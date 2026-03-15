@@ -1,3 +1,0 @@
-/Users/tudorserban/Work/Separate/CoreEngine/build_check/CMakeFiles/coreengine.dir
-/Users/tudorserban/Work/Separate/CoreEngine/build_check/CMakeFiles/edit_cache.dir
-/Users/tudorserban/Work/Separate/CoreEngine/build_check/CMakeFiles/rebuild_cache.dir
