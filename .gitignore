@@ -1,0 +1,11 @@
+build/
+build_check/
+build-*/
+cmake-build-*/
+.cache/
+.DS_Store
+*.swp
+.idea/
+.vscode/
+.env
+.env.*
