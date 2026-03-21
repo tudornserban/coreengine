@@ -6,7 +6,7 @@ How each game project uses CoreEngine systems.
 
 ## VenusWars
 
-**Location:** `VenusWars/VenusWarsPrototype/`
+**Location:** `VenusWars/` (CMake project and sources at repository root)
 
 VenusWars is the original source of most `core/` systems. After extraction:
 

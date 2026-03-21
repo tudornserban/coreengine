@@ -159,7 +159,7 @@ int main()
 #include "CoreEngine/platform/sdl2/SDLInputReader.h"
 #include <SDL.h>
 
-// See VenusWars/VenusWarsPrototype/src/main.cpp for full reference implementation.
+// See VenusWars/src/main.cpp for full reference implementation.
 ```
 
 ---
