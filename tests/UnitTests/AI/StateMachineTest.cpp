@@ -102,6 +102,22 @@ TEST(StateMachineTest, FirstSatisfiedTransitionWins) {
     EXPECT_EQ(sm.GetCurrentState(), "B");
 }
 
+TEST(StateMachineTest, ClearCurrentState_ExitsBehaviorAndEmptiesCurrent) {
+    StateMachine sm;
+    MockGameUnit unit;
+    sm.SetOwner(&unit);
+    auto beh = std::make_unique<MockBehavior>("BehA");
+    MockBehavior* raw = beh.get();
+    sm.AddState("A", std::move(beh));
+    sm.SetState("A");
+    ASSERT_NE(sm.GetCurrentBehavior(), nullptr);
+
+    sm.ClearCurrentState();
+    EXPECT_TRUE(sm.GetCurrentState().empty());
+    EXPECT_EQ(sm.GetCurrentBehavior(), nullptr);
+    EXPECT_GE(raw->GetExitCount(), 1);
+}
+
 TEST(StateMachineTest, OnEnterOnExitCalledOnTransition) {
     StateMachine sm;
     MockGameUnit unit;

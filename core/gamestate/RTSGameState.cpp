@@ -89,12 +89,12 @@ void RTSGameState::Update(float deltaTime)
         {
             Vector2 acceleration;
 
-            // Try new interface first (GenerateFieldItems)
+            // Behavior field items + static influences (map edges, obstacles, static attractors)
             std::vector<InfluenceFieldItem> items = currentBehavior->GenerateFieldItems(ctx);
+            items.insert(items.end(), ctx.staticFieldItems.begin(), ctx.staticFieldItems.end());
 
             if (!items.empty())
             {
-                // New modular system - calculate from field items
                 acceleration = InfluenceField::CalculateTotalForce(
                     rtsUnit->GetPosition(),
                     rtsUnit->GetVelocity(),
@@ -104,11 +104,9 @@ void RTSGameState::Update(float deltaTime)
             }
             else
             {
-                // Old system - use CalculateAcceleration (for generic behaviors)
                 acceleration = currentBehavior->CalculateAcceleration(ctx);
             }
 
-            // Apply acceleration
             rtsUnit->ApplyAcceleration(acceleration, deltaTime);
         }
     }

@@ -68,6 +68,18 @@ void StateMachine::SetState(const std::string& stateName)
     }
 }
 
+void StateMachine::ClearCurrentState()
+{
+    if (currentState_.empty()) {
+        return;
+    }
+    auto cur = states_.find(currentState_);
+    if (cur != states_.end() && cur->second && owner_) {
+        cur->second->OnExit(owner_);
+    }
+    currentState_.clear();
+}
+
 IBehavior* StateMachine::GetCurrentBehavior()
 {
     auto it = states_.find(currentState_);

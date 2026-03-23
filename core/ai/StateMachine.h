@@ -47,6 +47,10 @@ public:
     /// Manually override current state (used by RationalInsanity magic dust swap, commands, etc.)
     void SetState(const std::string& stateName);
 
+    /// Exit the current behavior and clear the active state (no current behavior until SetState/AddState).
+    /// Used when ejecting Magic Dust so the unit receives no AI acceleration.
+    void ClearCurrentState();
+
     const std::string& GetCurrentState() const { return currentState_; }
     const std::map<std::string, std::unique_ptr<IBehavior>>& GetStates() const { return states_; }
     std::map<std::string, std::unique_ptr<IBehavior>>& GetStates() { return states_; }
