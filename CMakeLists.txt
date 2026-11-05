@@ -26,6 +26,12 @@ if(_standalone_modes GREATER 1)
     message(FATAL_ERROR "At most one COREENGINE_*_STANDALONE option may be ON")
 endif()
 
+# Static archive and OBJECT-library .o files linked into coreengine_ffi must be PIC/PIE-ready.
+# Scoped to BUILD_FFI so default static-only builds keep non-PIC objects (smaller .a on some toolchains).
+if(BUILD_FFI)
+    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+endif()
+
 if(COREENGINE_MATH_STANDALONE)
     add_subdirectory(core/math)
     if(NOT BUILD_TESTS)
