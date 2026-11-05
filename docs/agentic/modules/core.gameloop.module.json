@@ -1,0 +1,16 @@
+{
+  "id": "core.gameloop",
+  "version": "1.0.0",
+  "path": "core/gameloop",
+  "exports": [
+    "GameLogicEngine",
+    "DeploymentTimer",
+    "ThinkTimer",
+    "PlaybackController",
+    "MatchState"
+  ],
+  "requires": {
+    "core.math": "^1.0.0"
+  },
+  "tags": ["timing", "deterministic"]
+}

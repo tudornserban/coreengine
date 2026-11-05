@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "modules": [
+    "core.ai",
+    "core.ai_advanced",
+    "core.collision",
+    "core.combat",
+    "core.gamestate",
+    "core.gameloop",
+    "core.influence",
+    "core.interfaces",
+    "core.logging",
+    "core.map",
+    "core.math",
+    "core.serialization"
+  ]
+}

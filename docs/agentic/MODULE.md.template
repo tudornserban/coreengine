@@ -1,0 +1,37 @@
+# Module: `<MODULE_ID>`
+
+> Copy this file to `<module-path>/MODULE.md` when a module gains a stable boundary (Phase 2+).  
+> Manifest: `docs/agentic/modules/<MODULE_ID>.module.json`
+
+## Purpose
+
+One paragraph: what this module owns and what it explicitly does **not** own.
+
+## Public surface (`exports`)
+
+List types and functions other modules may use. Match the manifest `exports` array.
+
+| Symbol | Kind | Notes |
+|--------|------|-------|
+| | | |
+
+## Dependencies (`requires`)
+
+| Module | Range | Why |
+|--------|-------|-----|
+| | | |
+
+## Invariants
+
+- Threading / determinism / allocation rules agents must preserve.
+
+## Tests
+
+- Path(s) under `tests/` that guard this module.
+- How to run: `cmake -B build -DBUILD_TESTS=ON && cmake --build build && ctest --test-dir build -R <pattern>`
+
+## Change checklist
+
+- [ ] Update `docs/agentic/modules/<MODULE_ID>.module.json` version if exports changed
+- [ ] Update `docs/ARCHITECTURE.md` if behavior or boundaries changed
+- [ ] Run `./scripts/check-module-deps.sh`

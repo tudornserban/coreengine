@@ -1,0 +1,17 @@
+{
+  "id": "core.combat",
+  "version": "1.0.0",
+  "path": "core/combat",
+  "exports": [
+    "CombatManager",
+    "CommandSystem",
+    "SelectionSystem",
+    "Explosion"
+  ],
+  "requires": {
+    "core.interfaces": "^1.0.0",
+    "core.math": "^1.0.0"
+  },
+  "tags": ["gameplay"],
+  "notes": "CommandSystem.cpp includes RTSUnit today."
+}

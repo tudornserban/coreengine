@@ -1,0 +1,18 @@
+{
+  "id": "core.map",
+  "version": "1.0.0",
+  "path": "core/map",
+  "exports": [
+    "Map",
+    "MapEntity",
+    "PlacementValidator",
+    "GameMode",
+    "MapObstacleComponent",
+    "MapResourceComponent"
+  ],
+  "requires": {
+    "core.interfaces": "^1.0.0",
+    "core.math": "^1.0.0"
+  },
+  "tags": ["ecs", "gameplay"]
+}

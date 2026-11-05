@@ -1,0 +1,26 @@
+{
+  "id": "core.ai",
+  "version": "1.0.0",
+  "path": "core/ai",
+  "exports": [
+    "StateMachine",
+    "BehaviorContext",
+    "BehaviorFactory",
+    "SeekBehavior",
+    "FleeBehavior",
+    "WanderBehavior",
+    "CohesionBehavior",
+    "SeparationBehavior",
+    "EnemyInRangeCondition",
+    "AlliesNearbyCondition",
+    "TimeElapsedCondition"
+  ],
+  "requires": {
+    "core.interfaces": "^1.0.0",
+    "core.math": "^1.0.0",
+    "core.logging": "^1.0.0",
+    "core.influence": "^1.0.0"
+  },
+  "tags": ["gameplay", "fsm"],
+  "notes": "Behaviors reference InfluenceFieldItem via IBehavior; influence coupling is structural."
+}
