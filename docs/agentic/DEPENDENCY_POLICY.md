@@ -20,6 +20,8 @@ Enforcement is **active for `core.math`** in Phase 2 (`scripts/check-module-deps
 | Depend only on modules listed in `requires` with satisfied semver | Agent + CI guardrail |
 | No cycles in `requires` | Enables ordered extraction |
 
+**Exception (documented):** `core.interfaces` ↔ `core.influence` mutual `requires` — `IBehavior` returns `InfluenceFieldItem`; `TerritoryCalculator` uses `IGameUnit`. Allowed by `scripts/check_module_deps.py` only for this pair.
+
 ## Version bumps
 
 See [AGENTS.md](../../AGENTS.md) — patch/minor/major rules apply per module `version` in `docs/agentic/modules/*.module.json`.

@@ -1,6 +1,6 @@
 {
   "id": "core.influence",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "path": "core/influence",
   "exports": [
     "InfluenceFieldItem",
@@ -9,7 +9,9 @@
     "TerritoryCalculator"
   ],
   "requires": {
-    "core.math": "^1.0.0"
+    "core.math": "^1.0.0",
+    "core.interfaces": "^1.0.0"
   },
-  "tags": ["gameplay", "movement"]
+  "tags": ["gameplay", "movement"],
+  "notes": "Phase 2 boundary; documented mutual requires with core.interfaces (IBehavior field items + IGameUnit territory API)."
 }

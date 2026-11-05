@@ -14,6 +14,7 @@ ctest --test-dir build --output-on-failure
 ./scripts/check-module-deps.sh
 python3 scripts/test_check_module_deps.py
 ./scripts/run-math-module-tests.sh
+./scripts/run-influence-module-tests.sh
 ```
 
 ## Scoped repair (2026-11-05)
@@ -35,4 +36,4 @@ GitHub mirror PR merges do not sync to GitLab `gamedev4680743/coreengine`.
 
 ## Next module step (after gates)
 
-With full CI green and math pilot on `main`: continue Phase 2 rollout to **`core.influence`** or **`core.logging`** (see [INVENTORY.md](INVENTORY.md) §5 runner-up) — one module at a time, same MODULE.md + checker opt-in pattern as `core.math`.
+With full CI green and math pilot on `main`: continue Phase 2 rollout — **`core.influence`** (this module) then **`core.logging`** — one module at a time, same MODULE.md + checker opt-in pattern as `core.math`.

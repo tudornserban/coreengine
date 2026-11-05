@@ -15,7 +15,10 @@ ID_RE = re.compile(r"^[a-z][a-z0-9]*(\.[a-z][a-z0-9_]*)+$")
 INCLUDE_RE = re.compile(r'^\s*#\s*include\s+([<"])([^>"]+)[>"]', re.MULTILINE)
 
 # Phase 2: strict include boundaries. Other modules remain manifest-only until opted in.
-INCLUDE_ENFORCED_MODULES = frozenset({"core.math"})
+INCLUDE_ENFORCED_MODULES = frozenset({"core.math", "core.influence"})
+
+# Documented mutual manifest edge (IBehavior ↔ InfluenceFieldItem, TerritoryCalculator ↔ IGameUnit).
+ALLOWED_REQUIRES_CYCLE_PAIRS = frozenset({frozenset({"core.interfaces", "core.influence"})})
 
 
 @dataclass
@@ -78,8 +81,10 @@ def detect_requires_cycles(module_ids: list[str], manifests: dict) -> list[str]:
             if dep not in color:
                 continue
             if color[dep] == GRAY:
-                errors.append(f"cycle in requires graph involving {dep}")
-                return
+                pair = frozenset({node, dep})
+                if pair not in ALLOWED_REQUIRES_CYCLE_PAIRS:
+                    errors.append(f"cycle in requires graph involving {dep}")
+                continue
             if color[dep] == WHITE:
                 dfs(dep, stack)
         stack.pop()
@@ -134,10 +139,21 @@ def check_include_line(
     resolved = (source_file.parent / include_path).resolve()
     try:
         resolved.relative_to(module_root.resolve())
+        return None
     except ValueError:
-        return f"include {include_path!r} resolves outside {module_root.relative_to(repo_root)}"
+        pass
 
-    return None
+    for req_id in requires:
+        req_path = (repo_root / manifests[req_id].get("path", "")).resolve()
+        if not req_path.is_dir():
+            continue
+        try:
+            resolved.relative_to(req_path)
+            return None
+        except ValueError:
+            continue
+
+    return f"include {include_path!r} resolves outside {module_root.relative_to(repo_root)}"
 
 
 def check_include_boundaries(
