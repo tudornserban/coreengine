@@ -3,7 +3,7 @@
 #include <map>
 #include <string>
 #include <vector>
-#include "../influence/InfluenceFieldItem.h"
+#include "../influence_types/InfluenceFieldItem.h"
 #include "../math/Vector2.h"
 
 // Forward declarations

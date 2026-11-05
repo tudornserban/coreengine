@@ -12,6 +12,7 @@ option(COREENGINE_MATH_STANDALONE "Build only core.math tests (no full coreengin
 option(COREENGINE_INFLUENCE_STANDALONE "Build only core.influence tests (no full coreengine)" OFF)
 
 add_subdirectory(core/math)
+add_subdirectory(core/influence_types)
 add_subdirectory(core/influence)
 
 if(COREENGINE_MATH_STANDALONE AND COREENGINE_INFLUENCE_STANDALONE)
@@ -50,10 +51,12 @@ elseif(COREENGINE_INFLUENCE_STANDALONE)
 
     add_executable(coreengine_influence_tests
         tests/UnitTests/Influence/InfluenceFieldTest.cpp
+        tests/UnitTests/Influence/InfluenceTypesCompatibilityTest.cpp
     )
     target_include_directories(coreengine_influence_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
     target_link_libraries(coreengine_influence_tests
         coreengine_influence
+        coreengine_influence_types
         coreengine_math
         GTest::gtest
         GTest::gtest_main
@@ -82,6 +85,7 @@ else()
     add_library(coreengine STATIC
         ${CORE_SOURCES}
         $<TARGET_OBJECTS:coreengine_math>
+        $<TARGET_OBJECTS:coreengine_influence_types>
         $<TARGET_OBJECTS:coreengine_influence>
     )
     target_include_directories(coreengine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

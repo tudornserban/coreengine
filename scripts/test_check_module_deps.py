@@ -11,6 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from check_module_deps import (
     INCLUDE_ENFORCED_MODULES,
     check_include_boundaries,
+    detect_requires_cycles,
     run_checks,
 )
 
@@ -20,6 +21,12 @@ class CheckModuleDepsRegression(unittest.TestCase):
         repo_root = Path(__file__).resolve().parents[1]
         result = run_checks(repo_root)
         self.assertTrue(result.ok, result.errors)
+
+    def test_ibehavior_includes_influence_types_leaf(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        text = (repo_root / "core/interfaces/IBehavior.h").read_text(encoding="utf-8")
+        self.assertIn("influence_types/InfluenceFieldItem.h", text)
+        self.assertNotIn("influence/InfluenceFieldItem.h", text)
 
     def test_math_rejects_sibling_core_include(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -124,11 +131,71 @@ class CheckModuleDepsRegression(unittest.TestCase):
             )
             self.assertTrue(errors, errors)
 
+    def test_manifest_rejects_mutual_requires_cycle(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_cyclic_registry(root)
+            modules_dir = root / "docs/agentic/modules"
+            registry = json.loads((modules_dir / "registry.json").read_text())
+            manifests = self._manifests(root)
+            errors = detect_requires_cycles(registry["modules"], manifests)
+            self.assertTrue(any("cycle" in e for e in errors), errors)
+
+    def test_influence_types_rejects_interfaces_include(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_types_registry(root)
+            types_dir = root / "core/influence_types"
+            ifaces = root / "core/interfaces"
+            types_dir.mkdir(parents=True)
+            ifaces.mkdir(parents=True)
+            (ifaces / "IGameUnit.h").write_text("#pragma once\n", encoding="utf-8")
+            (types_dir / "Bad.cpp").write_text(
+                '#include "core/interfaces/IGameUnit.h"\n',
+                encoding="utf-8",
+            )
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.influence.types"})
+            )
+            self.assertTrue(any("core/interfaces" in e for e in errors), errors)
+
     @staticmethod
-    def _write_influence_registry(root: Path) -> None:
+    def _write_cyclic_registry(root: Path) -> None:
         modules_dir = root / "docs/agentic/modules"
         modules_dir.mkdir(parents=True)
-        registry = {"modules": ["core.math", "core.interfaces", "core.influence"]}
+        registry = {"modules": ["core.interfaces", "core.influence"]}
+        (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+        (modules_dir / "core.interfaces.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.interfaces",
+                    "version": "1.0.0",
+                    "path": "core/interfaces",
+                    "exports": ["IBehavior"],
+                    "requires": {"core.influence": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.influence.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.influence",
+                    "version": "1.0.0",
+                    "path": "core/influence",
+                    "exports": ["TerritoryCalculator"],
+                    "requires": {"core.interfaces": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+
+    @staticmethod
+    def _write_types_registry(root: Path) -> None:
+        modules_dir = root / "docs/agentic/modules"
+        modules_dir.mkdir(parents=True)
+        registry = {"modules": ["core.math", "core.influence.types"]}
         (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
         (modules_dir / "core.math.module.json").write_text(
             json.dumps(
@@ -142,6 +209,56 @@ class CheckModuleDepsRegression(unittest.TestCase):
             ),
             encoding="utf-8",
         )
+        (modules_dir / "core.influence.types.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.influence.types",
+                    "version": "1.0.0",
+                    "path": "core/influence_types",
+                    "exports": ["InfluenceFieldItem"],
+                    "requires": {"core.math": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+
+    @staticmethod
+    def _write_influence_registry(root: Path) -> None:
+        modules_dir = root / "docs/agentic/modules"
+        modules_dir.mkdir(parents=True)
+        registry = {
+            "modules": [
+                "core.math",
+                "core.influence.types",
+                "core.interfaces",
+                "core.influence",
+            ]
+        }
+        (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+        (modules_dir / "core.math.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.math",
+                    "version": "1.0.0",
+                    "path": "core/math",
+                    "exports": ["Vector2"],
+                    "requires": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.influence.types.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.influence.types",
+                    "version": "1.0.0",
+                    "path": "core/influence_types",
+                    "exports": ["InfluenceFieldItem"],
+                    "requires": {"core.math": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
         (modules_dir / "core.interfaces.module.json").write_text(
             json.dumps(
                 {
@@ -149,7 +266,7 @@ class CheckModuleDepsRegression(unittest.TestCase):
                     "version": "1.0.0",
                     "path": "core/interfaces",
                     "exports": ["IGameUnit"],
-                    "requires": {"core.math": "^1.0.0", "core.influence": "^1.0.0"},
+                    "requires": {"core.math": "^1.0.0", "core.influence.types": "^1.0.0"},
                 }
             ),
             encoding="utf-8",
@@ -160,8 +277,12 @@ class CheckModuleDepsRegression(unittest.TestCase):
                     "id": "core.influence",
                     "version": "1.0.0",
                     "path": "core/influence",
-                    "exports": ["InfluenceFieldItem"],
-                    "requires": {"core.math": "^1.0.0", "core.interfaces": "^1.0.0"},
+                    "exports": ["InfluenceFieldCalculator"],
+                    "requires": {
+                        "core.math": "^1.0.0",
+                        "core.influence.types": "^1.0.0",
+                        "core.interfaces": "^1.0.0",
+                    },
                 }
             ),
             encoding="utf-8",

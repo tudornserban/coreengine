@@ -1,6 +1,5 @@
-# core.influence — explicit source list. Headers: InfluenceFieldItem, InfluenceFieldCalculator, InfluenceFieldParameters, TerritoryCalculator.
+# core.influence — calculator + territory (types live in core/influence_types/).
 set(CORE_INFLUENCE_SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/InfluenceFieldItem.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/InfluenceFieldCalculator.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/TerritoryCalculator.cpp
 )

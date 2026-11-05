@@ -8,6 +8,7 @@
     "core.gamestate",
     "core.gameloop",
     "core.influence",
+    "core.influence.types",
     "core.interfaces",
     "core.logging",
     "core.map",

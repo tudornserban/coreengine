@@ -15,10 +15,7 @@ ID_RE = re.compile(r"^[a-z][a-z0-9]*(\.[a-z][a-z0-9_]*)+$")
 INCLUDE_RE = re.compile(r'^\s*#\s*include\s+([<"])([^>"]+)[>"]', re.MULTILINE)
 
 # Phase 2: strict include boundaries. Other modules remain manifest-only until opted in.
-INCLUDE_ENFORCED_MODULES = frozenset({"core.math", "core.influence"})
-
-# Documented mutual manifest edge (IBehavior ↔ InfluenceFieldItem, TerritoryCalculator ↔ IGameUnit).
-ALLOWED_REQUIRES_CYCLE_PAIRS = frozenset({frozenset({"core.interfaces", "core.influence"})})
+INCLUDE_ENFORCED_MODULES = frozenset({"core.math", "core.influence.types", "core.influence"})
 
 
 @dataclass
@@ -81,9 +78,7 @@ def detect_requires_cycles(module_ids: list[str], manifests: dict) -> list[str]:
             if dep not in color:
                 continue
             if color[dep] == GRAY:
-                pair = frozenset({node, dep})
-                if pair not in ALLOWED_REQUIRES_CYCLE_PAIRS:
-                    errors.append(f"cycle in requires graph involving {dep}")
+                errors.append(f"cycle in requires graph involving {dep}")
                 continue
             if color[dep] == WHITE:
                 dfs(dep, stack)

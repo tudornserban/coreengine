@@ -19,7 +19,7 @@ private:
 
 } // namespace
 
-// Regression: IBehavior.h must include complete InfluenceFieldItem (not forward-declare only).
+// Regression: IBehavior.h must include complete InfluenceFieldItem from core.influence.types.
 // GCC 13 fails to compile std::vector<InfluenceFieldItem> in the interface otherwise.
 TEST(IBehaviorInterfaceTest, DefaultGenerateFieldItemsReturnsEmptyVector) {
     DefaultFieldItemsBehavior behavior;

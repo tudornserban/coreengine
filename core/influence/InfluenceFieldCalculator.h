@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../math/Vector2.h"
-#include "InfluenceFieldItem.h"
+#include "../influence_types/InfluenceFieldItem.h"
 #include <vector>
 
 /// Calculates the total acceleration force on an agent from a list of
