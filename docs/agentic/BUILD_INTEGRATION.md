@@ -15,6 +15,7 @@ ctest --test-dir build --output-on-failure
 python3 scripts/test_check_module_deps.py
 ./scripts/run-math-module-tests.sh
 ./scripts/run-influence-module-tests.sh
+./scripts/run-logging-module-tests.sh
 ```
 
 ## FFI shared library (`BUILD_FFI=ON`)

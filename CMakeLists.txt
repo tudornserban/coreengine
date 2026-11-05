@@ -11,6 +11,7 @@ option(BUILD_RAYLIB   "Build Raylib platform adapter"          OFF)
 option(COREENGINE_MATH_STANDALONE "Build only core.math tests (no full coreengine)" OFF)
 option(COREENGINE_INFLUENCE_STANDALONE "Build only core.influence tests (no full coreengine)" OFF)
 option(COREENGINE_INFLUENCE_TYPES_STANDALONE "Build only core.influence.types tests" OFF)
+option(COREENGINE_LOGGING_STANDALONE "Build only core.logging tests (no full coreengine)" OFF)
 
 set(_standalone_modes 0)
 if(COREENGINE_MATH_STANDALONE)
@@ -20,6 +21,9 @@ if(COREENGINE_INFLUENCE_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(COREENGINE_INFLUENCE_TYPES_STANDALONE)
+    math(EXPR _standalone_modes "${_standalone_modes}+1")
+endif()
+if(COREENGINE_LOGGING_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(_standalone_modes GREATER 1)
@@ -107,10 +111,32 @@ elseif(COREENGINE_INFLUENCE_STANDALONE)
     )
     include(GoogleTest)
     gtest_discover_tests(coreengine_influence_tests)
+elseif(COREENGINE_LOGGING_STANDALONE)
+    add_subdirectory(core/logging)
+    if(NOT BUILD_TESTS)
+        message(FATAL_ERROR "COREENGINE_LOGGING_STANDALONE requires BUILD_TESTS=ON")
+    endif()
+    enable_testing()
+    find_package(GTest REQUIRED)
+
+    add_executable(coreengine_logging_tests
+        tests/UnitTests/Logging/LoggerTest.cpp
+        tests/UnitTests/Logging/LoggingCanonicalHeaderCompileTest.cpp
+        tests/UnitTests/Logging/LoggingIntegrationHeaderCompileTest.cpp
+    )
+    target_include_directories(coreengine_logging_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(coreengine_logging_tests
+        coreengine_logging
+        GTest::gtest
+        GTest::gtest_main
+    )
+    include(GoogleTest)
+    gtest_discover_tests(coreengine_logging_tests)
 else()
     add_subdirectory(core/math)
     add_subdirectory(core/influence_types)
     add_subdirectory(core/influence)
+    add_subdirectory(core/logging)
 
     file(GLOB_RECURSE CORE_SOURCES
         "core/interfaces/*.cpp"
@@ -123,7 +149,6 @@ else()
         "core/map/MapComponents/*.cpp"
         "core/combat/*.cpp"
         "core/gamestate/*.cpp"
-        "core/logging/*.cpp"
         "core/ai_advanced/*.cpp"
         "core/serialization/*.cpp"
     )
@@ -133,6 +158,7 @@ else()
         $<TARGET_OBJECTS:coreengine_math>
         $<TARGET_OBJECTS:coreengine_influence_types>
         $<TARGET_OBJECTS:coreengine_influence>
+        $<TARGET_OBJECTS:coreengine_logging>
     )
     target_include_directories(coreengine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 

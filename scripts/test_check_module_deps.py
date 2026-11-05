@@ -227,6 +227,60 @@ class CheckModuleDepsRegression(unittest.TestCase):
             )
             self.assertTrue(any("core/interfaces" in e for e in errors), errors)
 
+    def test_logging_rejects_sibling_core_include(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_logging_registry(root)
+            log_dir = root / "core/logging"
+            math_dir = root / "core/math"
+            math_dir.mkdir(parents=True)
+            (math_dir / "Vector2.h").write_text("#pragma once\n", encoding="utf-8")
+            (log_dir / "Bad.cpp").write_text(
+                '#include "core/math/Vector2.h"\n',
+                encoding="utf-8",
+            )
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.logging"})
+            )
+            self.assertTrue(any("core/math" in e for e in errors), errors)
+
+    def test_logging_allows_own_headers_and_stdlib(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_logging_registry(root)
+            log_dir = root / "core/logging"
+            (log_dir / "Logger.h").write_text("#pragma once\n", encoding="utf-8")
+            (log_dir / "Ok.cpp").write_text(
+                '#include "Logger.h"\n#include <iostream>\n',
+                encoding="utf-8",
+            )
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.logging"})
+            )
+            self.assertEqual(errors, [])
+
+    @staticmethod
+    def _write_logging_registry(root: Path) -> None:
+        modules_dir = root / "docs/agentic/modules"
+        modules_dir.mkdir(parents=True)
+        registry = {"modules": ["core.logging"]}
+        (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+        (modules_dir / "core.logging.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.logging",
+                    "version": "1.0.0",
+                    "path": "core/logging",
+                    "exports": ["Logger"],
+                    "requires": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (root / "core/logging").mkdir(parents=True, exist_ok=True)
+
     @staticmethod
     def _write_three_node_cycle_registry(root: Path) -> None:
         modules_dir = root / "docs/agentic/modules"

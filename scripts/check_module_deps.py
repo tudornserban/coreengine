@@ -15,7 +15,9 @@ ID_RE = re.compile(r"^[a-z][a-z0-9]*(\.[a-z][a-z0-9_]*)+$")
 INCLUDE_RE = re.compile(r'^\s*#\s*include\s+([<"])([^>"]+)[>"]', re.MULTILINE)
 
 # Phase 2: strict include boundaries. Other modules remain manifest-only until opted in.
-INCLUDE_ENFORCED_MODULES = frozenset({"core.math", "core.influence.types", "core.influence"})
+INCLUDE_ENFORCED_MODULES = frozenset(
+    {"core.math", "core.influence.types", "core.influence", "core.logging"}
+)
 
 
 @dataclass
