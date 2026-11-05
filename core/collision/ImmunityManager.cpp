@@ -1,5 +1,6 @@
 #include "ImmunityManager.h"
 #include <algorithm>
+#include <vector>
 
 ImmunityManager::ImmunityManager(int defaultFrames)
     : defaultImmunityFrames(defaultFrames) {

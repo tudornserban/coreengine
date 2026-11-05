@@ -9,6 +9,7 @@ This folder holds **Phase 0 inventory** and **Phase 1 scaffold** for modular, ag
 | [modules/](modules/) | One manifest per logical module (`*.module.json`) |
 | [MODULE.md.template](MODULE.md.template) | Copy when adding or splitting a module |
 | [DEPENDENCY_POLICY.md](DEPENDENCY_POLICY.md) | Intended dependency layers (enforcement grows in Phase 2+) |
+| [BUILD_INTEGRATION.md](BUILD_INTEGRATION.md) | Full-engine build gate and compile repair notes |
 | [PHASE2_PILOT.md](PHASE2_PILOT.md) | Planned `core.math` extraction (not started) |
 
 **Next (Phase 2):** extract boundaries and enforce imports using `scripts/check-module-deps.sh` (currently validates manifests only).

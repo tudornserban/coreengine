@@ -3,12 +3,12 @@
 #include <map>
 #include <string>
 #include <vector>
+#include "../influence/InfluenceFieldItem.h"
 #include "../math/Vector2.h"
 
 // Forward declarations
 struct BehaviorContext;
 class IGameUnit;
-class InfluenceFieldItem;
 
 /// Steering behavior interface.
 ///
