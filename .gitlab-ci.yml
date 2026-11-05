@@ -12,6 +12,19 @@ agentic-module-manifests:
   script:
     - chmod +x scripts/check-module-deps.sh
     - ./scripts/check-module-deps.sh
+    - python3 scripts/test_check_module_deps.py
+
+math-module-pilot:
+  stage: build
+  image: ubuntu:24.04
+  before_script:
+    - apt-get update -qq
+    - apt-get install -qq -y --no-install-recommends
+        cmake ninja-build build-essential libgtest-dev python3
+  script:
+    - chmod +x scripts/run-math-module-tests.sh scripts/check-module-deps.sh
+    - ./scripts/check-module-deps.sh
+    - ./scripts/run-math-module-tests.sh
 
 build-and-test:
   stage: build
