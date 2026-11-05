@@ -43,6 +43,13 @@ TEST(Vector2Test, ScalarMultiplication) {
     EXPECT_FLOAT_EQ(r.y, 4.0f);
 }
 
+TEST(Vector2Test, FriendScalarMultiplication) {
+    Vector2 v(1.0f, 2.0f);
+    Vector2 r = 2.0f * v;
+    EXPECT_FLOAT_EQ(r.x, 2.0f);
+    EXPECT_FLOAT_EQ(r.y, 4.0f);
+}
+
 TEST(Vector2Test, ScalarDivision) {
     Vector2 v(3.0f, 4.0f);
     Vector2 r = v / 2.0f;

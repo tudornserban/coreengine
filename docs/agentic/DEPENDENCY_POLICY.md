@@ -1,6 +1,6 @@
 # Module dependency policy (draft)
 
-Enforcement is **stub-only** in Phase 1 (`scripts/check-module-deps.sh`). This document defines the target rules for Phase 2+.
+Enforcement is **active for `core.math`** in Phase 2 (`scripts/check-module-deps.sh` via `scripts/check_module_deps.py`). All other registry modules remain **manifest-only** until individually opted into `INCLUDE_ENFORCED_MODULES`.
 
 ## Layers
 

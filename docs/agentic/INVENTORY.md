@@ -56,10 +56,17 @@ cmake --build build --parallel
 cd build && ctest --output-on-failure
 ```
 
-**Agentic dependency stub** (Phase 1):
+**Agentic dependency check** (manifests + Phase 2 `core.math` `#include` enforcement):
 
 ```bash
 ./scripts/check-module-deps.sh
+python3 scripts/test_check_module_deps.py
+```
+
+**Math-only tests** (Phase 2 pilot):
+
+```bash
+./scripts/run-math-module-tests.sh
 ```
 
 ### CI
