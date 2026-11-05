@@ -5,5 +5,5 @@
   "exports": ["Vector2", "Vector3", "DeterministicRNG", "MathConstants"],
   "requires": {},
   "tags": ["foundation", "deterministic"],
-  "notes": "Phase 2 pilot module — no upstream core dependencies."
+  "notes": "Phase 2 pilot complete: MODULE.md, include enforcement, math-only test target."
 }

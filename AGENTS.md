@@ -34,14 +34,20 @@ Update the module’s `*.module.json` in the same PR as the code change.
 
 ```bash
 ./scripts/check-module-deps.sh
+python3 scripts/test_check_module_deps.py
+./scripts/run-math-module-tests.sh
 cmake -S . -B build -G Ninja -DBUILD_TESTS=ON && cmake --build build && ctest --test-dir build
 ```
 
 ## Phase 2 pilot
 
-Default first extraction target: **`core.math`** — see [INVENTORY.md](docs/agentic/INVENTORY.md) §5.
+**`core.math`** — see [core/math/MODULE.md](core/math/MODULE.md) and [docs/agentic/PHASE2_PILOT.md](docs/agentic/PHASE2_PILOT.md).
 
-Copy [MODULE.md.template](docs/agentic/MODULE.md.template) into `core/math/MODULE.md` when that module is formalized.
+Math-only verification:
+
+```bash
+./scripts/run-math-module-tests.sh
+```
 
 ## Human docs
 
