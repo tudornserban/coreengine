@@ -1,7 +1,6 @@
 # Phase 2 — `core.influence` + `core.influence.types`
 
-**Status:** Implemented on PR #4 (types leaf breaks interfaces↔influence cycle).  
-**Base:** `main` @ `628ce572`.
+**Status:** Open PR #4 — rebased on `main` @ `fc5c7e2` (includes merged PR #5 FFI PIC repair).
 
 ## Architectural outcome (Tudor option 2)
 
