@@ -31,7 +31,8 @@
 
 ## Validation surface (acceptance)
 
-- Checker + regressions; full CTest FFI OFF/ON; `verify-ffi-build.sh`; math/types/influence/**logging** standalone; single `Logger.cpp.o` in archive; math standalone still one RNG object only.
+- Checker + regressions (includes `scripts/test_build_dir_guard.py`); full CTest FFI OFF/ON; `verify-ffi-build.sh`; math/types/influence/**logging** standalone; single `Logger.cpp.o` in archive; math standalone still one RNG object only.
+- Standalone runners use fixed repo-local `build-*` dirs (incremental configure). Fresh trees for acceptance: `./scripts/wipe-local-build-dir.sh <name>` (guard rejects unsafe paths).
 
 ## Stop conditions
 

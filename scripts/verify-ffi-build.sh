@@ -4,11 +4,10 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-BUILD_DIR="${COREENGINE_FFI_BUILD_DIR:-${ROOT}/build-verify-ffi}"
+BUILD_DIR="${ROOT}/build-verify-ffi"
 export CXX="${CXX:-g++}"
 
-echo "[verify-ffi-build] fresh CMAKE_BINARY_DIR=${BUILD_DIR}"
-rm -rf "${BUILD_DIR}"
+echo "[verify-ffi-build] CMAKE_BINARY_DIR=${BUILD_DIR}"
 
 cmake -S "${ROOT}" -B "${BUILD_DIR}" -G Ninja \
   -DBUILD_FFI=ON \

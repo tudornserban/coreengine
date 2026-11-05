@@ -4,13 +4,23 @@
 #include <filesystem>
 #include <fstream>
 #include <string>
+#if defined(_WIN32)
+#include <process.h>
+#else
 #include <unistd.h>
+#endif
 #include "core/logging/Logger.h"
 
 using VenusWars::Logging::LogLevel;
 using VenusWars::Logging::Logger;
 
 namespace {
+
+#if defined(_WIN32)
+int CurrentProcessId() { return _getpid(); }
+#else
+int CurrentProcessId() { return getpid(); }
+#endif
 
 class LoggerStateGuard {
 public:
@@ -27,7 +37,7 @@ private:
 class IsolatedLogFile {
 public:
     IsolatedLogFile() {
-        const std::string name = "coreengine_logger_" + std::to_string(getpid()) + "_"
+        const std::string name = "coreengine_logger_" + std::to_string(CurrentProcessId()) + "_"
             + std::to_string(s_counter.fetch_add(1, std::memory_order_relaxed)) + ".log";
         path_ = std::filesystem::temp_directory_path() / name;
         std::error_code ec;

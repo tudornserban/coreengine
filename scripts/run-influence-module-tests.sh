@@ -3,11 +3,10 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-BUILD_DIR="${COREENGINE_STANDALONE_BUILD_DIR:-${ROOT}/build-influence}"
+BUILD_DIR="${ROOT}/build-influence"
 export CXX="${CXX:-g++}"
 
-echo "[run-influence-module-tests] fresh CMAKE_BINARY_DIR=${BUILD_DIR}"
-rm -rf "${BUILD_DIR}"
+echo "[run-influence-module-tests] CMAKE_BINARY_DIR=${BUILD_DIR}"
 
 cmake -S "${ROOT}" -B "${BUILD_DIR}" -G Ninja \
   -DBUILD_TESTS=ON \
