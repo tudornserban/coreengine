@@ -3,6 +3,16 @@ stages: [build]
 variables:
   DEBIAN_FRONTEND: noninteractive
 
+agentic-module-manifests:
+  stage: build
+  image: ubuntu:24.04
+  before_script:
+    - apt-get update -qq
+    - apt-get install -qq -y --no-install-recommends python3
+  script:
+    - chmod +x scripts/check-module-deps.sh
+    - ./scripts/check-module-deps.sh
+
 build-and-test:
   stage: build
   image: ubuntu:24.04
@@ -11,6 +21,7 @@ build-and-test:
     - apt-get install -qq -y --no-install-recommends
         cmake ninja-build build-essential libgtest-dev
   script:
+    - ./scripts/check-module-deps.sh
     - cmake -S . -B build -G Ninja -DBUILD_TESTS=ON
     - cmake --build build --parallel 4
     - cd build && ctest --output-on-failure

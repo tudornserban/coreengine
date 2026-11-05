@@ -1,0 +1,50 @@
+# CoreEngine — agent instructions
+
+This repository uses an **additive, module-by-module** workflow. Phase 1 scaffold lives under `docs/agentic/`.
+
+## Scope rules
+
+1. **One module per task** unless the user explicitly asks for cross-cutting work.
+2. **Path allowlists** — when editing module `core.<name>`, you may read/write:
+   - `docs/agentic/modules/core.<name>.module.json`
+   - Paths under that module’s `path` in the manifest (see [INVENTORY.md](docs/agentic/INVENTORY.md))
+   - Matching tests under `tests/UnitTests/` or `tests/IntegrationTests/` for that area
+   - Shared docs: `docs/agentic/*`, `docs/ARCHITECTURE.md` (if behavior changed)
+3. **Do not read other modules’ implementation** for context when working a single module — use `core/interfaces` headers and the target module only. Exception: integration modules (`core.gamestate`, `core.serialization`) when the task requires it.
+4. **No platform or FFI changes** when working `core/*` unless the task is platform/FFI scoped.
+5. **No wide refactors** in inventory/scaffold PRs — extract interfaces in dedicated Phase 2+ PRs.
+
+## Module metadata
+
+- Manifest schema: [docs/agentic/manifest.schema.json](docs/agentic/manifest.schema.json)
+- Registry: [docs/agentic/modules/registry.json](docs/agentic/modules/registry.json)
+- Per-module semver: `version` field in each `*.module.json`
+
+### Version bump rules
+
+| Change | Bump |
+|--------|------|
+| Internal-only, no export/API change | Patch |
+| New export or backward-compatible behavior | Minor |
+| Remove/rename export or break callers | Major |
+
+Update the module’s `*.module.json` in the same PR as the code change.
+
+## Verification
+
+```bash
+./scripts/check-module-deps.sh
+cmake -S . -B build -G Ninja -DBUILD_TESTS=ON && cmake --build build && ctest --test-dir build
+```
+
+## Phase 2 pilot
+
+Default first extraction target: **`core.math`** — see [INVENTORY.md](docs/agentic/INVENTORY.md) §5.
+
+Copy [MODULE.md.template](docs/agentic/MODULE.md.template) into `core/math/MODULE.md` when that module is formalized.
+
+## Human docs
+
+- [Architecture](docs/ARCHITECTURE.md)
+- [Coding guidelines](docs/CODING_GUIDELINES.md)
+- [Agentic index](docs/agentic/README.md)

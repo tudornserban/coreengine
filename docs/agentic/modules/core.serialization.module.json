@@ -1,0 +1,10 @@
+{
+  "id": "core.serialization",
+  "version": "1.0.0",
+  "path": "core/serialization",
+  "exports": ["GameStateSerializer"],
+  "requires": {
+    "core.gamestate": "^1.0.0"
+  },
+  "tags": ["persistence"]
+}

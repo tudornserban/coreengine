@@ -1,0 +1,15 @@
+{
+  "id": "core.influence",
+  "version": "1.0.0",
+  "path": "core/influence",
+  "exports": [
+    "InfluenceFieldItem",
+    "InfluenceFieldCalculator",
+    "InfluenceFieldParameters",
+    "TerritoryCalculator"
+  ],
+  "requires": {
+    "core.math": "^1.0.0"
+  },
+  "tags": ["gameplay", "movement"]
+}

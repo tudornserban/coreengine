@@ -1,0 +1,8 @@
+{
+  "id": "core.logging",
+  "version": "1.0.0",
+  "path": "core/logging",
+  "exports": ["Logger", "LogLevel", "LoggerIntegration"],
+  "requires": {},
+  "tags": ["foundation"]
+}
