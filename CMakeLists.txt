@@ -121,6 +121,7 @@ elseif(COREENGINE_LOGGING_STANDALONE)
 
     add_executable(coreengine_logging_tests
         tests/UnitTests/Logging/LoggerTest.cpp
+        tests/UnitTests/Logging/LoggingLogLevelHeaderCompileTest.cpp
         tests/UnitTests/Logging/LoggingCanonicalHeaderCompileTest.cpp
         tests/UnitTests/Logging/LoggingIntegrationHeaderCompileTest.cpp
     )

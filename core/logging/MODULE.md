@@ -18,7 +18,7 @@ Foundation logging: levels, singleton `Logger`, optional file append, and compil
 |--------|--------|
 | `Logger`, `LOG_*` macros | `Logger.h` |
 | `LogLevel`, `LogLevelToString` | `LogLevel.h` |
-| `LoggerIntegration` inline helper | `LoggerIntegration.h` |
+| `LoggerIntegration.h` | `SetupSDL2Logging()` when SDL headers present |
 
 ## Dependencies (`requires`)
 
@@ -34,7 +34,8 @@ Foundation logging: levels, singleton `Logger`, optional file append, and compil
 
 | File | Role |
 |------|------|
-| `tests/UnitTests/Logging/LoggerTest.cpp` | Level threshold + file output behavior |
+| `tests/UnitTests/Logging/LoggerTest.cpp` | Runtime level threshold + isolated file output |
+| `tests/UnitTests/Logging/LoggingLogLevelHeaderCompileTest.cpp` | `#include "core/logging/LogLevel.h"` only |
 | `tests/UnitTests/Logging/LoggingCanonicalHeaderCompileTest.cpp` | `#include "core/logging/Logger.h"` only |
 | `tests/UnitTests/Logging/LoggingIntegrationHeaderCompileTest.cpp` | `#include "core/logging/LoggerIntegration.h"` only |
 
