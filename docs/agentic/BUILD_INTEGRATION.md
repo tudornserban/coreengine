@@ -16,6 +16,16 @@ python3 scripts/test_check_module_deps.py
 ./scripts/run-math-module-tests.sh
 ```
 
+## FFI shared library (`BUILD_FFI=ON`)
+
+Linking `coreengine_ffi` pulls in the monolithic static `coreengine` archive and OBJECT-library objects; on ELF toolchains those inputs must be built with position-independent code. When `BUILD_FFI=ON`, root `CMakeLists.txt` sets `CMAKE_POSITION_INDEPENDENT_CODE ON` before any targets are defined.
+
+```bash
+./scripts/verify-ffi-build.sh
+```
+
+Default `BUILD_FFI=OFF` builds are unchanged (non-PIC static objects).
+
 ## Scoped repair (2026-11-05)
 
 | Item | Detail |

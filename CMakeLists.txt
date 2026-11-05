@@ -10,6 +10,12 @@ option(BUILD_SDL2     "Build SDL2 platform adapter"            OFF)
 option(BUILD_RAYLIB   "Build Raylib platform adapter"          OFF)
 option(COREENGINE_MATH_STANDALONE "Build only core.math tests (no full coreengine)" OFF)
 
+# Static archive and OBJECT-library .o files linked into coreengine_ffi must be PIC/PIE-ready.
+# Scoped to BUILD_FFI so default static-only builds keep non-PIC objects (smaller .a on some toolchains).
+if(BUILD_FFI)
+    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+endif()
+
 add_subdirectory(core/math)
 
 if(COREENGINE_MATH_STANDALONE)
