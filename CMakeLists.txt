@@ -9,6 +9,22 @@ option(BUILD_TESTS    "Build unit tests with GoogleTest"        OFF)
 option(BUILD_SDL2     "Build SDL2 platform adapter"            OFF)
 option(BUILD_RAYLIB   "Build Raylib platform adapter"          OFF)
 option(COREENGINE_MATH_STANDALONE "Build only core.math tests (no full coreengine)" OFF)
+option(COREENGINE_INFLUENCE_STANDALONE "Build only core.influence tests (no full coreengine)" OFF)
+option(COREENGINE_INFLUENCE_TYPES_STANDALONE "Build only core.influence.types tests" OFF)
+
+set(_standalone_modes 0)
+if(COREENGINE_MATH_STANDALONE)
+    math(EXPR _standalone_modes "${_standalone_modes}+1")
+endif()
+if(COREENGINE_INFLUENCE_STANDALONE)
+    math(EXPR _standalone_modes "${_standalone_modes}+1")
+endif()
+if(COREENGINE_INFLUENCE_TYPES_STANDALONE)
+    math(EXPR _standalone_modes "${_standalone_modes}+1")
+endif()
+if(_standalone_modes GREATER 1)
+    message(FATAL_ERROR "At most one COREENGINE_*_STANDALONE option may be ON")
+endif()
 
 # Static archive and OBJECT-library .o files linked into coreengine_ffi must be PIC/PIE-ready.
 # Scoped to BUILD_FFI so default static-only builds keep non-PIC objects (smaller .a on some toolchains).
@@ -16,9 +32,8 @@ if(BUILD_FFI)
     set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 endif()
 
-add_subdirectory(core/math)
-
 if(COREENGINE_MATH_STANDALONE)
+    add_subdirectory(core/math)
     if(NOT BUILD_TESTS)
         message(FATAL_ERROR "COREENGINE_MATH_STANDALONE requires BUILD_TESTS=ON")
     endif()
@@ -41,15 +56,67 @@ if(COREENGINE_MATH_STANDALONE)
     )
     include(GoogleTest)
     gtest_discover_tests(coreengine_math_tests)
+elseif(COREENGINE_INFLUENCE_TYPES_STANDALONE)
+    add_subdirectory(core/math)
+    add_subdirectory(core/influence_types)
+    if(NOT BUILD_TESTS)
+        message(FATAL_ERROR "COREENGINE_INFLUENCE_TYPES_STANDALONE requires BUILD_TESTS=ON")
+    endif()
+    enable_testing()
+    find_package(GTest REQUIRED)
+
+    add_executable(coreengine_influence_types_tests
+        tests/UnitTests/Influence/InfluenceTypesCanonicalHeaderCompileTest.cpp
+        tests/UnitTests/Influence/InfluenceLegacyItemHeaderCompileTest.cpp
+        tests/UnitTests/Influence/InfluenceLegacyParametersHeaderCompileTest.cpp
+        tests/UnitTests/Influence/InfluenceTypesModuleTest.cpp
+    )
+    target_include_directories(coreengine_influence_types_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(coreengine_influence_types_tests
+        coreengine_influence_types
+        coreengine_math
+        GTest::gtest
+        GTest::gtest_main
+    )
+    include(GoogleTest)
+    gtest_discover_tests(coreengine_influence_types_tests)
+elseif(COREENGINE_INFLUENCE_STANDALONE)
+    add_subdirectory(core/math)
+    add_subdirectory(core/influence_types)
+    add_subdirectory(core/influence)
+    if(NOT BUILD_TESTS)
+        message(FATAL_ERROR "COREENGINE_INFLUENCE_STANDALONE requires BUILD_TESTS=ON")
+    endif()
+    enable_testing()
+    find_package(GTest REQUIRED)
+
+    add_executable(coreengine_influence_tests
+        tests/UnitTests/Influence/InfluenceFieldTest.cpp
+        tests/UnitTests/Influence/InfluenceTypesCanonicalHeaderCompileTest.cpp
+        tests/UnitTests/Influence/InfluenceLegacyItemHeaderCompileTest.cpp
+        tests/UnitTests/Influence/InfluenceLegacyParametersHeaderCompileTest.cpp
+        tests/UnitTests/Influence/InfluenceTypesModuleTest.cpp
+    )
+    target_include_directories(coreengine_influence_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(coreengine_influence_tests
+        coreengine_influence
+        coreengine_influence_types
+        coreengine_math
+        GTest::gtest
+        GTest::gtest_main
+    )
+    include(GoogleTest)
+    gtest_discover_tests(coreengine_influence_tests)
 else()
-    # ---- Core static library ----
+    add_subdirectory(core/math)
+    add_subdirectory(core/influence_types)
+    add_subdirectory(core/influence)
 
     file(GLOB_RECURSE CORE_SOURCES
         "core/interfaces/*.cpp"
         "core/ai/*.cpp"
         "core/ai/Behaviors/*.cpp"
         "core/ai/Conditions/*.cpp"
-        "core/influence/*.cpp"
         "core/collision/*.cpp"
         "core/gameloop/*.cpp"
         "core/map/*.cpp"
@@ -61,10 +128,13 @@ else()
         "core/serialization/*.cpp"
     )
 
-    add_library(coreengine STATIC ${CORE_SOURCES} $<TARGET_OBJECTS:coreengine_math>)
+    add_library(coreengine STATIC
+        ${CORE_SOURCES}
+        $<TARGET_OBJECTS:coreengine_math>
+        $<TARGET_OBJECTS:coreengine_influence_types>
+        $<TARGET_OBJECTS:coreengine_influence>
+    )
     target_include_directories(coreengine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
-    # ---- FFI shared library ----
 
     if(BUILD_FFI)
         add_library(coreengine_ffi SHARED ffi/c_api.cpp)
@@ -76,8 +146,6 @@ else()
         )
     endif()
 
-    # ---- SDL2 platform adapter ----
-
     if(BUILD_SDL2)
         find_package(SDL2 REQUIRED)
         file(GLOB SDL2_SOURCES "platform/sdl2/*.cpp")
@@ -86,8 +154,6 @@ else()
         target_include_directories(coreengine_sdl2 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
     endif()
 
-    # ---- Raylib platform adapter ----
-
     if(BUILD_RAYLIB)
         find_package(raylib QUIET)
         file(GLOB RAYLIB_SOURCES "platform/raylib/*.cpp")
@@ -95,8 +161,6 @@ else()
         target_link_libraries(coreengine_raylib PUBLIC coreengine raylib)
         target_include_directories(coreengine_raylib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
     endif()
-
-    # ---- Tests ----
 
     if(BUILD_TESTS)
         enable_testing()

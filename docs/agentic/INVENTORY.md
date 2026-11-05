@@ -69,6 +69,12 @@ python3 scripts/test_check_module_deps.py
 ./scripts/run-math-module-tests.sh
 ```
 
+**Influence-only tests** (Phase 2 — does not compile other `core/` `.cpp` files):
+
+```bash
+./scripts/run-influence-module-tests.sh
+```
+
 ### CI
 
 | Pipeline | File | Stages |

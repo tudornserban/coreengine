@@ -26,6 +26,18 @@ math-module-pilot:
     - ./scripts/check-module-deps.sh
     - ./scripts/run-math-module-tests.sh
 
+influence-module-pilot:
+  stage: build
+  image: ubuntu:24.04
+  before_script:
+    - apt-get update -qq
+    - apt-get install -qq -y --no-install-recommends
+        cmake ninja-build build-essential libgtest-dev python3
+  script:
+    - chmod +x scripts/run-influence-module-tests.sh scripts/check-module-deps.sh
+    - ./scripts/check-module-deps.sh
+    - ./scripts/run-influence-module-tests.sh
+
 build-and-test:
   stage: build
   image: ubuntu:24.04

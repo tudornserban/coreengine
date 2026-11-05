@@ -42,6 +42,7 @@ ctest --test-dir build --output-on-failure
 ./scripts/check-module-deps.sh
 python3 scripts/test_check_module_deps.py
 ./scripts/run-math-module-tests.sh
+./scripts/run-influence-module-tests.sh
 ```
 
 See [docs/agentic/BUILD_INTEGRATION.md](docs/agentic/BUILD_INTEGRATION.md).
@@ -54,6 +55,12 @@ Math-only verification:
 
 ```bash
 ./scripts/run-math-module-tests.sh
+```
+
+Influence-only verification:
+
+```bash
+./scripts/run-influence-module-tests.sh
 ```
 
 ## Human docs

@@ -1,4 +1,5 @@
 #include "TerritoryCalculator.h"
+#include "../interfaces/IGameUnit.h"
 #include <limits>
 
 TerritoryCalculator::Result TerritoryCalculator::Calculate(

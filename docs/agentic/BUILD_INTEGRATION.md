@@ -14,6 +14,7 @@ ctest --test-dir build --output-on-failure
 ./scripts/check-module-deps.sh
 python3 scripts/test_check_module_deps.py
 ./scripts/run-math-module-tests.sh
+./scripts/run-influence-module-tests.sh
 ```
 
 ## FFI shared library (`BUILD_FFI=ON`)
@@ -31,7 +32,7 @@ Default `BUILD_FFI=OFF` builds are unchanged (non-PIC static objects).
 | Item | Detail |
 |------|--------|
 | **Symptom** | GCC 13: `std::vector<InfluenceFieldItem>` in `IBehavior.h` with forward-declared `InfluenceFieldItem` — incomplete type in vector destructor |
-| **Fix** | `#include "../influence/InfluenceFieldItem.h"` in `core/interfaces/IBehavior.h`; manifest `core.interfaces` `requires` adds `core.influence` (patch 1.0.1) |
+| **Fix** | `#include "../influence_types/InfluenceFieldItem.h"` in `core/interfaces/IBehavior.h`; `core.interfaces` requires `core.influence.types` (not `core.influence`) |
 | **Follow-on** | `ImmunityManager.cpp` missing `#include <vector>` (latent; exposed once AI compiled) |
 | **Regression** | `tests/UnitTests/AI/IBehaviorInterfaceTest.cpp` — default `GenerateFieldItems()` on a minimal `IBehavior` impl |
 
@@ -45,4 +46,4 @@ GitHub mirror PR merges do not sync to GitLab `gamedev4680743/coreengine`.
 
 ## Next module step (after gates)
 
-With full CI green and math pilot on `main`: continue Phase 2 rollout to **`core.influence`** or **`core.logging`** (see [INVENTORY.md](INVENTORY.md) §5 runner-up) — one module at a time, same MODULE.md + checker opt-in pattern as `core.math`.
+With full CI green on `main`: **`core.logging`** is a possible future Phase 2 target (not started in this PR) — same MODULE.md + checker opt-in pattern as `core.math`.
