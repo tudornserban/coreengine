@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Build and run core.influence.types tests (math + types object libs only).
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BUILD_DIR="${ROOT}/build-influence-types"
+export CXX="${CXX:-g++}"
+
+cmake -S "${ROOT}" -B "${BUILD_DIR}" -G Ninja \
+  -DBUILD_TESTS=ON \
+  -DCOREENGINE_INFLUENCE_TYPES_STANDALONE=ON
+
+cmake --build "${BUILD_DIR}" --target coreengine_influence_types_tests
+ctest --test-dir "${BUILD_DIR}" --output-on-failure

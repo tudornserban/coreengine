@@ -141,6 +141,73 @@ class CheckModuleDepsRegression(unittest.TestCase):
             errors = detect_requires_cycles(registry["modules"], manifests)
             self.assertTrue(any("cycle" in e for e in errors), errors)
 
+    def test_manifest_rejects_three_node_requires_cycle(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_three_node_cycle_registry(root)
+            registry = json.loads(
+                (root / "docs/agentic/modules/registry.json").read_text(encoding="utf-8")
+            )
+            errors = detect_requires_cycles(registry["modules"], self._manifests(root))
+            self.assertEqual(len(errors), 1, errors)
+            self.assertIn("cycle", errors[0])
+
+    def test_option2_dag_fixture_passes_cycle_and_include_checks(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_option2_dag_registry(root)
+            registry = json.loads(
+                (root / "docs/agentic/modules/registry.json").read_text(encoding="utf-8")
+            )
+            manifests = self._manifests(root)
+            module_ids = registry["modules"]
+            self.assertEqual(detect_requires_cycles(module_ids, manifests), [])
+            types_dir = root / "core/influence_types"
+            (types_dir / "Ok.cpp").write_text('#include "core/math/Vector2.h"\n', encoding="utf-8")
+            (root / "core/math/Vector2.h").write_text("#pragma once\n", encoding="utf-8")
+            errors = check_include_boundaries(
+                root, module_ids, manifests, frozenset({"core.influence.types"})
+            )
+            self.assertEqual(errors, [])
+
+    def test_influence_allows_relative_include_into_declared_types(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_influence_registry(root)
+            types_dir = root / "core/influence_types"
+            inf_dir = root / "core/influence"
+            types_dir.mkdir(parents=True)
+            inf_dir.mkdir(parents=True)
+            (types_dir / "InfluenceFieldItem.h").write_text("#pragma once\n", encoding="utf-8")
+            (inf_dir / "Ok.cpp").write_text(
+                '#include "../influence_types/InfluenceFieldItem.h"\n',
+                encoding="utf-8",
+            )
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.influence"})
+            )
+            self.assertEqual(errors, [])
+
+    def test_influence_rejects_undeclared_core_interfaces_include(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_influence_registry(root, include_interfaces_require=False)
+            inf_dir = root / "core/influence"
+            ifaces = root / "core/interfaces"
+            inf_dir.mkdir(parents=True)
+            ifaces.mkdir(parents=True)
+            (ifaces / "IGameUnit.h").write_text("#pragma once\n", encoding="utf-8")
+            (inf_dir / "Bad.cpp").write_text(
+                '#include "core/interfaces/IGameUnit.h"\n',
+                encoding="utf-8",
+            )
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.influence"})
+            )
+            self.assertTrue(any("core/interfaces" in e for e in errors), errors)
+
     def test_influence_types_rejects_interfaces_include(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -159,6 +226,84 @@ class CheckModuleDepsRegression(unittest.TestCase):
                 root, list(manifests.keys()), manifests, frozenset({"core.influence.types"})
             )
             self.assertTrue(any("core/interfaces" in e for e in errors), errors)
+
+    @staticmethod
+    def _write_three_node_cycle_registry(root: Path) -> None:
+        modules_dir = root / "docs/agentic/modules"
+        modules_dir.mkdir(parents=True)
+        registry = {"modules": ["core.a", "core.b", "core.c"]}
+        (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+        for mid, req in (
+            ("core.a", {"core.c": "^1.0.0"}),
+            ("core.b", {"core.a": "^1.0.0"}),
+            ("core.c", {"core.b": "^1.0.0"}),
+        ):
+            (modules_dir / f"{mid}.module.json").write_text(
+                json.dumps(
+                    {
+                        "id": mid,
+                        "version": "1.0.0",
+                        "path": f"core/{mid.replace('.', '/')}",
+                        "exports": ["X"],
+                        "requires": req,
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (root / f"core/{mid.replace('.', '/')}").mkdir(parents=True, exist_ok=True)
+
+    @staticmethod
+    def _write_option2_dag_registry(root: Path) -> None:
+        modules_dir = root / "docs/agentic/modules"
+        modules_dir.mkdir(parents=True)
+        registry = {
+            "modules": [
+                "core.math",
+                "core.influence.types",
+                "core.interfaces",
+                "core.influence",
+            ]
+        }
+        (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+        (root / "core/math").mkdir(parents=True, exist_ok=True)
+        (root / "core/influence_types").mkdir(parents=True, exist_ok=True)
+        (root / "core/interfaces").mkdir(parents=True, exist_ok=True)
+        (root / "core/influence").mkdir(parents=True, exist_ok=True)
+        specs = {
+            "core.math": ("core/math", [], {}),
+            "core.influence.types": (
+                "core/influence_types",
+                ["InfluenceFieldItem"],
+                {"core.math": "^1.0.0"},
+            ),
+            "core.interfaces": (
+                "core/interfaces",
+                ["IBehavior"],
+                {"core.math": "^1.0.0", "core.influence.types": "^1.0.0"},
+            ),
+            "core.influence": (
+                "core/influence",
+                ["InfluenceFieldCalculator"],
+                {
+                    "core.math": "^1.0.0",
+                    "core.influence.types": "^1.0.0",
+                    "core.interfaces": "^1.0.0",
+                },
+            ),
+        }
+        for mid, (path, exports, requires) in specs.items():
+            (modules_dir / f"{mid}.module.json").write_text(
+                json.dumps(
+                    {
+                        "id": mid,
+                        "version": "1.0.0",
+                        "path": path,
+                        "exports": exports,
+                        "requires": requires,
+                    }
+                ),
+                encoding="utf-8",
+            )
 
     @staticmethod
     def _write_cyclic_registry(root: Path) -> None:
@@ -223,7 +368,7 @@ class CheckModuleDepsRegression(unittest.TestCase):
         )
 
     @staticmethod
-    def _write_influence_registry(root: Path) -> None:
+    def _write_influence_registry(root: Path, *, include_interfaces_require: bool = True) -> None:
         modules_dir = root / "docs/agentic/modules"
         modules_dir.mkdir(parents=True)
         registry = {
@@ -271,6 +416,12 @@ class CheckModuleDepsRegression(unittest.TestCase):
             ),
             encoding="utf-8",
         )
+        inf_requires = {
+            "core.math": "^1.0.0",
+            "core.influence.types": "^1.0.0",
+        }
+        if include_interfaces_require:
+            inf_requires["core.interfaces"] = "^1.0.0"
         (modules_dir / "core.influence.module.json").write_text(
             json.dumps(
                 {
@@ -278,11 +429,7 @@ class CheckModuleDepsRegression(unittest.TestCase):
                     "version": "1.0.0",
                     "path": "core/influence",
                     "exports": ["InfluenceFieldCalculator"],
-                    "requires": {
-                        "core.math": "^1.0.0",
-                        "core.influence.types": "^1.0.0",
-                        "core.interfaces": "^1.0.0",
-                    },
+                    "requires": inf_requires,
                 }
             ),
             encoding="utf-8",

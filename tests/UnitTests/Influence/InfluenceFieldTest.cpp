@@ -47,11 +47,6 @@ TEST(InfluenceFieldItemTest, SetImportance) {
     EXPECT_FLOAT_EQ(item.GetImportance(), 5.0f);
 }
 
-TEST(InfluenceFieldItemTest, AggregateEmptyReturnsDefaultConstructed) {
-    auto aggregated = InfluenceFieldItem::Aggregate({});
-    EXPECT_FLOAT_EQ(aggregated.GetImportance(), 1.0f);
-}
-
 // ============================================================
 // InfluenceFieldCalculator — directional sanity checks
 // ============================================================

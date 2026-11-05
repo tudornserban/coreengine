@@ -34,7 +34,8 @@ Legacy compatibility (downward re-export only — **do not** use from `core.inte
 
 ## Tests
 
-Full and influence-standalone suites include [`InfluenceTypesCompatibilityTest.cpp`](../../tests/UnitTests/Influence/InfluenceTypesCompatibilityTest.cpp).
+- `./scripts/run-influence-types-module-tests.sh` — types + math only (header compile TUs + `InfluenceTypesModuleTest.cpp`).
+- Full engine and `./scripts/run-influence-module-tests.sh` also run `InfluenceFieldTest.cpp` (calculator/territory) plus the same header/module tests.
 
 ## Change checklist
 

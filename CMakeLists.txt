@@ -10,16 +10,24 @@ option(BUILD_SDL2     "Build SDL2 platform adapter"            OFF)
 option(BUILD_RAYLIB   "Build Raylib platform adapter"          OFF)
 option(COREENGINE_MATH_STANDALONE "Build only core.math tests (no full coreengine)" OFF)
 option(COREENGINE_INFLUENCE_STANDALONE "Build only core.influence tests (no full coreengine)" OFF)
+option(COREENGINE_INFLUENCE_TYPES_STANDALONE "Build only core.influence.types tests" OFF)
 
-add_subdirectory(core/math)
-add_subdirectory(core/influence_types)
-add_subdirectory(core/influence)
-
-if(COREENGINE_MATH_STANDALONE AND COREENGINE_INFLUENCE_STANDALONE)
-    message(FATAL_ERROR "COREENGINE_MATH_STANDALONE and COREENGINE_INFLUENCE_STANDALONE are mutually exclusive")
+set(_standalone_modes 0)
+if(COREENGINE_MATH_STANDALONE)
+    math(EXPR _standalone_modes "${_standalone_modes}+1")
+endif()
+if(COREENGINE_INFLUENCE_STANDALONE)
+    math(EXPR _standalone_modes "${_standalone_modes}+1")
+endif()
+if(COREENGINE_INFLUENCE_TYPES_STANDALONE)
+    math(EXPR _standalone_modes "${_standalone_modes}+1")
+endif()
+if(_standalone_modes GREATER 1)
+    message(FATAL_ERROR "At most one COREENGINE_*_STANDALONE option may be ON")
 endif()
 
 if(COREENGINE_MATH_STANDALONE)
+    add_subdirectory(core/math)
     if(NOT BUILD_TESTS)
         message(FATAL_ERROR "COREENGINE_MATH_STANDALONE requires BUILD_TESTS=ON")
     endif()
@@ -42,7 +50,34 @@ if(COREENGINE_MATH_STANDALONE)
     )
     include(GoogleTest)
     gtest_discover_tests(coreengine_math_tests)
+elseif(COREENGINE_INFLUENCE_TYPES_STANDALONE)
+    add_subdirectory(core/math)
+    add_subdirectory(core/influence_types)
+    if(NOT BUILD_TESTS)
+        message(FATAL_ERROR "COREENGINE_INFLUENCE_TYPES_STANDALONE requires BUILD_TESTS=ON")
+    endif()
+    enable_testing()
+    find_package(GTest REQUIRED)
+
+    add_executable(coreengine_influence_types_tests
+        tests/UnitTests/Influence/InfluenceTypesCanonicalHeaderCompileTest.cpp
+        tests/UnitTests/Influence/InfluenceLegacyItemHeaderCompileTest.cpp
+        tests/UnitTests/Influence/InfluenceLegacyParametersHeaderCompileTest.cpp
+        tests/UnitTests/Influence/InfluenceTypesModuleTest.cpp
+    )
+    target_include_directories(coreengine_influence_types_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(coreengine_influence_types_tests
+        coreengine_influence_types
+        coreengine_math
+        GTest::gtest
+        GTest::gtest_main
+    )
+    include(GoogleTest)
+    gtest_discover_tests(coreengine_influence_types_tests)
 elseif(COREENGINE_INFLUENCE_STANDALONE)
+    add_subdirectory(core/math)
+    add_subdirectory(core/influence_types)
+    add_subdirectory(core/influence)
     if(NOT BUILD_TESTS)
         message(FATAL_ERROR "COREENGINE_INFLUENCE_STANDALONE requires BUILD_TESTS=ON")
     endif()
@@ -51,7 +86,10 @@ elseif(COREENGINE_INFLUENCE_STANDALONE)
 
     add_executable(coreengine_influence_tests
         tests/UnitTests/Influence/InfluenceFieldTest.cpp
-        tests/UnitTests/Influence/InfluenceTypesCompatibilityTest.cpp
+        tests/UnitTests/Influence/InfluenceTypesCanonicalHeaderCompileTest.cpp
+        tests/UnitTests/Influence/InfluenceLegacyItemHeaderCompileTest.cpp
+        tests/UnitTests/Influence/InfluenceLegacyParametersHeaderCompileTest.cpp
+        tests/UnitTests/Influence/InfluenceTypesModuleTest.cpp
     )
     target_include_directories(coreengine_influence_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
     target_link_libraries(coreengine_influence_tests
@@ -64,7 +102,9 @@ elseif(COREENGINE_INFLUENCE_STANDALONE)
     include(GoogleTest)
     gtest_discover_tests(coreengine_influence_tests)
 else()
-    # ---- Core static library ----
+    add_subdirectory(core/math)
+    add_subdirectory(core/influence_types)
+    add_subdirectory(core/influence)
 
     file(GLOB_RECURSE CORE_SOURCES
         "core/interfaces/*.cpp"

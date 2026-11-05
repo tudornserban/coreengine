@@ -1,8 +1,7 @@
 #pragma once
 
+#include "../interfaces/IGameUnit.h"
 #include <vector>
-
-class IGameUnit;
 
 /// Voronoi-based territory ownership calculator.
 ///

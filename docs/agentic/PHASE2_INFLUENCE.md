@@ -11,16 +11,21 @@
 - Legacy `#include "core/influence/InfluenceFieldItem.h"` remains a downward wrapper.
 - **No** cycle allowlist; checker rejects all `requires` cycles.
 
-## Dependency graph (manifest)
+## Dependency graph (manifest `requires`)
 
 ```text
-core.math
-  ↑ core.influence.types
-  ↑     ↑
-  |     └── core.influence  → core.interfaces (one-way)
-  └──────── core.interfaces
+core.influence.types  requires  core.math
+core.interfaces       requires  core.math, core.influence.types
+core.influence        requires  core.math, core.influence.types, core.interfaces
 ```
+
+Edges are one-way; no cycle allowlist.
 
 ## Verification
 
-Same commands as [BUILD_INTEGRATION.md](BUILD_INTEGRATION.md) + `./scripts/run-influence-module-tests.sh`.
+Same commands as [BUILD_INTEGRATION.md](BUILD_INTEGRATION.md) plus:
+
+```bash
+./scripts/run-influence-types-module-tests.sh
+./scripts/run-influence-module-tests.sh
+```
