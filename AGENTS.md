@@ -32,12 +32,19 @@ Update the module’s `*.module.json` in the same PR as the code change.
 
 ## Verification
 
+Full-engine gate (GitLab `build-and-test` job). Run from the **repository root**:
+
 ```bash
+export CXX="${CXX:-g++}"
+cmake -S . -B build -G Ninja -DBUILD_TESTS=ON
+cmake --build build --parallel
+ctest --test-dir build --output-on-failure
 ./scripts/check-module-deps.sh
 python3 scripts/test_check_module_deps.py
 ./scripts/run-math-module-tests.sh
-cmake -S . -B build -G Ninja -DBUILD_TESTS=ON && cmake --build build && ctest --test-dir build
 ```
+
+See [docs/agentic/BUILD_INTEGRATION.md](docs/agentic/BUILD_INTEGRATION.md).
 
 ## Phase 2 pilot
 

@@ -1,6 +1,6 @@
 {
   "id": "core.interfaces",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "path": "core/interfaces",
   "exports": [
     "IGameUnit",
@@ -13,7 +13,8 @@
     "IMapComponent"
   ],
   "requires": {
-    "core.math": "^1.0.0"
+    "core.math": "^1.0.0",
+    "core.influence": "^1.0.0"
   },
   "tags": ["contracts"]
 }

@@ -94,7 +94,7 @@ python3 scripts/test_check_module_deps.py
 | **Serialization → `RTSGameState`** | `GameStateSerializer.cpp` | Expected for now; may stay in `gamestate` or `serialization` bundle. |
 | **Duplicate interface headers** | `core/gamestate/IGameState.h`, `IGameLogicRenderer.h` vs `core/interfaces/` | `GameStateManager` includes local `IGameState.h`; risk of drift from `core/interfaces/`. |
 | **Hub module** | `RTSGameState.h` | Pulls combat, map, influence, collision, AI context — natural integration point, hard to edit in isolation. |
-| **Interface completeness** | `IBehavior.h` | Returns `std::vector<InfluenceFieldItem>` with forward declaration only; **GCC 13 fails** to compile `BehaviorFactory.cpp` (incomplete type in vector destructor). May be environment-specific or latent bug. |
+| **Interface completeness** | `IBehavior.h` | ~~GCC 13 fails~~ **Fixed:** include complete `InfluenceFieldItem` for `std::vector` in interface (see [BUILD_INTEGRATION.md](BUILD_INTEGRATION.md)). |
 
 ### Dependency sketch (allowed direction, target state)
 
@@ -179,4 +179,4 @@ flowchart BT
 
 ## 6. Local build note (agent environment)
 
-On Ubuntu 24.04 with GCC 13, configure with `CXX=g++` if the default `c++` symlink lacks `libstdc++`. A full `BUILD_TESTS=ON` build currently **fails** on `BehaviorFactory.cpp` / `IBehavior.h` incomplete `InfluenceFieldItem` in `std::vector` (pre-existing). GitLab CI uses the same source layout; treat green CI as authoritative once the mirror pipeline is confirmed.
+On Ubuntu 24.04 with GCC 13, configure with `CXX=g++` if the default `c++` symlink lacks `libstdc++`. Full `BUILD_TESTS=ON` build and `ctest` are the integration gate — see [BUILD_INTEGRATION.md](BUILD_INTEGRATION.md).
