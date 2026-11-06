@@ -9,10 +9,16 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from check_module_deps import (
+    DEPENDENCY_GRAPH_REL,
+    DEPENDENCY_SUMMARY_REL,
     INCLUDE_ENFORCED_MODULES,
+    build_dependency_graph,
     check_include_boundaries,
     detect_requires_cycles,
+    render_dependency_graph_json,
+    render_dependency_summary_md,
     run_checks,
+    verify_dependency_map_artifacts,
 )
 
 
@@ -21,6 +27,126 @@ class CheckModuleDepsRegression(unittest.TestCase):
         repo_root = Path(__file__).resolve().parents[1]
         result = run_checks(repo_root)
         self.assertTrue(result.ok, result.errors)
+
+    def test_real_repo_graph_matches_manifests(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (repo_root / "docs/agentic/modules/registry.json").read_text(encoding="utf-8")
+        )
+        module_ids = registry["modules"]
+        manifests: dict = {}
+        for mid in module_ids:
+            p = repo_root / "docs/agentic/modules" / f"{mid}.module.json"
+            manifests[mid] = json.loads(p.read_text(encoding="utf-8"))
+        graph = build_dependency_graph(module_ids, manifests, INCLUDE_ENFORCED_MODULES)
+        for node in graph["modules"]:
+            mid = node["id"]
+            self.assertEqual(node["version"], manifests[mid]["version"])
+            self.assertEqual(node["path"], manifests[mid]["path"])
+            self.assertEqual(
+                node["requires"],
+                {d: manifests[mid]["requires"][d] for d in sorted(manifests[mid].get("requires", {}))},
+            )
+            self.assertEqual(node["includeEnforced"], mid in INCLUDE_ENFORCED_MODULES)
+        req_edges = set()
+        for mid in module_ids:
+            for dep, rng in (manifests[mid].get("requires") or {}).items():
+                req_edges.add((mid, dep, rng))
+        file_edges = {(e["from"], e["to"], e["range"]) for e in graph["edges"]}
+        self.assertEqual(file_edges, req_edges)
+
+    def test_committed_deps_match_generator(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (repo_root / "docs/agentic/modules/registry.json").read_text(encoding="utf-8")
+        )
+        module_ids = registry["modules"]
+        manifests: dict = {}
+        for mid in module_ids:
+            p = repo_root / "docs/agentic/modules" / f"{mid}.module.json"
+            manifests[mid] = json.loads(p.read_text(encoding="utf-8"))
+        graph = build_dependency_graph(module_ids, manifests, INCLUDE_ENFORCED_MODULES)
+        expected_json = render_dependency_graph_json(graph)
+        expected_md = render_dependency_summary_md(graph, module_ids, manifests)
+        self.assertEqual((repo_root / DEPENDENCY_GRAPH_REL).read_text(encoding="utf-8"), expected_json)
+        self.assertEqual((repo_root / DEPENDENCY_SUMMARY_REL).read_text(encoding="utf-8"), expected_md)
+        self.assertEqual(
+            verify_dependency_map_artifacts(repo_root, module_ids, manifests, INCLUDE_ENFORCED_MODULES),
+            [],
+        )
+
+    def test_manifest_edit_changes_graph(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_two_module_registry(root, extra_require=False)
+            registry = json.loads(
+                (root / "docs/agentic/modules/registry.json").read_text(encoding="utf-8")
+            )
+            module_ids = registry["modules"]
+            manifests = self._manifests(root)
+            g1 = build_dependency_graph(module_ids, manifests, frozenset())
+            # Add core.b -> core.a require on core.b only (DAG: a has no deps, b requires a).
+            mod_path = root / "docs/agentic/modules/core.b.module.json"
+            data = json.loads(mod_path.read_text(encoding="utf-8"))
+            data["requires"] = {"core.a": "^1.0.0"}
+            mod_path.write_text(json.dumps(data), encoding="utf-8")
+            manifests2 = self._manifests(root)
+            g2 = build_dependency_graph(module_ids, manifests2, frozenset())
+            self.assertEqual(len(g1["edges"]) + 1, len(g2["edges"]))
+            self.assertIn(
+                {"from": "core.b", "to": "core.a", "range": "^1.0.0", "enforced": False},
+                g2["edges"],
+            )
+
+    def test_dependency_map_drift_fails_checker(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_min_registry(root)
+            (root / "core/math").mkdir(parents=True, exist_ok=True)
+            (root / "core/logging").mkdir(parents=True, exist_ok=True)
+            registry = json.loads(
+                (root / "docs/agentic/modules/registry.json").read_text(encoding="utf-8")
+            )
+            module_ids = registry["modules"]
+            manifests = self._manifests(root)
+            graph = build_dependency_graph(module_ids, manifests, INCLUDE_ENFORCED_MODULES)
+            deps = root / "docs/deps"
+            deps.mkdir(parents=True, exist_ok=True)
+            (deps / "graph.json").write_text(render_dependency_graph_json(graph), encoding="utf-8")
+            (deps / "SUMMARY.md").write_text(
+                render_dependency_summary_md(graph, module_ids, manifests), encoding="utf-8"
+            )
+            self.assertTrue(run_checks(root).ok)
+            (deps / "graph.json").write_text(
+                render_dependency_graph_json(graph).replace('"schemaVersion": 1', '"schemaVersion": 99'),
+                encoding="utf-8",
+            )
+            r = run_checks(root)
+            self.assertFalse(r.ok)
+            self.assertTrue(any("graph.json" in e for e in r.errors), r.errors)
+
+    def test_run_checks_fails_on_requires_cycle(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_cyclic_registry(root)
+            (root / "core/interfaces").mkdir(parents=True, exist_ok=True)
+            (root / "core/influence").mkdir(parents=True, exist_ok=True)
+            deps = root / "docs/deps"
+            deps.mkdir(parents=True, exist_ok=True)
+            # Valid committed map matching manifests (still cyclic requires).
+            registry = json.loads(
+                (root / "docs/agentic/modules/registry.json").read_text(encoding="utf-8")
+            )
+            module_ids = registry["modules"]
+            manifests = self._manifests(root)
+            graph = build_dependency_graph(module_ids, manifests, INCLUDE_ENFORCED_MODULES)
+            (deps / "graph.json").write_text(render_dependency_graph_json(graph), encoding="utf-8")
+            (deps / "SUMMARY.md").write_text(
+                render_dependency_summary_md(graph, module_ids, manifests), encoding="utf-8"
+            )
+            result = run_checks(root)
+            self.assertFalse(result.ok)
+            self.assertTrue(any("cycle" in e for e in result.errors), result.errors)
 
     def test_ibehavior_includes_influence_types_leaf(self) -> None:
         repo_root = Path(__file__).resolve().parents[1]
@@ -488,6 +614,40 @@ class CheckModuleDepsRegression(unittest.TestCase):
             ),
             encoding="utf-8",
         )
+
+    @staticmethod
+    def _write_two_module_registry(root: Path, *, extra_require: bool = False) -> None:
+        modules_dir = root / "docs/agentic/modules"
+        modules_dir.mkdir(parents=True)
+        registry = {"modules": ["core.a", "core.b"]}
+        (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+        (modules_dir / "core.a.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.a",
+                    "version": "1.0.0",
+                    "path": "core/a",
+                    "exports": ["A"],
+                    "requires": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        b_requires = {"core.a": "^1.0.0"} if extra_require else {}
+        (modules_dir / "core.b.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.b",
+                    "version": "1.0.0",
+                    "path": "core/b",
+                    "exports": ["B"],
+                    "requires": b_requires,
+                }
+            ),
+            encoding="utf-8",
+        )
+        (root / "core/a").mkdir(parents=True, exist_ok=True)
+        (root / "core/b").mkdir(parents=True, exist_ok=True)
 
     @staticmethod
     def _write_min_registry(root: Path) -> None:

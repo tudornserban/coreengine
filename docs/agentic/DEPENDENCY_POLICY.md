@@ -2,6 +2,8 @@
 
 Enforcement is **active** for `core.math`, `core.influence.types`, `core.influence`, and `core.logging` in Phase 2 (`scripts/check-module-deps.sh`). Other registry modules remain **manifest-only** until opted in. **`requires` graphs must be acyclic** — no checker exceptions.
 
+The committed manifest-only **`requires` graph** (machine-readable JSON plus a human summary) lives under [`docs/deps/`](../deps/). `scripts/check_module_deps.py` regenerates and byte-compares these files on every run so committed artifacts cannot drift from the manifests.
+
 ## Layers
 
 1. **Foundation:** `core.math`, `core.influence.types`, `core.logging`
