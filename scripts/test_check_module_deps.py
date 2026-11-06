@@ -447,6 +447,44 @@ class CheckModuleDepsRegression(unittest.TestCase):
             )
             self.assertEqual(errors, [])
 
+    def test_gameloop_rejects_undeclared_sibling_include(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_gameloop_registry(root)
+            gl_dir = root / "core/gameloop"
+            log_dir = root / "core/logging"
+            log_dir.mkdir(parents=True)
+            (log_dir / "Logger.h").write_text("#pragma once\n", encoding="utf-8")
+            (gl_dir / "Bad.cpp").write_text(
+                '#include "core/logging/Logger.h"\n',
+                encoding="utf-8",
+            )
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.gameloop"})
+            )
+            self.assertTrue(any("core/logging" in e for e in errors), errors)
+
+    def test_gameloop_allows_declared_math_and_own_headers(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_gameloop_registry(root)
+            math_dir = root / "core/math"
+            gl_dir = root / "core/gameloop"
+            (math_dir / "Vector2.h").write_text("#pragma once\n", encoding="utf-8")
+            (gl_dir / "Ok.cpp").write_text(
+                '#include "GameLogicEngine.h"\n'
+                '#include "core/math/Vector2.h"\n'
+                '#include <algorithm>\n',
+                encoding="utf-8",
+            )
+            (gl_dir / "GameLogicEngine.h").write_text("#pragma once\n", encoding="utf-8")
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.gameloop"})
+            )
+            self.assertEqual(errors, [])
+
     @staticmethod
     def _write_interfaces_registry(root: Path) -> None:
         modules_dir = root / "docs/agentic/modules"
@@ -495,6 +533,39 @@ class CheckModuleDepsRegression(unittest.TestCase):
         (root / "core/math").mkdir(parents=True, exist_ok=True)
         (root / "core/influence_types").mkdir(parents=True, exist_ok=True)
         (root / "core/interfaces").mkdir(parents=True, exist_ok=True)
+
+    @staticmethod
+    def _write_gameloop_registry(root: Path) -> None:
+        modules_dir = root / "docs/agentic/modules"
+        modules_dir.mkdir(parents=True)
+        registry = {"modules": ["core.math", "core.gameloop"]}
+        (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+        (modules_dir / "core.math.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.math",
+                    "version": "1.0.0",
+                    "path": "core/math",
+                    "exports": ["Vector2"],
+                    "requires": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.gameloop.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.gameloop",
+                    "version": "1.0.0",
+                    "path": "core/gameloop",
+                    "exports": ["GameLogicEngine"],
+                    "requires": {"core.math": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (root / "core/math").mkdir(parents=True, exist_ok=True)
+        (root / "core/gameloop").mkdir(parents=True, exist_ok=True)
 
     @staticmethod
     def _write_logging_registry(root: Path) -> None:

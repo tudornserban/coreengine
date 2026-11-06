@@ -61,7 +61,7 @@
       "to": "core.math"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.gameloop",
       "range": "^1.0.0",
       "to": "core.math"
@@ -214,7 +214,7 @@
     },
     {
       "id": "core.gameloop",
-      "includeEnforced": false,
+      "includeEnforced": true,
       "path": "core/gameloop",
       "requires": {
         "core.math": "^1.0.0"
