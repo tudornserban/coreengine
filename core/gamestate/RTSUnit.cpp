@@ -60,3 +60,18 @@ float RTSUnit::CalculateMass() const {
     float hpRatio = currentHP / maxHP;
     return baseMass * hpRatio * massModifier;
 }
+
+void RTSUnit::SetAgentState(const std::string& stateName) {
+    GetStateMachine().SetState(stateName);
+}
+
+void RTSUnit::SetAgentParameter(const std::string& paramName, float value) {
+    IBehavior* currentBehavior = GetStateMachine().GetCurrentBehavior();
+    if (currentBehavior) {
+        auto& params = currentBehavior->GetParameters();
+        auto it = params.find(paramName);
+        if (it != params.end()) {
+            it->second = value;
+        }
+    }
+}
