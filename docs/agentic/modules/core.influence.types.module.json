@@ -1,0 +1,14 @@
+{
+  "id": "core.influence.types",
+  "version": "1.0.0",
+  "path": "core/influence_types",
+  "exports": [
+    "InfluenceFieldItem",
+    "InfluenceFieldParameters"
+  ],
+  "requires": {
+    "core.math": "^1.0.0"
+  },
+  "tags": ["foundation", "data"],
+  "notes": "Neutral APF value types; no IGameUnit or field calculator logic."
+}
