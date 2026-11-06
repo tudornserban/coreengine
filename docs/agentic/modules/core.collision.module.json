@@ -1,6 +1,6 @@
 {
   "id": "core.collision",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "path": "core/collision",
   "exports": [
     "CollisionSystem",
@@ -19,5 +19,5 @@
     "core.logging": "^1.0.0"
   },
   "tags": ["gameplay", "physics"],
-  "notes": "CollisionResolver, PositionCorrector, MapCollisionHandler, and CollisionSystem resolve/write motion only when units implement IUnitKinematics; include enforcement for collision remains off until R1.3."
+  "notes": "Agent-agent resolution requires IUnitKinematics on both units. Map-edge contacts always emit a collision event; impulse/correction/push runs only when unit A implements IUnitKinematics. Include enforcement for collision remains off until R1.3."
 }
