@@ -1,5 +1,7 @@
 #include "GameStateSerializer.h"
-#include "../gamestate/RTSGameState.h"
+
+#include "core/gamestate/RTSGameState.h"
+
 #include <sstream>
 
 // NOTE: Full serialization requires a JSON library (e.g. nlohmann/json).

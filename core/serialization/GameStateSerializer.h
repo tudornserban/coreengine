@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../interfaces/ISerializer.h"
+#include "core/interfaces/ISerializer.h"
+#include <cstdint>
 #include <string>
 #include <vector>
-#include <cstdint>
 
 // Forward declaration
 class RTSGameState;

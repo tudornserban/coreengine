@@ -526,6 +526,47 @@ class CheckModuleDepsRegression(unittest.TestCase):
             )
             self.assertEqual(errors, [])
 
+    def test_serialization_rejects_undeclared_sibling_include(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_serialization_registry(root)
+            ser_dir = root / "core/serialization"
+            log_dir = root / "core/logging"
+            log_dir.mkdir(parents=True)
+            (log_dir / "Logger.h").write_text("#pragma once\n", encoding="utf-8")
+            (ser_dir / "Bad.cpp").write_text(
+                '#include "core/logging/Logger.h"\n',
+                encoding="utf-8",
+            )
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.serialization"})
+            )
+            self.assertTrue(any("core/logging" in e for e in errors), errors)
+
+    def test_serialization_allows_declared_gamestate_and_interfaces(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_serialization_registry(root)
+            gs_dir = root / "core/gamestate"
+            ifaces = root / "core/interfaces"
+            ser_dir = root / "core/serialization"
+            (gs_dir / "RTSGameState.h").write_text("#pragma once\n", encoding="utf-8")
+            (ifaces / "ISerializer.h").write_text("#pragma once\n", encoding="utf-8")
+            (ser_dir / "Ok.cpp").write_text(
+                '#include "core/gamestate/RTSGameState.h"\n'
+                '#include "core/interfaces/ISerializer.h"\n'
+                '#include "GameStateSerializer.h"\n'
+                '#include <sstream>\n',
+                encoding="utf-8",
+            )
+            (ser_dir / "GameStateSerializer.h").write_text("#pragma once\n", encoding="utf-8")
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.serialization"})
+            )
+            self.assertEqual(errors, [])
+
     def test_ai_rejects_undeclared_sibling_include(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -718,6 +759,67 @@ class CheckModuleDepsRegression(unittest.TestCase):
         (root / "core/influence_types").mkdir(parents=True, exist_ok=True)
         (root / "core/interfaces").mkdir(parents=True, exist_ok=True)
         (root / "core/map").mkdir(parents=True, exist_ok=True)
+
+    @staticmethod
+    def _write_serialization_registry(root: Path) -> None:
+        modules_dir = root / "docs/agentic/modules"
+        modules_dir.mkdir(parents=True)
+        registry = {
+            "modules": ["core.math", "core.interfaces", "core.gamestate", "core.serialization"]
+        }
+        (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+        (modules_dir / "core.math.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.math",
+                    "version": "1.0.0",
+                    "path": "core/math",
+                    "exports": ["Vector2"],
+                    "requires": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.interfaces.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.interfaces",
+                    "version": "1.0.0",
+                    "path": "core/interfaces",
+                    "exports": ["ISerializer"],
+                    "requires": {"core.math": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.gamestate.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.gamestate",
+                    "version": "1.0.0",
+                    "path": "core/gamestate",
+                    "exports": ["RTSGameState"],
+                    "requires": {"core.math": "^1.0.0", "core.interfaces": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.serialization.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.serialization",
+                    "version": "1.0.0",
+                    "path": "core/serialization",
+                    "exports": ["GameStateSerializer"],
+                    "requires": {"core.gamestate": "^1.0.0", "core.interfaces": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (root / "core/math").mkdir(parents=True, exist_ok=True)
+        (root / "core/interfaces").mkdir(parents=True, exist_ok=True)
+        (root / "core/gamestate").mkdir(parents=True, exist_ok=True)
+        (root / "core/serialization").mkdir(parents=True, exist_ok=True)
 
     @staticmethod
     def _write_ai_registry(root: Path) -> None:

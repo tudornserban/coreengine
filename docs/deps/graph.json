@@ -169,10 +169,16 @@
       "to": "core.math"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.serialization",
       "range": "^1.0.0",
       "to": "core.gamestate"
+    },
+    {
+      "enforced": true,
+      "from": "core.serialization",
+      "range": "^1.0.0",
+      "to": "core.interfaces"
     }
   ],
   "modules": [
@@ -300,10 +306,11 @@
     },
     {
       "id": "core.serialization",
-      "includeEnforced": false,
+      "includeEnforced": true,
       "path": "core/serialization",
       "requires": {
-        "core.gamestate": "^1.0.0"
+        "core.gamestate": "^1.0.0",
+        "core.interfaces": "^1.0.0"
       },
       "version": "1.0.0"
     }
