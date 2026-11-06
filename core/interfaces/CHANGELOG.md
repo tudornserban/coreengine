@@ -5,6 +5,10 @@ Agents **must** append a dated note under the matching `## [version]` section wh
 
 Entries describe the **published contract**: manifest `exports` and the headers under `core/interfaces/`, plus manifest `requires` edges. Follow [AGENTS.md](../../AGENTS.md) for major / minor / patch rules.
 
+## [1.1.0] — 2026-11-06
+
+- **Export:** `IUnitKinematics.h` — optional write-only kinematics (`SetPosition`, `SetVelocity`) for systems such as collision resolution. `RTSUnit` implements this alongside `IGameUnit`; types that only expose `IGameUnit` are unchanged.
+
 ## [1.0.2] — 2026-11-06
 
 **Initial changelog record for the current contract (no prior history consolidated here).**

@@ -95,7 +95,7 @@ python3 scripts/test_check_module_deps.py
 
 | Issue | Files | Notes |
 |-------|-------|-------|
-| **Collision → concrete `RTSUnit`** | `CollisionResolver.cpp`, `CollisionSystem.cpp`, `PositionCorrector.cpp`, `MapCollisionHandler.cpp` | Guidelines say avoid `RTSUnit*` outside gamestate/collision; ideal fix is `IGameUnit` only (Phase 2+). |
+| **Collision → concrete `RTSUnit`** | `CollisionSystem.cpp` (still; enforcement paths) | `CollisionResolver.cpp`, `PositionCorrector.cpp`, and `MapCollisionHandler.cpp` now write via `IUnitKinematics`; `CollisionSystem.cpp` remains coupled to `RTSUnit` while enforcement is off. |
 | **Combat → `RTSUnit`** | `CommandSystem.cpp` | Same pattern. |
 | **Serialization → `RTSGameState`** | `GameStateSerializer.cpp` | Expected for now; may stay in `gamestate` or `serialization` bundle. |
 | **Duplicate interface headers** | `core/gamestate/IGameState.h`, `IGameLogicRenderer.h` vs `core/interfaces/` | `GameStateManager` includes local `IGameState.h`; risk of drift from `core/interfaces/`. |
@@ -154,7 +154,7 @@ flowchart BT
 | `core.math` | `DeterministicRNGTest`, `MathConstantsTest`, `Vector2Test` | Used in `DeterminismTest` |
 | `core.ai` | `StateMachineTest`, `BehaviorsTest`, `ConditionsTest`, `BehaviorFactoryTest` | `BehaviorRuntimeSwapTest` |
 | `core.influence` | `InfluenceFieldTest` | — |
-| `core.collision` | `SpatialGridTest`, `ImmunityManagerTest` | — |
+| `core.collision` | `SpatialGridTest`, `ImmunityManagerTest`, `UnitKinematicsWriteTest` | — |
 | `core.gameloop` | `GameLogicEngineTest`, `DeploymentTimerTest`, `ThinkTimerTest` | — |
 | `core.map` | `MapTest` | — |
 | `core.combat` | `ExplosionTest` (under `Map/` folder name) | — |

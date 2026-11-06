@@ -1,9 +1,10 @@
 {
   "id": "core.interfaces",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "path": "core/interfaces",
   "exports": [
     "IGameUnit",
+    "IUnitKinematics",
     "IBehavior",
     "ITransitionCondition",
     "IGameState",

@@ -1,5 +1,5 @@
 #include "PositionCorrector.h"
-#include "../gamestate/RTSUnit.h"
+#include "../interfaces/IUnitKinematics.h"
 #include "../math/Vector2.h"
 
 void PositionCorrector::CorrectAgentAgent(
@@ -47,10 +47,10 @@ void PositionCorrector::CorrectAgentMap(
 void PositionCorrector::ApplyCorrection(IGameUnit* unit, Vector2 correction) {
     if (!unit) return;
 
-    RTSUnit* rtsUnit = dynamic_cast<RTSUnit*>(unit);
-    if (rtsUnit) {
-        Vector2 currentPos = rtsUnit->GetPosition();
-        rtsUnit->SetPosition(currentPos + correction);
+    IUnitKinematics* kinematics = dynamic_cast<IUnitKinematics*>(unit);
+    if (kinematics) {
+        Vector2 currentPos = unit->GetPosition();
+        kinematics->SetPosition(currentPos + correction);
     }
 }
 

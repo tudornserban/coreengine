@@ -34,7 +34,6 @@ public:
         float massB
     );
 
-private:
     // Apply impulse to unit
     static void ApplyImpulse(IGameUnit* unit, Vector2 impulse, float mass);
 };
