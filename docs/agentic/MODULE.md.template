@@ -33,5 +33,6 @@ List types and functions other modules may use. Match the manifest `exports` arr
 ## Change checklist
 
 - [ ] Update `docs/agentic/modules/<MODULE_ID>.module.json` version if exports changed
+- [ ] If `<MODULE_ID>` is `core.interfaces`, append to `core/interfaces/CHANGELOG.md` under `## [same version as manifest]`
 - [ ] Update `docs/ARCHITECTURE.md` if behavior or boundaries changed
 - [ ] Run `./scripts/check-module-deps.sh`

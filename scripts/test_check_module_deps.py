@@ -18,6 +18,7 @@ from check_module_deps import (
     render_dependency_graph_json,
     render_dependency_summary_md,
     run_checks,
+    verify_core_interfaces_changelog,
     verify_dependency_map_artifacts,
 )
 
@@ -27,6 +28,24 @@ class CheckModuleDepsRegression(unittest.TestCase):
         repo_root = Path(__file__).resolve().parents[1]
         result = run_checks(repo_root)
         self.assertTrue(result.ok, result.errors)
+
+    def test_core_interfaces_changelog_requires_version_heading(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            cl = root / "core" / "interfaces" / "CHANGELOG.md"
+            cl.parent.mkdir(parents=True)
+            cl.write_text("# Log\n\n## [1.0.0]\n\nhello\n", encoding="utf-8")
+            manifests = {"core.interfaces": {"version": "1.0.1"}}
+            self.assertTrue(verify_core_interfaces_changelog(root, manifests))
+
+    def test_core_interfaces_changelog_passes_when_heading_matches(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            cl = root / "core" / "interfaces" / "CHANGELOG.md"
+            cl.parent.mkdir(parents=True)
+            cl.write_text("# Log\n\n## [2.0.0]\n\nok\n", encoding="utf-8")
+            manifests = {"core.interfaces": {"version": "2.0.0"}}
+            self.assertEqual(verify_core_interfaces_changelog(root, manifests), [])
 
     def test_real_repo_graph_matches_manifests(self) -> None:
         repo_root = Path(__file__).resolve().parents[1]

@@ -30,6 +30,8 @@ This repository uses an **additive, module-by-module** workflow. Phase 1 scaffol
 
 Update the module’s `*.module.json` in the same PR as the code change.
 
+For **`core.interfaces`** (headers under `core/interfaces/`), treat the manifest **`exports`** list as the published API surface — the same table applies (add/remove/rename an export, or break implementers or callers, drives minor vs major; doc-only or internal manifest tweaks with no contract change can be patch). **Every** manifest version bump for `core.interfaces` must append an entry under the matching `## [version]` heading in [`core/interfaces/CHANGELOG.md`](core/interfaces/CHANGELOG.md). Do not bump the module version in a PR without updating that changelog; CI-style checks may enforce the version string is present. If you add a new published interface package later, add a semver-keyed changelog beside it and wire the same rule in docs.
+
 ## Verification
 
 Full-engine gate (GitLab `build-and-test` job). Run from the **repository root**:
