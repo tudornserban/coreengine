@@ -167,6 +167,7 @@ elseif(COREENGINE_INTERFACES_STANDALONE)
     find_package(GTest REQUIRED)
 
     add_executable(coreengine_interfaces_tests
+        tests/UnitTests/Interfaces/GameStateInterfaceForwardCompileTest.cpp
         tests/UnitTests/Interfaces/InterfacesModuleHeaderCompileTest.cpp
     )
     target_include_directories(coreengine_interfaces_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
