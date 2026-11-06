@@ -1,6 +1,6 @@
 {
   "id": "core.collision",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "path": "core/collision",
   "exports": [
     "CollisionSystem",
@@ -19,5 +19,5 @@
     "core.logging": "^1.0.0"
   },
   "tags": ["gameplay", "physics"],
-  "notes": "CollisionResolver, PositionCorrector, and MapCollisionHandler write motion via IUnitKinematics; CollisionSystem.cpp still includes RTSUnit for enforcement-off paths (see INVENTORY.md)."
+  "notes": "CollisionResolver, PositionCorrector, MapCollisionHandler, and CollisionSystem resolve/write motion only when units implement IUnitKinematics; include enforcement for collision remains off until R1.3."
 }

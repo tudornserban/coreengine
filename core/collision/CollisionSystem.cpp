@@ -1,6 +1,6 @@
 #include "CollisionSystem.h"
 #include "../interfaces/IGameUnit.h"
-#include "../gamestate/RTSUnit.h"
+#include "../interfaces/IUnitKinematics.h"
 #include "ICollisionDetector.h"  // For MapBounds
 #include "../logging/Logger.h"
 #include <algorithm>
@@ -38,8 +38,9 @@ void CollisionSystem::ProcessCollisions(
 void CollisionSystem::ResolveCollision(const CollisionContact& contact) {
     if (!contact.unitA) return;
 
-    RTSUnit* unitA = dynamic_cast<RTSUnit*>(contact.unitA);
-    if (!unitA) return;
+    if (!dynamic_cast<IUnitKinematics*>(contact.unitA)) return;
+
+    IGameUnit* unitA = contact.unitA;
 
     float massA = unitA->CalculateMass();
     float restitutionA = unitA->GetRestitution();
@@ -47,8 +48,9 @@ void CollisionSystem::ResolveCollision(const CollisionContact& contact) {
 
     if (contact.type == CollisionType::AGENT_AGENT && contact.unitB) {
         // Agent-Agent collision
-        RTSUnit* unitB = dynamic_cast<RTSUnit*>(contact.unitB);
-        if (!unitB) return;
+        if (!dynamic_cast<IUnitKinematics*>(contact.unitB)) return;
+
+        IGameUnit* unitB = contact.unitB;
 
         float massB = unitB->CalculateMass();
         float restitutionB = unitB->GetRestitution();
@@ -141,13 +143,8 @@ CollisionEvent CollisionSystem::CreateCollisionEvent(
         event.relativeVelocity = contact.unitA->GetVelocity().Dot(contact.normal);
     }
 
-    // Get damage modifier
-    RTSUnit* rtsUnit = dynamic_cast<RTSUnit*>(contact.unitA);
-    if (rtsUnit) {
-        event.damageModifier = rtsUnit->GetDamageModifier();
-    } else {
-        event.damageModifier = settings.damageModifier;
-    }
+    // Get damage modifier (via IGameUnit contract)
+    event.damageModifier = contact.unitA->GetDamageModifier();
 
     return event;
 }
