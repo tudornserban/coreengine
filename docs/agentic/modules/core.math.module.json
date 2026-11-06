@@ -1,0 +1,9 @@
+{
+  "id": "core.math",
+  "version": "1.0.0",
+  "path": "core/math",
+  "exports": ["Vector2", "Vector3", "DeterministicRNG", "MathConstants"],
+  "requires": {},
+  "tags": ["foundation", "deterministic"],
+  "notes": "Phase 2 pilot complete: MODULE.md, include enforcement, math-only test target."
+}
