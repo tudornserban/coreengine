@@ -1,0 +1,312 @@
+{
+  "edges": [
+    {
+      "enforced": false,
+      "from": "core.ai",
+      "range": "^1.0.0",
+      "to": "core.influence"
+    },
+    {
+      "enforced": false,
+      "from": "core.ai",
+      "range": "^1.0.0",
+      "to": "core.interfaces"
+    },
+    {
+      "enforced": false,
+      "from": "core.ai",
+      "range": "^1.0.0",
+      "to": "core.logging"
+    },
+    {
+      "enforced": false,
+      "from": "core.ai",
+      "range": "^1.0.0",
+      "to": "core.math"
+    },
+    {
+      "enforced": false,
+      "from": "core.ai_advanced",
+      "range": "^1.0.0",
+      "to": "core.gamestate"
+    },
+    {
+      "enforced": false,
+      "from": "core.collision",
+      "range": "^1.0.0",
+      "to": "core.interfaces"
+    },
+    {
+      "enforced": false,
+      "from": "core.collision",
+      "range": "^1.0.0",
+      "to": "core.logging"
+    },
+    {
+      "enforced": false,
+      "from": "core.collision",
+      "range": "^1.0.0",
+      "to": "core.math"
+    },
+    {
+      "enforced": false,
+      "from": "core.combat",
+      "range": "^1.0.0",
+      "to": "core.interfaces"
+    },
+    {
+      "enforced": false,
+      "from": "core.combat",
+      "range": "^1.0.0",
+      "to": "core.math"
+    },
+    {
+      "enforced": true,
+      "from": "core.gameloop",
+      "range": "^1.0.0",
+      "to": "core.math"
+    },
+    {
+      "enforced": false,
+      "from": "core.gamestate",
+      "range": "^1.0.0",
+      "to": "core.ai"
+    },
+    {
+      "enforced": false,
+      "from": "core.gamestate",
+      "range": "^1.0.0",
+      "to": "core.collision"
+    },
+    {
+      "enforced": false,
+      "from": "core.gamestate",
+      "range": "^1.0.0",
+      "to": "core.combat"
+    },
+    {
+      "enforced": false,
+      "from": "core.gamestate",
+      "range": "^1.0.0",
+      "to": "core.influence"
+    },
+    {
+      "enforced": false,
+      "from": "core.gamestate",
+      "range": "^1.0.0",
+      "to": "core.interfaces"
+    },
+    {
+      "enforced": false,
+      "from": "core.gamestate",
+      "range": "^1.0.0",
+      "to": "core.logging"
+    },
+    {
+      "enforced": false,
+      "from": "core.gamestate",
+      "range": "^1.0.0",
+      "to": "core.map"
+    },
+    {
+      "enforced": false,
+      "from": "core.gamestate",
+      "range": "^1.0.0",
+      "to": "core.math"
+    },
+    {
+      "enforced": true,
+      "from": "core.influence",
+      "range": "^1.0.0",
+      "to": "core.influence.types"
+    },
+    {
+      "enforced": true,
+      "from": "core.influence",
+      "range": "^1.0.0",
+      "to": "core.interfaces"
+    },
+    {
+      "enforced": true,
+      "from": "core.influence",
+      "range": "^1.0.0",
+      "to": "core.math"
+    },
+    {
+      "enforced": true,
+      "from": "core.influence.types",
+      "range": "^1.0.0",
+      "to": "core.math"
+    },
+    {
+      "enforced": true,
+      "from": "core.interfaces",
+      "range": "^1.0.0",
+      "to": "core.influence.types"
+    },
+    {
+      "enforced": true,
+      "from": "core.interfaces",
+      "range": "^1.0.0",
+      "to": "core.math"
+    },
+    {
+      "enforced": true,
+      "from": "core.map",
+      "range": "^1.0.0",
+      "to": "core.influence.types"
+    },
+    {
+      "enforced": true,
+      "from": "core.map",
+      "range": "^1.0.0",
+      "to": "core.interfaces"
+    },
+    {
+      "enforced": true,
+      "from": "core.map",
+      "range": "^1.0.0",
+      "to": "core.math"
+    },
+    {
+      "enforced": false,
+      "from": "core.serialization",
+      "range": "^1.0.0",
+      "to": "core.gamestate"
+    }
+  ],
+  "modules": [
+    {
+      "id": "core.ai",
+      "includeEnforced": false,
+      "path": "core/ai",
+      "requires": {
+        "core.influence": "^1.0.0",
+        "core.interfaces": "^1.0.0",
+        "core.logging": "^1.0.0",
+        "core.math": "^1.0.0"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "id": "core.ai_advanced",
+      "includeEnforced": false,
+      "path": "core/ai_advanced",
+      "requires": {
+        "core.gamestate": "^1.0.0"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "id": "core.collision",
+      "includeEnforced": false,
+      "path": "core/collision",
+      "requires": {
+        "core.interfaces": "^1.0.0",
+        "core.logging": "^1.0.0",
+        "core.math": "^1.0.0"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "id": "core.combat",
+      "includeEnforced": false,
+      "path": "core/combat",
+      "requires": {
+        "core.interfaces": "^1.0.0",
+        "core.math": "^1.0.0"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "id": "core.gameloop",
+      "includeEnforced": true,
+      "path": "core/gameloop",
+      "requires": {
+        "core.math": "^1.0.0"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "id": "core.gamestate",
+      "includeEnforced": false,
+      "path": "core/gamestate",
+      "requires": {
+        "core.ai": "^1.0.0",
+        "core.collision": "^1.0.0",
+        "core.combat": "^1.0.0",
+        "core.influence": "^1.0.0",
+        "core.interfaces": "^1.0.0",
+        "core.logging": "^1.0.0",
+        "core.map": "^1.0.0",
+        "core.math": "^1.0.0"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "id": "core.influence",
+      "includeEnforced": true,
+      "path": "core/influence",
+      "requires": {
+        "core.influence.types": "^1.0.0",
+        "core.interfaces": "^1.0.0",
+        "core.math": "^1.0.0"
+      },
+      "version": "1.0.2"
+    },
+    {
+      "id": "core.influence.types",
+      "includeEnforced": true,
+      "path": "core/influence_types",
+      "requires": {
+        "core.math": "^1.0.0"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "id": "core.interfaces",
+      "includeEnforced": true,
+      "path": "core/interfaces",
+      "requires": {
+        "core.influence.types": "^1.0.0",
+        "core.math": "^1.0.0"
+      },
+      "version": "1.0.2"
+    },
+    {
+      "id": "core.logging",
+      "includeEnforced": true,
+      "path": "core/logging",
+      "requires": {},
+      "version": "1.0.1"
+    },
+    {
+      "id": "core.map",
+      "includeEnforced": true,
+      "path": "core/map",
+      "requires": {
+        "core.influence.types": "^1.0.0",
+        "core.interfaces": "^1.0.0",
+        "core.math": "^1.0.0"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "id": "core.math",
+      "includeEnforced": true,
+      "path": "core/math",
+      "requires": {},
+      "version": "1.0.0"
+    },
+    {
+      "id": "core.serialization",
+      "includeEnforced": false,
+      "path": "core/serialization",
+      "requires": {
+        "core.gamestate": "^1.0.0"
+      },
+      "version": "1.0.0"
+    }
+  ],
+  "schemaVersion": 1
+}
