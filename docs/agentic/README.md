@@ -12,5 +12,6 @@ This folder holds **Phase 0 inventory** and **Phase 1 scaffold** for modular, ag
 | [BUILD_INTEGRATION.md](BUILD_INTEGRATION.md) | Full-engine build gate and compile repair notes |
 | [PHASE2_PILOT.md](PHASE2_PILOT.md) | `core.math` Phase 2 pilot (complete) |
 | [PHASE2_INFLUENCE.md](PHASE2_INFLUENCE.md) | `core.influence` + `core.influence.types` Phase 2 |
+| [PHASE2_LOGGING.md](PHASE2_LOGGING.md) | `core.logging` Phase 2 rollout |
 
 **Phase 2:** `core.math` boundary documented in [core/math/MODULE.md](../../core/math/MODULE.md); include enforcement and math-only tests via `./scripts/run-math-module-tests.sh`.

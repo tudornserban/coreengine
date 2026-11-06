@@ -6,6 +6,8 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BUILD_DIR="${ROOT}/build-influence-types"
 export CXX="${CXX:-g++}"
 
+echo "[run-influence-types-module-tests] CMAKE_BINARY_DIR=${BUILD_DIR}"
+
 cmake -S "${ROOT}" -B "${BUILD_DIR}" -G Ninja \
   -DBUILD_TESTS=ON \
   -DCOREENGINE_INFLUENCE_TYPES_STANDALONE=ON

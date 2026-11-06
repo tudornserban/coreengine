@@ -7,6 +7,8 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BUILD_DIR="${ROOT}/build-verify-ffi"
 export CXX="${CXX:-g++}"
 
+echo "[verify-ffi-build] CMAKE_BINARY_DIR=${BUILD_DIR}"
+
 cmake -S "${ROOT}" -B "${BUILD_DIR}" -G Ninja \
   -DBUILD_FFI=ON \
   -DBUILD_TESTS=OFF
@@ -25,6 +27,7 @@ import sys
 from pathlib import Path
 
 lib_path = Path("${LIB}").resolve()
+print(f"verify-ffi-build: loading {lib_path}")
 lib = ctypes.CDLL(str(lib_path))
 
 lib.ce_engine_create.restype = ctypes.c_void_p

@@ -1,6 +1,6 @@
 # Module dependency policy (draft)
 
-Enforcement is **active** for `core.math`, `core.influence.types`, and `core.influence` in Phase 2 (`scripts/check-module-deps.sh`). Other registry modules remain **manifest-only** until opted in. **`requires` graphs must be acyclic** — no checker exceptions.
+Enforcement is **active** for `core.math`, `core.influence.types`, `core.influence`, and `core.logging` in Phase 2 (`scripts/check-module-deps.sh`). Other registry modules remain **manifest-only** until opted in. **`requires` graphs must be acyclic** — no checker exceptions.
 
 ## Layers
 

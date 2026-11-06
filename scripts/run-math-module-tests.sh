@@ -6,6 +6,8 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BUILD_DIR="${ROOT}/build-math"
 export CXX="${CXX:-g++}"
 
+echo "[run-math-module-tests] CMAKE_BINARY_DIR=${BUILD_DIR}"
+
 cmake -S "${ROOT}" -B "${BUILD_DIR}" -G Ninja \
   -DBUILD_TESTS=ON \
   -DCOREENGINE_MATH_STANDALONE=ON
