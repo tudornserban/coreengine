@@ -1,7 +1,7 @@
 #include "CommandSystem.h"
 
-#include "../interfaces/IGameUnit.h"
-#include "../interfaces/IUnitAgent.h"
+#include "core/interfaces/IGameUnit.h"
+#include "core/interfaces/IUnitAgent.h"
 
 void CommandSystem::SetUnitState(IGameUnit* unit, const std::string& stateName) {
     if (IUnitAgent* agent = dynamic_cast<IUnitAgent*>(unit)) {

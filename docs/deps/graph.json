@@ -55,13 +55,13 @@
       "to": "core.math"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.combat",
       "range": "^1.2.0",
       "to": "core.interfaces"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.combat",
       "range": "^1.0.0",
       "to": "core.math"
@@ -223,7 +223,7 @@
     },
     {
       "id": "core.combat",
-      "includeEnforced": false,
+      "includeEnforced": true,
       "path": "core/combat",
       "requires": {
         "core.interfaces": "^1.2.0",

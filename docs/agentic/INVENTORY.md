@@ -103,7 +103,7 @@ python3 scripts/test_check_module_deps.py
 | Issue | Files | Notes |
 |-------|-------|-------|
 | **Collision → `IUnitKinematics` gate** | `CollisionSystem.cpp`, `CollisionResolver.cpp`, `PositionCorrector.cpp`, `MapCollisionHandler.cpp` | All four resolve/write paths gate on `IUnitKinematics`; no `#include` of `RTSUnit` in `core/collision` (`core.collision` is include-enforced as of R1.3). |
-| **Combat → `IUnitAgent`** | `CommandSystem.cpp` | `CommandSystem` commands via `dynamic_cast<IUnitAgent*>`; no `#include` of `RTSUnit` in `core/combat`. |
+| **Combat → `IUnitAgent`** | `CommandSystem.cpp` | `CommandSystem` commands via `dynamic_cast<IUnitAgent*>`; no `#include` of `RTSUnit` in `core/combat` (`core.combat` is include-enforced as of R1.6). |
 | **Serialization → `RTSGameState`** | `GameStateSerializer.cpp` | Expected for now; may stay in `gamestate` or `serialization` bundle. |
 | **Duplicate interface headers** | `core/gamestate/IGameState.h`, `IGameLogicRenderer.h` vs `core/interfaces/` | Legacy paths forward to `core/interfaces/` (R1.4); canonical contract is under `core/interfaces/`. |
 | **Hub module** | `RTSGameState.h` | Pulls combat, map, influence, collision, AI context — natural integration point, hard to edit in isolation. |
