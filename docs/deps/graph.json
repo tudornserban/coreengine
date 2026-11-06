@@ -151,13 +151,19 @@
       "to": "core.math"
     },
     {
-      "enforced": false,
+      "enforced": true,
+      "from": "core.map",
+      "range": "^1.0.0",
+      "to": "core.influence.types"
+    },
+    {
+      "enforced": true,
       "from": "core.map",
       "range": "^1.0.0",
       "to": "core.interfaces"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.map",
       "range": "^1.0.0",
       "to": "core.math"
@@ -276,9 +282,10 @@
     },
     {
       "id": "core.map",
-      "includeEnforced": false,
+      "includeEnforced": true,
       "path": "core/map",
       "requires": {
+        "core.influence.types": "^1.0.0",
         "core.interfaces": "^1.0.0",
         "core.math": "^1.0.0"
       },

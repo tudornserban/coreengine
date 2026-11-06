@@ -17,6 +17,7 @@ python3 scripts/test_check_module_deps.py
 ./scripts/run-influence-module-tests.sh
 ./scripts/run-logging-module-tests.sh
 ./scripts/run-interfaces-module-tests.sh
+./scripts/run-map-module-tests.sh
 ```
 
 ## FFI shared library (`BUILD_FFI=ON`)

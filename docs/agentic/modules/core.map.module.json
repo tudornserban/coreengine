@@ -12,7 +12,9 @@
   ],
   "requires": {
     "core.interfaces": "^1.0.0",
+    "core.influence.types": "^1.0.0",
     "core.math": "^1.0.0"
   },
+  "notes": "Map obstacle components store InfluenceFieldItem from core.influence.types; legacy include path core/influence/InfluenceFieldItem.h re-exports the same type.",
   "tags": ["ecs", "gameplay"]
 }

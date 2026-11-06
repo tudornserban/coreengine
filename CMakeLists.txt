@@ -14,6 +14,7 @@ option(COREENGINE_INFLUENCE_TYPES_STANDALONE "Build only core.influence.types te
 option(COREENGINE_LOGGING_STANDALONE "Build only core.logging tests (no full coreengine)" OFF)
 option(COREENGINE_INTERFACES_STANDALONE "Build only core.interfaces header compile tests" OFF)
 option(COREENGINE_GAMELOOP_STANDALONE "Build only core.gameloop tests (no full coreengine)" OFF)
+option(COREENGINE_MAP_STANDALONE "Build only core.map tests (no full coreengine)" OFF)
 
 set(_standalone_modes 0)
 if(COREENGINE_MATH_STANDALONE)
@@ -32,6 +33,9 @@ if(COREENGINE_INTERFACES_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(COREENGINE_GAMELOOP_STANDALONE)
+    math(EXPR _standalone_modes "${_standalone_modes}+1")
+endif()
+if(COREENGINE_MAP_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(_standalone_modes GREATER 1)
@@ -184,12 +188,37 @@ elseif(COREENGINE_GAMELOOP_STANDALONE)
     )
     include(GoogleTest)
     gtest_discover_tests(coreengine_gameloop_tests)
+elseif(COREENGINE_MAP_STANDALONE)
+    add_subdirectory(core/math)
+    add_subdirectory(core/influence_types)
+    add_subdirectory(core/map)
+    if(NOT BUILD_TESTS)
+        message(FATAL_ERROR "COREENGINE_MAP_STANDALONE requires BUILD_TESTS=ON")
+    endif()
+    enable_testing()
+    find_package(GTest REQUIRED)
+
+    add_executable(coreengine_map_tests
+        tests/UnitTests/Map/MapTest.cpp
+        tests/UnitTests/Map/MapModuleHeaderCompileTest.cpp
+    )
+    target_include_directories(coreengine_map_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(coreengine_map_tests
+        coreengine_map
+        coreengine_influence_types
+        coreengine_math
+        GTest::gtest
+        GTest::gtest_main
+    )
+    include(GoogleTest)
+    gtest_discover_tests(coreengine_map_tests)
 else()
     add_subdirectory(core/math)
     add_subdirectory(core/influence_types)
     add_subdirectory(core/influence)
     add_subdirectory(core/logging)
     add_subdirectory(core/gameloop)
+    add_subdirectory(core/map)
 
     file(GLOB_RECURSE CORE_SOURCES
         "core/interfaces/*.cpp"
@@ -197,8 +226,6 @@ else()
         "core/ai/Behaviors/*.cpp"
         "core/ai/Conditions/*.cpp"
         "core/collision/*.cpp"
-        "core/map/*.cpp"
-        "core/map/MapComponents/*.cpp"
         "core/combat/*.cpp"
         "core/gamestate/*.cpp"
         "core/ai_advanced/*.cpp"
@@ -212,6 +239,7 @@ else()
         $<TARGET_OBJECTS:coreengine_influence>
         $<TARGET_OBJECTS:coreengine_logging>
         $<TARGET_OBJECTS:coreengine_gameloop>
+        $<TARGET_OBJECTS:coreengine_map>
     )
     target_include_directories(coreengine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
