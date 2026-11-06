@@ -1,6 +1,6 @@
 #include "PositionCorrector.h"
-#include "../interfaces/IUnitKinematics.h"
-#include "../math/Vector2.h"
+#include "core/interfaces/IUnitKinematics.h"
+#include "core/math/Vector2.h"
 
 void PositionCorrector::CorrectAgentAgent(
     IGameUnit* unitA,

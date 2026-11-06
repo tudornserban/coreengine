@@ -2,7 +2,7 @@
 
 #include "CollisionContact.h"
 #include "CollisionPhysics.h"
-#include "../interfaces/IGameUnit.h"
+#include "core/interfaces/IGameUnit.h"
 
 class CollisionResolver {
 public:

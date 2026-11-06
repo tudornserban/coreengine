@@ -1,5 +1,5 @@
 #include "CollisionResolver.h"
-#include "../interfaces/IUnitKinematics.h"
+#include "core/interfaces/IUnitKinematics.h"
 
 void CollisionResolver::ResolveAgentAgent(
     IGameUnit* unitA,

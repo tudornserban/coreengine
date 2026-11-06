@@ -50,9 +50,10 @@ python3 scripts/test_check_module_deps.py
 ./scripts/run-map-module-tests.sh
 ./scripts/run-ai-module-tests.sh
 ./scripts/run-serialization-module-tests.sh
+./scripts/run-collision-module-tests.sh
 ```
 
-**Include enforcement:** `./scripts/check-module-deps.sh` enforces `#include` boundaries for opted-in registry modules (see `INCLUDE_ENFORCED_MODULES` in `scripts/check_module_deps.py`), including `core.gameloop` as of Phase 3 A3.2, `core.map` as of Phase 3 A3.3, `core.ai` as of Phase 3 A3.4, and `core.serialization` as of Phase 3 A3.5.
+**Include enforcement:** `./scripts/check-module-deps.sh` enforces `#include` boundaries for opted-in registry modules (see `INCLUDE_ENFORCED_MODULES` in `scripts/check_module_deps.py`), including `core.gameloop` as of Phase 3 A3.2, `core.map` as of Phase 3 A3.3, `core.ai` as of Phase 3 A3.4, `core.serialization` as of Phase 3 A3.5, and `core.collision` as of R1.3 (A3.6).
 
 See [docs/agentic/BUILD_INTEGRATION.md](docs/agentic/BUILD_INTEGRATION.md).
 

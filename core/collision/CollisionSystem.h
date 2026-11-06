@@ -10,7 +10,7 @@
 #include "CollisionSettings.h"
 #include "CollisionEvent.h"
 #include "ICollisionDetector.h"  // Includes MapBounds
-#include "../math/Vector2.h"
+#include "core/math/Vector2.h"
 #include <vector>
 #include <memory>
 

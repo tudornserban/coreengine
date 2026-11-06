@@ -1,8 +1,8 @@
 #include "CollisionSystem.h"
-#include "../interfaces/IGameUnit.h"
-#include "../interfaces/IUnitKinematics.h"
+#include "core/interfaces/IGameUnit.h"
+#include "core/interfaces/IUnitKinematics.h"
 #include "ICollisionDetector.h"  // For MapBounds
-#include "../logging/Logger.h"
+#include "core/logging/Logger.h"
 #include <algorithm>
 #include <cmath>
 
