@@ -233,6 +233,32 @@ def render_dependency_summary_md(
     return "\n".join(lines) + "\n"
 
 
+def verify_core_interfaces_changelog(repo_root: Path, manifests: dict[str, dict]) -> list[str]:
+    """Ensure core/interfaces/CHANGELOG.md documents the manifest version for core.interfaces."""
+    errors: list[str] = []
+    mid = "core.interfaces"
+    if mid not in manifests:
+        return errors
+    version = manifests[mid].get("version", "")
+    if not version or not SEMVER_RE.match(version):
+        return errors
+    changelog_path = repo_root / "core" / "interfaces" / "CHANGELOG.md"
+    if not changelog_path.is_file():
+        errors.append(
+            "core/interfaces/CHANGELOG.md: missing; add it when maintaining core.interfaces "
+            "(semver section must match docs/agentic/modules/core.interfaces.module.json)"
+        )
+        return errors
+    text = changelog_path.read_text(encoding="utf-8", errors="replace")
+    heading = f"## [{version}]"
+    if heading not in text:
+        errors.append(
+            f"core/interfaces/CHANGELOG.md: expected a line {heading!r} matching manifest version "
+            f"{version!r}; append a changelog entry when bumping core.interfaces"
+        )
+    return errors
+
+
 def verify_dependency_map_artifacts(
     repo_root: Path,
     module_ids: list[str],
@@ -386,6 +412,8 @@ def run_checks(
         m in manifests for m in module_ids
     ):
         errors.extend(verify_dependency_map_artifacts(repo_root, module_ids, manifests, enforced))
+
+    errors.extend(verify_core_interfaces_changelog(repo_root, manifests))
 
     errors.extend(check_include_boundaries(repo_root, module_ids, manifests, enforced))
 
