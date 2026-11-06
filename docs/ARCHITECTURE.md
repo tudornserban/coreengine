@@ -124,7 +124,7 @@ Directly from VenusWars — broadphase SpatialGrid + narrowphase circle detectio
 - `RTSGameState` — canonical simulation state (units, map, collision, RNG)
 - `RTSUnit` — concrete IGameUnit with StateMachine + InfluenceFieldController
 - `GameStateManager` — single-active-state stack (transitions via SetState)
-- `IGameState` / `IGameLogicRenderer` — mirror interfaces (also in `core/interfaces/`)
+- `IGameState` / `IGameLogicRenderer` — thin `#include` forwarders to `core/interfaces/` (canonical contract)
 
 ### `core/logging/`
 - `Logger` (singleton) — level-filtered console + file output, `LOG_DEBUG/INFO/WARN/ERROR/FATAL` macros
