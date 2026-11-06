@@ -16,6 +16,7 @@ option(COREENGINE_INTERFACES_STANDALONE "Build only core.interfaces header compi
 option(COREENGINE_GAMELOOP_STANDALONE "Build only core.gameloop tests (no full coreengine)" OFF)
 option(COREENGINE_MAP_STANDALONE "Build only core.map tests (no full coreengine)" OFF)
 option(COREENGINE_AI_STANDALONE "Build only core.ai tests (no full coreengine)" OFF)
+option(COREENGINE_SERIALIZATION_STANDALONE "Build only core.serialization tests (no full coreengine)" OFF)
 
 set(_standalone_modes 0)
 if(COREENGINE_MATH_STANDALONE)
@@ -40,6 +41,9 @@ if(COREENGINE_MAP_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(COREENGINE_AI_STANDALONE)
+    math(EXPR _standalone_modes "${_standalone_modes}+1")
+endif()
+if(COREENGINE_SERIALIZATION_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(_standalone_modes GREATER 1)
@@ -246,6 +250,43 @@ elseif(COREENGINE_AI_STANDALONE)
     )
     include(GoogleTest)
     gtest_discover_tests(coreengine_ai_tests)
+elseif(COREENGINE_SERIALIZATION_STANDALONE)
+    add_subdirectory(core/math)
+    add_subdirectory(core/influence_types)
+    add_subdirectory(core/logging)
+    add_subdirectory(core/map)
+    add_subdirectory(core/ai)
+    add_subdirectory(core/influence)
+    add_subdirectory(core/combat)
+    add_subdirectory(core/collision)
+    add_subdirectory(core/gamestate)
+    add_subdirectory(core/serialization)
+    if(NOT BUILD_TESTS)
+        message(FATAL_ERROR "COREENGINE_SERIALIZATION_STANDALONE requires BUILD_TESTS=ON")
+    endif()
+    enable_testing()
+    find_package(GTest REQUIRED)
+
+    add_executable(coreengine_serialization_tests
+        tests/UnitTests/Serialization/SerializationModuleHeaderCompileTest.cpp
+    )
+    target_include_directories(coreengine_serialization_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(coreengine_serialization_tests
+        coreengine_serialization
+        coreengine_gamestate
+        coreengine_collision
+        coreengine_combat
+        coreengine_ai
+        coreengine_map
+        coreengine_influence
+        coreengine_influence_types
+        coreengine_logging
+        coreengine_math
+        GTest::gtest
+        GTest::gtest_main
+    )
+    include(GoogleTest)
+    gtest_discover_tests(coreengine_serialization_tests)
 else()
     add_subdirectory(core/math)
     add_subdirectory(core/influence_types)
@@ -254,14 +295,14 @@ else()
     add_subdirectory(core/gameloop)
     add_subdirectory(core/map)
     add_subdirectory(core/ai)
+    add_subdirectory(core/combat)
+    add_subdirectory(core/collision)
+    add_subdirectory(core/gamestate)
+    add_subdirectory(core/serialization)
 
     file(GLOB_RECURSE CORE_SOURCES
         "core/interfaces/*.cpp"
-        "core/collision/*.cpp"
-        "core/combat/*.cpp"
-        "core/gamestate/*.cpp"
         "core/ai_advanced/*.cpp"
-        "core/serialization/*.cpp"
     )
 
     add_library(coreengine STATIC
@@ -273,6 +314,10 @@ else()
         $<TARGET_OBJECTS:coreengine_gameloop>
         $<TARGET_OBJECTS:coreengine_map>
         $<TARGET_OBJECTS:coreengine_ai>
+        $<TARGET_OBJECTS:coreengine_combat>
+        $<TARGET_OBJECTS:coreengine_collision>
+        $<TARGET_OBJECTS:coreengine_gamestate>
+        $<TARGET_OBJECTS:coreengine_serialization>
     )
     target_include_directories(coreengine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 

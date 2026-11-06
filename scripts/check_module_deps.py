@@ -49,6 +49,7 @@ INCLUDE_ENFORCED_MODULES = frozenset(
         "core.gameloop",
         "core.map",
         "core.ai",
+        "core.serialization",
     }
 )
 

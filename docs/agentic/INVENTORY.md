@@ -160,7 +160,7 @@ flowchart BT
 | `core.combat` | `ExplosionTest` (under `Map/` folder name) | — |
 | `core.gamestate` | — | `DeterminismTest` |
 | `core.logging` | — | — |
-| `core.serialization` | — | — |
+| `core.serialization` | `SerializationModuleHeaderCompileTest` | — |
 | `core.ai_advanced` | — | — |
 
 ---

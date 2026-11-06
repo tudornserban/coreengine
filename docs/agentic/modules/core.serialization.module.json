@@ -4,7 +4,8 @@
   "path": "core/serialization",
   "exports": ["GameStateSerializer"],
   "requires": {
-    "core.gamestate": "^1.0.0"
+    "core.gamestate": "^1.0.0",
+    "core.interfaces": "^1.0.0"
   },
   "tags": ["persistence"]
 }
