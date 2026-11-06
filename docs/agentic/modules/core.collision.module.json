@@ -1,0 +1,23 @@
+{
+  "id": "core.collision",
+  "version": "1.0.0",
+  "path": "core/collision",
+  "exports": [
+    "CollisionSystem",
+    "CollisionDetector",
+    "SpatialGrid",
+    "CollisionResolver",
+    "PositionCorrector",
+    "ImmunityManager",
+    "ICollisionDetector",
+    "ICollidable",
+    "ICollisionObserver"
+  ],
+  "requires": {
+    "core.interfaces": "^1.0.0",
+    "core.math": "^1.0.0",
+    "core.logging": "^1.0.0"
+  },
+  "tags": ["gameplay", "physics"],
+  "notes": "Implementation still includes RTSUnit in several TUs — policy violation tracked in INVENTORY.md."
+}

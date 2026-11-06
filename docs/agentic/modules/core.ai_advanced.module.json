@@ -1,0 +1,10 @@
+{
+  "id": "core.ai_advanced",
+  "version": "0.1.0",
+  "path": "core/ai_advanced",
+  "exports": ["GeneticTrainer", "Genome", "BotPlayer"],
+  "requires": {
+    "core.gamestate": "^1.0.0"
+  },
+  "tags": ["experimental", "ai"]
+}
