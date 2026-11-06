@@ -31,19 +31,25 @@
       "to": "core.gamestate"
     },
     {
-      "enforced": false,
+      "enforced": true,
+      "from": "core.collision",
+      "range": "^1.0.0",
+      "to": "core.influence.types"
+    },
+    {
+      "enforced": true,
       "from": "core.collision",
       "range": "^1.0.0",
       "to": "core.interfaces"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.collision",
       "range": "^1.0.0",
       "to": "core.logging"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.collision",
       "range": "^1.0.0",
       "to": "core.math"
@@ -205,14 +211,15 @@
     },
     {
       "id": "core.collision",
-      "includeEnforced": false,
+      "includeEnforced": true,
       "path": "core/collision",
       "requires": {
+        "core.influence.types": "^1.0.0",
         "core.interfaces": "^1.0.0",
         "core.logging": "^1.0.0",
         "core.math": "^1.0.0"
       },
-      "version": "1.0.3"
+      "version": "1.0.4"
     },
     {
       "id": "core.combat",

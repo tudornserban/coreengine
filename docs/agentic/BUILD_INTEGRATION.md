@@ -20,6 +20,7 @@ python3 scripts/test_check_module_deps.py
 ./scripts/run-gameloop-module-tests.sh
 ./scripts/run-map-module-tests.sh
 ./scripts/run-ai-module-tests.sh
+./scripts/run-collision-module-tests.sh
 ```
 
 ## FFI shared library (`BUILD_FFI=ON`)

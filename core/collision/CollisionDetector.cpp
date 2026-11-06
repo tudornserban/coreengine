@@ -1,5 +1,5 @@
 #include "CollisionDetector.h"
-#include "../interfaces/IGameUnit.h"
+#include "core/interfaces/IGameUnit.h"
 #include <algorithm>
 #include <cmath>
 

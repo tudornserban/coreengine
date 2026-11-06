@@ -1,7 +1,7 @@
 #include "MapCollisionHandler.h"
 #include "NarrowPhaseDetector.h"
 #include "CollisionResolver.h"
-#include "../interfaces/IUnitKinematics.h"
+#include "core/interfaces/IUnitKinematics.h"
 
 bool MapCollisionHandler::DetectAndResolveMapEdge(
     IGameUnit* unit,

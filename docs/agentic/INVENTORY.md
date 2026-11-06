@@ -47,6 +47,7 @@ Modules below match **CMake source globs** and **ARCHITECTURE.md** layers. Subfo
 | `BUILD_TESTS` | OFF | `coreengine_tests` + `ctest` discovery |
 | `BUILD_SDL2` | OFF | `coreengine_sdl2` (needs SDL2) |
 | `BUILD_RAYLIB` | OFF | `coreengine_raylib` (needs raylib) |
+| `COREENGINE_COLLISION_STANDALONE` | OFF | `coreengine_collision_tests` (collision + declared deps only) |
 
 **Typical CI / local test command** (matches `.gitlab-ci.yml`):
 
@@ -56,7 +57,7 @@ cmake --build build --parallel
 cd build && ctest --output-on-failure
 ```
 
-**Agentic dependency check** (manifests + Phase 2 `core.math` `#include` enforcement):
+**Agentic dependency check** (manifests + opted-in modules `#include` enforcement):
 
 ```bash
 ./scripts/check-module-deps.sh
@@ -73,6 +74,12 @@ python3 scripts/test_check_module_deps.py
 
 ```bash
 ./scripts/run-influence-module-tests.sh
+```
+
+**Collision-only tests** (OBJECT lib + math + influence types + logging + collision):
+
+```bash
+./scripts/run-collision-module-tests.sh
 ```
 
 ### CI
@@ -95,7 +102,7 @@ python3 scripts/test_check_module_deps.py
 
 | Issue | Files | Notes |
 |-------|-------|-------|
-| **Collision → `IUnitKinematics` gate** | `CollisionSystem.cpp`, `CollisionResolver.cpp`, `PositionCorrector.cpp`, `MapCollisionHandler.cpp` | All four resolve/write paths gate on `IUnitKinematics`; no `#include` of `RTSUnit` in `core/collision` (manifest not include-enforced until R1.3). |
+| **Collision → `IUnitKinematics` gate** | `CollisionSystem.cpp`, `CollisionResolver.cpp`, `PositionCorrector.cpp`, `MapCollisionHandler.cpp` | All four resolve/write paths gate on `IUnitKinematics`; no `#include` of `RTSUnit` in `core/collision` (`core.collision` is include-enforced as of R1.3). |
 | **Combat → `RTSUnit`** | `CommandSystem.cpp` | Same pattern. |
 | **Serialization → `RTSGameState`** | `GameStateSerializer.cpp` | Expected for now; may stay in `gamestate` or `serialization` bundle. |
 | **Duplicate interface headers** | `core/gamestate/IGameState.h`, `IGameLogicRenderer.h` vs `core/interfaces/` | `GameStateManager` includes local `IGameState.h`; risk of drift from `core/interfaces/`. |
@@ -154,7 +161,7 @@ flowchart BT
 | `core.math` | `DeterministicRNGTest`, `MathConstantsTest`, `Vector2Test` | Used in `DeterminismTest` |
 | `core.ai` | `StateMachineTest`, `BehaviorsTest`, `ConditionsTest`, `BehaviorFactoryTest` | `BehaviorRuntimeSwapTest` |
 | `core.influence` | `InfluenceFieldTest` | — |
-| `core.collision` | `SpatialGridTest`, `ImmunityManagerTest`, `UnitKinematicsWriteTest`, `CollisionSystemKinematicsGateTest` | — |
+| `core.collision` | `SpatialGridTest`, `ImmunityManagerTest`, `UnitKinematicsWriteTest`, `CollisionSystemKinematicsGateTest`, `CollisionModuleHeaderCompileTest` | — |
 | `core.gameloop` | `GameLogicEngineTest`, `DeploymentTimerTest`, `ThinkTimerTest` | — |
 | `core.map` | `MapTest` | — |
 | `core.combat` | `ExplosionTest` (under `Map/` folder name) | — |
@@ -179,7 +186,7 @@ flowchart BT
 
 **Runner-up:** `core.influence` — good tests and mostly depends on `math`, but ties to AI behavior field generation.
 
-**Defer:** `core.gamestate` and `core.collision` until interfaces are cleaned (collision↔gamestate coupling).
+**Defer:** `core.gamestate` until integration boundaries are cleaner (hub coupling, combat, serialization).
 
 ---
 

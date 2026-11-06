@@ -17,6 +17,7 @@ option(COREENGINE_GAMELOOP_STANDALONE "Build only core.gameloop tests (no full c
 option(COREENGINE_MAP_STANDALONE "Build only core.map tests (no full coreengine)" OFF)
 option(COREENGINE_AI_STANDALONE "Build only core.ai tests (no full coreengine)" OFF)
 option(COREENGINE_SERIALIZATION_STANDALONE "Build only core.serialization tests (no full coreengine)" OFF)
+option(COREENGINE_COLLISION_STANDALONE "Build only core.collision tests (no full coreengine)" OFF)
 
 set(_standalone_modes 0)
 if(COREENGINE_MATH_STANDALONE)
@@ -44,6 +45,9 @@ if(COREENGINE_AI_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(COREENGINE_SERIALIZATION_STANDALONE)
+    math(EXPR _standalone_modes "${_standalone_modes}+1")
+endif()
+if(COREENGINE_COLLISION_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(_standalone_modes GREATER 1)
@@ -287,6 +291,47 @@ elseif(COREENGINE_SERIALIZATION_STANDALONE)
     )
     include(GoogleTest)
     gtest_discover_tests(coreengine_serialization_tests)
+elseif(COREENGINE_COLLISION_STANDALONE)
+    add_subdirectory(core/math)
+    add_subdirectory(core/influence_types)
+    add_subdirectory(core/influence)
+    add_subdirectory(core/logging)
+    add_subdirectory(core/gameloop)
+    add_subdirectory(core/map)
+    add_subdirectory(core/ai)
+    add_subdirectory(core/combat)
+    add_subdirectory(core/collision)
+    add_subdirectory(core/gamestate)
+    if(NOT BUILD_TESTS)
+        message(FATAL_ERROR "COREENGINE_COLLISION_STANDALONE requires BUILD_TESTS=ON")
+    endif()
+    enable_testing()
+    find_package(GTest REQUIRED)
+
+    add_executable(coreengine_collision_tests
+        tests/UnitTests/Collision/CollisionModuleHeaderCompileTest.cpp
+        tests/UnitTests/Collision/CollisionSystemKinematicsGateTest.cpp
+        tests/UnitTests/Collision/ImmunityManagerTest.cpp
+        tests/UnitTests/Collision/SpatialGridTest.cpp
+        tests/UnitTests/Collision/UnitKinematicsWriteTest.cpp
+    )
+    target_include_directories(coreengine_collision_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(coreengine_collision_tests
+        coreengine_gamestate
+        coreengine_collision
+        coreengine_combat
+        coreengine_ai
+        coreengine_map
+        coreengine_influence
+        coreengine_gameloop
+        coreengine_logging
+        coreengine_influence_types
+        coreengine_math
+        GTest::gtest
+        GTest::gtest_main
+    )
+    include(GoogleTest)
+    gtest_discover_tests(coreengine_collision_tests)
 else()
     add_subdirectory(core/math)
     add_subdirectory(core/influence_types)

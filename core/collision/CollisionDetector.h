@@ -3,7 +3,7 @@
 #include "ICollisionDetector.h"
 #include "SpatialGrid.h"
 #include "NarrowPhaseDetector.h"
-#include "../interfaces/IGameUnit.h"
+#include "core/interfaces/IGameUnit.h"
 #include <vector>
 
 class CollisionDetector : public ICollisionDetector {

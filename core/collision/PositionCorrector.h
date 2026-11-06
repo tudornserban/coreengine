@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CollisionContact.h"
-#include "../interfaces/IGameUnit.h"
+#include "core/interfaces/IGameUnit.h"
 
 class PositionCorrector {
 public:
