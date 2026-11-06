@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coreengine.local/docs/agentic/manifest.schema.json",
+  "title": "CoreEngine module manifest",
+  "description": "Describes one logical engine module for agent boundaries, semver, and dependency checking.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "version", "path", "exports", "requires"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z][a-z0-9_]*)+$",
+      "description": "Stable module identifier, e.g. core.math"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(-[0-9A-Za-z.-]+)?(\\+[0-9A-Za-z.-]+)?$",
+      "description": "Semver of this module's public surface (exports)"
+    },
+    "path": {
+      "type": "string",
+      "description": "Repository-relative directory root for sources"
+    },
+    "exports": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1,
+      "description": "Public type or entrypoint names agents may depend on"
+    },
+    "requires": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "description": "Semver range (npm-style) satisfied by dependency module version"
+      },
+      "description": "Map of module id -> semver range"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Optional labels: foundation, gameplay, experimental, ..."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Human context for agents; not used by tooling yet"
+    }
+  }
+}

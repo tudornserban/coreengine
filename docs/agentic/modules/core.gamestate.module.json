@@ -1,0 +1,21 @@
+{
+  "id": "core.gamestate",
+  "version": "1.0.0",
+  "path": "core/gamestate",
+  "exports": [
+    "RTSGameState",
+    "RTSUnit",
+    "GameStateManager"
+  ],
+  "requires": {
+    "core.ai": "^1.0.0",
+    "core.combat": "^1.0.0",
+    "core.map": "^1.0.0",
+    "core.influence": "^1.0.0",
+    "core.collision": "^1.0.0",
+    "core.math": "^1.0.0",
+    "core.logging": "^1.0.0",
+    "core.interfaces": "^1.0.0"
+  },
+  "tags": ["integration", "gameplay"]
+}

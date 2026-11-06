@@ -1,0 +1,20 @@
+{
+  "id": "core.interfaces",
+  "version": "1.0.2",
+  "path": "core/interfaces",
+  "exports": [
+    "IGameUnit",
+    "IBehavior",
+    "ITransitionCondition",
+    "IGameState",
+    "IGameLogicRenderer",
+    "IInputReader",
+    "ISerializer",
+    "IMapComponent"
+  ],
+  "requires": {
+    "core.math": "^1.0.0",
+    "core.influence.types": "^1.0.0"
+  },
+  "tags": ["contracts"]
+}

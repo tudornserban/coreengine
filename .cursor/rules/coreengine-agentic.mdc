@@ -1,0 +1,14 @@
+---
+description: CoreEngine agentic workflow — module boundaries and edit scope
+alwaysApply: true
+---
+
+# CoreEngine agentic rules
+
+- Read [AGENTS.md](../../AGENTS.md) and [docs/agentic/INVENTORY.md](../../docs/agentic/INVENTORY.md) before multi-file engine work.
+- **Single-module tasks:** limit implementation reads/edits to one manifest `path` plus `core/interfaces/` and that module’s tests.
+- **Do not** refactor unrelated modules, extract interfaces, or change CMake glob structure unless the task says so.
+- **Manifest:** bump `docs/agentic/modules/<id>.module.json` semver when `exports` or observable behavior changes.
+- **`core.interfaces`:** any version bump must add a `## [version]` section (or dated line under it) in `core/interfaces/CHANGELOG.md` — no silent bumps.
+- **Verify:** run `./scripts/check-module-deps.sh` when touching modules or manifests.
+- **Pilot module for extractions:** `core.math` unless the user chooses another module from the inventory.

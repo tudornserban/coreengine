@@ -90,6 +90,7 @@ int main()
 
 ## Docs
 
+- [Agentic workflow (inventory & module manifests)](docs/agentic/README.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Porting Guide](docs/PORTING_GUIDE.md) — UE5, Unity, Raylib, SDL2, Python
 - [FFI Guide](docs/FFI_GUIDE.md) — Python, Rust, Go, Lua, WebAssembly
