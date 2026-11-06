@@ -1,6 +1,6 @@
 #include "CollisionSystem.h"
 #include "../interfaces/IGameUnit.h"
-#include "../gamestate/RTSUnit.h"
+#include "../interfaces/IUnitKinematics.h"
 #include "ICollisionDetector.h"  // For MapBounds
 #include "../logging/Logger.h"
 #include <algorithm>
@@ -38,17 +38,18 @@ void CollisionSystem::ProcessCollisions(
 void CollisionSystem::ResolveCollision(const CollisionContact& contact) {
     if (!contact.unitA) return;
 
-    RTSUnit* unitA = dynamic_cast<RTSUnit*>(contact.unitA);
-    if (!unitA) return;
-
-    float massA = unitA->CalculateMass();
-    float restitutionA = unitA->GetRestitution();
-    float positionCorrectionA = unitA->GetPositionCorrection();
+    IGameUnit* unitA = contact.unitA;
 
     if (contact.type == CollisionType::AGENT_AGENT && contact.unitB) {
-        // Agent-Agent collision
-        RTSUnit* unitB = dynamic_cast<RTSUnit*>(contact.unitB);
-        if (!unitB) return;
+        // Agent-Agent collision: require kinematics on both sides (same as pre-R1.2 RTSUnit gate).
+        if (!dynamic_cast<IUnitKinematics*>(contact.unitA)) return;
+        if (!dynamic_cast<IUnitKinematics*>(contact.unitB)) return;
+
+        IGameUnit* unitB = contact.unitB;
+
+        float massA = unitA->CalculateMass();
+        float restitutionA = unitA->GetRestitution();
+        float positionCorrectionA = unitA->GetPositionCorrection();
 
         float massB = unitB->CalculateMass();
         float restitutionB = unitB->GetRestitution();
@@ -89,29 +90,30 @@ void CollisionSystem::ResolveCollision(const CollisionContact& contact) {
         }
 
     } else if (contact.type == CollisionType::AGENT_MAP_EDGE) {
-        // Agent-Map collision
+        // Agent-Map collision: always emit an event; kinematics gate applies only to writes.
+        float massA = unitA->CalculateMass();
+        float positionCorrectionA = unitA->GetPositionCorrection();
+
         float impulseMagnitude = CalculateImpulseMagnitude(unitA, nullptr, contact);
 
-        // Resolve collision
-        CollisionResolver::ResolveAgentMap(
-            unitA, contact,
-            settings.mapRestitution,
-            massA
-        );
+        if (dynamic_cast<IUnitKinematics*>(unitA)) {
+            CollisionResolver::ResolveAgentMap(
+                unitA, contact,
+                settings.mapRestitution,
+                massA
+            );
 
-        // Position correction
-        if (positionCorrectionA > 0.0f) {
-            PositionCorrector::CorrectAgentMap(unitA, contact, positionCorrectionA);
+            if (positionCorrectionA > 0.0f) {
+                PositionCorrector::CorrectAgentMap(unitA, contact, positionCorrectionA);
+            }
+
+            MapCollisionHandler::PushInsideBounds(
+                unitA,
+                currentBounds.min,
+                currentBounds.max
+            );
         }
 
-        // Push inside bounds using current map bounds
-        MapCollisionHandler::PushInsideBounds(
-            unitA,
-            currentBounds.min,
-            currentBounds.max
-        );
-
-        // Create and emit event
         CollisionEvent event = CreateCollisionEvent(contact, impulseMagnitude, 0.0f);
         eventManager.EmitCollision(event);
     }
@@ -141,13 +143,8 @@ CollisionEvent CollisionSystem::CreateCollisionEvent(
         event.relativeVelocity = contact.unitA->GetVelocity().Dot(contact.normal);
     }
 
-    // Get damage modifier
-    RTSUnit* rtsUnit = dynamic_cast<RTSUnit*>(contact.unitA);
-    if (rtsUnit) {
-        event.damageModifier = rtsUnit->GetDamageModifier();
-    } else {
-        event.damageModifier = settings.damageModifier;
-    }
+    // Get damage modifier (via IGameUnit contract)
+    event.damageModifier = contact.unitA->GetDamageModifier();
 
     return event;
 }
