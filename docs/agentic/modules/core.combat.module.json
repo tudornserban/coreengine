@@ -13,5 +13,5 @@
     "core.math": "^1.0.0"
   },
   "tags": ["gameplay"],
-  "notes": "CommandSystem uses IUnitAgent for SetUnitState / SetBehaviorParameter (no RTSUnit include)."
+  "notes": "CommandSystem uses IUnitAgent for SetUnitState / SetBehaviorParameter (no RTSUnit include). `#include` boundaries are enforced via INCLUDE_ENFORCED_MODULES (R1.6)."
 }

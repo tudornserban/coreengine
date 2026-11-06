@@ -51,6 +51,7 @@ INCLUDE_ENFORCED_MODULES = frozenset(
         "core.ai",
         "core.serialization",
         "core.collision",
+        "core.combat",
     }
 )
 
