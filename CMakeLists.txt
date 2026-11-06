@@ -172,6 +172,7 @@ elseif(COREENGINE_GAMELOOP_STANDALONE)
     find_package(GTest REQUIRED)
 
     add_executable(coreengine_gameloop_tests
+        tests/UnitTests/Gameloop/GameloopInvariantsTest.cpp
         tests/UnitTests/Gameloop/GameloopModuleHeaderCompileTest.cpp
     )
     target_include_directories(coreengine_gameloop_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

@@ -47,11 +47,17 @@ Do not read other `core/*` implementation trees for gameloop-only tasks.
 - Do not introduce `#include` of other CoreEngine modules without updating manifest `requires`, dependency policy, and regenerating `docs/deps/*`.
 - Keep public includes stable at `core/gameloop/…` (repo-root include path).
 
+**Timer / deployment notes (for tests and callers):**
+
+- `ThinkTimer::Update` only drains the bank while `IsActive()` is true; when inactive, `GetBankRemaining()` is unchanged by `Update`.
+- `DeploymentTimer::GetChargeProgress` is in `[0, 1]` whether or not a charge is banked; after `SpendCharge()` with no charges left, progress is again the partial fill toward the next charge.
+
 ## Tests
 
 | Suite | Path |
 |-------|------|
 | Header compile smoke | `tests/UnitTests/Gameloop/GameloopModuleHeaderCompileTest.cpp` |
+| Invariants (timers) | `tests/UnitTests/Gameloop/GameloopInvariantsTest.cpp` |
 
 ### Gameloop-only (OBJECT lib + math; no full `coreengine` static lib)
 
