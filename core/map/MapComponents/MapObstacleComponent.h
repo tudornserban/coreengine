@@ -2,7 +2,7 @@
 
 #include "IMapComponent.h"
 #include "../../math/Vector2.h"
-#include "../../influence/InfluenceFieldItem.h"
+#include "core/influence_types/InfluenceFieldItem.h"
 
 class MapObstacleComponent : public IMapComponent {
 private:
