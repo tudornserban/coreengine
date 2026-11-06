@@ -5,6 +5,7 @@
 #include "core/interfaces/IGameState.h"
 #include "core/interfaces/IGameUnit.h"
 #include "core/interfaces/IUnitKinematics.h"
+#include "core/interfaces/IUnitAgent.h"
 #include "core/interfaces/IInputReader.h"
 #include "core/interfaces/IMapComponent.h"
 #include "core/interfaces/ISerializer.h"

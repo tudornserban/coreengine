@@ -1,10 +1,11 @@
 #include "CommandSystem.h"
-#include "../gamestate/RTSUnit.h"
+
+#include "../interfaces/IGameUnit.h"
+#include "../interfaces/IUnitAgent.h"
 
 void CommandSystem::SetUnitState(IGameUnit* unit, const std::string& stateName) {
-    RTSUnit* rtsUnit = dynamic_cast<RTSUnit*>(unit);
-    if (rtsUnit) {
-        rtsUnit->GetStateMachine().SetState(stateName);
+    if (IUnitAgent* agent = dynamic_cast<IUnitAgent*>(unit)) {
+        agent->SetAgentState(stateName);
     }
 }
 
@@ -37,16 +38,8 @@ void CommandSystem::MoveUnitsTo(const std::vector<IGameUnit*>& units, Vector2 de
 }
 
 void CommandSystem::SetBehaviorParameter(IGameUnit* unit, const std::string& paramName, float value) {
-    RTSUnit* rtsUnit = dynamic_cast<RTSUnit*>(unit);
-    if (rtsUnit) {
-        IBehavior* currentBehavior = rtsUnit->GetStateMachine().GetCurrentBehavior();
-        if (currentBehavior) {
-            auto& params = currentBehavior->GetParameters();
-            auto it = params.find(paramName);
-            if (it != params.end()) {
-                it->second = value;
-            }
-        }
+    if (IUnitAgent* agent = dynamic_cast<IUnitAgent*>(unit)) {
+        agent->SetAgentParameter(paramName, value);
     }
 }
 
