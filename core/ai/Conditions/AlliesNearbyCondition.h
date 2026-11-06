@@ -1,5 +1,5 @@
 #pragma once
-#include "../../interfaces/ITransitionCondition.h"
+#include "core/interfaces/ITransitionCondition.h"
 
 class AlliesNearbyCondition : public ITransitionCondition {
 private:

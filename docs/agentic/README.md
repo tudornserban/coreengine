@@ -18,7 +18,8 @@ This folder holds **Phase 0 inventory** and **Phase 1 scaffold** for modular, ag
 | [PHASE3_INTERFACES.md](PHASE3_INTERFACES.md) | `core.interfaces` include enforcement (A3.1) |
 | [PHASE3_GAMELOOP.md](PHASE3_GAMELOOP.md) | `core.gameloop` include enforcement (A3.2) |
 | [PHASE3_MAP.md](PHASE3_MAP.md) | `core.map` include enforcement (A3.3) |
+| [PHASE3_AI.md](PHASE3_AI.md) | `core.ai` include enforcement (A3.4) |
 
 **Phase 2:** `core.math` boundary documented in [core/math/MODULE.md](../../core/math/MODULE.md); include enforcement and math-only tests via `./scripts/run-math-module-tests.sh`.
 
-**Phase 3:** `core.interfaces` boundary documented in [core/interfaces/MODULE.md](../../core/interfaces/MODULE.md); header compile smoke test via `./scripts/run-interfaces-module-tests.sh`. `core.gameloop` is documented in [core/gameloop/MODULE.md](../../core/gameloop/MODULE.md); gameloop-only build via `./scripts/run-gameloop-module-tests.sh`. `core.map` is documented in [core/map/MODULE.md](../../core/map/MODULE.md); map-only build via `./scripts/run-map-module-tests.sh`.
+**Phase 3:** `core.interfaces` boundary documented in [core/interfaces/MODULE.md](../../core/interfaces/MODULE.md); header compile smoke test via `./scripts/run-interfaces-module-tests.sh`. `core.gameloop` is documented in [core/gameloop/MODULE.md](../../core/gameloop/MODULE.md); gameloop-only build via `./scripts/run-gameloop-module-tests.sh`. `core.map` is documented in [core/map/MODULE.md](../../core/map/MODULE.md); map-only build via `./scripts/run-map-module-tests.sh`. `core.ai` is documented in [core/ai/MODULE.md](../../core/ai/MODULE.md); AI-only build via `./scripts/run-ai-module-tests.sh`.

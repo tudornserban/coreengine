@@ -526,6 +526,54 @@ class CheckModuleDepsRegression(unittest.TestCase):
             )
             self.assertEqual(errors, [])
 
+    def test_ai_rejects_undeclared_sibling_include(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_ai_registry(root)
+            ai_dir = root / "core/ai"
+            gs_dir = root / "core/gamestate"
+            gs_dir.mkdir(parents=True)
+            (gs_dir / "RTSGameState.h").write_text("#pragma once\n", encoding="utf-8")
+            (ai_dir / "Bad.cpp").write_text(
+                '#include "core/gamestate/RTSGameState.h"\n',
+                encoding="utf-8",
+            )
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.ai"})
+            )
+            self.assertTrue(any("core/gamestate" in e for e in errors), errors)
+
+    def test_ai_allows_declared_deps_and_own_headers(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_ai_registry(root)
+            math_dir = root / "core/math"
+            types_dir = root / "core/influence_types"
+            log_dir = root / "core/logging"
+            ifaces = root / "core/interfaces"
+            ai_dir = root / "core/ai"
+            (math_dir / "Vector2.h").write_text("#pragma once\n", encoding="utf-8")
+            (types_dir / "InfluenceFieldItem.h").write_text("#pragma once\n", encoding="utf-8")
+            (log_dir / "Logger.h").write_text("#pragma once\n", encoding="utf-8")
+            (ifaces / "IGameUnit.h").write_text("#pragma once\n", encoding="utf-8")
+            (ifaces / "IBehavior.h").write_text("#pragma once\n", encoding="utf-8")
+            (ai_dir / "Ok.cpp").write_text(
+                '#include "BehaviorContext.h"\n'
+                '#include "core/math/Vector2.h"\n'
+                '#include "core/influence_types/InfluenceFieldItem.h"\n'
+                '#include "core/logging/Logger.h"\n'
+                '#include "core/interfaces/IGameUnit.h"\n'
+                '#include <vector>\n',
+                encoding="utf-8",
+            )
+            (ai_dir / "BehaviorContext.h").write_text("#pragma once\n", encoding="utf-8")
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.ai"})
+            )
+            self.assertEqual(errors, [])
+
     @staticmethod
     def _write_interfaces_registry(root: Path) -> None:
         modules_dir = root / "docs/agentic/modules"
@@ -670,6 +718,91 @@ class CheckModuleDepsRegression(unittest.TestCase):
         (root / "core/influence_types").mkdir(parents=True, exist_ok=True)
         (root / "core/interfaces").mkdir(parents=True, exist_ok=True)
         (root / "core/map").mkdir(parents=True, exist_ok=True)
+
+    @staticmethod
+    def _write_ai_registry(root: Path) -> None:
+        modules_dir = root / "docs/agentic/modules"
+        modules_dir.mkdir(parents=True)
+        registry = {
+            "modules": [
+                "core.math",
+                "core.influence.types",
+                "core.interfaces",
+                "core.logging",
+                "core.ai",
+            ]
+        }
+        (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+        (modules_dir / "core.math.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.math",
+                    "version": "1.0.0",
+                    "path": "core/math",
+                    "exports": ["Vector2"],
+                    "requires": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.influence.types.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.influence.types",
+                    "version": "1.0.0",
+                    "path": "core/influence_types",
+                    "exports": ["InfluenceFieldItem"],
+                    "requires": {"core.math": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.interfaces.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.interfaces",
+                    "version": "1.0.0",
+                    "path": "core/interfaces",
+                    "exports": ["IGameUnit"],
+                    "requires": {"core.math": "^1.0.0", "core.influence.types": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.logging.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.logging",
+                    "version": "1.0.0",
+                    "path": "core/logging",
+                    "exports": ["Logger"],
+                    "requires": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.ai.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.ai",
+                    "version": "1.0.0",
+                    "path": "core/ai",
+                    "exports": ["StateMachine"],
+                    "requires": {
+                        "core.math": "^1.0.0",
+                        "core.interfaces": "^1.0.0",
+                        "core.logging": "^1.0.0",
+                        "core.influence.types": "^1.0.0",
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        (root / "core/math").mkdir(parents=True, exist_ok=True)
+        (root / "core/influence_types").mkdir(parents=True, exist_ok=True)
+        (root / "core/interfaces").mkdir(parents=True, exist_ok=True)
+        (root / "core/logging").mkdir(parents=True, exist_ok=True)
+        (root / "core/ai").mkdir(parents=True, exist_ok=True)
 
     @staticmethod
     def _write_logging_registry(root: Path) -> None:
