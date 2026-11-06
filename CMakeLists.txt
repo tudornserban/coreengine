@@ -12,6 +12,7 @@ option(COREENGINE_MATH_STANDALONE "Build only core.math tests (no full coreengin
 option(COREENGINE_INFLUENCE_STANDALONE "Build only core.influence tests (no full coreengine)" OFF)
 option(COREENGINE_INFLUENCE_TYPES_STANDALONE "Build only core.influence.types tests" OFF)
 option(COREENGINE_LOGGING_STANDALONE "Build only core.logging tests (no full coreengine)" OFF)
+option(COREENGINE_INTERFACES_STANDALONE "Build only core.interfaces header compile tests" OFF)
 
 set(_standalone_modes 0)
 if(COREENGINE_MATH_STANDALONE)
@@ -24,6 +25,9 @@ if(COREENGINE_INFLUENCE_TYPES_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(COREENGINE_LOGGING_STANDALONE)
+    math(EXPR _standalone_modes "${_standalone_modes}+1")
+endif()
+if(COREENGINE_INTERFACES_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(_standalone_modes GREATER 1)
@@ -133,6 +137,27 @@ elseif(COREENGINE_LOGGING_STANDALONE)
     )
     include(GoogleTest)
     gtest_discover_tests(coreengine_logging_tests)
+elseif(COREENGINE_INTERFACES_STANDALONE)
+    add_subdirectory(core/math)
+    add_subdirectory(core/influence_types)
+    if(NOT BUILD_TESTS)
+        message(FATAL_ERROR "COREENGINE_INTERFACES_STANDALONE requires BUILD_TESTS=ON")
+    endif()
+    enable_testing()
+    find_package(GTest REQUIRED)
+
+    add_executable(coreengine_interfaces_tests
+        tests/UnitTests/Interfaces/InterfacesModuleHeaderCompileTest.cpp
+    )
+    target_include_directories(coreengine_interfaces_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(coreengine_interfaces_tests
+        coreengine_influence_types
+        coreengine_math
+        GTest::gtest
+        GTest::gtest_main
+    )
+    include(GoogleTest)
+    gtest_discover_tests(coreengine_interfaces_tests)
 else()
     add_subdirectory(core/math)
     add_subdirectory(core/influence_types)

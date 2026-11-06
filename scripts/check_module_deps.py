@@ -40,7 +40,13 @@ INCLUDE_RE = re.compile(r'^\s*#\s*include\s+([<"])([^>"]+)[>"]', re.MULTILINE)
 
 # Phase 2: strict include boundaries. Other modules remain manifest-only until opted in.
 INCLUDE_ENFORCED_MODULES = frozenset(
-    {"core.math", "core.influence.types", "core.influence", "core.logging"}
+    {
+        "core.math",
+        "core.influence.types",
+        "core.influence",
+        "core.logging",
+        "core.interfaces",
+    }
 )
 
 
