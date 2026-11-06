@@ -1,5 +1,6 @@
 #include "ImmunityManager.h"
 #include <algorithm>
+#include <vector>
 
 ImmunityManager::ImmunityManager(int defaultFrames)
     : defaultImmunityFrames(defaultFrames) {
@@ -89,4 +90,3 @@ void ImmunityManager::ClearImmunity(IGameUnit* unit) {
         immunityMap.erase(it);
     }
 }
-
