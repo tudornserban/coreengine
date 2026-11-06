@@ -56,7 +56,7 @@ build-and-test:
   before_script:
     - apt-get update -qq
     - apt-get install -qq -y --no-install-recommends
-        cmake ninja-build build-essential libgtest-dev
+        cmake ninja-build build-essential libgtest-dev python3
   script:
     - ./scripts/check-module-deps.sh
     - cmake -S . -B build -G Ninja -DBUILD_TESTS=ON
