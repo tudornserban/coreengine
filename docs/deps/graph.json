@@ -139,13 +139,13 @@
       "to": "core.math"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.interfaces",
       "range": "^1.0.0",
       "to": "core.influence.types"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.interfaces",
       "range": "^1.0.0",
       "to": "core.math"
@@ -259,7 +259,7 @@
     },
     {
       "id": "core.interfaces",
-      "includeEnforced": false,
+      "includeEnforced": true,
       "path": "core/interfaces",
       "requires": {
         "core.influence.types": "^1.0.0",
