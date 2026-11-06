@@ -1,6 +1,6 @@
 # Module dependency policy (draft)
 
-Enforcement is **active** for `core.math`, `core.influence.types`, `core.influence`, `core.logging`, and `core.interfaces` in Phase 2–3 (`scripts/check-module-deps.sh`). Other registry modules remain **manifest-only** until opted in. **`requires` graphs must be acyclic** — no checker exceptions.
+Enforcement is **active** for `core.math`, `core.influence.types`, `core.influence`, `core.logging`, `core.interfaces`, and `core.gameloop` in Phase 2–3 (`scripts/check-module-deps.sh`). Other registry modules remain **manifest-only** until opted in. **`requires` graphs must be acyclic** — no checker exceptions.
 
 The committed manifest-only **`requires` graph** (machine-readable JSON plus a human summary) lives under [`docs/deps/`](../deps/). `scripts/check_module_deps.py` regenerates and byte-compares these files on every run so committed artifacts cannot drift from the manifests.
 

@@ -13,6 +13,7 @@ option(COREENGINE_INFLUENCE_STANDALONE "Build only core.influence tests (no full
 option(COREENGINE_INFLUENCE_TYPES_STANDALONE "Build only core.influence.types tests" OFF)
 option(COREENGINE_LOGGING_STANDALONE "Build only core.logging tests (no full coreengine)" OFF)
 option(COREENGINE_INTERFACES_STANDALONE "Build only core.interfaces header compile tests" OFF)
+option(COREENGINE_GAMELOOP_STANDALONE "Build only core.gameloop tests (no full coreengine)" OFF)
 
 set(_standalone_modes 0)
 if(COREENGINE_MATH_STANDALONE)
@@ -28,6 +29,9 @@ if(COREENGINE_LOGGING_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(COREENGINE_INTERFACES_STANDALONE)
+    math(EXPR _standalone_modes "${_standalone_modes}+1")
+endif()
+if(COREENGINE_GAMELOOP_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(_standalone_modes GREATER 1)
@@ -158,11 +162,33 @@ elseif(COREENGINE_INTERFACES_STANDALONE)
     )
     include(GoogleTest)
     gtest_discover_tests(coreengine_interfaces_tests)
+elseif(COREENGINE_GAMELOOP_STANDALONE)
+    add_subdirectory(core/math)
+    add_subdirectory(core/gameloop)
+    if(NOT BUILD_TESTS)
+        message(FATAL_ERROR "COREENGINE_GAMELOOP_STANDALONE requires BUILD_TESTS=ON")
+    endif()
+    enable_testing()
+    find_package(GTest REQUIRED)
+
+    add_executable(coreengine_gameloop_tests
+        tests/UnitTests/Gameloop/GameloopModuleHeaderCompileTest.cpp
+    )
+    target_include_directories(coreengine_gameloop_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(coreengine_gameloop_tests
+        coreengine_gameloop
+        coreengine_math
+        GTest::gtest
+        GTest::gtest_main
+    )
+    include(GoogleTest)
+    gtest_discover_tests(coreengine_gameloop_tests)
 else()
     add_subdirectory(core/math)
     add_subdirectory(core/influence_types)
     add_subdirectory(core/influence)
     add_subdirectory(core/logging)
+    add_subdirectory(core/gameloop)
 
     file(GLOB_RECURSE CORE_SOURCES
         "core/interfaces/*.cpp"
@@ -170,7 +196,6 @@ else()
         "core/ai/Behaviors/*.cpp"
         "core/ai/Conditions/*.cpp"
         "core/collision/*.cpp"
-        "core/gameloop/*.cpp"
         "core/map/*.cpp"
         "core/map/MapComponents/*.cpp"
         "core/combat/*.cpp"
@@ -185,6 +210,7 @@ else()
         $<TARGET_OBJECTS:coreengine_influence_types>
         $<TARGET_OBJECTS:coreengine_influence>
         $<TARGET_OBJECTS:coreengine_logging>
+        $<TARGET_OBJECTS:coreengine_gameloop>
     )
     target_include_directories(coreengine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 

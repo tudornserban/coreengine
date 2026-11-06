@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Validate module manifests; enforce #include boundaries for Phase 2 pilot modules.
+# Validate module manifests; enforce #include boundaries for opted-in modules (Phase 2–3).
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

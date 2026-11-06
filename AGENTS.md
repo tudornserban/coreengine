@@ -46,7 +46,10 @@ python3 scripts/test_check_module_deps.py
 ./scripts/run-math-module-tests.sh
 ./scripts/run-influence-module-tests.sh
 ./scripts/run-interfaces-module-tests.sh
+./scripts/run-gameloop-module-tests.sh
 ```
+
+**Include enforcement:** `./scripts/check-module-deps.sh` enforces `#include` boundaries for opted-in registry modules (see `INCLUDE_ENFORCED_MODULES` in `scripts/check_module_deps.py`), including `core.gameloop` as of Phase 3 A3.2.
 
 See [docs/agentic/BUILD_INTEGRATION.md](docs/agentic/BUILD_INTEGRATION.md).
 
@@ -64,6 +67,12 @@ Influence-only verification:
 
 ```bash
 ./scripts/run-influence-module-tests.sh
+```
+
+Gameloop-only verification:
+
+```bash
+./scripts/run-gameloop-module-tests.sh
 ```
 
 ## Human docs

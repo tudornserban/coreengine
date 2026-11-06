@@ -46,6 +46,7 @@ INCLUDE_ENFORCED_MODULES = frozenset(
         "core.influence",
         "core.logging",
         "core.interfaces",
+        "core.gameloop",
     }
 )
 
