@@ -22,7 +22,6 @@ public:
         float correctionFactor
     );
 
-private:
     static void ApplyCorrection(IGameUnit* unit, Vector2 correction);
 };
 

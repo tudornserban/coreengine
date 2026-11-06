@@ -1,11 +1,12 @@
 #pragma once
 
 #include "../interfaces/IGameUnit.h"
+#include "../interfaces/IUnitKinematics.h"
 #include "../ai/StateMachine.h"
 #include "../math/Vector2.h"
 #include <algorithm>
 
-class RTSUnit : public IGameUnit {
+class RTSUnit : public IGameUnit, public IUnitKinematics {
 protected:
     Vector2 position;
     Vector2 velocity;
@@ -66,9 +67,9 @@ public:
     StateMachine& GetStateMachine() { return stateMachine; }
     const StateMachine& GetStateMachine() const { return stateMachine; }
 
-    // Setters
-    void SetPosition(Vector2 pos) { position = pos; }
-    void SetVelocity(Vector2 vel) { velocity = vel; }
+    // Setters (IUnitKinematics)
+    void SetPosition(Vector2 pos) override { position = pos; }
+    void SetVelocity(Vector2 vel) override { velocity = vel; }
     void SetMaxSpeed(float speed) { maxSpeed = speed; }
 
     // HP and Mass

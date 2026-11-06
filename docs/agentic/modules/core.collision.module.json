@@ -1,6 +1,6 @@
 {
   "id": "core.collision",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "path": "core/collision",
   "exports": [
     "CollisionSystem",
@@ -19,5 +19,5 @@
     "core.logging": "^1.0.0"
   },
   "tags": ["gameplay", "physics"],
-  "notes": "Implementation still includes RTSUnit in several TUs — policy violation tracked in INVENTORY.md."
+  "notes": "CollisionResolver, PositionCorrector, and MapCollisionHandler write motion via IUnitKinematics; CollisionSystem.cpp still includes RTSUnit for enforcement-off paths (see INVENTORY.md)."
 }

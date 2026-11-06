@@ -1,5 +1,5 @@
 #include "CollisionResolver.h"
-#include "../gamestate/RTSUnit.h"
+#include "../interfaces/IUnitKinematics.h"
 
 void CollisionResolver::ResolveAgentAgent(
     IGameUnit* unitA,
@@ -97,11 +97,9 @@ void CollisionResolver::ApplyImpulse(IGameUnit* unit, Vector2 impulse, float mas
     // Apply velocity change
     Vector2 newVelocity = currentVelocity + velocityChange;
 
-    // Apply new velocity (we'll need to add SetVelocity method to IGameUnit)
-    // For now, we'll use RTSUnit directly
-    RTSUnit* rtsUnit = dynamic_cast<RTSUnit*>(unit);
-    if (rtsUnit) {
-        rtsUnit->SetVelocity(newVelocity);
+    IUnitKinematics* kinematics = dynamic_cast<IUnitKinematics*>(unit);
+    if (kinematics) {
+        kinematics->SetVelocity(newVelocity);
     }
 }
 

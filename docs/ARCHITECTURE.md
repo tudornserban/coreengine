@@ -67,6 +67,7 @@ These are the FFI boundary contracts — the minimal surface area each system de
 | Interface | Purpose |
 |-----------|---------|
 | `IGameUnit.h` | Position, velocity, HP, team, radius |
+| `IUnitKinematics.h` | Optional `SetPosition` / `SetVelocity` for systems that must write kinematics (e.g. collision); `RTSUnit` implements |
 | `IBehavior.h` | GenerateFieldItems() or CalculateAcceleration() + lifecycle hooks |
 | `ITransitionCondition.h` | Evaluate(BehaviorContext) → bool |
 | `IGameState.h` | OnEnter/OnExit/Update/Render |
