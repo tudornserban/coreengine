@@ -1,5 +1,5 @@
 #include "TimeElapsedCondition.h"
-#include "../../ai/BehaviorContext.h"
+#include "core/ai/BehaviorContext.h"
 #include <cstdio>
 
 TimeElapsedCondition::TimeElapsedCondition(float durationSeconds)

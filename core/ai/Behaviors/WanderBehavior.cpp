@@ -1,8 +1,8 @@
 #include "WanderBehavior.h"
-#include "../../ai/BehaviorContext.h"
-#include "../../interfaces/IGameUnit.h"
-#include "../../math/DeterministicRNG.h"
-#include "../../math/MathConstants.h"
+#include "core/ai/BehaviorContext.h"
+#include "core/interfaces/IGameUnit.h"
+#include "core/math/DeterministicRNG.h"
+#include "core/math/MathConstants.h"
 #include <cmath>
 #include <algorithm>
 

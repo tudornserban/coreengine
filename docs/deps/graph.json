@@ -1,25 +1,25 @@
 {
   "edges": [
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.ai",
       "range": "^1.0.0",
-      "to": "core.influence"
+      "to": "core.influence.types"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.ai",
       "range": "^1.0.0",
       "to": "core.interfaces"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.ai",
       "range": "^1.0.0",
       "to": "core.logging"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.ai",
       "range": "^1.0.0",
       "to": "core.math"
@@ -178,10 +178,10 @@
   "modules": [
     {
       "id": "core.ai",
-      "includeEnforced": false,
+      "includeEnforced": true,
       "path": "core/ai",
       "requires": {
-        "core.influence": "^1.0.0",
+        "core.influence.types": "^1.0.0",
         "core.interfaces": "^1.0.0",
         "core.logging": "^1.0.0",
         "core.math": "^1.0.0"

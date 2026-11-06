@@ -1,5 +1,5 @@
 #pragma once
-#include "../../interfaces/IBehavior.h"
+#include "core/interfaces/IBehavior.h"
 
 class CohesionBehavior : public IBehavior {
 private:

@@ -1,7 +1,7 @@
 #include "StateMachine.h"
 #include "BehaviorContext.h"
-#include "../interfaces/IGameUnit.h"
-#include "../logging/Logger.h"
+#include "core/interfaces/IGameUnit.h"
+#include "core/logging/Logger.h"
 
 void StateMachine::AddState(const std::string& name, std::unique_ptr<IBehavior> behavior)
 {

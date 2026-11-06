@@ -15,6 +15,7 @@ option(COREENGINE_LOGGING_STANDALONE "Build only core.logging tests (no full cor
 option(COREENGINE_INTERFACES_STANDALONE "Build only core.interfaces header compile tests" OFF)
 option(COREENGINE_GAMELOOP_STANDALONE "Build only core.gameloop tests (no full coreengine)" OFF)
 option(COREENGINE_MAP_STANDALONE "Build only core.map tests (no full coreengine)" OFF)
+option(COREENGINE_AI_STANDALONE "Build only core.ai tests (no full coreengine)" OFF)
 
 set(_standalone_modes 0)
 if(COREENGINE_MATH_STANDALONE)
@@ -36,6 +37,9 @@ if(COREENGINE_GAMELOOP_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(COREENGINE_MAP_STANDALONE)
+    math(EXPR _standalone_modes "${_standalone_modes}+1")
+endif()
+if(COREENGINE_AI_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(_standalone_modes GREATER 1)
@@ -212,6 +216,36 @@ elseif(COREENGINE_MAP_STANDALONE)
     )
     include(GoogleTest)
     gtest_discover_tests(coreengine_map_tests)
+elseif(COREENGINE_AI_STANDALONE)
+    add_subdirectory(core/math)
+    add_subdirectory(core/influence_types)
+    add_subdirectory(core/logging)
+    add_subdirectory(core/ai)
+    if(NOT BUILD_TESTS)
+        message(FATAL_ERROR "COREENGINE_AI_STANDALONE requires BUILD_TESTS=ON")
+    endif()
+    enable_testing()
+    find_package(GTest REQUIRED)
+
+    add_executable(coreengine_ai_tests
+        tests/UnitTests/AI/AIModuleHeaderCompileTest.cpp
+        tests/UnitTests/AI/IBehaviorInterfaceTest.cpp
+        tests/UnitTests/AI/BehaviorFactoryTest.cpp
+        tests/UnitTests/AI/BehaviorsTest.cpp
+        tests/UnitTests/AI/ConditionsTest.cpp
+        tests/UnitTests/AI/StateMachineTest.cpp
+    )
+    target_include_directories(coreengine_ai_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(coreengine_ai_tests
+        coreengine_ai
+        coreengine_influence_types
+        coreengine_logging
+        coreengine_math
+        GTest::gtest
+        GTest::gtest_main
+    )
+    include(GoogleTest)
+    gtest_discover_tests(coreengine_ai_tests)
 else()
     add_subdirectory(core/math)
     add_subdirectory(core/influence_types)
@@ -219,12 +253,10 @@ else()
     add_subdirectory(core/logging)
     add_subdirectory(core/gameloop)
     add_subdirectory(core/map)
+    add_subdirectory(core/ai)
 
     file(GLOB_RECURSE CORE_SOURCES
         "core/interfaces/*.cpp"
-        "core/ai/*.cpp"
-        "core/ai/Behaviors/*.cpp"
-        "core/ai/Conditions/*.cpp"
         "core/collision/*.cpp"
         "core/combat/*.cpp"
         "core/gamestate/*.cpp"
@@ -240,6 +272,7 @@ else()
         $<TARGET_OBJECTS:coreengine_logging>
         $<TARGET_OBJECTS:coreengine_gameloop>
         $<TARGET_OBJECTS:coreengine_map>
+        $<TARGET_OBJECTS:coreengine_ai>
     )
     target_include_directories(coreengine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
