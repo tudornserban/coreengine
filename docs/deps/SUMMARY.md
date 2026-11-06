@@ -67,3 +67,4 @@ Sorted by `from`, then `to`.
 | `core.map` | `core.interfaces` | `^1.0.0` | yes |
 | `core.map` | `core.math` | `^1.0.0` | yes |
 | `core.serialization` | `core.gamestate` | `^1.0.0` | no |
+
