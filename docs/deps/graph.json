@@ -73,49 +73,49 @@
       "to": "core.math"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.gamestate",
       "range": "^1.0.0",
       "to": "core.ai"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.gamestate",
       "range": "^1.0.0",
       "to": "core.collision"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.gamestate",
       "range": "^1.0.0",
       "to": "core.combat"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.gamestate",
       "range": "^1.0.0",
       "to": "core.influence"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.gamestate",
       "range": "^1.0.0",
       "to": "core.interfaces"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.gamestate",
       "range": "^1.0.0",
       "to": "core.logging"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.gamestate",
       "range": "^1.0.0",
       "to": "core.map"
     },
     {
-      "enforced": false,
+      "enforced": true,
       "from": "core.gamestate",
       "range": "^1.0.0",
       "to": "core.math"
@@ -242,7 +242,7 @@
     },
     {
       "id": "core.gamestate",
-      "includeEnforced": false,
+      "includeEnforced": true,
       "path": "core/gamestate",
       "requires": {
         "core.ai": "^1.0.0",
@@ -254,7 +254,7 @@
         "core.map": "^1.0.0",
         "core.math": "^1.0.0"
       },
-      "version": "1.0.0"
+      "version": "1.0.1"
     },
     {
       "id": "core.influence",
