@@ -4,7 +4,7 @@ Manifest: [docs/agentic/modules/core.gamestate.module.json](../../docs/agentic/m
 
 ## Purpose
 
-**Simulation hub** for RTS-style matches: unit list, map integration, selection and commands, collision and explosion handling, deterministic RNG, static influence fields, and `RTSUnit` as the concrete `IGameUnit`. **`GameStateManager`** owns menu/mission state stack and transitions between high-level game modes.
+**Simulation hub** for RTS-style matches: unit list, map integration, selection and commands, collision and explosion handling, deterministic RNG, static influence fields, and `RTSUnit` as the concrete `IGameUnit`. **`GameStateManager`** holds a single `currentState` and `GameStateType` enum; high-level mode changes go through `SetState` / `TransitionToState`.
 
 ## Public surface (`exports`)
 
@@ -14,7 +14,7 @@ Include headers from the repo root, e.g. `#include "core/gamestate/RTSGameState.
 |--------|------|--------|-------|
 | `RTSGameState` | class | `RTSGameState.h` | Main simulation step (`Update`, units, map, combat systems) |
 | `RTSUnit` | class | `RTSUnit.h` | Concrete unit; AI FSM + kinematics/agent interfaces |
-| `GameStateManager` | class | `GameStateManager.h` | Menu / mission stack |
+| `GameStateManager` | class | `GameStateManager.h` | Menu / mission state holder (`currentState` + `GameStateType`) |
 | `IGameState` | header | `IGameState.h` | Legacy forwarder → `core/interfaces/IGameState.h` |
 | `IGameLogicRenderer` | header | `IGameLogicRenderer.h` | Legacy forwarder → `core/interfaces/IGameLogicRenderer.h` |
 
@@ -62,6 +62,7 @@ Allowed `#include` in `core/gamestate/**`: standard library (`<…>`), headers u
 | Suite | Path |
 |-------|------|
 | Header compile smoke | `tests/UnitTests/Gamestate/GamestateModuleHeaderCompileTest.cpp` |
+| Non-`RTSUnit` update gates (R2.2) | `tests/UnitTests/Gamestate/RTSGameStateNonRTSUnitGateTest.cpp` |
 | Determinism (integration) | `tests/IntegrationTests/DeterminismTest.cpp` (when present in full gate) |
 
 Run with the full-engine test target (`cmake` + `ctest`).

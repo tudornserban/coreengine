@@ -165,7 +165,7 @@ flowchart BT
 | `core.gameloop` | `GameLogicEngineTest`, `DeploymentTimerTest`, `ThinkTimerTest` | — |
 | `core.map` | `MapTest` | — |
 | `core.combat` | `ExplosionTest` (under `Map/` folder name), `CommandSystemTest` | — |
-| `core.gamestate` | — | `DeterminismTest` |
+| `core.gamestate` | `GamestateModuleHeaderCompileTest`, `RTSGameStateNonRTSUnitGateTest` | `DeterminismTest` |
 | `core.logging` | — | — |
 | `core.serialization` | `SerializationModuleHeaderCompileTest` | — |
 | `core.ai_advanced` | — | — |
