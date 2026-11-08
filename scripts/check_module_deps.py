@@ -52,6 +52,7 @@ INCLUDE_ENFORCED_MODULES = frozenset(
         "core.serialization",
         "core.collision",
         "core.combat",
+        "core.gamestate",
     }
 )
 

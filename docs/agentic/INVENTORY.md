@@ -21,7 +21,7 @@ Modules below match **CMake source globs** and **ARCHITECTURE.md** layers. Subfo
 | `core.gameloop` | `core/gameloop/` | Fixed-timestep `GameLogicEngine`, deployment/think timers, playback | 4 |
 | `core.map` | `core/map/` (+ `MapComponents/`) | ECS-style map, placement validation | 5 |
 | `core.combat` | `core/combat/` | Selection, commands, explosions, combat manager | 4 |
-| `core.gamestate` | `core/gamestate/` | `RTSGameState`, `RTSUnit`, state manager | 3 |
+| `core.gamestate` | `core/gamestate/` | Simulation hub (`RTSGameState`, `RTSUnit`, selection/commands/collision/RNG); `GameStateManager` menu/mission stack — include enforcement R2.1 | 3 |
 | `core.serialization` | `core/serialization/` | Game state serialize/deserialize | 1 |
 | `core.ai_advanced` | `core/ai_advanced/` | Bot genomes, genetic trainer (experimental) | 1 |
 
@@ -186,7 +186,7 @@ flowchart BT
 
 **Runner-up:** `core.influence` — good tests and mostly depends on `math`, but ties to AI behavior field generation.
 
-**Defer:** `core.gamestate` until integration boundaries are cleaner (hub coupling, combat, serialization).
+**`core.gamestate`:** include enforcement active as of R2.1 — see [core/gamestate/MODULE.md](../../core/gamestate/MODULE.md) and [PHASE3_GAMESTATE.md](PHASE3_GAMESTATE.md).
 
 ---
 
