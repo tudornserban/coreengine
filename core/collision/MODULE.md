@@ -64,7 +64,9 @@ Do not read other `core/*` implementation trees for collision-only tasks.
 | System gate | `tests/UnitTests/Collision/CollisionSystemKinematicsGateTest.cpp` |
 | Header compile smoke | `tests/UnitTests/Collision/CollisionModuleHeaderCompileTest.cpp` |
 
-### Collision-only (OBJECT lib + collision deps; full subsystem stack for tests that construct `RTSUnit`)
+### Collision-only (`COREENGINE_COLLISION_STANDALONE`)
+
+Standalone target `coreengine_collision_tests` links `coreengine_collision`, `coreengine_logging`, `coreengine_influence_types`, and `coreengine_math` (plus GTest). Kinematics coverage uses `tests/TestHelpers/KinematicMockGameUnit.h` (`IUnitKinematics` test double) instead of `RTSUnit`.
 
 ```bash
 chmod +x scripts/run-collision-module-tests.sh

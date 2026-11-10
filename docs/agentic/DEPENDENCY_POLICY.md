@@ -18,7 +18,7 @@ The committed manifest-only **`requires` graph** (machine-readable JSON plus a h
 |------|-----------|
 | No `#include` from `core/` to `platform/` or `ffi/` | Platform-agnostic core |
 | Systems must not `#include` concrete types from `core.gamestate/` except integration modules | Keeps agents scoped to one module |
-| `core.collision` should depend on `IGameUnit`, not `RTSUnit` | Documented violation today; remove in Phase 2 pilot follow-ups |
+| `core.collision` depends on `IGameUnit` and `IUnitKinematics`; includes enforced since R1.3; standalone tests construct `KinematicMockGameUnit` as of R3.1 | Interface-only dependency on game units |
 | Depend only on modules listed in `requires` with satisfied semver | Agent + CI guardrail |
 | No cycles in `requires` | Enables ordered extraction; strictly enforced |
 
