@@ -1,6 +1,7 @@
 #pragma once
 
 #include "core/interfaces/ISerializer.h"
+#include <cstddef>
 #include <cstdint>
 #include <string>
 #include <vector>
@@ -26,7 +27,7 @@ private:
 public:
     explicit GameStateSerializer(const RTSGameState* state = nullptr);
     explicit GameStateSerializer(const ISimulationSnapshot* snapshot);
-    GameStateSerializer(std::nullptr_t) : snapshot_(nullptr) {}
+    explicit GameStateSerializer(std::nullptr_t) : snapshot_(nullptr) {}
 
     void SetState(const RTSGameState* state);
     void SetSnapshot(const ISimulationSnapshot* snapshot);
