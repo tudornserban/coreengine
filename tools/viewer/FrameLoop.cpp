@@ -41,8 +41,8 @@ void ApplyRightClick(RTSGameState& state, const Camera& camera, Vector2 screen)
 void ApplyBox(RTSGameState& state, const Camera& camera, Vector2 screenA, Vector2 screenB)
 {
     SelectionSystem& selection = state.GetSelectionSystem();
-    const Vector2 worldStart = screenA;
-    const Vector2 worldEnd = screenB;
+    const Vector2 worldStart = camera.ScreenToWorld(screenA);
+    const Vector2 worldEnd = camera.ScreenToWorld(screenB);
     selection.StartBoxSelection(worldStart);
     selection.UpdateBoxSelection(worldEnd);
     selection.EndBoxSelection(state.GetAllUnits());

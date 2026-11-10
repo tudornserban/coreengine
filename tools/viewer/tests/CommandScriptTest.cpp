@@ -1,8 +1,10 @@
 #include "Camera.h"
+#include "DrawList.h"
 #include "FrameLoop.h"
 #include "InputScript.h"
 #include "Scenario.h"
 
+#include "core/combat/SelectionSystem.h"
 #include "core/interfaces/IGameUnit.h"
 
 #include <gtest/gtest.h>
@@ -59,8 +61,9 @@ TEST(CommandScriptTest, ClickMissesUnitOutsideHitRadius)
 {
     Scene scene = BuildPreset(Preset::TwoUnits, 1);
     Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
-  // Team-1 unit at world (200,300), radius 12, tolerance 15 => hit radius 27.
-    Vector2 nearMissWorld(200.0f + 12.0f + 15.0f + 2.0f, 300.0f);
+    // Team-1 at (200,300), radius 12, default tolerance 15 => outer hit ring at 27 world units.
+    constexpr float kOuterHit = 12.0f + 15.0f;
+    Vector2 nearMissWorld(200.0f + kOuterHit + 1.0f, 300.0f);
     Vector2 screen = camera.WorldToScreen(nearMissWorld);
     ApplyClick(*scene.state, camera, screen);
     EXPECT_FALSE(scene.state->GetAllUnits()[0]->IsSelected());
@@ -71,10 +74,39 @@ TEST(CommandScriptTest, ClickHitsUnitAtRadiusBoundary)
 {
     Scene scene = BuildPreset(Preset::TwoUnits, 1);
     Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
-    Vector2 boundaryWorld(200.0f + 12.0f + 15.0f - 0.5f, 300.0f);
+    constexpr float kOuterHit = 12.0f + 15.0f;
+    Vector2 boundaryWorld(200.0f + kOuterHit - 0.01f, 300.0f);
     Vector2 screen = camera.WorldToScreen(boundaryWorld);
     ApplyClick(*scene.state, camera, screen);
     EXPECT_TRUE(scene.state->GetAllUnits()[0]->IsSelected());
+}
+
+TEST(CommandScriptTest, DragSelectionBoxOutlineUsesWorldToScreenCorners)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    const Vector2 worldStart(100.0f, 200.0f);
+    const Vector2 worldEnd(700.0f, 400.0f);
+    SelectionSystem& selection = scene.state->GetSelectionSystem();
+    selection.StartBoxSelection(worldStart);
+    selection.UpdateBoxSelection(worldEnd);
+    ASSERT_TRUE(selection.IsBoxSelecting());
+
+    DrawList list;
+    AppendSelectionBox(list, selection, camera);
+    ASSERT_EQ(list.rects.size(), 1u);
+    const DrawRect& box = list.rects[0];
+    EXPECT_FALSE(box.filled);
+    EXPECT_EQ(box.color.r, 255);
+    EXPECT_EQ(box.color.g, 220);
+    EXPECT_EQ(box.color.b, 40);
+    EXPECT_EQ(box.color.a, 255);
+    const Vector2 expectedMin = camera.WorldToScreen(selection.GetBoxStart());
+    const Vector2 expectedMax = camera.WorldToScreen(selection.GetBoxEnd());
+    EXPECT_NEAR(box.min.x, expectedMin.x, 0.01f);
+    EXPECT_NEAR(box.min.y, expectedMin.y, 0.01f);
+    EXPECT_NEAR(box.max.x, expectedMax.x, 0.01f);
+    EXPECT_NEAR(box.max.y, expectedMax.y, 0.01f);
 }
 
 TEST(CommandScriptTest, FrameLoopScriptClickRclickAndFrames)
