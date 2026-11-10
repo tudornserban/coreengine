@@ -13,6 +13,7 @@
 #include "core/influence_types/InfluenceFieldItem.h"
 #include "core/interfaces/IBehavior.h"
 #include "core/math/Vector2.h"
+#include "tests/TestHelpers/KinematicMockGameUnit.h"
 #include "tests/TestHelpers/MockGameUnit.h"
 
 namespace {
@@ -267,6 +268,30 @@ TEST_F(RTSGameStateUpdateCharacterizationTest, AiTickSkipsMockUnit) {
     EXPECT_FLOAT_EQ(mockPtr->GetPosition().y, mockStart.y);
     EXPECT_FLOAT_EQ(mockPtr->GetVelocity().x, mockVelStart.x);
     EXPECT_FLOAT_EQ(mockPtr->GetVelocity().y, mockVelStart.y);
+}
+
+TEST_F(RTSGameStateUpdateCharacterizationTest, KinematicMockSkipsAiTickAndExplosionImpulse) {
+    auto unit = std::make_unique<KinematicMockGameUnit>(Vector2(50.0f, 50.0f), 0, 10.0f, 100.0f);
+    unit->SetVelocity(Vector2(40.0f, 0.0f));
+    KinematicMockGameUnit* ptr = unit.get();
+    const Vector2 posStart = ptr->GetPosition();
+    const Vector2 velStart = ptr->GetVelocity();
+    state.AddUnit(std::move(unit));
+
+    state.Update(0.5f);
+
+    EXPECT_FLOAT_EQ(ptr->GetPosition().x, posStart.x);
+    EXPECT_FLOAT_EQ(ptr->GetPosition().y, posStart.y);
+    EXPECT_FLOAT_EQ(ptr->GetVelocity().x, velStart.x);
+    EXPECT_FLOAT_EQ(ptr->GetVelocity().y, velStart.y);
+
+    state.AddExplosion(Explosion(Vector2(35.0f, 50.0f), 40.0f, 8000.0f));
+    state.Update(0.25f);
+
+    EXPECT_FLOAT_EQ(ptr->GetPosition().x, posStart.x);
+    EXPECT_FLOAT_EQ(ptr->GetPosition().y, posStart.y);
+    EXPECT_FLOAT_EQ(ptr->GetVelocity().x, velStart.x);
+    EXPECT_FLOAT_EQ(ptr->GetVelocity().y, velStart.y);
 }
 
 TEST_F(RTSGameStateUpdateCharacterizationTest, DebugModeSkipsAiButMovesTowardDestination) {

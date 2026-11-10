@@ -5,6 +5,10 @@ Agents **must** append a dated note under the matching `## [version]` section wh
 
 Entries describe the **published contract**: manifest `exports` and the headers under `core/interfaces/`, plus manifest `requires` edges. Follow [AGENTS.md](../../AGENTS.md) for major / minor / patch rules.
 
+## [1.5.0] — 2026-11-10
+
+- **Export:** `IUnitBehaviorHost.h` — `GetCurrentBehavior()` for the hub AI tick. `RTSUnit` implements it. Explosion impulse and bounds fallback stay `RTSUnit*` participation filters.
+
 ## [1.4.0] — 2026-11-10
 
 - **Behavior:** `IGameLogicRenderer::GetSimulationSnapshot()` returns `const ISimulationSnapshot*`, default `nullptr`. `GetCurrentGameState()` stays `const RTSGameState*`.
