@@ -23,22 +23,27 @@ TEST(CameraTest, WorldScreenRoundTripAtMapCenterAndCorner)
     EXPECT_NEAR(world.y, 0.0f, 0.001f);
 }
 
-TEST(CameraTest, PanShiftsWorldCenterOppositeToScreenDrag)
+TEST(CameraTest, PanAppliesLiteralWorldShiftForScreenDelta)
 {
     Camera camera = FitMap(Vector2(800.0f, 600.0f), 1280, 720, 40.0f);
-    const Vector2 before = camera.center;
-    camera.Pan(Vector2(64.0f, 0.0f));
-    EXPECT_LT(camera.center.x, before.x);
+    EXPECT_FLOAT_EQ(camera.center.x, 400.0f);
+    EXPECT_FLOAT_EQ(camera.center.y, 300.0f);
+    camera.Pan(Vector2(64.0f, -32.0f));
+    EXPECT_FLOAT_EQ(camera.center.x, 340.0f);
+    EXPECT_FLOAT_EQ(camera.center.y, 330.0f);
 }
 
-TEST(CameraTest, ZoomAtKeepsWorldPointUnderCursorFixed)
+TEST(CameraTest, ZoomAtOffCenterScreenKeepsWorldAnchorFixed)
 {
     Camera camera = FitMap(Vector2(800.0f, 600.0f), 1280, 720, 40.0f);
-    const Vector2 screen(640.0f, 360.0f);
+    const float basePixelsPerUnit = 640.0f / 600.0f;
+    EXPECT_FLOAT_EQ(camera.pixelsPerUnit, basePixelsPerUnit);
+    const Vector2 screen(100.0f, 80.0f);
     const Vector2 worldBefore = camera.ScreenToWorld(screen);
-    camera.ZoomAt(screen, 1.25f);
+    constexpr float kZoomFactor = 1.25f;
+    camera.ZoomAt(screen, kZoomFactor);
     const Vector2 worldAfter = camera.ScreenToWorld(screen);
     EXPECT_NEAR(worldAfter.x, worldBefore.x, 0.02f);
     EXPECT_NEAR(worldAfter.y, worldBefore.y, 0.02f);
-    EXPECT_GT(camera.pixelsPerUnit, 640.0f / 600.0f);
+    EXPECT_NEAR(camera.pixelsPerUnit, basePixelsPerUnit * kZoomFactor, 0.0001f);
 }

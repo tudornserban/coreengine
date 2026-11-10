@@ -52,7 +52,7 @@ Exit codes: `0` success, `2` bad CLI args, `3` SDL failure, `4` PNG write failur
 | Left drag | Box select |
 | Right click | Move selected units (`CommandSystem::MoveUnitsTo`) |
 | Mouse wheel | Zoom around cursor |
-| Middle drag | Pan camera |
+| Middle drag | Pan camera (screen drag **right** decreases `Camera::center.x`; drag **down** increases `center.y`) |
 
 Screenshots use the **software raster buffer**, not SDL readback.
 
@@ -64,8 +64,8 @@ All module presets use map `800×600`, seed `1`, and perception radius `80` (exc
 |----------|-----------|
 | `two-units` | Default map + two idle teams |
 | `collision` | Two units at `(380,300)` / `(420,300)` with opposing `SetVelocity`; viewer-local **Coast** influence behavior integrates motion until overlap (hub does not integrate bare velocity) |
-| `combat` | Four units converging; scheduled center explosion at t = 0.5 s (impulse only — **no HP damage**) |
-| `ai` | Seek / flee / separation behaviors via state machine (no `StateMachine::Update` transitions) |
+| `combat` | Four units at fixed spawn positions with stored ±X velocities (the hub does **not** integrate velocity without a behavior). Scheduled center explosion at **t = 0.5 s**; visible motion is mostly **explosion impulse**, not convergence (**no HP damage**) |
+| `ai` | Seek / flee / separation state machines. **Viewer-local:** `Scenario.cpp` adds a static attractor at **(700, 300)** because `RTSGameState::Update` always merges the four map-edge static field items into the influence path, so `CalculateAcceleration` on builtins is skipped; the attractor is what pulls units through `InfluenceField::CalculateTotalForce` |
 
 ## Script grammar
 
@@ -90,8 +90,9 @@ Debug verb `dest` sets `SetDebugDestination` directly (not a player-facing comma
 ## Known limitations
 
 1. **Collisions do not reduce HP.** `CombatManager` is unused; the visible combat effect is explosion impulse on `RTSUnit`.
-2. **FSM automatic transitions do not tick.** The hub never calls `StateMachine::Update`; only manually `SetState` presets drive behaviors.
-3. **`GameStateSerializer::DeserializeFromString` always returns false.** Presets are C++ factories only (no JSON scenario load).
+2. **Explosion overlay echo.** `RTSGameState::Update` clears the engine `explosions_` vector at the end of each tick. The viewer copies pending engine explosions into **echoes** with **0.5 s** lifetime inside `NoteExplosions`, which runs **before** `Update`, so the orange ring can still draw after the engine list is empty.
+3. **FSM automatic transitions do not tick.** The hub never calls `StateMachine::Update`; only manually `SetState` presets drive behaviors.
+4. **`GameStateSerializer::DeserializeFromString` always returns false.** Presets are C++ factories only (no JSON scenario load).
 
 ## Smoke commands
 

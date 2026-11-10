@@ -62,6 +62,7 @@ public:
     void ToggleOverlayFromFKey(int fKeyIndex);
     void ApplyViewerKeyAction(const ViewerKeyAction& action);
     const OverlayFlags& GetOverlayFlags() const { return overlayFlags_; }
+    int CountFiredPendingScenarioEvents() const;
 
 private:
     Preset preset_;

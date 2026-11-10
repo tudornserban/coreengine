@@ -158,6 +158,19 @@ void FrameLoop::ResetScene()
     RefreshCameraFromMap();
 }
 
+int FrameLoop::CountFiredPendingScenarioEvents() const
+{
+    int count = 0;
+    for (const ScenarioEvent& event : pendingEvents_)
+    {
+        if (event.fired)
+        {
+            ++count;
+        }
+    }
+    return count;
+}
+
 void FrameLoop::FirePendingScenarioEvents()
 {
     const float gameTime = engine_.GetGameTime();
