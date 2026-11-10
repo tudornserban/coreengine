@@ -47,7 +47,7 @@ Modules below match **CMake source globs** and **ARCHITECTURE.md** layers. Subfo
 | `BUILD_TESTS` | OFF | `coreengine_tests` + `ctest` discovery |
 | `BUILD_SDL2` | OFF | `coreengine_sdl2` (needs SDL2) |
 | `BUILD_RAYLIB` | OFF | `coreengine_raylib` (needs raylib) |
-| `COREENGINE_COLLISION_STANDALONE` | OFF | `coreengine_collision_tests` (collision + declared deps only) |
+| `COREENGINE_COLLISION_STANDALONE` | OFF | `coreengine_collision_tests` (collision + declared deps only; standalone target links math + influence types + logging + collision) |
 
 **Typical CI / local test command** (matches `.gitlab-ci.yml`):
 

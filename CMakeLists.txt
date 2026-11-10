@@ -295,14 +295,8 @@ elseif(COREENGINE_SERIALIZATION_STANDALONE)
 elseif(COREENGINE_COLLISION_STANDALONE)
     add_subdirectory(core/math)
     add_subdirectory(core/influence_types)
-    add_subdirectory(core/influence)
     add_subdirectory(core/logging)
-    add_subdirectory(core/gameloop)
-    add_subdirectory(core/map)
-    add_subdirectory(core/ai)
-    add_subdirectory(core/combat)
     add_subdirectory(core/collision)
-    add_subdirectory(core/gamestate)
     if(NOT BUILD_TESTS)
         message(FATAL_ERROR "COREENGINE_COLLISION_STANDALONE requires BUILD_TESTS=ON")
     endif()
@@ -318,13 +312,7 @@ elseif(COREENGINE_COLLISION_STANDALONE)
     )
     target_include_directories(coreengine_collision_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
     target_link_libraries(coreengine_collision_tests
-        coreengine_gamestate
         coreengine_collision
-        coreengine_combat
-        coreengine_ai
-        coreengine_map
-        coreengine_influence
-        coreengine_gameloop
         coreengine_logging
         coreengine_influence_types
         coreengine_math

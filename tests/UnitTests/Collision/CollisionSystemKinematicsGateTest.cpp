@@ -4,7 +4,7 @@
 #include "core/collision/CollisionEvent.h"
 #include "core/collision/ICollisionDetector.h"
 #include "core/collision/ICollisionObserver.h"
-#include "core/gamestate/RTSUnit.h"
+#include "tests/TestHelpers/KinematicMockGameUnit.h"
 #include "core/math/Vector2.h"
 #include "tests/TestHelpers/MockGameUnit.h"
 
@@ -60,13 +60,13 @@ TEST(CollisionSystemKinematicsGateTest, map_edge_emits_for_mock_without_iunit_ki
     EXPECT_EQ(unit.GetPosition().y, posBefore.y);
 }
 
-TEST(CollisionSystemKinematicsGateTest, map_edge_resolves_for_rts_unit) {
+TEST(CollisionSystemKinematicsGateTest, map_edge_resolves_for_kinematic_unit) {
     CollisionSystem system;
     RecordingCollisionObserver observer;
     system.Subscribe(&observer);
 
     // Center left of the map so the circle sticks out past x=0 (map-edge contact).
-    RTSUnit unit(Vector2(-5.0f, 50.0f), 0, 10.0f, 100.0f);
+    KinematicMockGameUnit unit(Vector2(-5.0f, 50.0f), 0, 10.0f, 100.0f);
 
     MapBounds bounds(Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f));
     std::vector<IGameUnit*> units = {&unit};
