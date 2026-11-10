@@ -4,4 +4,12 @@
 
 Public headers use repo-root paths such as `#include "core/combat/CommandSystem.h"`; implementation uses canonical `#include "core/interfaces/…"` and `#include "core/math/…"` for declared `requires`.
 
-**Agent working notes:** allowed `#include` surfaces are in `core/combat/MODULE.md` (`core/combat/…`, `core/math/…`, `core/interfaces/…`, standard library). No standalone combat-only CMake preset is required for this rollout; validate with `./scripts/check-module-deps.sh` and the full-engine `ctest` gate.
+**CMake:** `COREENGINE_COMBAT_STANDALONE=ON` builds the `coreengine_combat` OBJECT library plus combat gtests under `tests/UnitTests/Combat/`, linking only `coreengine_combat`, `coreengine_math` (plus GTest). `CommandSystemAgentContractTest` locks `IUnitAgent` forwarding without `RTSUnit` or AI headers; RTS delegation remains in `CommandSystemTest`. Includes `CombatModuleHeaderCompileTest` (canonical `#include "core/combat/…"` compile smoke). Full-engine builds link combat via `$<TARGET_OBJECTS:coreengine_combat>` instead of globbing `core/combat/*.cpp` into the monolith.
+
+**Agent working notes:** allowed `#include` surfaces are in `core/combat/MODULE.md` (`core/combat/…`, `core/math/…`, `core/interfaces/…`, standard library). Combat-only verification:
+
+```bash
+./scripts/run-combat-module-tests.sh
+```
+
+Also run `./scripts/check-module-deps.sh` and the full-engine `ctest` gate when touching manifests or cross-module edges.

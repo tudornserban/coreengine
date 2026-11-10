@@ -37,7 +37,7 @@ Allowed `#include` in `core/combat/**`: standard library (`<…>`), headers unde
 |-------|------|
 | Implementation | `core/combat/**` |
 | Manifest | `docs/agentic/modules/core.combat.module.json` |
-| Unit tests | `tests/UnitTests/Map/ExplosionTest.cpp`, `tests/UnitTests/Map/CommandSystemTest.cpp` (combat-related suites today) |
+| Unit tests | `tests/UnitTests/Combat/**` (standalone + full-engine) |
 | Shared agentic docs | `docs/agentic/*` (when policy requires) |
 
 Do not read other `core/*` implementation trees for combat-only tasks.
@@ -51,7 +51,23 @@ Do not read other `core/*` implementation trees for combat-only tasks.
 
 | Suite | Path |
 |-------|------|
-| Explosion | `tests/UnitTests/Map/ExplosionTest.cpp` |
-| Command system | `tests/UnitTests/Map/CommandSystemTest.cpp` |
+| Explosion | `tests/UnitTests/Combat/ExplosionTest.cpp` |
+| Command system (`IUnitAgent` contract) | `tests/UnitTests/Combat/CommandSystemAgentContractTest.cpp` |
+| Command system (RTS delegation) | `tests/UnitTests/Combat/CommandSystemTest.cpp` (full-engine only) |
+| Header compile smoke | `tests/UnitTests/Combat/CombatModuleHeaderCompileTest.cpp` |
 
-Run with the full-engine test target (`cmake` + `ctest`) or the suites that already link combat in your workflow.
+### Combat-only (`COREENGINE_COMBAT_STANDALONE`)
+
+```bash
+./scripts/run-combat-module-tests.sh
+```
+
+Or manually:
+
+```bash
+cmake -S . -B build-combat -G Ninja -DBUILD_TESTS=ON -DBUILD_FFI=OFF -DCOREENGINE_COMBAT_STANDALONE=ON
+cmake --build build-combat --target coreengine_combat_tests
+ctest --test-dir build-combat --output-on-failure
+```
+
+Standalone links `coreengine_combat` and `coreengine_math` only (header-only `core.interfaces` via include paths).
