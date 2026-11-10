@@ -8,6 +8,7 @@ option(BUILD_FFI      "Build shared library with C API"        OFF)
 option(BUILD_TESTS    "Build unit tests with GoogleTest"        OFF)
 option(BUILD_SDL2     "Build SDL2 platform adapter"            OFF)
 option(BUILD_RAYLIB   "Build Raylib platform adapter"          OFF)
+option(COREENGINE_BUILD_SDL2_VIEWER "Build optional SDL2 simulation viewer" OFF)
 option(COREENGINE_MATH_STANDALONE "Build only core.math tests (no full coreengine)" OFF)
 option(COREENGINE_INFLUENCE_STANDALONE "Build only core.influence tests (no full coreengine)" OFF)
 option(COREENGINE_INFLUENCE_TYPES_STANDALONE "Build only core.influence.types tests" OFF)
@@ -56,6 +57,11 @@ if(COREENGINE_COMBAT_STANDALONE)
 endif()
 if(_standalone_modes GREATER 1)
     message(FATAL_ERROR "At most one COREENGINE_*_STANDALONE option may be ON")
+endif()
+
+if(COREENGINE_BUILD_SDL2_VIEWER AND _standalone_modes GREATER 0)
+    message(FATAL_ERROR
+        "COREENGINE_BUILD_SDL2_VIEWER cannot be combined with a COREENGINE_*_STANDALONE option")
 endif()
 
 # Static archive and OBJECT-library .o files linked into coreengine_ffi must be PIC/PIE-ready.
@@ -383,6 +389,10 @@ else()
         $<TARGET_OBJECTS:coreengine_serialization>
     )
     target_include_directories(coreengine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+    if(COREENGINE_BUILD_SDL2_VIEWER)
+        add_subdirectory(tools/viewer)
+    endif()
 
     if(BUILD_FFI)
         add_library(coreengine_ffi SHARED ffi/c_api.cpp)
