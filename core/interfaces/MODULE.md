@@ -19,7 +19,7 @@ Include headers from the repo root, e.g. `#include "core/interfaces/IGameUnit.h"
 | `IInputReader` | class | `IInputReader.h` | Input abstraction; uses `Vector2` |
 | `ITransitionCondition` | class | `ITransitionCondition.h` | Condition evaluation; `BehaviorContext` forward-declared |
 | `IGameState` | class | `IGameState.h` | Single active state contract |
-| `IGameLogicRenderer` | class | `IGameLogicRenderer.h` | Read-only renderer; `RTSGameState` forward-declared |
+| `IGameLogicRenderer` | class | `IGameLogicRenderer.h` | Read-only renderer; `GetCurrentGameState` (`const RTSGameState*`); optional `GetSimulationSnapshot()` (default `nullptr`) |
 | `ISerializer` | class | `ISerializer.h` | Byte/string serialization contract |
 | `IMapComponent` | class | `IMapComponent.h` | Map ECS component contract |
 | `ISimulationSnapshot` | class | `ISimulationSnapshot.h` | Read-only map size + unit list for snapshot serializers |
