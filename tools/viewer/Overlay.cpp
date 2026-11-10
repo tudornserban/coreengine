@@ -260,7 +260,7 @@ void NoteExplosions(const RTSGameState& state, std::vector<ExplosionEcho>& echoe
         ExplosionEcho echo;
         echo.position = explosion.GetPosition();
         echo.radius = explosion.GetRadius();
-        echo.secondsLeft = 0.0f;
+        echo.secondsLeft = kExplosionEchoLifetimeSeconds;
         echoes.push_back(echo);
     }
 }
