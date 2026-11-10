@@ -233,6 +233,32 @@ bool ParseLine(const std::string& line, ScriptCommand& cmd, std::string& error)
         }
         return true;
     }
+    if (verb == "overlay")
+    {
+        std::string nameToken;
+        std::string onToken;
+        if (!(iss >> nameToken >> onToken))
+        {
+            error = "overlay requires name and 0|1";
+            return true;
+        }
+        int onValue = 0;
+        if (!ParseInt(onToken, onValue) || (onValue != 0 && onValue != 1))
+        {
+            error = "overlay on value must be 0 or 1";
+            return true;
+        }
+        cmd.kind = ScriptCommand::Kind::Overlay;
+        cmd.strArg = nameToken;
+        cmd.intArg = onValue;
+        std::string extra;
+        if (iss >> extra)
+        {
+            error = "unexpected token after overlay";
+            return true;
+        }
+        return true;
+    }
     if (verb == "box")
     {
         std::string x0Token;

@@ -4,6 +4,7 @@
 #include "DrawList.h"
 #include "InputScript.h"
 #include "PlaybackControl.h"
+#include "Overlay.h"
 #include "Scenario.h"
 
 #include "core/gamestate/RTSGameState.h"
@@ -27,6 +28,7 @@ class FrameLoop
 {
 public:
     FrameLoop(Preset preset, std::uint64_t seed, int viewportW, int viewportH);
+    ~FrameLoop();
     FrameLoop(const FrameLoop&) = delete;
     FrameLoop& operator=(const FrameLoop&) = delete;
 
@@ -51,6 +53,9 @@ public:
     void OnMouseMotion(Vector2 screen);
     void OnMouseRightDown(Vector2 screen, bool shiftHeld);
 
+    void ToggleOverlayFromFKey(int fKeyIndex);
+    const OverlayFlags& GetOverlayFlags() const { return overlayFlags_; }
+
 private:
     Preset preset_;
     std::uint64_t seed_;
@@ -64,6 +69,12 @@ private:
     bool dragSelectActive_ = false;
     Vector2 dragStartScreen_;
 
+    OverlayFlags overlayFlags_;
+    CollisionRecorder collisionRecorder_;
+    std::vector<ExplosionEcho> explosionEchoes_;
+
     void BindUpdateCallback();
+    void SubscribeCollisionRecorder();
+    void UnsubscribeCollisionRecorder();
     bool ApplyScriptCommand(const ScriptCommand& command, std::string& error);
 };

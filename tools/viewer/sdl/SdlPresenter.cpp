@@ -128,7 +128,15 @@ bool PresentSimulation(FrameLoop& loop, const ViewerConfig& config, Framebuffer&
             }
             else if (event.type == SDL_KEYDOWN)
             {
-                ApplyViewerKey(loop, KeyFromSdl(event.key.keysym.sym));
+                const int sym = event.key.keysym.sym;
+                if (sym >= SDLK_F1 && sym <= SDLK_F6)
+                {
+                    loop.ToggleOverlayFromFKey(sym - SDLK_F1 + 1);
+                }
+                else
+                {
+                    ApplyViewerKey(loop, KeyFromSdl(sym));
+                }
             }
             else if (event.type == SDL_MOUSEBUTTONDOWN)
             {

@@ -1,6 +1,7 @@
 #include "FrameLoop.h"
 
 #include "DrawList.h"
+#include "Overlay.h"
 #include "Raster.h"
 #include "SnapshotRenderer.h"
 
@@ -64,6 +65,18 @@ void AppendSelectionBox(DrawList& list, const SelectionSystem& selection, const 
     list.rects.push_back(box);
 }
 
+namespace
+{
+
+constexpr float kCollisionOverlayKeepSeconds = 3.0f;
+
+} // namespace
+
+FrameLoop::~FrameLoop()
+{
+    UnsubscribeCollisionRecorder();
+}
+
 FrameLoop::FrameLoop(Preset preset, std::uint64_t seed, int viewportW, int viewportH)
     : preset_(preset)
     , seed_(seed)
@@ -85,12 +98,32 @@ void FrameLoop::BindUpdateCallback()
     engine_.SetUpdateCallback([this](float dt) { state_->Update(dt); });
 }
 
+void FrameLoop::SubscribeCollisionRecorder()
+{
+    if (state_ != nullptr)
+    {
+        state_->GetCollisionSystem().Subscribe(&collisionRecorder_);
+    }
+}
+
+void FrameLoop::UnsubscribeCollisionRecorder()
+{
+    if (state_ != nullptr)
+    {
+        state_->GetCollisionSystem().Unsubscribe(&collisionRecorder_);
+    }
+}
+
 void FrameLoop::ResetScene()
 {
+    UnsubscribeCollisionRecorder();
+    explosionEchoes_.clear();
+    collisionRecorder_.Clear();
     Scene scene = BuildPreset(preset_, seed_);
     state_ = std::move(scene.state);
     engine_.Reset();
     BindUpdateCallback();
+    SubscribeCollisionRecorder();
 }
 
 void FrameLoop::ApplyPlaybackCommand(PlaybackCommand command)
@@ -125,7 +158,11 @@ void FrameLoop::ApplyPlaybackCommand(PlaybackCommand command)
 
 void FrameLoop::AdvancePresentationFrame()
 {
+    collisionRecorder_.SetReferenceGameTime(engine_.GetGameTime());
+    NoteExplosions(*state_, explosionEchoes_, kFixedDt);
     engine_.Update(kFixedDt);
+    TickExplosionEchoes(explosionEchoes_, kFixedDt);
+    collisionRecorder_.ExpireOlderThan(engine_.GetGameTime(), kCollisionOverlayKeepSeconds);
 }
 
 void FrameLoop::RasterizeCurrentView(Framebuffer& fb) const
@@ -135,6 +172,12 @@ void FrameLoop::RasterizeCurrentView(Framebuffer& fb) const
     const Camera camera = GetCamera();
     DrawList list = BuildSnapshotDrawList(*state_, camera);
     AppendSelectionBox(list, state_->GetSelectionSystem(), camera);
+    AppendOverlays(list, *state_, camera, overlayFlags_, collisionRecorder_, explosionEchoes_);
+    if (overlayFlags_.collisions || overlayFlags_.perception || overlayFlags_.influence || overlayFlags_.obstacles
+        || overlayFlags_.behaviorItems || overlayFlags_.explosions)
+    {
+        AppendStatusLine(list, engine_, playback_, overlayFlags_, state_->GetAllUnits().size());
+    }
     Rasterize(list, fb);
 }
 
@@ -207,6 +250,15 @@ bool FrameLoop::ApplyScriptCommand(const ScriptCommand& command, std::string& er
     case ScriptCommand::Kind::Box:
         ApplyBox(*state_, GetCamera(), Vector2(command.x, command.y), Vector2(command.x2, command.y2));
         return true;
+    case ScriptCommand::Kind::Overlay:
+    {
+        const bool enabled = command.intArg != 0;
+        if (!SetOverlayFlag(overlayFlags_, command.strArg, enabled, error))
+        {
+            return false;
+        }
+        return true;
+    }
     }
     error = "internal script error";
     return false;
@@ -271,4 +323,31 @@ void FrameLoop::OnMouseMotion(Vector2 screen)
 void FrameLoop::OnMouseRightDown(Vector2 screen, bool /*shiftHeld*/)
 {
     ApplyRightClick(*state_, GetCamera(), screen);
+}
+
+void FrameLoop::ToggleOverlayFromFKey(int fKeyIndex)
+{
+    switch (OverlayKeyFromViewerFKey(fKeyIndex))
+    {
+    case OverlayKey::Collisions:
+        overlayFlags_.collisions = !overlayFlags_.collisions;
+        break;
+    case OverlayKey::Perception:
+        overlayFlags_.perception = !overlayFlags_.perception;
+        break;
+    case OverlayKey::Influence:
+        overlayFlags_.influence = !overlayFlags_.influence;
+        break;
+    case OverlayKey::Obstacles:
+        overlayFlags_.obstacles = !overlayFlags_.obstacles;
+        break;
+    case OverlayKey::BehaviorItems:
+        overlayFlags_.behaviorItems = !overlayFlags_.behaviorItems;
+        break;
+    case OverlayKey::Explosions:
+        overlayFlags_.explosions = !overlayFlags_.explosions;
+        break;
+    case OverlayKey::Unknown:
+        break;
+    }
 }
