@@ -12,6 +12,7 @@
 #include "core/gamestate/RTSUnit.h"
 #include "core/influence_types/InfluenceFieldItem.h"
 #include "core/interfaces/IBehavior.h"
+#include "core/interfaces/IUnitBehaviorHost.h"
 #include "core/math/Vector2.h"
 #include "tests/TestHelpers/KinematicMockGameUnit.h"
 #include "tests/TestHelpers/MockGameUnit.h"
@@ -70,6 +71,26 @@ SpyBehavior* InstallOwnedSpy(RTSUnit& unit) {
     unit.GetStateMachine().SetState("Spy");
     return ptr;
 }
+
+// Non-RTSUnit host for the IUnitBehaviorHost AI tick gate (R4.5 / R4.6 positive pin).
+class BehaviorHostMockGameUnit : public MockGameUnit, public IUnitBehaviorHost {
+public:
+    explicit BehaviorHostMockGameUnit(Vector2 position, int team, float radius, float maxSpeed)
+        : MockGameUnit(position, team, radius, maxSpeed) {}
+
+    void InstallSpy(std::unique_ptr<SpyBehavior> spy) {
+        spy_ = std::move(spy);
+        spyPtr_ = spy_.get();
+    }
+
+    SpyBehavior* Spy() const { return spyPtr_; }
+
+    IBehavior* GetCurrentBehavior() override { return spyPtr_; }
+
+private:
+    std::unique_ptr<SpyBehavior> spy_;
+    SpyBehavior* spyPtr_ = nullptr;
+};
 
 }  // namespace
 
@@ -268,6 +289,23 @@ TEST_F(RTSGameStateUpdateCharacterizationTest, AiTickSkipsMockUnit) {
     EXPECT_FLOAT_EQ(mockPtr->GetPosition().y, mockStart.y);
     EXPECT_FLOAT_EQ(mockPtr->GetVelocity().x, mockVelStart.x);
     EXPECT_FLOAT_EQ(mockPtr->GetVelocity().y, mockVelStart.y);
+}
+
+TEST_F(RTSGameStateUpdateCharacterizationTest, AiTickVisitsNonRtsBehaviorHost) {
+    auto unit = std::make_unique<BehaviorHostMockGameUnit>(Vector2(50.0f, 50.0f), 0, 10.0f, 100.0f);
+    unit->SetVelocity(Vector2(20.0f, 0.0f));
+    auto spy = std::make_unique<SpyBehavior>();
+    SpyBehavior* spyPtr = spy.get();
+    unit->InstallSpy(std::move(spy));
+    BehaviorHostMockGameUnit* ptr = unit.get();
+    const Vector2 posStart = ptr->GetPosition();
+    state.AddUnit(std::move(unit));
+
+    state.Update(0.5f);
+
+    EXPECT_EQ(spyPtr->generateFieldItemsCalls, 1);
+    EXPECT_FLOAT_EQ(ptr->GetPosition().x, posStart.x + 20.0f * 0.5f);
+    EXPECT_FLOAT_EQ(ptr->GetPosition().y, posStart.y);
 }
 
 TEST_F(RTSGameStateUpdateCharacterizationTest, KinematicMockSkipsAiTickAndExplosionImpulse) {
