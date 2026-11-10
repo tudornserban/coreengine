@@ -16,6 +16,7 @@ enum class ViewerKey
 
 enum class PlaybackCommand
 {
+    None,
     TogglePause,
     HalfSpeed,
     NormalSpeed,

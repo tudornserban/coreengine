@@ -18,9 +18,10 @@ PlaybackCommand CommandForKey(ViewerKey key)
         return PlaybackCommand::StepOnce;
     case ViewerKey::R:
         return PlaybackCommand::ResetScene;
-    default:
-        return PlaybackCommand::TogglePause;
+    case ViewerKey::Unknown:
+        return PlaybackCommand::None;
     }
+    return PlaybackCommand::None;
 }
 
 TickResult StepOneTick(GameLogicEngine& engine)

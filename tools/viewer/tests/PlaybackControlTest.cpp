@@ -42,6 +42,11 @@ TEST(PlaybackControlTest, SpaceIsPauseAndPeriodIsStep)
     EXPECT_EQ(CommandForKey(ViewerKey::Digit3), PlaybackCommand::DoubleSpeed);
 }
 
+TEST(PlaybackControlTest, UnknownKeyMapsToNoPlaybackCommand)
+{
+    EXPECT_EQ(CommandForKey(ViewerKey::Unknown), PlaybackCommand::None);
+}
+
 TEST(PlaybackControlTest, ResetRestoresTheStartPosition)
 {
     Scene scene = BuildPreset(Preset::TwoUnits, 1);

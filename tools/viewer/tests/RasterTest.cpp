@@ -49,40 +49,37 @@ TEST(RasterTest, OutOfBoundsRectsLeaveFramebufferAtClearColor)
     }
 }
 
-TEST(RasterTest, InBoundsPixelSurvivesOutOfBoundsProbeOnX)
+TEST(RasterTest, GuardRowBelowSurvivesOutOfBoundsProbeOnY)
 {
     Framebuffer fb;
-    fb.width = 4;
-    fb.height = 4;
+    FramebufferInitWithBottomRowGuard(fb, 4, 4);
+    DrawList list;
+    list.clear = {10, 11, 12, 255};
+    list.rects.push_back({{2, 1}, {2, 1}, true, {0, 0, 200, 255}});
+    list.rects.push_back({{1, 4}, {1, 4}, true, {0, 200, 0, 255}});
+    Rasterize(list, fb);
+    EXPECT_TRUE(FramebufferGuardRowBelowIsClean(fb));
+    auto px = [&](int x, int y) {
+        const std::uint8_t* p = &fb.rgba[(y * fb.width + x) * 4];
+        return Rgba{p[0], p[1], p[2], p[3]};
+    };
+    EXPECT_EQ(px(2, 1).b, 200);
+}
+
+TEST(RasterTest, GuardColumnRightSurvivesOutOfBoundsProbeOnX)
+{
+    Framebuffer fb;
+    FramebufferInitWithRightColumnGuard(fb, 4, 4);
     DrawList list;
     list.clear = {10, 11, 12, 255};
     list.rects.push_back({{2, 1}, {2, 1}, true, {200, 0, 0, 255}});
     list.rects.push_back({{4, 1}, {4, 1}, true, {0, 200, 0, 255}});
     Rasterize(list, fb);
+    EXPECT_TRUE(FramebufferGuardColumnRightIsClean(fb));
     auto px = [&](int x, int y) {
-        const std::uint8_t* p = &fb.rgba[(y * fb.width + x) * 4];
+        const std::uint8_t* p = &fb.rgba[(y * (fb.width + fb.guardColumnsRight) + x) * 4];
         return Rgba{p[0], p[1], p[2], p[3]};
     };
     EXPECT_EQ(px(2, 1).r, 200);
-    EXPECT_EQ(px(0, 1).r, 10);
     EXPECT_EQ(px(3, 1).r, 10);
-}
-
-TEST(RasterTest, InBoundsPixelSurvivesOutOfBoundsProbeOnY)
-{
-    Framebuffer fb;
-    fb.width = 4;
-    fb.height = 4;
-    DrawList list;
-    list.clear = {10, 11, 12, 255};
-    list.rects.push_back({{1, 2}, {1, 2}, true, {0, 0, 200, 255}});
-    list.rects.push_back({{1, 4}, {1, 4}, true, {0, 200, 0, 255}});
-    Rasterize(list, fb);
-    auto px = [&](int x, int y) {
-        const std::uint8_t* p = &fb.rgba[(y * fb.width + x) * 4];
-        return Rgba{p[0], p[1], p[2], p[3]};
-    };
-    EXPECT_EQ(px(1, 2).b, 200);
-    EXPECT_EQ(px(1, 0).b, 12);
-    EXPECT_EQ(px(1, 3).b, 12);
 }

@@ -8,13 +8,55 @@
 namespace
 {
 
+int RowStridePixels(const Framebuffer& fb)
+{
+    return fb.width + fb.guardColumnsRight;
+}
+
+int StorageRows(const Framebuffer& fb)
+{
+    return fb.height + fb.guardRowsBelow;
+}
+
+size_t PixelByteIndex(const Framebuffer& fb, int x, int y)
+{
+    return static_cast<size_t>((y * RowStridePixels(fb) + x) * 4);
+}
+
+void WriteGuardRegions(Framebuffer& fb)
+{
+    if (fb.guardRowsBelow > 0)
+    {
+        for (int x = 0; x < fb.width; ++x)
+        {
+            const size_t i = PixelByteIndex(fb, x, fb.height);
+            fb.rgba[i] = kRasterGuardSentinel.r;
+            fb.rgba[i + 1] = kRasterGuardSentinel.g;
+            fb.rgba[i + 2] = kRasterGuardSentinel.b;
+            fb.rgba[i + 3] = kRasterGuardSentinel.a;
+        }
+    }
+    if (fb.guardColumnsRight > 0)
+    {
+        const int guardX = fb.width;
+        for (int y = 0; y < StorageRows(fb); ++y)
+        {
+            const size_t i = PixelByteIndex(fb, guardX, y);
+            fb.rgba[i] = kRasterGuardSentinel.r;
+            fb.rgba[i + 1] = kRasterGuardSentinel.g;
+            fb.rgba[i + 2] = kRasterGuardSentinel.b;
+            fb.rgba[i + 3] = kRasterGuardSentinel.a;
+        }
+    }
+}
+
 void PutPixel(Framebuffer& fb, int x, int y, Rgba color)
 {
     if (x < 0 || y < 0 || x >= fb.width || y >= fb.height)
     {
         return;
     }
-    const size_t i = static_cast<size_t>((y * fb.width + x) * 4);
+    const size_t i = PixelByteIndex(fb, x, y);
     fb.rgba[i] = color.r;
     fb.rgba[i + 1] = color.g;
     fb.rgba[i + 2] = color.b;
@@ -146,7 +188,21 @@ void Rasterize(const DrawList& list, Framebuffer& fb)
     {
         return;
     }
-    fb.rgba.assign(static_cast<size_t>(fb.width * fb.height * 4), 0);
+    const size_t storageBytes =
+        static_cast<size_t>(StorageRows(fb) * RowStridePixels(fb) * 4);
+    const bool hasGuards = fb.guardRowsBelow > 0 || fb.guardColumnsRight > 0;
+    if (hasGuards)
+    {
+        if (fb.rgba.size() != storageBytes)
+        {
+            fb.rgba.assign(storageBytes, 0);
+            WriteGuardRegions(fb);
+        }
+    }
+    else
+    {
+        fb.rgba.assign(static_cast<size_t>(fb.width * fb.height * 4), 0);
+    }
     for (int y = 0; y < fb.height; ++y)
     {
         for (int x = 0; x < fb.width; ++x)
@@ -167,4 +223,65 @@ void Rasterize(const DrawList& list, Framebuffer& fb)
     {
         RasterizeCircle(circle, fb);
     }
+}
+
+void FramebufferInitWithBottomRowGuard(Framebuffer& fb, int width, int height)
+{
+    fb.width = width;
+    fb.height = height;
+    fb.guardRowsBelow = 1;
+    fb.guardColumnsRight = 0;
+    const size_t storageBytes =
+        static_cast<size_t>(StorageRows(fb) * RowStridePixels(fb) * 4);
+    fb.rgba.assign(storageBytes, 0);
+    WriteGuardRegions(fb);
+}
+
+void FramebufferInitWithRightColumnGuard(Framebuffer& fb, int width, int height)
+{
+    fb.width = width;
+    fb.height = height;
+    fb.guardRowsBelow = 0;
+    fb.guardColumnsRight = 1;
+    const size_t storageBytes =
+        static_cast<size_t>(StorageRows(fb) * RowStridePixels(fb) * 4);
+    fb.rgba.assign(storageBytes, 0);
+    WriteGuardRegions(fb);
+}
+
+bool FramebufferGuardRowBelowIsClean(const Framebuffer& fb)
+{
+    if (fb.guardRowsBelow <= 0)
+    {
+        return true;
+    }
+    for (int x = 0; x < fb.width; ++x)
+    {
+        const size_t i = PixelByteIndex(fb, x, fb.height);
+        if (fb.rgba[i] != kRasterGuardSentinel.r || fb.rgba[i + 1] != kRasterGuardSentinel.g
+            || fb.rgba[i + 2] != kRasterGuardSentinel.b || fb.rgba[i + 3] != kRasterGuardSentinel.a)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool FramebufferGuardColumnRightIsClean(const Framebuffer& fb)
+{
+    if (fb.guardColumnsRight <= 0)
+    {
+        return true;
+    }
+    const int guardX = fb.width;
+    for (int y = 0; y < StorageRows(fb); ++y)
+    {
+        const size_t i = PixelByteIndex(fb, guardX, y);
+        if (fb.rgba[i] != kRasterGuardSentinel.r || fb.rgba[i + 1] != kRasterGuardSentinel.g
+            || fb.rgba[i + 2] != kRasterGuardSentinel.b || fb.rgba[i + 3] != kRasterGuardSentinel.a)
+        {
+            return false;
+        }
+    }
+    return true;
 }

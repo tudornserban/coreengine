@@ -24,6 +24,7 @@ public:
     RTSGameState& State() { return *state_; }
     const RTSGameState& State() const { return *state_; }
     GameLogicEngine& Engine() { return engine_; }
+    const GameLogicEngine& Engine() const { return engine_; }
     PlaybackController& Playback() { return playback_; }
 
     Camera GetCamera() const;

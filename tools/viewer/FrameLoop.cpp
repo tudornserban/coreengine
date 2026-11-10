@@ -37,6 +37,8 @@ void FrameLoop::ApplyPlaybackCommand(PlaybackCommand command)
 {
     switch (command)
     {
+    case PlaybackCommand::None:
+        break;
     case PlaybackCommand::TogglePause:
         playback_.TogglePause();
         break;

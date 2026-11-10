@@ -39,6 +39,7 @@ if(BUILD_TESTS)
         tests/SnapshotRendererTest.cpp
         tests/PlaybackControlTest.cpp
         tests/InputScriptTest.cpp
+        tests/FrameLoopResetTest.cpp
     )
     target_link_libraries(coreengine_sdl2_viewer_tests PRIVATE
         coreengine_viewer_logic
