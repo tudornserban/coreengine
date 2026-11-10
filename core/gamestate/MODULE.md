@@ -22,6 +22,7 @@ Include headers from the repo root, e.g. `#include "core/gamestate/RTSGameState.
 
 - **`GetCurrentGameState`** returns `const RTSGameState*` (do not widen to non-const without an explicit API change).
 - **`BehaviorContext::self`** remains `IGameUnit*`; gamestate wires concrete units without changing the AI contract.
+- **`RTSGameState::BuildContextForUnit`** delegates to internal **`AssembleBehaviorContext`** (`BehaviorContextAssembler.h` / `.cpp`); not a manifest export.
 - **`RTSGameState.cpp`** may include sibling `RTSUnit.h` (same module).
 
 ## Dependencies (`requires`)
