@@ -16,13 +16,7 @@
 namespace
 {
 
-constexpr Rgba kCollisionColor{255, 160, 40, 255};
-constexpr Rgba kPerceptionOutline{120, 220, 255, 255};
-constexpr Rgba kExplosionOutline{255, 80, 40, 255};
-constexpr Rgba kObstacleColor{160, 160, 160, 255};
-constexpr Rgba kHollowFill{0, 0, 0, 0};
 constexpr float kMarkerWorldRadius = 6.0f;
-constexpr float kCollisionKeepSeconds = 3.0f;
 
 Rgba ColorForInfluenceType(InfluenceType type)
 {
@@ -44,7 +38,7 @@ void PushHollowCircle(DrawList& list, Vector2 center, float radiusPx, Rgba outli
     DrawCircle circle;
     circle.center = center;
     circle.radius = radiusPx;
-    circle.fill = kHollowFill;
+    circle.fill = kViewerHollowCircleFill;
     circle.outline = outline;
     list.circles.push_back(circle);
 }
@@ -266,7 +260,7 @@ void NoteExplosions(const RTSGameState& state, std::vector<ExplosionEcho>& echoe
         ExplosionEcho echo;
         echo.position = explosion.GetPosition();
         echo.radius = explosion.GetRadius();
-        echo.secondsLeft = 0.5f;
+        echo.secondsLeft = 0.0f;
         echoes.push_back(echo);
     }
 }
@@ -293,119 +287,130 @@ void AppendOverlays(
     const CollisionRecorder& collisions,
     const std::vector<ExplosionEcho>& echoes)
 {
-  if (flags.collisions)
-  {
-    for (const CollisionEvent& event : collisions.Events())
+    if (flags.collisions)
     {
-      const Vector2 contactScreen = camera.WorldToScreen(event.contactPoint);
-      PushCollisionCross(list, contactScreen, kCollisionColor);
-      const Vector2 normalEnd =
-          event.contactPoint + event.normal * 20.0f;
-      DrawLine normalLine;
-      normalLine.a = contactScreen;
-      normalLine.b = camera.WorldToScreen(normalEnd);
-      normalLine.color = kCollisionColor;
-      list.lines.push_back(normalLine);
-    }
-  }
-
-  if (flags.perception)
-  {
-    const float ringRadius = state.GetPerceptionRadius() * camera.pixelsPerUnit;
-    for (IGameUnit* unit : state.GetAllUnits())
-    {
-      if (unit == nullptr)
-      {
-        continue;
-      }
-      PushHollowCircle(list, camera.WorldToScreen(unit->GetPosition()), ringRadius, kPerceptionOutline);
-    }
-  }
-
-  if (flags.influence)
-  {
-    const float markerPx = kMarkerWorldRadius * camera.pixelsPerUnit;
-    for (const InfluenceFieldItem& item : state.GetStaticItems())
-    {
-      PushFilledCircle(
-          list,
-          camera.WorldToScreen(item.GetPosition()),
-          markerPx,
-          ColorForInfluenceType(item.GetInfluenceType()));
-    }
-    for (const InfluenceFieldItem& item : state.GetStaticAttractors())
-    {
-      PushFilledCircle(
-          list,
-          camera.WorldToScreen(item.GetPosition()),
-          markerPx,
-          ColorForInfluenceType(item.GetInfluenceType()));
-    }
-  }
-
-  if (flags.obstacles)
-  {
-    const Map* map = state.GetMap();
-    if (map != nullptr)
-    {
-      for (const auto& entityPtr : map->GetEntities())
-      {
-        const MapEntity* entity = entityPtr.get();
-        if (entity == nullptr)
+        for (const CollisionEvent& event : collisions.Events())
         {
-          continue;
+            const Vector2 contactScreen = camera.WorldToScreen(event.contactPoint);
+            PushCollisionCross(list, contactScreen, kViewerCollisionOverlayColor);
+            const Vector2 normalEnd = event.contactPoint + event.normal * 20.0f;
+            DrawLine normalLine;
+            normalLine.a = contactScreen;
+            normalLine.b = camera.WorldToScreen(normalEnd);
+            normalLine.color = kViewerCollisionOverlayColor;
+            list.lines.push_back(normalLine);
         }
-        const MapObstacleComponent* obstacle = entity->GetComponent<MapObstacleComponent>();
-        if (obstacle == nullptr)
+    }
+
+    if (flags.perception)
+    {
+        const float ringRadius = state.GetPerceptionRadius() * camera.pixelsPerUnit;
+        for (IGameUnit* unit : state.GetAllUnits())
         {
-          continue;
+            if (unit == nullptr)
+            {
+                continue;
+            }
+            PushHollowCircle(
+                list,
+                camera.WorldToScreen(unit->GetPosition()),
+                ringRadius,
+                kViewerPerceptionOutlineColor);
         }
-        const float radiusPx = obstacle->GetRadius() * camera.pixelsPerUnit;
-        PushFilledCircle(list, camera.WorldToScreen(entity->GetPosition()), radiusPx, kObstacleColor);
-      }
     }
-  }
 
-  if (flags.behaviorItems)
-  {
-    const float markerPx = kMarkerWorldRadius * camera.pixelsPerUnit;
-    for (IGameUnit* unit : state.GetAllUnits())
+    if (flags.influence)
     {
-      if (unit == nullptr)
-      {
-        continue;
-      }
-      auto* host = dynamic_cast<IUnitBehaviorHost*>(unit);
-      if (host == nullptr)
-      {
-        continue;
-      }
-      IBehavior* behavior = host->GetCurrentBehavior();
-      if (behavior == nullptr)
-      {
-        continue;
-      }
-      BehaviorContext ctx = state.BuildContextForUnit(unit, 0.0f);
-      const std::vector<InfluenceFieldItem> items = behavior->GenerateFieldItems(ctx);
-      for (const InfluenceFieldItem& item : items)
-      {
-        PushFilledCircle(
-            list,
-            camera.WorldToScreen(item.GetPosition()),
-            markerPx,
-            ColorForInfluenceType(item.GetInfluenceType()));
-      }
+        const float markerPx = kMarkerWorldRadius * camera.pixelsPerUnit;
+        for (const InfluenceFieldItem& item : state.GetStaticItems())
+        {
+            PushFilledCircle(
+                list,
+                camera.WorldToScreen(item.GetPosition()),
+                markerPx,
+                ColorForInfluenceType(item.GetInfluenceType()));
+        }
+        for (const InfluenceFieldItem& item : state.GetStaticAttractors())
+        {
+            PushFilledCircle(
+                list,
+                camera.WorldToScreen(item.GetPosition()),
+                markerPx,
+                ColorForInfluenceType(item.GetInfluenceType()));
+        }
     }
-  }
 
-  if (flags.explosions)
-  {
-    for (const ExplosionEcho& echo : echoes)
+    if (flags.obstacles)
     {
-      const float radiusPx = echo.radius * camera.pixelsPerUnit;
-      PushHollowCircle(list, camera.WorldToScreen(echo.position), radiusPx, kExplosionOutline);
+        const Map* map = state.GetMap();
+        if (map != nullptr)
+        {
+            for (const auto& entityPtr : map->GetEntities())
+            {
+                const MapEntity* entity = entityPtr.get();
+                if (entity == nullptr)
+                {
+                    continue;
+                }
+                const MapObstacleComponent* obstacle = entity->GetComponent<MapObstacleComponent>();
+                if (obstacle == nullptr)
+                {
+                    continue;
+                }
+                const float radiusPx = obstacle->GetRadius() * camera.pixelsPerUnit;
+                PushFilledCircle(
+                    list,
+                    camera.WorldToScreen(entity->GetPosition()),
+                    radiusPx,
+                    kViewerObstacleOverlayColor);
+            }
+        }
     }
-  }
+
+    if (flags.behaviorItems)
+    {
+        const float markerPx = kMarkerWorldRadius * camera.pixelsPerUnit;
+        for (IGameUnit* unit : state.GetAllUnits())
+        {
+            if (unit == nullptr)
+            {
+                continue;
+            }
+            auto* host = dynamic_cast<IUnitBehaviorHost*>(unit);
+            if (host == nullptr)
+            {
+                continue;
+            }
+            IBehavior* behavior = host->GetCurrentBehavior();
+            if (behavior == nullptr)
+            {
+                continue;
+            }
+            BehaviorContext ctx = state.BuildContextForUnit(unit, 0.0f);
+            const std::vector<InfluenceFieldItem> items = behavior->GenerateFieldItems(ctx);
+            for (const InfluenceFieldItem& item : items)
+            {
+                PushFilledCircle(
+                    list,
+                    camera.WorldToScreen(item.GetPosition()),
+                    markerPx,
+                    ColorForInfluenceType(item.GetInfluenceType()));
+            }
+        }
+    }
+
+    if (flags.explosions)
+    {
+        for (const ExplosionEcho& echo : echoes)
+        {
+            const float radiusPx = echo.radius * camera.pixelsPerUnit;
+            PushHollowCircle(
+                list,
+                camera.WorldToScreen(echo.position),
+                radiusPx,
+                kViewerExplosionOutlineColor);
+        }
+    }
 }
 
 void AppendStatusLine(
@@ -513,4 +518,14 @@ OverlayKey OverlayKeyFromViewerFKey(int keyIndex)
     default:
         return OverlayKey::Unknown;
     }
+}
+
+int OverlayFKeyIndexFromKeycode(int keycode)
+{
+    constexpr int kSdlF1 = 1073741882;
+    if (keycode >= kSdlF1 && keycode < kSdlF1 + 6)
+    {
+        return keycode - kSdlF1 + 1;
+    }
+    return 0;
 }

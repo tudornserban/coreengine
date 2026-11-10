@@ -1,6 +1,7 @@
 #include "SdlPresenter.h"
 
 #include "Camera.h"
+#include "Overlay.h"
 #include "PlaybackControl.h"
 
 #include <SDL.h>
@@ -129,9 +130,10 @@ bool PresentSimulation(FrameLoop& loop, const ViewerConfig& config, Framebuffer&
             else if (event.type == SDL_KEYDOWN)
             {
                 const int sym = event.key.keysym.sym;
-                if (sym >= SDLK_F1 && sym <= SDLK_F6)
+                const int fKeyIndex = OverlayFKeyIndexFromKeycode(sym);
+                if (fKeyIndex > 0)
                 {
-                    loop.ToggleOverlayFromFKey(sym - SDLK_F1 + 1);
+                    loop.ToggleOverlayFromFKey(fKeyIndex);
                 }
                 else
                 {

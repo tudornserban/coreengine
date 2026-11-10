@@ -46,6 +46,15 @@ struct ExplosionEcho
     float secondsLeft;
 };
 
+constexpr float kExplosionEchoLifetimeSeconds = 0.5f;
+constexpr float kCollisionOverlayKeepSeconds = 3.0f;
+
+constexpr Rgba kViewerCollisionOverlayColor{255, 160, 40, 255};
+constexpr Rgba kViewerPerceptionOutlineColor{120, 220, 255, 255};
+constexpr Rgba kViewerExplosionOutlineColor{255, 80, 40, 255};
+constexpr Rgba kViewerObstacleOverlayColor{160, 160, 160, 255};
+constexpr Rgba kViewerHollowCircleFill{0, 0, 0, 0};
+
 void NoteExplosions(const RTSGameState& state, std::vector<ExplosionEcho>& echoes, float dt);
 void TickExplosionEchoes(std::vector<ExplosionEcho>& echoes, float dt);
 
@@ -79,3 +88,5 @@ enum class OverlayKey
 };
 
 OverlayKey OverlayKeyFromViewerFKey(int keyIndex);
+
+int OverlayFKeyIndexFromKeycode(int keycode);

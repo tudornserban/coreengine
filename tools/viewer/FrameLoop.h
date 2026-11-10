@@ -45,6 +45,7 @@ public:
 
     void AdvancePresentationFrame();
     void RasterizeCurrentView(Framebuffer& fb) const;
+    DrawList BuildViewDrawList() const;
 
     bool ExecuteScript(const std::vector<ScriptCommand>& commands, std::string& error);
 
@@ -77,4 +78,8 @@ private:
     void SubscribeCollisionRecorder();
     void UnsubscribeCollisionRecorder();
     bool ApplyScriptCommand(const ScriptCommand& command, std::string& error);
+
+    void BeginSimulationTick();
+    void EndSimulationTick();
+    void RunStepSimulationTick();
 };

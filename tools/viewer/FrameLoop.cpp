@@ -65,13 +65,6 @@ void AppendSelectionBox(DrawList& list, const SelectionSystem& selection, const 
     list.rects.push_back(box);
 }
 
-namespace
-{
-
-constexpr float kCollisionOverlayKeepSeconds = 3.0f;
-
-} // namespace
-
 FrameLoop::~FrameLoop()
 {
     UnsubscribeCollisionRecorder();
@@ -148,7 +141,11 @@ void FrameLoop::ApplyPlaybackCommand(PlaybackCommand command)
         playback_.SetQuadSpeed();
         break;
     case PlaybackCommand::StepOnce:
-        StepOneTick(engine_);
+        if (!engine_.IsPaused())
+        {
+            break;
+        }
+        RunStepSimulationTick();
         break;
     case PlaybackCommand::ResetScene:
         ResetScene();
@@ -156,19 +153,41 @@ void FrameLoop::ApplyPlaybackCommand(PlaybackCommand command)
     }
 }
 
-void FrameLoop::AdvancePresentationFrame()
+void FrameLoop::BeginSimulationTick()
 {
     collisionRecorder_.SetReferenceGameTime(engine_.GetGameTime());
     NoteExplosions(*state_, explosionEchoes_, kFixedDt);
-    engine_.Update(kFixedDt);
+}
+
+void FrameLoop::EndSimulationTick()
+{
     TickExplosionEchoes(explosionEchoes_, kFixedDt);
     collisionRecorder_.ExpireOlderThan(engine_.GetGameTime(), kCollisionOverlayKeepSeconds);
 }
 
-void FrameLoop::RasterizeCurrentView(Framebuffer& fb) const
+void FrameLoop::RunStepSimulationTick()
 {
-    fb.width = viewportW_;
-    fb.height = viewportH_;
+    BeginSimulationTick();
+    StepOneTick(engine_);
+    EndSimulationTick();
+}
+
+void FrameLoop::AdvancePresentationFrame()
+{
+    if (!engine_.IsPaused())
+    {
+        BeginSimulationTick();
+        engine_.Update(kFixedDt);
+        EndSimulationTick();
+    }
+    else
+    {
+        engine_.Update(kFixedDt);
+    }
+}
+
+DrawList FrameLoop::BuildViewDrawList() const
+{
     const Camera camera = GetCamera();
     DrawList list = BuildSnapshotDrawList(*state_, camera);
     AppendSelectionBox(list, state_->GetSelectionSystem(), camera);
@@ -178,7 +197,14 @@ void FrameLoop::RasterizeCurrentView(Framebuffer& fb) const
     {
         AppendStatusLine(list, engine_, playback_, overlayFlags_, state_->GetAllUnits().size());
     }
-    Rasterize(list, fb);
+    return list;
+}
+
+void FrameLoop::RasterizeCurrentView(Framebuffer& fb) const
+{
+    fb.width = viewportW_;
+    fb.height = viewportH_;
+    Rasterize(BuildViewDrawList(), fb);
 }
 
 bool FrameLoop::ApplyScriptCommand(const ScriptCommand& command, std::string& error)
@@ -198,11 +224,12 @@ bool FrameLoop::ApplyScriptCommand(const ScriptCommand& command, std::string& er
         playback_.Resume();
         return true;
     case ScriptCommand::Kind::Step:
-        if (StepOneTick(engine_).stepsRun == 0)
+        if (!engine_.IsPaused())
         {
             error = "step requires the simulation to be paused";
             return false;
         }
+        RunStepSimulationTick();
         return true;
     case ScriptCommand::Kind::Speed:
         if (command.floatArg == 0.5f)
