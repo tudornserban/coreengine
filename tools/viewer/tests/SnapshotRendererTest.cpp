@@ -48,3 +48,33 @@ TEST(SnapshotRendererTest, RasterizedTeamOneCenterIsBlueAndFarPixelIsMapFill)
     EXPECT_EQ(px(cx + 30, cy).g, 36);
     EXPECT_EQ(px(cx + 30, cy).b, 42);
 }
+
+TEST(SnapshotRendererTest, SelectedUnitGetsYellowOutlineRingLargerThanFill)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    scene.state->GetAllUnits()[0]->SetSelected(true);
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    DrawList list = BuildSnapshotDrawList(*scene.state, camera);
+    ASSERT_GE(list.circles.size(), 1u);
+    const DrawCircle& circle = list.circles[0];
+    EXPECT_EQ(circle.outline.r, 255);
+    EXPECT_EQ(circle.outline.g, 220);
+    EXPECT_EQ(circle.outline.b, 40);
+    EXPECT_NE(circle.outline.r, circle.fill.r);
+
+    Framebuffer fb;
+    fb.width = 1280;
+    fb.height = 720;
+    Rasterize(list, fb);
+    auto px = [&](int x, int y) {
+        const std::uint8_t* p = &fb.rgba[(y * fb.width + x) * 4];
+        return Rgba{p[0], p[1], p[2], p[3]};
+    };
+    const int cx = 427;
+    const int cy = 360;
+    const int ringSampleX = cx + static_cast<int>(std::floor(circle.radius)) + 2;
+    EXPECT_EQ(px(cx, cy).r, circle.fill.r);
+    EXPECT_EQ(px(ringSampleX, cy).r, 255);
+    EXPECT_EQ(px(ringSampleX, cy).g, 220);
+    EXPECT_EQ(px(ringSampleX, cy).b, 40);
+}

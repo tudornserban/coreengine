@@ -1,5 +1,7 @@
 #pragma once
 
 #include "DrawList.h"
+#include "FrameLoop.h"
+#include "ViewerConfig.h"
 
-bool PresentFramebuffer(const Framebuffer& fb, int frames, const char* title);
+bool PresentSimulation(FrameLoop& loop, const ViewerConfig& config, Framebuffer& framebuffer);

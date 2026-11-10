@@ -55,6 +55,15 @@ ViewerConfig ParseViewerConfig(int argc, char** argv)
             }
             config.width = static_cast<int>(value);
         }
+        else if (std::strcmp(arg, "--script") == 0)
+        {
+            if (i + 1 >= argc)
+            {
+                config.parseError = true;
+                return config;
+            }
+            config.scriptPath = argv[++i];
+        }
         else if (std::strcmp(arg, "--height") == 0)
         {
             if (i + 1 >= argc)
