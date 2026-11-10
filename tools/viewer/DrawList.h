@@ -43,8 +43,12 @@ struct DrawList
 
 struct Framebuffer
 {
-    int width;
-    int height;
+    int width = 0;
+    int height = 0;
+    /// Rows stored below the logical height (sentinel guard); tests set this before Rasterize.
+    int guardRowsBelow = 0;
+    /// Extra pixel columns per row stored to the right of logical width (sentinel guard).
+    int guardColumnsRight = 0;
     std::vector<std::uint8_t> rgba;
 };
 

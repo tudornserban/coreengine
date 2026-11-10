@@ -1,0 +1,156 @@
+#include "FrameLoop.h"
+
+#include "DrawList.h"
+#include "Raster.h"
+#include "SnapshotRenderer.h"
+
+FrameLoop::FrameLoop(Preset preset, std::uint64_t seed, int viewportW, int viewportH)
+    : preset_(preset)
+    , seed_(seed)
+    , viewportW_(viewportW)
+    , viewportH_(viewportH)
+    , engine_(kFixedDt)
+    , playback_(&engine_)
+{
+    ResetScene();
+}
+
+Camera FrameLoop::GetCamera() const
+{
+    return FitMap(state_->GetMapSize(), viewportW_, viewportH_, kFitMarginPx);
+}
+
+void FrameLoop::BindUpdateCallback()
+{
+    engine_.SetUpdateCallback([this](float dt) { state_->Update(dt); });
+}
+
+void FrameLoop::ResetScene()
+{
+    Scene scene = BuildPreset(preset_, seed_);
+    state_ = std::move(scene.state);
+    engine_.Reset();
+    BindUpdateCallback();
+}
+
+void FrameLoop::ApplyPlaybackCommand(PlaybackCommand command)
+{
+    switch (command)
+    {
+    case PlaybackCommand::None:
+        break;
+    case PlaybackCommand::TogglePause:
+        playback_.TogglePause();
+        break;
+    case PlaybackCommand::HalfSpeed:
+        playback_.SetHalfSpeed();
+        break;
+    case PlaybackCommand::NormalSpeed:
+        playback_.SetNormalSpeed();
+        break;
+    case PlaybackCommand::DoubleSpeed:
+        playback_.SetDoubleSpeed();
+        break;
+    case PlaybackCommand::QuadSpeed:
+        playback_.SetQuadSpeed();
+        break;
+    case PlaybackCommand::StepOnce:
+        StepOneTick(engine_);
+        break;
+    case PlaybackCommand::ResetScene:
+        ResetScene();
+        break;
+    }
+}
+
+void FrameLoop::AdvancePresentationFrame()
+{
+    engine_.Update(kFixedDt);
+}
+
+void FrameLoop::RasterizeCurrentView(Framebuffer& fb) const
+{
+    fb.width = viewportW_;
+    fb.height = viewportH_;
+    const Camera camera = GetCamera();
+    const DrawList list = BuildSnapshotDrawList(*state_, camera);
+    Rasterize(list, fb);
+}
+
+bool FrameLoop::ApplyScriptCommand(const ScriptCommand& command, std::string& error)
+{
+    switch (command.kind)
+    {
+    case ScriptCommand::Kind::Frames:
+        for (int i = 0; i < command.intArg; ++i)
+        {
+            AdvancePresentationFrame();
+        }
+        return true;
+    case ScriptCommand::Kind::Pause:
+        playback_.Pause();
+        return true;
+    case ScriptCommand::Kind::Resume:
+        playback_.Resume();
+        return true;
+    case ScriptCommand::Kind::Step:
+        if (StepOneTick(engine_).stepsRun == 0)
+        {
+            error = "step requires the simulation to be paused";
+            return false;
+        }
+        return true;
+    case ScriptCommand::Kind::Speed:
+        if (command.floatArg == 0.5f)
+        {
+            playback_.SetHalfSpeed();
+        }
+        else if (command.floatArg == 1.0f)
+        {
+            playback_.SetNormalSpeed();
+        }
+        else if (command.floatArg == 2.0f)
+        {
+            playback_.SetDoubleSpeed();
+        }
+        else
+        {
+            playback_.SetQuadSpeed();
+        }
+        return true;
+    case ScriptCommand::Kind::Reset:
+        ResetScene();
+        return true;
+    case ScriptCommand::Kind::Dest:
+    {
+        const auto& units = state_->GetAllUnits();
+        if (command.intArg < 0 || static_cast<size_t>(command.intArg) >= units.size())
+        {
+            error = "dest index out of range";
+            return false;
+        }
+        if (units[command.intArg] == nullptr)
+        {
+            error = "dest index is null";
+            return false;
+        }
+        units[command.intArg]->SetDebugDestination(Vector2(command.x, command.y));
+        return true;
+    }
+    }
+    error = "internal script error";
+    return false;
+}
+
+bool FrameLoop::ExecuteScript(const std::vector<ScriptCommand>& commands, std::string& error)
+{
+    error.clear();
+    for (const ScriptCommand& command : commands)
+    {
+        if (!ApplyScriptCommand(command, error))
+        {
+            return false;
+        }
+    }
+    return true;
+}

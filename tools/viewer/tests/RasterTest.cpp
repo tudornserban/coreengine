@@ -24,24 +24,62 @@ TEST(RasterTest, ClearAndFilledRectPaintThosePixels)
     EXPECT_EQ(px(1, 1).b, 42);
 }
 
-TEST(RasterTest, PutPixelClipsAtFramebufferEdges)
+TEST(RasterTest, OutOfBoundsRectsLeaveFramebufferAtClearColor)
 {
     Framebuffer fb;
     fb.width = 4;
     fb.height = 4;
     DrawList list;
-    list.clear = {0, 0, 0, 255};
-    list.rects.push_back({{3, 1}, {3, 1}, true, {255, 0, 0, 255}});
-    list.rects.push_back({{4, 1}, {4, 1}, true, {0, 255, 0, 255}});
-    list.rects.push_back({{1, 3}, {1, 3}, true, {0, 0, 255, 255}});
-    list.rects.push_back({{1, 4}, {1, 4}, true, {255, 255, 0, 255}});
+    list.clear = {10, 11, 12, 255};
+    list.rects.push_back({{4, 1}, {4, 1}, true, {99, 0, 0, 255}});
+    list.rects.push_back({{1, 4}, {1, 4}, true, {0, 99, 0, 255}});
     Rasterize(list, fb);
     auto px = [&](int x, int y) {
         const std::uint8_t* p = &fb.rgba[(y * fb.width + x) * 4];
         return Rgba{p[0], p[1], p[2], p[3]};
     };
-    EXPECT_EQ(px(3, 1).r, 255);
-    EXPECT_EQ(px(4, 1).r, 0);
-    EXPECT_EQ(px(1, 3).b, 255);
-    EXPECT_EQ(px(1, 4).r, 0);
+    for (int y = 0; y < 4; ++y)
+    {
+        for (int x = 0; x < 4; ++x)
+        {
+            EXPECT_EQ(px(x, y).r, 10) << "at (" << x << "," << y << ")";
+            EXPECT_EQ(px(x, y).g, 11);
+            EXPECT_EQ(px(x, y).b, 12);
+        }
+    }
+}
+
+TEST(RasterTest, GuardRowBelowSurvivesOutOfBoundsProbeOnY)
+{
+    Framebuffer fb;
+    FramebufferInitWithBottomRowGuard(fb, 4, 4);
+    DrawList list;
+    list.clear = {10, 11, 12, 255};
+    list.rects.push_back({{2, 1}, {2, 1}, true, {0, 0, 200, 255}});
+    list.rects.push_back({{1, 4}, {1, 4}, true, {0, 200, 0, 255}});
+    Rasterize(list, fb);
+    EXPECT_TRUE(FramebufferGuardRowBelowIsClean(fb));
+    auto px = [&](int x, int y) {
+        const std::uint8_t* p = &fb.rgba[(y * fb.width + x) * 4];
+        return Rgba{p[0], p[1], p[2], p[3]};
+    };
+    EXPECT_EQ(px(2, 1).b, 200);
+}
+
+TEST(RasterTest, GuardColumnRightSurvivesOutOfBoundsProbeOnX)
+{
+    Framebuffer fb;
+    FramebufferInitWithRightColumnGuard(fb, 4, 4);
+    DrawList list;
+    list.clear = {10, 11, 12, 255};
+    list.rects.push_back({{2, 1}, {2, 1}, true, {200, 0, 0, 255}});
+    list.rects.push_back({{4, 1}, {4, 1}, true, {0, 200, 0, 255}});
+    Rasterize(list, fb);
+    EXPECT_TRUE(FramebufferGuardColumnRightIsClean(fb));
+    auto px = [&](int x, int y) {
+        const std::uint8_t* p = &fb.rgba[(y * (fb.width + fb.guardColumnsRight) + x) * 4];
+        return Rgba{p[0], p[1], p[2], p[3]};
+    };
+    EXPECT_EQ(px(2, 1).r, 200);
+    EXPECT_EQ(px(3, 1).r, 10);
 }

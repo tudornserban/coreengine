@@ -9,6 +9,7 @@ struct ViewerConfig
     bool noWindow = false;
     int width = 1280;
     int height = 720;
+    std::string scriptPath;
     bool parseError = false;
 };
 

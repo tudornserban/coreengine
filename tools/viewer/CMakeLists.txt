@@ -7,6 +7,9 @@ add_library(coreengine_viewer_logic STATIC
     PngWriter.cpp
     Scenario.cpp
     SnapshotRenderer.cpp
+    PlaybackControl.cpp
+    InputScript.cpp
+    FrameLoop.cpp
 )
 target_link_libraries(coreengine_viewer_logic PUBLIC coreengine)
 target_include_directories(coreengine_viewer_logic PUBLIC
@@ -34,6 +37,9 @@ if(BUILD_TESTS)
         tests/RasterTest.cpp
         tests/ViewerConfigTest.cpp
         tests/SnapshotRendererTest.cpp
+        tests/PlaybackControlTest.cpp
+        tests/InputScriptTest.cpp
+        tests/FrameLoopResetTest.cpp
     )
     target_link_libraries(coreengine_sdl2_viewer_tests PRIVATE
         coreengine_viewer_logic
