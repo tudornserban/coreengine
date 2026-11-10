@@ -54,8 +54,9 @@ Allowed `#include` in `core/gamestate/**`: standard library (`<…>`), headers u
 
 - **Legacy forwarders** in `IGameState.h` / `IGameLogicRenderer.h` remain; canonical contracts live under `core/interfaces/`.
 - **`SetAgentState` / `SetAgentParameter`** forwarder bodies stay verbatim on `RTSUnit` / command paths.
-- **`RTSGameState::Update`:** AI tick gates on `dynamic_cast<IUnitBehaviorHost*>`; explosion impulse and bounds fallback remain `dynamic_cast<RTSUnit*>` participation filters.
-- Do not broaden non-`RTSUnit` behavior in those gates; bounds fallback is separate from collision radius-aware push.
+- **`RTSGameState::Update`:** AI tick gates on `dynamic_cast<IUnitBehaviorHost*>`; explosion impulse and bounds fallback remain `dynamic_cast<RTSUnit*>` participation filters (do not widen those two gates to `IGameUnit` / `IUnitKinematics`).
+- Bounds fallback center-clamps `RTSUnit` centers onto `[0, mapSize]` after explosions; collision still performs radius-aware map-edge inset via `IUnitKinematics` for non-`RTSUnit` kinematic doubles (see `RTSGameStateNonRTSUnitGateTest`).
+- **`RTSUnit`** multiply-inherits `IGameUnit`, `IUnitKinematics`, `IUnitAgent`, and `IUnitBehaviorHost`; ABI/size changed for out-of-tree binaries when the behavior-host base was added (in-tree tests use concrete `RTSUnit`).
 - **Map-edge collision events** always emit, including for units that do not implement `IUnitKinematics`.
 - Do not introduce `#include` of other CoreEngine modules without updating manifest `requires`, dependency policy, and regenerating `docs/deps/*`.
 

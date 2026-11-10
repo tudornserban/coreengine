@@ -4,12 +4,13 @@
 #include "core/combat/Explosion.h"
 #include "core/gamestate/RTSGameState.h"
 #include "core/math/Vector2.h"
+#include "tests/TestHelpers/KinematicMockGameUnit.h"
 #include "tests/TestHelpers/MockGameUnit.h"
 
-// R2.2 — documents current RTSGameState dynamic_cast<RTSUnit*> gates only.
-// MockGameUnit implements IGameUnit but not IUnitKinematics / IUnitAgent / RTSUnit.
-// These tests do not prove behavior if bounds fallback is retargeted to IUnitKinematics:
-// MockGameUnit would still not match that cast.
+// R2.2 / R4.6 — pins RTSGameState Update participation filters.
+// AI tick: dynamic_cast<IUnitBehaviorHost*> (R4.5).
+// Explosion impulse and bounds fallback: dynamic_cast<RTSUnit*> (unchanged).
+// MockGameUnit implements IGameUnit only (no kinematics / behavior host / RTSUnit).
 
 namespace {
 
@@ -72,4 +73,22 @@ TEST_F(RTSGameStateNonRTSUnitGateTest, BoundsFallbackGate_MockOutsideMapPosition
   EXPECT_FLOAT_EQ(unit->GetPosition().y, outsidePos.y);
   EXPECT_FLOAT_EQ(unit->GetVelocity().x, startVel.x);
   EXPECT_FLOAT_EQ(unit->GetVelocity().y, startVel.y);
+}
+
+TEST_F(RTSGameStateNonRTSUnitGateTest, BoundsFallbackGate_KinematicMockOutsideMapNotCenterClamped) {
+  // Radius > map extent: PushInsideBounds leaves the center outside [0, mapSize] on both axes.
+  // Hub bounds fallback must remain RTSUnit-only (see mutation pin in R4.6).
+  constexpr float kHugeRadius = 150.0f;
+  const Vector2 outsidePos(kMapSize + 20.0f, 30.0f);
+  auto unit = std::make_unique<KinematicMockGameUnit>(outsidePos, /*team=*/0, kHugeRadius, 100.0f);
+  unit->SetVelocity(Vector2::Zero());
+  KinematicMockGameUnit* ptr = unit.get();
+  state.AddUnit(std::move(unit));
+
+  state.Update(1.0f);
+
+  EXPECT_FLOAT_EQ(ptr->GetPosition().x, kHugeRadius);
+  EXPECT_FLOAT_EQ(ptr->GetPosition().y, kHugeRadius);
+  EXPECT_FLOAT_EQ(ptr->GetVelocity().x, 0.0f);
+  EXPECT_FLOAT_EQ(ptr->GetVelocity().y, 0.0f);
 }
