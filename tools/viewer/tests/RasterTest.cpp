@@ -23,3 +23,25 @@ TEST(RasterTest, ClearAndFilledRectPaintThosePixels)
     EXPECT_EQ(px(1, 1).g, 36);
     EXPECT_EQ(px(1, 1).b, 42);
 }
+
+TEST(RasterTest, PutPixelClipsAtFramebufferEdges)
+{
+    Framebuffer fb;
+    fb.width = 4;
+    fb.height = 4;
+    DrawList list;
+    list.clear = {0, 0, 0, 255};
+    list.rects.push_back({{3, 1}, {3, 1}, true, {255, 0, 0, 255}});
+    list.rects.push_back({{4, 1}, {4, 1}, true, {0, 255, 0, 255}});
+    list.rects.push_back({{1, 3}, {1, 3}, true, {0, 0, 255, 255}});
+    list.rects.push_back({{1, 4}, {1, 4}, true, {255, 255, 0, 255}});
+    Rasterize(list, fb);
+    auto px = [&](int x, int y) {
+        const std::uint8_t* p = &fb.rgba[(y * fb.width + x) * 4];
+        return Rgba{p[0], p[1], p[2], p[3]};
+    };
+    EXPECT_EQ(px(3, 1).r, 255);
+    EXPECT_EQ(px(4, 1).r, 0);
+    EXPECT_EQ(px(1, 3).b, 255);
+    EXPECT_EQ(px(1, 4).r, 0);
+}

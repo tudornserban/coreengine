@@ -5,6 +5,8 @@ add_library(coreengine_viewer_logic STATIC
     Camera.cpp
     Raster.cpp
     PngWriter.cpp
+    Scenario.cpp
+    SnapshotRenderer.cpp
 )
 target_link_libraries(coreengine_viewer_logic PUBLIC coreengine)
 target_include_directories(coreengine_viewer_logic PUBLIC
@@ -31,6 +33,7 @@ if(BUILD_TESTS)
         tests/PngWriterTest.cpp
         tests/RasterTest.cpp
         tests/ViewerConfigTest.cpp
+        tests/SnapshotRendererTest.cpp
     )
     target_link_libraries(coreengine_sdl2_viewer_tests PRIVATE
         coreengine_viewer_logic
