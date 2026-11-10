@@ -51,6 +51,7 @@ python3 scripts/test_check_module_deps.py
 ./scripts/run-ai-module-tests.sh
 ./scripts/run-serialization-module-tests.sh
 ./scripts/run-collision-module-tests.sh
+./scripts/run-combat-module-tests.sh
 ```
 
 **Include enforcement:** `./scripts/check-module-deps.sh` enforces `#include` boundaries for opted-in registry modules (see `INCLUDE_ENFORCED_MODULES` in `scripts/check_module_deps.py`), including `core.gameloop` as of Phase 3 A3.2, `core.map` as of Phase 3 A3.3, `core.ai` as of Phase 3 A3.4, `core.serialization` as of Phase 3 A3.5, `core.collision` as of R1.3 (A3.6), `core.combat` as of R1.6, and `core.gamestate` as of R2.1.

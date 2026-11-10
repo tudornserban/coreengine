@@ -18,6 +18,7 @@ option(COREENGINE_MAP_STANDALONE "Build only core.map tests (no full coreengine)
 option(COREENGINE_AI_STANDALONE "Build only core.ai tests (no full coreengine)" OFF)
 option(COREENGINE_SERIALIZATION_STANDALONE "Build only core.serialization tests (no full coreengine)" OFF)
 option(COREENGINE_COLLISION_STANDALONE "Build only core.collision tests (no full coreengine)" OFF)
+option(COREENGINE_COMBAT_STANDALONE "Build only core.combat tests (no full coreengine)" OFF)
 
 set(_standalone_modes 0)
 if(COREENGINE_MATH_STANDALONE)
@@ -48,6 +49,9 @@ if(COREENGINE_SERIALIZATION_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(COREENGINE_COLLISION_STANDALONE)
+    math(EXPR _standalone_modes "${_standalone_modes}+1")
+endif()
+if(COREENGINE_COMBAT_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(_standalone_modes GREATER 1)
@@ -321,6 +325,29 @@ elseif(COREENGINE_COLLISION_STANDALONE)
     )
     include(GoogleTest)
     gtest_discover_tests(coreengine_collision_tests)
+elseif(COREENGINE_COMBAT_STANDALONE)
+    add_subdirectory(core/math)
+    add_subdirectory(core/combat)
+    if(NOT BUILD_TESTS)
+        message(FATAL_ERROR "COREENGINE_COMBAT_STANDALONE requires BUILD_TESTS=ON")
+    endif()
+    enable_testing()
+    find_package(GTest REQUIRED)
+
+    add_executable(coreengine_combat_tests
+        tests/UnitTests/Combat/CombatModuleHeaderCompileTest.cpp
+        tests/UnitTests/Combat/CommandSystemAgentContractTest.cpp
+        tests/UnitTests/Combat/ExplosionTest.cpp
+    )
+    target_include_directories(coreengine_combat_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(coreengine_combat_tests
+        coreengine_combat
+        coreengine_math
+        GTest::gtest
+        GTest::gtest_main
+    )
+    include(GoogleTest)
+    gtest_discover_tests(coreengine_combat_tests)
 else()
     add_subdirectory(core/math)
     add_subdirectory(core/influence_types)

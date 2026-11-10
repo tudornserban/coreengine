@@ -48,6 +48,7 @@ Modules below match **CMake source globs** and **ARCHITECTURE.md** layers. Subfo
 | `BUILD_SDL2` | OFF | `coreengine_sdl2` (needs SDL2) |
 | `BUILD_RAYLIB` | OFF | `coreengine_raylib` (needs raylib) |
 | `COREENGINE_COLLISION_STANDALONE` | OFF | `coreengine_collision_tests` (collision + declared deps only; standalone target links math + influence types + logging + collision) |
+| `COREENGINE_COMBAT_STANDALONE` | OFF | `coreengine_combat_tests` (combat + declared deps only; standalone target links math + combat) |
 
 **Typical CI / local test command** (matches `.gitlab-ci.yml`):
 
@@ -80,6 +81,12 @@ python3 scripts/test_check_module_deps.py
 
 ```bash
 ./scripts/run-collision-module-tests.sh
+```
+
+**Combat-only tests** (OBJECT lib + math + combat):
+
+```bash
+./scripts/run-combat-module-tests.sh
 ```
 
 ### CI
@@ -164,7 +171,7 @@ flowchart BT
 | `core.collision` | `SpatialGridTest`, `ImmunityManagerTest`, `UnitKinematicsWriteTest`, `CollisionSystemKinematicsGateTest`, `CollisionModuleHeaderCompileTest` | — |
 | `core.gameloop` | `GameLogicEngineTest`, `DeploymentTimerTest`, `ThinkTimerTest` | — |
 | `core.map` | `MapTest` | — |
-| `core.combat` | `ExplosionTest` (under `Map/` folder name), `CommandSystemTest` | — |
+| `core.combat` | `ExplosionTest`, `CommandSystemAgentContractTest`, `CombatModuleHeaderCompileTest`, `CommandSystemTest` (full-engine) | `./scripts/run-combat-module-tests.sh` |
 | `core.gamestate` | `GamestateModuleHeaderCompileTest`, `RTSGameStateNonRTSUnitGateTest` | `DeterminismTest` |
 | `core.logging` | — | — |
 | `core.serialization` | `SerializationModuleHeaderCompileTest` | — |
