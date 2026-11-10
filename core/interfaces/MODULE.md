@@ -18,7 +18,7 @@ Include headers from the repo root, e.g. `#include "core/interfaces/IGameUnit.h"
 | `IUnitAgent` | class | `IUnitAgent.h` | Optional FSM / behavior-parameter commands (`SetAgentState`, `SetAgentParameter`); implemented by `RTSUnit` for `CommandSystem` |
 | `IInputReader` | class | `IInputReader.h` | Input abstraction; uses `Vector2` |
 | `ITransitionCondition` | class | `ITransitionCondition.h` | Condition evaluation; `BehaviorContext` forward-declared |
-| `IGameState` | class | `IGameState.h` | State stack contract |
+| `IGameState` | class | `IGameState.h` | Single active state contract |
 | `IGameLogicRenderer` | class | `IGameLogicRenderer.h` | Read-only renderer; `RTSGameState` forward-declared |
 | `ISerializer` | class | `ISerializer.h` | Byte/string serialization contract |
 | `IMapComponent` | class | `IMapComponent.h` | Map ECS component contract |
