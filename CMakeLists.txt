@@ -278,6 +278,7 @@ elseif(COREENGINE_SERIALIZATION_STANDALONE)
 
     add_executable(coreengine_serialization_tests
         tests/UnitTests/Serialization/SerializationModuleHeaderCompileTest.cpp
+        tests/UnitTests/Serialization/GameStateSerializerCharacterizationTest.cpp
     )
     target_include_directories(coreengine_serialization_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
     target_link_libraries(coreengine_serialization_tests
