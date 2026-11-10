@@ -23,6 +23,7 @@ Include headers from the repo root, e.g. `#include "core/interfaces/IGameUnit.h"
 | `ISerializer` | class | `ISerializer.h` | Byte/string serialization contract |
 | `IMapComponent` | class | `IMapComponent.h` | Map ECS component contract |
 | `ISimulationSnapshot` | class | `ISimulationSnapshot.h` | Read-only map size + unit list for snapshot serializers |
+| `IUnitBehaviorHost` | class | `IUnitBehaviorHost.h` | Active behavior accessor for hub AI tick; implemented by `RTSUnit` |
 
 ## Dependencies (`requires`)
 

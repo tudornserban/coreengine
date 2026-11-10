@@ -61,6 +61,10 @@ float RTSUnit::CalculateMass() const {
     return baseMass * hpRatio * massModifier;
 }
 
+IBehavior* RTSUnit::GetCurrentBehavior() {
+    return stateMachine.GetCurrentBehavior();
+}
+
 void RTSUnit::SetAgentState(const std::string& stateName) {
     GetStateMachine().SetState(stateName);
 }

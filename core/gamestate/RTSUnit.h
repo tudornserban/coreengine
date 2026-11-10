@@ -3,12 +3,13 @@
 #include "../interfaces/IGameUnit.h"
 #include "../interfaces/IUnitKinematics.h"
 #include "../interfaces/IUnitAgent.h"
+#include "../interfaces/IUnitBehaviorHost.h"
 #include "../ai/StateMachine.h"
 #include "../math/Vector2.h"
 #include <algorithm>
 #include <string>
 
-class RTSUnit : public IGameUnit, public IUnitKinematics, public IUnitAgent {
+class RTSUnit : public IGameUnit, public IUnitKinematics, public IUnitAgent, public IUnitBehaviorHost {
 protected:
     Vector2 position;
     Vector2 velocity;
@@ -77,6 +78,9 @@ public:
     // IUnitAgent (command surface for FSM / behavior parameters)
     void SetAgentState(const std::string& stateName) override;
     void SetAgentParameter(const std::string& paramName, float value) override;
+
+    // IUnitBehaviorHost
+    IBehavior* GetCurrentBehavior() override;
 
     // HP and Mass
     float GetCurrentHP() const override { return currentHP; }
