@@ -13,7 +13,10 @@ struct ScriptCommand
         Step,
         Speed,
         Reset,
-        Dest
+        Dest,
+        Click,
+        RightClick,
+        Box
     };
 
     Kind kind = Kind::Frames;
@@ -21,6 +24,8 @@ struct ScriptCommand
     float floatArg = 0.0f;
     float x = 0.0f;
     float y = 0.0f;
+    float x2 = 0.0f;
+    float y2 = 0.0f;
 };
 
 std::vector<ScriptCommand> ParseScript(const std::string& text, std::string& error);

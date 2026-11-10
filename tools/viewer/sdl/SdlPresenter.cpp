@@ -1,5 +1,6 @@
 #include "SdlPresenter.h"
 
+#include "Camera.h"
 #include "PlaybackControl.h"
 
 #include <SDL.h>
@@ -128,6 +129,39 @@ bool PresentSimulation(FrameLoop& loop, const ViewerConfig& config, Framebuffer&
             else if (event.type == SDL_KEYDOWN)
             {
                 ApplyViewerKey(loop, KeyFromSdl(event.key.keysym.sym));
+            }
+            else if (event.type == SDL_MOUSEBUTTONDOWN)
+            {
+                const Vector2 screen(
+                    static_cast<float>(event.button.x),
+                    static_cast<float>(event.button.y));
+                const bool shiftHeld = (SDL_GetModState() & KMOD_SHIFT) != 0;
+                if (event.button.button == SDL_BUTTON_LEFT)
+                {
+                    loop.OnMouseLeftDown(screen, shiftHeld);
+                }
+                else if (event.button.button == SDL_BUTTON_RIGHT)
+                {
+                    loop.OnMouseRightDown(screen, shiftHeld);
+                }
+            }
+            else if (event.type == SDL_MOUSEBUTTONUP)
+            {
+                if (event.button.button == SDL_BUTTON_LEFT)
+                {
+                    const Vector2 screen(
+                        static_cast<float>(event.button.x),
+                        static_cast<float>(event.button.y));
+                    const bool shiftHeld = (SDL_GetModState() & KMOD_SHIFT) != 0;
+                    loop.OnMouseLeftUp(screen, shiftHeld);
+                }
+            }
+            else if (event.type == SDL_MOUSEMOTION)
+            {
+                const Vector2 screen(
+                    static_cast<float>(event.motion.x),
+                    static_cast<float>(event.motion.y));
+                loop.OnMouseMotion(screen);
             }
         }
 

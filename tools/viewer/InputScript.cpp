@@ -186,9 +186,77 @@ bool ParseLine(const std::string& line, ScriptCommand& cmd, std::string& error)
         }
         return true;
     }
-    if (verb == "click" || verb == "rclick" || verb == "box")
+    if (verb == "click")
     {
-        error = "mouse script commands are not supported until V1.4";
+        std::string sxToken;
+        std::string syToken;
+        if (!(iss >> sxToken >> syToken))
+        {
+            error = "click requires screen x y";
+            return true;
+        }
+        cmd.kind = ScriptCommand::Kind::Click;
+        if (!ParseFloat(sxToken, cmd.x) || !ParseFloat(syToken, cmd.y))
+        {
+            error = "invalid click coordinates";
+            return true;
+        }
+        cmd.floatArg = cmd.x;
+        std::string extra;
+        if (iss >> extra)
+        {
+            error = "unexpected token after click";
+            return true;
+        }
+        return true;
+    }
+    if (verb == "rclick")
+    {
+        std::string sxToken;
+        std::string syToken;
+        if (!(iss >> sxToken >> syToken))
+        {
+            error = "rclick requires screen x y";
+            return true;
+        }
+        cmd.kind = ScriptCommand::Kind::RightClick;
+        if (!ParseFloat(sxToken, cmd.x) || !ParseFloat(syToken, cmd.y))
+        {
+            error = "invalid rclick coordinates";
+            return true;
+        }
+        std::string extra;
+        if (iss >> extra)
+        {
+            error = "unexpected token after rclick";
+            return true;
+        }
+        return true;
+    }
+    if (verb == "box")
+    {
+        std::string x0Token;
+        std::string y0Token;
+        std::string x1Token;
+        std::string y1Token;
+        if (!(iss >> x0Token >> y0Token >> x1Token >> y1Token))
+        {
+            error = "box requires screen x0 y0 x1 y1";
+            return true;
+        }
+        cmd.kind = ScriptCommand::Kind::Box;
+        if (!ParseFloat(x0Token, cmd.x) || !ParseFloat(y0Token, cmd.y) || !ParseFloat(x1Token, cmd.x2)
+            || !ParseFloat(y1Token, cmd.y2))
+        {
+            error = "invalid box coordinates";
+            return true;
+        }
+        std::string extra;
+        if (iss >> extra)
+        {
+            error = "unexpected token after box";
+            return true;
+        }
         return true;
     }
 

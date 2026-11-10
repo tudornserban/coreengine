@@ -4,6 +4,66 @@
 #include "Raster.h"
 #include "SnapshotRenderer.h"
 
+#include "core/combat/CommandSystem.h"
+#include "core/combat/SelectionSystem.h"
+#include "core/interfaces/IGameUnit.h"
+
+#include <cmath>
+
+namespace
+{
+
+constexpr float kDragThresholdPx = 4.0f;
+
+} // namespace
+
+void ApplyClick(RTSGameState& state, const Camera& camera, Vector2 screen, bool shiftHeld)
+{
+    const Vector2 world = camera.ScreenToWorld(screen);
+    IGameUnit* unit = state.GetUnitAtPosition(world);
+    if (unit != nullptr)
+    {
+        state.GetSelectionSystem().SelectUnit(unit, shiftHeld);
+    }
+}
+
+void ApplyRightClick(RTSGameState& state, const Camera& camera, Vector2 screen)
+{
+    const Vector2 world = camera.ScreenToWorld(screen);
+    const std::vector<IGameUnit*>& selected = state.GetSelectionSystem().GetSelectedUnits();
+    if (selected.empty())
+    {
+        return;
+    }
+    state.GetCommandSystem().MoveUnitsTo(selected, world);
+}
+
+void ApplyBox(RTSGameState& state, const Camera& camera, Vector2 screenA, Vector2 screenB)
+{
+    SelectionSystem& selection = state.GetSelectionSystem();
+    const Vector2 worldStart = camera.ScreenToWorld(screenA);
+    const Vector2 worldEnd = camera.ScreenToWorld(screenB);
+    selection.StartBoxSelection(worldStart);
+    selection.UpdateBoxSelection(worldEnd);
+    selection.EndBoxSelection(state.GetAllUnits());
+}
+
+void AppendSelectionBox(DrawList& list, const SelectionSystem& selection, const Camera& camera)
+{
+    if (!selection.IsBoxSelecting())
+    {
+        return;
+    }
+    const Vector2 screenMin = camera.WorldToScreen(selection.GetBoxStart());
+    const Vector2 screenMax = camera.WorldToScreen(selection.GetBoxEnd());
+    DrawRect box;
+    box.min = screenMin;
+    box.max = screenMax;
+    box.filled = false;
+    box.color = {255, 220, 40, 255};
+    list.rects.push_back(box);
+}
+
 FrameLoop::FrameLoop(Preset preset, std::uint64_t seed, int viewportW, int viewportH)
     : preset_(preset)
     , seed_(seed)
@@ -73,7 +133,8 @@ void FrameLoop::RasterizeCurrentView(Framebuffer& fb) const
     fb.width = viewportW_;
     fb.height = viewportH_;
     const Camera camera = GetCamera();
-    const DrawList list = BuildSnapshotDrawList(*state_, camera);
+    DrawList list = BuildSnapshotDrawList(*state_, camera);
+    AppendSelectionBox(list, state_->GetSelectionSystem(), camera);
     Rasterize(list, fb);
 }
 
@@ -137,6 +198,15 @@ bool FrameLoop::ApplyScriptCommand(const ScriptCommand& command, std::string& er
         units[command.intArg]->SetDebugDestination(Vector2(command.x, command.y));
         return true;
     }
+    case ScriptCommand::Kind::Click:
+        ApplyClick(*state_, GetCamera(), Vector2(command.x, command.y), false);
+        return true;
+    case ScriptCommand::Kind::RightClick:
+        ApplyRightClick(*state_, GetCamera(), Vector2(command.x, command.y));
+        return true;
+    case ScriptCommand::Kind::Box:
+        ApplyBox(*state_, GetCamera(), Vector2(command.x, command.y), Vector2(command.x2, command.y2));
+        return true;
     }
     error = "internal script error";
     return false;
@@ -153,4 +223,52 @@ bool FrameLoop::ExecuteScript(const std::vector<ScriptCommand>& commands, std::s
         }
     }
     return true;
+}
+
+void FrameLoop::OnMouseLeftDown(Vector2 screen, bool /*shiftHeld*/)
+{
+    leftButtonDown_ = true;
+    dragSelectActive_ = false;
+    dragStartScreen_ = screen;
+}
+
+void FrameLoop::OnMouseLeftUp(Vector2 screen, bool shiftHeld)
+{
+    const Camera camera = GetCamera();
+    if (dragSelectActive_)
+    {
+        state_->GetSelectionSystem().EndBoxSelection(state_->GetAllUnits());
+    }
+    else if (leftButtonDown_)
+    {
+        ApplyClick(*state_, camera, screen, shiftHeld);
+    }
+    leftButtonDown_ = false;
+    dragSelectActive_ = false;
+}
+
+void FrameLoop::OnMouseMotion(Vector2 screen)
+{
+    if (!leftButtonDown_)
+    {
+        return;
+    }
+    const float dx = screen.x - dragStartScreen_.x;
+    const float dy = screen.y - dragStartScreen_.y;
+    const float dist = std::sqrt(dx * dx + dy * dy);
+    const Camera camera = GetCamera();
+    if (!dragSelectActive_ && dist >= kDragThresholdPx)
+    {
+        dragSelectActive_ = true;
+        state_->GetSelectionSystem().StartBoxSelection(camera.ScreenToWorld(dragStartScreen_));
+    }
+    if (dragSelectActive_)
+    {
+        state_->GetSelectionSystem().UpdateBoxSelection(camera.ScreenToWorld(screen));
+    }
+}
+
+void FrameLoop::OnMouseRightDown(Vector2 screen, bool /*shiftHeld*/)
+{
+    ApplyRightClick(*state_, GetCamera(), screen);
 }
