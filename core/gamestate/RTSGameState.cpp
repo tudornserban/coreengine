@@ -1,4 +1,5 @@
 #include "RTSGameState.h"
+#include "BehaviorContextAssembler.h"
 #include "../combat/Explosion.h"
 #include "RTSUnit.h"
 #include <algorithm>
@@ -182,46 +183,14 @@ void RTSGameState::Update(float deltaTime)
 
 BehaviorContext RTSGameState::BuildContextForUnit(IGameUnit* unit, float deltaTime)
 {
-    BehaviorContext ctx;
-    ctx.self = unit;
-    ctx.deltaTime = deltaTime;
-    ctx.mapCenter = GetMapCenter();
-    ctx.mapSize = GetMapSize();
-    ctx.mapBounds = GetMapSize();
-    ctx.rng = &rng_;  // Provide deterministic RNG to behaviors
-
-    Vector2 position = unit->GetPosition();
-    int team = unit->GetTeam();
-
-    // Find nearby units
-    for (const auto& other : units_)
+    std::vector<IGameUnit*> others;
+    others.reserve(units_.size());
+    for (const auto& u : units_)
     {
-        if (other.get() == unit) continue;
-
-        float distance = other->GetPosition().Distance(position);
-        if (distance > perceptionRadius_) continue;
-
-        if (other->GetTeam() == team)
-        {
-            ctx.nearbyAllies.push_back(other.get());
-        }
-        else
-        {
-            ctx.nearbyEnemies.push_back(other.get());
-        }
+        others.push_back(u.get());
     }
 
-    // Add static field items (map boundaries and obstacles)
-    ctx.staticFieldItems = mapEdgeItems_;
-
-    // Add static attractors
-    ctx.staticFieldItems.insert(
-        ctx.staticFieldItems.end(),
-        staticAttractors_.begin(),
-        staticAttractors_.end()
-    );
-
-    // Add obstacles from Map entities
+    std::vector<InfluenceFieldItem> obstacleItems;
     if (map_)
     {
         for (const auto& entity : map_->GetEntities())
@@ -229,12 +198,24 @@ BehaviorContext RTSGameState::BuildContextForUnit(IGameUnit* unit, float deltaTi
             auto* obstacleComp = entity->GetComponent<MapObstacleComponent>();
             if (obstacleComp)
             {
-                ctx.staticFieldItems.push_back(obstacleComp->GetInfluenceFieldItem());
+                obstacleItems.push_back(obstacleComp->GetInfluenceFieldItem());
             }
         }
     }
 
-    return ctx;
+    BehaviorContextInputs inputs{
+        unit,
+        deltaTime,
+        perceptionRadius_,
+        GetMapCenter(),
+        GetMapSize(),
+        &rng_,
+        others,
+        mapEdgeItems_,
+        staticAttractors_,
+        obstacleItems};
+
+    return AssembleBehaviorContext(inputs);
 }
 
 std::vector<IGameUnit*> RTSGameState::GetUnitsInRadius(Vector2 position, float radius) const
