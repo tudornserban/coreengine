@@ -156,9 +156,11 @@ void RasterizeCircle(const DrawCircle& circle, Framebuffer& fb)
     const int cx = static_cast<int>(std::lround(circle.center.x));
     const int cy = static_cast<int>(std::lround(circle.center.y));
     const float fillRadius = circle.radius;
-    const bool selectionRing = !RgbaEqual(circle.fill, circle.outline);
+    const bool hollowOnly = circle.fill.a == 0;
+    const bool selectionRing = !hollowOnly && !RgbaEqual(circle.fill, circle.outline);
     const float outlineRadius = selectionRing ? fillRadius + 2.0f : fillRadius;
     const int bound = static_cast<int>(std::ceil(outlineRadius));
+    const float innerBand = std::max(0.0f, fillRadius - 1.0f);
 
     for (int y = cy - bound; y <= cy + bound; ++y)
     {
@@ -167,7 +169,14 @@ void RasterizeCircle(const DrawCircle& circle, Framebuffer& fb)
             const float dx = static_cast<float>(x - cx);
             const float dy = static_cast<float>(y - cy);
             const float distSq = dx * dx + dy * dy;
-            if (distSq <= fillRadius * fillRadius)
+            if (hollowOnly)
+            {
+                if (distSq <= fillRadius * fillRadius && distSq >= innerBand * innerBand)
+                {
+                    PutPixel(fb, x, y, circle.outline);
+                }
+            }
+            else if (distSq <= fillRadius * fillRadius)
             {
                 PutPixel(fb, x, y, circle.fill);
             }
@@ -177,7 +186,10 @@ void RasterizeCircle(const DrawCircle& circle, Framebuffer& fb)
             }
         }
     }
-    PutPixel(fb, cx, cy, circle.fill);
+    if (!hollowOnly)
+    {
+        PutPixel(fb, cx, cy, circle.fill);
+    }
 }
 
 } // namespace

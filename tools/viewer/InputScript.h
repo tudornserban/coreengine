@@ -16,12 +16,14 @@ struct ScriptCommand
         Dest,
         Click,
         RightClick,
-        Box
+        Box,
+        Overlay
     };
 
     Kind kind = Kind::Frames;
     int intArg = 0;
     float floatArg = 0.0f;
+    std::string strArg;
     float x = 0.0f;
     float y = 0.0f;
     float x2 = 0.0f;
