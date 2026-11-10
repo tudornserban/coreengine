@@ -5,6 +5,10 @@ Agents **must** append a dated note under the matching `## [version]` section wh
 
 Entries describe the **published contract**: manifest `exports` and the headers under `core/interfaces/`, plus manifest `requires` edges. Follow [AGENTS.md](../../AGENTS.md) for major / minor / patch rules.
 
+## [1.4.0] — 2026-11-10
+
+- **Behavior:** `IGameLogicRenderer::GetSimulationSnapshot()` returns `const ISimulationSnapshot*`, default `nullptr`. `GetCurrentGameState()` stays `const RTSGameState*`.
+
 ## [1.3.0] — 2026-11-10
 
 - **Export:** `ISimulationSnapshot.h` — read-only map size and unit list used by snapshot serializers. `RTSGameState` implements it. `IGameLogicRenderer::GetCurrentGameState` is unchanged.

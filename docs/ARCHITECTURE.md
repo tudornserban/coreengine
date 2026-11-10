@@ -71,7 +71,7 @@ These are the FFI boundary contracts — the minimal surface area each system de
 | `IBehavior.h` | GenerateFieldItems() or CalculateAcceleration() + lifecycle hooks |
 | `ITransitionCondition.h` | Evaluate(BehaviorContext) → bool |
 | `IGameState.h` | OnEnter/OnExit/Update/Render |
-| `IGameLogicRenderer.h` | GetCurrentGameState() — read-only renderer contract |
+| `IGameLogicRenderer.h` | GetCurrentGameState() — read-only renderer contract; GetSimulationSnapshot() optional (default nullptr) |
 | `IInputReader.h` | PollEvents(), IsKeyDown(), GetMousePosition() etc. |
 | `ISerializer.h` | Serialize/Deserialize to byte buffer or string |
 | `IMapComponent.h` | ECS component base for map entities |

@@ -21,7 +21,7 @@ Include headers from the repo root, e.g. `#include "core/gamestate/RTSGameState.
 ### Contract highlights
 
 - **`GetCurrentGameState`** returns `const RTSGameState*` (do not widen to non-const without an explicit API change).
-- **`RTSGameState`** implements **`ISimulationSnapshot`** (`GetMapSize`, `GetAllUnits`) for serializers; renderer APIs unchanged.
+- **`RTSGameState`** implements **`ISimulationSnapshot`** (`GetMapSize`, `GetAllUnits`) for serializers; **`IGameLogicRenderer::GetSimulationSnapshot()`** defaults to `nullptr` until renderers override it.
 - **`BehaviorContext::self`** remains `IGameUnit*`; gamestate wires concrete units without changing the AI contract.
 - **`RTSGameState::BuildContextForUnit`** delegates to internal **`AssembleBehaviorContext`** (`BehaviorContextAssembler.h` / `.cpp`); not a manifest export.
 - **`RTSGameState.cpp`** may include sibling `RTSUnit.h` (same module).
