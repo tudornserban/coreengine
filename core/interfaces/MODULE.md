@@ -22,6 +22,7 @@ Include headers from the repo root, e.g. `#include "core/interfaces/IGameUnit.h"
 | `IGameLogicRenderer` | class | `IGameLogicRenderer.h` | Read-only renderer; `RTSGameState` forward-declared |
 | `ISerializer` | class | `ISerializer.h` | Byte/string serialization contract |
 | `IMapComponent` | class | `IMapComponent.h` | Map ECS component contract |
+| `ISimulationSnapshot` | class | `ISimulationSnapshot.h` | Read-only map size + unit list for snapshot serializers |
 
 ## Dependencies (`requires`)
 

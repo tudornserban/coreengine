@@ -136,6 +136,16 @@ TEST_F(RTSGameStateContextCharacterizationTest, NearbyAlliesEnemiesOrderAndPerce
     }
 }
 
+TEST_F(RTSGameStateContextCharacterizationTest, NearbyUnitAtExactlyPerceptionRadiusIsIncluded) {
+    RTSUnit* self = AddRts(state, Vector2(10.0f, 10.0f), 0);
+    AddRts(state, Vector2(10.0f, 310.0f), 0);
+
+    const BehaviorContext ctx = state.BuildContextForUnit(self, 0.016f);
+    ASSERT_EQ(ctx.nearbyAllies.size(), 1u);
+    EXPECT_FLOAT_EQ(ctx.nearbyAllies[0]->GetPosition().x, 10.0f);
+    EXPECT_FLOAT_EQ(ctx.nearbyAllies[0]->GetPosition().y, 310.0f);
+}
+
 TEST_F(RTSGameStateContextCharacterizationTest, StaticFieldItemsAttractorAndObstacle) {
     RTSUnit* self = AddRts(state, Vector2(10.0f, 10.0f), 0);
 

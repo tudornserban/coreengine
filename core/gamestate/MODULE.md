@@ -12,7 +12,7 @@ Include headers from the repo root, e.g. `#include "core/gamestate/RTSGameState.
 
 | Symbol | Kind | Header | Notes |
 |--------|------|--------|-------|
-| `RTSGameState` | class | `RTSGameState.h` | Main simulation step (`Update`, units, map, combat systems) |
+| `RTSGameState` | class | `RTSGameState.h` | Main simulation step (`Update`, units, map, combat systems); implements `ISimulationSnapshot` |
 | `RTSUnit` | class | `RTSUnit.h` | Concrete unit; AI FSM + kinematics/agent interfaces |
 | `GameStateManager` | class | `GameStateManager.h` | Menu / mission state holder (`currentState` + `GameStateType`) |
 | `IGameState` | header | `IGameState.h` | Legacy forwarder → `core/interfaces/IGameState.h` |
@@ -21,6 +21,7 @@ Include headers from the repo root, e.g. `#include "core/gamestate/RTSGameState.
 ### Contract highlights
 
 - **`GetCurrentGameState`** returns `const RTSGameState*` (do not widen to non-const without an explicit API change).
+- **`RTSGameState`** implements **`ISimulationSnapshot`** (`GetMapSize`, `GetAllUnits`) for serializers; renderer APIs unchanged.
 - **`BehaviorContext::self`** remains `IGameUnit*`; gamestate wires concrete units without changing the AI contract.
 - **`RTSGameState::BuildContextForUnit`** delegates to internal **`AssembleBehaviorContext`** (`BehaviorContextAssembler.h` / `.cpp`); not a manifest export.
 - **`RTSGameState.cpp`** may include sibling `RTSUnit.h` (same module).

@@ -1,6 +1,6 @@
 {
   "id": "core.interfaces",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "path": "core/interfaces",
   "exports": [
     "IGameUnit",
@@ -12,7 +12,8 @@
     "IGameLogicRenderer",
     "IInputReader",
     "ISerializer",
-    "IMapComponent"
+    "IMapComponent",
+    "ISimulationSnapshot"
   ],
   "requires": {
     "core.math": "^1.0.0",

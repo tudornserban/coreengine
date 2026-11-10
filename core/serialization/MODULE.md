@@ -17,7 +17,8 @@ Include headers from the repo root, e.g. `#include "core/serialization/GameState
 ### Contract highlights
 
 - **Interfaces:** depend on `ISerializer` from `core/interfaces/`.
-- **Game state:** reads `RTSGameState` via `core/gamestate/` (manifest `requires` `core.gamestate`).
+- **Game state:** reads map size and units through `ISimulationSnapshot`; retains `GameStateSerializer(const RTSGameState*)` / `SetState` and the `core.gamestate` manifest edge (`.cpp` still includes `RTSGameState.h`).
+- **Overload:** `GameStateSerializer(const ISimulationSnapshot*)` / `SetSnapshot` for non-hub snapshot sources.
 
 ## Dependencies (`requires`)
 
