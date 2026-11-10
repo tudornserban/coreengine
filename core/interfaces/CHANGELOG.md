@@ -5,6 +5,10 @@ Agents **must** append a dated note under the matching `## [version]` section wh
 
 Entries describe the **published contract**: manifest `exports` and the headers under `core/interfaces/`, plus manifest `requires` edges. Follow [AGENTS.md](../../AGENTS.md) for major / minor / patch rules.
 
+## [1.3.0] — 2026-11-10
+
+- **Export:** `ISimulationSnapshot.h` — read-only map size and unit list used by snapshot serializers. `RTSGameState` implements it. `IGameLogicRenderer::GetCurrentGameState` is unchanged.
+
 ## [1.2.0] — 2026-11-06
 
 - **Export:** `IUnitAgent.h` — optional command surface (`SetAgentState`, `SetAgentParameter`) for units backed by an AI state machine. Implemented by `RTSUnit`; `CommandSystem` uses it instead of including `RTSUnit.h`.

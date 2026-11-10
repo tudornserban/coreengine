@@ -10,6 +10,7 @@
 #include "core/interfaces/IMapComponent.h"
 #include "core/interfaces/ISerializer.h"
 #include "core/interfaces/ITransitionCondition.h"
+#include "core/interfaces/ISimulationSnapshot.h"
 
 namespace {
 
