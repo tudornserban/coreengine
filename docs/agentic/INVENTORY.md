@@ -21,7 +21,7 @@ Modules below match **CMake source globs** and **ARCHITECTURE.md** layers. Subfo
 | `core.gameloop` | `core/gameloop/` | Fixed-timestep `GameLogicEngine`, deployment/think timers, playback | 4 |
 | `core.map` | `core/map/` (+ `MapComponents/`) | ECS-style map, placement validation | 5 |
 | `core.combat` | `core/combat/` | Selection, commands, explosions, combat manager | 4 |
-| `core.gamestate` | `core/gamestate/` | Simulation hub (`RTSGameState`, `RTSUnit`, selection/commands/collision/RNG); `GameStateManager` menu/mission stack — include enforcement R2.1 | 3 |
+| `core.gamestate` | `core/gamestate/` | Simulation hub (`RTSGameState`, `RTSUnit`, selection/commands/collision/RNG); `GameStateManager` single active menu/mission state — include enforcement R2.1 | 3 |
 | `core.serialization` | `core/serialization/` | Game state serialize/deserialize | 1 |
 | `core.ai_advanced` | `core/ai_advanced/` | Bot genomes, genetic trainer (experimental) | 1 |
 
@@ -157,7 +157,7 @@ flowchart BT
   adv --> gs
 ```
 
-*(Solid arrows = direct `#include` today or expected; collision→gamestate dashed in policy as **to remove**.)*
+*(Solid arrows = direct `#include` today or expected. `core.collision` depends on `IGameUnit` / `IUnitKinematics` only; standalone tests use `KinematicMockGameUnit` since R3.1 — not on `core.gamestate`.)*
 
 ---
 
