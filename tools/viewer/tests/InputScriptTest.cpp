@@ -12,12 +12,30 @@ TEST(InputScriptTest, PauseThenStepIsTwoCommands)
     EXPECT_EQ(cmds[1].kind, ScriptCommand::Kind::Step);
 }
 
-TEST(InputScriptTest, ClickLineIsParseErrorUntilV14)
+TEST(InputScriptTest, ParsesClickAndRightClick)
 {
     std::string error;
-    auto cmds = ParseScript("click 427 360\n", error);
-    EXPECT_FALSE(error.empty());
-    EXPECT_TRUE(cmds.empty());
+    auto cmds = ParseScript("click 426.7 360\nrclick 640 360\n", error);
+    ASSERT_TRUE(error.empty());
+    ASSERT_EQ(cmds.size(), 2u);
+    EXPECT_EQ(cmds[0].kind, ScriptCommand::Kind::Click);
+    EXPECT_NEAR(cmds[0].floatArg, 426.7f, 0.01f);
+    EXPECT_NEAR(cmds[0].x, 426.7f, 0.01f);
+    EXPECT_NEAR(cmds[0].y, 360.0f, 0.01f);
+    EXPECT_EQ(cmds[1].kind, ScriptCommand::Kind::RightClick);
+}
+
+TEST(InputScriptTest, ParsesBox)
+{
+    std::string error;
+    auto cmds = ParseScript("box 10 20 300 400\n", error);
+    ASSERT_TRUE(error.empty());
+    ASSERT_EQ(cmds.size(), 1u);
+    EXPECT_EQ(cmds[0].kind, ScriptCommand::Kind::Box);
+    EXPECT_FLOAT_EQ(cmds[0].x, 10.0f);
+    EXPECT_FLOAT_EQ(cmds[0].y, 20.0f);
+    EXPECT_FLOAT_EQ(cmds[0].x2, 300.0f);
+    EXPECT_FLOAT_EQ(cmds[0].y2, 400.0f);
 }
 
 TEST(InputScriptTest, ParsesDestPauseFrames)

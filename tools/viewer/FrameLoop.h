@@ -14,6 +14,15 @@
 #include <memory>
 #include <vector>
 
+class SelectionSystem;
+
+struct DrawList;
+
+void ApplyClick(RTSGameState& state, const Camera& camera, Vector2 screen, bool shiftHeld = false);
+void ApplyRightClick(RTSGameState& state, const Camera& camera, Vector2 screen);
+void ApplyBox(RTSGameState& state, const Camera& camera, Vector2 screenA, Vector2 screenB);
+void AppendSelectionBox(DrawList& list, const SelectionSystem& selection, const Camera& camera);
+
 class FrameLoop
 {
 public:
@@ -37,6 +46,11 @@ public:
 
     bool ExecuteScript(const std::vector<ScriptCommand>& commands, std::string& error);
 
+    void OnMouseLeftDown(Vector2 screen, bool shiftHeld);
+    void OnMouseLeftUp(Vector2 screen, bool shiftHeld);
+    void OnMouseMotion(Vector2 screen);
+    void OnMouseRightDown(Vector2 screen, bool shiftHeld);
+
 private:
     Preset preset_;
     std::uint64_t seed_;
@@ -45,6 +59,10 @@ private:
     std::unique_ptr<RTSGameState> state_;
     GameLogicEngine engine_;
     PlaybackController playback_;
+
+    bool leftButtonDown_ = false;
+    bool dragSelectActive_ = false;
+    Vector2 dragStartScreen_;
 
     void BindUpdateCallback();
     bool ApplyScriptCommand(const ScriptCommand& command, std::string& error);
