@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Scenario.h"
+
 #include <string>
 
 struct ViewerConfig
@@ -10,6 +12,7 @@ struct ViewerConfig
     int width = 1280;
     int height = 720;
     std::string scriptPath;
+    Preset preset = Preset::TwoUnits;
     bool parseError = false;
 };
 

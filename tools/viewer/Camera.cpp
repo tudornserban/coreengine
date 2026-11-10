@@ -17,6 +17,25 @@ Vector2 Camera::ScreenToWorld(Vector2 screen) const
         center.y + (screen.y - viewportH * 0.5f) / pixelsPerUnit);
 }
 
+void Camera::Pan(Vector2 screenDelta)
+{
+    center.x -= screenDelta.x / pixelsPerUnit;
+    center.y -= screenDelta.y / pixelsPerUnit;
+}
+
+void Camera::ZoomAt(Vector2 screen, float factor)
+{
+    if (factor <= 0.0f)
+    {
+        return;
+    }
+    const Vector2 anchorWorld = ScreenToWorld(screen);
+    pixelsPerUnit *= factor;
+    const Vector2 anchorAfter = ScreenToWorld(screen);
+    center.x += anchorWorld.x - anchorAfter.x;
+    center.y += anchorWorld.y - anchorAfter.y;
+}
+
 Camera FitMap(Vector2 mapSize, int viewportW, int viewportH, float marginPx)
 {
     Camera camera;

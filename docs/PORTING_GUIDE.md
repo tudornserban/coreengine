@@ -150,17 +150,14 @@ int main()
 
 ---
 
-## SDL2 (VenusWars pattern)
+## SDL2
 
-```cpp
-#include "CoreEngine/core/gamestate/RTSGameState.h"
-#include "CoreEngine/core/gameloop/GameLogicEngine.h"
-#include "CoreEngine/platform/sdl2/SDLRenderer.h"
-#include "CoreEngine/platform/sdl2/SDLInputReader.h"
-#include <SDL.h>
+For a runnable SDL2 window that ticks `RTSGameState` through `GameLogicEngine` without modifying `platform/sdl2` stubs, use the optional viewer in this repository:
 
-// See VenusWars/src/main.cpp for full reference implementation.
-```
+- Enable `-DCOREENGINE_BUILD_SDL2_VIEWER=ON` (default OFF), install `libsdl2-dev`, build `coreengine_sdl2_viewer`.
+- Full flag/key/preset/script documentation: [VIEWER.md](VIEWER.md).
+
+Game-specific ports can still implement `SDLRenderer` / `SDLInputReader` under `platform/sdl2` when `BUILD_SDL2=ON`; that path is separate from the optional viewer tool.
 
 ---
 

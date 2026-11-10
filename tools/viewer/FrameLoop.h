@@ -54,6 +54,10 @@ public:
     void OnMouseLeftUp(Vector2 screen, bool shiftHeld);
     void OnMouseMotion(Vector2 screen);
     void OnMouseRightDown(Vector2 screen, bool shiftHeld);
+    void OnMouseWheel(float screenX, float screenY, float wheelDelta);
+    void OnMouseMiddleDown(Vector2 screen);
+    void OnMouseMiddleUp(Vector2 screen);
+    void OnMouseMiddleMotion(Vector2 screen);
 
     void ToggleOverlayFromFKey(int fKeyIndex);
     void ApplyViewerKeyAction(const ViewerKeyAction& action);
@@ -75,8 +79,14 @@ private:
     OverlayFlags overlayFlags_;
     CollisionRecorder collisionRecorder_;
     std::vector<ExplosionEcho> explosionEchoes_;
+    std::vector<ScenarioEvent> pendingEvents_;
+    Camera camera_;
+    bool middleMouseDown_ = false;
+    Vector2 middleDragLastScreen_;
 
     void BindUpdateCallback();
+    void FirePendingScenarioEvents();
+    void RefreshCameraFromMap();
     void SubscribeCollisionRecorder();
     void UnsubscribeCollisionRecorder();
     bool ApplyScriptCommand(const ScriptCommand& command, std::string& error);

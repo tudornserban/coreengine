@@ -44,6 +44,7 @@ if(BUILD_TESTS)
         tests/FrameLoopResetTest.cpp
         tests/CommandScriptTest.cpp
         tests/OverlayTest.cpp
+        tests/ScenarioTest.cpp
     )
     target_link_libraries(coreengine_sdl2_viewer_tests PRIVATE
         coreengine_viewer_logic

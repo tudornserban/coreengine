@@ -193,3 +193,9 @@ each frame:
 | `TerritoryCalculator` in core | Shared win condition system for DynamicGO + AscendantExpanse |
 | `DeploymentTimer` in core | Universal spawn charge system across all four games |
 | `IGameLogicRenderer` read-only | Logic state never mutated by renderer |
+
+---
+
+## Optional viewer (`tools/viewer/`)
+
+`core/` remains free of SDL, platform adapters, and FFI headers. The optional SDL2 simulation viewer (`-DCOREENGINE_BUILD_SDL2_VIEWER=ON`, default OFF) lives entirely under `tools/viewer/` and links the existing `coreengine` static library. It is not registered in `docs/agentic/modules/` and does not change engine simulation code. See [VIEWER.md](VIEWER.md).

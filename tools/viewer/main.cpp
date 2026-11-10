@@ -37,7 +37,7 @@ int main(int argc, char** argv)
         return 2;
     }
 
-    FrameLoop loop(Preset::TwoUnits, kDefaultSeed, config.width, config.height);
+    FrameLoop loop(config.preset, kDefaultSeed, config.width, config.height);
 
     if (!config.scriptPath.empty())
     {
