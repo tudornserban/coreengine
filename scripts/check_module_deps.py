@@ -37,10 +37,14 @@ SEMVER_RE = re.compile(
 )
 ID_RE = re.compile(r"^[a-z][a-z0-9]*(\.[a-z][a-z0-9_]*)+$")
 INCLUDE_RE = re.compile(r'^\s*#\s*include\s+([<"])([^>"]+)[>"]', re.MULTILINE)
-STANDALONE_TEST_TARGET_LINK_RE = re.compile(
-    r"target_link_libraries\(\s*(coreengine_[a-z0-9_]+_tests)\s*(.*?)^\s*\)",
-    re.MULTILINE | re.DOTALL,
+STANDALONE_TEST_TARGET_RE = re.compile(r"^coreengine_[a-z0-9_]+_tests$")
+ADD_COREENGINE_OBJECT_LIB_RE = re.compile(
+    r"add_library\s*\(\s*(coreengine_[a-z0-9_]+)\s+OBJECT\b",
+    re.IGNORECASE,
 )
+CMAKE_LINK_SCOPE_KEYWORDS = frozenset({"PRIVATE", "PUBLIC", "INTERFACE"})
+GENEXPR_COREENGINE_RE = re.compile(r"\$<[^:>]+:(coreengine_[a-z0-9_]+)>")
+UNRESOLVED_CMAKE_VAR_RE = re.compile(r"\$\{")
 
 # Phase 2: strict include boundaries. Other modules remain manifest-only until opted in.
 INCLUDE_ENFORCED_MODULES = frozenset(
@@ -65,6 +69,7 @@ INCLUDE_ENFORCED_MODULES = frozenset(
 class CheckResult:
     errors: list[str]
     warnings: list[str]
+    standalone_link_check_ran: bool = False
 
     @property
     def ok(self) -> bool:
@@ -375,24 +380,30 @@ def check_include_line(
     return f"include {include_path!r} resolves outside {module_root.relative_to(repo_root)}"
 
 
-def build_coreengine_lib_to_module_map(manifests: dict[str, dict]) -> dict[str, str]:
-    """Map `coreengine_*` OBJECT library names to manifest module ids.
+def build_coreengine_lib_to_module_map(
+    repo_root: Path,
+    manifests: dict[str, dict],
+) -> dict[str, str]:
+    """Map ``coreengine_*`` OBJECT library target names to manifest module ids.
 
-    CMake names object libraries from each module's manifest ``path`` under ``core/``:
-    directory segments stay separated by underscores in the target name, and dots in
-    the module id replace those underscores (``core/influence_types`` →
-    ``coreengine_influence_types`` → ``core.influence.types``). Header-only
-    ``core.interfaces`` has no ``coreengine_*`` object target and is omitted.
+    Only targets declared via ``add_library(... OBJECT ...)`` in ``core/*/CMakeLists.txt``
+    are included (e.g. header-only ``core.interfaces`` has no entry).
     """
-    mapping: dict[str, str] = {}
+    path_to_module: dict[str, str] = {}
     for mid, data in manifests.items():
         path = data.get("path", "")
-        if not path.startswith("core/"):
+        if path.startswith("core/"):
+            path_to_module[path] = mid
+
+    mapping: dict[str, str] = {}
+    for cmake_path in sorted(repo_root.glob("core/*/CMakeLists.txt")):
+        rel_dir = cmake_path.parent.relative_to(repo_root).as_posix()
+        mid = path_to_module.get(rel_dir)
+        if mid is None:
             continue
-        suffix = path.removeprefix("core/").replace("/", "_")
-        if not suffix:
-            continue
-        mapping[f"coreengine_{suffix}"] = mid
+        text = cmake_path.read_text(encoding="utf-8", errors="replace")
+        for match in ADD_COREENGINE_OBJECT_LIB_RE.finditer(text):
+            mapping[match.group(1)] = mid
     return mapping
 
 
@@ -420,23 +431,104 @@ def transitive_require_closure(module_id: str, manifests: dict[str, dict]) -> se
     return closure
 
 
-def parse_standalone_test_link_libraries(cmake_text: str) -> dict[str, list[str]]:
+def _strip_cmake_comments(text: str) -> str:
+    out: list[str] = []
+    for line in text.splitlines():
+        out.append(re.sub(r"#.*", "", line))
+    return "\n".join(out)
+
+
+def _cmake_unquote(token: str) -> str:
+    if len(token) >= 2 and token[0] == token[-1] and token[0] in "\"'":
+        return token[1:-1]
+    return token
+
+
+def _tokenize_target_link_body(body: str) -> tuple[list[str], list[str]]:
+    """Return (coreengine libs, errors) from a target_link_libraries argument list."""
+    errors: list[str] = []
+    cleaned = _strip_cmake_comments(body)
+    # Unwrap common generator expressions that embed object-library targets.
+    cleaned = GENEXPR_COREENGINE_RE.sub(r"\1", cleaned)
+    raw_tokens = re.split(r"[\s,]+", cleaned)
+    libs: list[str] = []
+    for raw in raw_tokens:
+        token = raw.strip()
+        if not token:
+            continue
+        token = _cmake_unquote(token)
+        if token in CMAKE_LINK_SCOPE_KEYWORDS:
+            continue
+        if token.startswith("GTest::") or token == "GTest::gtest_main":
+            continue
+        if UNRESOLVED_CMAKE_VAR_RE.search(token):
+            errors.append(
+                "standalone link check: unresolved CMake variable in target_link_libraries "
+                f"({token!r}); list coreengine_* object libraries explicitly instead of ${'{'}VAR{'}'} "
+                "or generator expressions the checker cannot expand"
+            )
+            continue
+        if token.startswith("$<"):
+            errors.append(
+                "standalone link check: unresolved generator expression in target_link_libraries "
+                f"({token!r}); list coreengine_* object libraries explicitly"
+            )
+            continue
+        if token.startswith("coreengine_"):
+            libs.append(token)
+    return libs, errors
+
+
+def _extract_target_link_calls(cmake_text: str) -> list[tuple[str, str]]:
+    """Find target_link_libraries( coreengine_*_tests ... ) and return (target, inner args)."""
+    calls: list[tuple[str, str]] = []
+    needle = "target_link_libraries"
+    pos = 0
+    while pos < len(cmake_text):
+        idx = cmake_text.find(needle, pos)
+        if idx < 0:
+            break
+        pos = idx + len(needle)
+        while pos < len(cmake_text) and cmake_text[pos].isspace():
+            pos += 1
+        if pos >= len(cmake_text) or cmake_text[pos] != "(":
+            continue
+        depth = 0
+        start = pos
+        i = pos
+        while i < len(cmake_text):
+            ch = cmake_text[i]
+            if ch == "(":
+                depth += 1
+            elif ch == ")":
+                depth -= 1
+                if depth == 0:
+                    inner = cmake_text[start + 1 : i]
+                    parts = inner.split(None, 1)
+                    if parts:
+                        target = parts[0].strip()
+                        body = parts[1] if len(parts) > 1 else ""
+                        if STANDALONE_TEST_TARGET_RE.match(target):
+                            calls.append((target, body))
+                    pos = i + 1
+                    break
+            i += 1
+        else:
+            break
+    return calls
+
+
+def parse_standalone_test_link_libraries(cmake_text: str) -> tuple[dict[str, list[str]], list[str]]:
     """Extract ``coreengine_*`` link items for standalone ``coreengine_*_tests`` executables."""
-    links: dict[str, list[str]] = {}
-    for match in STANDALONE_TEST_TARGET_LINK_RE.finditer(cmake_text):
-        target = match.group(1)
-        body = match.group(2)
-        libs: list[str] = []
-        for line in body.splitlines():
-            token = line.strip()
-            if not token or token.startswith("#"):
-                continue
-            name = token.split()[0]
-            if name.startswith("coreengine_"):
-                libs.append(name)
+    links: dict[str, set[str]] = {}
+    errors: list[str] = []
+    for target, body in _extract_target_link_calls(cmake_text):
+        libs, tok_errors = _tokenize_target_link_body(body)
+        errors.extend(tok_errors)
         if target not in links:
-            links[target] = libs
-    return links
+            links[target] = set()
+        links[target].update(libs)
+    return {t: sorted(v) for t, v in links.items()}, errors
 
 
 def check_standalone_test_link_libraries(
@@ -444,15 +536,33 @@ def check_standalone_test_link_libraries(
     manifests: dict[str, dict],
     *,
     cmake_path: Path | None = None,
-) -> list[str]:
-    """Fail when a COREENGINE_*_STANDALONE test executable links outside allowed object libs."""
+    require_top_level_cmake: bool = False,
+) -> tuple[list[str], bool]:
+    """Fail when a COREENGINE_*_STANDALONE test executable links outside allowed object libs.
+
+    Returns (errors, ran). When the default top-level ``CMakeLists.txt`` is missing and
+    ``require_top_level_cmake`` is true, returns a failure and ``ran=False``. Fixture trees
+    may omit the check by passing ``cmake_path`` or setting ``require_top_level_cmake`` false
+    only when not using the real repo root.
+    """
     cmake_file = cmake_path if cmake_path is not None else repo_root / "CMakeLists.txt"
     if not cmake_file.is_file():
-        return []
+        if cmake_path is None and require_top_level_cmake:
+            return (
+                [
+                    "standalone link check: missing top-level CMakeLists.txt "
+                    f"at {cmake_file}; "
+                    "cannot validate COREENGINE_*_STANDALONE target_link_libraries"
+                ],
+                False,
+            )
+        return [], False
 
-    lib_to_module = build_coreengine_lib_to_module_map(manifests)
-    test_links = parse_standalone_test_link_libraries(cmake_file.read_text(encoding="utf-8"))
-    errors: list[str] = []
+    lib_to_module = build_coreengine_lib_to_module_map(repo_root, manifests)
+    test_links, parse_errors = parse_standalone_test_link_libraries(
+        cmake_file.read_text(encoding="utf-8", errors="replace")
+    )
+    errors: list[str] = list(parse_errors)
 
     for test_target, linked_libs in sorted(test_links.items()):
         owner = module_id_from_standalone_test_target(test_target)
@@ -471,7 +581,7 @@ def check_standalone_test_link_libraries(
             if dep_module is None:
                 errors.append(
                     f"{test_target}: links unknown or non-module library {lib!r} "
-                    f"(expected coreengine_* object libraries declared under core/)"
+                    f"(expected coreengine_* OBJECT libraries declared in core/*/CMakeLists.txt)"
                 )
                 continue
             if dep_module not in allowed_modules:
@@ -481,7 +591,7 @@ def check_standalone_test_link_libraries(
                     f"standalone {owner!r} may only link object libraries for {owner!r} "
                     f"and its manifest requires closure: {allowed_sorted}"
                 )
-    return errors
+    return errors, True
 
 
 def check_include_boundaries(
@@ -522,6 +632,7 @@ def run_checks(
     repo_root: Path,
     *,
     enforced_modules: frozenset[str] | None = None,
+    skip_standalone_link_check: bool = False,
 ) -> CheckResult:
     registry_path = repo_root / "docs/agentic/modules/registry.json"
     modules_dir = repo_root / "docs/agentic/modules"
@@ -543,8 +654,14 @@ def run_checks(
 
     errors.extend(check_include_boundaries(repo_root, module_ids, manifests, enforced))
 
-    if not manifest_errors and manifests:
-        errors.extend(check_standalone_test_link_libraries(repo_root, manifests))
+    standalone_link_check_ran = False
+    if not skip_standalone_link_check and not manifest_errors and manifests:
+        link_errors, standalone_link_check_ran = check_standalone_test_link_libraries(
+            repo_root,
+            manifests,
+            require_top_level_cmake=True,
+        )
+        errors.extend(link_errors)
 
     skipped = set(module_ids) - set(enforced)
     if skipped:
@@ -554,7 +671,11 @@ def run_checks(
             + " (manifest validation only)"
         )
 
-    return CheckResult(errors=errors, warnings=warnings)
+    return CheckResult(
+        errors=errors,
+        warnings=warnings,
+        standalone_link_check_ran=standalone_link_check_ran,
+    )
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -572,7 +693,8 @@ def main(argv: list[str] | None = None) -> int:
     print(f"OK: {n} module manifests validated.")
     print(f"OK: dependency map matches committed {DEPENDENCY_GRAPH_REL} and {DEPENDENCY_SUMMARY_REL}.")
     print(f"OK: include boundaries enforced for: {enforced}")
-    print("OK: COREENGINE_*_STANDALONE test link libraries match manifest requires closure.")
+    if result.standalone_link_check_ran:
+        print("OK: COREENGINE_*_STANDALONE test link libraries match manifest requires closure.")
     return 0
 
 

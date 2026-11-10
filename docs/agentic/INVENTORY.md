@@ -157,7 +157,7 @@ flowchart BT
   adv --> gs
 ```
 
-*(Solid arrows = direct `#include` today or expected. `core.collision` depends on `IGameUnit` / `IUnitKinematics` only; standalone tests use `KinematicMockGameUnit` since R3.1 — not on `core.gamestate`.)*
+*(Solid arrows = direct `#include` today or expected. For game units, `core.collision`’s only unit-facing dependencies are `IGameUnit` / `IUnitKinematics` (no `RTSUnit` / `core.gamestate`); per its manifest it also requires `core.math`, `core.logging`, and `core.influence.types`. Standalone tests use `KinematicMockGameUnit` since R3.1.)*
 
 ---
 
