@@ -47,6 +47,7 @@ Modules below match **CMake source globs** and **ARCHITECTURE.md** layers. Subfo
 | `BUILD_TESTS` | OFF | `coreengine_tests` + `ctest` discovery |
 | `BUILD_SDL2` | OFF | `coreengine_sdl2` (needs SDL2) |
 | `BUILD_RAYLIB` | OFF | `coreengine_raylib` (needs raylib) |
+| `COREENGINE_BUILD_SDL2_VIEWER` | OFF | `coreengine_sdl2_viewer` + optional viewer tests (needs SDL2; `libsdl2-dev`) |
 | `COREENGINE_COLLISION_STANDALONE` | OFF | `coreengine_collision_tests` (collision + declared deps only; standalone target links math + influence types + logging + collision) |
 | `COREENGINE_COMBAT_STANDALONE` | OFF | `coreengine_combat_tests` (combat + declared deps only; standalone target links math + combat) |
 
