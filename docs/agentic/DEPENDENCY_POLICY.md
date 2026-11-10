@@ -1,6 +1,6 @@
 # Module dependency policy (draft)
 
-Enforcement is **active** for `core.math`, `core.influence.types`, `core.influence`, `core.logging`, `core.interfaces`, `core.gameloop`, `core.map`, `core.ai`, `core.serialization`, `core.collision`, `core.combat`, and `core.gamestate` (`scripts/check-module-deps.sh`). **`core.ai_advanced`** remains manifest-only until opted in. **`requires` graphs must be acyclic** — no checker exceptions.
+Enforcement is **active** for `core.math`, `core.influence.types`, `core.influence`, `core.logging`, `core.interfaces`, `core.gameloop`, `core.map`, `core.ai`, `core.serialization`, `core.collision`, `core.combat`, and `core.gamestate` (`scripts/check-module-deps.sh`). **`core.ai_advanced`** remains manifest-only until opted in. **`requires` graphs must be acyclic** — no checker exceptions. Standalone `COREENGINE_*_STANDALONE` test executables in the top-level `CMakeLists.txt` may only link `coreengine_*` object libraries for that module and the transitive closure of its manifest `requires` (header-only `core.interfaces` has no object target).
 
 The committed manifest-only **`requires` graph** (machine-readable JSON plus a human summary) lives under [`docs/deps/`](../deps/). `scripts/check_module_deps.py` regenerates and byte-compares these files on every run so committed artifacts cannot drift from the manifests.
 

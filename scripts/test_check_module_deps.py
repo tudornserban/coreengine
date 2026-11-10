@@ -14,6 +14,7 @@ from check_module_deps import (
     INCLUDE_ENFORCED_MODULES,
     build_dependency_graph,
     check_include_boundaries,
+    check_standalone_test_link_libraries,
     detect_requires_cycles,
     render_dependency_graph_json,
     render_dependency_summary_md,
@@ -28,6 +29,87 @@ class CheckModuleDepsRegression(unittest.TestCase):
         repo_root = Path(__file__).resolve().parents[1]
         result = run_checks(repo_root)
         self.assertTrue(result.ok, result.errors)
+
+    def test_real_cmake_standalone_links_pass(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        manifests = self._manifests(repo_root)
+        errors = check_standalone_test_link_libraries(repo_root, manifests)
+        self.assertEqual(errors, [])
+
+    def test_standalone_collision_illegal_gamestate_link_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            modules_dir = root / "docs/agentic/modules"
+            registry = json.loads((modules_dir / "registry.json").read_text(encoding="utf-8"))
+            registry["modules"].append("core.gamestate")
+            (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+            (modules_dir / "core.gamestate.module.json").write_text(
+                json.dumps(
+                    {
+                        "id": "core.gamestate",
+                        "version": "1.0.0",
+                        "path": "core/gamestate",
+                        "exports": ["RTSGameState"],
+                        "requires": {"core.math": "^1.0.0"},
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (root / "core/gamestate").mkdir(parents=True, exist_ok=True)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "\n".join(
+                    [
+                        "if(COREENGINE_COLLISION_STANDALONE)",
+                        "add_executable(coreengine_collision_tests foo.cpp)",
+                        "target_link_libraries(coreengine_collision_tests",
+                        "    coreengine_collision",
+                        "    coreengine_gamestate",
+                        "    coreengine_math",
+                        "    GTest::gtest",
+                        ")",
+                        "endif()",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            errors = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertEqual(len(errors), 1, errors)
+            self.assertIn("coreengine_collision_tests", errors[0])
+            self.assertIn("coreengine_gamestate", errors[0])
+            self.assertIn("core.gamestate", errors[0])
+
+    def test_standalone_serialization_transitive_links_pass(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_gamestate_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "\n".join(
+                    [
+                        "if(COREENGINE_SERIALIZATION_STANDALONE)",
+                        "add_executable(coreengine_serialization_tests foo.cpp)",
+                        "target_link_libraries(coreengine_serialization_tests",
+                        "    coreengine_serialization",
+                        "    coreengine_gamestate",
+                        "    coreengine_collision",
+                        "    coreengine_combat",
+                        "    coreengine_ai",
+                        "    coreengine_map",
+                        "    coreengine_influence",
+                        "    coreengine_influence_types",
+                        "    coreengine_logging",
+                        "    coreengine_math",
+                        "    GTest::gtest",
+                        ")",
+                        "endif()",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            errors = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertEqual(errors, [], errors)
 
     def test_core_interfaces_changelog_requires_version_heading(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

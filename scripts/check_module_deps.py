@@ -37,6 +37,10 @@ SEMVER_RE = re.compile(
 )
 ID_RE = re.compile(r"^[a-z][a-z0-9]*(\.[a-z][a-z0-9_]*)+$")
 INCLUDE_RE = re.compile(r'^\s*#\s*include\s+([<"])([^>"]+)[>"]', re.MULTILINE)
+STANDALONE_TEST_TARGET_LINK_RE = re.compile(
+    r"target_link_libraries\(\s*(coreengine_[a-z0-9_]+_tests)\s*(.*?)^\s*\)",
+    re.MULTILINE | re.DOTALL,
+)
 
 # Phase 2: strict include boundaries. Other modules remain manifest-only until opted in.
 INCLUDE_ENFORCED_MODULES = frozenset(
@@ -371,6 +375,115 @@ def check_include_line(
     return f"include {include_path!r} resolves outside {module_root.relative_to(repo_root)}"
 
 
+def build_coreengine_lib_to_module_map(manifests: dict[str, dict]) -> dict[str, str]:
+    """Map `coreengine_*` OBJECT library names to manifest module ids.
+
+    CMake names object libraries from each module's manifest ``path`` under ``core/``:
+    directory segments stay separated by underscores in the target name, and dots in
+    the module id replace those underscores (``core/influence_types`` →
+    ``coreengine_influence_types`` → ``core.influence.types``). Header-only
+    ``core.interfaces`` has no ``coreengine_*`` object target and is omitted.
+    """
+    mapping: dict[str, str] = {}
+    for mid, data in manifests.items():
+        path = data.get("path", "")
+        if not path.startswith("core/"):
+            continue
+        suffix = path.removeprefix("core/").replace("/", "_")
+        if not suffix:
+            continue
+        mapping[f"coreengine_{suffix}"] = mid
+    return mapping
+
+
+def module_id_from_standalone_test_target(test_target: str) -> str | None:
+    """``coreengine_collision_tests`` → ``core.collision`` (same suffix rule as libraries)."""
+    if not test_target.startswith("coreengine_") or not test_target.endswith("_tests"):
+        return None
+    suffix = test_target.removeprefix("coreengine_").removesuffix("_tests")
+    if not suffix:
+        return None
+    return "core." + suffix.replace("_", ".")
+
+
+def transitive_require_closure(module_id: str, manifests: dict[str, dict]) -> set[str]:
+    """Module id plus all manifest ``requires`` descendants (transitive)."""
+    closure: set[str] = set()
+    stack = [module_id]
+    while stack:
+        mid = stack.pop()
+        if mid in closure:
+            continue
+        closure.add(mid)
+        for dep in (manifests.get(mid, {}).get("requires") or {}):
+            stack.append(dep)
+    return closure
+
+
+def parse_standalone_test_link_libraries(cmake_text: str) -> dict[str, list[str]]:
+    """Extract ``coreengine_*`` link items for standalone ``coreengine_*_tests`` executables."""
+    links: dict[str, list[str]] = {}
+    for match in STANDALONE_TEST_TARGET_LINK_RE.finditer(cmake_text):
+        target = match.group(1)
+        body = match.group(2)
+        libs: list[str] = []
+        for line in body.splitlines():
+            token = line.strip()
+            if not token or token.startswith("#"):
+                continue
+            name = token.split()[0]
+            if name.startswith("coreengine_"):
+                libs.append(name)
+        if target not in links:
+            links[target] = libs
+    return links
+
+
+def check_standalone_test_link_libraries(
+    repo_root: Path,
+    manifests: dict[str, dict],
+    *,
+    cmake_path: Path | None = None,
+) -> list[str]:
+    """Fail when a COREENGINE_*_STANDALONE test executable links outside allowed object libs."""
+    cmake_file = cmake_path if cmake_path is not None else repo_root / "CMakeLists.txt"
+    if not cmake_file.is_file():
+        return []
+
+    lib_to_module = build_coreengine_lib_to_module_map(manifests)
+    test_links = parse_standalone_test_link_libraries(cmake_file.read_text(encoding="utf-8"))
+    errors: list[str] = []
+
+    for test_target, linked_libs in sorted(test_links.items()):
+        owner = module_id_from_standalone_test_target(test_target)
+        if owner is None:
+            errors.append(f"standalone link check: unrecognized test target name {test_target!r}")
+            continue
+        if owner not in manifests:
+            errors.append(
+                f"standalone link check: test target {test_target!r} maps to unknown module {owner!r}"
+            )
+            continue
+
+        allowed_modules = transitive_require_closure(owner, manifests)
+        for lib in linked_libs:
+            dep_module = lib_to_module.get(lib)
+            if dep_module is None:
+                errors.append(
+                    f"{test_target}: links unknown or non-module library {lib!r} "
+                    f"(expected coreengine_* object libraries declared under core/)"
+                )
+                continue
+            if dep_module not in allowed_modules:
+                allowed_sorted = ", ".join(sorted(allowed_modules))
+                errors.append(
+                    f"{test_target}: illegal link to {lib!r} ({dep_module!r}); "
+                    f"standalone {owner!r} may only link object libraries for {owner!r} "
+                    f"and its manifest requires closure: {allowed_sorted}"
+                )
+    return errors
+
+
 def check_include_boundaries(
     repo_root: Path,
     module_ids: list[str],
@@ -430,6 +543,9 @@ def run_checks(
 
     errors.extend(check_include_boundaries(repo_root, module_ids, manifests, enforced))
 
+    if not manifest_errors and manifests:
+        errors.extend(check_standalone_test_link_libraries(repo_root, manifests))
+
     skipped = set(module_ids) - set(enforced)
     if skipped:
         warnings.append(
@@ -456,6 +572,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"OK: {n} module manifests validated.")
     print(f"OK: dependency map matches committed {DEPENDENCY_GRAPH_REL} and {DEPENDENCY_SUMMARY_REL}.")
     print(f"OK: include boundaries enforced for: {enforced}")
+    print("OK: COREENGINE_*_STANDALONE test link libraries match manifest requires closure.")
     return 0
 
 
