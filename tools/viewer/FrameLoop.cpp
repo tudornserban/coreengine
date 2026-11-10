@@ -352,6 +352,19 @@ void FrameLoop::OnMouseRightDown(Vector2 screen, bool /*shiftHeld*/)
     ApplyRightClick(*state_, GetCamera(), screen);
 }
 
+void FrameLoop::ApplyViewerKeyAction(const ViewerKeyAction& action)
+{
+    if (action.kind == ViewerKeyActionKind::OverlayToggle)
+    {
+        ToggleOverlayFromFKey(action.overlayToggleIndex);
+        return;
+    }
+    if (action.kind == ViewerKeyActionKind::Playback)
+    {
+        ApplyPlaybackCommand(action.playback);
+    }
+}
+
 void FrameLoop::ToggleOverlayFromFKey(int fKeyIndex)
 {
     switch (OverlayKeyFromViewerFKey(fKeyIndex))

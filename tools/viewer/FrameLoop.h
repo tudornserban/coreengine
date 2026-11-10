@@ -6,6 +6,7 @@
 #include "PlaybackControl.h"
 #include "Overlay.h"
 #include "Scenario.h"
+#include "ViewerInput.h"
 
 #include "core/gamestate/RTSGameState.h"
 #include "core/gameloop/GameLogicEngine.h"
@@ -55,6 +56,7 @@ public:
     void OnMouseRightDown(Vector2 screen, bool shiftHeld);
 
     void ToggleOverlayFromFKey(int fKeyIndex);
+    void ApplyViewerKeyAction(const ViewerKeyAction& action);
     const OverlayFlags& GetOverlayFlags() const { return overlayFlags_; }
 
 private:

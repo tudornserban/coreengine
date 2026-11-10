@@ -11,6 +11,7 @@ add_library(coreengine_viewer_logic STATIC
     InputScript.cpp
     FrameLoop.cpp
     Overlay.cpp
+    ViewerInput.cpp
 )
 target_link_libraries(coreengine_viewer_logic PUBLIC coreengine)
 target_include_directories(coreengine_viewer_logic PUBLIC

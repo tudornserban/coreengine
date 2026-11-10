@@ -1,47 +1,8 @@
 #include "SdlPresenter.h"
 
-#include "Camera.h"
-#include "Overlay.h"
-#include "PlaybackControl.h"
+#include "ViewerInput.h"
 
 #include <SDL.h>
-
-namespace
-{
-
-ViewerKey KeyFromSdl(int sdlKey)
-{
-    switch (sdlKey)
-    {
-    case SDLK_SPACE:
-        return ViewerKey::Space;
-    case SDLK_1:
-        return ViewerKey::Digit1;
-    case SDLK_2:
-        return ViewerKey::Digit2;
-    case SDLK_3:
-        return ViewerKey::Digit3;
-    case SDLK_4:
-        return ViewerKey::Digit4;
-    case SDLK_PERIOD:
-        return ViewerKey::Period;
-    case SDLK_r:
-        return ViewerKey::R;
-    default:
-        return ViewerKey::Unknown;
-    }
-}
-
-void ApplyViewerKey(FrameLoop& loop, ViewerKey key)
-{
-    if (key == ViewerKey::Unknown)
-    {
-        return;
-    }
-    loop.ApplyPlaybackCommand(CommandForKey(key));
-}
-
-} // namespace
 
 bool PresentSimulation(FrameLoop& loop, const ViewerConfig& config, Framebuffer& framebuffer)
 {
@@ -129,16 +90,7 @@ bool PresentSimulation(FrameLoop& loop, const ViewerConfig& config, Framebuffer&
             }
             else if (event.type == SDL_KEYDOWN)
             {
-                const int sym = event.key.keysym.sym;
-                const int fKeyIndex = OverlayFKeyIndexFromKeycode(sym);
-                if (fKeyIndex > 0)
-                {
-                    loop.ToggleOverlayFromFKey(fKeyIndex);
-                }
-                else
-                {
-                    ApplyViewerKey(loop, KeyFromSdl(sym));
-                }
+                loop.ApplyViewerKeyAction(HandleViewerKeycode(event.key.keysym.sym));
             }
             else if (event.type == SDL_MOUSEBUTTONDOWN)
             {

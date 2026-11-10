@@ -6,6 +6,7 @@
 #include "Raster.h"
 #include "Scenario.h"
 #include "SnapshotRenderer.h"
+#include "ViewerInput.h"
 
 #include "core/ai/Behaviors/SeekBehavior.h"
 #include "core/combat/Explosion.h"
@@ -63,6 +64,14 @@ bool RgbaEqual(Rgba a, Rgba b)
     return a.r == b.r && a.g == b.g && a.b == b.b && a.a == b.a;
 }
 
+void ExpectRgbaLiteral(const Rgba& color, std::uint8_t r, std::uint8_t g, std::uint8_t b, std::uint8_t a)
+{
+    EXPECT_EQ(color.r, r);
+    EXPECT_EQ(color.g, g);
+    EXPECT_EQ(color.b, b);
+    EXPECT_EQ(color.a, a);
+}
+
 int CountPixels(const Framebuffer& fb, Rgba color)
 {
     int count = 0;
@@ -96,8 +105,8 @@ const DrawCircle* FindExplosionCircle(const DrawList& list)
 {
     for (const DrawCircle& circle : list.circles)
     {
-        if (RgbaEqual(circle.outline, kViewerExplosionOutlineColor)
-            && RgbaEqual(circle.fill, kViewerHollowCircleFill))
+        if (circle.outline.r == 255 && circle.outline.g == 80 && circle.outline.b == 40 && circle.outline.a == 255
+            && circle.fill.r == 0 && circle.fill.g == 0 && circle.fill.b == 0 && circle.fill.a == 0)
         {
             return &circle;
         }
@@ -186,7 +195,7 @@ TEST(OverlayTest, CollisionOverlayProjectsCrossAndNormal)
     ASSERT_EQ(list.lines.size(), 3u);
     for (const DrawLine& line : list.lines)
     {
-        EXPECT_EQ(line.color.b, 40);
+        ExpectRgbaLiteral(line.color, 255, 160, 40, 255);
     }
     const Vector2 contactScreen = camera.WorldToScreen(event.contactPoint);
     EXPECT_NEAR(list.lines[0].a.x, contactScreen.x - 3.0f, 0.01f);
@@ -208,7 +217,8 @@ TEST(OverlayTest, PerceptionRingUsesCameraAndLargeRadius)
     const Vector2 unitScreen = camera.WorldToScreen(unit->GetPosition());
     ASSERT_EQ(list.circles.size(), 2u);
     EXPECT_NEAR(list.circles[0].radius, 1000.0f * camera.pixelsPerUnit, 0.01f);
-    EXPECT_TRUE(RgbaEqual(list.circles[0].fill, kViewerHollowCircleFill));
+    ExpectRgbaLiteral(list.circles[0].outline, 120, 220, 255, 255);
+    ExpectRgbaLiteral(list.circles[0].fill, 0, 0, 0, 0);
 
     scene.state->SetPerceptionRadius(45.0f);
     list.circles.clear();
@@ -236,7 +246,7 @@ TEST(OverlayTest, PerceptionRingUsesCameraAndLargeRadius)
         {
             const size_t i = static_cast<size_t>((y * fb.width + x) * 4);
             Rgba px{fb.rgba[i], fb.rgba[i + 1], fb.rgba[i + 2], fb.rgba[i + 3]};
-            if (!RgbaEqual(px, kViewerPerceptionOutlineColor))
+            if (px.r != 120 || px.g != 220 || px.b != 255 || px.a != 255)
             {
                 continue;
             }
@@ -282,6 +292,7 @@ TEST(OverlayTest, FrameLoopStepNotesExplosionBeforeUpdate)
     ASSERT_NE(ring, nullptr);
     EXPECT_NEAR(ring->center.x, camera.WorldToScreen(explosionPos).x, 0.01f);
     EXPECT_NEAR(ring->radius, explosionRadius * camera.pixelsPerUnit, 0.01f);
+    ExpectRgbaLiteral(ring->outline, 255, 80, 40, 255);
 }
 
 TEST(OverlayTest, PausedFramesDoNotReNoteExplosion)
@@ -318,7 +329,7 @@ TEST(OverlayTest, CollisionOverlayExpiresAfterSimulatedTime)
     ASSERT_TRUE(RunScript(loop, "overlay collisions 1\nframes 1\n"));
     Framebuffer afterHit;
     loop.RasterizeCurrentView(afterHit);
-    EXPECT_GT(CountPixels(afterHit, kViewerCollisionOverlayColor), 0);
+    EXPECT_GT(CountPixels(afterHit, {255, 160, 40, 255}), 0);
     int spread = 0;
     for (IGameUnit* unit : loop.State().GetAllUnits())
     {
@@ -332,7 +343,7 @@ TEST(OverlayTest, CollisionOverlayExpiresAfterSimulatedTime)
     ASSERT_TRUE(RunScript(loop, "frames 100\n"));
     Framebuffer expired;
     loop.RasterizeCurrentView(expired);
-    EXPECT_EQ(0, CountPixels(expired, kViewerCollisionOverlayColor));
+    EXPECT_EQ(0, CountPixels(expired, {255, 160, 40, 255}));
 }
 
 TEST(OverlayTest, InfluenceDrawsEdgeAndAttractorRepulsorMarkers)
@@ -347,23 +358,37 @@ TEST(OverlayTest, InfluenceDrawsEdgeAndAttractorRepulsorMarkers)
     DrawList list;
     AppendOverlays(list, *scene.state, camera, flags, CollisionRecorder{}, {});
     ASSERT_EQ(list.circles.size(), 6u);
-    EXPECT_EQ(list.circles[4].fill.g, 220);
-    EXPECT_EQ(list.circles[5].fill.r, 220);
+    const float markerPx = 6.0f * camera.pixelsPerUnit;
+    for (size_t i = 0; i < 4u; ++i)
+    {
+        ExpectRgbaLiteral(list.circles[i].fill, 0, 220, 220, 255);
+        EXPECT_NEAR(list.circles[i].center.x, camera.WorldToScreen(edges[i].GetPosition()).x, 0.01f);
+        EXPECT_NEAR(list.circles[i].radius, markerPx, 0.01f);
+    }
+    ExpectRgbaLiteral(list.circles[4].fill, 80, 220, 80, 255);
+    ExpectRgbaLiteral(list.circles[5].fill, 220, 60, 60, 255);
 }
 
 TEST(OverlayTest, ObstacleOverlayUsesEntityPositionAndRadius)
 {
     Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    const Vector2 obstaclePos(250.0f, 175.0f);
+    const float obstacleRadius = 22.0f;
     RepulsorParams params;
-    params.DetectionRange = 22.0f;
-    scene.state->AddObstacle(InfluenceFieldItem::CreateRepulsor(Vector2(250.0f, 175.0f), 1.0f, params));
+    params.DetectionRange = obstacleRadius;
+    scene.state->AddObstacle(InfluenceFieldItem::CreateRepulsor(obstaclePos, 1.0f, params));
     const Camera camera = MakeOffsetCamera();
     OverlayFlags flags;
     flags.obstacles = true;
     DrawList listOn;
     AppendOverlays(listOn, *scene.state, camera, flags, CollisionRecorder{}, {});
     ASSERT_EQ(listOn.circles.size(), 1u);
-    EXPECT_TRUE(RgbaEqual(listOn.circles[0].fill, kViewerObstacleOverlayColor));
+    ExpectRgbaLiteral(listOn.circles[0].fill, 160, 160, 160, 255);
+    ExpectRgbaLiteral(listOn.circles[0].outline, 160, 160, 160, 255);
+    const Vector2 expectedCenter = camera.WorldToScreen(obstaclePos);
+    EXPECT_NEAR(listOn.circles[0].center.x, expectedCenter.x, 0.01f);
+    EXPECT_NEAR(listOn.circles[0].center.y, expectedCenter.y, 0.01f);
+    EXPECT_NEAR(listOn.circles[0].radius, obstacleRadius * camera.pixelsPerUnit, 0.01f);
 }
 
 TEST(OverlayTest, BehaviorOverlayEmptyForSeekAndDrawsEmittedItem)
@@ -383,8 +408,13 @@ TEST(OverlayTest, BehaviorOverlayEmptyForSeekAndDrawsEmittedItem)
     rts->GetStateMachine().AddState("Emit", std::make_unique<SingleFieldItemBehavior>(emitPos));
     rts->GetStateMachine().SetState("Emit");
     list.circles.clear();
-    AppendOverlays(list, *scene.state, MakeOffsetCamera(), flags, CollisionRecorder{}, {});
+    const Camera offsetCamera = MakeOffsetCamera();
+    AppendOverlays(list, *scene.state, offsetCamera, flags, CollisionRecorder{}, {});
     ASSERT_EQ(list.circles.size(), 1u);
+    const Vector2 expectedCenter = offsetCamera.WorldToScreen(emitPos);
+    EXPECT_NEAR(list.circles[0].center.x, expectedCenter.x, 0.01f);
+    EXPECT_NEAR(list.circles[0].center.y, expectedCenter.y, 0.01f);
+    ExpectRgbaLiteral(list.circles[0].fill, 80, 220, 80, 255);
 }
 
 TEST(OverlayTest, ScriptTogglesEveryOverlayFlag)
@@ -412,24 +442,34 @@ TEST(OverlayTest, ScriptTogglesEveryOverlayFlag)
     }
 }
 
-TEST(OverlayTest, FKeyIndexMappingAndToggle)
+TEST(OverlayTest, HandleViewerKeycodeFKeysToggleOverlayFlags)
 {
     constexpr int kSdlF1 = 1073741882;
-    for (int i = 0; i < 6; ++i)
-    {
-        EXPECT_EQ(OverlayFKeyIndexFromKeycode(kSdlF1 + i), i + 1);
-    }
     FrameLoop loop(Preset::TwoUnits, 1, 1280, 720);
-    for (int i = 1; i <= 6; ++i)
+    struct ToggleCase
     {
-        loop.ToggleOverlayFromFKey(i);
-    }
-    EXPECT_TRUE(loop.GetOverlayFlags().collisions);
-    for (int i = 1; i <= 6; ++i)
+        int keycode;
+        int expectedIndex;
+        bool OverlayFlags::* member;
+    };
+    const ToggleCase cases[] = {
+        {kSdlF1 + 0, 1, &OverlayFlags::collisions},
+        {kSdlF1 + 1, 2, &OverlayFlags::perception},
+        {kSdlF1 + 2, 3, &OverlayFlags::influence},
+        {kSdlF1 + 3, 4, &OverlayFlags::obstacles},
+        {kSdlF1 + 4, 5, &OverlayFlags::behaviorItems},
+        {kSdlF1 + 5, 6, &OverlayFlags::explosions},
+    };
+    for (const ToggleCase& toggleCase : cases)
     {
-        loop.ToggleOverlayFromFKey(i);
+        const ViewerKeyAction action = HandleViewerKeycode(toggleCase.keycode);
+        ASSERT_EQ(action.kind, ViewerKeyActionKind::OverlayToggle);
+        EXPECT_EQ(action.overlayToggleIndex, toggleCase.expectedIndex);
+        loop.ApplyViewerKeyAction(action);
+        EXPECT_TRUE(loop.GetOverlayFlags().*toggleCase.member);
+        loop.ApplyViewerKeyAction(action);
+        EXPECT_FALSE(loop.GetOverlayFlags().*toggleCase.member);
     }
-    EXPECT_FALSE(loop.GetOverlayFlags().collisions);
 }
 
 TEST(OverlayTest, AppendStatusLinePinsTextLayout)
@@ -457,7 +497,7 @@ TEST(OverlayTest, ExplosionOutlineColorPinned)
     flags.explosions = true;
     AppendOverlays(list, *scene.state, FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f), flags, CollisionRecorder{}, echoes);
     ASSERT_EQ(list.circles.size(), 1u);
-    EXPECT_TRUE(RgbaEqual(list.circles[0].outline, kViewerExplosionOutlineColor));
+    ExpectRgbaLiteral(list.circles[0].outline, 255, 80, 40, 255);
 }
 
 TEST(OverlayTest, FrameLoopScriptTurnsInfluenceOverlayOnAndOff)
