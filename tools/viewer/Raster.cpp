@@ -1,7 +1,9 @@
 #include "Raster.h"
 
+#include <algorithm>
 #include <cmath>
 #include <cstdint>
+#include <cstdlib>
 
 namespace
 {
@@ -102,6 +104,40 @@ void RasterizeLine(const DrawLine& line, Framebuffer& fb)
     }
 }
 
+bool RgbaEqual(Rgba a, Rgba b)
+{
+    return a.r == b.r && a.g == b.g && a.b == b.b && a.a == b.a;
+}
+
+void RasterizeCircle(const DrawCircle& circle, Framebuffer& fb)
+{
+    const int cx = static_cast<int>(std::lround(circle.center.x));
+    const int cy = static_cast<int>(std::lround(circle.center.y));
+    const float fillRadius = circle.radius;
+    const bool selectionRing = !RgbaEqual(circle.fill, circle.outline);
+    const float outlineRadius = selectionRing ? fillRadius + 2.0f : fillRadius;
+    const int bound = static_cast<int>(std::ceil(outlineRadius));
+
+    for (int y = cy - bound; y <= cy + bound; ++y)
+    {
+        for (int x = cx - bound; x <= cx + bound; ++x)
+        {
+            const float dx = static_cast<float>(x - cx);
+            const float dy = static_cast<float>(y - cy);
+            const float distSq = dx * dx + dy * dy;
+            if (distSq <= fillRadius * fillRadius)
+            {
+                PutPixel(fb, x, y, circle.fill);
+            }
+            else if (selectionRing && distSq <= outlineRadius * outlineRadius)
+            {
+                PutPixel(fb, x, y, circle.outline);
+            }
+        }
+    }
+    PutPixel(fb, cx, cy, circle.fill);
+}
+
 } // namespace
 
 void Rasterize(const DrawList& list, Framebuffer& fb)
@@ -129,21 +165,6 @@ void Rasterize(const DrawList& list, Framebuffer& fb)
     }
     for (const DrawCircle& circle : list.circles)
     {
-        const int cx = static_cast<int>(std::lround(circle.center.x));
-        const int cy = static_cast<int>(std::lround(circle.center.y));
-        const int r = static_cast<int>(std::lround(circle.radius));
-        for (int y = cy - r; y <= cy + r; ++y)
-        {
-            for (int x = cx - r; x <= cx + r; ++x)
-            {
-                float dx = static_cast<float>(x - cx);
-                float dy = static_cast<float>(y - cy);
-                if (dx * dx + dy * dy <= static_cast<float>(r * r))
-                {
-                    PutPixel(fb, x, y, circle.fill);
-                }
-            }
-        }
-        PutPixel(fb, cx, cy, circle.fill);
+        RasterizeCircle(circle, fb);
     }
 }

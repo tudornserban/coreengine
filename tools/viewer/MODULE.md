@@ -12,6 +12,8 @@ Optional SDL2 simulation viewer. Not registered in `docs/agentic/modules/registr
 
 CMake option `COREENGINE_BUILD_SDL2_VIEWER` (default OFF). Requires SDL2 via `find_package(SDL2)`.
 
+Viewer executable (viewer ON): `build-viewer/tools/viewer/coreengine_sdl2_viewer`
+
 ## Dependencies
 
 The logic static library links `coreengine`. It must not include `platform/`, `ffi/`, or `SDL.h`.
