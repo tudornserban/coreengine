@@ -44,6 +44,7 @@ if(BUILD_TESTS)
         tests/FrameLoopResetTest.cpp
         tests/CommandScriptTest.cpp
         tests/OverlayTest.cpp
+        tests/ScenarioTest.cpp
     )
     target_link_libraries(coreengine_sdl2_viewer_tests PRIVATE
         coreengine_viewer_logic
@@ -56,4 +57,18 @@ if(BUILD_TESTS)
     include(GoogleTest)
     gtest_discover_tests(coreengine_sdl2_viewer_tests)
     add_test(NAME coreengine_sdl2_viewer_tests COMMAND coreengine_sdl2_viewer_tests)
+
+    set(VIEWER_CTEST_COLLISION_PNG "${CMAKE_CURRENT_BINARY_DIR}/ctest_collision_cli.png")
+    add_test(
+        NAME viewer_cli_collision_preset_screenshot
+        COMMAND
+            python3
+            ${CMAKE_CURRENT_SOURCE_DIR}/tests/check_collision_preset_cli.py
+            $<TARGET_FILE:coreengine_sdl2_viewer>
+            ${VIEWER_CTEST_COLLISION_PNG}
+    )
+    set_tests_properties(viewer_cli_collision_preset_screenshot PROPERTIES
+        DEPENDS coreengine_sdl2_viewer
+        LABELS "viewer_cli"
+    )
 endif()

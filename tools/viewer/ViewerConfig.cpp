@@ -64,6 +64,20 @@ ViewerConfig ParseViewerConfig(int argc, char** argv)
             }
             config.scriptPath = argv[++i];
         }
+        else if (std::strcmp(arg, "--preset") == 0)
+        {
+            if (i + 1 >= argc)
+            {
+                config.parseError = true;
+                return config;
+            }
+            const std::string presetName = argv[++i];
+            if (!ParsePresetFromString(presetName, config.preset))
+            {
+                config.parseError = true;
+                return config;
+            }
+        }
         else if (std::strcmp(arg, "--height") == 0)
         {
             if (i + 1 >= argc)

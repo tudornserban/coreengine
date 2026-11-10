@@ -62,6 +62,7 @@ bool PresentSimulation(FrameLoop& loop, const ViewerConfig& config, Framebuffer&
     const int targetFrames = config.frames > 0 ? config.frames : 0;
     int presented = 0;
     bool running = true;
+    bool middleDown = false;
 
     while (running && (targetFrames == 0 || presented < targetFrames))
     {
@@ -106,6 +107,11 @@ bool PresentSimulation(FrameLoop& loop, const ViewerConfig& config, Framebuffer&
                 {
                     loop.OnMouseRightDown(screen, shiftHeld);
                 }
+                else if (event.button.button == SDL_BUTTON_MIDDLE)
+                {
+                    middleDown = true;
+                    loop.OnMouseMiddleDown(screen);
+                }
             }
             else if (event.type == SDL_MOUSEBUTTONUP)
             {
@@ -117,13 +123,34 @@ bool PresentSimulation(FrameLoop& loop, const ViewerConfig& config, Framebuffer&
                     const bool shiftHeld = (SDL_GetModState() & KMOD_SHIFT) != 0;
                     loop.OnMouseLeftUp(screen, shiftHeld);
                 }
+                else if (event.button.button == SDL_BUTTON_MIDDLE)
+                {
+                    const Vector2 screen(
+                        static_cast<float>(event.button.x),
+                        static_cast<float>(event.button.y));
+                    middleDown = false;
+                    loop.OnMouseMiddleUp(screen);
+                }
             }
             else if (event.type == SDL_MOUSEMOTION)
             {
                 const Vector2 screen(
                     static_cast<float>(event.motion.x),
                     static_cast<float>(event.motion.y));
-                loop.OnMouseMotion(screen);
+                if (middleDown)
+                {
+                    loop.OnMouseMiddleMotion(screen);
+                }
+                else
+                {
+                    loop.OnMouseMotion(screen);
+                }
+            }
+            else if (event.type == SDL_MOUSEWHEEL)
+            {
+                const float mouseX = static_cast<float>(event.wheel.mouseX);
+                const float mouseY = static_cast<float>(event.wheel.mouseY);
+                loop.OnMouseWheel(mouseX, mouseY, static_cast<float>(event.wheel.y));
             }
         }
 

@@ -52,3 +52,21 @@ TEST(InputScriptTest, ParsesDestPauseFrames)
     EXPECT_EQ(cmds[2].kind, ScriptCommand::Kind::Frames);
     EXPECT_EQ(cmds[2].intArg, 2);
 }
+
+TEST(InputScriptTest, ParsesPresetCommand)
+{
+    std::string error;
+    auto cmds = ParseScript("preset combat\n", error);
+    ASSERT_TRUE(error.empty());
+    ASSERT_EQ(cmds.size(), 1u);
+    EXPECT_EQ(cmds[0].kind, ScriptCommand::Kind::Preset);
+    EXPECT_EQ(cmds[0].strArg, "combat");
+}
+
+TEST(InputScriptTest, RejectsUnknownPreset)
+{
+    std::string error;
+    auto cmds = ParseScript("preset unknown-name\n", error);
+    EXPECT_FALSE(error.empty());
+    EXPECT_TRUE(cmds.empty());
+}

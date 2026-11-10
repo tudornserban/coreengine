@@ -1,5 +1,7 @@
 #include "InputScript.h"
 
+#include "Scenario.h"
+
 #include <cctype>
 #include <cstdlib>
 #include <sstream>
@@ -255,6 +257,30 @@ bool ParseLine(const std::string& line, ScriptCommand& cmd, std::string& error)
         if (iss >> extra)
         {
             error = "unexpected token after overlay";
+            return true;
+        }
+        return true;
+    }
+    if (verb == "preset")
+    {
+        std::string nameToken;
+        if (!(iss >> nameToken))
+        {
+            error = "preset requires a name";
+            return true;
+        }
+        Preset parsedPreset = Preset::TwoUnits;
+        if (!ParsePresetFromString(nameToken, parsedPreset))
+        {
+            error = "unknown preset name";
+            return true;
+        }
+        cmd.kind = ScriptCommand::Kind::Preset;
+        cmd.strArg = nameToken;
+        std::string extra;
+        if (iss >> extra)
+        {
+            error = "unexpected token after preset";
             return true;
         }
         return true;

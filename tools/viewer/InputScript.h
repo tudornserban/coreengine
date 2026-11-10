@@ -17,7 +17,8 @@ struct ScriptCommand
         Click,
         RightClick,
         Box,
-        Overlay
+        Overlay,
+        Preset
     };
 
     Kind kind = Kind::Frames;

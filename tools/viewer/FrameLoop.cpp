@@ -81,9 +81,41 @@ FrameLoop::FrameLoop(Preset preset, std::uint64_t seed, int viewportW, int viewp
     ResetScene();
 }
 
+void FrameLoop::OnMouseWheel(float screenX, float screenY, float wheelDelta)
+{
+    if (wheelDelta == 0.0f)
+    {
+        return;
+    }
+    const float factor = wheelDelta > 0.0f ? 1.1f : 1.0f / 1.1f;
+    camera_.ZoomAt(Vector2(screenX, screenY), factor);
+}
+
+void FrameLoop::OnMouseMiddleDown(Vector2 screen)
+{
+    middleMouseDown_ = true;
+    middleDragLastScreen_ = screen;
+}
+
+void FrameLoop::OnMouseMiddleUp(Vector2 /*screen*/)
+{
+    middleMouseDown_ = false;
+}
+
+void FrameLoop::OnMouseMiddleMotion(Vector2 screen)
+{
+    if (!middleMouseDown_)
+    {
+        return;
+    }
+    const Vector2 delta(screen.x - middleDragLastScreen_.x, screen.y - middleDragLastScreen_.y);
+    camera_.Pan(delta);
+    middleDragLastScreen_ = screen;
+}
+
 Camera FrameLoop::GetCamera() const
 {
-    return FitMap(state_->GetMapSize(), viewportW_, viewportH_, kFitMarginPx);
+    return camera_;
 }
 
 void FrameLoop::BindUpdateCallback()
@@ -107,6 +139,11 @@ void FrameLoop::UnsubscribeCollisionRecorder()
     }
 }
 
+void FrameLoop::RefreshCameraFromMap()
+{
+    camera_ = FitMap(state_->GetMapSize(), viewportW_, viewportH_, kFitMarginPx);
+}
+
 void FrameLoop::ResetScene()
 {
     UnsubscribeCollisionRecorder();
@@ -114,9 +151,41 @@ void FrameLoop::ResetScene()
     collisionRecorder_.Clear();
     Scene scene = BuildPreset(preset_, seed_);
     state_ = std::move(scene.state);
+    pendingEvents_ = PendingEvents(preset_, *state_);
     engine_.Reset();
     BindUpdateCallback();
     SubscribeCollisionRecorder();
+    RefreshCameraFromMap();
+}
+
+int FrameLoop::CountFiredPendingScenarioEvents() const
+{
+    int count = 0;
+    for (const ScenarioEvent& event : pendingEvents_)
+    {
+        if (event.fired)
+        {
+            ++count;
+        }
+    }
+    return count;
+}
+
+void FrameLoop::FirePendingScenarioEvents()
+{
+    const float gameTime = engine_.GetGameTime();
+    for (ScenarioEvent& event : pendingEvents_)
+    {
+        if (event.fired)
+        {
+            continue;
+        }
+        if (gameTime < event.time && gameTime + kFixedDt >= event.time)
+        {
+            state_->AddExplosion(event.explosion);
+            event.fired = true;
+        }
+    }
 }
 
 void FrameLoop::ApplyPlaybackCommand(PlaybackCommand command)
@@ -155,6 +224,7 @@ void FrameLoop::ApplyPlaybackCommand(PlaybackCommand command)
 
 void FrameLoop::BeginSimulationTick()
 {
+    FirePendingScenarioEvents();
     collisionRecorder_.SetReferenceGameTime(engine_.GetGameTime());
     NoteExplosions(*state_, explosionEchoes_, kFixedDt);
 }
@@ -284,6 +354,18 @@ bool FrameLoop::ApplyScriptCommand(const ScriptCommand& command, std::string& er
         {
             return false;
         }
+        return true;
+    }
+    case ScriptCommand::Kind::Preset:
+    {
+        Preset preset = Preset::TwoUnits;
+        if (!ParsePresetFromString(command.strArg, preset))
+        {
+            error = "unknown preset name";
+            return false;
+        }
+        preset_ = preset;
+        ResetScene();
         return true;
     }
     }
