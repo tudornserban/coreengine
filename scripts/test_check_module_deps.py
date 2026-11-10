@@ -33,7 +33,8 @@ class CheckModuleDepsRegression(unittest.TestCase):
     def test_real_cmake_standalone_links_pass(self) -> None:
         repo_root = Path(__file__).resolve().parents[1]
         manifests = self._manifests(repo_root)
-        errors = check_standalone_test_link_libraries(repo_root, manifests)
+        errors, ran = check_standalone_test_link_libraries(repo_root, manifests, require_top_level_cmake=True)
+        self.assertTrue(ran)
         self.assertEqual(errors, [])
 
     def test_standalone_collision_illegal_gamestate_link_fails(self) -> None:
@@ -57,6 +58,7 @@ class CheckModuleDepsRegression(unittest.TestCase):
                 encoding="utf-8",
             )
             (root / "core/gamestate").mkdir(parents=True, exist_ok=True)
+            self._stub_core_object_lib(root, "core/gamestate")
             cmake = root / "CMakeLists.txt"
             cmake.write_text(
                 "\n".join(
@@ -74,11 +76,153 @@ class CheckModuleDepsRegression(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
-            errors = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            errors, _ran = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
             self.assertEqual(len(errors), 1, errors)
             self.assertIn("coreengine_collision_tests", errors[0])
             self.assertIn("coreengine_gamestate", errors[0])
             self.assertIn("core.gamestate", errors[0])
+
+    def test_standalone_missing_top_level_cmake_on_real_path_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_min_registry(root)
+            (root / "core/math").mkdir(parents=True)
+            (root / "core/logging").mkdir(parents=True)
+            errors, ran = check_standalone_test_link_libraries(
+                root, self._manifests(root), require_top_level_cmake=True
+            )
+            self.assertFalse(ran)
+            self.assertEqual(len(errors), 1)
+            self.assertIn("missing top-level CMakeLists.txt", errors[0])
+
+    def test_standalone_same_line_private_illegal_lib_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "target_link_libraries(coreengine_collision_tests PRIVATE coreengine_gamestate)\n",
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertTrue(errors)
+            self.assertIn("coreengine_gamestate", errors[0])
+
+    def test_standalone_two_libs_one_line_one_illegal_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "target_link_libraries(coreengine_collision_tests "
+                "coreengine_collision coreengine_gamestate)\n",
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertEqual(len(errors), 1)
+            self.assertIn("coreengine_gamestate", errors[0])
+
+    def test_standalone_one_line_call_illegal_lib_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "target_link_libraries(coreengine_collision_tests coreengine_gamestate)\n",
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertTrue(errors)
+
+    def test_standalone_commented_illegal_lib_ignored(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "\n".join(
+                    [
+                        "target_link_libraries(coreengine_collision_tests",
+                        "    coreengine_collision",
+                        "    # coreengine_gamestate",
+                        "    coreengine_math",
+                        ")",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertEqual(errors, [])
+
+    def test_standalone_quoted_illegal_lib_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                'target_link_libraries(coreengine_collision_tests "coreengine_gamestate")\n',
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertTrue(any("coreengine_gamestate" in e for e in errors))
+
+    def test_standalone_target_objects_genexpr_illegal_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "target_link_libraries(coreengine_collision_tests "
+                "$<TARGET_OBJECTS:coreengine_gamestate> coreengine_math)\n",
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertTrue(any("coreengine_gamestate" in e for e in errors))
+
+    def test_standalone_cmake_var_fails_explicit_libraries_message(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "target_link_libraries(coreengine_collision_tests ${COLLISION_LIBS})\n",
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertTrue(errors)
+            self.assertTrue(
+                any("list coreengine_* object libraries explicitly" in e for e in errors), errors
+            )
+
+    def test_standalone_two_link_calls_second_illegal_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "\n".join(
+                    [
+                        "target_link_libraries(coreengine_collision_tests coreengine_collision)",
+                        "target_link_libraries(coreengine_collision_tests coreengine_gamestate)",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertTrue(any("coreengine_gamestate" in e for e in errors))
+
+    def test_standalone_unknown_coreengine_foo_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "target_link_libraries(coreengine_collision_tests coreengine_foo)\n",
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertTrue(errors)
+            self.assertTrue(any("coreengine_foo" in e for e in errors))
 
     def test_standalone_serialization_transitive_links_pass(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -108,7 +252,7 @@ class CheckModuleDepsRegression(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
-            errors = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
             self.assertEqual(errors, [], errors)
 
     def test_core_interfaces_changelog_requires_version_heading(self) -> None:
@@ -217,12 +361,12 @@ class CheckModuleDepsRegression(unittest.TestCase):
             (deps / "SUMMARY.md").write_text(
                 render_dependency_summary_md(graph, module_ids, manifests), encoding="utf-8"
             )
-            self.assertTrue(run_checks(root).ok)
+            self.assertTrue(run_checks(root, skip_standalone_link_check=True).ok)
             (deps / "graph.json").write_text(
                 render_dependency_graph_json(graph).replace('"schemaVersion": 1', '"schemaVersion": 99'),
                 encoding="utf-8",
             )
-            r = run_checks(root)
+            r = run_checks(root, skip_standalone_link_check=True)
             self.assertFalse(r.ok)
             self.assertTrue(any("graph.json" in e for e in r.errors), r.errors)
 
@@ -245,7 +389,7 @@ class CheckModuleDepsRegression(unittest.TestCase):
             (deps / "SUMMARY.md").write_text(
                 render_dependency_summary_md(graph, module_ids, manifests), encoding="utf-8"
             )
-            result = run_checks(root)
+            result = run_checks(root, skip_standalone_link_check=True)
             self.assertFalse(result.ok)
             self.assertTrue(any("cycle" in e for e in result.errors), result.errors)
 
@@ -1158,6 +1302,17 @@ class CheckModuleDepsRegression(unittest.TestCase):
                 encoding="utf-8",
             )
             (root / path).mkdir(parents=True, exist_ok=True)
+            CheckModuleDepsRegression._stub_core_object_lib(root, path)
+
+    @staticmethod
+    def _stub_core_object_lib(root: Path, rel_path: str) -> None:
+        if rel_path == "core/interfaces":
+            return
+        suffix = rel_path.removeprefix("core/").replace("/", "_")
+        target = f"coreengine_{suffix}"
+        d = root / rel_path
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "CMakeLists.txt").write_text(f"add_library({target} OBJECT)\n", encoding="utf-8")
 
     @staticmethod
     def _write_combat_registry(root: Path) -> None:
@@ -1283,11 +1438,17 @@ class CheckModuleDepsRegression(unittest.TestCase):
             ),
             encoding="utf-8",
         )
-        (root / "core/math").mkdir(parents=True, exist_ok=True)
-        (root / "core/influence_types").mkdir(parents=True, exist_ok=True)
-        (root / "core/interfaces").mkdir(parents=True, exist_ok=True)
-        (root / "core/logging").mkdir(parents=True, exist_ok=True)
-        (root / "core/collision").mkdir(parents=True, exist_ok=True)
+        for rel in (
+            "core/math",
+            "core/influence_types",
+            "core/interfaces",
+            "core/logging",
+            "core/collision",
+        ):
+            if rel == "core/interfaces":
+                (root / rel).mkdir(parents=True, exist_ok=True)
+            else:
+                CheckModuleDepsRegression._stub_core_object_lib(root, rel)
 
     @staticmethod
     def _write_ai_registry(root: Path) -> None:
