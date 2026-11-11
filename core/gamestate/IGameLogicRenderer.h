@@ -1,15 +1,1 @@
-#pragma once
-
-// Forward declaration
-class RTSGameState;
-
-// Interface for reading game state (read-only)
-// Graphics systems implement this to render game state
-class IGameLogicRenderer {
-public:
-    virtual ~IGameLogicRenderer() = default;
-    
-    // Get current game state snapshot (read-only)
-    virtual const RTSGameState* GetCurrentGameState() const = 0;
-};
-
+I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lHYW1lTG9naWNSZW5kZXJlci5oIgo=
