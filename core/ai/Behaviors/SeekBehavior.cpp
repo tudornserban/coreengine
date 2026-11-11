@@ -1,1 +1,28 @@
-I2luY2x1ZGUgIlNlZWtCZWhhdmlvci5oIgojaW5jbHVkZSAiY29yZS9haS9CZWhhdmlvckNvbnRleHQuaCIKI2luY2x1ZGUgImNvcmUvaW50ZXJmYWNlcy9JR2FtZVVuaXQuaCIKClNlZWtCZWhhdmlvcjo6U2Vla0JlaGF2aW9yKFZlY3RvcjIgdGFyZ2V0KSA6IHRhcmdldFBvc2l0aW9uXyh0YXJnZXQpCnsKICAgIHBhcmFtc19bInNlZWtTdHJlbmd0aCJdICA9IDEwMC4wZjsKICAgIHBhcmFtc19bImFycml2YWxSYWRpdXMiXSA9IDEwLjBmOwogICAgcGFyYW1zX1sic2xvd2luZ1JhZGl1cyJdID0gMTAwLjBmOwp9CgpWZWN0b3IyIFNlZWtCZWhhdmlvcjo6Q2FsY3VsYXRlQWNjZWxlcmF0aW9uKGNvbnN0IEJlaGF2aW9yQ29udGV4dCYgY3R4KQp7CiAgICBpZiAoIWN0eC5zZWxmKSByZXR1cm4gVmVjdG9yMjo6WmVybygpOwoKICAgIFZlY3RvcjIgdG9UYXJnZXQgPSB0YXJnZXRQb3NpdGlvbl8gLSBjdHguc2VsZi0+R2V0UG9zaXRpb24oKTsKICAgIGZsb2F0IGRpc3RhbmNlID0gdG9UYXJnZXQuTGVuZ3RoKCk7CgogICAgaWYgKGRpc3RhbmNlIDwgcGFyYW1zX1siYXJyaXZhbFJhZGl1cyJdKSByZXR1cm4gVmVjdG9yMjo6WmVybygpOwoKICAgIFZlY3RvcjIgZGVzaXJlZCA9IHRvVGFyZ2V0Lk5vcm1hbGl6ZWQoKSAqIGN0eC5zZWxmLT5HZXRNYXhTcGVlZCgpOwoKICAgIGlmIChkaXN0YW5jZSA8IHBhcmFtc19bInNsb3dpbmdSYWRpdXMiXSkgewogICAgICAgIGRlc2lyZWQgPSBkZXNpcmVkICogKGRpc3RhbmNlIC8gcGFyYW1zX1sic2xvd2luZ1JhZGl1cyJdKTsKICAgIH0KCiAgICByZXR1cm4gKGRlc2lyZWQgLSBjdHguc2VsZi0+R2V0VmVsb2NpdHkoKSkgKiBwYXJhbXNfWyJzZWVrU3RyZW5ndGgiXSAqIGN0eC5kZWx0YVRpbWU7Cn0K
+#include "SeekBehavior.h"
+#include "core/ai/BehaviorContext.h"
+#include "core/interfaces/IGameUnit.h"
+
+SeekBehavior::SeekBehavior(Vector2 target) : targetPosition_(target)
+{
+    params_["seekStrength"]  = 100.0f;
+    params_["arrivalRadius"] = 10.0f;
+    params_["slowingRadius"] = 100.0f;
+}
+
+Vector2 SeekBehavior::CalculateAcceleration(const BehaviorContext& ctx)
+{
+    if (!ctx.self) return Vector2::Zero();
+
+    Vector2 toTarget = targetPosition_ - ctx.self->GetPosition();
+    float distance = toTarget.Length();
+
+    if (distance < params_["arrivalRadius"]) return Vector2::Zero();
+
+    Vector2 desired = toTarget.Normalized() * ctx.self->GetMaxSpeed();
+
+    if (distance < params_["slowingRadius"]) {
+        desired = desired * (distance / params_["slowingRadius"]);
+    }
+
+    return (desired - ctx.self->GetVelocity()) * params_["seekStrength"] * ctx.deltaTime;
+}
