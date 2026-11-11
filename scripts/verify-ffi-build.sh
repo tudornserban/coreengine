@@ -61,6 +61,8 @@ lib.ce_timer_grant_charge.argtypes = (ctypes.c_void_p, ctypes.c_int)
 lib.ce_engine_get_seed.restype = ctypes.c_uint64
 lib.ce_engine_get_seed.argtypes = (ctypes.c_void_p,)
 
+lib.ce_engine_reset.argtypes = (ctypes.c_void_p,)
+
 engine = lib.ce_engine_create(1600.0, 900.0, 42)
 if not engine:
     print("verify-ffi-build: ce_engine_create returned NULL", file=sys.stderr)
@@ -75,6 +77,11 @@ if lib.ce_timer_grant_charge(engine, 1) != 1:
 
 if lib.ce_engine_get_seed(engine) != 42:
     print("verify-ffi-build: ce_engine_get_seed mismatch", file=sys.stderr)
+    sys.exit(1)
+
+lib.ce_engine_reset(engine)
+if lib.ce_engine_get_seed(engine) != 42:
+    print("verify-ffi-build: ce_engine_get_seed after reset mismatch", file=sys.stderr)
     sys.exit(1)
 
 lib.ce_engine_destroy(engine)

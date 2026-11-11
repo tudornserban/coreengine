@@ -38,6 +38,12 @@ Usage with ctypes:
     lib.ce_ffi_version.restype = c_char_p
     lib.ce_ffi_version.argtypes = []
 
+    lib.ce_engine_get_seed.restype = c_uint64
+    lib.ce_engine_get_seed.argtypes = [ctypes.c_void_p]
+
+    lib.ce_engine_reset.restype = None
+    lib.ce_engine_reset.argtypes = [ctypes.c_void_p]
+
     # Create engine (opaque handle must stay c_void_p — do not pass as bare int)
     engine = lib.ce_engine_create(1600.0, 900.0, 0)
 
