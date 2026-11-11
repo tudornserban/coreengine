@@ -1,1 +1,15 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiSUdhbWVVbml0LmgiCiNpbmNsdWRlICIuLi9tYXRoL1ZlY3RvcjIuaCIKI2luY2x1ZGUgPHZlY3Rvcj4KCi8vLyBSZWFkLW9ubHkgc2ltdWxhdGlvbiBzbmFwc2hvdDogbWFwIGRpbWVuc2lvbnMgYW5kIGxpdmUgdW5pdCBwb2ludGVycy4KLy8vIEltcGxlbWVudGVkIGJ5IGBSVFNHYW1lU3RhdGVgIGZvciBKU09OIHNlcmlhbGl6YXRpb24gd2l0aG91dCB3aWRlbmluZyByZW5kZXJlciBBUElzLgpjbGFzcyBJU2ltdWxhdGlvblNuYXBzaG90IHsKcHVibGljOgogICAgdmlydHVhbCB+SVNpbXVsYXRpb25TbmFwc2hvdCgpID0gZGVmYXVsdDsKCiAgICB2aXJ0dWFsIFZlY3RvcjIgR2V0TWFwU2l6ZSgpIGNvbnN0ID0gMDsKICAgIHZpcnR1YWwgc3RkOjp2ZWN0b3I8SUdhbWVVbml0Kj4gR2V0QWxsVW5pdHMoKSBjb25zdCA9IDA7Cn07Cg==
+#pragma once
+
+#include "IGameUnit.h"
+#include "../math/Vector2.h"
+#include <vector>
+
+/// Read-only simulation snapshot: map dimensions and live unit pointers.
+/// Implemented by `RTSGameState` for JSON serialization without widening renderer APIs.
+class ISimulationSnapshot {
+public:
+    virtual ~ISimulationSnapshot() = default;
+
+    virtual Vector2 GetMapSize() const = 0;
+    virtual std::vector<IGameUnit*> GetAllUnits() const = 0;
+};

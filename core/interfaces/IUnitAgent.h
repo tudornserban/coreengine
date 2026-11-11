@@ -1,1 +1,13 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSA8c3RyaW5nPgoKLy8vIE9wdGlvbmFsIGNvbnRyYWN0IGZvciB1bml0cyB0aGF0IGV4cG9zZSBjb21tYW5kYWJsZSBhZ2VudCBzdGF0ZSAoRlNNICsgYmVoYXZpb3IgcGFyYW1ldGVycykuCi8vLyBDb21iYXQgYENvbW1hbmRTeXN0ZW1gIHVzZXMgdGhpcyB0byBhdm9pZCBkZXBlbmRpbmcgb24gY29uY3JldGUgYFJUU1VuaXRgLgpjbGFzcyBJVW5pdEFnZW50IHsKcHVibGljOgogICAgdmlydHVhbCB+SVVuaXRBZ2VudCgpID0gZGVmYXVsdDsKCiAgICB2aXJ0dWFsIHZvaWQgU2V0QWdlbnRTdGF0ZShjb25zdCBzdGQ6OnN0cmluZyYgc3RhdGVOYW1lKSA9IDA7CiAgICB2aXJ0dWFsIHZvaWQgU2V0QWdlbnRQYXJhbWV0ZXIoY29uc3Qgc3RkOjpzdHJpbmcmIHBhcmFtTmFtZSwgZmxvYXQgdmFsdWUpID0gMDsKfTsK
+#pragma once
+
+#include <string>
+
+/// Optional contract for units that expose commandable agent state (FSM + behavior parameters).
+/// Combat `CommandSystem` uses this to avoid depending on concrete `RTSUnit`.
+class IUnitAgent {
+public:
+    virtual ~IUnitAgent() = default;
+
+    virtual void SetAgentState(const std::string& stateName) = 0;
+    virtual void SetAgentParameter(const std::string& paramName, float value) = 0;
+};

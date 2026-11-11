@@ -1,1 +1,71 @@
-IyBNb2R1bGU6IGBjb3JlLmdhbWVzdGF0ZWAKCk1hbmlmZXN0OiBbZG9jcy9hZ2VudGljL21vZHVsZXMvY29yZS5nYW1lc3RhdGUubW9kdWxlLmpzb25dKC4uLy4uL2RvY3MvYWdlbnRpYy9tb2R1bGVzL2NvcmUuZ2FtZXN0YXRlLm1vZHVsZS5qc29uKQoKIyMgUHVycG9zZQoKKipTaW11bGF0aW9uIGh1YioqIGZvciBSVFMtc3R5bGUgbWF0Y2hlczogdW5pdCBsaXN0LCBtYXAgaW50ZWdyYXRpb24sIHNlbGVjdGlvbiBhbmQgY29tbWFuZHMsIGNvbGxpc2lvbiBhbmQgZXhwbG9zaW9uIGhhbmRsaW5nLCBkZXRlcm1pbmlzdGljIFJORywgc3RhdGljIGluZmx1ZW5jZSBmaWVsZHMsIGFuZCBgUlRTVW5pdGAgYXMgdGhlIGNvbmNyZXRlIGBJR2FtZVVuaXRgLiAqKmBHYW1lU3RhdGVNYW5hZ2VyYCoqIGhvbGRzIGEgc2luZ2xlIGBjdXJyZW50U3RhdGVgIGFuZCBgR2FtZVN0YXRlVHlwZWAgZW51bTsgaGlnaC1sZXZlbCBtb2RlIGNoYW5nZXMgZ28gdGhyb3VnaCBgU2V0U3RhdGVgIC8gYFRyYW5zaXRpb25Ub1N0YXRlYC4KCiMjIFB1YmxpYyBzdXJmYWNlIChgZXhwb3J0c2ApCgpJbmNsdWRlIGhlYWRlcnMgZnJvbSB0aGUgcmVwbyByb290LCBlLmcuIGAjaW5jbHVkZSAiY29yZS9nYW1lc3RhdGUvUlRTR2FtZVN0YXRlLmgiYC4KCnwgU3ltYm9sIHwgS2luZCB8IEhlYWRlciB8IE5vdGVzIHwKfC0tLS0tLS0tfC0tLS0tLXwtLS0tLS0tLXwtLS0tLS0tfAp8IGBSVFNHYW1lU3RhdGVgIHwgY2xhc3MgfCBgUlRTR2FtZVN0YXRlLmhgIHwgTWFpbiBzaW11bGF0aW9uIHN0ZXAgKGBVcGRhdGVgLCB1bml0cywgbWFwLCBjb21iYXQgc3lzdGVtcyk7IGltcGxlbWVudHMgYElTaW11bGF0aW9uU25hcHNob3RgIHwKfCBgUlRTVW5pdGAgfCBjbGFzcyB8IGBSVFNVbml0LmhgIHwgQ29uY3JldGUgdW5pdDsgQUkgRlNNICsga2luZW1hdGljcy9hZ2VudCBpbnRlcmZhY2VzIHwKfCBgR2FtZVN0YXRlTWFuYWdlcmAgfCBjbGFzcyB8IGBHYW1lU3RhdGVNYW5hZ2VyLmhgIHwgTWVudSAvIG1pc3Npb24gc3RhdGUgaG9sZGVyIChgY3VycmVudFN0YXRlYCArIGBHYW1lU3RhdGVUeXBlYCkgfAp8IGBJR2FtZVN0YXRlYCB8IGhlYWRlciB8IGBJR2FtZVN0YXRlLmhgIHwgTGVnYWN5IGZvcndhcmRlciDihpIgYGNvcmUvaW50ZXJmYWNlcy9JR2FtZVN0YXRlLmhgIHwKfCBgSUdhbWVMb2dpY1JlbmRlcmVyYCB8IGhlYWRlciB8IGBJR2FtZUxvZ2ljUmVuZGVyZXIuaGAgfCBMZWdhY3kgZm9yd2FyZGVyIOKGkiBgY29yZS9pbnRlcmZhY2VzL0lHYW1lTG9naWNSZW5kZXJlci5oYCB8CgojIyMgQ29udHJhY3QgaGlnaGxpZ2h0cwoKLSAqKmBHZXRDdXJyZW50R2FtZVN0YXRlYCoqIHJldHVybnMgYGNvbnN0IFJUU0dhbWVTdGF0ZSpgIChkbyBub3Qgd2lkZW4gdG8gbm9uLWNvbnN0IHdpdGhvdXQgYW4gZXhwbGljaXQgQVBJIGNoYW5nZSkuCi0gKipgUlRTR2FtZVN0YXRlYCoqIGltcGxlbWVudHMgKipgSVNpbXVsYXRpb25TbmFwc2hvdGAqKiAoYEdldE1hcFNpemVgLCBgR2V0QWxsVW5pdHNgKSBmb3Igc2VyaWFsaXplcnM7ICoqYElHYW1lTG9naWNSZW5kZXJlcjo6R2V0U2ltdWxhdGlvblNuYXBzaG90KClgKiogZGVmYXVsdHMgdG8gYG51bGxwdHJgIHVudGlsIHJlbmRlcmVycyBvdmVycmlkZSBpdC4KLSAqKmBCZWhhdmlvckNvbnRleHQ6OnNlbGZgKiogcmVtYWlucyBgSUdhbWVVbml0KmA7IGdhbWVzdGF0ZSB3aXJlcyBjb25jcmV0ZSB1bml0cyB3aXRob3V0IGNoYW5naW5nIHRoZSBBSSBjb250cmFjdC4KLSAqKmBSVFNHYW1lU3RhdGU6OkJ1aWxkQ29udGV4dEZvclVuaXRgKiogZGVsZWdhdGVzIHRvIGludGVybmFsICoqYEFzc2VtYmxlQmVoYXZpb3JDb250ZXh0YCoqIChgQmVoYXZpb3JDb250ZXh0QXNzZW1ibGVyLmhgIC8gYC5jcHBgKTsgbm90IGEgbWFuaWZlc3QgZXhwb3J0LgotICoqYFJUU0dhbWVTdGF0ZS5jcHBgKiogbWF5IGluY2x1ZGUgc2libGluZyBgUlRTVW5pdC5oYCAoc2FtZSBtb2R1bGUpLgoKIyMgRGVwZW5kZW5jaWVzIChgcmVxdWlyZXNgKQoKfCBNb2R1bGUgfCBSYW5nZSB8IFdoeSB8CnwtLS0tLS0tLXwtLS0tLS0tfC0tLS0tfAp8IGBjb3JlLmFpYCB8IGBeMS4wLjBgIHwgYEJlaGF2aW9yQ29udGV4dGAsIHVuaXQgQUkgdGljayB8CnwgYGNvcmUuY29tYmF0YCB8IGBeMS4wLjBgIHwgU2VsZWN0aW9uLCBjb21tYW5kcywgZXhwbG9zaW9ucyB8CnwgYGNvcmUubWFwYCB8IGBeMS4wLjBgIHwgYE1hcGAsIHBsYWNlbWVudC9vYnN0YWNsZSBjb21wb25lbnRzIHwKfCBgY29yZS5pbmZsdWVuY2VgIHwgYF4xLjAuMGAgfCBJbmZsdWVuY2UgaXRlbXMgYW5kIGNhbGN1bGF0b3IgfAp8IGBjb3JlLmNvbGxpc2lvbmAgfCBgXjEuMC4wYCB8IENvbGxpc2lvbiBzeXN0ZW0gLyBkZXRlY3RvciBob29rcyB8CnwgYGNvcmUubWF0aGAgfCBgXjEuMC4wYCB8IGBWZWN0b3IyYCwgZGV0ZXJtaW5pc3RpYyBSTkcgfAp8IGBjb3JlLmxvZ2dpbmdgIHwgYF4xLjAuMGAgfCBgTG9nZ2VyYCB8CnwgYGNvcmUuaW50ZXJmYWNlc2AgfCBgXjEuMC4wYCB8IGBJR2FtZVVuaXRgLCBraW5lbWF0aWNzLCBnYW1lLXN0YXRlIGNvbnRyYWN0cyB8CgpBbGxvd2VkIGAjaW5jbHVkZWAgaW4gYGNvcmUvZ2FtZXN0YXRlLyoqYDogc3RhbmRhcmQgbGlicmFyeSAoYDzigKY+YCksIGhlYWRlcnMgdW5kZXIgYGNvcmUvZ2FtZXN0YXRlL2AsIHJlcG8tcm9vdCBwYXRocyB1bmRlciBkZWNsYXJlZCBgcmVxdWlyZXNgIChlLmcuIGBjb3JlL2ludGVyZmFjZXMv4oCmYCksIG9yICoqcmVsYXRpdmUqKiBpbmNsdWRlcyB0aGF0IHJlc29sdmUgaW50byBhIGRlY2xhcmVkIHJlcXVpcmVtZW50IChlLmcuIGAuLi9sb2dnaW5nL0xvZ2dlci5oYCwgYC4uL2NvbWJhdC9Db21tYW5kU3lzdGVtLmhgKS4gTm8gb3RoZXIgYGNvcmUvKmAgc2libGluZ3MgKGBjb3JlL3NlcmlhbGl6YXRpb24vYCwgYGNvcmUvYWlfYWR2YW5jZWQvYCwg4oCmKSwgYHBsYXRmb3JtL2AsIG9yIGBmZmkvYCAoZW5mb3JjZWQgYnkgYC4vc2NyaXB0cy9jaGVjay1tb2R1bGUtZGVwcy5zaGApLgoKIyMgQWdlbnQgZWRpdCBzY29wZQoKfCBBbGxvdyB8IFBhdGggfAp8LS0tLS0tLXwtLS0tLS18CnwgSW1wbGVtZW50YXRpb24gfCBgY29yZS9nYW1lc3RhdGUvKipgIHwKfCBNYW5pZmVzdCB8IGBkb2NzL2FnZW50aWMvbW9kdWxlcy9jb3JlLmdhbWVzdGF0ZS5tb2R1bGUuanNvbmAgfAp8IFVuaXQgdGVzdHMgfCBgdGVzdHMvVW5pdFRlc3RzL0dhbWVzdGF0ZS8qKmAgfAp8IFNoYXJlZCBhZ2VudGljIGRvY3MgfCBgZG9jcy9hZ2VudGljLypgICh3aGVuIHBvbGljeSByZXF1aXJlcykgfAoKIyMgSW52YXJpYW50cwoKLSAqKkxlZ2FjeSBmb3J3YXJkZXJzKiogaW4gYElHYW1lU3RhdGUuaGAgLyBgSUdhbWVMb2dpY1JlbmRlcmVyLmhgIHJlbWFpbjsgY2Fub25pY2FsIGNvbnRyYWN0cyBsaXZlIHVuZGVyIGBjb3JlL2ludGVyZmFjZXMvYC4KLSAqKmBTZXRBZ2VudFN0YXRlYCAvIGBTZXRBZ2VudFBhcmFtZXRlcmAqKiBmb3J3YXJkZXIgYm9kaWVzIHN0YXkgdmVyYmF0aW0gb24gYFJUU1VuaXRgIC8gY29tbWFuZCBwYXRocy4KLSAqKmBSVFNHYW1lU3RhdGU6OlVwZGF0ZWA6KiogQUkgdGljayBnYXRlcyBvbiBgZHluYW1pY19jYXN0PElVbml0QmVoYXZpb3JIb3N0Kj5gOyBleHBsb3Npb24gaW1wdWxzZSBhbmQgYm91bmRzIGZhbGxiYWNrIHJlbWFpbiBgZHluYW1pY19jYXN0PFJUU1VuaXQqPmAgcGFydGljaXBhdGlvbiBmaWx0ZXJzIChkbyBub3Qgd2lkZW4gdGhvc2UgdHdvIGdhdGVzIHRvIGBJR2FtZVVuaXRgIC8gYElVbml0S2luZW1hdGljc2ApLgotIEJvdW5kcyBmYWxsYmFjayBjZW50ZXItY2xhbXBzIGBSVFNVbml0YCBjZW50ZXJzIG9udG8gYFswLCBtYXBTaXplXWAgYWZ0ZXIgZXhwbG9zaW9uczsgY29sbGlzaW9uIHN0aWxsIHBlcmZvcm1zIHJhZGl1cy1hd2FyZSBtYXAtZWRnZSBpbnNldCB2aWEgYElVbml0S2luZW1hdGljc2AgZm9yIG5vbi1gUlRTVW5pdGAga2luZW1hdGljIGRvdWJsZXMgKHNlZSBgUlRTR2FtZVN0YXRlTm9uUlRTVW5pdEdhdGVUZXN0YCkuCi0gKipgUlRTVW5pdGAqKiBtdWx0aXBseS1pbmhlcml0cyBgSUdhbWVVbml0YCwgYElVbml0S2luZW1hdGljc2AsIGBJVW5pdEFnZW50YCwgYW5kIGBJVW5pdEJlaGF2aW9ySG9zdGA7IEFCSS9zaXplIGNoYW5nZWQgZm9yIG91dC1vZi10cmVlIGJpbmFyaWVzIHdoZW4gdGhlIGJlaGF2aW9yLWhvc3QgYmFzZSB3YXMgYWRkZWQgKGluLXRyZWUgdGVzdHMgdXNlIGNvbmNyZXRlIGBSVFNVbml0YCkuCi0gKipNYXAtZWRnZSBjb2xsaXNpb24gZXZlbnRzKiogYWx3YXlzIGVtaXQsIGluY2x1ZGluZyBmb3IgdW5pdHMgdGhhdCBkbyBub3QgaW1wbGVtZW50IGBJVW5pdEtpbmVtYXRpY3NgLgotIERvIG5vdCBpbnRyb2R1Y2UgYCNpbmNsdWRlYCBvZiBvdGhlciBDb3JlRW5naW5lIG1vZHVsZXMgd2l0aG91dCB1cGRhdGluZyBtYW5pZmVzdCBgcmVxdWlyZXNgLCBkZXBlbmRlbmN5IHBvbGljeSwgYW5kIHJlZ2VuZXJhdGluZyBgZG9jcy9kZXBzLypgLgoKIyMgVGVzdHMKCnwgU3VpdGUgfCBQYXRoIHwKfC0tLS0tLS18LS0tLS0tfAp8IEhlYWRlciBjb21waWxlIHNtb2tlIHwgYHRlc3RzL1VuaXRUZXN0cy9HYW1lc3RhdGUvR2FtZXN0YXRlTW9kdWxlSGVhZGVyQ29tcGlsZVRlc3QuY3BwYCB8CnwgTm9uLWBSVFNVbml0YCB1cGRhdGUgZ2F0ZXMgKFIyLjIpIHwgYHRlc3RzL1VuaXRUZXN0cy9HYW1lc3RhdGUvUlRTR2FtZVN0YXRlTm9uUlRTVW5pdEdhdGVUZXN0LmNwcGAgfAp8IERldGVybWluaXNtIChpbnRlZ3JhdGlvbikgfCBgdGVzdHMvSW50ZWdyYXRpb25UZXN0cy9EZXRlcm1pbmlzbVRlc3QuY3BwYCAod2hlbiBwcmVzZW50IGluIGZ1bGwgZ2F0ZSkgfAoKUnVuIHdpdGggdGhlIGZ1bGwtZW5naW5lIHRlc3QgdGFyZ2V0IChgY21ha2VgICsgYGN0ZXN0YCkuCg==
+# Module: `core.gamestate`
+
+Manifest: [docs/agentic/modules/core.gamestate.module.json](../../docs/agentic/modules/core.gamestate.module.json)
+
+## Purpose
+
+**Simulation hub** for RTS-style matches: unit list, map integration, selection and commands, collision and explosion handling, deterministic RNG, static influence fields, and `RTSUnit` as the concrete `IGameUnit`. **`GameStateManager`** holds a single `currentState` and `GameStateType` enum; high-level mode changes go through `SetState` / `TransitionToState`.
+
+## Public surface (`exports`)
+
+Include headers from the repo root, e.g. `#include "core/gamestate/RTSGameState.h"`.
+
+| Symbol | Kind | Header | Notes |
+|--------|------|--------|-------|
+| `RTSGameState` | class | `RTSGameState.h` | Main simulation step (`Update`, units, map, combat systems); implements `ISimulationSnapshot` |
+| `RTSUnit` | class | `RTSUnit.h` | Concrete unit; AI FSM + kinematics/agent interfaces |
+| `GameStateManager` | class | `GameStateManager.h` | Menu / mission state holder (`currentState` + `GameStateType`) |
+| `IGameState` | header | `IGameState.h` | Legacy forwarder → `core/interfaces/IGameState.h` |
+| `IGameLogicRenderer` | header | `IGameLogicRenderer.h` | Legacy forwarder → `core/interfaces/IGameLogicRenderer.h` |
+
+### Contract highlights
+
+- **`GetCurrentGameState`** returns `const RTSGameState*` (do not widen to non-const without an explicit API change).
+- **`RTSGameState`** implements **`ISimulationSnapshot`** (`GetMapSize`, `GetAllUnits`) for serializers; **`IGameLogicRenderer::GetSimulationSnapshot()`** defaults to `nullptr` until renderers override it.
+- **`BehaviorContext::self`** remains `IGameUnit*`; gamestate wires concrete units without changing the AI contract.
+- **`RTSGameState::BuildContextForUnit`** delegates to internal **`AssembleBehaviorContext`** (`BehaviorContextAssembler.h` / `.cpp`); not a manifest export.
+- **`RTSGameState.cpp`** may include sibling `RTSUnit.h` (same module).
+
+## Dependencies (`requires`)
+
+| Module | Range | Why |
+|--------|-------|-----|
+| `core.ai` | `^1.0.0` | `BehaviorContext`, unit AI tick |
+| `core.combat` | `^1.0.0` | Selection, commands, explosions |
+| `core.map` | `^1.0.0` | `Map`, placement/obstacle components |
+| `core.influence` | `^1.0.0` | Influence items and calculator |
+| `core.collision` | `^1.0.0` | Collision system / detector hooks |
+| `core.math` | `^1.0.0` | `Vector2`, deterministic RNG |
+| `core.logging` | `^1.0.0` | `Logger` |
+| `core.interfaces` | `^1.0.0` | `IGameUnit`, kinematics, game-state contracts |
+
+Allowed `#include` in `core/gamestate/**`: standard library (`<…>`), headers under `core/gamestate/`, repo-root paths under declared `requires` (e.g. `core/interfaces/…`), or **relative** includes that resolve into a declared requirement (e.g. `../logging/Logger.h`, `../combat/CommandSystem.h`). No other `core/*` siblings (`core/serialization/`, `core/ai_advanced/`, …), `platform/`, or `ffi/` (enforced by `./scripts/check-module-deps.sh`).
+
+## Agent edit scope
+
+| Allow | Path |
+|-------|------|
+| Implementation | `core/gamestate/**` |
+| Manifest | `docs/agentic/modules/core.gamestate.module.json` |
+| Unit tests | `tests/UnitTests/Gamestate/**` |
+| Shared agentic docs | `docs/agentic/*` (when policy requires) |
+
+## Invariants
+
+- **Legacy forwarders** in `IGameState.h` / `IGameLogicRenderer.h` remain; canonical contracts live under `core/interfaces/`.
+- **`SetAgentState` / `SetAgentParameter`** forwarder bodies stay verbatim on `RTSUnit` / command paths.
+- **`RTSGameState::Update`:** AI tick gates on `dynamic_cast<IUnitBehaviorHost*>`; explosion impulse and bounds fallback remain `dynamic_cast<RTSUnit*>` participation filters (do not widen those two gates to `IGameUnit` / `IUnitKinematics`).
+- Bounds fallback center-clamps `RTSUnit` centers onto `[0, mapSize]` after explosions; collision still performs radius-aware map-edge inset via `IUnitKinematics` for non-`RTSUnit` kinematic doubles (see `RTSGameStateNonRTSUnitGateTest`).
+- **`RTSUnit`** multiply-inherits `IGameUnit`, `IUnitKinematics`, `IUnitAgent`, and `IUnitBehaviorHost`; ABI/size changed for out-of-tree binaries when the behavior-host base was added (in-tree tests use concrete `RTSUnit`).
+- **Map-edge collision events** always emit, including for units that do not implement `IUnitKinematics`.
+- Do not introduce `#include` of other CoreEngine modules without updating manifest `requires`, dependency policy, and regenerating `docs/deps/*`.
+
+## Tests
+
+| Suite | Path |
+|-------|------|
+| Header compile smoke | `tests/UnitTests/Gamestate/GamestateModuleHeaderCompileTest.cpp` |
+| Non-`RTSUnit` update gates (R2.2) | `tests/UnitTests/Gamestate/RTSGameStateNonRTSUnitGateTest.cpp` |
+| Determinism (integration) | `tests/IntegrationTests/DeterminismTest.cpp` (when present in full gate) |
+
+Run with the full-engine test target (`cmake` + `ctest`).
