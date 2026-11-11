@@ -1,1 +1,199 @@
-IyBDb3JlRW5naW5lIOKAlCBQb3J0aW5nIEd1aWRlCgpIb3cgdG8gdXNlIENvcmVFbmdpbmUgaW4gZGlmZmVyZW50IGdhbWUgZW5naW5lcyBhbmQgcGxhdGZvcm1zLgoKLS0tCgojIyBVbnJlYWwgRW5naW5lIDUKCiMjIyBTdGVwIDE6IENvcHkgYGNvcmUvYCBpbnRvIHlvdXIgVUU1IHByb2plY3QKCmBgYApjcCAtciBDb3JlRW5naW5lL2NvcmUvIE15R2FtZS9Tb3VyY2UvTXlHYW1lL0NvcmVFbmdpbmUvCmBgYAoKQWxsIGZpbGVzIGluIGBjb3JlL2AgY29tcGlsZSB3aXRoIGAtc3RkPWMrKzE3YCBhbmQgemVybyBVRTUgZGVwZW5kZW5jaWVzLgoKIyMjIFN0ZXAgMjogQWRkIHRvIEJ1aWxkLmNzCgpgYGBjc2hhcnAKLy8gTXlHYW1lLkJ1aWxkLmNzClB1YmxpY0luY2x1ZGVQYXRocy5BZGQoUGF0aC5Db21iaW5lKE1vZHVsZURpcmVjdG9yeSwgIkNvcmVFbmdpbmUiKSk7CmBgYAoKIyMjIFN0ZXAgMzogV3JhcCBSVFNVbml0IGluIGEgVUNMQVNTIEFjdG9yCgpgYGBjcHAKVUNMQVNTKCkKY2xhc3MgTVlHQU1FX0FQSSBBTXlVbml0IDogcHVibGljIEFBY3Rvcgp7CiAgICBHRU5FUkFURURfQk9EWSgpCnByaXZhdGU6CiAgICBzdGQ6OnVuaXF1ZV9wdHI8UlRTVW5pdD4gY29yZVVuaXRfOwoKcHVibGljOgogICAgdmlydHVhbCB2b2lkIFRpY2soZmxvYXQgRGVsdGFUaW1lKSBvdmVycmlkZQogICAgewogICAgICAgIC8vIEJ1aWxkIGNvbnRleHQgZnJvbSBVRSB3b3JsZCBxdWVyaWVzCiAgICAgICAgQmVoYXZpb3JDb250ZXh0IGN0eDsKICAgICAgICBjdHguc2VsZiA9IGNvcmVVbml0Xy5nZXQoKTsKICAgICAgICBjdHguZGVsdGFUaW1lID0gRGVsdGFUaW1lOwogICAgICAgIGN0eC5ybmcgPSAmZ2FtZVN0YXRlXy0+R2V0Uk5HKCk7CiAgICAgICAgLy8gLi4uIHBvcHVsYXRlIG5lYXJieUFsbGllcywgbmVhcmJ5RW5lbWllcyBmcm9tIFVFIG92ZXJsYXAgc3BoZXJlCgogICAgICAgIC8vIFJ1biBBSQogICAgICAgIFZlY3RvcjIgYWNjZWwgPSBjb3JlVW5pdF8tPkdldFN0YXRlTWFjaGluZSgpLlVwZGF0ZShjdHgpOwogICAgICAgIGNvcmVVbml0Xy0+QXBwbHlBY2NlbGVyYXRpb24oYWNjZWwsIERlbHRhVGltZSk7CgogICAgICAgIC8vIFN5bmMgVUUgcG9zaXRpb24KICAgICAgICBWZWN0b3IyIHBvcyA9IGNvcmVVbml0Xy0+R2V0UG9zaXRpb24oKTsKICAgICAgICBTZXRBY3RvckxvY2F0aW9uKEZWZWN0b3IocG9zLngsIHBvcy55LCAwLjBmKSk7CiAgICB9Cn07CmBgYAoKIyMjIFN0ZXAgNDogVXNlIE51bGxSZW5kZXJlciBmb3IgbG9naWMgKFVFNSBoYW5kbGVzIHJlbmRlcmluZykKCmBgYGNwcAovLyBHYW1lIG1vZGUgb3Igc3Vic3lzdGVtClJUU0dhbWVTdGF0ZSBnYW1lU3RhdGUoVmVjdG9yMihtYXBXaWR0aCwgbWFwSGVpZ2h0KSwgcm5nU2VlZCk7CkdhbWVMb2dpY0VuZ2luZSBsb2dpY0VuZ2luZTsKbG9naWNFbmdpbmUuU2V0VXBkYXRlQ2FsbGJhY2soWyZdKGZsb2F0IGR0KSB7IGdhbWVTdGF0ZS5VcGRhdGUoZHQpOyB9KTsKCi8vIEluIFRpY2soKToKbG9naWNFbmdpbmUuVXBkYXRlKEdldFdvcmxkKCktPkdldERlbHRhU2Vjb25kcygpKTsKYGBgCgoqKkFsbCBBSSwgaW5mbHVlbmNlIGZpZWxkcywgY29sbGlzaW9uLCBhbmQgc3RhdGUgbWFjaGluZXMgd29yayB1bmNoYW5nZWQuKioKCi0tLQoKIyMgVW5pdHkgKHZpYSBDIEFQSSkKCiMjIyBTdGVwIDE6IEJ1aWxkIHRoZSBGRkkgc2hhcmVkIGxpYnJhcnkKCmBgYGJhc2gKY21ha2UgLURCVUlMRF9GRkk9T04gLURDTUFLRV9CVUlMRF9UWVBFPVJlbGVhc2UgLi4KbWFrZQojIOKGkiBsaWJjb3JlZW5naW5lX2ZmaS5keWxpYiAvIC5zbyAvIC5kbGwKYGBgCgojIyMgU3RlcCAyOiBDb3B5IHRvIFVuaXR5IFBsdWdpbnMgZm9sZGVyCgpgYGAKQXNzZXRzL1BsdWdpbnMvbGliY29yZWVuZ2luZV9mZmkuZHlsaWIgIChtYWNPUykKQXNzZXRzL1BsdWdpbnMvY29yZWVuZ2luZV9mZmkuZGxsICAgICAgIChXaW5kb3dzKQpBc3NldHMvUGx1Z2lucy9saWJjb3JlZW5naW5lX2ZmaS5zbyAgICAgKExpbnV4L0FuZHJvaWQpCmBgYAoKIyMjIFN0ZXAgMzogQyMgUC9JbnZva2UgYmluZGluZ3MKCmBgYGNzaGFycAp1c2luZyBTeXN0ZW0uUnVudGltZS5JbnRlcm9wU2VydmljZXM7CgpwdWJsaWMgc3RhdGljIGNsYXNzIENvcmVFbmdpbmUKewogICAgY29uc3Qgc3RyaW5nIExJQiA9ICJjb3JlZW5naW5lX2ZmaSI7CgogICAgW0RsbEltcG9ydChMSUIpXSBwdWJsaWMgc3RhdGljIGV4dGVybiBJbnRQdHIgY2VfZW5naW5lX2NyZWF0ZShmbG9hdCB3LCBmbG9hdCBoLCB1bG9uZyBzZWVkKTsKICAgIFtEbGxJbXBvcnQoTElCKV0gcHVibGljIHN0YXRpYyBleHRlcm4gdm9pZCAgIGNlX2VuZ2luZV9kZXN0cm95KEludFB0ciBlbmdpbmUpOwogICAgW0RsbEltcG9ydChMSUIpXSBwdWJsaWMgc3RhdGljIGV4dGVybiBpbnQgICAgY2VfZW5naW5lX3VwZGF0ZShJbnRQdHIgZW5naW5lLCBmbG9hdCBkdCk7CiAgICBbRGxsSW1wb3J0KExJQildIHB1YmxpYyBzdGF0aWMgZXh0ZXJuIGludCAgICBjZV91bml0X3NwYXduKEludFB0ciBlbmdpbmUsIGludCB0ZWFtLCBmbG9hdCB4LCBmbG9hdCB5KTsKICAgIFtEbGxJbXBvcnQoTElCKV0gcHVibGljIHN0YXRpYyBleHRlcm4gaW50ICAgIGNlX3VuaXRfY291bnQoSW50UHRyIGVuZ2luZSk7CiAgICBbRGxsSW1wb3J0KExJQildIHB1YmxpYyBzdGF0aWMgZXh0ZXJuIGZsb2F0ICBjZV90ZXJyaXRvcnlfZ2V0X3BjdChJbnRQdHIgZW5naW5lLCBpbnQgdGVhbSk7CiAgICBbRGxsSW1wb3J0KExJQildIHB1YmxpYyBzdGF0aWMgZXh0ZXJuIGludCAgICBjZV9zbmFwc2hvdF9nZXRfanNvbihJbnRQdHIgZW5naW5lLCBieXRlW10gYnVmLCBpbnQgc2l6ZSk7Cn0KCi8vIFVzYWdlIGluIE1vbm9CZWhhdmlvdXI6CnZvaWQgU3RhcnQoKSB7IGVuZ2luZSA9IENvcmVFbmdpbmUuY2VfZW5naW5lX2NyZWF0ZSgxNjAwLCA5MDAsIDApOyB9CnZvaWQgVXBkYXRlKCkgeyBDb3JlRW5naW5lLmNlX2VuZ2luZV91cGRhdGUoZW5naW5lLCBUaW1lLmRlbHRhVGltZSk7IH0Kdm9pZCBPbkRlc3Ryb3koKSB7IENvcmVFbmdpbmUuY2VfZW5naW5lX2Rlc3Ryb3koZW5naW5lKTsgfQpgYGAKCi0tLQoKIyMgUmF5bGliIChEeW5hbWljR08gcGF0dGVybikKCmBgYGNwcAojaW5jbHVkZSAiQ29yZUVuZ2luZS9jb3JlL2dhbWVzdGF0ZS9SVFNHYW1lU3RhdGUuaCIKI2luY2x1ZGUgIkNvcmVFbmdpbmUvY29yZS9nYW1lbG9vcC9HYW1lTG9naWNFbmdpbmUuaCIKI2luY2x1ZGUgIkNvcmVFbmdpbmUvcGxhdGZvcm0vcmF5bGliL1JheWxpYklucHV0UmVhZGVyLmgiCiNpbmNsdWRlICJDb3JlRW5naW5lL3BsYXRmb3JtL3JheWxpYi9SYXlsaWJSZW5kZXJlci5oIgojaW5jbHVkZSA8cmF5bGliLmg+CgppbnQgbWFpbigpCnsKICAgIEluaXRXaW5kb3coMTYwMCwgOTAwLCAiTXkgR2FtZSIpOwogICAgU2V0VGFyZ2V0RlBTKDYwKTsKCiAgICBSVFNHYW1lU3RhdGUgZ2FtZVN0YXRlKFZlY3RvcjIoMTYwMCwgOTAwKSk7CiAgICBHYW1lTG9naWNFbmdpbmUgbG9naWNFbmdpbmU7CiAgICBsb2dpY0VuZ2luZS5TZXRVcGRhdGVDYWxsYmFjayhbJl0oZmxvYXQgZHQpIHsgZ2FtZVN0YXRlLlVwZGF0ZShkdCk7IH0pOwoKICAgIFJheWxpYlJlbmRlcmVyIHJlbmRlcmVyKDE2MDAsIDkwMCk7CiAgICByZW5kZXJlci5TZXRHYW1lU3RhdGUoJmdhbWVTdGF0ZSk7CgogICAgUmF5bGliSW5wdXRSZWFkZXIgaW5wdXQ7CgogICAgd2hpbGUgKCFXaW5kb3dTaG91bGRDbG9zZSgpKSB7CiAgICAgICAgaW5wdXQuUG9sbEV2ZW50cygpOwogICAgICAgIGxvZ2ljRW5naW5lLlVwZGF0ZShHZXRGcmFtZVRpbWUoKSk7CiAgICAgICAgQmVnaW5EcmF3aW5nKCk7CiAgICAgICAgcmVuZGVyZXIuUmVuZGVyKCk7CiAgICAgICAgRW5kRHJhd2luZygpOwogICAgfQoKICAgIENsb3NlV2luZG93KCk7CiAgICByZXR1cm4gMDsKfQpgYGAKCi0tLQoKIyMgU0RMMgoKRm9yIGEgcnVubmFibGUgU0RMMiB3aW5kb3cgdGhhdCB0aWNrcyBgUlRTR2FtZVN0YXRlYCB0aHJvdWdoIGBHYW1lTG9naWNFbmdpbmVgIHdpdGhvdXQgbW9kaWZ5aW5nIGBwbGF0Zm9ybS9zZGwyYCBzdHVicywgdXNlIHRoZSBvcHRpb25hbCB2aWV3ZXIgaW4gdGhpcyByZXBvc2l0b3J5OgoKLSBFbmFibGUgYC1EQ09SRUVOR0lORV9CVUlMRF9TREwyX1ZJRVdFUj1PTmAgKGRlZmF1bHQgT0ZGKSwgaW5zdGFsbCBgbGlic2RsMi1kZXZgLCBidWlsZCBgY29yZWVuZ2luZV9zZGwyX3ZpZXdlcmAuCi0gRnVsbCBmbGFnL2tleS9wcmVzZXQvc2NyaXB0IGRvY3VtZW50YXRpb246IFtWSUVXRVIubWRdKFZJRVdFUi5tZCkuCgpHYW1lLXNwZWNpZmljIHBvcnRzIGNhbiBzdGlsbCBpbXBsZW1lbnQgYFNETFJlbmRlcmVyYCAvIGBTRExJbnB1dFJlYWRlcmAgdW5kZXIgYHBsYXRmb3JtL3NkbDJgIHdoZW4gYEJVSUxEX1NETDI9T05gOyB0aGF0IHBhdGggaXMgc2VwYXJhdGUgZnJvbSB0aGUgb3B0aW9uYWwgdmlld2VyIHRvb2wuCgotLS0KCiMjIFB5dGhvbgoKYGBgcHl0aG9uCmltcG9ydCBjdHlwZXMsIGpzb24KCmxpYiA9IGN0eXBlcy5DRExMKCIuL2xpYmNvcmVlbmdpbmVfZmZpLmR5bGliIikKbGliLmNlX2VuZ2luZV9jcmVhdGUucmVzdHlwZSAgPSBjdHlwZXMuY192b2lkX3AKbGliLmNlX2VuZ2luZV9jcmVhdGUuYXJndHlwZXMgPSBbY3R5cGVzLmNfZmxvYXQsIGN0eXBlcy5jX2Zsb2F0LCBjdHlwZXMuY191aW50NjRdCmxpYi5jZV9lbmdpbmVfdXBkYXRlLnJlc3R5cGUgID0gY3R5cGVzLmNfaW50CmxpYi5jZV9lbmdpbmVfdXBkYXRlLmFyZ3R5cGVzID0gW2N0eXBlcy5jX3ZvaWRfcCwgY3R5cGVzLmNfZmxvYXRdCmxpYi5jZV91bml0X3NwYXduLnJlc3R5cGUgID0gY3R5cGVzLmNfaW50CmxpYi5jZV91bml0X3NwYXduLmFyZ3R5cGVzID0gW2N0eXBlcy5jX3ZvaWRfcCwgY3R5cGVzLmNfaW50LCBjdHlwZXMuY19mbG9hdCwgY3R5cGVzLmNfZmxvYXRdCmxpYi5jZV9zbmFwc2hvdF9nZXRfanNvbi5yZXN0eXBlICA9IGN0eXBlcy5jX2ludApsaWIuY2Vfc25hcHNob3RfZ2V0X2pzb24uYXJndHlwZXMgPSBbY3R5cGVzLmNfdm9pZF9wLCBjdHlwZXMuY19jaGFyX3AsIGN0eXBlcy5jX2ludF0KCmVuZ2luZSA9IGxpYi5jZV9lbmdpbmVfY3JlYXRlKDE2MDAuMCwgOTAwLjAsIDApCmxpYi5jZV91bml0X3NwYXduKGVuZ2luZSwgMSwgNDAwLjAsIDQ1MC4wKQpmb3IgXyBpbiByYW5nZSgzMDApOgogICAgbGliLmNlX2VuZ2luZV91cGRhdGUoZW5naW5lLCAxLjAvMzAuMCkKCmJ1ZiA9IGN0eXBlcy5jcmVhdGVfc3RyaW5nX2J1ZmZlcig2NTUzNikKbGliLmNlX3NuYXBzaG90X2dldF9qc29uKGVuZ2luZSwgYnVmLCA2NTUzNikKcHJpbnQoanNvbi5sb2FkcyhidWYudmFsdWUpKQpsaWIuY2VfZW5naW5lX2Rlc3Ryb3koZW5naW5lKQpgYGAKCi0tLQoKIyMgTW9kaWZpY2F0aW9uIFpvbmVzCgp8IFpvbmUgfCBTeXN0ZW1zIHwgUnVsZSB8CnwtLS0tLS18LS0tLS0tLS0tfC0tLS0tLXwKfCBVbHRyYS1oaWdoIHwgYEluZmx1ZW5jZUZpZWxkQ2FsY3VsYXRvcmAsIGBJbmZsdWVuY2VGaWVsZEl0ZW1gIHwgQWx3YXlzIGFzayB8CnwgSGlnaCB8IGBTdGF0ZU1hY2hpbmVgLCBgQ29sbGlzaW9uU3lzdGVtYCwgYFJUU0dhbWVTdGF0ZWAsIGBSVFNVbml0YCB8IEFsd2F5cyBhc2sgfAp8IE1lZGl1bSB8IEJlaGF2aW9ycywgQ29uZGl0aW9ucywgR2FtZVN0YXRlcyB8IEFzayBpZiBtb2RpZnlpbmcgfAp8IExvdyB8IE5ldyBiZWhhdmlvcnMsIHBsYXRmb3JtLyBhZGFwdGVycywgZmZpLyBiaW5kaW5ncyB8IFByb2NlZWQgfAo=
+# CoreEngine — Porting Guide
+
+How to use CoreEngine in different game engines and platforms.
+
+---
+
+## Unreal Engine 5
+
+### Step 1: Copy `core/` into your UE5 project
+
+```
+cp -r CoreEngine/core/ MyGame/Source/MyGame/CoreEngine/
+```
+
+All files in `core/` compile with `-std=c++17` and zero UE5 dependencies.
+
+### Step 2: Add to Build.cs
+
+```csharp
+// MyGame.Build.cs
+PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "CoreEngine"));
+```
+
+### Step 3: Wrap RTSUnit in a UCLASS Actor
+
+```cpp
+UCLASS()
+class MYGAME_API AMyUnit : public AActor
+{
+    GENERATED_BODY()
+private:
+    std::unique_ptr<RTSUnit> coreUnit_;
+
+public:
+    virtual void Tick(float DeltaTime) override
+    {
+        // Build context from UE world queries
+        BehaviorContext ctx;
+        ctx.self = coreUnit_.get();
+        ctx.deltaTime = DeltaTime;
+        ctx.rng = &gameState_->GetRNG();
+        // ... populate nearbyAllies, nearbyEnemies from UE overlap sphere
+
+        // Run AI
+        Vector2 accel = coreUnit_->GetStateMachine().Update(ctx);
+        coreUnit_->ApplyAcceleration(accel, DeltaTime);
+
+        // Sync UE position
+        Vector2 pos = coreUnit_->GetPosition();
+        SetActorLocation(FVector(pos.x, pos.y, 0.0f));
+    }
+};
+```
+
+### Step 4: Use NullRenderer for logic (UE5 handles rendering)
+
+```cpp
+// Game mode or subsystem
+RTSGameState gameState(Vector2(mapWidth, mapHeight), rngSeed);
+GameLogicEngine logicEngine;
+logicEngine.SetUpdateCallback([&](float dt) { gameState.Update(dt); });
+
+// In Tick():
+logicEngine.Update(GetWorld()->GetDeltaSeconds());
+```
+
+**All AI, influence fields, collision, and state machines work unchanged.**
+
+---
+
+## Unity (via C API)
+
+### Step 1: Build the FFI shared library
+
+```bash
+cmake -DBUILD_FFI=ON -DCMAKE_BUILD_TYPE=Release ..
+make
+# → libcoreengine_ffi.dylib / .so / .dll
+```
+
+### Step 2: Copy to Unity Plugins folder
+
+```
+Assets/Plugins/libcoreengine_ffi.dylib  (macOS)
+Assets/Plugins/coreengine_ffi.dll       (Windows)
+Assets/Plugins/libcoreengine_ffi.so     (Linux/Android)
+```
+
+### Step 3: C# P/Invoke bindings
+
+```csharp
+using System.Runtime.InteropServices;
+
+public static class CoreEngine
+{
+    const string LIB = "coreengine_ffi";
+
+    [DllImport(LIB)] public static extern IntPtr ce_engine_create(float w, float h, ulong seed);
+    [DllImport(LIB)] public static extern void   ce_engine_destroy(IntPtr engine);
+    [DllImport(LIB)] public static extern int    ce_engine_update(IntPtr engine, float dt);
+    [DllImport(LIB)] public static extern int    ce_unit_spawn(IntPtr engine, int team, float x, float y);
+    [DllImport(LIB)] public static extern int    ce_unit_count(IntPtr engine);
+    [DllImport(LIB)] public static extern float  ce_territory_get_pct(IntPtr engine, int team);
+    [DllImport(LIB)] public static extern int    ce_snapshot_get_json(IntPtr engine, byte[] buf, int size);
+}
+
+// Usage in MonoBehaviour:
+void Start() { engine = CoreEngine.ce_engine_create(1600, 900, 0); }
+void Update() { CoreEngine.ce_engine_update(engine, Time.deltaTime); }
+void OnDestroy() { CoreEngine.ce_engine_destroy(engine); }
+```
+
+---
+
+## Raylib (DynamicGO pattern)
+
+```cpp
+#include "CoreEngine/core/gamestate/RTSGameState.h"
+#include "CoreEngine/core/gameloop/GameLogicEngine.h"
+#include "CoreEngine/platform/raylib/RaylibInputReader.h"
+#include "CoreEngine/platform/raylib/RaylibRenderer.h"
+#include <raylib.h>
+
+int main()
+{
+    InitWindow(1600, 900, "My Game");
+    SetTargetFPS(60);
+
+    RTSGameState gameState(Vector2(1600, 900));
+    GameLogicEngine logicEngine;
+    logicEngine.SetUpdateCallback([&](float dt) { gameState.Update(dt); });
+
+    RaylibRenderer renderer(1600, 900);
+    renderer.SetGameState(&gameState);
+
+    RaylibInputReader input;
+
+    while (!WindowShouldClose()) {
+        input.PollEvents();
+        logicEngine.Update(GetFrameTime());
+        BeginDrawing();
+        renderer.Render();
+        EndDrawing();
+    }
+
+    CloseWindow();
+    return 0;
+}
+```
+
+---
+
+## SDL2
+
+For a runnable SDL2 window that ticks `RTSGameState` through `GameLogicEngine` without modifying `platform/sdl2` stubs, use the optional viewer in this repository:
+
+- Enable `-DCOREENGINE_BUILD_SDL2_VIEWER=ON` (default OFF), install `libsdl2-dev`, build `coreengine_sdl2_viewer`.
+- Full flag/key/preset/script documentation: [VIEWER.md](VIEWER.md).
+
+Game-specific ports can still implement `SDLRenderer` / `SDLInputReader` under `platform/sdl2` when `BUILD_SDL2=ON`; that path is separate from the optional viewer tool.
+
+---
+
+## Python
+
+```python
+import ctypes, json
+
+lib = ctypes.CDLL("./libcoreengine_ffi.dylib")
+lib.ce_engine_create.restype  = ctypes.c_void_p
+lib.ce_engine_create.argtypes = [ctypes.c_float, ctypes.c_float, ctypes.c_uint64]
+lib.ce_engine_update.restype  = ctypes.c_int
+lib.ce_engine_update.argtypes = [ctypes.c_void_p, ctypes.c_float]
+lib.ce_unit_spawn.restype  = ctypes.c_int
+lib.ce_unit_spawn.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_float, ctypes.c_float]
+lib.ce_snapshot_get_json.restype  = ctypes.c_int
+lib.ce_snapshot_get_json.argtypes = [ctypes.c_void_p, ctypes.c_char_p, ctypes.c_int]
+
+engine = lib.ce_engine_create(1600.0, 900.0, 0)
+lib.ce_unit_spawn(engine, 1, 400.0, 450.0)
+for _ in range(300):
+    lib.ce_engine_update(engine, 1.0/30.0)
+
+buf = ctypes.create_string_buffer(65536)
+lib.ce_snapshot_get_json(engine, buf, 65536)
+print(json.loads(buf.value))
+lib.ce_engine_destroy(engine)
+```
+
+---
+
+## Modification Zones
+
+| Zone | Systems | Rule |
+|------|---------|------|
+| Ultra-high | `InfluenceFieldCalculator`, `InfluenceFieldItem` | Always ask |
+| High | `StateMachine`, `CollisionSystem`, `RTSGameState`, `RTSUnit` | Always ask |
+| Medium | Behaviors, Conditions, GameStates | Ask if modifying |
+| Low | New behaviors, platform/ adapters, ffi/ bindings | Proceed |

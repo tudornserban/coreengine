@@ -1,1 +1,27 @@
-IyBNb2R1bGUgZGVwZW5kZW5jeSBwb2xpY3kgKGRyYWZ0KQoKRW5mb3JjZW1lbnQgaXMgKiphY3RpdmUqKiBmb3IgYGNvcmUubWF0aGAsIGBjb3JlLmluZmx1ZW5jZS50eXBlc2AsIGBjb3JlLmluZmx1ZW5jZWAsIGBjb3JlLmxvZ2dpbmdgLCBgY29yZS5pbnRlcmZhY2VzYCwgYGNvcmUuZ2FtZWxvb3BgLCBgY29yZS5tYXBgLCBgY29yZS5haWAsIGBjb3JlLnNlcmlhbGl6YXRpb25gLCBgY29yZS5jb2xsaXNpb25gLCBgY29yZS5jb21iYXRgLCBhbmQgYGNvcmUuZ2FtZXN0YXRlYCAoYHNjcmlwdHMvY2hlY2stbW9kdWxlLWRlcHMuc2hgKS4gKipgY29yZS5haV9hZHZhbmNlZGAqKiByZW1haW5zIG1hbmlmZXN0LW9ubHkgdW50aWwgb3B0ZWQgaW4uICoqYHJlcXVpcmVzYCBncmFwaHMgbXVzdCBiZSBhY3ljbGljKiog4oCUIG5vIGNoZWNrZXIgZXhjZXB0aW9ucy4gU3RhbmRhbG9uZSBgQ09SRUVOR0lORV8qX1NUQU5EQUxPTkVgIHRlc3QgZXhlY3V0YWJsZXMgaW4gdGhlIHRvcC1sZXZlbCBgQ01ha2VMaXN0cy50eHRgIG1heSBvbmx5IGxpbmsgYGNvcmVlbmdpbmVfKmAgb2JqZWN0IGxpYnJhcmllcyBmb3IgdGhhdCBtb2R1bGUgYW5kIHRoZSB0cmFuc2l0aXZlIGNsb3N1cmUgb2YgaXRzIG1hbmlmZXN0IGByZXF1aXJlc2AgKGhlYWRlci1vbmx5IGBjb3JlLmludGVyZmFjZXNgIGhhcyBubyBvYmplY3QgdGFyZ2V0KS4gVGhlIGxpbmsgY2hlY2tlciB0b2tlbmlzZXMgZWFjaCBgdGFyZ2V0X2xpbmtfbGlicmFyaWVzYCBjYWxsIGxpdGVyYWxseTogYCR7Li4ufWAgdmFyaWFibGVzIGFuZCB1bmV4cGFuZGVkIGdlbmVyYXRvciBleHByZXNzaW9ucyBmYWlsIHRoZSBjaGVja+KAlGxpc3QgcmVxdWlyZWQgYGNvcmVlbmdpbmVfKmAgbGlicmFyaWVzIGV4cGxpY2l0bHkgaW4gQ01ha2UuCgpUaGUgY29tbWl0dGVkIG1hbmlmZXN0LW9ubHkgKipgcmVxdWlyZXNgIGdyYXBoKiogKG1hY2hpbmUtcmVhZGFibGUgSlNPTiBwbHVzIGEgaHVtYW4gc3VtbWFyeSkgbGl2ZXMgdW5kZXIgW2Bkb2NzL2RlcHMvYF0oLi4vZGVwcy8pLiBgc2NyaXB0cy9jaGVja19tb2R1bGVfZGVwcy5weWAgcmVnZW5lcmF0ZXMgYW5kIGJ5dGUtY29tcGFyZXMgdGhlc2UgZmlsZXMgb24gZXZlcnkgcnVuIHNvIGNvbW1pdHRlZCBhcnRpZmFjdHMgY2Fubm90IGRyaWZ0IGZyb20gdGhlIG1hbmlmZXN0cy4KCiMjIExheWVycwoKMS4gKipGb3VuZGF0aW9uOioqIGBjb3JlLm1hdGhgLCBgY29yZS5pbmZsdWVuY2UudHlwZXNgLCBgY29yZS5sb2dnaW5nYAoyLiAqKkNvbnRyYWN0czoqKiBgY29yZS5pbnRlcmZhY2VzYCAobWF5IGRlcGVuZCBvbiBmb3VuZGF0aW9uIC8gdmFsdWUtdHlwZSBsZWF2ZXMg4oCUIG5vdCBvbiBgY29yZS5pbmZsdWVuY2VgIHN5c3RlbXMpCjMuICoqU3lzdGVtczoqKiBgY29yZS5haWAsIGBjb3JlLmluZmx1ZW5jZWAsIGBjb3JlLmNvbGxpc2lvbmAsIGBjb3JlLm1hcGAsIGBjb3JlLmdhbWVsb29wYCwgYGNvcmUuY29tYmF0YAo0LiAqKkludGVncmF0aW9uOioqIGBjb3JlLmdhbWVzdGF0ZWAsIGBjb3JlLnNlcmlhbGl6YXRpb25gCjUuICoqRXhwZXJpbWVudGFsOioqIGBjb3JlLmFpX2FkdmFuY2VkYAoKIyMgUnVsZXMgKHRhcmdldCkKCnwgUnVsZSB8IFJhdGlvbmFsZSB8CnwtLS0tLS18LS0tLS0tLS0tLS18CnwgTm8gYCNpbmNsdWRlYCBmcm9tIGBjb3JlL2AgdG8gYHBsYXRmb3JtL2Agb3IgYGZmaS9gIHwgUGxhdGZvcm0tYWdub3N0aWMgY29yZSB8CnwgU3lzdGVtcyBtdXN0IG5vdCBgI2luY2x1ZGVgIGNvbmNyZXRlIHR5cGVzIGZyb20gYGNvcmUuZ2FtZXN0YXRlL2AgZXhjZXB0IGludGVncmF0aW9uIG1vZHVsZXMgfCBLZWVwcyBhZ2VudHMgc2NvcGVkIHRvIG9uZSBtb2R1bGUgfAp8IGBjb3JlLmNvbGxpc2lvbmAgZGVwZW5kcyBvbiBgSUdhbWVVbml0YCBhbmQgYElVbml0S2luZW1hdGljc2A7IGluY2x1ZGVzIGVuZm9yY2VkIHNpbmNlIFIxLjM7IHN0YW5kYWxvbmUgdGVzdHMgY29uc3RydWN0IGBLaW5lbWF0aWNNb2NrR2FtZVVuaXRgIGFzIG9mIFIzLjEgfCBJbnRlcmZhY2Utb25seSBkZXBlbmRlbmN5IG9uIGdhbWUgdW5pdHMgfAp8IERlcGVuZCBvbmx5IG9uIG1vZHVsZXMgbGlzdGVkIGluIGByZXF1aXJlc2Agd2l0aCBzYXRpc2ZpZWQgc2VtdmVyIHwgQWdlbnQgKyBDSSBndWFyZHJhaWwgfAp8IE5vIGN5Y2xlcyBpbiBgcmVxdWlyZXNgIHwgRW5hYmxlcyBvcmRlcmVkIGV4dHJhY3Rpb247IHN0cmljdGx5IGVuZm9yY2VkIHwKCiMjIFZlcnNpb24gYnVtcHMKClNlZSBbQUdFTlRTLm1kXSguLi8uLi9BR0VOVFMubWQpIOKAlCBwYXRjaC9taW5vci9tYWpvciBydWxlcyBhcHBseSBwZXIgbW9kdWxlIGB2ZXJzaW9uYCBpbiBgZG9jcy9hZ2VudGljL21vZHVsZXMvKi5tb2R1bGUuanNvbmAu
+# Module dependency policy (draft)
+
+Enforcement is **active** for `core.math`, `core.influence.types`, `core.influence`, `core.logging`, `core.interfaces`, `core.gameloop`, `core.map`, `core.ai`, `core.serialization`, `core.collision`, `core.combat`, and `core.gamestate` (`scripts/check-module-deps.sh`). **`core.ai_advanced`** remains manifest-only until opted in. **`requires` graphs must be acyclic** — no checker exceptions. Standalone `COREENGINE_*_STANDALONE` test executables in the top-level `CMakeLists.txt` may only link `coreengine_*` object libraries for that module and the transitive closure of its manifest `requires` (header-only `core.interfaces` has no object target). The link checker tokenises each `target_link_libraries` call literally: `${...}` variables and unexpanded generator expressions fail the check—list required `coreengine_*` libraries explicitly in CMake.
+
+The committed manifest-only **`requires` graph** (machine-readable JSON plus a human summary) lives under [`docs/deps/`](../deps/). `scripts/check_module_deps.py` regenerates and byte-compares these files on every run so committed artifacts cannot drift from the manifests.
+
+## Layers
+
+1. **Foundation:** `core.math`, `core.influence.types`, `core.logging`
+2. **Contracts:** `core.interfaces` (may depend on foundation / value-type leaves — not on `core.influence` systems)
+3. **Systems:** `core.ai`, `core.influence`, `core.collision`, `core.map`, `core.gameloop`, `core.combat`
+4. **Integration:** `core.gamestate`, `core.serialization`
+5. **Experimental:** `core.ai_advanced`
+
+## Rules (target)
+
+| Rule | Rationale |
+|------|-----------|
+| No `#include` from `core/` to `platform/` or `ffi/` | Platform-agnostic core |
+| Systems must not `#include` concrete types from `core.gamestate/` except integration modules | Keeps agents scoped to one module |
+| `core.collision` depends on `IGameUnit` and `IUnitKinematics`; includes enforced since R1.3; standalone tests construct `KinematicMockGameUnit` as of R3.1 | Interface-only dependency on game units |
+| Depend only on modules listed in `requires` with satisfied semver | Agent + CI guardrail |
+| No cycles in `requires` | Enables ordered extraction; strictly enforced |
+
+## Version bumps
+
+See [AGENTS.md](../../AGENTS.md) — patch/minor/major rules apply per module `version` in `docs/agentic/modules/*.module.json`.
