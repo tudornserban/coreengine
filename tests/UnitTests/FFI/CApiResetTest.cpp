@@ -163,7 +163,7 @@ TEST_F(CApiResetTest, NoCrossTalkBetweenEngines) {
 }
 
 TEST_F(CApiResetTest, FfiVersionIs130) {
-    EXPECT_STREQ(ce_ffi_version(), "1.3.0");
+    EXPECT_STREQ(ce_ffi_version(), "1.4.0");
 }
 
 // RNG oracle: Wander draws RNG at first directionChangeTime (2 s ≈ step 61); 90 steps pins post-draw state.

@@ -16,12 +16,13 @@ Include headers from the repo root, e.g. `#include "core/gameloop/GameLogicEngin
 | `PlaybackController` | class | `PlaybackController.h` | Thin wrapper over `GameLogicEngine` |
 | `ThinkTimer` | class | `ThinkTimer.h` | Real-time think bank; header-only API |
 | `DeploymentTimer` | class | `DeploymentTimer.h` | Charge / spend — `.cpp` in this module |
-| `MatchState` / `MatchResult` | struct / enum | `MatchState.h` | Match metadata; no engine deps |
+| `MatchState` / `MatchResult` | struct / enum | `MatchState.h` | Match metadata; `Advance(dt)` evaluates dominance (≥75% held 10 s) or 300 s time limit; no engine deps |
 
 ### Contract highlights
 
 - **No hidden globals:** timers and engines are value or instance state only.
 - **Forward-only contracts:** `GameLogicEngine` forward-declares `IGameState` but does not include interface headers (callers link types at a higher layer).
+- **Normal loop exit:** when `SetShouldEndCallback` is set and returns true at the start of a fixed step, the engine clears accumulator debt and `Update` returns false (fast-forward unchanged).
 
 ## Dependencies (`requires`)
 
@@ -58,6 +59,7 @@ Do not read other `core/*` implementation trees for gameloop-only tasks.
 |-------|------|
 | Header compile smoke | `tests/UnitTests/Gameloop/GameloopModuleHeaderCompileTest.cpp` |
 | Invariants (timers) | `tests/UnitTests/Gameloop/GameloopInvariantsTest.cpp` |
+| Match advance / loop end | `tests/UnitTests/Gameloop/MatchAdvanceTest.cpp` |
 
 ### Gameloop-only (OBJECT lib + math; no full `coreengine` static lib)
 

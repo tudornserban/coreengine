@@ -51,7 +51,9 @@ These match today's `ffi/c_api.cpp` implementation (not aspirational docs):
 | `ce_behavior_register_accel` | Registers a direct-acceleration behavior from a C callback (`CE_AccelFn`); builtins still register at `ce_engine_create` |
 | Built-in steering | Seek/Flee/Wander/Cohesion/Separation now run via `CalculateAcceleration` when they emit no field items, then map-edge static forces apply |
 | `ce_engine_reset` | Clears units, deployment timers, and game time; **rebuilds `RTSGameState` with the same map size and RNG seed** passed to `ce_engine_create` (including seed **0**, which is deterministic) |
-| `ce_snapshot_get` | Fills map size, unit count, and elapsed time; **`winner` is always `0`**; `matchOver` is `1` only when the internal `running` flag is false (nothing in core sets a match winner today) |
+| `ce_snapshot_get` | `winner` is `0` (none), `1`, `2`, or `3` (draw); `matchOver` is `1` when the match ended (75% held 10 s, or 300 s timeout rules) |
+| `ce_engine_update` | Returns `0` once the match is over (state stops advancing) |
+| `ce_territory_get_pct` | Fraction in `[0, 1]` (internal `TerritoryCalculator` still uses 0–100) |
 | Built-in behavior names | `Seek`, `Flee`, `Wander`, `Cohesion`, `Separation` from `BehaviorFactory::RegisterBuiltins()` — **`Aggro` is not built-in** |
 | `ce_unit_set_behavior` | Requires an already-registered behavior name (`BehaviorFactory::IsRegistered`) |
 
@@ -222,7 +224,7 @@ ce_unit_spawn(eng, 1, 400, 450);
 |----------|-------------|
 | `ce_engine_create(w, h, seed)` | Create engine instance (`DeterministicRNG`; **seed 0 is deterministic**, same LCG stream every run) |
 | `ce_engine_destroy(engine)` | Free engine |
-| `ce_engine_update(engine, dt)` | Tick simulation (advances deployment timers) |
+| `ce_engine_update(engine, dt)` | Tick simulation; returns `0` when match over |
 | `ce_engine_reset(engine)` | Reset units/state; **restores create-time RNG seed** (`ce_engine_get_seed`) |
 | `ce_engine_get_seed(engine)` | Read live LCG seed (`0` if engine is null) |
 | `ce_unit_spawn(engine, team, x, y)` | Spawn unit (requires deployment charge) |
@@ -230,13 +232,13 @@ ce_unit_spawn(eng, 1, 400, 450);
 | `ce_unit_get_state(engine, index, out)` | Read unit state |
 | `ce_unit_set_behavior(engine, index, name)` | Change unit behavior (registered name only) |
 | `ce_field_query(engine, x, y)` | Sample influence field |
-| `ce_snapshot_get(engine, out)` | Match summary (winner not populated) |
+| `ce_snapshot_get(engine, out)` | Match summary (`winner`, `matchOver`, elapsed time) |
 | `ce_snapshot_get_json(engine, buf, size)` | Get JSON snapshot |
 | `ce_timer_has_charge(engine, team)` | Check spawn charge (teams 1 and 2) |
 | `ce_timer_get_progress(engine, team)` | Charge progress [0,1] |
 | `ce_timer_grant_charge(engine, team)` | Grant one charge immediately (FFI 1.1.0+) |
 | `ce_last_result(engine)` | Last spawn/timer/territory/grant result code |
-| `ce_territory_get_pct(engine, team)` | Territory **0–100** percent (teams 1 and 2; not normalized yet) |
+| `ce_territory_get_pct(engine, team)` | Territory fraction `[0, 1]` (teams 1 and 2) |
 | `ce_behavior_list(buf, size)` | List registered behaviors |
 | `ce_behavior_register(name)` | **Deprecated no-op** (see limitations) |
 | `ce_behavior_register_accel(name, fn, userdata)` | Register direct-acceleration behavior (`1` / `0`) |

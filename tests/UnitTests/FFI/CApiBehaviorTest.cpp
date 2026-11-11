@@ -232,7 +232,7 @@ TEST_F(CApiBehaviorTest, FieldItemsNearLeftEdgeSplitStaticAndBehaviorForces) {
 
     CE_UnitState st{};
     ASSERT_EQ(ce_unit_get_state(e, 0, &st), 1);
-    // Split hub: behavior field pull capped to 300 then left-edge static adds on X (0x41200007 vs 0x41200000 w/o edges).
+    // Split hub: behavior field pull capped to 300 then left-edge static adds on X (0x41200007 vs 0x41200001 w/o edges).
     EXPECT_EQ(FloatBits(st.vx), 0x41200007u);
     EXPECT_EQ(FloatBits(st.vy), FloatBits(0.0f));
 }
@@ -262,6 +262,6 @@ TEST_F(CApiBehaviorTest, ThrowingCallbackDoesNotEscapeEngineUpdate) {
     EXPECT_EQ(FloatBits(st.vy), FloatBits(0.0f));
 }
 
-TEST_F(CApiBehaviorTest, FfiVersionIs130) {
-    EXPECT_STREQ(ce_ffi_version(), "1.3.0");
+TEST_F(CApiBehaviorTest, FfiVersionIs140) {
+    EXPECT_STREQ(ce_ffi_version(), "1.4.0");
 }

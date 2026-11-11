@@ -21,9 +21,9 @@ extern "C" {
 #include <stdint.h>
 
 #define CE_FFI_VERSION_MAJOR 1
-#define CE_FFI_VERSION_MINOR 3
+#define CE_FFI_VERSION_MINOR 4
 #define CE_FFI_VERSION_PATCH 0
-#define CE_FFI_VERSION       "1.3.0"
+#define CE_FFI_VERSION       "1.4.0"
 
 typedef enum CE_Result {
     CE_OK = 0,
@@ -142,8 +142,7 @@ int ce_last_result(CE_Engine engine);
 
 /* ---- Territory ---- */
 
-/** Get territory ownership percent for a team on the **0–100** scale (teams 1 and 2).
- *  Values are not normalized to [0, 1] until a future FFI release. */
+/** Territory ownership fraction in [0, 1] for teams 1 and 2 (internal calculator uses 0–100). */
 float ce_territory_get_pct(CE_Engine engine, int teamId);
 
 /* ---- Behavior factory ---- */
@@ -173,7 +172,7 @@ int ce_behavior_list(char* buffer, int bufferSize);
 /** Returns the engine version string (e.g. "CoreEngine 1.0.0") */
 const char* ce_version();
 
-/** Returns the FFI package version string (CE_FFI_VERSION, e.g. "1.3.0") */
+/** Returns the FFI package version string (CE_FFI_VERSION, e.g. "1.4.0") */
 const char* ce_ffi_version(void);
 
 #ifdef __cplusplus

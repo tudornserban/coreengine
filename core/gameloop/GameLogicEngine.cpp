@@ -54,6 +54,11 @@ bool GameLogicEngine::Update(float deltaTime) {
     accumulatedTime_ += adjustedDelta;
     
     while (accumulatedTime_ >= fixedTimestep_) {
+        if (shouldEndCallback_ && shouldEndCallback_()) {
+            accumulatedTime_ = 0.0f;
+            return false;
+        }
+
         if (updateCallback_) {
             updateCallback_(fixedTimestep_);
         }

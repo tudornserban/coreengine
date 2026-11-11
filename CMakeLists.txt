@@ -201,6 +201,7 @@ elseif(COREENGINE_GAMELOOP_STANDALONE)
     add_executable(coreengine_gameloop_tests
         tests/UnitTests/Gameloop/GameloopInvariantsTest.cpp
         tests/UnitTests/Gameloop/GameloopModuleHeaderCompileTest.cpp
+        tests/UnitTests/Gameloop/MatchAdvanceTest.cpp
     )
     target_include_directories(coreengine_gameloop_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
     target_link_libraries(coreengine_gameloop_tests
