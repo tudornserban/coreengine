@@ -1,1 +1,42 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiY29yZS9tYXRoL1ZlY3RvcjIuaCIKI2luY2x1ZGUgPHZlY3Rvcj4KI2luY2x1ZGUgPHVub3JkZXJlZF9tYXA+CiNpbmNsdWRlIDxzZXQ+CgpjbGFzcyBJR2FtZVVuaXQ7CgpjbGFzcyBTcGF0aWFsR3JpZCB7CnByaXZhdGU6CiAgICBzdHJ1Y3QgQ2VsbCB7CiAgICAgICAgc3RkOjp2ZWN0b3I8SUdhbWVVbml0Kj4gdW5pdHM7CiAgICB9OwoKICAgIGZsb2F0IGNlbGxTaXplOwogICAgaW50IGdyaWRXaWR0aDsKICAgIGludCBncmlkSGVpZ2h0OwogICAgVmVjdG9yMiB3b3JsZE1pbjsKICAgIFZlY3RvcjIgd29ybGRNYXg7CiAgICBzdGQ6OnZlY3RvcjxzdGQ6OnZlY3RvcjxDZWxsPj4gZ3JpZDsKCiAgICBpbnQgR2V0Q2VsbFgoZmxvYXQgeCkgY29uc3Q7CiAgICBpbnQgR2V0Q2VsbFkoZmxvYXQgeSkgY29uc3Q7CiAgICBib29sIElzVmFsaWRDZWxsKGludCB4LCBpbnQgeSkgY29uc3Q7CgpwdWJsaWM6CiAgICBTcGF0aWFsR3JpZChmbG9hdCBjZWxsU2l6ZSwgVmVjdG9yMiB3b3JsZE1pbiwgVmVjdG9yMiB3b3JsZE1heCk7CgogICAgdm9pZCBDbGVhcigpOwogICAgdm9pZCBJbnNlcnQoSUdhbWVVbml0KiB1bml0KTsKCiAgICAvLyBHZXQgcG90ZW50aWFsIGNvbGxpc2lvbiBwYWlycwogICAgc3RkOjp2ZWN0b3I8c3RkOjpwYWlyPElHYW1lVW5pdCosIElHYW1lVW5pdCo+PiBHZXRQb3RlbnRpYWxQYWlycygpIGNvbnN0OwoKICAgIC8vIEdldCB1bml0cyBpbiBhIHNwZWNpZmljIGNlbGwKICAgIHN0ZDo6dmVjdG9yPElHYW1lVW5pdCo+IEdldFVuaXRzSW5DZWxsKGludCB4LCBpbnQgeSkgY29uc3Q7CgogICAgLy8gR2V0IHVuaXRzIG5lYXIgYSBwb3NpdGlvbgogICAgc3RkOjp2ZWN0b3I8SUdhbWVVbml0Kj4gR2V0VW5pdHNOZWFyKFZlY3RvcjIgcG9zaXRpb24sIGZsb2F0IHJhZGl1cykgY29uc3Q7Cn07Cgo=
+#pragma once
+
+#include "core/math/Vector2.h"
+#include <vector>
+#include <unordered_map>
+#include <set>
+
+class IGameUnit;
+
+class SpatialGrid {
+private:
+    struct Cell {
+        std::vector<IGameUnit*> units;
+    };
+
+    float cellSize;
+    int gridWidth;
+    int gridHeight;
+    Vector2 worldMin;
+    Vector2 worldMax;
+    std::vector<std::vector<Cell>> grid;
+
+    int GetCellX(float x) const;
+    int GetCellY(float y) const;
+    bool IsValidCell(int x, int y) const;
+
+public:
+    SpatialGrid(float cellSize, Vector2 worldMin, Vector2 worldMax);
+
+    void Clear();
+    void Insert(IGameUnit* unit);
+
+    // Get potential collision pairs
+    std::vector<std::pair<IGameUnit*, IGameUnit*>> GetPotentialPairs() const;
+
+    // Get units in a specific cell
+    std::vector<IGameUnit*> GetUnitsInCell(int x, int y) const;
+
+    // Get units near a position
+    std::vector<IGameUnit*> GetUnitsNear(Vector2 position, float radius) const;
+};
+

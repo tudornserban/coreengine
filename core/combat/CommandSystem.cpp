@@ -1,1 +1,45 @@
-I2luY2x1ZGUgIkNvbW1hbmRTeXN0ZW0uaCIKCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSUdhbWVVbml0LmgiCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSVVuaXRBZ2VudC5oIgoKdm9pZCBDb21tYW5kU3lzdGVtOjpTZXRVbml0U3RhdGUoSUdhbWVVbml0KiB1bml0LCBjb25zdCBzdGQ6OnN0cmluZyYgc3RhdGVOYW1lKSB7CiAgICBpZiAoSVVuaXRBZ2VudCogYWdlbnQgPSBkeW5hbWljX2Nhc3Q8SVVuaXRBZ2VudCo+KHVuaXQpKSB7CiAgICAgICAgYWdlbnQtPlNldEFnZW50U3RhdGUoc3RhdGVOYW1lKTsKICAgIH0KfQoKdm9pZCBDb21tYW5kU3lzdGVtOjpTZXRVbml0c1N0YXRlKGNvbnN0IHN0ZDo6dmVjdG9yPElHYW1lVW5pdCo+JiB1bml0cywgY29uc3Qgc3RkOjpzdHJpbmcmIHN0YXRlTmFtZSkgewogICAgZm9yIChJR2FtZVVuaXQqIHVuaXQgOiB1bml0cykgewogICAgICAgIFNldFVuaXRTdGF0ZSh1bml0LCBzdGF0ZU5hbWUpOwogICAgfQp9Cgp2b2lkIENvbW1hbmRTeXN0ZW06Ok1vdmVVbml0c1RvKGNvbnN0IHN0ZDo6dmVjdG9yPElHYW1lVW5pdCo+JiB1bml0cywgVmVjdG9yMiBkZXN0aW5hdGlvbikgewogICAgLy8gU3ByZWFkIHVuaXRzIGFyb3VuZCB0aGUgZGVzdGluYXRpb24gcG9pbnQKICAgIGZsb2F0IG9mZnNldCA9IDAuMGY7CiAgICBmbG9hdCBvZmZzZXRJbmNyZW1lbnQgPSAzMC4wZjsKCiAgICBmb3IgKElHYW1lVW5pdCogdW5pdCA6IHVuaXRzKSB7CiAgICAgICAgaWYgKHVuaXQpIHsKICAgICAgICAgICAgVmVjdG9yMiB0YXJnZXRQb3MgPSBkZXN0aW5hdGlvbjsKCiAgICAgICAgICAgIC8vIE9mZnNldCBlYWNoIHVuaXQgc2xpZ2h0bHkgdG8gYXZvaWQgb3ZlcmxhcAogICAgICAgICAgICBpZiAob2Zmc2V0ID4gMC4wZikgewogICAgICAgICAgICAgICAgZmxvYXQgYW5nbGUgPSBvZmZzZXQgKiAyLjBmOwogICAgICAgICAgICAgICAgdGFyZ2V0UG9zLnggKz0gc3RkOjpjb3MoYW5nbGUpICogb2Zmc2V0OwogICAgICAgICAgICAgICAgdGFyZ2V0UG9zLnkgKz0gc3RkOjpzaW4oYW5nbGUpICogb2Zmc2V0OwogICAgICAgICAgICB9CgogICAgICAgICAgICB1bml0LT5TZXREZWJ1Z0Rlc3RpbmF0aW9uKHRhcmdldFBvcyk7CiAgICAgICAgICAgIG9mZnNldCArPSBvZmZzZXRJbmNyZW1lbnQ7CiAgICAgICAgfQogICAgfQp9Cgp2b2lkIENvbW1hbmRTeXN0ZW06OlNldEJlaGF2aW9yUGFyYW1ldGVyKElHYW1lVW5pdCogdW5pdCwgY29uc3Qgc3RkOjpzdHJpbmcmIHBhcmFtTmFtZSwgZmxvYXQgdmFsdWUpIHsKICAgIGlmIChJVW5pdEFnZW50KiBhZ2VudCA9IGR5bmFtaWNfY2FzdDxJVW5pdEFnZW50Kj4odW5pdCkpIHsKICAgICAgICBhZ2VudC0+U2V0QWdlbnRQYXJhbWV0ZXIocGFyYW1OYW1lLCB2YWx1ZSk7CiAgICB9Cn0KCg==
+#include "CommandSystem.h"
+
+#include "core/interfaces/IGameUnit.h"
+#include "core/interfaces/IUnitAgent.h"
+
+void CommandSystem::SetUnitState(IGameUnit* unit, const std::string& stateName) {
+    if (IUnitAgent* agent = dynamic_cast<IUnitAgent*>(unit)) {
+        agent->SetAgentState(stateName);
+    }
+}
+
+void CommandSystem::SetUnitsState(const std::vector<IGameUnit*>& units, const std::string& stateName) {
+    for (IGameUnit* unit : units) {
+        SetUnitState(unit, stateName);
+    }
+}
+
+void CommandSystem::MoveUnitsTo(const std::vector<IGameUnit*>& units, Vector2 destination) {
+    // Spread units around the destination point
+    float offset = 0.0f;
+    float offsetIncrement = 30.0f;
+
+    for (IGameUnit* unit : units) {
+        if (unit) {
+            Vector2 targetPos = destination;
+
+            // Offset each unit slightly to avoid overlap
+            if (offset > 0.0f) {
+                float angle = offset * 2.0f;
+                targetPos.x += std::cos(angle) * offset;
+                targetPos.y += std::sin(angle) * offset;
+            }
+
+            unit->SetDebugDestination(targetPos);
+            offset += offsetIncrement;
+        }
+    }
+}
+
+void CommandSystem::SetBehaviorParameter(IGameUnit* unit, const std::string& paramName, float value) {
+    if (IUnitAgent* agent = dynamic_cast<IUnitAgent*>(unit)) {
+        agent->SetAgentParameter(paramName, value);
+    }
+}
+
