@@ -188,6 +188,18 @@ TEST(ScenarioTest, CombatScheduledExplosionFiresExactlyOnceFromFrame15Through40)
     EXPECT_EQ(CountExplosionOutlineCircles(loop.BuildViewDrawList()), 0);
 }
 
+TEST(ScenarioTest, CombatSingleExplosionImpulsePinsUnit0AtFrame20)
+{
+    FrameLoop loop(Preset::Combat, 1, 1280, 720);
+    for (int i = 0; i < 20; ++i)
+    {
+        loop.AdvancePresentationFrame();
+    }
+    EXPECT_EQ(loop.CountFiredPendingScenarioEvents(), 1);
+    EXPECT_NEAR(loop.State().GetAllUnits()[0]->GetPosition().x, 357.032196f, 0.05f);
+    EXPECT_NEAR(loop.State().GetAllUnits()[0]->GetPosition().y, 278.482361f, 0.05f);
+}
+
 TEST(ScenarioTest, CombatPresetFiresExplosionAndDisplacesUnits)
 {
     FrameLoop loop(Preset::Combat, 1, 1280, 720);

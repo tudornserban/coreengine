@@ -98,7 +98,7 @@ Debug verb `dest` sets `SetDebugDestination` directly (not a player-facing comma
 
 ## Test coverage notes
 
-- **Key mapping** (`ViewerKeyFromKeycode`, `OverlayFKeyIndexFromKeycode`, `HandleViewerKeycode`) is covered in `coreengine_sdl2_viewer_tests` with literal SDL keycode integers (no `SDL.h` in the logic library).
+- **Key mapping** (`ViewerKeyFromPlaybackKeycode`, `OverlayFKeyIndexFromKeycode`, `HandleViewerKeycode`) is covered in `coreengine_sdl2_viewer_tests` with literal SDL keycode integers (no `SDL.h` in the logic library).
 - **SDL presenter path:** `SdlPresenter.cpp` forwards `SDL_KEYDOWN` `keysym.sym` values into `HandleViewerKeycode`; that wiring is not exercised without a real SDL window (headless tests call `HandleViewerKeycode` / `FrameLoop::ApplyViewerKeyAction` directly).
 
 ## Smoke commands
