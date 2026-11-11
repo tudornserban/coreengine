@@ -1,17 +1,1 @@
-#pragma once
-#include "../../interfaces/ITransitionCondition.h"
-
-class EnemyInRangeCondition : public ITransitionCondition {
-private:
-    float range_;
-    mutable char description_[128];
-
-public:
-    explicit EnemyInRangeCondition(float detectionRange);
-
-    bool Evaluate(const BehaviorContext& ctx) const override;
-    const char* GetDescription() const override;
-
-    void SetRange(float r) { range_ = r; }
-    float GetRange() const { return range_; }
-};
+I3ByYWdtYSBvbmNlCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSVRyYW5zaXRpb25Db25kaXRpb24uaCIKCmNsYXNzIEVuZW15SW5SYW5nZUNvbmRpdGlvbiA6IHB1YmxpYyBJVHJhbnNpdGlvbkNvbmRpdGlvbiB7CnByaXZhdGU6CiAgICBmbG9hdCByYW5nZV87CiAgICBtdXRhYmxlIGNoYXIgZGVzY3JpcHRpb25fWzEyOF07CgpwdWJsaWM6CiAgICBleHBsaWNpdCBFbmVteUluUmFuZ2VDb25kaXRpb24oZmxvYXQgZGV0ZWN0aW9uUmFuZ2UpOwoKICAgIGJvb2wgRXZhbHVhdGUoY29uc3QgQmVoYXZpb3JDb250ZXh0JiBjdHgpIGNvbnN0IG92ZXJyaWRlOwogICAgY29uc3QgY2hhciogR2V0RGVzY3JpcHRpb24oKSBjb25zdCBvdmVycmlkZTsKCiAgICB2b2lkIFNldFJhbmdlKGZsb2F0IHIpIHsgcmFuZ2VfID0gcjsgfQogICAgZmxvYXQgR2V0UmFuZ2UoKSBjb25zdCB7IHJldHVybiByYW5nZV87IH0KfTsK
