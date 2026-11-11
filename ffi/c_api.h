@@ -139,7 +139,8 @@ int ce_last_result(CE_Engine engine);
 
 /* ---- Territory ---- */
 
-/** Get territory ownership fraction for a team in [0.0, 1.0] */
+/** Get territory ownership percent for a team on the **0–100** scale (teams 1 and 2).
+ *  Values are not normalized to [0, 1] until a future FFI release. */
 float ce_territory_get_pct(CE_Engine engine, int teamId);
 
 /* ---- Behavior factory ---- */

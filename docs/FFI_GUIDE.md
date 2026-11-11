@@ -85,14 +85,23 @@ lib.ce_unit_spawn(eng, 1, 400.0, 450.0)
 
 ## Python (cffi) — alternative
 
+Do **not** strip the first `}` from `ffi/c_api.h` (that breaks the `CE_Result` enum). Drop only the C++ linkage guards:
+
 ```python
+import re
+from pathlib import Path
 from cffi import FFI
+
+raw = Path("ffi/c_api.h").read_text()
+raw = raw.replace("#pragma once", "")
+raw = re.sub(r"#ifdef __cplusplus\s*\nextern \"C\" \{\s*\n", "", raw, count=1)
+raw = re.sub(r"#ifdef __cplusplus\s*\n\}\s*\n#endif\s*\Z", "", raw, count=1)
+
 ffi = FFI()
-with open("ffi/c_api.h") as f:
-    ffi.cdef(f.read().replace("#pragma once", "").replace('#ifdef __cplusplus', '').replace('extern "C" {', '').replace('#endif', '').replace('}', '', 1))
+ffi.cdef(raw)
 lib = ffi.dlopen("./libcoreengine_ffi.so")
 eng = lib.ce_engine_create(1600, 900, 0)
-while not lib.ce_timer_has_charge(eng, 1):
+while lib.ce_timer_has_charge(eng, 1) == 0:
     lib.ce_engine_update(eng, 1.0 / 30.0)
 lib.ce_unit_spawn(eng, 1, 400, 450)
 ```
@@ -205,7 +214,7 @@ ce_unit_spawn(eng, 1, 400, 450);
 | `ce_timer_get_progress(engine, team)` | Charge progress [0,1] |
 | `ce_timer_grant_charge(engine, team)` | Grant one charge immediately (FFI 1.1.0+) |
 | `ce_last_result(engine)` | Last spawn/timer/territory/grant result code |
-| `ce_territory_get_pct(engine, team)` | Territory % (teams 1 and 2) |
+| `ce_territory_get_pct(engine, team)` | Territory **0–100** percent (teams 1 and 2; not normalized yet) |
 | `ce_behavior_list(buf, size)` | List registered behaviors |
 | `ce_behavior_register(name)` | **No-op hook** (see limitations) |
 | `ce_version()` | Engine version string |
