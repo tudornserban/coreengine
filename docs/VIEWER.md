@@ -1,1 +1,139 @@
-IyBDb3JlRW5naW5lIFNETDIgc2ltdWxhdGlvbiB2aWV3ZXIKCk9wdGlvbmFsIG1hbnVhbCB0ZXN0IHRvb2wgdW5kZXIgYHRvb2xzL3ZpZXdlci9gLiBJdCBpcyAqKm5vdCoqIHBhcnQgb2YgdGhlIG1vZHVsZSByZWdpc3RyeSBhbmQgZG9lcyBub3QgY2hhbmdlIGVuZ2luZSBBUElzLgoKIyMgQnVpbGQgKGRlZmF1bHQgT0ZGKQoKVGhlIHZpZXdlciBpcyBnYXRlZCBieSBDTWFrZSBvcHRpb24gYENPUkVFTkdJTkVfQlVJTERfU0RMMl9WSUVXRVJgIChkZWZhdWx0IGBPRkZgKS4gRGVmYXVsdCBDSSBhbmQgbG9jYWwgZ2F0ZXMgYnVpbGQgYW5kIHRlc3QgKip3aXRob3V0KiogU0RMMiBpbnN0YWxsZWQuCgpgYGBiYXNoCiMgVWJ1bnR1IC8gRGViaWFuCnN1ZG8gYXB0LWdldCBpbnN0YWxsIC15IGxpYnNkbDItZGV2CgpjbWFrZSAtUyAuIC1CIGJ1aWxkLXZpZXdlciAtRyBOaW5qYSBcCiAgLURCVUlMRF9URVNUUz1PTiBcCiAgLURDT1JFRU5HSU5FX0JVSUxEX1NETDJfVklFV0VSPU9OCmNtYWtlIC0tYnVpbGQgYnVpbGQtdmlld2VyIC0tcGFyYWxsZWwKYGBgCgpFeGVjdXRhYmxlOiBgYnVpbGQtdmlld2VyL3Rvb2xzL3ZpZXdlci9jb3JlZW5naW5lX3NkbDJfdmlld2VyYCAgClZpZXdlciB1bml0IHRlc3RzOiBgYnVpbGQtdmlld2VyL3Rvb2xzL3ZpZXdlci9jb3JlZW5naW5lX3NkbDJfdmlld2VyX3Rlc3RzYCAob3IgYGN0ZXN0IC1SIGNvcmVlbmdpbmVfc2RsMl92aWV3ZXJfdGVzdHNgKS4KCldpdGggdGhlIGZsYWcgYWJzZW50LCBgY21ha2UgLS1idWlsZCBidWlsZCAtLXRhcmdldCBoZWxwYCBtdXN0ICoqbm90KiogbGlzdCBgY29yZWVuZ2luZV9zZGwyX3ZpZXdlcmAuCgojIyBDb21tYW5kLWxpbmUgZmxhZ3MKCnwgRmxhZyB8IE1lYW5pbmcgfAp8LS0tLS0tfC0tLS0tLS0tLXwKfCBgLS1mcmFtZXMgTmAgfCBQcmVzZW50L3NpbXVsYXRlIE4gZnJhbWVzICgwID0gdW50aWwgcXVpdCBpbiB3aW5kb3cgbW9kZSkgfAp8IGAtLW5vLXdpbmRvd2AgfCBIZWFkbGVzczogcmFzdGVyaXplIG9ubHksIG5vIFNETCB3aW5kb3cgKGZvcmNlcyBhdCBsZWFzdCAxIGZyYW1lIHdoZW4gYE5gIGlzIDApIHwKfCBgLS1zY3JlZW5zaG90IFBBVEhgIHwgV3JpdGUgdGhlIHNvZnR3YXJlIGZyYW1lYnVmZmVyIGFzIFBORyB8CnwgYC0tc2NyaXB0IFBBVEhgIHwgUnVuIHNjcmlwdCBjb21tYW5kcyBiZWZvcmUgdGhlIGludGVyYWN0aXZlL2hlYWRsZXNzIGxvb3AgfAp8IGAtLXByZXNldCBOQU1FYCB8IFN0YXJ0IHNjZW5lOiBgdHdvLXVuaXRzYCwgYGNvbGxpc2lvbmAsIGBjb21iYXRgLCBgYWlgIChkZWZhdWx0IGB0d28tdW5pdHNgKSB8CnwgYC0td2lkdGggV2AgLyBgLS1oZWlnaHQgSGAgfCBWaWV3cG9ydCBwaXhlbHMgKGRlZmF1bHQgMTI4MMOXNzIwKSB8CgpFeGl0IGNvZGVzOiBgMGAgc3VjY2VzcywgYDJgIGJhZCBDTEkgYXJncywgYDNgIFNETCBmYWlsdXJlLCBgNGAgUE5HIHdyaXRlIGZhaWx1cmUsIGA1YCBzY3JpcHQgcmVhZC9wYXJzZS9leGVjIGVycm9yLgoKIyMgS2V5Ym9hcmQgKHdpbmRvdyBtb2RlKQoKfCBLZXkgfCBBY3Rpb24gfAp8LS0tLS18LS0tLS0tLS18CnwgU3BhY2UgfCBUb2dnbGUgcGF1c2UgfAp8IDEgLyAyIC8gMyAvIDQgfCBIYWxmIC8gbm9ybWFsIC8gZG91YmxlIC8gcXVhZCBzcGVlZCB8CnwgYC5gIChwZXJpb2QpIHwgU2luZ2xlIHN0ZXAgd2hpbGUgcGF1c2VkIHwKfCBSIHwgUmVzZXQgY3VycmVudCBwcmVzZXQgKHJlYnVpbGQgc2NlbmUgKyBlbmdpbmUgdGltaW5nKSB8CnwgRjHigJNGNiB8IFRvZ2dsZSBvdmVybGF5czogY29sbGlzaW9ucywgcGVyY2VwdGlvbiwgaW5mbHVlbmNlLCBvYnN0YWNsZXMsIGJlaGF2aW9yIGl0ZW1zLCBleHBsb3Npb25zIHwKCiMjIE1vdXNlICh3aW5kb3cgbW9kZSkKCnwgSW5wdXQgfCBBY3Rpb24gfAp8LS0tLS0tLXwtLS0tLS0tLXwKfCBMZWZ0IGNsaWNrIHwgU2VsZWN0IHVuaXQgKGVuZ2luZSBoaXQgdGVzdCkgfAp8IExlZnQgZHJhZyB8IEJveCBzZWxlY3QgfAp8IFJpZ2h0IGNsaWNrIHwgTW92ZSBzZWxlY3RlZCB1bml0cyAoYENvbW1hbmRTeXN0ZW06Ok1vdmVVbml0c1RvYCkgfAp8IE1vdXNlIHdoZWVsIHwgWm9vbSBhcm91bmQgY3Vyc29yIHwKfCBNaWRkbGUgZHJhZyB8IFBhbiBjYW1lcmEgKHNlZSBjb252ZW50aW9uIGJlbG93KSB8CgoqKlNjcmVlbiB2cyB3b3JsZCBZOioqIEJvdGggdXNlIGEgdG9wLWxlZnQgb3JpZ2luIHdpdGggKipZIGluY3JlYXNpbmcgZG93bndhcmQqKiAoc2FtZSBhcyBgQ2FtZXJhOjpXb3JsZFRvU2NyZWVuYCkuIE1pZGRsZS1tb3VzZSBwYW4gYXBwbGllcyBgQ2FtZXJhOjpQYW4oc2NyZWVuRGVsdGEpYCwgd2hpY2ggc3VidHJhY3RzIGVhY2ggc2NyZWVuLXBpeGVsIGRlbHRhIGZyb20gYGNlbnRlcmAgaW4gd29ybGQgc3BhY2U6IGRyYWcgKipyaWdodCoqIGRlY3JlYXNlcyBgY2VudGVyLnhgLCBkcmFnICoqZG93bioqIGRlY3JlYXNlcyBgY2VudGVyLnlgICh0aGUgbWFwIG1vdmVzIHdpdGggdGhlIHBvaW50ZXIpLgoKU2NyZWVuc2hvdHMgdXNlIHRoZSAqKnNvZnR3YXJlIHJhc3RlciBidWZmZXIqKiwgbm90IFNETCByZWFkYmFjay4KCiMjIFByZXNldHMKCkFsbCBtb2R1bGUgcHJlc2V0cyB1c2UgbWFwIGA4MDDDlzYwMGAsIHNlZWQgYDFgLCBhbmQgcGVyY2VwdGlvbiByYWRpdXMgYDgwYCAoZXhjZXB0IGB0d28tdW5pdHNgLCB1bmNoYW5nZWQgZnJvbSBWMS4yKS4KCnwgQ0xJIG5hbWUgfCBFeGVyY2lzZXMgfAp8LS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwKfCBgdHdvLXVuaXRzYCB8IERlZmF1bHQgbWFwICsgdHdvIGlkbGUgdGVhbXMgfAp8IGBjb2xsaXNpb25gIHwgVHdvIHVuaXRzIGF0IGAoMzgwLDMwMClgIC8gYCg0MjAsMzAwKWAgd2l0aCBvcHBvc2luZyBgU2V0VmVsb2NpdHlgOyB2aWV3ZXItbG9jYWwgKipDb2FzdCoqIGluZmx1ZW5jZSBiZWhhdmlvciBpbnRlZ3JhdGVzIG1vdGlvbiB1bnRpbCBvdmVybGFwIChodWIgZG9lcyBub3QgaW50ZWdyYXRlIGJhcmUgdmVsb2NpdHkpIHwKfCBgY29tYmF0YCB8IEZvdXIgdW5pdHMgYXQgZml4ZWQgc3Bhd24gcG9zaXRpb25zIHdpdGggc3RvcmVkIMKxWCB2ZWxvY2l0aWVzICh0aGUgaHViIGRvZXMgKipub3QqKiBpbnRlZ3JhdGUgdmVsb2NpdHkgd2l0aG91dCBhIGJlaGF2aW9yKS4gU2NoZWR1bGVkIGNlbnRlciBleHBsb3Npb24gYXQgKip0ID0gMC41IHMqKjsgdmlzaWJsZSBtb3Rpb24gaXMgbW9zdGx5ICoqZXhwbG9zaW9uIGltcHVsc2UqKiwgbm90IGNvbnZlcmdlbmNlICgqKm5vIEhQIGRhbWFnZSoqKSB8CnwgYGFpYCB8IFNlZWsgLyBmbGVlIC8gc2VwYXJhdGlvbiBzdGF0ZSBtYWNoaW5lcy4gKipWaWV3ZXItbG9jYWw6KiogYFNjZW5hcmlvLmNwcGAgYWRkcyBhIHN0YXRpYyBhdHRyYWN0b3IgYXQgKiooNzAwLCAzMDApKiogYmVjYXVzZSBgUlRTR2FtZVN0YXRlOjpVcGRhdGVgIGFsd2F5cyBtZXJnZXMgdGhlIGZvdXIgbWFwLWVkZ2Ugc3RhdGljIGZpZWxkIGl0ZW1zIGludG8gdGhlIGluZmx1ZW5jZSBwYXRoLCBzbyBgQ2FsY3VsYXRlQWNjZWxlcmF0aW9uYCBvbiBidWlsdGlucyBpcyBza2lwcGVkOyB0aGUgYXR0cmFjdG9yIGlzIHdoYXQgcHVsbHMgdW5pdHMgdGhyb3VnaCBgSW5mbHVlbmNlRmllbGQ6OkNhbGN1bGF0ZVRvdGFsRm9yY2VgIHwKCiMjIFNjcmlwdCBncmFtbWFyCgpPbmUgY29tbWFuZCBwZXIgbGluZS4gYCNgIHN0YXJ0cyBhIGNvbW1lbnQuIENvbW1hcyBhcmUgbm90IGFsbG93ZWQuCgpgYGAKZnJhbWVzIDxuPgpwYXVzZSB8IHJlc3VtZQpzdGVwCnNwZWVkIDwwLjV8MXwyfDQ+CnJlc2V0CnByZXNldCA8dHdvLXVuaXRzfGNvbGxpc2lvbnxjb21iYXR8YWk+CmRlc3QgPHVuaXRJbmRleD4gPHdvcmxkWD4gPHdvcmxkWT4KY2xpY2sgPHNjcmVlblg+IDxzY3JlZW5ZPgpyY2xpY2sgPHNjcmVlblg+IDxzY3JlZW5ZPgpib3ggPHgwPiA8eTA+IDx4MT4gPHkxPgpvdmVybGF5IDxjb2xsaXNpb25zfHBlcmNlcHRpb258aW5mbHVlbmNlfG9ic3RhY2xlc3xiZWhhdmlvcnxleHBsb3Npb25zPiA8MHwxPgpgYGAKCkRlYnVnIHZlcmIgYGRlc3RgIHNldHMgYFNldERlYnVnRGVzdGluYXRpb25gIGRpcmVjdGx5IChub3QgYSBwbGF5ZXItZmFjaW5nIGNvbW1hbmQpLgoKIyMgS25vd24gbGltaXRhdGlvbnMKCjEuICoqQ29sbGlzaW9ucyBkbyBub3QgcmVkdWNlIEhQLioqIGBDb21iYXRNYW5hZ2VyYCBpcyB1bnVzZWQ7IHRoZSB2aXNpYmxlIGNvbWJhdCBlZmZlY3QgaXMgZXhwbG9zaW9uIGltcHVsc2Ugb24gYFJUU1VuaXRgLgoyLiAqKkV4cGxvc2lvbiBvdmVybGF5IGVjaG8uKiogYFJUU0dhbWVTdGF0ZTo6VXBkYXRlYCBjbGVhcnMgdGhlIGVuZ2luZSBgZXhwbG9zaW9uc19gIHZlY3RvciBhdCB0aGUgZW5kIG9mIGVhY2ggdGljay4gVGhlIHZpZXdlciBjb3BpZXMgcGVuZGluZyBlbmdpbmUgZXhwbG9zaW9ucyBpbnRvICoqZWNob2VzKiogd2l0aCAqKjAuNSBzKiogbGlmZXRpbWUgaW5zaWRlIGBOb3RlRXhwbG9zaW9uc2AsIHdoaWNoIHJ1bnMgKipiZWZvcmUqKiBgVXBkYXRlYCwgc28gdGhlIG9yYW5nZSByaW5nIGNhbiBzdGlsbCBkcmF3IGFmdGVyIHRoZSBlbmdpbmUgbGlzdCBpcyBlbXB0eS4KMy4gKipGU00gYXV0b21hdGljIHRyYW5zaXRpb25zIGRvIG5vdCB0aWNrLioqIFRoZSBodWIgbmV2ZXIgY2FsbHMgYFN0YXRlTWFjaGluZTo6VXBkYXRlYDsgb25seSBtYW51YWxseSBgU2V0U3RhdGVgIHByZXNldHMgZHJpdmUgYmVoYXZpb3JzLgo0LiAqKmBHYW1lU3RhdGVTZXJpYWxpemVyOjpEZXNlcmlhbGl6ZUZyb21TdHJpbmdgIGFsd2F5cyByZXR1cm5zIGZhbHNlLioqIFByZXNldHMgYXJlIEMrKyBmYWN0b3JpZXMgb25seSAobm8gSlNPTiBzY2VuYXJpbyBsb2FkKS4KCiMjIFRlc3QgY292ZXJhZ2Ugbm90ZXMKCi0gKipLZXkgbWFwcGluZyoqIChgVmlld2VyS2V5RnJvbVBsYXliYWNrS2V5Y29kZWAsIGBPdmVybGF5RktleUluZGV4RnJvbUtleWNvZGVgLCBgSGFuZGxlVmlld2VyS2V5Y29kZWApIGlzIGNvdmVyZWQgaW4gYGNvcmVlbmdpbmVfc2RsMl92aWV3ZXJfdGVzdHNgIHdpdGggbGl0ZXJhbCBTREwga2V5Y29kZSBpbnRlZ2VycyAobm8gYFNETC5oYCBpbiB0aGUgbG9naWMgbGlicmFyeSkuCi0gKipTREwgcHJlc2VudGVyIHBhdGg6KiogYFNkbFByZXNlbnRlci5jcHBgIGZvcndhcmRzIGBTRExfS0VZRE9XTmAgYGtleXN5bS5zeW1gIHZhbHVlcyBpbnRvIGBIYW5kbGVWaWV3ZXJLZXljb2RlYDsgdGhhdCB3aXJpbmcgaXMgbm90IGV4ZXJjaXNlZCB3aXRob3V0IGEgcmVhbCBTREwgd2luZG93IChoZWFkbGVzcyB0ZXN0cyBjYWxsIGBIYW5kbGVWaWV3ZXJLZXljb2RlYCAvIGBGcmFtZUxvb3A6OkFwcGx5Vmlld2VyS2V5QWN0aW9uYCBkaXJlY3RseSkuCgojIyBTbW9rZSBjb21tYW5kcwoKYGBgYmFzaAojIEVtcHR5IG1hcCAoVjEuMSBzdHlsZSDigJQgdHdvLXVuaXRzIGRlZmF1bHQsIG92ZXJsYXlzIG9mZikKLi9idWlsZC12aWV3ZXIvdG9vbHMvdmlld2VyL2NvcmVlbmdpbmVfc2RsMl92aWV3ZXIgLS1uby13aW5kb3cgLS1mcmFtZXMgMSBcCiAgLS1zY3JlZW5zaG90IC90bXAvdmlld2VyLXYxMi11bml0cy5wbmcKCiMgUHJlc2V0IFBOR3MgKFYxLjYpCi4vYnVpbGQtdmlld2VyL3Rvb2xzL3ZpZXdlci9jb3JlZW5naW5lX3NkbDJfdmlld2VyIC0tbm8td2luZG93IC0tcHJlc2V0IGNvbGxpc2lvbiAtLWZyYW1lcyA1IFwKICAtLXNjcmVlbnNob3QgL3RtcC92aWV3ZXItdjE2LWNvbGxpc2lvbi5wbmcKCnByaW50ZiAnb3ZlcmxheSBleHBsb3Npb25zIDFcbmZyYW1lcyAyMFxuJyA+IC90bXAvdjE2LWNvbWJhdC50eHQKLi9idWlsZC12aWV3ZXIvdG9vbHMvdmlld2VyL2NvcmVlbmdpbmVfc2RsMl92aWV3ZXIgLS1uby13aW5kb3cgLS1wcmVzZXQgY29tYmF0IC0tc2NyaXB0IC90bXAvdjE2LWNvbWJhdC50eHQgXAogIC0tc2NyZWVuc2hvdCAvdG1wL3ZpZXdlci12MTYtY29tYmF0LnBuZwoKLi9idWlsZC12aWV3ZXIvdG9vbHMvdmlld2VyL2NvcmVlbmdpbmVfc2RsMl92aWV3ZXIgLS1uby13aW5kb3cgLS1wcmVzZXQgYWkgLS1mcmFtZXMgNjAgXAogIC0tc2NyZWVuc2hvdCAvdG1wL3ZpZXdlci12MTYtYWkucG5nCgojIEhlYWRsZXNzIHdpbmRvdyBkcml2ZXIgKG9wdGlvbmFsOyBuZWVkcyBTREwgb2Zmc2NyZWVuL2R1bW15KQpTRExfVklERU9EUklWRVI9b2Zmc2NyZWVuIFNETF9SRU5ERVJfRFJJVkVSPXNvZnR3YXJlIFwKICAuL2J1aWxkLXZpZXdlci90b29scy92aWV3ZXIvY29yZWVuZ2luZV9zZGwyX3ZpZXdlciAtLWZyYW1lcyAyIC0tc2NyZWVuc2hvdCAvdG1wL3ZpZXdlci13aW5kb3cucG5nCmBgYAoKUE5HIHZhbGlkYXRpb24gKHN0ZGxpYik6CgpgYGBiYXNoCnB5dGhvbjMgLSA8PCdQWScKaW1wb3J0IHN0cnVjdApwPW9wZW4oIi90bXAvdmlld2VyLXYxNi1jb2xsaXNpb24ucG5nIiwicmIiKS5yZWFkKCkKYXNzZXJ0IHBbOjhdPT1iIlx4ODlQTkdcclxuXHgxYVxuIgp3LGg9c3RydWN0LnVucGFjaygiPklJIiwgcFsxNjoyNF0pCnByaW50KHcsIGgpClBZCmBgYAoKVjEuMiByZWdyZXNzaW9uIHBpeGVsICh0ZWFtIDEgYmx1ZSBhdCByb3VuZGVkIGNlbnRlcik6IGAoNDI3LCAzNjApYCDihpIgUkdCIGAoNzAsIDE0MCwgMjMwKWAgd2l0aCBvdmVybGF5cyBvZmYuCg==
+# CoreEngine SDL2 simulation viewer
+
+Optional manual test tool under `tools/viewer/`. It is **not** part of the module registry and does not change engine APIs.
+
+## Build (default OFF)
+
+The viewer is gated by CMake option `COREENGINE_BUILD_SDL2_VIEWER` (default `OFF`). Default CI and local gates build and test **without** SDL2 installed.
+
+```bash
+# Ubuntu / Debian
+sudo apt-get install -y libsdl2-dev
+
+cmake -S . -B build-viewer -G Ninja \
+  -DBUILD_TESTS=ON \
+  -DCOREENGINE_BUILD_SDL2_VIEWER=ON
+cmake --build build-viewer --parallel
+```
+
+Executable: `build-viewer/tools/viewer/coreengine_sdl2_viewer`  
+Viewer unit tests: `build-viewer/tools/viewer/coreengine_sdl2_viewer_tests` (or `ctest -R coreengine_sdl2_viewer_tests`).
+
+With the flag absent, `cmake --build build --target help` must **not** list `coreengine_sdl2_viewer`.
+
+## Command-line flags
+
+| Flag | Meaning |
+|------|---------|
+| `--frames N` | Present/simulate N frames (0 = until quit in window mode) |
+| `--no-window` | Headless: rasterize only, no SDL window (forces at least 1 frame when `N` is 0) |
+| `--screenshot PATH` | Write the software framebuffer as PNG |
+| `--script PATH` | Run script commands before the interactive/headless loop |
+| `--preset NAME` | Start scene: `two-units`, `collision`, `combat`, `ai` (default `two-units`) |
+| `--width W` / `--height H` | Viewport pixels (default 1280×720) |
+
+Exit codes: `0` success, `2` bad CLI args, `3` SDL failure, `4` PNG write failure, `5` script read/parse/exec error.
+
+## Keyboard (window mode)
+
+| Key | Action |
+|-----|--------|
+| Space | Toggle pause |
+| 1 / 2 / 3 / 4 | Half / normal / double / quad speed |
+| `.` (period) | Single step while paused |
+| R | Reset current preset (rebuild scene + engine timing) |
+| F1–F6 | Toggle overlays: collisions, perception, influence, obstacles, behavior items, explosions |
+
+## Mouse (window mode)
+
+| Input | Action |
+|-------|--------|
+| Left click | Select unit (engine hit test) |
+| Left drag | Box select |
+| Right click | Move selected units (`CommandSystem::MoveUnitsTo`) |
+| Mouse wheel | Zoom around cursor |
+| Middle drag | Pan camera (see convention below) |
+
+**Screen vs world Y:** Both use a top-left origin with **Y increasing downward** (same as `Camera::WorldToScreen`). Middle-mouse pan applies `Camera::Pan(screenDelta)`, which subtracts each screen-pixel delta from `center` in world space: drag **right** decreases `center.x`, drag **down** decreases `center.y` (the map moves with the pointer).
+
+Screenshots use the **software raster buffer**, not SDL readback.
+
+## Presets
+
+All module presets use map `800×600`, seed `1`, and perception radius `80` (except `two-units`, unchanged from V1.2).
+
+| CLI name | Exercises |
+|----------|-----------|
+| `two-units` | Default map + two idle teams |
+| `collision` | Two units at `(380,300)` / `(420,300)` with opposing `SetVelocity`; viewer-local **Coast** influence behavior integrates motion until overlap (hub does not integrate bare velocity) |
+| `combat` | Four units at fixed spawn positions with stored ±X velocities (the hub does **not** integrate velocity without a behavior). Scheduled center explosion at **t = 0.5 s**; visible motion is mostly **explosion impulse**, not convergence (**no HP damage**) |
+| `ai` | Seek / flee / separation state machines. **Viewer-local:** `Scenario.cpp` adds a static attractor at **(700, 300)** because `RTSGameState::Update` always merges the four map-edge static field items into the influence path, so `CalculateAcceleration` on builtins is skipped; the attractor is what pulls units through `InfluenceField::CalculateTotalForce` |
+
+## Script grammar
+
+One command per line. `#` starts a comment. Commas are not allowed.
+
+```
+frames <n>
+pause | resume
+step
+speed <0.5|1|2|4>
+reset
+preset <two-units|collision|combat|ai>
+dest <unitIndex> <worldX> <worldY>
+click <screenX> <screenY>
+rclick <screenX> <screenY>
+box <x0> <y0> <x1> <y1>
+overlay <collisions|perception|influence|obstacles|behavior|explosions> <0|1>
+```
+
+Debug verb `dest` sets `SetDebugDestination` directly (not a player-facing command).
+
+## Known limitations
+
+1. **Collisions do not reduce HP.** `CombatManager` is unused; the visible combat effect is explosion impulse on `RTSUnit`.
+2. **Explosion overlay echo.** `RTSGameState::Update` clears the engine `explosions_` vector at the end of each tick. The viewer copies pending engine explosions into **echoes** with **0.5 s** lifetime inside `NoteExplosions`, which runs **before** `Update`, so the orange ring can still draw after the engine list is empty.
+3. **FSM automatic transitions do not tick.** The hub never calls `StateMachine::Update`; only manually `SetState` presets drive behaviors.
+4. **`GameStateSerializer::DeserializeFromString` always returns false.** Presets are C++ factories only (no JSON scenario load).
+
+## Test coverage notes
+
+- **Key mapping** (`ViewerKeyFromPlaybackKeycode`, `OverlayFKeyIndexFromKeycode`, `HandleViewerKeycode`) is covered in `coreengine_sdl2_viewer_tests` with literal SDL keycode integers (no `SDL.h` in the logic library).
+- **SDL presenter path:** `SdlPresenter.cpp` forwards `SDL_KEYDOWN` `keysym.sym` values into `HandleViewerKeycode`; that wiring is not exercised without a real SDL window (headless tests call `HandleViewerKeycode` / `FrameLoop::ApplyViewerKeyAction` directly).
+
+## Smoke commands
+
+```bash
+# Empty map (V1.1 style — two-units default, overlays off)
+./build-viewer/tools/viewer/coreengine_sdl2_viewer --no-window --frames 1 \
+  --screenshot /tmp/viewer-v12-units.png
+
+# Preset PNGs (V1.6)
+./build-viewer/tools/viewer/coreengine_sdl2_viewer --no-window --preset collision --frames 5 \
+  --screenshot /tmp/viewer-v16-collision.png
+
+printf 'overlay explosions 1\nframes 20\n' > /tmp/v16-combat.txt
+./build-viewer/tools/viewer/coreengine_sdl2_viewer --no-window --preset combat --script /tmp/v16-combat.txt \
+  --screenshot /tmp/viewer-v16-combat.png
+
+./build-viewer/tools/viewer/coreengine_sdl2_viewer --no-window --preset ai --frames 60 \
+  --screenshot /tmp/viewer-v16-ai.png
+
+# Headless window driver (optional; needs SDL offscreen/dummy)
+SDL_VIDEODRIVER=offscreen SDL_RENDER_DRIVER=software \
+  ./build-viewer/tools/viewer/coreengine_sdl2_viewer --frames 2 --screenshot /tmp/viewer-window.png
+```
+
+PNG validation (stdlib):
+
+```bash
+python3 - <<'PY'
+import struct
+p=open("/tmp/viewer-v16-collision.png","rb").read()
+assert p[:8]==b"\x89PNG\r\n\x1a\n"
+w,h=struct.unpack(">II", p[16:24])
+print(w, h)
+PY
+```
+
+V1.2 regression pixel (team 1 blue at rounded center): `(427, 360)` → RGB `(70, 140, 230)` with overlays off.
