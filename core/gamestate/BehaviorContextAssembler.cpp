@@ -1,1 +1,45 @@
-I2luY2x1ZGUgIkJlaGF2aW9yQ29udGV4dEFzc2VtYmxlci5oIgojaW5jbHVkZSAiLi4vaW50ZXJmYWNlcy9JR2FtZVVuaXQuaCIKCkJlaGF2aW9yQ29udGV4dCBBc3NlbWJsZUJlaGF2aW9yQ29udGV4dChjb25zdCBCZWhhdmlvckNvbnRleHRJbnB1dHMmIGluKQp7CiAgICBCZWhhdmlvckNvbnRleHQgY3R4OwogICAgY3R4LnNlbGYgPSBpbi5zZWxmOwogICAgY3R4LmRlbHRhVGltZSA9IGluLmRlbHRhVGltZTsKICAgIGN0eC5tYXBDZW50ZXIgPSBpbi5tYXBDZW50ZXI7CiAgICBjdHgubWFwU2l6ZSA9IGluLm1hcFNpemU7CiAgICBjdHgubWFwQm91bmRzID0gaW4ubWFwU2l6ZTsKICAgIGN0eC5ybmcgPSBpbi5ybmc7CgogICAgVmVjdG9yMiBwb3NpdGlvbiA9IGluLnNlbGYtPkdldFBvc2l0aW9uKCk7CiAgICBpbnQgdGVhbSA9IGluLnNlbGYtPkdldFRlYW0oKTsKCiAgICBmb3IgKElHYW1lVW5pdCogb3RoZXIgOiBpbi5vdGhlcnMpCiAgICB7CiAgICAgICAgaWYgKG90aGVyID09IGluLnNlbGYpIGNvbnRpbnVlOwoKICAgICAgICBmbG9hdCBkaXN0YW5jZSA9IG90aGVyLT5HZXRQb3NpdGlvbigpLkRpc3RhbmNlKHBvc2l0aW9uKTsKICAgICAgICBpZiAoZGlzdGFuY2UgPiBpbi5wZXJjZXB0aW9uUmFkaXVzKSBjb250aW51ZTsKCiAgICAgICAgaWYgKG90aGVyLT5HZXRUZWFtKCkgPT0gdGVhbSkKICAgICAgICB7CiAgICAgICAgICAgIGN0eC5uZWFyYnlBbGxpZXMucHVzaF9iYWNrKG90aGVyKTsKICAgICAgICB9CiAgICAgICAgZWxzZQogICAgICAgIHsKICAgICAgICAgICAgY3R4Lm5lYXJieUVuZW1pZXMucHVzaF9iYWNrKG90aGVyKTsKICAgICAgICB9CiAgICB9CgogICAgY3R4LnN0YXRpY0ZpZWxkSXRlbXMgPSBpbi5tYXBFZGdlczsKICAgIGN0eC5zdGF0aWNGaWVsZEl0ZW1zLmluc2VydCgKICAgICAgICBjdHguc3RhdGljRmllbGRJdGVtcy5lbmQoKSwKICAgICAgICBpbi5hdHRyYWN0b3JzLmJlZ2luKCksCiAgICAgICAgaW4uYXR0cmFjdG9ycy5lbmQoKSk7CiAgICBjdHguc3RhdGljRmllbGRJdGVtcy5pbnNlcnQoCiAgICAgICAgY3R4LnN0YXRpY0ZpZWxkSXRlbXMuZW5kKCksCiAgICAgICAgaW4ub2JzdGFjbGVzLmJlZ2luKCksCiAgICAgICAgaW4ub2JzdGFjbGVzLmVuZCgpKTsKCiAgICByZXR1cm4gY3R4Owp9Cg==
+#include "BehaviorContextAssembler.h"
+#include "../interfaces/IGameUnit.h"
+
+BehaviorContext AssembleBehaviorContext(const BehaviorContextInputs& in)
+{
+    BehaviorContext ctx;
+    ctx.self = in.self;
+    ctx.deltaTime = in.deltaTime;
+    ctx.mapCenter = in.mapCenter;
+    ctx.mapSize = in.mapSize;
+    ctx.mapBounds = in.mapSize;
+    ctx.rng = in.rng;
+
+    Vector2 position = in.self->GetPosition();
+    int team = in.self->GetTeam();
+
+    for (IGameUnit* other : in.others)
+    {
+        if (other == in.self) continue;
+
+        float distance = other->GetPosition().Distance(position);
+        if (distance > in.perceptionRadius) continue;
+
+        if (other->GetTeam() == team)
+        {
+            ctx.nearbyAllies.push_back(other);
+        }
+        else
+        {
+            ctx.nearbyEnemies.push_back(other);
+        }
+    }
+
+    ctx.staticFieldItems = in.mapEdges;
+    ctx.staticFieldItems.insert(
+        ctx.staticFieldItems.end(),
+        in.attractors.begin(),
+        in.attractors.end());
+    ctx.staticFieldItems.insert(
+        ctx.staticFieldItems.end(),
+        in.obstacles.begin(),
+        in.obstacles.end());
+
+    return ctx;
+}

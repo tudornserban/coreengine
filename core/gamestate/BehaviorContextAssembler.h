@@ -1,1 +1,24 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSA8dmVjdG9yPgojaW5jbHVkZSAiLi4vYWkvQmVoYXZpb3JDb250ZXh0LmgiCiNpbmNsdWRlICIuLi9tYXRoL1ZlY3RvcjIuaCIKI2luY2x1ZGUgIi4uL2luZmx1ZW5jZS9JbmZsdWVuY2VGaWVsZEl0ZW0uaCIKCmNsYXNzIElHYW1lVW5pdDsKY2xhc3MgRGV0ZXJtaW5pc3RpY1JORzsKCnN0cnVjdCBCZWhhdmlvckNvbnRleHRJbnB1dHMgewogICAgSUdhbWVVbml0KiBzZWxmOwogICAgZmxvYXQgZGVsdGFUaW1lOwogICAgZmxvYXQgcGVyY2VwdGlvblJhZGl1czsKICAgIFZlY3RvcjIgbWFwQ2VudGVyOwogICAgVmVjdG9yMiBtYXBTaXplOwogICAgRGV0ZXJtaW5pc3RpY1JORyogcm5nOwogICAgY29uc3Qgc3RkOjp2ZWN0b3I8SUdhbWVVbml0Kj4mIG90aGVyczsKICAgIGNvbnN0IHN0ZDo6dmVjdG9yPEluZmx1ZW5jZUZpZWxkSXRlbT4mIG1hcEVkZ2VzOwogICAgY29uc3Qgc3RkOjp2ZWN0b3I8SW5mbHVlbmNlRmllbGRJdGVtPiYgYXR0cmFjdG9yczsKICAgIGNvbnN0IHN0ZDo6dmVjdG9yPEluZmx1ZW5jZUZpZWxkSXRlbT4mIG9ic3RhY2xlczsKfTsKCkJlaGF2aW9yQ29udGV4dCBBc3NlbWJsZUJlaGF2aW9yQ29udGV4dChjb25zdCBCZWhhdmlvckNvbnRleHRJbnB1dHMmIGluKTsK
+#pragma once
+
+#include <vector>
+#include "../ai/BehaviorContext.h"
+#include "../math/Vector2.h"
+#include "../influence/InfluenceFieldItem.h"
+
+class IGameUnit;
+class DeterministicRNG;
+
+struct BehaviorContextInputs {
+    IGameUnit* self;
+    float deltaTime;
+    float perceptionRadius;
+    Vector2 mapCenter;
+    Vector2 mapSize;
+    DeterministicRNG* rng;
+    const std::vector<IGameUnit*>& others;
+    const std::vector<InfluenceFieldItem>& mapEdges;
+    const std::vector<InfluenceFieldItem>& attractors;
+    const std::vector<InfluenceFieldItem>& obstacles;
+};
+
+BehaviorContext AssembleBehaviorContext(const BehaviorContextInputs& in);
