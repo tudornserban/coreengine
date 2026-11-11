@@ -1,1 +1,345 @@
-I2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgojaW5jbHVkZSA8bWFwPgojaW5jbHVkZSA8bWVtb3J5PgojaW5jbHVkZSA8c3RyaW5nPgoKI2luY2x1ZGUgImNvcmUvYWkvQmVoYXZpb3JDb250ZXh0LmgiCiNpbmNsdWRlICJjb3JlL2NvbGxpc2lvbi9Db2xsaXNpb25FdmVudC5oIgojaW5jbHVkZSAiY29yZS9jb2xsaXNpb24vSUNvbGxpc2lvbk9ic2VydmVyLmgiCiNpbmNsdWRlICJjb3JlL2NvbWJhdC9FeHBsb3Npb24uaCIKI2luY2x1ZGUgImNvcmUvZ2FtZXN0YXRlL1JUU0dhbWVTdGF0ZS5oIgojaW5jbHVkZSAiY29yZS9nYW1lc3RhdGUvUlRTVW5pdC5oIgojaW5jbHVkZSAiY29yZS9pbmZsdWVuY2VfdHlwZXMvSW5mbHVlbmNlRmllbGRJdGVtLmgiCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSUJlaGF2aW9yLmgiCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSVVuaXRCZWhhdmlvckhvc3QuaCIKI2luY2x1ZGUgImNvcmUvbWF0aC9WZWN0b3IyLmgiCiNpbmNsdWRlICJ0ZXN0cy9UZXN0SGVscGVycy9LaW5lbWF0aWNNb2NrR2FtZVVuaXQuaCIKI2luY2x1ZGUgInRlc3RzL1Rlc3RIZWxwZXJzL01vY2tHYW1lVW5pdC5oIgoKbmFtZXNwYWNlIHsKCmNvbnN0ZXhwciB1aW50NjRfdCBrU2VlZCA9IDA7CmNvbnN0ZXhwciBmbG9hdCBrTWFwMTAwID0gMTAwLjBmOwoKY2xhc3MgUmVjb3JkaW5nQ29sbGlzaW9uT2JzZXJ2ZXIgOiBwdWJsaWMgSUNvbGxpc2lvbk9ic2VydmVyIHsKcHVibGljOgogICAgdm9pZCBPbkNvbGxpc2lvbihjb25zdCBDb2xsaXNpb25FdmVudCYgLypldmVudCovKSBvdmVycmlkZSB7ICsrZXZlbnRDb3VudDsgfQogICAgaW50IGV2ZW50Q291bnQgPSAwOwp9OwoKY2xhc3MgU3B5QmVoYXZpb3IgOiBwdWJsaWMgSUJlaGF2aW9yIHsKcHVibGljOgogICAgaW50IGdlbmVyYXRlRmllbGRJdGVtc0NhbGxzID0gMDsKICAgIGludCBjYWxjdWxhdGVBY2NlbGVyYXRpb25DYWxscyA9IDA7CiAgICBzdGQ6OnN0cmluZyBuYW1lXyA9ICJTcHlCZWhhdmlvciI7CgogICAgc3RkOjp2ZWN0b3I8SW5mbHVlbmNlRmllbGRJdGVtPiBHZW5lcmF0ZUZpZWxkSXRlbXMoY29uc3QgQmVoYXZpb3JDb250ZXh0JiAvKmN0eCovKSBvdmVycmlkZSB7CiAgICAgICAgKytnZW5lcmF0ZUZpZWxkSXRlbXNDYWxsczsKICAgICAgICByZXR1cm4ge307CiAgICB9CgogICAgVmVjdG9yMiBDYWxjdWxhdGVBY2NlbGVyYXRpb24oY29uc3QgQmVoYXZpb3JDb250ZXh0JiAvKmN0eCovKSBvdmVycmlkZSB7CiAgICAgICAgKytjYWxjdWxhdGVBY2NlbGVyYXRpb25DYWxsczsKICAgICAgICByZXR1cm4gVmVjdG9yMig5OTkuMGYsIDk5OS4wZik7CiAgICB9CgogICAgY29uc3QgY2hhciogR2V0TmFtZSgpIGNvbnN0IG92ZXJyaWRlIHsgcmV0dXJuIG5hbWVfLmNfc3RyKCk7IH0KCiAgICBzdGQ6Om1hcDxzdGQ6OnN0cmluZywgZmxvYXQ+JiBHZXRQYXJhbWV0ZXJzKCkgb3ZlcnJpZGUgeyByZXR1cm4gcGFyYW1zXzsgfQogICAgY29uc3Qgc3RkOjptYXA8c3RkOjpzdHJpbmcsIGZsb2F0PiYgR2V0UGFyYW1ldGVycygpIGNvbnN0IG92ZXJyaWRlIHsgcmV0dXJuIHBhcmFtc187IH0KCnByaXZhdGU6CiAgICBzdGQ6Om1hcDxzdGQ6OnN0cmluZywgZmxvYXQ+IHBhcmFtc187Cn07CgpSVFNHYW1lU3RhdGUgTWFrZU1hcDEwMCgpIHsKICAgIHJldHVybiBSVFNHYW1lU3RhdGUoVmVjdG9yMihrTWFwMTAwLCBrTWFwMTAwKSwga1NlZWQpOwp9CgpSVFNVbml0KiBBZGRSdHMoUlRTR2FtZVN0YXRlJiBzdGF0ZSwgVmVjdG9yMiBwb3MsIGludCB0ZWFtLCBmbG9hdCByYWRpdXMgPSAxMC4wZiwgZmxvYXQgbWF4U3BlZWQgPSAxMDAuMGYpIHsKICAgIGF1dG8gdW5pdCA9IHN0ZDo6bWFrZV91bmlxdWU8UlRTVW5pdD4ocG9zLCB0ZWFtLCByYWRpdXMsIG1heFNwZWVkKTsKICAgIFJUU1VuaXQqIHB0ciA9IHVuaXQuZ2V0KCk7CiAgICBzdGF0ZS5BZGRVbml0KHN0ZDo6bW92ZSh1bml0KSk7CiAgICByZXR1cm4gcHRyOwp9CgpTcHlCZWhhdmlvciogSW5zdGFsbE93bmVkU3B5KFJUU1VuaXQmIHVuaXQpIHsKICAgIGF1dG8gc3B5ID0gc3RkOjptYWtlX3VuaXF1ZTxTcHlCZWhhdmlvcj4oKTsKICAgIFNweUJlaGF2aW9yKiBwdHIgPSBzcHkuZ2V0KCk7CiAgICB1bml0LkdldFN0YXRlTWFjaGluZSgpLkFkZFN0YXRlKCJTcHkiLCBzdGQ6Om1vdmUoc3B5KSk7CiAgICB1bml0LkdldFN0YXRlTWFjaGluZSgpLlNldFN0YXRlKCJTcHkiKTsKICAgIHJldHVybiBwdHI7Cn0KCi8vIE5vbi1SVFNVbml0IGhvc3QgZm9yIHRoZSBJVW5pdEJlaGF2aW9ySG9zdCBBSSB0aWNrIGdhdGUgKFI0LjUgLyBSNC42IHBvc2l0aXZlIHBpbikuCmNsYXNzIEJlaGF2aW9ySG9zdE1vY2tHYW1lVW5pdCA6IHB1YmxpYyBNb2NrR2FtZVVuaXQsIHB1YmxpYyBJVW5pdEJlaGF2aW9ySG9zdCB7CnB1YmxpYzoKICAgIGV4cGxpY2l0IEJlaGF2aW9ySG9zdE1vY2tHYW1lVW5pdChWZWN0b3IyIHBvc2l0aW9uLCBpbnQgdGVhbSwgZmxvYXQgcmFkaXVzLCBmbG9hdCBtYXhTcGVlZCkKICAgICAgICA6IE1vY2tHYW1lVW5pdChwb3NpdGlvbiwgdGVhbSwgcmFkaXVzLCBtYXhTcGVlZCkge30KCiAgICB2b2lkIEluc3RhbGxTcHkoc3RkOjp1bmlxdWVfcHRyPFNweUJlaGF2aW9yPiBzcHkpIHsKICAgICAgICBzcHlfID0gc3RkOjptb3ZlKHNweSk7CiAgICAgICAgc3B5UHRyXyA9IHNweV8uZ2V0KCk7CiAgICB9CgogICAgU3B5QmVoYXZpb3IqIFNweSgpIGNvbnN0IHsgcmV0dXJuIHNweVB0cl87IH0KCiAgICBJQmVoYXZpb3IqIEdldEN1cnJlbnRCZWhhdmlvcigpIG92ZXJyaWRlIHsgcmV0dXJuIHNweVB0cl87IH0KCnByaXZhdGU6CiAgICBzdGQ6OnVuaXF1ZV9wdHI8U3B5QmVoYXZpb3I+IHNweV87CiAgICBTcHlCZWhhdmlvciogc3B5UHRyXyA9IG51bGxwdHI7Cn07Cgp9ICAvLyBuYW1lc3BhY2UKCmNsYXNzIFJUU0dhbWVTdGF0ZUNvbnRleHRDaGFyYWN0ZXJpemF0aW9uVGVzdCA6IHB1YmxpYyA6OnRlc3Rpbmc6OlRlc3Qgewpwcm90ZWN0ZWQ6CiAgICBSVFNHYW1lU3RhdGUgc3RhdGV7TWFrZU1hcDEwMCgpfTsKfTsKClRFU1RfRihSVFNHYW1lU3RhdGVDb250ZXh0Q2hhcmFjdGVyaXphdGlvblRlc3QsIFBlcmNlcHRpb25SYWRpdXNEZWZhdWx0KSB7CiAgICBFWFBFQ1RfRkxPQVRfRVEoc3RhdGUuR2V0UGVyY2VwdGlvblJhZGl1cygpLCAzMDAuMGYpOwp9CgpURVNUX0YoUlRTR2FtZVN0YXRlQ29udGV4dENoYXJhY3Rlcml6YXRpb25UZXN0LCBNYXBDZW50ZXJTaXplQW5kQ29udGV4dEJvdW5kcykgewogICAgRVhQRUNUX0ZMT0FUX0VRKHN0YXRlLkdldE1hcENlbnRlcigpLngsIDUwLjBmKTsKICAgIEVYUEVDVF9GTE9BVF9FUShzdGF0ZS5HZXRNYXBDZW50ZXIoKS55LCA1MC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEoc3RhdGUuR2V0TWFwU2l6ZSgpLngsIGtNYXAxMDApOwogICAgRVhQRUNUX0ZMT0FUX0VRKHN0YXRlLkdldE1hcFNpemUoKS55LCBrTWFwMTAwKTsKCiAgICBSVFNVbml0KiBzZWxmID0gQWRkUnRzKHN0YXRlLCBWZWN0b3IyKDEwLjBmLCAxMC4wZiksIDApOwogICAgY29uc3QgQmVoYXZpb3JDb250ZXh0IGN0eCA9IHN0YXRlLkJ1aWxkQ29udGV4dEZvclVuaXQoc2VsZiwgMC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEoY3R4Lm1hcEJvdW5kcy54LCBrTWFwMTAwKTsKICAgIEVYUEVDVF9GTE9BVF9FUShjdHgubWFwQm91bmRzLnksIGtNYXAxMDApOwp9CgpURVNUX0YoUlRTR2FtZVN0YXRlQ29udGV4dENoYXJhY3Rlcml6YXRpb25UZXN0LCBTdGF0aWNFZGdlSXRlbXNQaW4pIHsKICAgIGNvbnN0IGF1dG8mIGVkZ2VzID0gc3RhdGUuR2V0U3RhdGljSXRlbXMoKTsKICAgIEFTU0VSVF9FUShlZGdlcy5zaXplKCksIDR1KTsKICAgIGZvciAoY29uc3QgYXV0byYgZWRnZSA6IGVkZ2VzKSB7CiAgICAgICAgRVhQRUNUX0VRKGVkZ2UuR2V0SW5mbHVlbmNlVHlwZSgpLCBJbmZsdWVuY2VUeXBlOjpFREdFKTsKICAgICAgICBFWFBFQ1RfRkxPQVRfRVEoZWRnZS5HZXRFZGdlUGFyYW1zKCkuUmVwdWxzb3JTdHJlbmd0aCwgMTUwLjBmKTsKICAgICAgICBFWFBFQ1RfRkxPQVRfRVEoZWRnZS5HZXRFZGdlUGFyYW1zKCkuRGV0ZWN0aW9uUmFuZ2UsIDgwLjBmKTsKICAgIH0KICAgIEVYUEVDVF9GTE9BVF9FUShlZGdlc1swXS5HZXRQb3NpdGlvbigpLngsIC00MC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEoZWRnZXNbMF0uR2V0UG9zaXRpb24oKS55LCA1MC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEoZWRnZXNbMV0uR2V0UG9zaXRpb24oKS54LCAxNDAuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKGVkZ2VzWzFdLkdldFBvc2l0aW9uKCkueSwgNTAuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKGVkZ2VzWzJdLkdldFBvc2l0aW9uKCkueCwgNTAuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKGVkZ2VzWzJdLkdldFBvc2l0aW9uKCkueSwgLTQwLjBmKTsKICAgIEVYUEVDVF9GTE9BVF9FUShlZGdlc1szXS5HZXRQb3NpdGlvbigpLngsIDUwLjBmKTsKICAgIEVYUEVDVF9GTE9BVF9FUShlZGdlc1szXS5HZXRQb3NpdGlvbigpLnksIDE0MC4wZik7Cn0KClRFU1RfRihSVFNHYW1lU3RhdGVDb250ZXh0Q2hhcmFjdGVyaXphdGlvblRlc3QsIE5lYXJieUFsbGllc0VuZW1pZXNPcmRlckFuZFBlcmNlcHRpb24pIHsKICAgIFJUU1VuaXQqIHNlbGYgPSBBZGRSdHMoc3RhdGUsIFZlY3RvcjIoMTAuMGYsIDEwLjBmKSwgMCk7CiAgICBBZGRSdHMoc3RhdGUsIFZlY3RvcjIoMjAuMGYsIDEwLjBmKSwgMCk7CiAgICBBZGRSdHMoc3RhdGUsIFZlY3RvcjIoMTAuMGYsIDQwLjBmKSwgMSk7CiAgICBBZGRSdHMoc3RhdGUsIFZlY3RvcjIoMTAuMGYsIDQwMC4wZiksIDApOwoKICBjb25zdCBhdXRvIGFsbCA9IHN0YXRlLkdldEFsbFVuaXRzKCk7CiAgICBBU1NFUlRfR0UoYWxsLnNpemUoKSwgNHUpOwogICAgRVhQRUNUX0VRKGFsbFswXSwgc2VsZik7CgogICAgY29uc3QgQmVoYXZpb3JDb250ZXh0IGN0eCA9IHN0YXRlLkJ1aWxkQ29udGV4dEZvclVuaXQoc2VsZiwgMC4wMTZmKTsKICAgIEVYUEVDVF9FUShjdHguc2VsZiwgc2VsZik7CiAgICBBU1NFUlRfRVEoY3R4Lm5lYXJieUFsbGllcy5zaXplKCksIDF1KTsKICAgIEFTU0VSVF9FUShjdHgubmVhcmJ5RW5lbWllcy5zaXplKCksIDF1KTsKICAgIEVYUEVDVF9FUShjdHgubmVhcmJ5QWxsaWVzWzBdLT5HZXRQb3NpdGlvbigpLngsIDIwLjBmKTsKICAgIEVYUEVDVF9FUShjdHgubmVhcmJ5RW5lbWllc1swXS0+R2V0UG9zaXRpb24oKS55LCA0MC4wZik7CgogICAgZm9yIChJR2FtZVVuaXQqIGFsbHkgOiBjdHgubmVhcmJ5QWxsaWVzKSB7CiAgICAgICAgRVhQRUNUX05FKGFsbHksIHNlbGYpOwogICAgfQogICAgZm9yIChJR2FtZVVuaXQqIGVuZW15IDogY3R4Lm5lYXJieUVuZW1pZXMpIHsKICAgICAgICBFWFBFQ1RfTkUoZW5lbXksIHNlbGYpOwogICAgfQp9CgpURVNUX0YoUlRTR2FtZVN0YXRlQ29udGV4dENoYXJhY3Rlcml6YXRpb25UZXN0LCBOZWFyYnlVbml0QXRFeGFjdGx5UGVyY2VwdGlvblJhZGl1c0lzSW5jbHVkZWQpIHsKICAgIFJUU1VuaXQqIHNlbGYgPSBBZGRSdHMoc3RhdGUsIFZlY3RvcjIoMTAuMGYsIDEwLjBmKSwgMCk7CiAgICBBZGRSdHMoc3RhdGUsIFZlY3RvcjIoMTAuMGYsIDMxMC4wZiksIDApOwoKICAgIGNvbnN0IEJlaGF2aW9yQ29udGV4dCBjdHggPSBzdGF0ZS5CdWlsZENvbnRleHRGb3JVbml0KHNlbGYsIDAuMDE2Zik7CiAgICBBU1NFUlRfRVEoY3R4Lm5lYXJieUFsbGllcy5zaXplKCksIDF1KTsKICAgIEVYUEVDVF9GTE9BVF9FUShjdHgubmVhcmJ5QWxsaWVzWzBdLT5HZXRQb3NpdGlvbigpLngsIDEwLjBmKTsKICAgIEVYUEVDVF9GTE9BVF9FUShjdHgubmVhcmJ5QWxsaWVzWzBdLT5HZXRQb3NpdGlvbigpLnksIDMxMC4wZik7Cn0KClRFU1RfRihSVFNHYW1lU3RhdGVDb250ZXh0Q2hhcmFjdGVyaXphdGlvblRlc3QsIFN0YXRpY0ZpZWxkSXRlbXNBdHRyYWN0b3JBbmRPYnN0YWNsZSkgewogICAgUlRTVW5pdCogc2VsZiA9IEFkZFJ0cyhzdGF0ZSwgVmVjdG9yMigxMC4wZiwgMTAuMGYpLCAwKTsKCiAgICBjb25zdCBWZWN0b3IyIGF0dHJhY3RvclBvcygyNS4wZiwgMjUuMGYpOwogICAgY29uc3QgSW5mbHVlbmNlRmllbGRJdGVtIGF0dHJhY3RvciA9CiAgICAgICAgSW5mbHVlbmNlRmllbGRJdGVtOjpDcmVhdGVBdHRyYWN0b3IoYXR0cmFjdG9yUG9zLCAvKmltcG9ydGFuY2U9Ki8xLjBmKTsKICAgIHN0YXRlLkFkZFN0YXRpY0F0dHJhY3RvcihhdHRyYWN0b3IpOwoKICAgIGNvbnN0IFZlY3RvcjIgb2JzdGFjbGVQb3MoNjAuMGYsIDYwLjBmKTsKICAgIGNvbnN0IEluZmx1ZW5jZUZpZWxkSXRlbSBvYnN0YWNsZSA9CiAgICAgICAgSW5mbHVlbmNlRmllbGRJdGVtOjpDcmVhdGVSZXB1bHNvcihvYnN0YWNsZVBvcywgLyppbXBvcnRhbmNlPSovMS4wZik7CiAgICBzdGF0ZS5BZGRPYnN0YWNsZShvYnN0YWNsZSk7CgogICAgRVhQRUNUX0VRKHN0YXRlLkdldFN0YXRpY0l0ZW1zKCkuc2l6ZSgpLCA0dSk7CgogICAgY29uc3QgQmVoYXZpb3JDb250ZXh0IGN0eCA9IHN0YXRlLkJ1aWxkQ29udGV4dEZvclVuaXQoc2VsZiwgMC4wZik7CiAgICBBU1NFUlRfRVEoY3R4LnN0YXRpY0ZpZWxkSXRlbXMuc2l6ZSgpLCA2dSk7CgogICAgZm9yIChzaXplX3QgaSA9IDA7IGkgPCA0OyArK2kpIHsKICAgICAgICBFWFBFQ1RfRVEoY3R4LnN0YXRpY0ZpZWxkSXRlbXNbaV0uR2V0SW5mbHVlbmNlVHlwZSgpLCBJbmZsdWVuY2VUeXBlOjpFREdFKTsKICAgIH0KICAgIEVYUEVDVF9FUShjdHguc3RhdGljRmllbGRJdGVtc1s0XS5HZXRJbmZsdWVuY2VUeXBlKCksIEluZmx1ZW5jZVR5cGU6OkFUVFJBQ1RPUik7CiAgICBFWFBFQ1RfRkxPQVRfRVEoY3R4LnN0YXRpY0ZpZWxkSXRlbXNbNF0uR2V0UG9zaXRpb24oKS54LCBhdHRyYWN0b3JQb3MueCk7CiAgICBFWFBFQ1RfRVEoY3R4LnN0YXRpY0ZpZWxkSXRlbXNbNV0uR2V0SW5mbHVlbmNlVHlwZSgpLCBJbmZsdWVuY2VUeXBlOjpSRVBVTFNPUik7CiAgICBFWFBFQ1RfRkxPQVRfRVEoY3R4LnN0YXRpY0ZpZWxkSXRlbXNbNV0uR2V0UG9zaXRpb24oKS54LCBvYnN0YWNsZVBvcy54KTsKfQoKY2xhc3MgUlRTR2FtZVN0YXRlVXBkYXRlQ2hhcmFjdGVyaXphdGlvblRlc3QgOiBwdWJsaWMgOjp0ZXN0aW5nOjpUZXN0IHsKcHJvdGVjdGVkOgogICAgUlRTR2FtZVN0YXRlIHN0YXRle01ha2VNYXAxMDAoKX07CgogICAgdm9pZCBTdWJzY3JpYmVDb2xsaXNpb25PYnNlcnZlcigpIHsKICAgICAgICBzdGF0ZS5HZXRDb2xsaXNpb25TeXN0ZW0oKS5TdWJzY3JpYmUoJm9ic2VydmVyXyk7CiAgICB9CgogICAgUmVjb3JkaW5nQ29sbGlzaW9uT2JzZXJ2ZXIgb2JzZXJ2ZXJfOwp9OwoKVEVTVF9GKFJUU0dhbWVTdGF0ZVVwZGF0ZUNoYXJhY3Rlcml6YXRpb25UZXN0LCBNb2NrVW5pdE1hcEVkZ2VFbWl0c1dpdGhvdXRLaW5lbWF0aWNXcml0ZSkgewogICAgU3Vic2NyaWJlQ29sbGlzaW9uT2JzZXJ2ZXIoKTsKICAgIGF1dG8gbW9jayA9IHN0ZDo6bWFrZV91bmlxdWU8TW9ja0dhbWVVbml0PihWZWN0b3IyKC01LjBmLCA1MC4wZiksIDAsIDEwLjBmLCAxMDAuMGYpOwogICAgTW9ja0dhbWVVbml0KiBwdHIgPSBtb2NrLmdldCgpOwogICAgc3RhdGUuQWRkVW5pdChzdGQ6Om1vdmUobW9jaykpOwoKICAgIGNvbnN0IFZlY3RvcjIgYmVmb3JlID0gcHRyLT5HZXRQb3NpdGlvbigpOwogICAgc3RhdGUuVXBkYXRlKDAuMDE2Zik7CgogICAgRVhQRUNUX0VRKG9ic2VydmVyXy5ldmVudENvdW50LCAxKTsKICAgIEVYUEVDVF9GTE9BVF9FUShwdHItPkdldFBvc2l0aW9uKCkueCwgYmVmb3JlLngpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHB0ci0+R2V0UG9zaXRpb24oKS55LCBiZWZvcmUueSk7Cn0KClRFU1RfRihSVFNHYW1lU3RhdGVVcGRhdGVDaGFyYWN0ZXJpemF0aW9uVGVzdCwgUnRzVW5pdE1hcEVkZ2VJbnNldE5vdENsYW1wZWRUb1plcm8pIHsKICAgIFN1YnNjcmliZUNvbGxpc2lvbk9ic2VydmVyKCk7CiAgICBSVFNVbml0KiB1bml0ID0gQWRkUnRzKHN0YXRlLCBWZWN0b3IyKC01LjBmLCA1MC4wZiksIDAsIDEwLjBmKTsKCiAgICBzdGF0ZS5VcGRhdGUoMC4wMTZmKTsKCiAgICBFWFBFQ1RfRVEob2JzZXJ2ZXJfLmV2ZW50Q291bnQsIDEpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHVuaXQtPkdldFBvc2l0aW9uKCkueCwgMTAuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHVuaXQtPkdldFBvc2l0aW9uKCkueSwgNTAuMGYpOwp9CgpURVNUX0YoUlRTR2FtZVN0YXRlVXBkYXRlQ2hhcmFjdGVyaXphdGlvblRlc3QsIEV4cGxvc2lvbkltcHVsc2VPblJ0c1VuaXQpIHsKICAgIFJUU1VuaXQqIHVuaXQgPSBBZGRSdHMoc3RhdGUsIFZlY3RvcjIoNTAuMGYsIDUwLjBmKSwgMCwgMTAuMGYsIDEwMC4wZik7CiAgICBzdGF0ZS5BZGRFeHBsb3Npb24oRXhwbG9zaW9uKFZlY3RvcjIoMzUuMGYsIDUwLjBmKSwgNDAuMGYsIDgwMDAuMGYpKTsKCiAgICBzdGF0ZS5VcGRhdGUoMC4yNWYpOwoKICAgIEVYUEVDVF9GTE9BVF9FUSh1bml0LT5HZXRWZWxvY2l0eSgpLngsIDEwMC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEodW5pdC0+R2V0VmVsb2NpdHkoKS55LCAwLjBmKTsKICAgIEVYUEVDVF9GTE9BVF9FUSh1bml0LT5HZXRQb3NpdGlvbigpLngsIDc1LjBmKTsKICAgIEVYUEVDVF9GTE9BVF9FUSh1bml0LT5HZXRQb3NpdGlvbigpLnksIDUwLjBmKTsKfQoKVEVTVF9GKFJUU0dhbWVTdGF0ZVVwZGF0ZUNoYXJhY3Rlcml6YXRpb25UZXN0LCBCb3VuZHNGYWxsYmFja0NsYW1wc0NlbnRlck5vdFJhZGl1c0luc2V0KSB7CiAgICBSVFNVbml0KiB1bml0ID0gQWRkUnRzKHN0YXRlLCBWZWN0b3IyKDkwLjBmLCA1MC4wZiksIDAsIDEwLjBmLCAxMDAuMGYpOwogICAgc3RhdGUuQWRkRXhwbG9zaW9uKEV4cGxvc2lvbihWZWN0b3IyKDcwLjBmLCA1MC4wZiksIDQwLjBmLCA4MDAwLjBmKSk7CgogICAgc3RhdGUuVXBkYXRlKDEuMGYpOwoKICAgIEVYUEVDVF9GTE9BVF9FUSh1bml0LT5HZXRQb3NpdGlvbigpLngsIDEwMC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEodW5pdC0+R2V0UG9zaXRpb24oKS55LCA1MC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEodW5pdC0+R2V0VmVsb2NpdHkoKS54LCAxMDAuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHVuaXQtPkdldFZlbG9jaXR5KCkueSwgMC4wZik7Cn0KClRFU1RfRihSVFNHYW1lU3RhdGVVcGRhdGVDaGFyYWN0ZXJpemF0aW9uVGVzdCwgQWlUaWNrVmlzaXRzU3B5QmVoYXZpb3JFZGdlc09ubHkpIHsKICAgIFJUU0dhbWVTdGF0ZSBsYXJnZShWZWN0b3IyKDEwMDAuMGYsIDEwMDAuMGYpLCBrU2VlZCk7CiAgICBSVFNVbml0KiB1bml0ID0gQWRkUnRzKGxhcmdlLCBWZWN0b3IyKDUwMC4wZiwgNTAwLjBmKSwgMCk7CiAgICBTcHlCZWhhdmlvciogc3B5ID0gSW5zdGFsbE93bmVkU3B5KCp1bml0KTsKICAgIGNvbnN0IFZlY3RvcjIgc3RhcnQgPSB1bml0LT5HZXRQb3NpdGlvbigpOwoKICAgIGxhcmdlLlVwZGF0ZSgwLjAxNmYpOwoKICAgIEVYUEVDVF9FUShzcHktPmdlbmVyYXRlRmllbGRJdGVtc0NhbGxzLCAxKTsKICAgIEVYUEVDVF9FUShzcHktPmNhbGN1bGF0ZUFjY2VsZXJhdGlvbkNhbGxzLCAwKTsKICAgIEVYUEVDVF9GTE9BVF9FUSh1bml0LT5HZXRQb3NpdGlvbigpLngsIHN0YXJ0LngpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHVuaXQtPkdldFBvc2l0aW9uKCkueSwgc3RhcnQueSk7Cn0KClRFU1RfRihSVFNHYW1lU3RhdGVVcGRhdGVDaGFyYWN0ZXJpemF0aW9uVGVzdCwgQWlUaWNrU2tpcHNNb2NrVW5pdCkgewogICAgUlRTR2FtZVN0YXRlIGxhcmdlKFZlY3RvcjIoMTAwMC4wZiwgMTAwMC4wZiksIGtTZWVkKTsKICAgIFJUU1VuaXQqIHJ0cyA9IEFkZFJ0cyhsYXJnZSwgVmVjdG9yMig1MDAuMGYsIDUwMC4wZiksIDApOwogICAgU3B5QmVoYXZpb3IqIHNweSA9IEluc3RhbGxPd25lZFNweSgqcnRzKTsKCiAgICBhdXRvIG1vY2sgPSBzdGQ6Om1ha2VfdW5pcXVlPE1vY2tHYW1lVW5pdD4oVmVjdG9yMig1MDAuMGYsIDUwMC4wZiksIDAsIDEwLjBmLCAxMDAuMGYpOwogICAgbW9jay0+U2V0VmVsb2NpdHkoVmVjdG9yMigzMC4wZiwgMC4wZikpOwogICAgTW9ja0dhbWVVbml0KiBtb2NrUHRyID0gbW9jay5nZXQoKTsKICAgIGxhcmdlLkFkZFVuaXQoc3RkOjptb3ZlKG1vY2spKTsKCiAgICBjb25zdCBWZWN0b3IyIG1vY2tTdGFydCA9IG1vY2tQdHItPkdldFBvc2l0aW9uKCk7CiAgY29uc3QgVmVjdG9yMiBtb2NrVmVsU3RhcnQgPSBtb2NrUHRyLT5HZXRWZWxvY2l0eSgpOwoKICAgIGxhcmdlLlVwZGF0ZSgwLjVmKTsKCiAgICBFWFBFQ1RfRVEoc3B5LT5nZW5lcmF0ZUZpZWxkSXRlbXNDYWxscywgMSk7CiAgICBFWFBFQ1RfRkxPQVRfRVEobW9ja1B0ci0+R2V0UG9zaXRpb24oKS54LCBtb2NrU3RhcnQueCk7CiAgICBFWFBFQ1RfRkxPQVRfRVEobW9ja1B0ci0+R2V0UG9zaXRpb24oKS55LCBtb2NrU3RhcnQueSk7CiAgICBFWFBFQ1RfRkxPQVRfRVEobW9ja1B0ci0+R2V0VmVsb2NpdHkoKS54LCBtb2NrVmVsU3RhcnQueCk7CiAgICBFWFBFQ1RfRkxPQVRfRVEobW9ja1B0ci0+R2V0VmVsb2NpdHkoKS55LCBtb2NrVmVsU3RhcnQueSk7Cn0KClRFU1RfRihSVFNHYW1lU3RhdGVVcGRhdGVDaGFyYWN0ZXJpemF0aW9uVGVzdCwgQWlUaWNrVmlzaXRzTm9uUnRzQmVoYXZpb3JIb3N0KSB7CiAgICBhdXRvIHVuaXQgPSBzdGQ6Om1ha2VfdW5pcXVlPEJlaGF2aW9ySG9zdE1vY2tHYW1lVW5pdD4oVmVjdG9yMig1MC4wZiwgNTAuMGYpLCAwLCAxMC4wZiwgMTAwLjBmKTsKICAgIHVuaXQtPlNldFZlbG9jaXR5KFZlY3RvcjIoMjAuMGYsIDAuMGYpKTsKICAgIGF1dG8gc3B5ID0gc3RkOjptYWtlX3VuaXF1ZTxTcHlCZWhhdmlvcj4oKTsKICAgIFNweUJlaGF2aW9yKiBzcHlQdHIgPSBzcHkuZ2V0KCk7CiAgICB1bml0LT5JbnN0YWxsU3B5KHN0ZDo6bW92ZShzcHkpKTsKICAgIEJlaGF2aW9ySG9zdE1vY2tHYW1lVW5pdCogcHRyID0gdW5pdC5nZXQoKTsKICAgIGNvbnN0IFZlY3RvcjIgcG9zU3RhcnQgPSBwdHItPkdldFBvc2l0aW9uKCk7CiAgICBzdGF0ZS5BZGRVbml0KHN0ZDo6bW92ZSh1bml0KSk7CgogICAgc3RhdGUuVXBkYXRlKDAuNWYpOwoKICAgIEVYUEVDVF9FUShzcHlQdHItPmdlbmVyYXRlRmllbGRJdGVtc0NhbGxzLCAxKTsKICAgIEVYUEVDVF9GTE9BVF9FUShwdHItPkdldFBvc2l0aW9uKCkueCwgcG9zU3RhcnQueCArIDIwLjBmICogMC41Zik7CiAgICBFWFBFQ1RfRkxPQVRfRVEocHRyLT5HZXRQb3NpdGlvbigpLnksIHBvc1N0YXJ0LnkpOwp9CgpURVNUX0YoUlRTR2FtZVN0YXRlVXBkYXRlQ2hhcmFjdGVyaXphdGlvblRlc3QsIEtpbmVtYXRpY01vY2tTa2lwc0FpVGlja0FuZEV4cGxvc2lvbkltcHVsc2UpIHsKICAgIGF1dG8gdW5pdCA9IHN0ZDo6bWFrZV91bmlxdWU8S2luZW1hdGljTW9ja0dhbWVVbml0PihWZWN0b3IyKDUwLjBmLCA1MC4wZiksIDAsIDEwLjBmLCAxMDAuMGYpOwogICAgdW5pdC0+U2V0VmVsb2NpdHkoVmVjdG9yMig0MC4wZiwgMC4wZikpOwogICAgS2luZW1hdGljTW9ja0dhbWVVbml0KiBwdHIgPSB1bml0LmdldCgpOwogICAgY29uc3QgVmVjdG9yMiBwb3NTdGFydCA9IHB0ci0+R2V0UG9zaXRpb24oKTsKICAgIGNvbnN0IFZlY3RvcjIgdmVsU3RhcnQgPSBwdHItPkdldFZlbG9jaXR5KCk7CiAgICBzdGF0ZS5BZGRVbml0KHN0ZDo6bW92ZSh1bml0KSk7CgogICAgc3RhdGUuVXBkYXRlKDAuNWYpOwoKICAgIEVYUEVDVF9GTE9BVF9FUShwdHItPkdldFBvc2l0aW9uKCkueCwgcG9zU3RhcnQueCk7CiAgICBFWFBFQ1RfRkxPQVRfRVEocHRyLT5HZXRQb3NpdGlvbigpLnksIHBvc1N0YXJ0LnkpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHB0ci0+R2V0VmVsb2NpdHkoKS54LCB2ZWxTdGFydC54KTsKICAgIEVYUEVDVF9GTE9BVF9FUShwdHItPkdldFZlbG9jaXR5KCkueSwgdmVsU3RhcnQueSk7CgogICAgc3RhdGUuQWRkRXhwbG9zaW9uKEV4cGxvc2lvbihWZWN0b3IyKDM1LjBmLCA1MC4wZiksIDQwLjBmLCA4MDAwLjBmKSk7CiAgICBzdGF0ZS5VcGRhdGUoMC4yNWYpOwoKICAgIEVYUEVDVF9GTE9BVF9FUShwdHItPkdldFBvc2l0aW9uKCkueCwgcG9zU3RhcnQueCk7CiAgICBFWFBFQ1RfRkxPQVRfRVEocHRyLT5HZXRQb3NpdGlvbigpLnksIHBvc1N0YXJ0LnkpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHB0ci0+R2V0VmVsb2NpdHkoKS54LCB2ZWxTdGFydC54KTsKICAgIEVYUEVDVF9GTE9BVF9FUShwdHItPkdldFZlbG9jaXR5KCkueSwgdmVsU3RhcnQueSk7Cn0KClRFU1RfRihSVFNHYW1lU3RhdGVVcGRhdGVDaGFyYWN0ZXJpemF0aW9uVGVzdCwgRGVidWdNb2RlU2tpcHNBaUJ1dE1vdmVzVG93YXJkRGVzdGluYXRpb24pIHsKICAgIFJUU1VuaXQqIHVuaXQgPSBBZGRSdHMoc3RhdGUsIFZlY3RvcjIoMTAuMGYsIDEwLjBmKSwgMCk7CiAgICBTcHlCZWhhdmlvciogc3B5ID0gSW5zdGFsbE93bmVkU3B5KCp1bml0KTsKCiAgICB1bml0LT5TZXREZWJ1Z0Rlc3RpbmF0aW9uKFZlY3RvcjIoODAuMGYsIDEwLjBmKSk7CiAgICBzdGF0ZS5VcGRhdGUoMC41Zik7CgogICAgRVhQRUNUX0VRKHNweS0+Z2VuZXJhdGVGaWVsZEl0ZW1zQ2FsbHMsIDApOwogICAgRVhQRUNUX0dUKHVuaXQtPkdldFBvc2l0aW9uKCkueCwgMTAuMGYpOwogICAgRVhQRUNUX05FQVIodW5pdC0+R2V0UG9zaXRpb24oKS55LCAxMC4wZiwgMS4wZik7Cn0K
+#include <gtest/gtest.h>
+
+#include <map>
+#include <memory>
+#include <string>
+
+#include "core/ai/BehaviorContext.h"
+#include "core/collision/CollisionEvent.h"
+#include "core/collision/ICollisionObserver.h"
+#include "core/combat/Explosion.h"
+#include "core/gamestate/RTSGameState.h"
+#include "core/gamestate/RTSUnit.h"
+#include "core/influence_types/InfluenceFieldItem.h"
+#include "core/interfaces/IBehavior.h"
+#include "core/interfaces/IUnitBehaviorHost.h"
+#include "core/math/Vector2.h"
+#include "tests/TestHelpers/KinematicMockGameUnit.h"
+#include "tests/TestHelpers/MockGameUnit.h"
+
+namespace {
+
+constexpr uint64_t kSeed = 0;
+constexpr float kMap100 = 100.0f;
+
+class RecordingCollisionObserver : public ICollisionObserver {
+public:
+    void OnCollision(const CollisionEvent& /*event*/) override { ++eventCount; }
+    int eventCount = 0;
+};
+
+class SpyBehavior : public IBehavior {
+public:
+    int generateFieldItemsCalls = 0;
+    int calculateAccelerationCalls = 0;
+    std::string name_ = "SpyBehavior";
+
+    std::vector<InfluenceFieldItem> GenerateFieldItems(const BehaviorContext& /*ctx*/) override {
+        ++generateFieldItemsCalls;
+        return {};
+    }
+
+    Vector2 CalculateAcceleration(const BehaviorContext& /*ctx*/) override {
+        ++calculateAccelerationCalls;
+        return Vector2(999.0f, 999.0f);
+    }
+
+    const char* GetName() const override { return name_.c_str(); }
+
+    std::map<std::string, float>& GetParameters() override { return params_; }
+    const std::map<std::string, float>& GetParameters() const override { return params_; }
+
+private:
+    std::map<std::string, float> params_;
+};
+
+RTSGameState MakeMap100() {
+    return RTSGameState(Vector2(kMap100, kMap100), kSeed);
+}
+
+RTSUnit* AddRts(RTSGameState& state, Vector2 pos, int team, float radius = 10.0f, float maxSpeed = 100.0f) {
+    auto unit = std::make_unique<RTSUnit>(pos, team, radius, maxSpeed);
+    RTSUnit* ptr = unit.get();
+    state.AddUnit(std::move(unit));
+    return ptr;
+}
+
+SpyBehavior* InstallOwnedSpy(RTSUnit& unit) {
+    auto spy = std::make_unique<SpyBehavior>();
+    SpyBehavior* ptr = spy.get();
+    unit.GetStateMachine().AddState("Spy", std::move(spy));
+    unit.GetStateMachine().SetState("Spy");
+    return ptr;
+}
+
+// Non-RTSUnit host for the IUnitBehaviorHost AI tick gate (R4.5 / R4.6 positive pin).
+class BehaviorHostMockGameUnit : public MockGameUnit, public IUnitBehaviorHost {
+public:
+    explicit BehaviorHostMockGameUnit(Vector2 position, int team, float radius, float maxSpeed)
+        : MockGameUnit(position, team, radius, maxSpeed) {}
+
+    void InstallSpy(std::unique_ptr<SpyBehavior> spy) {
+        spy_ = std::move(spy);
+        spyPtr_ = spy_.get();
+    }
+
+    SpyBehavior* Spy() const { return spyPtr_; }
+
+    IBehavior* GetCurrentBehavior() override { return spyPtr_; }
+
+private:
+    std::unique_ptr<SpyBehavior> spy_;
+    SpyBehavior* spyPtr_ = nullptr;
+};
+
+}  // namespace
+
+class RTSGameStateContextCharacterizationTest : public ::testing::Test {
+protected:
+    RTSGameState state{MakeMap100()};
+};
+
+TEST_F(RTSGameStateContextCharacterizationTest, PerceptionRadiusDefault) {
+    EXPECT_FLOAT_EQ(state.GetPerceptionRadius(), 300.0f);
+}
+
+TEST_F(RTSGameStateContextCharacterizationTest, MapCenterSizeAndContextBounds) {
+    EXPECT_FLOAT_EQ(state.GetMapCenter().x, 50.0f);
+    EXPECT_FLOAT_EQ(state.GetMapCenter().y, 50.0f);
+    EXPECT_FLOAT_EQ(state.GetMapSize().x, kMap100);
+    EXPECT_FLOAT_EQ(state.GetMapSize().y, kMap100);
+
+    RTSUnit* self = AddRts(state, Vector2(10.0f, 10.0f), 0);
+    const BehaviorContext ctx = state.BuildContextForUnit(self, 0.0f);
+    EXPECT_FLOAT_EQ(ctx.mapBounds.x, kMap100);
+    EXPECT_FLOAT_EQ(ctx.mapBounds.y, kMap100);
+}
+
+TEST_F(RTSGameStateContextCharacterizationTest, StaticEdgeItemsPin) {
+    const auto& edges = state.GetStaticItems();
+    ASSERT_EQ(edges.size(), 4u);
+    for (const auto& edge : edges) {
+        EXPECT_EQ(edge.GetInfluenceType(), InfluenceType::EDGE);
+        EXPECT_FLOAT_EQ(edge.GetEdgeParams().RepulsorStrength, 150.0f);
+        EXPECT_FLOAT_EQ(edge.GetEdgeParams().DetectionRange, 80.0f);
+    }
+    EXPECT_FLOAT_EQ(edges[0].GetPosition().x, -40.0f);
+    EXPECT_FLOAT_EQ(edges[0].GetPosition().y, 50.0f);
+    EXPECT_FLOAT_EQ(edges[1].GetPosition().x, 140.0f);
+    EXPECT_FLOAT_EQ(edges[1].GetPosition().y, 50.0f);
+    EXPECT_FLOAT_EQ(edges[2].GetPosition().x, 50.0f);
+    EXPECT_FLOAT_EQ(edges[2].GetPosition().y, -40.0f);
+    EXPECT_FLOAT_EQ(edges[3].GetPosition().x, 50.0f);
+    EXPECT_FLOAT_EQ(edges[3].GetPosition().y, 140.0f);
+}
+
+TEST_F(RTSGameStateContextCharacterizationTest, NearbyAlliesEnemiesOrderAndPerception) {
+    RTSUnit* self = AddRts(state, Vector2(10.0f, 10.0f), 0);
+    AddRts(state, Vector2(20.0f, 10.0f), 0);
+    AddRts(state, Vector2(10.0f, 40.0f), 1);
+    AddRts(state, Vector2(10.0f, 400.0f), 0);
+
+  const auto all = state.GetAllUnits();
+    ASSERT_GE(all.size(), 4u);
+    EXPECT_EQ(all[0], self);
+
+    const BehaviorContext ctx = state.BuildContextForUnit(self, 0.016f);
+    EXPECT_EQ(ctx.self, self);
+    ASSERT_EQ(ctx.nearbyAllies.size(), 1u);
+    ASSERT_EQ(ctx.nearbyEnemies.size(), 1u);
+    EXPECT_EQ(ctx.nearbyAllies[0]->GetPosition().x, 20.0f);
+    EXPECT_EQ(ctx.nearbyEnemies[0]->GetPosition().y, 40.0f);
+
+    for (IGameUnit* ally : ctx.nearbyAllies) {
+        EXPECT_NE(ally, self);
+    }
+    for (IGameUnit* enemy : ctx.nearbyEnemies) {
+        EXPECT_NE(enemy, self);
+    }
+}
+
+TEST_F(RTSGameStateContextCharacterizationTest, NearbyUnitAtExactlyPerceptionRadiusIsIncluded) {
+    RTSUnit* self = AddRts(state, Vector2(10.0f, 10.0f), 0);
+    AddRts(state, Vector2(10.0f, 310.0f), 0);
+
+    const BehaviorContext ctx = state.BuildContextForUnit(self, 0.016f);
+    ASSERT_EQ(ctx.nearbyAllies.size(), 1u);
+    EXPECT_FLOAT_EQ(ctx.nearbyAllies[0]->GetPosition().x, 10.0f);
+    EXPECT_FLOAT_EQ(ctx.nearbyAllies[0]->GetPosition().y, 310.0f);
+}
+
+TEST_F(RTSGameStateContextCharacterizationTest, StaticFieldItemsAttractorAndObstacle) {
+    RTSUnit* self = AddRts(state, Vector2(10.0f, 10.0f), 0);
+
+    const Vector2 attractorPos(25.0f, 25.0f);
+    const InfluenceFieldItem attractor =
+        InfluenceFieldItem::CreateAttractor(attractorPos, /*importance=*/1.0f);
+    state.AddStaticAttractor(attractor);
+
+    const Vector2 obstaclePos(60.0f, 60.0f);
+    const InfluenceFieldItem obstacle =
+        InfluenceFieldItem::CreateRepulsor(obstaclePos, /*importance=*/1.0f);
+    state.AddObstacle(obstacle);
+
+    EXPECT_EQ(state.GetStaticItems().size(), 4u);
+
+    const BehaviorContext ctx = state.BuildContextForUnit(self, 0.0f);
+    ASSERT_EQ(ctx.staticFieldItems.size(), 6u);
+
+    for (size_t i = 0; i < 4; ++i) {
+        EXPECT_EQ(ctx.staticFieldItems[i].GetInfluenceType(), InfluenceType::EDGE);
+    }
+    EXPECT_EQ(ctx.staticFieldItems[4].GetInfluenceType(), InfluenceType::ATTRACTOR);
+    EXPECT_FLOAT_EQ(ctx.staticFieldItems[4].GetPosition().x, attractorPos.x);
+    EXPECT_EQ(ctx.staticFieldItems[5].GetInfluenceType(), InfluenceType::REPULSOR);
+    EXPECT_FLOAT_EQ(ctx.staticFieldItems[5].GetPosition().x, obstaclePos.x);
+}
+
+class RTSGameStateUpdateCharacterizationTest : public ::testing::Test {
+protected:
+    RTSGameState state{MakeMap100()};
+
+    void SubscribeCollisionObserver() {
+        state.GetCollisionSystem().Subscribe(&observer_);
+    }
+
+    RecordingCollisionObserver observer_;
+};
+
+TEST_F(RTSGameStateUpdateCharacterizationTest, MockUnitMapEdgeEmitsWithoutKinematicWrite) {
+    SubscribeCollisionObserver();
+    auto mock = std::make_unique<MockGameUnit>(Vector2(-5.0f, 50.0f), 0, 10.0f, 100.0f);
+    MockGameUnit* ptr = mock.get();
+    state.AddUnit(std::move(mock));
+
+    const Vector2 before = ptr->GetPosition();
+    state.Update(0.016f);
+
+    EXPECT_EQ(observer_.eventCount, 1);
+    EXPECT_FLOAT_EQ(ptr->GetPosition().x, before.x);
+    EXPECT_FLOAT_EQ(ptr->GetPosition().y, before.y);
+}
+
+TEST_F(RTSGameStateUpdateCharacterizationTest, RtsUnitMapEdgeInsetNotClampedToZero) {
+    SubscribeCollisionObserver();
+    RTSUnit* unit = AddRts(state, Vector2(-5.0f, 50.0f), 0, 10.0f);
+
+    state.Update(0.016f);
+
+    EXPECT_EQ(observer_.eventCount, 1);
+    EXPECT_FLOAT_EQ(unit->GetPosition().x, 10.0f);
+    EXPECT_FLOAT_EQ(unit->GetPosition().y, 50.0f);
+}
+
+TEST_F(RTSGameStateUpdateCharacterizationTest, ExplosionImpulseOnRtsUnit) {
+    RTSUnit* unit = AddRts(state, Vector2(50.0f, 50.0f), 0, 10.0f, 100.0f);
+    state.AddExplosion(Explosion(Vector2(35.0f, 50.0f), 40.0f, 8000.0f));
+
+    state.Update(0.25f);
+
+    EXPECT_FLOAT_EQ(unit->GetVelocity().x, 100.0f);
+    EXPECT_FLOAT_EQ(unit->GetVelocity().y, 0.0f);
+    EXPECT_FLOAT_EQ(unit->GetPosition().x, 75.0f);
+    EXPECT_FLOAT_EQ(unit->GetPosition().y, 50.0f);
+}
+
+TEST_F(RTSGameStateUpdateCharacterizationTest, BoundsFallbackClampsCenterNotRadiusInset) {
+    RTSUnit* unit = AddRts(state, Vector2(90.0f, 50.0f), 0, 10.0f, 100.0f);
+    state.AddExplosion(Explosion(Vector2(70.0f, 50.0f), 40.0f, 8000.0f));
+
+    state.Update(1.0f);
+
+    EXPECT_FLOAT_EQ(unit->GetPosition().x, 100.0f);
+    EXPECT_FLOAT_EQ(unit->GetPosition().y, 50.0f);
+    EXPECT_FLOAT_EQ(unit->GetVelocity().x, 100.0f);
+    EXPECT_FLOAT_EQ(unit->GetVelocity().y, 0.0f);
+}
+
+TEST_F(RTSGameStateUpdateCharacterizationTest, AiTickVisitsSpyBehaviorEdgesOnly) {
+    RTSGameState large(Vector2(1000.0f, 1000.0f), kSeed);
+    RTSUnit* unit = AddRts(large, Vector2(500.0f, 500.0f), 0);
+    SpyBehavior* spy = InstallOwnedSpy(*unit);
+    const Vector2 start = unit->GetPosition();
+
+    large.Update(0.016f);
+
+    EXPECT_EQ(spy->generateFieldItemsCalls, 1);
+    EXPECT_EQ(spy->calculateAccelerationCalls, 0);
+    EXPECT_FLOAT_EQ(unit->GetPosition().x, start.x);
+    EXPECT_FLOAT_EQ(unit->GetPosition().y, start.y);
+}
+
+TEST_F(RTSGameStateUpdateCharacterizationTest, AiTickSkipsMockUnit) {
+    RTSGameState large(Vector2(1000.0f, 1000.0f), kSeed);
+    RTSUnit* rts = AddRts(large, Vector2(500.0f, 500.0f), 0);
+    SpyBehavior* spy = InstallOwnedSpy(*rts);
+
+    auto mock = std::make_unique<MockGameUnit>(Vector2(500.0f, 500.0f), 0, 10.0f, 100.0f);
+    mock->SetVelocity(Vector2(30.0f, 0.0f));
+    MockGameUnit* mockPtr = mock.get();
+    large.AddUnit(std::move(mock));
+
+    const Vector2 mockStart = mockPtr->GetPosition();
+  const Vector2 mockVelStart = mockPtr->GetVelocity();
+
+    large.Update(0.5f);
+
+    EXPECT_EQ(spy->generateFieldItemsCalls, 1);
+    EXPECT_FLOAT_EQ(mockPtr->GetPosition().x, mockStart.x);
+    EXPECT_FLOAT_EQ(mockPtr->GetPosition().y, mockStart.y);
+    EXPECT_FLOAT_EQ(mockPtr->GetVelocity().x, mockVelStart.x);
+    EXPECT_FLOAT_EQ(mockPtr->GetVelocity().y, mockVelStart.y);
+}
+
+TEST_F(RTSGameStateUpdateCharacterizationTest, AiTickVisitsNonRtsBehaviorHost) {
+    auto unit = std::make_unique<BehaviorHostMockGameUnit>(Vector2(50.0f, 50.0f), 0, 10.0f, 100.0f);
+    unit->SetVelocity(Vector2(20.0f, 0.0f));
+    auto spy = std::make_unique<SpyBehavior>();
+    SpyBehavior* spyPtr = spy.get();
+    unit->InstallSpy(std::move(spy));
+    BehaviorHostMockGameUnit* ptr = unit.get();
+    const Vector2 posStart = ptr->GetPosition();
+    state.AddUnit(std::move(unit));
+
+    state.Update(0.5f);
+
+    EXPECT_EQ(spyPtr->generateFieldItemsCalls, 1);
+    EXPECT_FLOAT_EQ(ptr->GetPosition().x, posStart.x + 20.0f * 0.5f);
+    EXPECT_FLOAT_EQ(ptr->GetPosition().y, posStart.y);
+}
+
+TEST_F(RTSGameStateUpdateCharacterizationTest, KinematicMockSkipsAiTickAndExplosionImpulse) {
+    auto unit = std::make_unique<KinematicMockGameUnit>(Vector2(50.0f, 50.0f), 0, 10.0f, 100.0f);
+    unit->SetVelocity(Vector2(40.0f, 0.0f));
+    KinematicMockGameUnit* ptr = unit.get();
+    const Vector2 posStart = ptr->GetPosition();
+    const Vector2 velStart = ptr->GetVelocity();
+    state.AddUnit(std::move(unit));
+
+    state.Update(0.5f);
+
+    EXPECT_FLOAT_EQ(ptr->GetPosition().x, posStart.x);
+    EXPECT_FLOAT_EQ(ptr->GetPosition().y, posStart.y);
+    EXPECT_FLOAT_EQ(ptr->GetVelocity().x, velStart.x);
+    EXPECT_FLOAT_EQ(ptr->GetVelocity().y, velStart.y);
+
+    state.AddExplosion(Explosion(Vector2(35.0f, 50.0f), 40.0f, 8000.0f));
+    state.Update(0.25f);
+
+    EXPECT_FLOAT_EQ(ptr->GetPosition().x, posStart.x);
+    EXPECT_FLOAT_EQ(ptr->GetPosition().y, posStart.y);
+    EXPECT_FLOAT_EQ(ptr->GetVelocity().x, velStart.x);
+    EXPECT_FLOAT_EQ(ptr->GetVelocity().y, velStart.y);
+}
+
+TEST_F(RTSGameStateUpdateCharacterizationTest, DebugModeSkipsAiButMovesTowardDestination) {
+    RTSUnit* unit = AddRts(state, Vector2(10.0f, 10.0f), 0);
+    SpyBehavior* spy = InstallOwnedSpy(*unit);
+
+    unit->SetDebugDestination(Vector2(80.0f, 10.0f));
+    state.Update(0.5f);
+
+    EXPECT_EQ(spy->generateFieldItemsCalls, 0);
+    EXPECT_GT(unit->GetPosition().x, 10.0f);
+    EXPECT_NEAR(unit->GetPosition().y, 10.0f, 1.0f);
+}

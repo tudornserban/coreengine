@@ -1,1 +1,94 @@
-I2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CiNpbmNsdWRlIDxtZW1vcnk+CgojaW5jbHVkZSAiY29yZS9jb21iYXQvRXhwbG9zaW9uLmgiCiNpbmNsdWRlICJjb3JlL2dhbWVzdGF0ZS9SVFNHYW1lU3RhdGUuaCIKI2luY2x1ZGUgImNvcmUvbWF0aC9WZWN0b3IyLmgiCiNpbmNsdWRlICJ0ZXN0cy9UZXN0SGVscGVycy9LaW5lbWF0aWNNb2NrR2FtZVVuaXQuaCIKI2luY2x1ZGUgInRlc3RzL1Rlc3RIZWxwZXJzL01vY2tHYW1lVW5pdC5oIgoKLy8gUjIuMiAvIFI0LjYg4oCUIHBpbnMgUlRTR2FtZVN0YXRlIFVwZGF0ZSBwYXJ0aWNpcGF0aW9uIGZpbHRlcnMuCi8vIEFJIHRpY2s6IGR5bmFtaWNfY2FzdDxJVW5pdEJlaGF2aW9ySG9zdCo+IChSNC41KS4KLy8gRXhwbG9zaW9uIGltcHVsc2UgYW5kIGJvdW5kcyBmYWxsYmFjazogZHluYW1pY19jYXN0PFJUU1VuaXQqPiAodW5jaGFuZ2VkKS4KLy8gTW9ja0dhbWVVbml0IGltcGxlbWVudHMgSUdhbWVVbml0IG9ubHkgKG5vIGtpbmVtYXRpY3MgLyBiZWhhdmlvciBob3N0IC8gUlRTVW5pdCkuCgpuYW1lc3BhY2UgewoKY29uc3RleHByIGZsb2F0IGtNYXBTaXplID0gMTAwLjBmOwpjb25zdGV4cHIgdWludDY0X3Qga1JuZ1NlZWQgPSAwOwoKY2xhc3MgUlRTR2FtZVN0YXRlTm9uUlRTVW5pdEdhdGVUZXN0IDogcHVibGljIDo6dGVzdGluZzo6VGVzdCB7CnByb3RlY3RlZDoKICAgIFJUU0dhbWVTdGF0ZSBzdGF0ZXtWZWN0b3IyKGtNYXBTaXplLCBrTWFwU2l6ZSksIGtSbmdTZWVkfTsKCiAgICBNb2NrR2FtZVVuaXQqIEFkZE1vY2soVmVjdG9yMiBwb3NpdGlvbiwgVmVjdG9yMiB2ZWxvY2l0eSkgewogICAgICAgIGF1dG8gbW9jayA9IHN0ZDo6bWFrZV91bmlxdWU8TW9ja0dhbWVVbml0Pihwb3NpdGlvbiwgLyp0ZWFtPSovMCwgMTAuMGYsIDEwMC4wZik7CiAgICAgICAgbW9jay0+U2V0VmVsb2NpdHkodmVsb2NpdHkpOwogICAgICAgIE1vY2tHYW1lVW5pdCogcHRyID0gbW9jay5nZXQoKTsKICAgICAgICBzdGF0ZS5BZGRVbml0KHN0ZDo6bW92ZShtb2NrKSk7CiAgICAgICAgcmV0dXJuIHB0cjsKICAgIH0KfTsKCn0gIC8vIG5hbWVzcGFjZQoKVEVTVF9GKFJUU0dhbWVTdGF0ZU5vblJUU1VuaXRHYXRlVGVzdCwgQWlUaWNrR2F0ZV9Nb2NrVW5pdFBvc2l0aW9uQW5kVmVsb2NpdHlVbmNoYW5nZWQpIHsKICBjb25zdCBWZWN0b3IyIHN0YXJ0UG9zKDQwLjBmLCA0MC4wZik7CiAgY29uc3QgVmVjdG9yMiBzdGFydFZlbCgyNS4wZiwgLTEwLjBmKTsKICBNb2NrR2FtZVVuaXQqIHVuaXQgPSBBZGRNb2NrKHN0YXJ0UG9zLCBzdGFydFZlbCk7CgogIHN0YXRlLlVwZGF0ZSgwLjVmKTsKCiAgRVhQRUNUX0ZMT0FUX0VRKHVuaXQtPkdldFBvc2l0aW9uKCkueCwgc3RhcnRQb3MueCk7CiAgRVhQRUNUX0ZMT0FUX0VRKHVuaXQtPkdldFBvc2l0aW9uKCkueSwgc3RhcnRQb3MueSk7CiAgRVhQRUNUX0ZMT0FUX0VRKHVuaXQtPkdldFZlbG9jaXR5KCkueCwgc3RhcnRWZWwueCk7CiAgRVhQRUNUX0ZMT0FUX0VRKHVuaXQtPkdldFZlbG9jaXR5KCkueSwgc3RhcnRWZWwueSk7Cn0KClRFU1RfRihSVFNHYW1lU3RhdGVOb25SVFNVbml0R2F0ZVRlc3QsIEV4cGxvc2lvbkltcHVsc2VHYXRlX01vY2tVbml0UG9zaXRpb25BbmRWZWxvY2l0eVVuY2hhbmdlZCkgewogIGNvbnN0IFZlY3RvcjIgc3RhcnRQb3MoNTAuMGYsIDUwLjBmKTsKICBjb25zdCBWZWN0b3IyIHN0YXJ0VmVsKDEyLjBmLCA4LjBmKTsKICBNb2NrR2FtZVVuaXQqIHVuaXQgPSBBZGRNb2NrKHN0YXJ0UG9zLCBzdGFydFZlbCk7CgogIC8vIE9mZnNldCBjZW50ZXIgc28gdGhlIHVuaXQgaXMgaW5zaWRlIHJhZGl1cyB3aXRoIG5vbnplcm8gaW1wdWxzZSAobm90IGF0IHNpbmd1bGFyaXR5KS4KICBjb25zdCBWZWN0b3IyIGV4cGxvc2lvbkNlbnRlcigzNS4wZiwgNTAuMGYpOwogIHN0YXRlLkFkZEV4cGxvc2lvbihFeHBsb3Npb24oZXhwbG9zaW9uQ2VudGVyLCAvKnJhZGl1cz0qLzQwLjBmLCAvKnN0cmVuZ3RoPSovODAwMC4wZikpOwoKICBzdGF0ZS5VcGRhdGUoMC4yNWYpOwoKICBFWFBFQ1RfRkxPQVRfRVEodW5pdC0+R2V0UG9zaXRpb24oKS54LCBzdGFydFBvcy54KTsKICBFWFBFQ1RfRkxPQVRfRVEodW5pdC0+R2V0UG9zaXRpb24oKS55LCBzdGFydFBvcy55KTsKICBFWFBFQ1RfRkxPQVRfRVEodW5pdC0+R2V0VmVsb2NpdHkoKS54LCBzdGFydFZlbC54KTsKICBFWFBFQ1RfRkxPQVRfRVEodW5pdC0+R2V0VmVsb2NpdHkoKS55LCBzdGFydFZlbC55KTsKfQoKVEVTVF9GKFJUU0dhbWVTdGF0ZU5vblJUU1VuaXRHYXRlVGVzdCwgQm91bmRzRmFsbGJhY2tHYXRlX01vY2tPdXRzaWRlTWFwUG9zaXRpb25VbmNoYW5nZWQpIHsKICBjb25zdCBWZWN0b3IyIG91dHNpZGVQb3Moa01hcFNpemUgKyAyMC4wZiwgMzAuMGYpOwogIGNvbnN0IFZlY3RvcjIgc3RhcnRWZWwoNS4wZiwgLTMuMGYpOwogIE1vY2tHYW1lVW5pdCogdW5pdCA9IEFkZE1vY2sob3V0c2lkZVBvcywgc3RhcnRWZWwpOwoKICBzdGF0ZS5VcGRhdGUoMS4wZik7CgogIEVYUEVDVF9GTE9BVF9FUSh1bml0LT5HZXRQb3NpdGlvbigpLngsIG91dHNpZGVQb3MueCk7CiAgRVhQRUNUX0ZMT0FUX0VRKHVuaXQtPkdldFBvc2l0aW9uKCkueSwgb3V0c2lkZVBvcy55KTsKICBFWFBFQ1RfRkxPQVRfRVEodW5pdC0+R2V0VmVsb2NpdHkoKS54LCBzdGFydFZlbC54KTsKICBFWFBFQ1RfRkxPQVRfRVEodW5pdC0+R2V0VmVsb2NpdHkoKS55LCBzdGFydFZlbC55KTsKfQoKVEVTVF9GKFJUU0dhbWVTdGF0ZU5vblJUU1VuaXRHYXRlVGVzdCwgQm91bmRzRmFsbGJhY2tHYXRlX0tpbmVtYXRpY01vY2tPdXRzaWRlTWFwTm90Q2VudGVyQ2xhbXBlZCkgewogIC8vIFJhZGl1cyA+IG1hcCBleHRlbnQ6IFB1c2hJbnNpZGVCb3VuZHMgbGVhdmVzIHRoZSBjZW50ZXIgb3V0c2lkZSBbMCwgbWFwU2l6ZV0gb24gYm90aCBheGVzLgogIC8vIEh1YiBib3VuZHMgZmFsbGJhY2sgbXVzdCByZW1haW4gUlRTVW5pdC1vbmx5IChzZWUgbXV0YXRpb24gcGluIGluIFI0LjYpLgogIGNvbnN0ZXhwciBmbG9hdCBrSHVnZVJhZGl1cyA9IDE1MC4wZjsKICBjb25zdCBWZWN0b3IyIG91dHNpZGVQb3Moa01hcFNpemUgKyAyMC4wZiwgMzAuMGYpOwogIGF1dG8gdW5pdCA9IHN0ZDo6bWFrZV91bmlxdWU8S2luZW1hdGljTW9ja0dhbWVVbml0PihvdXRzaWRlUG9zLCAvKnRlYW09Ki8wLCBrSHVnZVJhZGl1cywgMTAwLjBmKTsKICB1bml0LT5TZXRWZWxvY2l0eShWZWN0b3IyOjpaZXJvKCkpOwogIEtpbmVtYXRpY01vY2tHYW1lVW5pdCogcHRyID0gdW5pdC5nZXQoKTsKICBzdGF0ZS5BZGRVbml0KHN0ZDo6bW92ZSh1bml0KSk7CgogIHN0YXRlLlVwZGF0ZSgxLjBmKTsKCiAgRVhQRUNUX0ZMT0FUX0VRKHB0ci0+R2V0UG9zaXRpb24oKS54LCBrSHVnZVJhZGl1cyk7CiAgRVhQRUNUX0ZMT0FUX0VRKHB0ci0+R2V0UG9zaXRpb24oKS55LCBrSHVnZVJhZGl1cyk7CiAgRVhQRUNUX0ZMT0FUX0VRKHB0ci0+R2V0VmVsb2NpdHkoKS54LCAwLjBmKTsKICBFWFBFQ1RfRkxPQVRfRVEocHRyLT5HZXRWZWxvY2l0eSgpLnksIDAuMGYpOwp9Cg==
+#include <gtest/gtest.h>
+#include <memory>
+
+#include "core/combat/Explosion.h"
+#include "core/gamestate/RTSGameState.h"
+#include "core/math/Vector2.h"
+#include "tests/TestHelpers/KinematicMockGameUnit.h"
+#include "tests/TestHelpers/MockGameUnit.h"
+
+// R2.2 / R4.6 — pins RTSGameState Update participation filters.
+// AI tick: dynamic_cast<IUnitBehaviorHost*> (R4.5).
+// Explosion impulse and bounds fallback: dynamic_cast<RTSUnit*> (unchanged).
+// MockGameUnit implements IGameUnit only (no kinematics / behavior host / RTSUnit).
+
+namespace {
+
+constexpr float kMapSize = 100.0f;
+constexpr uint64_t kRngSeed = 0;
+
+class RTSGameStateNonRTSUnitGateTest : public ::testing::Test {
+protected:
+    RTSGameState state{Vector2(kMapSize, kMapSize), kRngSeed};
+
+    MockGameUnit* AddMock(Vector2 position, Vector2 velocity) {
+        auto mock = std::make_unique<MockGameUnit>(position, /*team=*/0, 10.0f, 100.0f);
+        mock->SetVelocity(velocity);
+        MockGameUnit* ptr = mock.get();
+        state.AddUnit(std::move(mock));
+        return ptr;
+    }
+};
+
+}  // namespace
+
+TEST_F(RTSGameStateNonRTSUnitGateTest, AiTickGate_MockUnitPositionAndVelocityUnchanged) {
+  const Vector2 startPos(40.0f, 40.0f);
+  const Vector2 startVel(25.0f, -10.0f);
+  MockGameUnit* unit = AddMock(startPos, startVel);
+
+  state.Update(0.5f);
+
+  EXPECT_FLOAT_EQ(unit->GetPosition().x, startPos.x);
+  EXPECT_FLOAT_EQ(unit->GetPosition().y, startPos.y);
+  EXPECT_FLOAT_EQ(unit->GetVelocity().x, startVel.x);
+  EXPECT_FLOAT_EQ(unit->GetVelocity().y, startVel.y);
+}
+
+TEST_F(RTSGameStateNonRTSUnitGateTest, ExplosionImpulseGate_MockUnitPositionAndVelocityUnchanged) {
+  const Vector2 startPos(50.0f, 50.0f);
+  const Vector2 startVel(12.0f, 8.0f);
+  MockGameUnit* unit = AddMock(startPos, startVel);
+
+  // Offset center so the unit is inside radius with nonzero impulse (not at singularity).
+  const Vector2 explosionCenter(35.0f, 50.0f);
+  state.AddExplosion(Explosion(explosionCenter, /*radius=*/40.0f, /*strength=*/8000.0f));
+
+  state.Update(0.25f);
+
+  EXPECT_FLOAT_EQ(unit->GetPosition().x, startPos.x);
+  EXPECT_FLOAT_EQ(unit->GetPosition().y, startPos.y);
+  EXPECT_FLOAT_EQ(unit->GetVelocity().x, startVel.x);
+  EXPECT_FLOAT_EQ(unit->GetVelocity().y, startVel.y);
+}
+
+TEST_F(RTSGameStateNonRTSUnitGateTest, BoundsFallbackGate_MockOutsideMapPositionUnchanged) {
+  const Vector2 outsidePos(kMapSize + 20.0f, 30.0f);
+  const Vector2 startVel(5.0f, -3.0f);
+  MockGameUnit* unit = AddMock(outsidePos, startVel);
+
+  state.Update(1.0f);
+
+  EXPECT_FLOAT_EQ(unit->GetPosition().x, outsidePos.x);
+  EXPECT_FLOAT_EQ(unit->GetPosition().y, outsidePos.y);
+  EXPECT_FLOAT_EQ(unit->GetVelocity().x, startVel.x);
+  EXPECT_FLOAT_EQ(unit->GetVelocity().y, startVel.y);
+}
+
+TEST_F(RTSGameStateNonRTSUnitGateTest, BoundsFallbackGate_KinematicMockOutsideMapNotCenterClamped) {
+  // Radius > map extent: PushInsideBounds leaves the center outside [0, mapSize] on both axes.
+  // Hub bounds fallback must remain RTSUnit-only (see mutation pin in R4.6).
+  constexpr float kHugeRadius = 150.0f;
+  const Vector2 outsidePos(kMapSize + 20.0f, 30.0f);
+  auto unit = std::make_unique<KinematicMockGameUnit>(outsidePos, /*team=*/0, kHugeRadius, 100.0f);
+  unit->SetVelocity(Vector2::Zero());
+  KinematicMockGameUnit* ptr = unit.get();
+  state.AddUnit(std::move(unit));
+
+  state.Update(1.0f);
+
+  EXPECT_FLOAT_EQ(ptr->GetPosition().x, kHugeRadius);
+  EXPECT_FLOAT_EQ(ptr->GetPosition().y, kHugeRadius);
+  EXPECT_FLOAT_EQ(ptr->GetVelocity().x, 0.0f);
+  EXPECT_FLOAT_EQ(ptr->GetVelocity().y, 0.0f);
+}

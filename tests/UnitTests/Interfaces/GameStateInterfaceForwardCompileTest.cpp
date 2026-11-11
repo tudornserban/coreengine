@@ -1,1 +1,18 @@
-I2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgovLyBJbmNsdWRlIGNhbm9uaWNhbCBhbmQgbGVnYWN5IHBhdGhzIGluIG9uZSBUVSDigJQgc2luZ2xlIGRlZmluaXRpb24gZnJvbSBpbnRlcmZhY2VzOwovLyBnYW1lc3RhdGUgc2hpbXMgZm9yd2FyZCBvbmx5IChSMS40KS4KI2luY2x1ZGUgImNvcmUvZ2FtZXN0YXRlL0lHYW1lTG9naWNSZW5kZXJlci5oIgojaW5jbHVkZSAiY29yZS9nYW1lc3RhdGUvSUdhbWVTdGF0ZS5oIgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lHYW1lTG9naWNSZW5kZXJlci5oIgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lHYW1lU3RhdGUuaCIKCm5hbWVzcGFjZSB7CgpjbGFzcyBHYW1lU3RhdGVJbnRlcmZhY2VGb3J3YXJkQ29tcGlsZVRlc3QgOiBwdWJsaWMgOjp0ZXN0aW5nOjpUZXN0IHt9OwoKfSAgLy8gbmFtZXNwYWNlCgpURVNUX0YoR2FtZVN0YXRlSW50ZXJmYWNlRm9yd2FyZENvbXBpbGVUZXN0LCBCb3RoSW5jbHVkZVBhdGhzQWdyZWUpIHsKICAgIFNVQ0NFRUQoKTsKfQo=
+#include <gtest/gtest.h>
+
+// Include canonical and legacy paths in one TU — single definition from interfaces;
+// gamestate shims forward only (R1.4).
+#include "core/gamestate/IGameLogicRenderer.h"
+#include "core/gamestate/IGameState.h"
+#include "core/interfaces/IGameLogicRenderer.h"
+#include "core/interfaces/IGameState.h"
+
+namespace {
+
+class GameStateInterfaceForwardCompileTest : public ::testing::Test {};
+
+}  // namespace
+
+TEST_F(GameStateInterfaceForwardCompileTest, BothIncludePathsAgree) {
+    SUCCEED();
+}
