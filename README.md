@@ -1,1 +1,109 @@
-IyBDb3JlRW5naW5lCgpQbGF0Zm9ybS1hZ25vc3RpYywgbGFuZ3VhZ2UtaW50ZXJvcGVyYWJsZSBnYW1lIGVuZ2luZSBjb3JlLiAgCkV4dHJhY3RlZCBmcm9tIFZlbnVzV2FycywgRHluYW1pY0dPLCBBc2NlbmRhbnRFeHBhbnNlLCBhbmQgUmF0aW9uYWxJbnNhbml0eS4KCi0tLQoKIyMgV2hhdCBpdCBpcwoKQSBzaGFyZWQgQysrMTcgbGlicmFyeSBwcm92aWRpbmcgYWxsIHRoZSBzeXN0ZW1zIGNvbW1vbiBhY3Jvc3MgdGhlIGdhbWUgc2VlZHM6Cgp8IFN5c3RlbSB8IERlc2NyaXB0aW9uIHwKfC0tLS0tLS0tfC0tLS0tLS0tLS0tLS18CnwgSW5mbHVlbmNlIEZpZWxkcyB8IEFQRiBtb3ZlbWVudCBBSSAocG90ZW50aWFsIGZpZWxkcyArIHJlcHVsc29ycy9hdHRyYWN0b3JzKSB8CnwgU3RhdGUgTWFjaGluZSArIEJlaGF2aW9ycyB8IEdlbmVyaWMgRlNNIHdpdGggcnVudGltZSBiZWhhdmlvciBzd2FwIChCZWhhdmlvckZhY3RvcnkpIHwKfCBDb2xsaXNpb24gfCBCcm9hZHBoYXNlIFNwYXRpYWxHcmlkICsgY2lyY2xlIG5hcnJvd3BoYXNlICsgaW1wdWxzZSByZXNvbHV0aW9uIHwKfCBGaXhlZC1UaW1lc3RlcCBHYW1lIExvb3AgfCAzMEh6IGxvZ2ljIGRlY291cGxlZCBmcm9tIHJlbmRlciBIeiB8CnwgRGVwbG95bWVudCAmIFRoaW5rIFRpbWVycyB8IENoYXJnZS1iYXNlZCBzcGF3biwgdGFjdGljYWwgcGF1c2UgfAp8IFRlcnJpdG9yeSBDYWxjdWxhdG9yIHwgVm9yb25vaSBncmlkIG93bmVyc2hpcCAlIHwKfCBFQ1MgTWFwIHwgRW50aXRpZXMgKyBjb21wb25lbnRzIChvYnN0YWNsZXMsIHJlc291cmNlcykgfAp8IERldGVybWluaXN0aWMgUk5HIHwgU2VlZGVkIExDRyBmb3IgcmVwbGF5cyB8CnwgQyBBUEkgKEZGSSkgfCBDYWxsIGZyb20gUHl0aG9uLCBSdXN0LCBHbywgTHVhLCBVbml0eSBDIywgV2ViQXNzZW1ibHkgfAoKLS0tCgojIyBTdHJ1Y3R1cmUKCmBgYApjb3JlLyAgICAgICAg4oaQIFplcm8gcGxhdGZvcm0gZGVwcywgcHVyZSBDKysxNwpwbGF0Zm9ybS8gICAg4oaQIFNETDIsIFJheWxpYiwgbnVsbCwgVUU1IHN0dWIsIFVuaXR5IHN0dWIKZmZpLyAgICAgICAgIOKGkCBGbGF0IEMgQVBJICsgUHl0aG9uL0x1YSBiaW5kaW5ncwpkb2NzLyAgICAgICAg4oaQIEFyY2hpdGVjdHVyZSwgcG9ydGluZyBndWlkZSwgRkZJIGd1aWRlCmBgYAoKLS0tCgojIyBCdWlsZAoKYGBgYmFzaApjbWFrZSAtQiBidWlsZApjbWFrZSAtLWJ1aWxkIGJ1aWxkCgojIFdpdGggRkZJIHNoYXJlZCBsaWJyYXJ5OgpjbWFrZSAtQiBidWlsZCAtREJVSUxEX0ZGST1PTgpjbWFrZSAtLWJ1aWxkIGJ1aWxkCgojIFdpdGggU0RMMiBhZGFwdGVyOgpjbWFrZSAtQiBidWlsZCAtREJVSUxEX1NETDI9T04KY21ha2UgLS1idWlsZCBidWlsZAoKIyBXaXRoIHRlc3RzOgpjbWFrZSAtQiBidWlsZCAtREJVSUxEX1RFU1RTPU9OCmNtYWtlIC0tYnVpbGQgYnVpbGQKY3Rlc3QgLS10ZXN0LWRpciBidWlsZApgYGAKCiMjIyBPcHRpb25hbCBTREwyIHNpbXVsYXRpb24gdmlld2VyCgpPZmYgYnkgZGVmYXVsdC4gUmVxdWlyZXMgYGxpYnNkbDItZGV2YC4gRG9lcyBub3QgY2hhbmdlIGRlZmF1bHQgYGN0ZXN0YCBvciBtb2R1bGUgbWFuaWZlc3RzLgoKYGBgYmFzaApjbWFrZSAtQiBidWlsZC12aWV3ZXIgLURCVUlMRF9URVNUUz1PTiAtRENPUkVFTkdJTkVfQlVJTERfU0RMMl9WSUVXRVI9T04KY21ha2UgLS1idWlsZCBidWlsZC12aWV3ZXIKYGBgCgpTZWUgW2RvY3MvVklFV0VSLm1kXShkb2NzL1ZJRVdFUi5tZCkgZm9yIGZsYWdzLCBrZXlzLCBwcmVzZXRzLCBhbmQgc21va2UgY29tbWFuZHMuCgotLS0KCiMjIFF1aWNrIFN0YXJ0IChDKyspCgpgYGBjcHAKI2luY2x1ZGUgIkNvcmVFbmdpbmUvY29yZS9nYW1lc3RhdGUvUlRTR2FtZVN0YXRlLmgiCiNpbmNsdWRlICJDb3JlRW5naW5lL2NvcmUvZ2FtZXN0YXRlL1JUU1VuaXQuaCIKI2luY2x1ZGUgIkNvcmVFbmdpbmUvY29yZS9nYW1lbG9vcC9HYW1lTG9naWNFbmdpbmUuaCIKI2luY2x1ZGUgIkNvcmVFbmdpbmUvY29yZS9haS9CZWhhdmlvckZhY3RvcnkuaCIKI2luY2x1ZGUgIkNvcmVFbmdpbmUvY29yZS9haS9CZWhhdmlvcnMvU2Vla0JlaGF2aW9yLmgiCgppbnQgbWFpbigpCnsKICAgIEJlaGF2aW9yRmFjdG9yeTo6UmVnaXN0ZXJCdWlsdGlucygpOwoKICAgIFJUU0dhbWVTdGF0ZSBnYW1lU3RhdGUoVmVjdG9yMigxNjAwLCA5MDApKTsKICAgIEdhbWVMb2dpY0VuZ2luZSBlbmdpbmU7CiAgICBlbmdpbmUuU2V0VXBkYXRlQ2FsbGJhY2soWyZdKGZsb2F0IGR0KSB7IGdhbWVTdGF0ZS5VcGRhdGUoZHQpOyB9KTsKCiAgICBhdXRvIHVuaXQgPSBzdGQ6Om1ha2VfdW5pcXVlPFJUU1VuaXQ+KFZlY3RvcjIoNDAwLCA0NTApLCAxKTsKICAgIHVuaXQtPkdldFN0YXRlTWFjaGluZSgpLkFkZFN0YXRlKCJTZWVrIiwgc3RkOjptYWtlX3VuaXF1ZTxTZWVrQmVoYXZpb3I+KFZlY3RvcjIoODAwLCA0NTApKSk7CiAgICBnYW1lU3RhdGUuQWRkVW5pdChzdGQ6Om1vdmUodW5pdCkpOwoKICAgIC8vIFNpbXVsYXRlIDEwIHNlY29uZHMKICAgIGZvciAoaW50IGkgPSAwOyBpIDwgMzAwOyArK2kpIHsKICAgICAgICBlbmdpbmUuVXBkYXRlKDEuMGYgLyAzMC4wZik7CiAgICB9CgogICAgcmV0dXJuIDA7Cn0KYGBgCgotLS0KCiMjIERvY3MKCi0gW0FnZW50aWMgd29ya2Zsb3cgKGludmVudG9yeSAmIG1vZHVsZSBtYW5pZmVzdHMpXShkb2NzL2FnZW50aWMvUkVBRE1FLm1kKQotIFtBcmNoaXRlY3R1cmVdKGRvY3MvQVJDSElURUNUVVJFLm1kKQotIFtQb3J0aW5nIEd1aWRlXShkb2NzL1BPUlRJTkdfR1VJREUubWQpIOKAlCBVRTUsIFVuaXR5LCBSYXlsaWIsIFNETDIsIFB5dGhvbgotIFtGRkkgR3VpZGVdKGRvY3MvRkZJX0dVSURFLm1kKSDigJQgUHl0aG9uLCBSdXN0LCBHbywgTHVhLCBXZWJBc3NlbWJseQotIFtDb2RpbmcgR3VpZGVsaW5lc10oZG9jcy9DT0RJTkdfR1VJREVMSU5FUy5tZCkKLSBbR2FtZSBTZWVkcyBJbnRlZ3JhdGlvbl0oZG9jcy9HQU1FX1NFRURTX0lOVEVHUkFUSU9OLm1kKQ==
+# CoreEngine
+
+Platform-agnostic, language-interoperable game engine core.  
+Extracted from VenusWars, DynamicGO, AscendantExpanse, and RationalInsanity.
+
+---
+
+## What it is
+
+A shared C++17 library providing all the systems common across the game seeds:
+
+| System | Description |
+|--------|-------------|
+| Influence Fields | APF movement AI (potential fields + repulsors/attractors) |
+| State Machine + Behaviors | Generic FSM with runtime behavior swap (BehaviorFactory) |
+| Collision | Broadphase SpatialGrid + circle narrowphase + impulse resolution |
+| Fixed-Timestep Game Loop | 30Hz logic decoupled from render Hz |
+| Deployment & Think Timers | Charge-based spawn, tactical pause |
+| Territory Calculator | Voronoi grid ownership % |
+| ECS Map | Entities + components (obstacles, resources) |
+| Deterministic RNG | Seeded LCG for replays |
+| C API (FFI) | Call from Python, Rust, Go, Lua, Unity C#, WebAssembly |
+
+---
+
+## Structure
+
+```
+core/        ← Zero platform deps, pure C++17
+platform/    ← SDL2, Raylib, null, UE5 stub, Unity stub
+ffi/         ← Flat C API + Python/Lua bindings
+docs/        ← Architecture, porting guide, FFI guide
+```
+
+---
+
+## Build
+
+```bash
+cmake -B build
+cmake --build build
+
+# With FFI shared library:
+cmake -B build -DBUILD_FFI=ON
+cmake --build build
+
+# With SDL2 adapter:
+cmake -B build -DBUILD_SDL2=ON
+cmake --build build
+
+# With tests:
+cmake -B build -DBUILD_TESTS=ON
+cmake --build build
+ctest --test-dir build
+```
+
+### Optional SDL2 simulation viewer
+
+Off by default. Requires `libsdl2-dev`. Does not change default `ctest` or module manifests.
+
+```bash
+cmake -B build-viewer -DBUILD_TESTS=ON -DCOREENGINE_BUILD_SDL2_VIEWER=ON
+cmake --build build-viewer
+```
+
+See [docs/VIEWER.md](docs/VIEWER.md) for flags, keys, presets, and smoke commands.
+
+---
+
+## Quick Start (C++)
+
+```cpp
+#include "CoreEngine/core/gamestate/RTSGameState.h"
+#include "CoreEngine/core/gamestate/RTSUnit.h"
+#include "CoreEngine/core/gameloop/GameLogicEngine.h"
+#include "CoreEngine/core/ai/BehaviorFactory.h"
+#include "CoreEngine/core/ai/Behaviors/SeekBehavior.h"
+
+int main()
+{
+    BehaviorFactory::RegisterBuiltins();
+
+    RTSGameState gameState(Vector2(1600, 900));
+    GameLogicEngine engine;
+    engine.SetUpdateCallback([&](float dt) { gameState.Update(dt); });
+
+    auto unit = std::make_unique<RTSUnit>(Vector2(400, 450), 1);
+    unit->GetStateMachine().AddState("Seek", std::make_unique<SeekBehavior>(Vector2(800, 450)));
+    gameState.AddUnit(std::move(unit));
+
+    // Simulate 10 seconds
+    for (int i = 0; i < 300; ++i) {
+        engine.Update(1.0f / 30.0f);
+    }
+
+    return 0;
+}
+```
+
+---
+
+## Docs
+
+- [Agentic workflow (inventory & module manifests)](docs/agentic/README.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Porting Guide](docs/PORTING_GUIDE.md) — UE5, Unity, Raylib, SDL2, Python
+- [FFI Guide](docs/FFI_GUIDE.md) — Python, Rust, Go, Lua, WebAssembly
+- [Coding Guidelines](docs/CODING_GUIDELINES.md)
+- [Game Seeds Integration](docs/GAME_SEEDS_INTEGRATION.md)
