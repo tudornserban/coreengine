@@ -89,7 +89,7 @@ All of these live in [`core/interfaces/`](core/interfaces/MODULE.md). Include th
 | *(none)* | `coreengine` static library (include root = repo root) |
 | `BUILD_TESTS` | `coreengine_tests` (GoogleTest, registered with ctest) |
 | `BUILD_FFI` | `coreengine_ffi` shared library (`libcoreengine_ffi.so` / `.dylib` / `coreengine_ffi.dll`) |
-| `BUILD_SDL2` / `BUILD_RAYLIB` | **Do not use today:** configure **fails** (`No SOURCES given to target`) because only header stubs exist in-repo (`Render()` unimplemented). Add `platform/sdl2/*.cpp` or `platform/raylib/*.cpp` first, then enable. |
+| `BUILD_SDL2` / `BUILD_RAYLIB` | **Do not use today:** configure **fails immediately** with an explicit message — `platform/sdl2` and `platform/raylib` are header-only stubs (`Render()` unimplemented; no `.cpp` in-repo). For a runnable SDL2 window use `COREENGINE_BUILD_SDL2_VIEWER` ([VIEWER.md](docs/VIEWER.md)) instead of `BUILD_SDL2`. |
 | `COREENGINE_BUILD_SDL2_VIEWER` | Runnable SDL2 window/tools (`coreengine_sdl2_viewer` + tests; needs `libsdl2-dev`) |
 | `COREENGINE_<MODULE>_STANDALONE` | Builds and tests just one module (can't be combined with the viewer) |
 

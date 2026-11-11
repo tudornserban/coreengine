@@ -5,6 +5,16 @@ Each entry links back to the originating proposal document where applicable.
 
 ---
 
+## 2026-03-25 — F1.5: platform adapter CMake options fail at configure
+
+### F1.5 — `BUILD_SDL2` / `BUILD_RAYLIB` explicit stub failure
+
+- `BUILD_SDL2=ON` and `BUILD_RAYLIB=ON` now abort CMake configure **before** `find_package`, with a clear `header-only stub` message.
+- `COREENGINE_BUILD_SDL2_VIEWER` unchanged; see [VIEWER.md](VIEWER.md).
+- Automated check: `scripts/test_check_platform_stub_options.py` (also run from `check-module-deps.sh`).
+
+---
+
 ## 2026-03-25 — FFI 1.4.0 / core.gameloop 1.1.0: match end and territory fraction
 
 ### F1.4 — `MatchState::Advance`, snapshot winner/matchOver
