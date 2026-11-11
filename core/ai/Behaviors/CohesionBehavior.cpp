@@ -1,1 +1,34 @@
-I2luY2x1ZGUgIkNvaGVzaW9uQmVoYXZpb3IuaCIKI2luY2x1ZGUgImNvcmUvYWkvQmVoYXZpb3JDb250ZXh0LmgiCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSUdhbWVVbml0LmgiCgpDb2hlc2lvbkJlaGF2aW9yOjpDb2hlc2lvbkJlaGF2aW9yKCkKewogICAgcGFyYW1zX1siY29oZXNpb25TdHJlbmd0aCJdICA9IDUwLjBmOwogICAgcGFyYW1zX1sicGVyY2VwdGlvblJhZGl1cyJdICA9IDE1MC4wZjsKfQoKVmVjdG9yMiBDb2hlc2lvbkJlaGF2aW9yOjpDYWxjdWxhdGVBY2NlbGVyYXRpb24oY29uc3QgQmVoYXZpb3JDb250ZXh0JiBjdHgpCnsKICAgIGlmICghY3R4LnNlbGYpIHJldHVybiBWZWN0b3IyOjpaZXJvKCk7CgogICAgVmVjdG9yMiBwb3MgPSBjdHguc2VsZi0+R2V0UG9zaXRpb24oKTsKICAgIFZlY3RvcjIgY2VudGVyT2ZNYXNzID0gVmVjdG9yMjo6WmVybygpOwogICAgaW50IGNvdW50ID0gMDsKCiAgICBmb3IgKElHYW1lVW5pdCogYWxseSA6IGN0eC5uZWFyYnlBbGxpZXMpIHsKICAgICAgICBpZiAoYWxseSA9PSBjdHguc2VsZikgY29udGludWU7CiAgICAgICAgaWYgKGFsbHktPkdldFBvc2l0aW9uKCkuRGlzdGFuY2UocG9zKSA8IHBhcmFtc19bInBlcmNlcHRpb25SYWRpdXMiXSkgewogICAgICAgICAgICBjZW50ZXJPZk1hc3MgKz0gYWxseS0+R2V0UG9zaXRpb24oKTsKICAgICAgICAgICAgKytjb3VudDsKICAgICAgICB9CiAgICB9CgogICAgaWYgKGNvdW50ID4gMCkgewogICAgICAgIGNlbnRlck9mTWFzcyA9IGNlbnRlck9mTWFzcyAvIHN0YXRpY19jYXN0PGZsb2F0Pihjb3VudCk7CiAgICAgICAgVmVjdG9yMiBkZXNpcmVkID0gKGNlbnRlck9mTWFzcyAtIHBvcykuTm9ybWFsaXplZCgpICogY3R4LnNlbGYtPkdldE1heFNwZWVkKCk7CiAgICAgICAgcmV0dXJuIChkZXNpcmVkIC0gY3R4LnNlbGYtPkdldFZlbG9jaXR5KCkpICogcGFyYW1zX1siY29oZXNpb25TdHJlbmd0aCJdICogY3R4LmRlbHRhVGltZTsKICAgIH0KCiAgICByZXR1cm4gVmVjdG9yMjo6WmVybygpOwp9Cg==
+#include "CohesionBehavior.h"
+#include "core/ai/BehaviorContext.h"
+#include "core/interfaces/IGameUnit.h"
+
+CohesionBehavior::CohesionBehavior()
+{
+    params_["cohesionStrength"]  = 50.0f;
+    params_["perceptionRadius"]  = 150.0f;
+}
+
+Vector2 CohesionBehavior::CalculateAcceleration(const BehaviorContext& ctx)
+{
+    if (!ctx.self) return Vector2::Zero();
+
+    Vector2 pos = ctx.self->GetPosition();
+    Vector2 centerOfMass = Vector2::Zero();
+    int count = 0;
+
+    for (IGameUnit* ally : ctx.nearbyAllies) {
+        if (ally == ctx.self) continue;
+        if (ally->GetPosition().Distance(pos) < params_["perceptionRadius"]) {
+            centerOfMass += ally->GetPosition();
+            ++count;
+        }
+    }
+
+    if (count > 0) {
+        centerOfMass = centerOfMass / static_cast<float>(count);
+        Vector2 desired = (centerOfMass - pos).Normalized() * ctx.self->GetMaxSpeed();
+        return (desired - ctx.self->GetVelocity()) * params_["cohesionStrength"] * ctx.deltaTime;
+    }
+
+    return Vector2::Zero();
+}

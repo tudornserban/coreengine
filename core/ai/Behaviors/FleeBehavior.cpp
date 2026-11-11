@@ -1,1 +1,31 @@
-I2luY2x1ZGUgIkZsZWVCZWhhdmlvci5oIgojaW5jbHVkZSAiY29yZS9haS9CZWhhdmlvckNvbnRleHQuaCIKI2luY2x1ZGUgImNvcmUvaW50ZXJmYWNlcy9JR2FtZVVuaXQuaCIKCkZsZWVCZWhhdmlvcjo6RmxlZUJlaGF2aW9yKCkKewogICAgcGFyYW1zX1siZmxlZVN0cmVuZ3RoIl0gPSAxNTAuMGY7CiAgICBwYXJhbXNfWyJkYW5nZXJSYWRpdXMiXSA9IDIwMC4wZjsKfQoKVmVjdG9yMiBGbGVlQmVoYXZpb3I6OkNhbGN1bGF0ZUFjY2VsZXJhdGlvbihjb25zdCBCZWhhdmlvckNvbnRleHQmIGN0eCkKewogICAgaWYgKCFjdHguc2VsZikgcmV0dXJuIFZlY3RvcjI6Olplcm8oKTsKCiAgICBWZWN0b3IyIGZsZWVEaXIgPSBWZWN0b3IyOjpaZXJvKCk7CiAgICBmb3IgKElHYW1lVW5pdCogZW5lbXkgOiBjdHgubmVhcmJ5RW5lbWllcykgewogICAgICAgIFZlY3RvcjIgdG9FbmVteSA9IGVuZW15LT5HZXRQb3NpdGlvbigpIC0gY3R4LnNlbGYtPkdldFBvc2l0aW9uKCk7CiAgICAgICAgZmxvYXQgZGlzdCA9IHRvRW5lbXkuTGVuZ3RoKCk7CiAgICAgICAgaWYgKGRpc3QgPCBwYXJhbXNfWyJkYW5nZXJSYWRpdXMiXSAmJiBkaXN0ID4gMC4wMWYpIHsKICAgICAgICAgICAgZmxvYXQgc3RyZW5ndGggPSAocGFyYW1zX1siZGFuZ2VyUmFkaXVzIl0gLSBkaXN0KSAvIHBhcmFtc19bImRhbmdlclJhZGl1cyJdOwogICAgICAgICAgICBmbGVlRGlyIC09IHRvRW5lbXkuTm9ybWFsaXplZCgpICogc3RyZW5ndGg7CiAgICAgICAgfQogICAgfQoKICAgIGlmIChmbGVlRGlyLkxlbmd0aFNxdWFyZWQoKSA+IDAuMDFmKSB7CiAgICAgICAgVmVjdG9yMiBkZXNpcmVkID0gZmxlZURpci5Ob3JtYWxpemVkKCkgKiBjdHguc2VsZi0+R2V0TWF4U3BlZWQoKTsKICAgICAgICByZXR1cm4gKGRlc2lyZWQgLSBjdHguc2VsZi0+R2V0VmVsb2NpdHkoKSkgKiBwYXJhbXNfWyJmbGVlU3RyZW5ndGgiXSAqIGN0eC5kZWx0YVRpbWU7CiAgICB9CgogICAgcmV0dXJuIFZlY3RvcjI6Olplcm8oKTsKfQo=
+#include "FleeBehavior.h"
+#include "core/ai/BehaviorContext.h"
+#include "core/interfaces/IGameUnit.h"
+
+FleeBehavior::FleeBehavior()
+{
+    params_["fleeStrength"] = 150.0f;
+    params_["dangerRadius"] = 200.0f;
+}
+
+Vector2 FleeBehavior::CalculateAcceleration(const BehaviorContext& ctx)
+{
+    if (!ctx.self) return Vector2::Zero();
+
+    Vector2 fleeDir = Vector2::Zero();
+    for (IGameUnit* enemy : ctx.nearbyEnemies) {
+        Vector2 toEnemy = enemy->GetPosition() - ctx.self->GetPosition();
+        float dist = toEnemy.Length();
+        if (dist < params_["dangerRadius"] && dist > 0.01f) {
+            float strength = (params_["dangerRadius"] - dist) / params_["dangerRadius"];
+            fleeDir -= toEnemy.Normalized() * strength;
+        }
+    }
+
+    if (fleeDir.LengthSquared() > 0.01f) {
+        Vector2 desired = fleeDir.Normalized() * ctx.self->GetMaxSpeed();
+        return (desired - ctx.self->GetVelocity()) * params_["fleeStrength"] * ctx.deltaTime;
+    }
+
+    return Vector2::Zero();
+}

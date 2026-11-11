@@ -1,1 +1,52 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSA8bWVtb3J5PgojaW5jbHVkZSA8c3RyaW5nPgojaW5jbHVkZSA8ZnVuY3Rpb25hbD4KI2luY2x1ZGUgPG1hcD4KI2luY2x1ZGUgImNvcmUvaW50ZXJmYWNlcy9JQmVoYXZpb3IuaCIKCi8vLyBGYWN0b3J5IGZvciBjcmVhdGluZyBiZWhhdmlvcnMgYnkgbmFtZSBhdCBydW50aW1lLgovLy8KLy8vIEVuYWJsZXMgdGhlICJtYWdpYyBkdXN0IHN3YXAiIG1lY2hhbmljIGZyb20gUmF0aW9uYWxJbnNhbml0eToKLy8vIHRoZSBGYWlyeSBzd2FwcyBhIENvbnN0cnVjdCdzIGJlaGF2aW9yIGJ5IGNhbGxpbmcgU2V0U3RhdGUoKSBvbiBpdHMgU3RhdGVNYWNoaW5lCi8vLyB3aXRoIGEgYmVoYXZpb3Iga2V5LiBHYW1lLXNwZWNpZmljIGJlaGF2aW9ycyBhcmUgcmVnaXN0ZXJlZCBhdCBzdGFydHVwLgovLy8KLy8vIFVzYWdlOgovLy8gICBCZWhhdmlvckZhY3Rvcnk6OlJlZ2lzdGVyKCJBZ2dybyIsICBbXXsgcmV0dXJuIHN0ZDo6bWFrZV91bmlxdWU8QWdncm9CZWhhdmlvcj4oKTsgfSk7Ci8vLyAgIEJlaGF2aW9yRmFjdG9yeTo6UmVnaXN0ZXIoIkd1YXJkIiwgIFtdeyByZXR1cm4gc3RkOjptYWtlX3VuaXF1ZTxHdWFyZEJlaGF2aW9yPigpOyB9KTsKLy8vCi8vLyAgIGF1dG8gYiA9IEJlaGF2aW9yRmFjdG9yeTo6Q3JlYXRlKCJBZ2dybyIpOwovLy8gICBzdGF0ZU1hY2hpbmUuQWRkU3RhdGUoIkFnZ3JvIiwgc3RkOjptb3ZlKGIpKTsKLy8vICAgc3RhdGVNYWNoaW5lLlNldFN0YXRlKCJBZ2dybyIpOwovLy8KLy8vIEFsbCBjb3JlIGJlaGF2aW9ycyBhcmUgcHJlLXJlZ2lzdGVyZWQ7IGdhbWUtc3BlY2lmaWMgYmVoYXZpb3JzIGFyZSByZWdpc3RlcmVkCi8vLyBieSBlYWNoIGdhbWUgcHJvamVjdCdzIGluaXRpYWxpemF0aW9uIGNvZGUuCmNsYXNzIEJlaGF2aW9yRmFjdG9yeSB7CnB1YmxpYzoKICAgIHVzaW5nIENyZWF0b3IgPSBzdGQ6OmZ1bmN0aW9uPHN0ZDo6dW5pcXVlX3B0cjxJQmVoYXZpb3I+KCk+OwoKICAgIC8vLyBSZWdpc3RlciBhIGJlaGF2aW9yIHR5cGUgd2l0aCBhIHN0cmluZyBrZXkuCiAgICAvLy8gUmUtcmVnaXN0cmF0aW9uIG92ZXJ3cml0ZXMgdGhlIHByZXZpb3VzIGNyZWF0b3IgKGxhc3Qgd3JpdGUgd2lucykuCiAgICBzdGF0aWMgdm9pZCBSZWdpc3Rlcihjb25zdCBzdGQ6OnN0cmluZyYga2V5LCBDcmVhdG9yIGNyZWF0b3IpOwoKICAgIC8vLyBDcmVhdGUgYSBuZXcgaW5zdGFuY2Ugb2YgdGhlIGJlaGF2aW9yIHJlZ2lzdGVyZWQgdW5kZXIga2V5LgogICAgLy8vIFJldHVybnMgbnVsbHB0ciBpZiB0aGUga2V5IGhhcyBub3QgYmVlbiByZWdpc3RlcmVkLgogICAgc3RhdGljIHN0ZDo6dW5pcXVlX3B0cjxJQmVoYXZpb3I+IENyZWF0ZShjb25zdCBzdGQ6OnN0cmluZyYga2V5KTsKCiAgICAvLy8gUmV0dXJucyB0cnVlIGlmIGtleSBpcyByZWdpc3RlcmVkLgogICAgc3RhdGljIGJvb2wgSXNSZWdpc3RlcmVkKGNvbnN0IHN0ZDo6c3RyaW5nJiBrZXkpOwoKICAgIC8vLyBSZXR1cm5zIGFsbCByZWdpc3RlcmVkIGJlaGF2aW9yIGtleXMgKGZvciBlZGl0b3JzIGFuZCBkZWJ1ZyBVSXMpLgogICAgc3RhdGljIHN0ZDo6dmVjdG9yPHN0ZDo6c3RyaW5nPiBHZXRSZWdpc3RlcmVkS2V5cygpOwoKICAgIC8vLyBSZW1vdmUgYSByZWdpc3RlcmVkIGJlaGF2aW9yIChlLmcuIGZvciB0ZXN0IHRlYXJkb3duKS4KICAgIHN0YXRpYyB2b2lkIFVucmVnaXN0ZXIoY29uc3Qgc3RkOjpzdHJpbmcmIGtleSk7CgogICAgLy8vIFJlZ2lzdGVyIGFsbCBidWlsdC1pbiBjb3JlIGJlaGF2aW9ycy4KICAgIC8vLyBDYWxsIG9uY2UgZHVyaW5nIGVuZ2luZSBpbml0aWFsaXphdGlvbi4KICAgIHN0YXRpYyB2b2lkIFJlZ2lzdGVyQnVpbHRpbnMoKTsKCnByaXZhdGU6CiAgICBzdGF0aWMgc3RkOjptYXA8c3RkOjpzdHJpbmcsIENyZWF0b3I+JiBSZWdpc3RyeSgpOwp9Owo=
+#pragma once
+
+#include <memory>
+#include <string>
+#include <functional>
+#include <map>
+#include "core/interfaces/IBehavior.h"
+
+/// Factory for creating behaviors by name at runtime.
+///
+/// Enables the "magic dust swap" mechanic from RationalInsanity:
+/// the Fairy swaps a Construct's behavior by calling SetState() on its StateMachine
+/// with a behavior key. Game-specific behaviors are registered at startup.
+///
+/// Usage:
+///   BehaviorFactory::Register("Aggro",  []{ return std::make_unique<AggroBehavior>(); });
+///   BehaviorFactory::Register("Guard",  []{ return std::make_unique<GuardBehavior>(); });
+///
+///   auto b = BehaviorFactory::Create("Aggro");
+///   stateMachine.AddState("Aggro", std::move(b));
+///   stateMachine.SetState("Aggro");
+///
+/// All core behaviors are pre-registered; game-specific behaviors are registered
+/// by each game project's initialization code.
+class BehaviorFactory {
+public:
+    using Creator = std::function<std::unique_ptr<IBehavior>()>;
+
+    /// Register a behavior type with a string key.
+    /// Re-registration overwrites the previous creator (last write wins).
+    static void Register(const std::string& key, Creator creator);
+
+    /// Create a new instance of the behavior registered under key.
+    /// Returns nullptr if the key has not been registered.
+    static std::unique_ptr<IBehavior> Create(const std::string& key);
+
+    /// Returns true if key is registered.
+    static bool IsRegistered(const std::string& key);
+
+    /// Returns all registered behavior keys (for editors and debug UIs).
+    static std::vector<std::string> GetRegisteredKeys();
+
+    /// Remove a registered behavior (e.g. for test teardown).
+    static void Unregister(const std::string& key);
+
+    /// Register all built-in core behaviors.
+    /// Call once during engine initialization.
+    static void RegisterBuiltins();
+
+private:
+    static std::map<std::string, Creator>& Registry();
+};
