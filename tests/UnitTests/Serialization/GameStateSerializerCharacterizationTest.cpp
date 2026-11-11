@@ -1,1 +1,68 @@
-I2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgojaW5jbHVkZSA8bWVtb3J5PgojaW5jbHVkZSA8c3RyaW5nPgoKI2luY2x1ZGUgImNvcmUvZ2FtZXN0YXRlL1JUU0dhbWVTdGF0ZS5oIgojaW5jbHVkZSAiY29yZS9nYW1lc3RhdGUvUlRTVW5pdC5oIgojaW5jbHVkZSAiY29yZS9tYXRoL1ZlY3RvcjIuaCIKI2luY2x1ZGUgImNvcmUvc2VyaWFsaXphdGlvbi9HYW1lU3RhdGVTZXJpYWxpemVyLmgiCgpuYW1lc3BhY2UgewoKY29uc3RleHByIHVpbnQ2NF90IGtTZWVkID0gMDsKCmNvbnN0IGNoYXIqIGtPbmVVbml0SnNvbiA9IFIiKHsKICAidmVyc2lvbiI6IDEsCiAgImZvcm1hdCI6ICJDb3JlRW5naW5lLUpTT04tdjEiLAogICJtYXAiOiB7ICJ3aWR0aCI6IDEwMCwgImhlaWdodCI6IDEwMCB9LAogICJ1bml0cyI6IFsKICAgIHsgInRlYW0iOiAxLCAieCI6IDEwLCAieSI6IDIwLCAidngiOiAwLCAidnkiOiAwLCAiaHAiOiAxMDAgfQogIF0KfQopIjsKClJUU0dhbWVTdGF0ZSBNYWtlTWFwMTAwKCkgewogICAgcmV0dXJuIFJUU0dhbWVTdGF0ZShWZWN0b3IyKDEwMC4wZiwgMTAwLjBmKSwga1NlZWQpOwp9Cgp9ICAvLyBuYW1lc3BhY2UKClRFU1QoR2FtZVN0YXRlU2VyaWFsaXplckNoYXJhY3Rlcml6YXRpb25UZXN0LCBOdWxsU3RhdGVTZXJpYWxpemVzRW1wdHlPYmplY3QpIHsKICAgIEdhbWVTdGF0ZVNlcmlhbGl6ZXIgc2VyaWFsaXplcihudWxscHRyKTsKICAgIEVYUEVDVF9FUShzZXJpYWxpemVyLlNlcmlhbGl6ZVRvU3RyaW5nKCksICJ7fSIpOwp9CgpURVNUKEdhbWVTdGF0ZVNlcmlhbGl6ZXJDaGFyYWN0ZXJpemF0aW9uVGVzdCwgRGVzZXJpYWxpemVBbHdheXNSZXR1cm5zRmFsc2UpIHsKICAgIEdhbWVTdGF0ZVNlcmlhbGl6ZXIgc2VyaWFsaXplcjsKICAgIEVYUEVDVF9GQUxTRShzZXJpYWxpemVyLkRlc2VyaWFsaXplRnJvbVN0cmluZygie30iKSk7CiAgICBFWFBFQ1RfRkFMU0Uoc2VyaWFsaXplci5EZXNlcmlhbGl6ZShzdGQ6OnZlY3Rvcjx1aW50OF90PnsneycsICd9J30pKTsKfQoKVEVTVChHYW1lU3RhdGVTZXJpYWxpemVyQ2hhcmFjdGVyaXphdGlvblRlc3QsIE9uZVJ0c1VuaXRFeGFjdEpzb25QaW4pIHsKICAgIFJUU0dhbWVTdGF0ZSBzdGF0ZSA9IE1ha2VNYXAxMDAoKTsKICAgIGF1dG8gdW5pdCA9IHN0ZDo6bWFrZV91bmlxdWU8UlRTVW5pdD4oVmVjdG9yMigxMC4wZiwgMjAuMGYpLCAvKnRlYW09Ki8xKTsKICAgIHN0YXRlLkFkZFVuaXQoc3RkOjptb3ZlKHVuaXQpKTsKCiAgICBHYW1lU3RhdGVTZXJpYWxpemVyIHNlcmlhbGl6ZXIoJnN0YXRlKTsKICAgIEVYUEVDVF9FUShzZXJpYWxpemVyLlNlcmlhbGl6ZVRvU3RyaW5nKCksIGtPbmVVbml0SnNvbik7Cn0KClRFU1QoR2FtZVN0YXRlU2VyaWFsaXplckNoYXJhY3Rlcml6YXRpb25UZXN0LCBTZWNvbmRVbml0QXBwZWFyc1NlY29uZFdpdGhDb21tYSkgewogICAgUlRTR2FtZVN0YXRlIHN0YXRlID0gTWFrZU1hcDEwMCgpOwogICAgc3RhdGUuQWRkVW5pdChzdGQ6Om1ha2VfdW5pcXVlPFJUU1VuaXQ+KFZlY3RvcjIoMTAuMGYsIDIwLjBmKSwgMSkpOwogICAgc3RhdGUuQWRkVW5pdChzdGQ6Om1ha2VfdW5pcXVlPFJUU1VuaXQ+KFZlY3RvcjIoMzAuMGYsIDQwLjBmKSwgMCkpOwoKICAgIGNvbnN0IHN0ZDo6c3RyaW5nIGpzb24gPSBHYW1lU3RhdGVTZXJpYWxpemVyKCZzdGF0ZSkuU2VyaWFsaXplVG9TdHJpbmcoKTsKICAgIGNvbnN0IHN0ZDo6c3RyaW5nIGV4cGVjdGVkRmlyc3RPYmplY3QgPQogICAgICAgIFIiKCAgICB7ICJ0ZWFtIjogMSwgIngiOiAxMCwgInkiOiAyMCwgInZ4IjogMCwgInZ5IjogMCwgImhwIjogMTAwIH0pIjsKICAgIGNvbnN0IHN0ZDo6c3RyaW5nIGV4cGVjdGVkU2Vjb25kT2JqZWN0ID0KICAgICAgICBSIiggICAgeyAidGVhbSI6IDAsICJ4IjogMzAsICJ5IjogNDAsICJ2eCI6IDAsICJ2eSI6IDAsICJocCI6IDEwMCB9KSI7CgogICAgY29uc3QgYXV0byBmaXJzdFBvcyA9IGpzb24uZmluZChleHBlY3RlZEZpcnN0T2JqZWN0KTsKICAgIGNvbnN0IGF1dG8gc2Vjb25kUG9zID0ganNvbi5maW5kKGV4cGVjdGVkU2Vjb25kT2JqZWN0KTsKICAgIEFTU0VSVF9ORShmaXJzdFBvcywgc3RkOjpzdHJpbmc6Om5wb3MpOwogICAgQVNTRVJUX05FKHNlY29uZFBvcywgc3RkOjpzdHJpbmc6Om5wb3MpOwogICAgRVhQRUNUX0xUKGZpcnN0UG9zLCBzZWNvbmRQb3MpOwogICAgRVhQRUNUX0VRKGpzb25bZmlyc3RQb3MgKyBleHBlY3RlZEZpcnN0T2JqZWN0LnNpemUoKV0sICcsJyk7Cn0K
+#include <gtest/gtest.h>
+
+#include <memory>
+#include <string>
+
+#include "core/gamestate/RTSGameState.h"
+#include "core/gamestate/RTSUnit.h"
+#include "core/math/Vector2.h"
+#include "core/serialization/GameStateSerializer.h"
+
+namespace {
+
+constexpr uint64_t kSeed = 0;
+
+const char* kOneUnitJson = R"({
+  "version": 1,
+  "format": "CoreEngine-JSON-v1",
+  "map": { "width": 100, "height": 100 },
+  "units": [
+    { "team": 1, "x": 10, "y": 20, "vx": 0, "vy": 0, "hp": 100 }
+  ]
+}
+)";
+
+RTSGameState MakeMap100() {
+    return RTSGameState(Vector2(100.0f, 100.0f), kSeed);
+}
+
+}  // namespace
+
+TEST(GameStateSerializerCharacterizationTest, NullStateSerializesEmptyObject) {
+    GameStateSerializer serializer(nullptr);
+    EXPECT_EQ(serializer.SerializeToString(), "{}");
+}
+
+TEST(GameStateSerializerCharacterizationTest, DeserializeAlwaysReturnsFalse) {
+    GameStateSerializer serializer;
+    EXPECT_FALSE(serializer.DeserializeFromString("{}"));
+    EXPECT_FALSE(serializer.Deserialize(std::vector<uint8_t>{'{', '}'}));
+}
+
+TEST(GameStateSerializerCharacterizationTest, OneRtsUnitExactJsonPin) {
+    RTSGameState state = MakeMap100();
+    auto unit = std::make_unique<RTSUnit>(Vector2(10.0f, 20.0f), /*team=*/1);
+    state.AddUnit(std::move(unit));
+
+    GameStateSerializer serializer(&state);
+    EXPECT_EQ(serializer.SerializeToString(), kOneUnitJson);
+}
+
+TEST(GameStateSerializerCharacterizationTest, SecondUnitAppearsSecondWithComma) {
+    RTSGameState state = MakeMap100();
+    state.AddUnit(std::make_unique<RTSUnit>(Vector2(10.0f, 20.0f), 1));
+    state.AddUnit(std::make_unique<RTSUnit>(Vector2(30.0f, 40.0f), 0));
+
+    const std::string json = GameStateSerializer(&state).SerializeToString();
+    const std::string expectedFirstObject =
+        R"(    { "team": 1, "x": 10, "y": 20, "vx": 0, "vy": 0, "hp": 100 })";
+    const std::string expectedSecondObject =
+        R"(    { "team": 0, "x": 30, "y": 40, "vx": 0, "vy": 0, "hp": 100 })";
+
+    const auto firstPos = json.find(expectedFirstObject);
+    const auto secondPos = json.find(expectedSecondObject);
+    ASSERT_NE(firstPos, std::string::npos);
+    ASSERT_NE(secondPos, std::string::npos);
+    EXPECT_LT(firstPos, secondPos);
+    EXPECT_EQ(json[firstPos + expectedFirstObject.size()], ',');
+}

@@ -1,1 +1,74 @@
-ZmluZF9wYWNrYWdlKFNETDIgUkVRVUlSRUQpCgphZGRfbGlicmFyeShjb3JlZW5naW5lX3ZpZXdlcl9sb2dpYyBTVEFUSUMKICAgIFZpZXdlckNvbmZpZy5jcHAKICAgIENhbWVyYS5jcHAKICAgIFJhc3Rlci5jcHAKICAgIFBuZ1dyaXRlci5jcHAKICAgIFNjZW5hcmlvLmNwcAogICAgU25hcHNob3RSZW5kZXJlci5jcHAKICAgIFBsYXliYWNrQ29udHJvbC5jcHAKICAgIElucHV0U2NyaXB0LmNwcAogICAgRnJhbWVMb29wLmNwcAogICAgT3ZlcmxheS5jcHAKICAgIFZpZXdlcklucHV0LmNwcAopCnRhcmdldF9saW5rX2xpYnJhcmllcyhjb3JlZW5naW5lX3ZpZXdlcl9sb2dpYyBQVUJMSUMgY29yZWVuZ2luZSkKdGFyZ2V0X2luY2x1ZGVfZGlyZWN0b3JpZXMoY29yZWVuZ2luZV92aWV3ZXJfbG9naWMgUFVCTElDCiAgICAke0NNQUtFX0NVUlJFTlRfU09VUkNFX0RJUn0KKQoKYWRkX2V4ZWN1dGFibGUoY29yZWVuZ2luZV9zZGwyX3ZpZXdlcgogICAgbWFpbi5jcHAKICAgIHNkbC9TZGxQcmVzZW50ZXIuY3BwCikKdGFyZ2V0X2xpbmtfbGlicmFyaWVzKGNvcmVlbmdpbmVfc2RsMl92aWV3ZXIgUFJJVkFURQogICAgY29yZWVuZ2luZV92aWV3ZXJfbG9naWMKICAgIFNETDI6OlNETDIKKQp0YXJnZXRfaW5jbHVkZV9kaXJlY3Rvcmllcyhjb3JlZW5naW5lX3NkbDJfdmlld2VyIFBSSVZBVEUKICAgICR7Q01BS0VfQ1VSUkVOVF9TT1VSQ0VfRElSfQopCgppZihCVUlMRF9URVNUUykKICAgIGVuYWJsZV90ZXN0aW5nKCkKICAgIGZpbmRfcGFja2FnZShHVGVzdCBSRVFVSVJFRCkKICAgIGFkZF9leGVjdXRhYmxlKGNvcmVlbmdpbmVfc2RsMl92aWV3ZXJfdGVzdHMKICAgICAgICB0ZXN0cy9DYW1lcmFUZXN0LmNwcAogICAgICAgIHRlc3RzL1BuZ1dyaXRlclRlc3QuY3BwCiAgICAgICAgdGVzdHMvUmFzdGVyVGVzdC5jcHAKICAgICAgICB0ZXN0cy9WaWV3ZXJDb25maWdUZXN0LmNwcAogICAgICAgIHRlc3RzL1NuYXBzaG90UmVuZGVyZXJUZXN0LmNwcAogICAgICAgIHRlc3RzL1BsYXliYWNrQ29udHJvbFRlc3QuY3BwCiAgICAgICAgdGVzdHMvSW5wdXRTY3JpcHRUZXN0LmNwcAogICAgICAgIHRlc3RzL0ZyYW1lTG9vcFJlc2V0VGVzdC5jcHAKICAgICAgICB0ZXN0cy9Db21tYW5kU2NyaXB0VGVzdC5jcHAKICAgICAgICB0ZXN0cy9PdmVybGF5VGVzdC5jcHAKICAgICAgICB0ZXN0cy9TY2VuYXJpb1Rlc3QuY3BwCiAgICAgICAgdGVzdHMvVmlld2VySW5wdXRUZXN0LmNwcAogICAgKQogICAgdGFyZ2V0X2xpbmtfbGlicmFyaWVzKGNvcmVlbmdpbmVfc2RsMl92aWV3ZXJfdGVzdHMgUFJJVkFURQogICAgICAgIGNvcmVlbmdpbmVfdmlld2VyX2xvZ2ljCiAgICAgICAgR1Rlc3Q6Omd0ZXN0CiAgICAgICAgR1Rlc3Q6Omd0ZXN0X21haW4KICAgICkKICAgIHRhcmdldF9pbmNsdWRlX2RpcmVjdG9yaWVzKGNvcmVlbmdpbmVfc2RsMl92aWV3ZXJfdGVzdHMgUFJJVkFURQogICAgICAgICR7Q01BS0VfQ1VSUkVOVF9TT1VSQ0VfRElSfQogICAgKQogICAgaW5jbHVkZShHb29nbGVUZXN0KQogICAgZ3Rlc3RfZGlzY292ZXJfdGVzdHMoY29yZWVuZ2luZV9zZGwyX3ZpZXdlcl90ZXN0cykKCiAgICBzZXQoVklFV0VSX0NURVNUX0NPTExJU0lPTl9QTkcgIiR7Q01BS0VfQ1VSUkVOVF9CSU5BUllfRElSfS9jdGVzdF9jb2xsaXNpb25fY2xpLnBuZyIpCiAgICBhZGRfdGVzdCgKICAgICAgICBOQU1FIHZpZXdlcl9jbGlfY29sbGlzaW9uX3ByZXNldF9zY3JlZW5zaG90CiAgICAgICAgQ09NTUFORAogICAgICAgICAgICBweXRob24zCiAgICAgICAgICAgICR7Q01BS0VfQ1VSUkVOVF9TT1VSQ0VfRElSfS90ZXN0cy9jaGVja19jb2xsaXNpb25fcHJlc2V0X2NsaS5weQogICAgICAgICAgICAkPFRBUkdFVF9GSUxFOmNvcmVlbmdpbmVfc2RsMl92aWV3ZXI+CiAgICAgICAgICAgICR7VklFV0VSX0NURVNUX0NPTExJU0lPTl9QTkd9CiAgICApCiAgICBzZXRfdGVzdHNfcHJvcGVydGllcyh2aWV3ZXJfY2xpX2NvbGxpc2lvbl9wcmVzZXRfc2NyZWVuc2hvdCBQUk9QRVJUSUVTCiAgICAgICAgREVQRU5EUyBjb3JlZW5naW5lX3NkbDJfdmlld2VyCiAgICAgICAgTEFCRUxTICJ2aWV3ZXJfY2xpIgogICAgKQplbmRpZigpCg==
+find_package(SDL2 REQUIRED)
+
+add_library(coreengine_viewer_logic STATIC
+    ViewerConfig.cpp
+    Camera.cpp
+    Raster.cpp
+    PngWriter.cpp
+    Scenario.cpp
+    SnapshotRenderer.cpp
+    PlaybackControl.cpp
+    InputScript.cpp
+    FrameLoop.cpp
+    Overlay.cpp
+    ViewerInput.cpp
+)
+target_link_libraries(coreengine_viewer_logic PUBLIC coreengine)
+target_include_directories(coreengine_viewer_logic PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+add_executable(coreengine_sdl2_viewer
+    main.cpp
+    sdl/SdlPresenter.cpp
+)
+target_link_libraries(coreengine_sdl2_viewer PRIVATE
+    coreengine_viewer_logic
+    SDL2::SDL2
+)
+target_include_directories(coreengine_sdl2_viewer PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+if(BUILD_TESTS)
+    enable_testing()
+    find_package(GTest REQUIRED)
+    add_executable(coreengine_sdl2_viewer_tests
+        tests/CameraTest.cpp
+        tests/PngWriterTest.cpp
+        tests/RasterTest.cpp
+        tests/ViewerConfigTest.cpp
+        tests/SnapshotRendererTest.cpp
+        tests/PlaybackControlTest.cpp
+        tests/InputScriptTest.cpp
+        tests/FrameLoopResetTest.cpp
+        tests/CommandScriptTest.cpp
+        tests/OverlayTest.cpp
+        tests/ScenarioTest.cpp
+        tests/ViewerInputTest.cpp
+    )
+    target_link_libraries(coreengine_sdl2_viewer_tests PRIVATE
+        coreengine_viewer_logic
+        GTest::gtest
+        GTest::gtest_main
+    )
+    target_include_directories(coreengine_sdl2_viewer_tests PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+    )
+    include(GoogleTest)
+    gtest_discover_tests(coreengine_sdl2_viewer_tests)
+
+    set(VIEWER_CTEST_COLLISION_PNG "${CMAKE_CURRENT_BINARY_DIR}/ctest_collision_cli.png")
+    add_test(
+        NAME viewer_cli_collision_preset_screenshot
+        COMMAND
+            python3
+            ${CMAKE_CURRENT_SOURCE_DIR}/tests/check_collision_preset_cli.py
+            $<TARGET_FILE:coreengine_sdl2_viewer>
+            ${VIEWER_CTEST_COLLISION_PNG}
+    )
+    set_tests_properties(viewer_cli_collision_preset_screenshot PROPERTIES
+        DEPENDS coreengine_sdl2_viewer
+        LABELS "viewer_cli"
+    )
+endif()

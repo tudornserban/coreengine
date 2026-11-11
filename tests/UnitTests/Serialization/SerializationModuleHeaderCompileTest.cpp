@@ -1,1 +1,14 @@
-I2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgojaW5jbHVkZSAiY29yZS9zZXJpYWxpemF0aW9uL0dhbWVTdGF0ZVNlcmlhbGl6ZXIuaCIKCm5hbWVzcGFjZSB7CgovLy8gU21va2UgY29tcGlsZTogZXhwb3J0ZWQgc2VyaWFsaXphdGlvbiBoZWFkZXJzIHBhcnNlIHVuZGVyIHJlcG8tcm9vdCBpbmNsdWRlcy4KY2xhc3MgU2VyaWFsaXphdGlvbkhlYWRlckNvbXBpbGVUZXN0IDogcHVibGljIDo6dGVzdGluZzo6VGVzdCB7fTsKCn0gIC8vIG5hbWVzcGFjZQoKVEVTVF9GKFNlcmlhbGl6YXRpb25IZWFkZXJDb21waWxlVGVzdCwgRXhwb3J0ZWRIZWFkZXJJbmNsdWRlZCkgewogICAgU1VDQ0VFRCgpOwp9Cg==
+#include <gtest/gtest.h>
+
+#include "core/serialization/GameStateSerializer.h"
+
+namespace {
+
+/// Smoke compile: exported serialization headers parse under repo-root includes.
+class SerializationHeaderCompileTest : public ::testing::Test {};
+
+}  // namespace
+
+TEST_F(SerializationHeaderCompileTest, ExportedHeaderIncluded) {
+    SUCCEED();
+}
