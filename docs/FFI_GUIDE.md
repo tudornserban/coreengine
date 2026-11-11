@@ -48,7 +48,7 @@ These match today's `ffi/c_api.cpp` implementation (not aspirational docs):
 | API / topic | Actual behavior |
 |-------------|-----------------|
 | `ce_behavior_register` | **No-op** — does not register creators; register behaviors in C++ via `BehaviorFactory::Register` before creating the engine |
-| `ce_engine_reset` | Rebuilds `RTSGameState` with **rng seed 0** (drops the seed passed to `ce_engine_create`) |
+| `ce_engine_reset` | Clears units, deployment timers, and game time; **rebuilds `RTSGameState` with the same map size and RNG seed** passed to `ce_engine_create` (including seed **0**, which is deterministic) |
 | `ce_snapshot_get` | Fills map size, unit count, and elapsed time; **`winner` is always `0`**; `matchOver` is `1` only when the internal `running` flag is false (nothing in core sets a match winner today) |
 | Built-in behavior names | `Seek`, `Flee`, `Wander`, `Cohesion`, `Separation` from `BehaviorFactory::RegisterBuiltins()` — **`Aggro` is not built-in** |
 | `ce_unit_set_behavior` | Requires an already-registered behavior name (`BehaviorFactory::IsRegistered`) |
@@ -221,7 +221,8 @@ ce_unit_spawn(eng, 1, 400, 450);
 | `ce_engine_create(w, h, seed)` | Create engine instance (`DeterministicRNG`; **seed 0 is deterministic**, same LCG stream every run) |
 | `ce_engine_destroy(engine)` | Free engine |
 | `ce_engine_update(engine, dt)` | Tick simulation (advances deployment timers) |
-| `ce_engine_reset(engine)` | Reset units/state; **re-seeds RNG to 0** |
+| `ce_engine_reset(engine)` | Reset units/state; **restores create-time RNG seed** (`ce_engine_get_seed`) |
+| `ce_engine_get_seed(engine)` | Read live LCG seed (`0` if engine is null) |
 | `ce_unit_spawn(engine, team, x, y)` | Spawn unit (requires deployment charge) |
 | `ce_unit_count(engine)` | Count units |
 | `ce_unit_get_state(engine, index, out)` | Read unit state |

@@ -21,9 +21,9 @@ extern "C" {
 #include <stdint.h>
 
 #define CE_FFI_VERSION_MAJOR 1
-#define CE_FFI_VERSION_MINOR 1
+#define CE_FFI_VERSION_MINOR 2
 #define CE_FFI_VERSION_PATCH 0
-#define CE_FFI_VERSION       "1.1.0"
+#define CE_FFI_VERSION       "1.2.0"
 
 typedef enum CE_Result {
     CE_OK = 0,
@@ -79,8 +79,11 @@ void ce_engine_destroy(CE_Engine engine);
  *  @return 0 if engine stopped (match over or error), 1 if still running */
 int ce_engine_update(CE_Engine engine, float deltaTime);
 
-/** Reset engine to initial state (same map/seed). */
+/** Reset engine to initial state (same map size and RNG seed as create). */
 void ce_engine_reset(CE_Engine engine);
+
+/** LCG seed of the live game state (from DeterministicRNG). NULL engine -> 0. */
+uint64_t ce_engine_get_seed(CE_Engine engine);
 
 /* ---- Unit management ---- */
 
@@ -161,7 +164,7 @@ int ce_behavior_list(char* buffer, int bufferSize);
 /** Returns the engine version string (e.g. "CoreEngine 1.0.0") */
 const char* ce_version();
 
-/** Returns the FFI package version string (CE_FFI_VERSION, e.g. "1.1.0") */
+/** Returns the FFI package version string (CE_FFI_VERSION, e.g. "1.2.0") */
 const char* ce_ffi_version(void);
 
 #ifdef __cplusplus
