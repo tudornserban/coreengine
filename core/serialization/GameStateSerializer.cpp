@@ -1,1 +1,74 @@
-I2luY2x1ZGUgIkdhbWVTdGF0ZVNlcmlhbGl6ZXIuaCIKCiNpbmNsdWRlICJjb3JlL2dhbWVzdGF0ZS9SVFNHYW1lU3RhdGUuaCIKI2luY2x1ZGUgImNvcmUvaW50ZXJmYWNlcy9JU2ltdWxhdGlvblNuYXBzaG90LmgiCgojaW5jbHVkZSA8c3N0cmVhbT4KCi8vIE5PVEU6IEZ1bGwgc2VyaWFsaXphdGlvbiByZXF1aXJlcyBhIEpTT04gbGlicmFyeSAoZS5nLiBubG9obWFubi9qc29uKS4KLy8gVGhpcyBpbXBsZW1lbnRhdGlvbiBwcm92aWRlcyB0aGUgbWluaW1hbCBzY2FmZm9sZDsgZXh0ZW5kIGFzIG5lZWRlZC4KLy8gVGhlIHNlcmlhbGl6ZS9kZXNlcmlhbGl6ZSBjeWNsZSBtdXN0IGJlIGxvc3NsZXNzIGZvciBkZXRlcm1pbmlzdGljIHJlcGxheXMuCgpHYW1lU3RhdGVTZXJpYWxpemVyOjpHYW1lU3RhdGVTZXJpYWxpemVyKGNvbnN0IFJUU0dhbWVTdGF0ZSogc3RhdGUpIDogc25hcHNob3RfKHN0YXRlKSB7fQoKR2FtZVN0YXRlU2VyaWFsaXplcjo6R2FtZVN0YXRlU2VyaWFsaXplcihjb25zdCBJU2ltdWxhdGlvblNuYXBzaG90KiBzbmFwc2hvdCkgOiBzbmFwc2hvdF8oc25hcHNob3QpIHt9Cgp2b2lkIEdhbWVTdGF0ZVNlcmlhbGl6ZXI6OlNldFN0YXRlKGNvbnN0IFJUU0dhbWVTdGF0ZSogc3RhdGUpCnsKICAgIHNuYXBzaG90XyA9IHN0YXRlOwp9Cgp2b2lkIEdhbWVTdGF0ZVNlcmlhbGl6ZXI6OlNldFNuYXBzaG90KGNvbnN0IElTaW11bGF0aW9uU25hcHNob3QqIHNuYXBzaG90KQp7CiAgICBzbmFwc2hvdF8gPSBzbmFwc2hvdDsKfQoKc3RkOjpzdHJpbmcgR2FtZVN0YXRlU2VyaWFsaXplcjo6U2VyaWFsaXplVG9TdHJpbmcoKSBjb25zdAp7CiAgICBpZiAoIXNuYXBzaG90XykgcmV0dXJuICJ7fSI7CgogICAgc3RkOjpvc3RyaW5nc3RyZWFtIG9zczsKICAgIG9zcyA8PCAie1xuIjsKICAgIG9zcyA8PCAiICBcInZlcnNpb25cIjogIiA8PCBGT1JNQVRfVkVSU0lPTiA8PCAiLFxuIjsKICAgIG9zcyA8PCAiICBcImZvcm1hdFwiOiBcIiIgPDwgR2V0Rm9ybWF0TmFtZSgpIDw8ICJcIixcbiI7CgogICAgVmVjdG9yMiBtYXBTaXplID0gc25hcHNob3RfLT5HZXRNYXBTaXplKCk7CiAgICBvc3MgPDwgIiAgXCJtYXBcIjogeyBcIndpZHRoXCI6ICIgPDwgbWFwU2l6ZS54IDw8ICIsIFwiaGVpZ2h0XCI6ICIgPDwgbWFwU2l6ZS55IDw8ICIgfSxcbiI7CgogICAgYXV0byB1bml0cyA9IHNuYXBzaG90Xy0+R2V0QWxsVW5pdHMoKTsKICAgIG9zcyA8PCAiICBcInVuaXRzXCI6IFtcbiI7CiAgICBmb3IgKHNpemVfdCBpID0gMDsgaSA8IHVuaXRzLnNpemUoKTsgKytpKSB7CiAgICAgICAgY29uc3QgSUdhbWVVbml0KiB1ID0gdW5pdHNbaV07CiAgICAgICAgb3NzIDw8ICIgICAgeyBcInRlYW1cIjogIiA8PCB1LT5HZXRUZWFtKCkKICAgICAgICAgICAgPDwgIiwgXCJ4XCI6ICIgPDwgdS0+R2V0UG9zaXRpb24oKS54CiAgICAgICAgICAgIDw8ICIsIFwieVwiOiAiIDw8IHUtPkdldFBvc2l0aW9uKCkueQogICAgICAgICAgICA8PCAiLCBcInZ4XCI6ICIgPDwgdS0+R2V0VmVsb2NpdHkoKS54CiAgICAgICAgICAgIDw8ICIsIFwidnlcIjogIiA8PCB1LT5HZXRWZWxvY2l0eSgpLnkKICAgICAgICAgICAgPDwgIiwgXCJocFwiOiAiIDw8IHUtPkdldEN1cnJlbnRIUCgpCiAgICAgICAgICAgIDw8ICIgfSI7CiAgICAgICAgaWYgKGkgKyAxIDwgdW5pdHMuc2l6ZSgpKSBvc3MgPDwgIiwiOwogICAgICAgIG9zcyA8PCAiXG4iOwogICAgfQogICAgb3NzIDw8ICIgIF1cbiI7CiAgICBvc3MgPDwgIn1cbiI7CgogICAgcmV0dXJuIG9zcy5zdHIoKTsKfQoKc3RkOjp2ZWN0b3I8dWludDhfdD4gR2FtZVN0YXRlU2VyaWFsaXplcjo6U2VyaWFsaXplKCkgY29uc3QKewogICAgc3RkOjpzdHJpbmcgcyA9IFNlcmlhbGl6ZVRvU3RyaW5nKCk7CiAgICByZXR1cm4gc3RkOjp2ZWN0b3I8dWludDhfdD4ocy5iZWdpbigpLCBzLmVuZCgpKTsKfQoKYm9vbCBHYW1lU3RhdGVTZXJpYWxpemVyOjpEZXNlcmlhbGl6ZUZyb21TdHJpbmcoY29uc3Qgc3RkOjpzdHJpbmcmIC8qZGF0YSovKQp7CiAgICAvLyBGdWxsIGRlc2VyaWFsaXphdGlvbiByZXF1aXJlcyBhIEpTT04gcGFyc2VyLgogICAgLy8gSW1wbGVtZW50IHVzaW5nIG5sb2htYW5uL2pzb24gb3Igc2ltaWxhciB3aGVuIG5lZWRlZCBmb3IgcmVwbGF5cy4KICAgIHJldHVybiBmYWxzZTsKfQoKYm9vbCBHYW1lU3RhdGVTZXJpYWxpemVyOjpEZXNlcmlhbGl6ZShjb25zdCBzdGQ6OnZlY3Rvcjx1aW50OF90PiYgZGF0YSkKewogICAgcmV0dXJuIERlc2VyaWFsaXplRnJvbVN0cmluZyhzdGQ6OnN0cmluZyhkYXRhLmJlZ2luKCksIGRhdGEuZW5kKCkpKTsKfQo=
+#include "GameStateSerializer.h"
+
+#include "core/gamestate/RTSGameState.h"
+#include "core/interfaces/ISimulationSnapshot.h"
+
+#include <sstream>
+
+// NOTE: Full serialization requires a JSON library (e.g. nlohmann/json).
+// This implementation provides the minimal scaffold; extend as needed.
+// The serialize/deserialize cycle must be lossless for deterministic replays.
+
+GameStateSerializer::GameStateSerializer(const RTSGameState* state) : snapshot_(state) {}
+
+GameStateSerializer::GameStateSerializer(const ISimulationSnapshot* snapshot) : snapshot_(snapshot) {}
+
+void GameStateSerializer::SetState(const RTSGameState* state)
+{
+    snapshot_ = state;
+}
+
+void GameStateSerializer::SetSnapshot(const ISimulationSnapshot* snapshot)
+{
+    snapshot_ = snapshot;
+}
+
+std::string GameStateSerializer::SerializeToString() const
+{
+    if (!snapshot_) return "{}";
+
+    std::ostringstream oss;
+    oss << "{\n";
+    oss << "  \"version\": " << FORMAT_VERSION << ",\n";
+    oss << "  \"format\": \"" << GetFormatName() << "\",\n";
+
+    Vector2 mapSize = snapshot_->GetMapSize();
+    oss << "  \"map\": { \"width\": " << mapSize.x << ", \"height\": " << mapSize.y << " },\n";
+
+    auto units = snapshot_->GetAllUnits();
+    oss << "  \"units\": [\n";
+    for (size_t i = 0; i < units.size(); ++i) {
+        const IGameUnit* u = units[i];
+        oss << "    { \"team\": " << u->GetTeam()
+            << ", \"x\": " << u->GetPosition().x
+            << ", \"y\": " << u->GetPosition().y
+            << ", \"vx\": " << u->GetVelocity().x
+            << ", \"vy\": " << u->GetVelocity().y
+            << ", \"hp\": " << u->GetCurrentHP()
+            << " }";
+        if (i + 1 < units.size()) oss << ",";
+        oss << "\n";
+    }
+    oss << "  ]\n";
+    oss << "}\n";
+
+    return oss.str();
+}
+
+std::vector<uint8_t> GameStateSerializer::Serialize() const
+{
+    std::string s = SerializeToString();
+    return std::vector<uint8_t>(s.begin(), s.end());
+}
+
+bool GameStateSerializer::DeserializeFromString(const std::string& /*data*/)
+{
+    // Full deserialization requires a JSON parser.
+    // Implement using nlohmann/json or similar when needed for replays.
+    return false;
+}
+
+bool GameStateSerializer::Deserialize(const std::vector<uint8_t>& data)
+{
+    return DeserializeFromString(std::string(data.begin(), data.end()));
+}

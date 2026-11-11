@@ -1,1 +1,70 @@
-IyBNb2R1bGU6IGBjb3JlLmludGVyZmFjZXNgCgpNYW5pZmVzdDogW2RvY3MvYWdlbnRpYy9tb2R1bGVzL2NvcmUuaW50ZXJmYWNlcy5tb2R1bGUuanNvbl0oLi4vLi4vZG9jcy9hZ2VudGljL21vZHVsZXMvY29yZS5pbnRlcmZhY2VzLm1vZHVsZS5qc29uKQoKIyMgUHVycG9zZQoKUHVibGlzaGVkICoqY29udHJhY3QgaGVhZGVycyoqIChwdXJlIHZpcnR1YWwgaW50ZXJmYWNlcykgZm9yIHVuaXRzLCBiZWhhdmlvcnMsIGlucHV0LCBzZXJpYWxpemF0aW9uLCBtYXAgY29tcG9uZW50cywgYW5kIGhpZ2gtbGV2ZWwgZ2FtZSBmbG93LiBUaGlzIHBhY2thZ2UgaXMgKipoZWFkZXItb25seSoqOiBubyB0cmFuc2xhdGlvbiB1bml0cyB1bmRlciBgY29yZS9pbnRlcmZhY2VzL2AuIEl0IGRvZXMgKipub3QqKiBvd24gaW1wbGVtZW50YXRpb25zLCBwbGF0Zm9ybSBhZGFwdGVycywgaW5mbHVlbmNlLWZpZWxkIGNhbGN1bGF0aW9uLCBvciBnYW1lLXN0YXRlIGNvbmNyZXRlIHR5cGVzLgoKIyMgUHVibGljIHN1cmZhY2UgKGBleHBvcnRzYCkKCkluY2x1ZGUgaGVhZGVycyBmcm9tIHRoZSByZXBvIHJvb3QsIGUuZy4gYCNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSUdhbWVVbml0LmgiYC4KCnwgU3ltYm9sIHwgS2luZCB8IEhlYWRlciB8IE5vdGVzIHwKfC0tLS0tLS0tfC0tLS0tLXwtLS0tLS0tLXwtLS0tLS0tfAp8IGBJQmVoYXZpb3JgIHwgY2xhc3MgfCBgSUJlaGF2aW9yLmhgIHwgSW5mbHVlbmNlIGl0ZW1zICsgb3B0aW9uYWwgZGlyZWN0IGFjY2VsZXJhdGlvbjsgaW5jbHVkZXMgdmFsdWUgdHlwZXMgZnJvbSBgY29yZS5pbmZsdWVuY2UudHlwZXNgIGFuZCBgVmVjdG9yMmAgfAp8IGBJR2FtZVVuaXRgIHwgY2xhc3MgfCBgSUdhbWVVbml0LmhgIHwgVW5pdCBjb250cmFjdDsgdXNlcyBgVmVjdG9yMmAgfAp8IGBJVW5pdEtpbmVtYXRpY3NgIHwgY2xhc3MgfCBgSVVuaXRLaW5lbWF0aWNzLmhgIHwgT3B0aW9uYWwgZGlyZWN0IHBvc2l0aW9uL3ZlbG9jaXR5IHdyaXRlcyAoYFNldFBvc2l0aW9uYCwgYFNldFZlbG9jaXR5YCk7IGltcGxlbWVudGVkIGJ5IGBSVFNVbml0YCBmb3IgY29sbGlzaW9uIHdyaXRlcnMgfAp8IGBJVW5pdEFnZW50YCB8IGNsYXNzIHwgYElVbml0QWdlbnQuaGAgfCBPcHRpb25hbCBGU00gLyBiZWhhdmlvci1wYXJhbWV0ZXIgY29tbWFuZHMgKGBTZXRBZ2VudFN0YXRlYCwgYFNldEFnZW50UGFyYW1ldGVyYCk7IGltcGxlbWVudGVkIGJ5IGBSVFNVbml0YCBmb3IgYENvbW1hbmRTeXN0ZW1gIHwKfCBgSUlucHV0UmVhZGVyYCB8IGNsYXNzIHwgYElJbnB1dFJlYWRlci5oYCB8IElucHV0IGFic3RyYWN0aW9uOyB1c2VzIGBWZWN0b3IyYCB8CnwgYElUcmFuc2l0aW9uQ29uZGl0aW9uYCB8IGNsYXNzIHwgYElUcmFuc2l0aW9uQ29uZGl0aW9uLmhgIHwgQ29uZGl0aW9uIGV2YWx1YXRpb247IGBCZWhhdmlvckNvbnRleHRgIGZvcndhcmQtZGVjbGFyZWQgfAp8IGBJR2FtZVN0YXRlYCB8IGNsYXNzIHwgYElHYW1lU3RhdGUuaGAgfCBTaW5nbGUgYWN0aXZlIHN0YXRlIGNvbnRyYWN0IHwKfCBgSUdhbWVMb2dpY1JlbmRlcmVyYCB8IGNsYXNzIHwgYElHYW1lTG9naWNSZW5kZXJlci5oYCB8IFJlYWQtb25seSByZW5kZXJlcjsgYEdldEN1cnJlbnRHYW1lU3RhdGVgIChgY29uc3QgUlRTR2FtZVN0YXRlKmApOyBvcHRpb25hbCBgR2V0U2ltdWxhdGlvblNuYXBzaG90KClgIChkZWZhdWx0IGBudWxscHRyYCkgfAp8IGBJU2VyaWFsaXplcmAgfCBjbGFzcyB8IGBJU2VyaWFsaXplci5oYCB8IEJ5dGUvc3RyaW5nIHNlcmlhbGl6YXRpb24gY29udHJhY3QgfAp8IGBJTWFwQ29tcG9uZW50YCB8IGNsYXNzIHwgYElNYXBDb21wb25lbnQuaGAgfCBNYXAgRUNTIGNvbXBvbmVudCBjb250cmFjdCB8CnwgYElTaW11bGF0aW9uU25hcHNob3RgIHwgY2xhc3MgfCBgSVNpbXVsYXRpb25TbmFwc2hvdC5oYCB8IFJlYWQtb25seSBtYXAgc2l6ZSArIHVuaXQgbGlzdCBmb3Igc25hcHNob3Qgc2VyaWFsaXplcnMgfAp8IGBJVW5pdEJlaGF2aW9ySG9zdGAgfCBjbGFzcyB8IGBJVW5pdEJlaGF2aW9ySG9zdC5oYCB8IEFjdGl2ZSBiZWhhdmlvciBhY2Nlc3NvciBmb3IgaHViIEFJIHRpY2s7IGltcGxlbWVudGVkIGJ5IGBSVFNVbml0YCB8CgojIyBEZXBlbmRlbmNpZXMgKGByZXF1aXJlc2ApCgp8IE1vZHVsZSB8IFJhbmdlIHwgV2h5IHwKfC0tLS0tLS0tfC0tLS0tLS18LS0tLS18CnwgYGNvcmUubWF0aGAgfCBgXjEuMC4wYCB8IGBWZWN0b3IyYCBpbiBgSUdhbWVVbml0YCwgYElCZWhhdmlvcmAsIGBJSW5wdXRSZWFkZXJgIHwKfCBgY29yZS5pbmZsdWVuY2UudHlwZXNgIHwgYF4xLjAuMGAgfCBgSW5mbHVlbmNlRmllbGRJdGVtYCBpbiBgSUJlaGF2aW9yYCB8CgpBbGxvd2VkIGAjaW5jbHVkZWAgaW4gYGNvcmUvaW50ZXJmYWNlcy8qKmA6IHN0YW5kYXJkIGxpYnJhcnksIGhlYWRlcnMgdW5kZXIgYGNvcmUvaW50ZXJmYWNlcy9gLCBhbmQgKHZpYSBtYW5pZmVzdCBgcmVxdWlyZXNgKSBoZWFkZXJzIHVuZGVyIGBjb3JlL21hdGgvYCBhbmQgYGNvcmUvaW5mbHVlbmNlX3R5cGVzL2AuIFJlbGF0aXZlIGluY2x1ZGVzIG11c3QgcmVzb2x2ZSBpbnNpZGUgdGhvc2UgdHJlZXMgb3IgdGhpcyBtb2R1bGUuIE5vIG90aGVyIGBjb3JlLypgIHNpYmxpbmdzLCBgcGxhdGZvcm0vYCwgb3IgYGZmaS9gIChlbmZvcmNlZCBieSBgLi9zY3JpcHRzL2NoZWNrLW1vZHVsZS1kZXBzLnNoYCkuCgojIyBBZ2VudCBlZGl0IHNjb3BlCgp8IEFsbG93IHwgUGF0aCB8CnwtLS0tLS0tfC0tLS0tLXwKfCBDb250cmFjdCBoZWFkZXJzIHwgYGNvcmUvaW50ZXJmYWNlcy8qKmAgfAp8IE1hbmlmZXN0IHwgYGRvY3MvYWdlbnRpYy9tb2R1bGVzL2NvcmUuaW50ZXJmYWNlcy5tb2R1bGUuanNvbmAgfAp8IENoYW5nZWxvZyB8IGBjb3JlL2ludGVyZmFjZXMvQ0hBTkdFTE9HLm1kYCAod2hlbiBtYW5pZmVzdCB2ZXJzaW9uIGNoYW5nZXMpIHwKfCBDb21waWxlIHNtb2tlIHRlc3RzIHwgYHRlc3RzL1VuaXRUZXN0cy9JbnRlcmZhY2VzLyoqYCB8CnwgU2hhcmVkIGFnZW50aWMgZG9jcyB8IGBkb2NzL2FnZW50aWMvKmAgKHdoZW4gcG9saWN5IHJlcXVpcmVzKSB8CgojIyBJbnZhcmlhbnRzCgotIERvIG5vdCBhZGQgY29uY3JldGUgZ2FtZSB0eXBlcyBvciBwdWxsIGluIHN5c3RlbXMgbW9kdWxlcyAoYGNvcmUuaW5mbHVlbmNlYCwgYGNvcmUuZ2FtZXN0YXRlYCwgZXRjLikgd2l0aG91dCBhIGRlZGljYXRlZCBleHRyYWN0aW9uIGFuZCBtYW5pZmVzdCB1cGRhdGUuCi0gUHJlc2VydmUgc3RhYmxlIGluY2x1ZGUgcGF0aHMgYW5kIHB1cmUtdmlydHVhbCBzdXJmYWNlIHVubGVzcyBpbnRlbnRpb25hbGx5IGJyZWFraW5nIHNlbXZlciBtYWpvci4KCiMjIFRlc3RzCgp8IFN1aXRlIHwgUGF0aCB8CnwtLS0tLS0tfC0tLS0tLXwKfCBIZWFkZXIgY29tcGlsZSAoY2Fub25pY2FsIGluY2x1ZGVzKSB8IGB0ZXN0cy9Vbml0VGVzdHMvSW50ZXJmYWNlcy9JbnRlcmZhY2VzTW9kdWxlSGVhZGVyQ29tcGlsZVRlc3QuY3BwYCB8CgpGdWxsIGJ1aWxkOgoKYGBgYmFzaApjbWFrZSAtUyAuIC1CIGJ1aWxkIC1HIE5pbmphIC1EQlVJTERfVEVTVFM9T04KY21ha2UgLS1idWlsZCBidWlsZApjdGVzdCAtLXRlc3QtZGlyIGJ1aWxkIC0tb3V0cHV0LW9uLWZhaWx1cmUgLVIgSW50ZXJmYWNlc01vZHVsZUhlYWRlckNvbXBpbGVUZXN0CmBgYAoKIyMgQ2hhbmdlIGNoZWNrbGlzdAoKLSBbIF0gVXBkYXRlIGBkb2NzL2FnZW50aWMvbW9kdWxlcy9jb3JlLmludGVyZmFjZXMubW9kdWxlLmpzb25gIHZlcnNpb24gaWYgZXhwb3J0cyBvciBvYnNlcnZhYmxlIGNvbnRyYWN0IGNoYW5nZXMKLSBbIF0gQXBwZW5kIGBjb3JlL2ludGVyZmFjZXMvQ0hBTkdFTE9HLm1kYCB1bmRlciBgIyMgW3NhbWUgdmVyc2lvbiBhcyBtYW5pZmVzdF1gCi0gWyBdIFJ1biBgLi9zY3JpcHRzL2NoZWNrLW1vZHVsZS1kZXBzLnNoYA==
+# Module: `core.interfaces`
+
+Manifest: [docs/agentic/modules/core.interfaces.module.json](../../docs/agentic/modules/core.interfaces.module.json)
+
+## Purpose
+
+Published **contract headers** (pure virtual interfaces) for units, behaviors, input, serialization, map components, and high-level game flow. This package is **header-only**: no translation units under `core/interfaces/`. It does **not** own implementations, platform adapters, influence-field calculation, or game-state concrete types.
+
+## Public surface (`exports`)
+
+Include headers from the repo root, e.g. `#include "core/interfaces/IGameUnit.h"`.
+
+| Symbol | Kind | Header | Notes |
+|--------|------|--------|-------|
+| `IBehavior` | class | `IBehavior.h` | Influence items + optional direct acceleration; includes value types from `core.influence.types` and `Vector2` |
+| `IGameUnit` | class | `IGameUnit.h` | Unit contract; uses `Vector2` |
+| `IUnitKinematics` | class | `IUnitKinematics.h` | Optional direct position/velocity writes (`SetPosition`, `SetVelocity`); implemented by `RTSUnit` for collision writers |
+| `IUnitAgent` | class | `IUnitAgent.h` | Optional FSM / behavior-parameter commands (`SetAgentState`, `SetAgentParameter`); implemented by `RTSUnit` for `CommandSystem` |
+| `IInputReader` | class | `IInputReader.h` | Input abstraction; uses `Vector2` |
+| `ITransitionCondition` | class | `ITransitionCondition.h` | Condition evaluation; `BehaviorContext` forward-declared |
+| `IGameState` | class | `IGameState.h` | Single active state contract |
+| `IGameLogicRenderer` | class | `IGameLogicRenderer.h` | Read-only renderer; `GetCurrentGameState` (`const RTSGameState*`); optional `GetSimulationSnapshot()` (default `nullptr`) |
+| `ISerializer` | class | `ISerializer.h` | Byte/string serialization contract |
+| `IMapComponent` | class | `IMapComponent.h` | Map ECS component contract |
+| `ISimulationSnapshot` | class | `ISimulationSnapshot.h` | Read-only map size + unit list for snapshot serializers |
+| `IUnitBehaviorHost` | class | `IUnitBehaviorHost.h` | Active behavior accessor for hub AI tick; implemented by `RTSUnit` |
+
+## Dependencies (`requires`)
+
+| Module | Range | Why |
+|--------|-------|-----|
+| `core.math` | `^1.0.0` | `Vector2` in `IGameUnit`, `IBehavior`, `IInputReader` |
+| `core.influence.types` | `^1.0.0` | `InfluenceFieldItem` in `IBehavior` |
+
+Allowed `#include` in `core/interfaces/**`: standard library, headers under `core/interfaces/`, and (via manifest `requires`) headers under `core/math/` and `core/influence_types/`. Relative includes must resolve inside those trees or this module. No other `core/*` siblings, `platform/`, or `ffi/` (enforced by `./scripts/check-module-deps.sh`).
+
+## Agent edit scope
+
+| Allow | Path |
+|-------|------|
+| Contract headers | `core/interfaces/**` |
+| Manifest | `docs/agentic/modules/core.interfaces.module.json` |
+| Changelog | `core/interfaces/CHANGELOG.md` (when manifest version changes) |
+| Compile smoke tests | `tests/UnitTests/Interfaces/**` |
+| Shared agentic docs | `docs/agentic/*` (when policy requires) |
+
+## Invariants
+
+- Do not add concrete game types or pull in systems modules (`core.influence`, `core.gamestate`, etc.) without a dedicated extraction and manifest update.
+- Preserve stable include paths and pure-virtual surface unless intentionally breaking semver major.
+
+## Tests
+
+| Suite | Path |
+|-------|------|
+| Header compile (canonical includes) | `tests/UnitTests/Interfaces/InterfacesModuleHeaderCompileTest.cpp` |
+
+Full build:
+
+```bash
+cmake -S . -B build -G Ninja -DBUILD_TESTS=ON
+cmake --build build
+ctest --test-dir build --output-on-failure -R InterfacesModuleHeaderCompileTest
+```
+
+## Change checklist
+
+- [ ] Update `docs/agentic/modules/core.interfaces.module.json` version if exports or observable contract changes
+- [ ] Append `core/interfaces/CHANGELOG.md` under `## [same version as manifest]`
+- [ ] Run `./scripts/check-module-deps.sh`

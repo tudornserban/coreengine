@@ -1,1 +1,46 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lTZXJpYWxpemVyLmgiCiNpbmNsdWRlIDxjc3RkZGVmPgojaW5jbHVkZSA8Y3N0ZGludD4KI2luY2x1ZGUgPHN0cmluZz4KI2luY2x1ZGUgPHZlY3Rvcj4KCi8vIEZvcndhcmQgZGVjbGFyYXRpb25zCmNsYXNzIFJUU0dhbWVTdGF0ZTsKY2xhc3MgSVNpbXVsYXRpb25TbmFwc2hvdDsKCi8vLyBKU09OIHNlcmlhbGl6ZXIgZm9yIFJUU0dhbWVTdGF0ZS4KLy8vCi8vLyBTZXJpYWxpemVzIHRoZSBjb21wbGV0ZSBzaW11bGF0aW9uIHN0YXRlIHRvL2Zyb20gSlNPTiwgZW5hYmxpbmc6Ci8vLyAgIC0gU2VydmVyLXNpZGUgdmFsaWRhdGlvbiAoRHluYW1pY0dPIHNlcnZlciBtb2RlKQovLy8gICAtIERldGVybWluaXN0aWMgcmVwbGF5IChsb2FkIHNlZWQgKyBjb21tYW5kIGxvZywgcmUtc2ltdWxhdGUpCi8vLyAgIC0gRkZJIGRhdGEgZXhjaGFuZ2UgKGNhbGwgR2V0U3RhdGVKU09OKCkgZnJvbSBhbnkgbGFuZ3VhZ2UgdmlhIEMgQVBJKQovLy8gICAtIE5ldHdvcmsgc3luYyAoc2VuZC9yZWNlaXZlIG1hdGNoIHNuYXBzaG90cykKLy8vCi8vLyBGb3JtYXQgdmVyc2lvbiBpcyBlbWJlZGRlZCBpbiBldmVyeSBwYXlsb2FkIGZvciBmb3J3YXJkIGNvbXBhdGliaWxpdHkuCmNsYXNzIEdhbWVTdGF0ZVNlcmlhbGl6ZXIgOiBwdWJsaWMgSVNlcmlhbGl6ZXIgewpwcml2YXRlOgogICAgY29uc3QgSVNpbXVsYXRpb25TbmFwc2hvdCogc25hcHNob3RfOwogICAgc3RhdGljIGNvbnN0ZXhwciB1aW50MzJfdCBGT1JNQVRfVkVSU0lPTiA9IDE7CgpwdWJsaWM6CiAgICBleHBsaWNpdCBHYW1lU3RhdGVTZXJpYWxpemVyKGNvbnN0IFJUU0dhbWVTdGF0ZSogc3RhdGUgPSBudWxscHRyKTsKICAgIGV4cGxpY2l0IEdhbWVTdGF0ZVNlcmlhbGl6ZXIoY29uc3QgSVNpbXVsYXRpb25TbmFwc2hvdCogc25hcHNob3QpOwogICAgZXhwbGljaXQgR2FtZVN0YXRlU2VyaWFsaXplcihzdGQ6Om51bGxwdHJfdCkgOiBzbmFwc2hvdF8obnVsbHB0cikge30KCiAgICB2b2lkIFNldFN0YXRlKGNvbnN0IFJUU0dhbWVTdGF0ZSogc3RhdGUpOwogICAgdm9pZCBTZXRTbmFwc2hvdChjb25zdCBJU2ltdWxhdGlvblNuYXBzaG90KiBzbmFwc2hvdCk7CgogICAgLy8gLS0tIElTZXJpYWxpemVyIC0tLQogICAgc3RkOjp2ZWN0b3I8dWludDhfdD4gU2VyaWFsaXplKCkgY29uc3Qgb3ZlcnJpZGU7CiAgICBzdGQ6OnN0cmluZyBTZXJpYWxpemVUb1N0cmluZygpIGNvbnN0IG92ZXJyaWRlOwogICAgYm9vbCBEZXNlcmlhbGl6ZShjb25zdCBzdGQ6OnZlY3Rvcjx1aW50OF90PiYgZGF0YSkgb3ZlcnJpZGU7CiAgICBib29sIERlc2VyaWFsaXplRnJvbVN0cmluZyhjb25zdCBzdGQ6OnN0cmluZyYgZGF0YSkgb3ZlcnJpZGU7CiAgICBjb25zdCBjaGFyKiBHZXRGb3JtYXROYW1lKCkgY29uc3Qgb3ZlcnJpZGUgeyByZXR1cm4gIkNvcmVFbmdpbmUtSlNPTi12MSI7IH0KICAgIHVpbnQzMl90IEdldFZlcnNpb24oKSBjb25zdCBvdmVycmlkZSB7IHJldHVybiBGT1JNQVRfVkVSU0lPTjsgfQoKICAgIC8vIC0tLSBDb252ZW5pZW5jZSAtLS0KICAgIC8vLyBSZXR1cm5zIGEgSlNPTiBzdHJpbmcgc25hcHNob3Qgb2YgdGhlIGdhbWUgc3RhdGUgKGZvciBGRkkvZGVidWcpLgogICAgc3RkOjpzdHJpbmcgR2V0U3RhdGVKU09OKCkgY29uc3QgeyByZXR1cm4gU2VyaWFsaXplVG9TdHJpbmcoKTsgfQp9Owo=
+#pragma once
+
+#include "core/interfaces/ISerializer.h"
+#include <cstddef>
+#include <cstdint>
+#include <string>
+#include <vector>
+
+// Forward declarations
+class RTSGameState;
+class ISimulationSnapshot;
+
+/// JSON serializer for RTSGameState.
+///
+/// Serializes the complete simulation state to/from JSON, enabling:
+///   - Server-side validation (DynamicGO server mode)
+///   - Deterministic replay (load seed + command log, re-simulate)
+///   - FFI data exchange (call GetStateJSON() from any language via C API)
+///   - Network sync (send/receive match snapshots)
+///
+/// Format version is embedded in every payload for forward compatibility.
+class GameStateSerializer : public ISerializer {
+private:
+    const ISimulationSnapshot* snapshot_;
+    static constexpr uint32_t FORMAT_VERSION = 1;
+
+public:
+    explicit GameStateSerializer(const RTSGameState* state = nullptr);
+    explicit GameStateSerializer(const ISimulationSnapshot* snapshot);
+    explicit GameStateSerializer(std::nullptr_t) : snapshot_(nullptr) {}
+
+    void SetState(const RTSGameState* state);
+    void SetSnapshot(const ISimulationSnapshot* snapshot);
+
+    // --- ISerializer ---
+    std::vector<uint8_t> Serialize() const override;
+    std::string SerializeToString() const override;
+    bool Deserialize(const std::vector<uint8_t>& data) override;
+    bool DeserializeFromString(const std::string& data) override;
+    const char* GetFormatName() const override { return "CoreEngine-JSON-v1"; }
+    uint32_t GetVersion() const override { return FORMAT_VERSION; }
+
+    // --- Convenience ---
+    /// Returns a JSON string snapshot of the game state (for FFI/debug).
+    std::string GetStateJSON() const { return SerializeToString(); }
+};
