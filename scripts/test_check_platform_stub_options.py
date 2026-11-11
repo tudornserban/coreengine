@@ -8,6 +8,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
@@ -18,6 +19,7 @@ from check_platform_stub_options import (  # noqa: E402
     configure_default_succeeds,
     configure_should_fail,
     run_checks,
+    viewer_configure_succeeds_or_skip,
 )
 
 
@@ -70,6 +72,55 @@ class PlatformStubOptionsTest(unittest.TestCase):
     def test_message_contains_header_only_stub(self) -> None:
         self.assertIn(STUB_SNIPPET, self.sdl_block)
         self.assertIn(STUB_SNIPPET, self.ray_block)
+
+
+class ViewerDependencyDetectionTest(unittest.TestCase):
+    def test_missing_detection_tools_skips_without_running_subprocess(self) -> None:
+        with patch("check_platform_stub_options.shutil.which", return_value=None), patch(
+            "check_platform_stub_options.subprocess.run"
+        ) as run:
+            status, detail = viewer_configure_succeeds_or_skip(Path("unused"))
+        self.assertEqual(status, "skip")
+        self.assertIn("SDL2 not installed", detail)
+        run.assert_not_called()
+
+    def test_pkg_config_without_sdl2_skips_configure(self) -> None:
+        with patch(
+            "check_platform_stub_options.shutil.which",
+            side_effect=[None, "/usr/bin/pkg-config"],
+        ), patch(
+            "check_platform_stub_options.subprocess.run",
+            return_value=subprocess.CompletedProcess([], 1),
+        ) as run, patch("check_platform_stub_options._cmake_configure") as configure:
+            status, _ = viewer_configure_succeeds_or_skip(Path("unused"))
+        self.assertEqual(status, "skip")
+        run.assert_called_once_with(
+            ["pkg-config", "--exists", "sdl2"], capture_output=True, check=False
+        )
+        configure.assert_not_called()
+
+    def test_sdl2_available_through_either_detection_tool_configures(self) -> None:
+        for detected_tools in (
+            ["/usr/bin/sdl2-config"],
+            [None, "/usr/bin/pkg-config"],
+        ):
+            with self.subTest(detected_tools=detected_tools), patch(
+                "check_platform_stub_options.shutil.which", side_effect=detected_tools
+            ), patch(
+                "check_platform_stub_options.subprocess.run",
+                return_value=subprocess.CompletedProcess([], 0),
+            ) as run, patch(
+                "check_platform_stub_options._cmake_configure",
+                return_value=subprocess.CompletedProcess([], 0, "configured", ""),
+            ) as configure:
+                status, detail = viewer_configure_succeeds_or_skip(Path("unused"))
+                self.assertEqual(status, "ok")
+                self.assertEqual(detail, "configured")
+                self.assertEqual(run.call_count, len(detected_tools) - 1)
+                configure.assert_called_once()
+                self.assertEqual(
+                    configure.call_args.args[2], ["-DCOREENGINE_BUILD_SDL2_VIEWER=ON"]
+                )
 
 
 class PlatformStubOptionsMutationTest(unittest.TestCase):

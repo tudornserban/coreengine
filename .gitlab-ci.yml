@@ -8,7 +8,8 @@ agentic-module-manifests:
   image: ubuntu:24.04
   before_script:
     - apt-get update -qq
-    - apt-get install -qq -y --no-install-recommends python3
+    - apt-get install -qq -y --no-install-recommends
+        cmake ninja-build build-essential git python3
   script:
     - chmod +x scripts/check-module-deps.sh
     - ./scripts/check-module-deps.sh
@@ -20,7 +21,7 @@ math-module-pilot:
   before_script:
     - apt-get update -qq
     - apt-get install -qq -y --no-install-recommends
-        cmake ninja-build build-essential libgtest-dev python3
+        cmake ninja-build build-essential libgtest-dev git python3
   script:
     - chmod +x scripts/run-math-module-tests.sh scripts/check-module-deps.sh
     - ./scripts/check-module-deps.sh
@@ -32,7 +33,7 @@ influence-module-pilot:
   before_script:
     - apt-get update -qq
     - apt-get install -qq -y --no-install-recommends
-        cmake ninja-build build-essential libgtest-dev python3
+        cmake ninja-build build-essential libgtest-dev git python3
   script:
     - chmod +x scripts/run-influence-module-tests.sh scripts/check-module-deps.sh
     - ./scripts/check-module-deps.sh
@@ -44,7 +45,7 @@ logging-module-pilot:
   before_script:
     - apt-get update -qq
     - apt-get install -qq -y --no-install-recommends
-        cmake ninja-build build-essential libgtest-dev python3
+        cmake ninja-build build-essential libgtest-dev git python3
   script:
     - chmod +x scripts/run-logging-module-tests.sh scripts/check-module-deps.sh
     - ./scripts/check-module-deps.sh
@@ -56,7 +57,7 @@ build-and-test:
   before_script:
     - apt-get update -qq
     - apt-get install -qq -y --no-install-recommends
-        cmake ninja-build build-essential libgtest-dev python3
+        cmake ninja-build build-essential libgtest-dev git python3
   script:
     - ./scripts/check-module-deps.sh
     - cmake -S . -B build -G Ninja -DBUILD_TESTS=ON

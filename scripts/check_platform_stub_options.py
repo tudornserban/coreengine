@@ -95,6 +95,8 @@ def configure_default_succeeds(repo_root: Path) -> tuple[bool, str]:
 def viewer_configure_succeeds_or_skip(repo_root: Path) -> tuple[str, str]:
     """Returns ('ok'|'skip'|'fail', detail). Skip when SDL2 is not installed."""
     if shutil.which("sdl2-config") is None:
+        if shutil.which("pkg-config") is None:
+            return "skip", "SDL2 not installed; skipping viewer configure check"
         pkg = subprocess.run(
             ["pkg-config", "--exists", "sdl2"],
             capture_output=True,
