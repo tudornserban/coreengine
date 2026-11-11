@@ -1,6 +1,6 @@
 #include "SeparationBehavior.h"
-#include "../../ai/BehaviorContext.h"
-#include "../../interfaces/IGameUnit.h"
+#include "core/ai/BehaviorContext.h"
+#include "core/interfaces/IGameUnit.h"
 
 SeparationBehavior::SeparationBehavior()
 {

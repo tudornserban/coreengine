@@ -4,9 +4,9 @@
 #include <map>
 #include <vector>
 #include <memory>
-#include "../interfaces/IBehavior.h"
-#include "../interfaces/ITransitionCondition.h"
-#include "../math/Vector2.h"
+#include "core/interfaces/IBehavior.h"
+#include "core/interfaces/ITransitionCondition.h"
+#include "core/math/Vector2.h"
 
 // Forward declaration
 struct BehaviorContext;

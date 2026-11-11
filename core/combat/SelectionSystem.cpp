@@ -1,5 +1,5 @@
 #include "SelectionSystem.h"
-#include "../interfaces/IGameUnit.h"
+#include "core/interfaces/IGameUnit.h"
 #include <algorithm>
 
 void SelectionSystem::SelectUnit(IGameUnit* unit, bool addToSelection) {

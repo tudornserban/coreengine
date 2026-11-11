@@ -9,7 +9,16 @@ export CXX="${CXX:-g++}"
 
 echo "[verify-ffi-build] CMAKE_BINARY_DIR=${BUILD_DIR}"
 
-cmake -S "${ROOT}" -B "${BUILD_DIR}" -G Ninja \
+rm -rf "${BUILD_DIR}"
+
+if command -v ninja >/dev/null 2>&1; then
+  CMAKE_GEN="Ninja"
+else
+  CMAKE_GEN="Unix Makefiles"
+fi
+
+cmake -S "${ROOT}" -B "${BUILD_DIR}" -G "${CMAKE_GEN}" \
+  -DCMAKE_CXX_COMPILER="${CXX}" \
   -DBUILD_FFI=ON \
   -DBUILD_TESTS=OFF
 

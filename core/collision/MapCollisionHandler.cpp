@@ -1,7 +1,7 @@
 #include "MapCollisionHandler.h"
 #include "NarrowPhaseDetector.h"
 #include "CollisionResolver.h"
-#include "../gamestate/RTSUnit.h"
+#include "core/interfaces/IUnitKinematics.h"
 
 bool MapCollisionHandler::DetectAndResolveMapEdge(
     IGameUnit* unit,
@@ -34,8 +34,8 @@ void MapCollisionHandler::PushInsideBounds(
 
     if (!unit) return;
 
-    RTSUnit* rtsUnit = dynamic_cast<RTSUnit*>(unit);
-    if (!rtsUnit) return;
+    IUnitKinematics* kinematics = dynamic_cast<IUnitKinematics*>(unit);
+    if (!kinematics) return;
 
     Vector2 pos = unit->GetPosition();
     float radius = unit->GetRadius();
@@ -44,6 +44,6 @@ void MapCollisionHandler::PushInsideBounds(
     pos.x = std::max(mapMin.x + radius, std::min(mapMax.x - radius, pos.x));
     pos.y = std::max(mapMin.y + radius, std::min(mapMax.y - radius, pos.y));
 
-    rtsUnit->SetPosition(pos);
+    kinematics->SetPosition(pos);
 }
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../math/Vector2.h"
+#include "core/math/Vector2.h"
 #include "CollisionContact.h"
 #include <vector>
 

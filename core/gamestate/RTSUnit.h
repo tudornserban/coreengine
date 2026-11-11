@@ -1,11 +1,15 @@
 #pragma once
 
 #include "../interfaces/IGameUnit.h"
+#include "../interfaces/IUnitKinematics.h"
+#include "../interfaces/IUnitAgent.h"
+#include "../interfaces/IUnitBehaviorHost.h"
 #include "../ai/StateMachine.h"
 #include "../math/Vector2.h"
 #include <algorithm>
+#include <string>
 
-class RTSUnit : public IGameUnit {
+class RTSUnit : public IGameUnit, public IUnitKinematics, public IUnitAgent, public IUnitBehaviorHost {
 protected:
     Vector2 position;
     Vector2 velocity;
@@ -66,10 +70,17 @@ public:
     StateMachine& GetStateMachine() { return stateMachine; }
     const StateMachine& GetStateMachine() const { return stateMachine; }
 
-    // Setters
-    void SetPosition(Vector2 pos) { position = pos; }
-    void SetVelocity(Vector2 vel) { velocity = vel; }
+    // Setters (IUnitKinematics)
+    void SetPosition(Vector2 pos) override { position = pos; }
+    void SetVelocity(Vector2 vel) override { velocity = vel; }
     void SetMaxSpeed(float speed) { maxSpeed = speed; }
+
+    // IUnitAgent (command surface for FSM / behavior parameters)
+    void SetAgentState(const std::string& stateName) override;
+    void SetAgentParameter(const std::string& paramName, float value) override;
+
+    // IUnitBehaviorHost
+    IBehavior* GetCurrentBehavior() override;
 
     // HP and Mass
     float GetCurrentHP() const override { return currentHP; }

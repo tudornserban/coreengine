@@ -2,7 +2,7 @@
 
 #include "CollisionContact.h"
 #include "CollisionPhysics.h"
-#include "../interfaces/IGameUnit.h"
+#include "core/interfaces/IGameUnit.h"
 
 class CollisionResolver {
 public:
@@ -34,7 +34,6 @@ public:
         float massB
     );
 
-private:
     // Apply impulse to unit
     static void ApplyImpulse(IGameUnit* unit, Vector2 impulse, float mass);
 };

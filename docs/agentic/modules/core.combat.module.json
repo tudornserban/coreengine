@@ -1,6 +1,6 @@
 {
   "id": "core.combat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "path": "core/combat",
   "exports": [
     "CombatManager",
@@ -9,9 +9,9 @@
     "Explosion"
   ],
   "requires": {
-    "core.interfaces": "^1.0.0",
+    "core.interfaces": "^1.2.0",
     "core.math": "^1.0.0"
   },
   "tags": ["gameplay"],
-  "notes": "CommandSystem.cpp includes RTSUnit today."
+  "notes": "CommandSystem uses IUnitAgent for SetUnitState / SetBehaviorParameter (no RTSUnit include). `#include` boundaries are enforced via INCLUDE_ENFORCED_MODULES (R1.6)."
 }

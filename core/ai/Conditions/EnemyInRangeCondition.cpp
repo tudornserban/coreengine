@@ -1,6 +1,6 @@
 #include "EnemyInRangeCondition.h"
-#include "../../ai/BehaviorContext.h"
-#include "../../interfaces/IGameUnit.h"
+#include "core/ai/BehaviorContext.h"
+#include "core/interfaces/IGameUnit.h"
 #include <cstdio>
 
 EnemyInRangeCondition::EnemyInRangeCondition(float detectionRange) : range_(detectionRange) {}

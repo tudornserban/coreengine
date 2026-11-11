@@ -1,12 +1,14 @@
 #pragma once
 
-#include "../interfaces/ISerializer.h"
+#include "core/interfaces/ISerializer.h"
+#include <cstddef>
+#include <cstdint>
 #include <string>
 #include <vector>
-#include <cstdint>
 
-// Forward declaration
+// Forward declarations
 class RTSGameState;
+class ISimulationSnapshot;
 
 /// JSON serializer for RTSGameState.
 ///
@@ -19,13 +21,16 @@ class RTSGameState;
 /// Format version is embedded in every payload for forward compatibility.
 class GameStateSerializer : public ISerializer {
 private:
-    const RTSGameState* state_;
+    const ISimulationSnapshot* snapshot_;
     static constexpr uint32_t FORMAT_VERSION = 1;
 
 public:
     explicit GameStateSerializer(const RTSGameState* state = nullptr);
+    explicit GameStateSerializer(const ISimulationSnapshot* snapshot);
+    explicit GameStateSerializer(std::nullptr_t) : snapshot_(nullptr) {}
 
-    void SetState(const RTSGameState* state) { state_ = state; }
+    void SetState(const RTSGameState* state);
+    void SetSnapshot(const ISimulationSnapshot* snapshot);
 
     // --- ISerializer ---
     std::vector<uint8_t> Serialize() const override;

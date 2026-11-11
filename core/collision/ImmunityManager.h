@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../interfaces/IGameUnit.h"
+#include "core/interfaces/IGameUnit.h"
 #include <unordered_map>
 #include <set>
 

@@ -1,6 +1,6 @@
 {
   "id": "core.collision",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "path": "core/collision",
   "exports": [
     "CollisionSystem",
@@ -15,9 +15,10 @@
   ],
   "requires": {
     "core.interfaces": "^1.0.0",
+    "core.influence.types": "^1.0.0",
     "core.math": "^1.0.0",
     "core.logging": "^1.0.0"
   },
   "tags": ["gameplay", "physics"],
-  "notes": "Implementation still includes RTSUnit in several TUs — policy violation tracked in INVENTORY.md."
+  "notes": "Agent-agent resolution requires IUnitKinematics on both units. Map-edge contacts always emit a collision event; impulse/correction/push runs only when unit A implements IUnitKinematics. `#include` boundaries are enforced via INCLUDE_ENFORCED_MODULES (R1.3)."
 }

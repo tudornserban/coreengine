@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../math/Vector2.h"
+#include "core/math/Vector2.h"
 #include <vector>
 #include <unordered_map>
 #include <set>

@@ -3,6 +3,7 @@
 #include <vector>
 #include <memory>
 #include "../interfaces/IGameUnit.h"
+#include "../interfaces/ISimulationSnapshot.h"
 #include "../ai/BehaviorContext.h"
 #include "../math/Vector2.h"
 #include "../math/DeterministicRNG.h"
@@ -13,7 +14,7 @@
 #include "../collision/CollisionSystem.h"
 #include "../combat/Explosion.h"
 
-class RTSGameState
+class RTSGameState : public ISimulationSnapshot
 {
 private:
     std::vector<std::unique_ptr<IGameUnit>> units_;
@@ -48,7 +49,7 @@ public:
     // Queries
     std::vector<IGameUnit*> GetUnitsInRadius(Vector2 position, float radius) const;
     std::vector<IGameUnit*> GetTeamUnitsInRadius(Vector2 position, float radius, int team) const;
-    std::vector<IGameUnit*> GetAllUnits() const;
+    std::vector<IGameUnit*> GetAllUnits() const override;
     IGameUnit* GetUnitAtPosition(Vector2 position, float tolerance = 15.0f) const;
 
     // Systems
@@ -63,7 +64,7 @@ public:
     float GetPerceptionRadius() const { return perceptionRadius_; }
 
     // Getters
-    Vector2 GetMapSize() const;
+    Vector2 GetMapSize() const override;
     Vector2 GetMapCenter() const;
     Map* GetMap() { return map_.get(); }
     const Map* GetMap() const { return map_.get(); }

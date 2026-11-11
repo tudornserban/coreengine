@@ -1,8 +1,8 @@
 #pragma once
 
 #include <vector>
-#include "../math/Vector2.h"
-#include "../influence/InfluenceFieldItem.h"
+#include "core/math/Vector2.h"
+#include "core/influence_types/InfluenceFieldItem.h"
 
 // Forward declarations
 class IGameUnit;

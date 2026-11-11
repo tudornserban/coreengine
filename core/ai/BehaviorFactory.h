@@ -4,7 +4,7 @@
 #include <string>
 #include <functional>
 #include <map>
-#include "../interfaces/IBehavior.h"
+#include "core/interfaces/IBehavior.h"
 
 /// Factory for creating behaviors by name at runtime.
 ///
