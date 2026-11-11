@@ -1,10 +1,1 @@
-{
-  "id": "core.serialization",
-  "version": "1.0.0",
-  "path": "core/serialization",
-  "exports": ["GameStateSerializer"],
-  "requires": {
-    "core.gamestate": "^1.0.0"
-  },
-  "tags": ["persistence"]
-}
+ewogICJpZCI6ICJjb3JlLnNlcmlhbGl6YXRpb24iLAogICJ2ZXJzaW9uIjogIjEuMS4wIiwKICAicGF0aCI6ICJjb3JlL3NlcmlhbGl6YXRpb24iLAogICJleHBvcnRzIjogWyJHYW1lU3RhdGVTZXJpYWxpemVyIl0sCiAgInJlcXVpcmVzIjogewogICAgImNvcmUuZ2FtZXN0YXRlIjogIl4xLjAuMCIsCiAgICAiY29yZS5pbnRlcmZhY2VzIjogIl4xLjAuMCIKICB9LAogICJ0YWdzIjogWyJwZXJzaXN0ZW5jZSJdCn0=
