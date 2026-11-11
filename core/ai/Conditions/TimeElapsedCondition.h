@@ -1,17 +1,1 @@
-#pragma once
-#include "../../interfaces/ITransitionCondition.h"
-
-class TimeElapsedCondition : public ITransitionCondition {
-private:
-    float duration_;
-    mutable float elapsed_;
-    mutable char description_[128];
-
-public:
-    explicit TimeElapsedCondition(float durationSeconds);
-
-    bool Evaluate(const BehaviorContext& ctx) const override;
-    const char* GetDescription() const override;
-
-    void Reset() { elapsed_ = 0.0f; }
-};
+I3ByYWdtYSBvbmNlCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSVRyYW5zaXRpb25Db25kaXRpb24uaCIKCmNsYXNzIFRpbWVFbGFwc2VkQ29uZGl0aW9uIDogcHVibGljIElUcmFuc2l0aW9uQ29uZGl0aW9uIHsKcHJpdmF0ZToKICAgIGZsb2F0IGR1cmF0aW9uXzsKICAgIG11dGFibGUgZmxvYXQgZWxhcHNlZF87CiAgICBtdXRhYmxlIGNoYXIgZGVzY3JpcHRpb25fWzEyOF07CgpwdWJsaWM6CiAgICBleHBsaWNpdCBUaW1lRWxhcHNlZENvbmRpdGlvbihmbG9hdCBkdXJhdGlvblNlY29uZHMpOwoKICAgIGJvb2wgRXZhbHVhdGUoY29uc3QgQmVoYXZpb3JDb250ZXh0JiBjdHgpIGNvbnN0IG92ZXJyaWRlOwogICAgY29uc3QgY2hhciogR2V0RGVzY3JpcHRpb24oKSBjb25zdCBvdmVycmlkZTsKCiAgICB2b2lkIFJlc2V0KCkgeyBlbGFwc2VkXyA9IDAuMGY7IH0KfTsK
