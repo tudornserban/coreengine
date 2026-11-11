@@ -188,7 +188,7 @@ ce_unit_spawn(eng, 1, 400, 450);
 
 | Function | Description |
 |----------|-------------|
-| `ce_engine_create(w, h, seed)` | Create engine instance (`seed` 0 = non-deterministic RNG) |
+| `ce_engine_create(w, h, seed)` | Create engine instance (`DeterministicRNG`; **seed 0 is deterministic**, same LCG stream every run) |
 | `ce_engine_destroy(engine)` | Free engine |
 | `ce_engine_update(engine, dt)` | Tick simulation (advances deployment timers) |
 | `ce_engine_reset(engine)` | Reset units/state; **re-seeds RNG to 0** |

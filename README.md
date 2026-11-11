@@ -89,8 +89,8 @@ All of these live in [`core/interfaces/`](core/interfaces/MODULE.md). Include th
 | *(none)* | `coreengine` static library (include root = repo root) |
 | `BUILD_TESTS` | `coreengine_tests` (GoogleTest, registered with ctest) |
 | `BUILD_FFI` | `coreengine_ffi` shared library (`libcoreengine_ffi.so` / `.dylib` / `coreengine_ffi.dll`) |
-| `BUILD_SDL2` / `BUILD_RAYLIB` | `coreengine_sdl2` / `coreengine_raylib` adapter libs (header-only stubs today; see [platform/](platform/sdl2/SDLRenderer.h)) |
-| `COREENGINE_BUILD_SDL2_VIEWER` | `coreengine_sdl2_viewer` + its tests (needs SDL2) |
+| `BUILD_SDL2` / `BUILD_RAYLIB` | **Do not use today:** configure **fails** (`No SOURCES given to target`) because only header stubs exist in-repo (`Render()` unimplemented). Add `platform/sdl2/*.cpp` or `platform/raylib/*.cpp` first, then enable. |
+| `COREENGINE_BUILD_SDL2_VIEWER` | Runnable SDL2 window/tools (`coreengine_sdl2_viewer` + tests; needs `libsdl2-dev`) |
 | `COREENGINE_<MODULE>_STANDALONE` | Builds and tests just one module (can't be combined with the viewer) |
 
 When vendoring this tree as a submodule, use `add_subdirectory(CoreEngine)` and `target_link_libraries(mygame PRIVATE coreengine)` with the include root at the submodule path.
@@ -108,7 +108,7 @@ When vendoring this tree as a submodule, use `add_subdirectory(CoreEngine)` and 
 
 BehaviorFactory::RegisterBuiltins();
 
-RTSGameState state(Vector2(800.0f, 600.0f), /*rngSeed=*/1);        // 0 = non-deterministic
+RTSGameState state(Vector2(800.0f, 600.0f), /*rngSeed=*/1);        // any seed is replay-deterministic (incl. 0)
 state.AddStaticAttractor(InfluenceFieldItem::CreateAttractor(Vector2(700.0f, 300.0f), 5.0f));
 
 auto unit = std::make_unique<RTSUnit>(Vector2(120.0f, 300.0f), /*team=*/1);
@@ -137,7 +137,7 @@ Things that will surprise you (also [VIEWER.md](docs/VIEWER.md#known-limitations
 [`ffi/c_api.h`](ffi/c_api.h) is the only cross-language boundary. It uses opaque handles, POD structs, and 0/-1 error returns. Call it from one thread unless you add your own locking.
 
 ```c
-CE_Engine e = ce_engine_create(1600.0f, 900.0f, 42);  /* seed 0 = non-deterministic */
+CE_Engine e = ce_engine_create(1600.0f, 900.0f, 42);  /* LCG seed; 0 is valid and deterministic */
 while (!ce_timer_has_charge(e, 1))                    /* spawns cost a deployment    */
     ce_engine_update(e, 1.0f / 30.0f);                /* charge: one per 10 s of sim */
 ce_unit_spawn(e, 1, 400.0f, 450.0f);

@@ -7,7 +7,7 @@
 1. Add `core/math/MODULE.md` from [MODULE.md.template](MODULE.md.template). **Done**
 2. CMake OBJECT library `coreengine_math` + `COREENGINE_MATH_STANDALONE` math-only tests. **Done**
 3. Extend `scripts/check-module-deps.sh` to fail on illegal `#include` for `core.math`. **Done**
-4. Other modules: manifest validation only until opted in. **Documented**
+4. Other registry modules: include enforcement rolled out through Phase 3 / R2 (12 of 13 modules). **Done** (`core.ai_advanced` manifest-only).
 
 ## Success criteria
 
@@ -27,8 +27,8 @@ python3 scripts/test_check_module_deps.py
 
 ## Checker coverage / limitations
 
-- **Enforced:** `core.math` sources under `core/math/` (`.h`, `.hpp`, `.cpp`).
+- **Enforced:** `core.math` sources under `core/math/` (`.h`, `.hpp`, `.cpp`) — same rules as every opted-in module today.
 - **Rules:** no `platform/` or `ffi/`; no `core/…` outside this module unless listed in manifest `requires` (empty today); quoted includes must resolve inside `core/math/`.
-- **Not enforced yet:** all other registry modules (manifest + cycle check only); tests and `ffi/` trees; transitive includes through standard headers.
+- **Registry (2026):** **12 of 13** modules have `#include` enforcement via `INCLUDE_ENFORCED_MODULES` in `scripts/check_module_deps.py`. **`core.ai_advanced`** is manifest-only (not include-enforced). Tests, `ffi/`, and `tools/viewer/` trees are outside module include checks; transitive includes through standard headers are not traced.
 
 See [INVENTORY.md](INVENTORY.md) §5 for rationale.

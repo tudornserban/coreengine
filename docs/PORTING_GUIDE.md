@@ -165,7 +165,7 @@ For a runnable SDL2 window that ticks `RTSGameState` through `GameLogicEngine` w
 - Enable `-DCOREENGINE_BUILD_SDL2_VIEWER=ON` (default OFF), install `libsdl2-dev`, build `coreengine_sdl2_viewer`.
 - Full flag/key/preset/script documentation: [VIEWER.md](VIEWER.md).
 
-`platform/sdl2` ships **header-only stubs** (`SDLRenderer::Render()` is declared, not implemented here). Game-specific ports copy VenusWars SDL code or use the viewer. With `-DBUILD_SDL2=ON`, CMake still builds a `coreengine_sdl2` static library from any `platform/sdl2/*.cpp` you add.
+`platform/sdl2` ships **header-only stubs** (`SDLRenderer::Render()` is declared, not implemented here). Game-specific ports copy VenusWars SDL code or use the viewer. `-DBUILD_SDL2=ON` **fails configure** until you add at least one `platform/sdl2/*.cpp` (empty glob → `No SOURCES given to target: coreengine_sdl2`).
 
 ---
 

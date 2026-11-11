@@ -30,7 +30,7 @@ Registry: [modules/registry.json](modules/registry.json) (13 modules). Subfolder
 
 | Area | Path | Relation to `core/` |
 |------|------|---------------------|
-| **Platform** | `platform/{null,sdl2,raylib,unity,unreal}/` | Header sketches implementing `core/interfaces` contracts; **no reference `.cpp` in-repo** for SDL2/Raylib (`Render()` stubs). Optional CMake targets `coreengine_sdl2`, `coreengine_raylib` when `BUILD_SDL2` / `BUILD_RAYLIB` ON (still need SDL2/raylib installed). Runnable SDL2 window: `tools/viewer` + `COREENGINE_BUILD_SDL2_VIEWER`. No `#include` from `core/` into platform (verified). |
+| **Platform** | `platform/{null,sdl2,raylib,unity,unreal}/` | Header sketches; SDL2/Raylib **`Render()` unimplemented**, no `.cpp` in-repo. `BUILD_SDL2` / `BUILD_RAYLIB` **fail configure** (`No SOURCES given to target`) until implementations exist — they do **not** ship working adapter libraries today. Runnable SDL2 window: `tools/viewer` + `COREENGINE_BUILD_SDL2_VIEWER`. No `#include` from `core/` into platform (verified). |
 | **FFI** | `ffi/c_api.{h,cpp}` + `ffi/python`, `ffi/lua` | Shared lib `coreengine_ffi` when `BUILD_FFI=ON`; links **private** to monolithic `coreengine`. Public boundary is C types in `c_api.h`. |
 | **Tests** | `tests/UnitTests/<Area>/`, `tests/IntegrationTests/` | Single executable `coreengine_tests` when `BUILD_TESTS=ON`; links `coreengine` + GTest. Mirrors core areas (Math, AI, Collision, …). |
 | **Scripts** | `scripts/run-*-module-tests.sh` | Eleven standalone runners (no `gamestate` runner — use full `ctest`). |
@@ -47,8 +47,8 @@ Registry: [modules/registry.json](modules/registry.json) (13 modules). Subfolder
 | (none) | — | Static library `coreengine` (OBJECT libs per module) |
 | `BUILD_FFI` | OFF | Shared `coreengine_ffi` |
 | `BUILD_TESTS` | OFF | `coreengine_tests` + `ctest` discovery (299 tests) |
-| `BUILD_SDL2` | OFF | `coreengine_sdl2` static lib (needs SDL2; stubs until you add `.cpp`) |
-| `BUILD_RAYLIB` | OFF | `coreengine_raylib` static lib (needs raylib; stubs until you add `.cpp`) |
+| `BUILD_SDL2` | OFF | Intended `coreengine_sdl2` static lib; **configure fails** without `platform/sdl2/*.cpp` (headers-only today) |
+| `BUILD_RAYLIB` | OFF | Intended `coreengine_raylib` static lib; **configure fails** without `platform/raylib/*.cpp` |
 | `COREENGINE_BUILD_SDL2_VIEWER` | OFF | `coreengine_sdl2_viewer` + optional viewer tests (needs SDL2; `libsdl2-dev`) |
 | `COREENGINE_<MODULE>_STANDALONE` | OFF | Per-module test executable + narrowed link closure (see each `MODULE.md`) |
 

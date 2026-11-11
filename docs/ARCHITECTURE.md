@@ -142,7 +142,7 @@ Directly from VenusWars — broadphase SpatialGrid + narrowphase circle detectio
 
 ## Layer 2: `platform/` — Platform Adapters
 
-Each adapter implements interfaces from `core/interfaces/`. The core engine never includes platform headers. **Today:** `platform/sdl2` and `platform/raylib` ship **header-only stubs** (no reference `.cpp`); enabling `BUILD_SDL2` / `BUILD_RAYLIB` still creates CMake targets but you must supply drawing/input implementations (or use the SDL2 viewer under `tools/viewer/`).
+Each adapter implements interfaces from `core/interfaces/`. The core engine never includes platform headers. **Today:** `platform/sdl2` and `platform/raylib` are **header stubs** only (`Render()` not implemented; no `.cpp` in-repo). `-DBUILD_SDL2=ON` or `-DBUILD_RAYLIB=ON` **fails at CMake generate** with `No SOURCES given to target` until you add implementation `.cpp` files. For a windowed SDL2 tick without writing adapters, use **`COREENGINE_BUILD_SDL2_VIEWER`** (`tools/viewer/`).
 
 | Adapter | Implements | Use |
 |---------|-----------|-----|

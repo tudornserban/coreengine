@@ -56,7 +56,7 @@ typedef struct {
 /** Create and initialize an engine instance.
  *  @param mapWidth   Arena width in world units
  *  @param mapHeight  Arena height in world units
- *  @param rngSeed    0 = non-deterministic, non-zero = deterministic replay seed
+ *  @param rngSeed    LCG seed for DeterministicRNG (0 is valid; replays match for the same seed)
  *  @return Opaque engine handle, or NULL on failure */
 CE_Engine ce_engine_create(float mapWidth, float mapHeight, uint64_t rngSeed);
 
