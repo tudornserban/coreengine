@@ -1,1 +1,522 @@
-I2luY2x1ZGUgIk92ZXJsYXkuaCIKCiNpbmNsdWRlICJjb3JlL2FpL0JlaGF2aW9yQ29udGV4dC5oIgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lHYW1lVW5pdC5oIgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lCZWhhdmlvci5oIgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lVbml0QmVoYXZpb3JIb3N0LmgiCiNpbmNsdWRlICJjb3JlL2luZmx1ZW5jZV90eXBlcy9JbmZsdWVuY2VGaWVsZEl0ZW0uaCIKI2luY2x1ZGUgImNvcmUvbWFwL01hcENvbXBvbmVudHMvTWFwT2JzdGFjbGVDb21wb25lbnQuaCIKI2luY2x1ZGUgImNvcmUvbWFwL01hcEVudGl0eS5oIgoKI2luY2x1ZGUgPGFsZ29yaXRobT4KI2luY2x1ZGUgPGNtYXRoPgojaW5jbHVkZSA8Y3N0ZGlvPgojaW5jbHVkZSA8c3RyaW5nPgoKbmFtZXNwYWNlCnsKCmNvbnN0ZXhwciBmbG9hdCBrTWFya2VyV29ybGRSYWRpdXMgPSA2LjBmOwoKUmdiYSBDb2xvckZvckluZmx1ZW5jZVR5cGUoSW5mbHVlbmNlVHlwZSB0eXBlKQp7CiAgICBzd2l0Y2ggKHR5cGUpCiAgICB7CiAgICBjYXNlIEluZmx1ZW5jZVR5cGU6OkVER0U6CiAgICAgICAgcmV0dXJuIHswLCAyMjAsIDIyMCwgMjU1fTsKICAgIGNhc2UgSW5mbHVlbmNlVHlwZTo6QVRUUkFDVE9SOgogICAgICAgIHJldHVybiB7ODAsIDIyMCwgODAsIDI1NX07CiAgICBjYXNlIEluZmx1ZW5jZVR5cGU6OlJFUFVMU09SOgogICAgICAgIHJldHVybiB7MjIwLCA2MCwgNjAsIDI1NX07CiAgICBkZWZhdWx0OgogICAgICAgIHJldHVybiB7MjAwLCAyMDAsIDIwMCwgMjU1fTsKICAgIH0KfQoKdm9pZCBQdXNoSG9sbG93Q2lyY2xlKERyYXdMaXN0JiBsaXN0LCBWZWN0b3IyIGNlbnRlciwgZmxvYXQgcmFkaXVzUHgsIFJnYmEgb3V0bGluZSkKewogICAgRHJhd0NpcmNsZSBjaXJjbGU7CiAgICBjaXJjbGUuY2VudGVyID0gY2VudGVyOwogICAgY2lyY2xlLnJhZGl1cyA9IHJhZGl1c1B4OwogICAgY2lyY2xlLmZpbGwgPSBrVmlld2VySG9sbG93Q2lyY2xlRmlsbDsKICAgIGNpcmNsZS5vdXRsaW5lID0gb3V0bGluZTsKICAgIGxpc3QuY2lyY2xlcy5wdXNoX2JhY2soY2lyY2xlKTsKfQoKdm9pZCBQdXNoRmlsbGVkQ2lyY2xlKERyYXdMaXN0JiBsaXN0LCBWZWN0b3IyIGNlbnRlciwgZmxvYXQgcmFkaXVzUHgsIFJnYmEgY29sb3IpCnsKICAgIERyYXdDaXJjbGUgY2lyY2xlOwogICAgY2lyY2xlLmNlbnRlciA9IGNlbnRlcjsKICAgIGNpcmNsZS5yYWRpdXMgPSByYWRpdXNQeDsKICAgIGNpcmNsZS5maWxsID0gY29sb3I7CiAgICBjaXJjbGUub3V0bGluZSA9IGNvbG9yOwogICAgbGlzdC5jaXJjbGVzLnB1c2hfYmFjayhjaXJjbGUpOwp9Cgp2b2lkIFB1c2hDb2xsaXNpb25Dcm9zcyhEcmF3TGlzdCYgbGlzdCwgVmVjdG9yMiBzY3JlZW5DZW50ZXIsIFJnYmEgY29sb3IpCnsKICAgIGNvbnN0IGZsb2F0IGhhbGYgPSAzLjBmOwogICAgRHJhd0xpbmUgaDsKICAgIGguYSA9IFZlY3RvcjIoc2NyZWVuQ2VudGVyLnggLSBoYWxmLCBzY3JlZW5DZW50ZXIueSk7CiAgICBoLmIgPSBWZWN0b3IyKHNjcmVlbkNlbnRlci54ICsgaGFsZiwgc2NyZWVuQ2VudGVyLnkpOwogICAgaC5jb2xvciA9IGNvbG9yOwogICAgbGlzdC5saW5lcy5wdXNoX2JhY2soaCk7CiAgICBEcmF3TGluZSB2OwogICAgdi5hID0gVmVjdG9yMihzY3JlZW5DZW50ZXIueCwgc2NyZWVuQ2VudGVyLnkgLSBoYWxmKTsKICAgIHYuYiA9IFZlY3RvcjIoc2NyZWVuQ2VudGVyLngsIHNjcmVlbkNlbnRlci55ICsgaGFsZik7CiAgICB2LmNvbG9yID0gY29sb3I7CiAgICBsaXN0LmxpbmVzLnB1c2hfYmFjayh2KTsKfQoKLy8gNXg3IGJpdG1hcCBmb250OiBvbmUgYnl0ZSBwZXIgcm93LCB0b3AgYml0ID0gbGVmdCBwaXhlbC4KY29uc3RleHByIHN0ZDo6dWludDhfdCBrRm9udFNwYWNlWzddID0gezAsIDAsIDAsIDAsIDAsIDAsIDB9OwoKY29uc3RleHByIHN0ZDo6dWludDhfdCBrRm9udDBbN10gPSB7MHgwZSwgMHgxMSwgMHgxMywgMHgxNSwgMHgxOSwgMHgxMSwgMHgwZX07CmNvbnN0ZXhwciBzdGQ6OnVpbnQ4X3Qga0ZvbnQxWzddID0gezB4MDQsIDB4MGMsIDB4MDQsIDB4MDQsIDB4MDQsIDB4MDQsIDB4MGV9Owpjb25zdGV4cHIgc3RkOjp1aW50OF90IGtGb250Mls3XSA9IHsweDBlLCAweDExLCAweDAxLCAweDA2LCAweDA4LCAweDEwLCAweDFmfTsKY29uc3RleHByIHN0ZDo6dWludDhfdCBrRm9udDNbN10gPSB7MHgwZSwgMHgxMSwgMHgwMSwgMHgwNiwgMHgwMSwgMHgxMSwgMHgwZX07CmNvbnN0ZXhwciBzdGQ6OnVpbnQ4X3Qga0ZvbnQ0WzddID0gezB4MDIsIDB4MDYsIDB4MGEsIDB4MTIsIDB4MWYsIDB4MDIsIDB4MDJ9Owpjb25zdGV4cHIgc3RkOjp1aW50OF90IGtGb250NVs3XSA9IHsweDFmLCAweDEwLCAweDFlLCAweDAxLCAweDAxLCAweDExLCAweDBlfTsKY29uc3RleHByIHN0ZDo6dWludDhfdCBrRm9udDZbN10gPSB7MHgwNiwgMHgwOCwgMHgxMCwgMHgxZSwgMHgxMSwgMHgxMSwgMHgwZX07CmNvbnN0ZXhwciBzdGQ6OnVpbnQ4X3Qga0ZvbnQ3WzddID0gezB4MWYsIDB4MDEsIDB4MDIsIDB4MDQsIDB4MDgsIDB4MDgsIDB4MDh9Owpjb25zdGV4cHIgc3RkOjp1aW50OF90IGtGb250OFs3XSA9IHsweDBlLCAweDExLCAweDExLCAweDBlLCAweDExLCAweDExLCAweDBlfTsKY29uc3RleHByIHN0ZDo6dWludDhfdCBrRm9udDlbN10gPSB7MHgwZSwgMHgxMSwgMHgxMSwgMHgwZiwgMHgwMSwgMHgwMiwgMHgwY307Cgpjb25zdGV4cHIgc3RkOjp1aW50OF90IGtGb250UFs3XSA9IHsweDFlLCAweDExLCAweDExLCAweDFlLCAweDEwLCAweDEwLCAweDEwfTsKY29uc3RleHByIHN0ZDo6dWludDhfdCBrRm9udEFbN10gPSB7MHgwZSwgMHgxMSwgMHgxMSwgMHgxZiwgMHgxMSwgMHgxMSwgMHgxMX07CmNvbnN0ZXhwciBzdGQ6OnVpbnQ4X3Qga0ZvbnRVWzddID0gezB4MTEsIDB4MTEsIDB4MTEsIDB4MTEsIDB4MTEsIDB4MTEsIDB4MGV9Owpjb25zdGV4cHIgc3RkOjp1aW50OF90IGtGb250U1s3XSA9IHsweDBlLCAweDExLCAweDEwLCAweDBlLCAweDAxLCAweDExLCAweDBlfTsKY29uc3RleHByIHN0ZDo6dWludDhfdCBrRm9udEVbN10gPSB7MHgxZiwgMHgxMCwgMHgxMCwgMHgxZSwgMHgxMCwgMHgxMCwgMHgxZn07CmNvbnN0ZXhwciBzdGQ6OnVpbnQ4X3Qga0ZvbnRPWzddID0gezB4MGUsIDB4MTEsIDB4MTEsIDB4MTEsIDB4MTEsIDB4MTEsIDB4MGV9Owpjb25zdGV4cHIgc3RkOjp1aW50OF90IGtGb250Vls3XSA9IHsweDExLCAweDExLCAweDExLCAweDExLCAweDExLCAweDBhLCAweDA0fTsKY29uc3RleHByIHN0ZDo6dWludDhfdCBrRm9udFJbN10gPSB7MHgxZSwgMHgxMSwgMHgxMSwgMHgxZSwgMHgxNCwgMHgxMiwgMHgxMX07CmNvbnN0ZXhwciBzdGQ6OnVpbnQ4X3Qga0ZvbnRMWzddID0gezB4MTAsIDB4MTAsIDB4MTAsIDB4MTAsIDB4MTAsIDB4MTAsIDB4MWZ9Owpjb25zdGV4cHIgc3RkOjp1aW50OF90IGtGb250WVs3XSA9IHsweDExLCAweDExLCAweDBhLCAweDA0LCAweDA0LCAweDA0LCAweDA0fTsKY29uc3RleHByIHN0ZDo6dWludDhfdCBrRm9udElbN10gPSB7MHgwZSwgMHgwNCwgMHgwNCwgMHgwNCwgMHgwNCwgMHgwNCwgMHgwZX07CmNvbnN0ZXhwciBzdGQ6OnVpbnQ4X3Qga0ZvbnROWzddID0gezB4MTEsIDB4MTksIDB4MTUsIDB4MTMsIDB4MTEsIDB4MTEsIDB4MTF9Owpjb25zdGV4cHIgc3RkOjp1aW50OF90IGtGb250Q1s3XSA9IHsweDBlLCAweDExLCAweDEwLCAweDEwLCAweDEwLCAweDExLCAweDBlfTsKY29uc3RleHByIHN0ZDo6dWludDhfdCBrRm9udEJbN10gPSB7MHgxZSwgMHgxMSwgMHgxMSwgMHgxZSwgMHgxMSwgMHgxMSwgMHgxZX07CmNvbnN0ZXhwciBzdGQ6OnVpbnQ4X3Qga0ZvbnRIWzddID0gezB4MTEsIDB4MTEsIDB4MTEsIDB4MWYsIDB4MTEsIDB4MTEsIDB4MTF9Owpjb25zdGV4cHIgc3RkOjp1aW50OF90IGtGb250WFs3XSA9IHsweDExLCAweDExLCAweDBhLCAweDA0LCAweDBhLCAweDExLCAweDExfTsKY29uc3RleHByIHN0ZDo6dWludDhfdCBrRm9udEVxWzddID0gezB4MDAsIDB4MDAsIDB4MWYsIDB4MDAsIDB4MWYsIDB4MDAsIDB4MDB9Owpjb25zdGV4cHIgc3RkOjp1aW50OF90IGtGb250RG90WzddID0gezB4MDAsIDB4MDAsIDB4MDAsIDB4MDAsIDB4MDAsIDB4MGMsIDB4MGN9OwoKY29uc3Qgc3RkOjp1aW50OF90KiBHbHlwaEZvckNoYXIoY2hhciBjaCkKewogICAgc3dpdGNoIChjaCkKICAgIHsKICAgIGNhc2UgJyAnOgogICAgICAgIHJldHVybiBrRm9udFNwYWNlOwogICAgY2FzZSAnMCc6CiAgICAgICAgcmV0dXJuIGtGb250MDsKICAgIGNhc2UgJzEnOgogICAgICAgIHJldHVybiBrRm9udDE7CiAgICBjYXNlICcyJzoKICAgICAgICByZXR1cm4ga0ZvbnQyOwogICAgY2FzZSAnMyc6CiAgICAgICAgcmV0dXJuIGtGb250MzsKICAgIGNhc2UgJzQnOgogICAgICAgIHJldHVybiBrRm9udDQ7CiAgICBjYXNlICc1JzoKICAgICAgICByZXR1cm4ga0ZvbnQ1OwogICAgY2FzZSAnNic6CiAgICAgICAgcmV0dXJuIGtGb250NjsKICAgIGNhc2UgJzcnOgogICAgICAgIHJldHVybiBrRm9udDc7CiAgICBjYXNlICc4JzoKICAgICAgICByZXR1cm4ga0ZvbnQ4OwogICAgY2FzZSAnOSc6CiAgICAgICAgcmV0dXJuIGtGb250OTsKICAgIGNhc2UgJ3AnOgogICAgICAgIHJldHVybiBrRm9udFA7CiAgICBjYXNlICdhJzoKICAgICAgICByZXR1cm4ga0ZvbnRBOwogICAgY2FzZSAndSc6CiAgICAgICAgcmV0dXJuIGtGb250VTsKICAgIGNhc2UgJ3MnOgogICAgICAgIHJldHVybiBrRm9udFM7CiAgICBjYXNlICdlJzoKICAgICAgICByZXR1cm4ga0ZvbnRFOwogICAgY2FzZSAnbyc6CiAgICAgICAgcmV0dXJuIGtGb250TzsKICAgIGNhc2UgJ3YnOgogICAgICAgIHJldHVybiBrRm9udFY7CiAgICBjYXNlICdyJzoKICAgICAgICByZXR1cm4ga0ZvbnRSOwogICAgY2FzZSAnbCc6CiAgICAgICAgcmV0dXJuIGtGb250TDsKICAgIGNhc2UgJ3knOgogICAgICAgIHJldHVybiBrRm9udFk7CiAgICBjYXNlICdpJzoKICAgICAgICByZXR1cm4ga0ZvbnRJOwogICAgY2FzZSAnbic6CiAgICAgICAgcmV0dXJuIGtGb250TjsKICAgIGNhc2UgJ2MnOgogICAgICAgIHJldHVybiBrRm9udEM7CiAgICBjYXNlICdiJzoKICAgICAgICByZXR1cm4ga0ZvbnRCOwogICAgY2FzZSAnaCc6CiAgICAgICAgcmV0dXJuIGtGb250SDsKICAgIGNhc2UgJ3gnOgogICAgICAgIHJldHVybiBrRm9udFg7CiAgICBjYXNlICc9JzoKICAgICAgICByZXR1cm4ga0ZvbnRFcTsKICAgIGNhc2UgJy4nOgogICAgICAgIHJldHVybiBrRm9udERvdDsKICAgIGRlZmF1bHQ6CiAgICAgICAgcmV0dXJuIGtGb250U3BhY2U7CiAgICB9Cn0KCnZvaWQgRHJhd0dseXBoKERyYXdMaXN0JiBsaXN0LCBjaGFyIGNoLCBmbG9hdCBvcmlnaW5YLCBmbG9hdCBvcmlnaW5ZLCBSZ2JhIGNvbG9yKQp7CiAgICBjb25zdCBzdGQ6OnVpbnQ4X3QqIGdseXBoID0gR2x5cGhGb3JDaGFyKGNoKTsKICAgIGZvciAoaW50IHJvdyA9IDA7IHJvdyA8IDc7ICsrcm93KQogICAgewogICAgICAgIGNvbnN0IHN0ZDo6dWludDhfdCBiaXRzID0gZ2x5cGhbcm93XTsKICAgICAgICBmb3IgKGludCBjb2wgPSAwOyBjb2wgPCA1OyArK2NvbCkKICAgICAgICB7CiAgICAgICAgICAgIGlmICgoYml0cyA+PiAoNCAtIGNvbCkpICYgMSkKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgRHJhd1JlY3QgcGl4ZWw7CiAgICAgICAgICAgICAgICBwaXhlbC5taW4gPSBWZWN0b3IyKG9yaWdpblggKyBzdGF0aWNfY2FzdDxmbG9hdD4oY29sKSwgb3JpZ2luWSArIHN0YXRpY19jYXN0PGZsb2F0Pihyb3cpKTsKICAgICAgICAgICAgICAgIHBpeGVsLm1heCA9IFZlY3RvcjIocGl4ZWwubWluLngsIHBpeGVsLm1pbi55KTsKICAgICAgICAgICAgICAgIHBpeGVsLmZpbGxlZCA9IHRydWU7CiAgICAgICAgICAgICAgICBwaXhlbC5jb2xvciA9IGNvbG9yOwogICAgICAgICAgICAgICAgbGlzdC5yZWN0cy5wdXNoX2JhY2socGl4ZWwpOwogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQp9Cgp2b2lkIERyYXdUZXh0KERyYXdMaXN0JiBsaXN0LCBjb25zdCBzdGQ6OnN0cmluZyYgdGV4dCwgZmxvYXQgeCwgZmxvYXQgeSwgUmdiYSBjb2xvcikKewogICAgZmxvYXQgY3Vyc29yID0geDsKICAgIGZvciAoY2hhciBjaCA6IHRleHQpCiAgICB7CiAgICAgICAgRHJhd0dseXBoKGxpc3QsIGNoLCBjdXJzb3IsIHksIGNvbG9yKTsKICAgICAgICBjdXJzb3IgKz0gNi4wZjsKICAgIH0KfQoKc3RkOjpzdHJpbmcgT3ZlcmxheUJpdHNTdHJpbmcoY29uc3QgT3ZlcmxheUZsYWdzJiBmbGFncykKewogICAgc3RkOjpzdHJpbmcgYml0czsKICAgIGJpdHMucHVzaF9iYWNrKGZsYWdzLmNvbGxpc2lvbnMgPyAnMScgOiAnMCcpOwogICAgYml0cy5wdXNoX2JhY2soZmxhZ3MucGVyY2VwdGlvbiA/ICcxJyA6ICcwJyk7CiAgICBiaXRzLnB1c2hfYmFjayhmbGFncy5pbmZsdWVuY2UgPyAnMScgOiAnMCcpOwogICAgYml0cy5wdXNoX2JhY2soZmxhZ3Mub2JzdGFjbGVzID8gJzEnIDogJzAnKTsKICAgIGJpdHMucHVzaF9iYWNrKGZsYWdzLmJlaGF2aW9ySXRlbXMgPyAnMScgOiAnMCcpOwogICAgYml0cy5wdXNoX2JhY2soZmxhZ3MuZXhwbG9zaW9ucyA/ICcxJyA6ICcwJyk7CiAgICByZXR1cm4gYml0czsKfQoKc3RkOjpzdHJpbmcgRm9ybWF0U3BlZWQoZmxvYXQgbXVsdGlwbGllcikKewogICAgaWYgKG11bHRpcGxpZXIgPT0gMC41ZikKICAgIHsKICAgICAgICByZXR1cm4gIjAuNSI7CiAgICB9CiAgICBjaGFyIGJ1ZlsxNl07CiAgICBzdGQ6OnNucHJpbnRmKGJ1Ziwgc2l6ZW9mKGJ1ZiksICIlZCIsIHN0YXRpY19jYXN0PGludD4obXVsdGlwbGllcikpOwogICAgcmV0dXJuIGJ1ZjsKfQoKfSAvLyBuYW1lc3BhY2UKCnZvaWQgQ29sbGlzaW9uUmVjb3JkZXI6Ok9uQ29sbGlzaW9uKGNvbnN0IENvbGxpc2lvbkV2ZW50JiBldmVudCkKewogICAgZXZlbnRzXy5wdXNoX2JhY2soZXZlbnQpOwogICAgZXZlbnRUaW1lc18ucHVzaF9iYWNrKHJlZmVyZW5jZUdhbWVUaW1lXyk7Cn0KCnZvaWQgQ29sbGlzaW9uUmVjb3JkZXI6OkV4cGlyZU9sZGVyVGhhbihmbG9hdCBnYW1lVGltZSwgZmxvYXQga2VlcFNlY29uZHMpCnsKICAgIGNvbnN0IGZsb2F0IGN1dG9mZiA9IGdhbWVUaW1lIC0ga2VlcFNlY29uZHM7CiAgICBzdGQ6OnNpemVfdCB3cml0ZSA9IDA7CiAgICBmb3IgKHN0ZDo6c2l6ZV90IGkgPSAwOyBpIDwgZXZlbnRzXy5zaXplKCk7ICsraSkKICAgIHsKICAgICAgICBpZiAoZXZlbnRUaW1lc19baV0gPj0gY3V0b2ZmKQogICAgICAgIHsKICAgICAgICAgICAgZXZlbnRzX1t3cml0ZV0gPSBldmVudHNfW2ldOwogICAgICAgICAgICBldmVudFRpbWVzX1t3cml0ZV0gPSBldmVudFRpbWVzX1tpXTsKICAgICAgICAgICAgKyt3cml0ZTsKICAgICAgICB9CiAgICB9CiAgICBldmVudHNfLnJlc2l6ZSh3cml0ZSk7CiAgICBldmVudFRpbWVzXy5yZXNpemUod3JpdGUpOwp9Cgp2b2lkIENvbGxpc2lvblJlY29yZGVyOjpDbGVhcigpCnsKICAgIGV2ZW50c18uY2xlYXIoKTsKICAgIGV2ZW50VGltZXNfLmNsZWFyKCk7Cn0KCnZvaWQgTm90ZUV4cGxvc2lvbnMoY29uc3QgUlRTR2FtZVN0YXRlJiBzdGF0ZSwgc3RkOjp2ZWN0b3I8RXhwbG9zaW9uRWNobz4mIGVjaG9lcywgZmxvYXQgLypkdCovKQp7CiAgICBmb3IgKGNvbnN0IEV4cGxvc2lvbiYgZXhwbG9zaW9uIDogc3RhdGUuR2V0RXhwbG9zaW9ucygpKQogICAgewogICAgICAgIEV4cGxvc2lvbkVjaG8gZWNobzsKICAgICAgICBlY2hvLnBvc2l0aW9uID0gZXhwbG9zaW9uLkdldFBvc2l0aW9uKCk7CiAgICAgICAgZWNoby5yYWRpdXMgPSBleHBsb3Npb24uR2V0UmFkaXVzKCk7CiAgICAgICAgZWNoby5zZWNvbmRzTGVmdCA9IGtFeHBsb3Npb25FY2hvTGlmZXRpbWVTZWNvbmRzOwogICAgICAgIGVjaG9lcy5wdXNoX2JhY2soZWNobyk7CiAgICB9Cn0KCnZvaWQgVGlja0V4cGxvc2lvbkVjaG9lcyhzdGQ6OnZlY3RvcjxFeHBsb3Npb25FY2hvPiYgZWNob2VzLCBmbG9hdCBkdCkKewogICAgZm9yIChFeHBsb3Npb25FY2hvJiBlY2hvIDogZWNob2VzKQogICAgewogICAgICAgIGVjaG8uc2Vjb25kc0xlZnQgLT0gZHQ7CiAgICB9CiAgICBlY2hvZXMuZXJhc2UoCiAgICAgICAgc3RkOjpyZW1vdmVfaWYoCiAgICAgICAgICAgIGVjaG9lcy5iZWdpbigpLAogICAgICAgICAgICBlY2hvZXMuZW5kKCksCiAgICAgICAgICAgIFtdKGNvbnN0IEV4cGxvc2lvbkVjaG8mIGUpIHsgcmV0dXJuIGUuc2Vjb25kc0xlZnQgPD0gMC4wZjsgfSksCiAgICAgICAgZWNob2VzLmVuZCgpKTsKfQoKdm9pZCBBcHBlbmRPdmVybGF5cygKICAgIERyYXdMaXN0JiBsaXN0LAogICAgUlRTR2FtZVN0YXRlJiBzdGF0ZSwKICAgIGNvbnN0IENhbWVyYSYgY2FtZXJhLAogICAgY29uc3QgT3ZlcmxheUZsYWdzJiBmbGFncywKICAgIGNvbnN0IENvbGxpc2lvblJlY29yZGVyJiBjb2xsaXNpb25zLAogICAgY29uc3Qgc3RkOjp2ZWN0b3I8RXhwbG9zaW9uRWNobz4mIGVjaG9lcykKewogICAgaWYgKGZsYWdzLmNvbGxpc2lvbnMpCiAgICB7CiAgICAgICAgZm9yIChjb25zdCBDb2xsaXNpb25FdmVudCYgZXZlbnQgOiBjb2xsaXNpb25zLkV2ZW50cygpKQogICAgICAgIHsKICAgICAgICAgICAgY29uc3QgVmVjdG9yMiBjb250YWN0U2NyZWVuID0gY2FtZXJhLldvcmxkVG9TY3JlZW4oZXZlbnQuY29udGFjdFBvaW50KTsKICAgICAgICAgICAgUHVzaENvbGxpc2lvbkNyb3NzKGxpc3QsIGNvbnRhY3RTY3JlZW4sIGtWaWV3ZXJDb2xsaXNpb25PdmVybGF5Q29sb3IpOwogICAgICAgICAgICBjb25zdCBWZWN0b3IyIG5vcm1hbEVuZCA9IGV2ZW50LmNvbnRhY3RQb2ludCArIGV2ZW50Lm5vcm1hbCAqIDIwLjBmOwogICAgICAgICAgICBEcmF3TGluZSBub3JtYWxMaW5lOwogICAgICAgICAgICBub3JtYWxMaW5lLmEgPSBjb250YWN0U2NyZWVuOwogICAgICAgICAgICBub3JtYWxMaW5lLmIgPSBjYW1lcmEuV29ybGRUb1NjcmVlbihub3JtYWxFbmQpOwogICAgICAgICAgICBub3JtYWxMaW5lLmNvbG9yID0ga1ZpZXdlckNvbGxpc2lvbk92ZXJsYXlDb2xvcjsKICAgICAgICAgICAgbGlzdC5saW5lcy5wdXNoX2JhY2sobm9ybWFsTGluZSk7CiAgICAgICAgfQogICAgfQoKICAgIGlmIChmbGFncy5wZXJjZXB0aW9uKQogICAgewogICAgICAgIGNvbnN0IGZsb2F0IHJpbmdSYWRpdXMgPSBzdGF0ZS5HZXRQZXJjZXB0aW9uUmFkaXVzKCkgKiBjYW1lcmEucGl4ZWxzUGVyVW5pdDsKICAgICAgICBmb3IgKElHYW1lVW5pdCogdW5pdCA6IHN0YXRlLkdldEFsbFVuaXRzKCkpCiAgICAgICAgewogICAgICAgICAgICBpZiAodW5pdCA9PSBudWxscHRyKQogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICBjb250aW51ZTsKICAgICAgICAgICAgfQogICAgICAgICAgICBQdXNoSG9sbG93Q2lyY2xlKAogICAgICAgICAgICAgICAgbGlzdCwKICAgICAgICAgICAgICAgIGNhbWVyYS5Xb3JsZFRvU2NyZWVuKHVuaXQtPkdldFBvc2l0aW9uKCkpLAogICAgICAgICAgICAgICAgcmluZ1JhZGl1cywKICAgICAgICAgICAgICAgIGtWaWV3ZXJQZXJjZXB0aW9uT3V0bGluZUNvbG9yKTsKICAgICAgICB9CiAgICB9CgogICAgaWYgKGZsYWdzLmluZmx1ZW5jZSkKICAgIHsKICAgICAgICBjb25zdCBmbG9hdCBtYXJrZXJQeCA9IGtNYXJrZXJXb3JsZFJhZGl1cyAqIGNhbWVyYS5waXhlbHNQZXJVbml0OwogICAgICAgIGZvciAoY29uc3QgSW5mbHVlbmNlRmllbGRJdGVtJiBpdGVtIDogc3RhdGUuR2V0U3RhdGljSXRlbXMoKSkKICAgICAgICB7CiAgICAgICAgICAgIFB1c2hGaWxsZWRDaXJjbGUoCiAgICAgICAgICAgICAgICBsaXN0LAogICAgICAgICAgICAgICAgY2FtZXJhLldvcmxkVG9TY3JlZW4oaXRlbS5HZXRQb3NpdGlvbigpKSwKICAgICAgICAgICAgICAgIG1hcmtlclB4LAogICAgICAgICAgICAgICAgQ29sb3JGb3JJbmZsdWVuY2VUeXBlKGl0ZW0uR2V0SW5mbHVlbmNlVHlwZSgpKSk7CiAgICAgICAgfQogICAgICAgIGZvciAoY29uc3QgSW5mbHVlbmNlRmllbGRJdGVtJiBpdGVtIDogc3RhdGUuR2V0U3RhdGljQXR0cmFjdG9ycygpKQogICAgICAgIHsKICAgICAgICAgICAgUHVzaEZpbGxlZENpcmNsZSgKICAgICAgICAgICAgICAgIGxpc3QsCiAgICAgICAgICAgICAgICBjYW1lcmEuV29ybGRUb1NjcmVlbihpdGVtLkdldFBvc2l0aW9uKCkpLAogICAgICAgICAgICAgICAgbWFya2VyUHgsCiAgICAgICAgICAgICAgICBDb2xvckZvckluZmx1ZW5jZVR5cGUoaXRlbS5HZXRJbmZsdWVuY2VUeXBlKCkpKTsKICAgICAgICB9CiAgICB9CgogICAgaWYgKGZsYWdzLm9ic3RhY2xlcykKICAgIHsKICAgICAgICBjb25zdCBNYXAqIG1hcCA9IHN0YXRlLkdldE1hcCgpOwogICAgICAgIGlmIChtYXAgIT0gbnVsbHB0cikKICAgICAgICB7CiAgICAgICAgICAgIGZvciAoY29uc3QgYXV0byYgZW50aXR5UHRyIDogbWFwLT5HZXRFbnRpdGllcygpKQogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICBjb25zdCBNYXBFbnRpdHkqIGVudGl0eSA9IGVudGl0eVB0ci5nZXQoKTsKICAgICAgICAgICAgICAgIGlmIChlbnRpdHkgPT0gbnVsbHB0cikKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBjb250aW51ZTsKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIGNvbnN0IE1hcE9ic3RhY2xlQ29tcG9uZW50KiBvYnN0YWNsZSA9IGVudGl0eS0+R2V0Q29tcG9uZW50PE1hcE9ic3RhY2xlQ29tcG9uZW50PigpOwogICAgICAgICAgICAgICAgaWYgKG9ic3RhY2xlID09IG51bGxwdHIpCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgY29udGludWU7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBjb25zdCBmbG9hdCByYWRpdXNQeCA9IG9ic3RhY2xlLT5HZXRSYWRpdXMoKSAqIGNhbWVyYS5waXhlbHNQZXJVbml0OwogICAgICAgICAgICAgICAgUHVzaEZpbGxlZENpcmNsZSgKICAgICAgICAgICAgICAgICAgICBsaXN0LAogICAgICAgICAgICAgICAgICAgIGNhbWVyYS5Xb3JsZFRvU2NyZWVuKGVudGl0eS0+R2V0UG9zaXRpb24oKSksCiAgICAgICAgICAgICAgICAgICAgcmFkaXVzUHgsCiAgICAgICAgICAgICAgICAgICAga1ZpZXdlck9ic3RhY2xlT3ZlcmxheUNvbG9yKTsKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KCiAgICBpZiAoZmxhZ3MuYmVoYXZpb3JJdGVtcykKICAgIHsKICAgICAgICBjb25zdCBmbG9hdCBtYXJrZXJQeCA9IGtNYXJrZXJXb3JsZFJhZGl1cyAqIGNhbWVyYS5waXhlbHNQZXJVbml0OwogICAgICAgIGZvciAoSUdhbWVVbml0KiB1bml0IDogc3RhdGUuR2V0QWxsVW5pdHMoKSkKICAgICAgICB7CiAgICAgICAgICAgIGlmICh1bml0ID09IG51bGxwdHIpCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIGNvbnRpbnVlOwogICAgICAgICAgICB9CiAgICAgICAgICAgIGF1dG8qIGhvc3QgPSBkeW5hbWljX2Nhc3Q8SVVuaXRCZWhhdmlvckhvc3QqPih1bml0KTsKICAgICAgICAgICAgaWYgKGhvc3QgPT0gbnVsbHB0cikKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgY29udGludWU7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgSUJlaGF2aW9yKiBiZWhhdmlvciA9IGhvc3QtPkdldEN1cnJlbnRCZWhhdmlvcigpOwogICAgICAgICAgICBpZiAoYmVoYXZpb3IgPT0gbnVsbHB0cikKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgY29udGludWU7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgQmVoYXZpb3JDb250ZXh0IGN0eCA9IHN0YXRlLkJ1aWxkQ29udGV4dEZvclVuaXQodW5pdCwgMC4wZik7CiAgICAgICAgICAgIGNvbnN0IHN0ZDo6dmVjdG9yPEluZmx1ZW5jZUZpZWxkSXRlbT4gaXRlbXMgPSBiZWhhdmlvci0+R2VuZXJhdGVGaWVsZEl0ZW1zKGN0eCk7CiAgICAgICAgICAgIGZvciAoY29uc3QgSW5mbHVlbmNlRmllbGRJdGVtJiBpdGVtIDogaXRlbXMpCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIFB1c2hGaWxsZWRDaXJjbGUoCiAgICAgICAgICAgICAgICAgICAgbGlzdCwKICAgICAgICAgICAgICAgICAgICBjYW1lcmEuV29ybGRUb1NjcmVlbihpdGVtLkdldFBvc2l0aW9uKCkpLAogICAgICAgICAgICAgICAgICAgIG1hcmtlclB4LAogICAgICAgICAgICAgICAgICAgIENvbG9yRm9ySW5mbHVlbmNlVHlwZShpdGVtLkdldEluZmx1ZW5jZVR5cGUoKSkpOwogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQoKICAgIGlmIChmbGFncy5leHBsb3Npb25zKQogICAgewogICAgICAgIGZvciAoY29uc3QgRXhwbG9zaW9uRWNobyYgZWNobyA6IGVjaG9lcykKICAgICAgICB7CiAgICAgICAgICAgIGNvbnN0IGZsb2F0IHJhZGl1c1B4ID0gZWNoby5yYWRpdXMgKiBjYW1lcmEucGl4ZWxzUGVyVW5pdDsKICAgICAgICAgICAgUHVzaEhvbGxvd0NpcmNsZSgKICAgICAgICAgICAgICAgIGxpc3QsCiAgICAgICAgICAgICAgICBjYW1lcmEuV29ybGRUb1NjcmVlbihlY2hvLnBvc2l0aW9uKSwKICAgICAgICAgICAgICAgIHJhZGl1c1B4LAogICAgICAgICAgICAgICAga1ZpZXdlckV4cGxvc2lvbk91dGxpbmVDb2xvcik7CiAgICAgICAgfQogICAgfQp9Cgp2b2lkIEFwcGVuZFN0YXR1c0xpbmUoCiAgICBEcmF3TGlzdCYgbGlzdCwKICAgIGNvbnN0IEdhbWVMb2dpY0VuZ2luZSYgZW5naW5lLAogICAgY29uc3QgUGxheWJhY2tDb250cm9sbGVyJiBwbGF5YmFjaywKICAgIGNvbnN0IE92ZXJsYXlGbGFncyYgZmxhZ3MsCiAgICBzdGQ6OnNpemVfdCB1bml0Q291bnQpCnsKICAgIGNvbnN0IHN0ZDo6c3RyaW5nIGxpbmUgPSAicGF1c2U9IiArIHN0ZDo6c3RyaW5nKHBsYXliYWNrLklzUGF1c2VkKCkgPyAiMSIgOiAiMCIpICsgIiBzcGVlZD0iCiAgICAgICAgKyBGb3JtYXRTcGVlZChlbmdpbmUuR2V0U3BlZWRNdWx0aXBsaWVyKCkpICsgIiBvdmVybGF5cz0iICsgT3ZlcmxheUJpdHNTdHJpbmcoZmxhZ3MpICsgIiB1bml0cz0iCiAgICAgICAgKyBzdGQ6OnRvX3N0cmluZyh1bml0Q291bnQpOwogICAgY29uc3QgUmdiYSB0ZXh0Q29sb3J7MjQwLCAyNDAsIDI0MCwgMjU1fTsKICAgIERyYXdUZXh0KGxpc3QsIGxpbmUsIDguMGYsIDguMGYsIHRleHRDb2xvcik7Cn0KCmJvb2wgU2V0T3ZlcmxheUZsYWcoT3ZlcmxheUZsYWdzJiBmbGFncywgY29uc3Qgc3RkOjpzdHJpbmcmIG5hbWUsIGJvb2wgZW5hYmxlZCwgc3RkOjpzdHJpbmcmIGVycm9yKQp7CiAgICBpZiAobmFtZSA9PSAiY29sbGlzaW9ucyIpCiAgICB7CiAgICAgICAgZmxhZ3MuY29sbGlzaW9ucyA9IGVuYWJsZWQ7CiAgICAgICAgcmV0dXJuIHRydWU7CiAgICB9CiAgICBpZiAobmFtZSA9PSAicGVyY2VwdGlvbiIpCiAgICB7CiAgICAgICAgZmxhZ3MucGVyY2VwdGlvbiA9IGVuYWJsZWQ7CiAgICAgICAgcmV0dXJuIHRydWU7CiAgICB9CiAgICBpZiAobmFtZSA9PSAiaW5mbHVlbmNlIikKICAgIHsKICAgICAgICBmbGFncy5pbmZsdWVuY2UgPSBlbmFibGVkOwogICAgICAgIHJldHVybiB0cnVlOwogICAgfQogICAgaWYgKG5hbWUgPT0gIm9ic3RhY2xlcyIpCiAgICB7CiAgICAgICAgZmxhZ3Mub2JzdGFjbGVzID0gZW5hYmxlZDsKICAgICAgICByZXR1cm4gdHJ1ZTsKICAgIH0KICAgIGlmIChuYW1lID09ICJiZWhhdmlvciIpCiAgICB7CiAgICAgICAgZmxhZ3MuYmVoYXZpb3JJdGVtcyA9IGVuYWJsZWQ7CiAgICAgICAgcmV0dXJuIHRydWU7CiAgICB9CiAgICBpZiAobmFtZSA9PSAiZXhwbG9zaW9ucyIpCiAgICB7CiAgICAgICAgZmxhZ3MuZXhwbG9zaW9ucyA9IGVuYWJsZWQ7CiAgICAgICAgcmV0dXJuIHRydWU7CiAgICB9CiAgICBlcnJvciA9ICJ1bmtub3duIG92ZXJsYXkgbmFtZTogIiArIG5hbWU7CiAgICByZXR1cm4gZmFsc2U7Cn0KCmJvb2wgVG9nZ2xlT3ZlcmxheUZsYWcoT3ZlcmxheUZsYWdzJiBmbGFncywgY29uc3Qgc3RkOjpzdHJpbmcmIG5hbWUpCnsKICAgIHN0ZDo6c3RyaW5nIGVycm9yOwogICAgaWYgKG5hbWUgPT0gImNvbGxpc2lvbnMiKQogICAgewogICAgICAgIGZsYWdzLmNvbGxpc2lvbnMgPSAhZmxhZ3MuY29sbGlzaW9uczsKICAgICAgICByZXR1cm4gdHJ1ZTsKICAgIH0KICAgIGlmIChuYW1lID09ICJwZXJjZXB0aW9uIikKICAgIHsKICAgICAgICBmbGFncy5wZXJjZXB0aW9uID0gIWZsYWdzLnBlcmNlcHRpb247CiAgICAgICAgcmV0dXJuIHRydWU7CiAgICB9CiAgICBpZiAobmFtZSA9PSAiaW5mbHVlbmNlIikKICAgIHsKICAgICAgICBmbGFncy5pbmZsdWVuY2UgPSAhZmxhZ3MuaW5mbHVlbmNlOwogICAgICAgIHJldHVybiB0cnVlOwogICAgfQogICAgaWYgKG5hbWUgPT0gIm9ic3RhY2xlcyIpCiAgICB7CiAgICAgICAgZmxhZ3Mub2JzdGFjbGVzID0gIWZsYWdzLm9ic3RhY2xlczsKICAgICAgICByZXR1cm4gdHJ1ZTsKICAgIH0KICAgIGlmIChuYW1lID09ICJiZWhhdmlvciIpCiAgICB7CiAgICAgICAgZmxhZ3MuYmVoYXZpb3JJdGVtcyA9ICFmbGFncy5iZWhhdmlvckl0ZW1zOwogICAgICAgIHJldHVybiB0cnVlOwogICAgfQogICAgaWYgKG5hbWUgPT0gImV4cGxvc2lvbnMiKQogICAgewogICAgICAgIGZsYWdzLmV4cGxvc2lvbnMgPSAhZmxhZ3MuZXhwbG9zaW9uczsKICAgICAgICByZXR1cm4gdHJ1ZTsKICAgIH0KICAgIHJldHVybiBmYWxzZTsKfQoKT3ZlcmxheUtleSBPdmVybGF5S2V5RnJvbVZpZXdlckZLZXkoaW50IGtleUluZGV4KQp7CiAgICBzd2l0Y2ggKGtleUluZGV4KQogICAgewogICAgY2FzZSAxOgogICAgICAgIHJldHVybiBPdmVybGF5S2V5OjpDb2xsaXNpb25zOwogICAgY2FzZSAyOgogICAgICAgIHJldHVybiBPdmVybGF5S2V5OjpQZXJjZXB0aW9uOwogICAgY2FzZSAzOgogICAgICAgIHJldHVybiBPdmVybGF5S2V5OjpJbmZsdWVuY2U7CiAgICBjYXNlIDQ6CiAgICAgICAgcmV0dXJuIE92ZXJsYXlLZXk6Ok9ic3RhY2xlczsKICAgIGNhc2UgNToKICAgICAgICByZXR1cm4gT3ZlcmxheUtleTo6QmVoYXZpb3JJdGVtczsKICAgIGNhc2UgNjoKICAgICAgICByZXR1cm4gT3ZlcmxheUtleTo6RXhwbG9zaW9uczsKICAgIGRlZmF1bHQ6CiAgICAgICAgcmV0dXJuIE92ZXJsYXlLZXk6OlVua25vd247CiAgICB9Cn0KCg==
+#include "Overlay.h"
+
+#include "core/ai/BehaviorContext.h"
+#include "core/interfaces/IGameUnit.h"
+#include "core/interfaces/IBehavior.h"
+#include "core/interfaces/IUnitBehaviorHost.h"
+#include "core/influence_types/InfluenceFieldItem.h"
+#include "core/map/MapComponents/MapObstacleComponent.h"
+#include "core/map/MapEntity.h"
+
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <string>
+
+namespace
+{
+
+constexpr float kMarkerWorldRadius = 6.0f;
+
+Rgba ColorForInfluenceType(InfluenceType type)
+{
+    switch (type)
+    {
+    case InfluenceType::EDGE:
+        return {0, 220, 220, 255};
+    case InfluenceType::ATTRACTOR:
+        return {80, 220, 80, 255};
+    case InfluenceType::REPULSOR:
+        return {220, 60, 60, 255};
+    default:
+        return {200, 200, 200, 255};
+    }
+}
+
+void PushHollowCircle(DrawList& list, Vector2 center, float radiusPx, Rgba outline)
+{
+    DrawCircle circle;
+    circle.center = center;
+    circle.radius = radiusPx;
+    circle.fill = kViewerHollowCircleFill;
+    circle.outline = outline;
+    list.circles.push_back(circle);
+}
+
+void PushFilledCircle(DrawList& list, Vector2 center, float radiusPx, Rgba color)
+{
+    DrawCircle circle;
+    circle.center = center;
+    circle.radius = radiusPx;
+    circle.fill = color;
+    circle.outline = color;
+    list.circles.push_back(circle);
+}
+
+void PushCollisionCross(DrawList& list, Vector2 screenCenter, Rgba color)
+{
+    const float half = 3.0f;
+    DrawLine h;
+    h.a = Vector2(screenCenter.x - half, screenCenter.y);
+    h.b = Vector2(screenCenter.x + half, screenCenter.y);
+    h.color = color;
+    list.lines.push_back(h);
+    DrawLine v;
+    v.a = Vector2(screenCenter.x, screenCenter.y - half);
+    v.b = Vector2(screenCenter.x, screenCenter.y + half);
+    v.color = color;
+    list.lines.push_back(v);
+}
+
+// 5x7 bitmap font: one byte per row, top bit = left pixel.
+constexpr std::uint8_t kFontSpace[7] = {0, 0, 0, 0, 0, 0, 0};
+
+constexpr std::uint8_t kFont0[7] = {0x0e, 0x11, 0x13, 0x15, 0x19, 0x11, 0x0e};
+constexpr std::uint8_t kFont1[7] = {0x04, 0x0c, 0x04, 0x04, 0x04, 0x04, 0x0e};
+constexpr std::uint8_t kFont2[7] = {0x0e, 0x11, 0x01, 0x06, 0x08, 0x10, 0x1f};
+constexpr std::uint8_t kFont3[7] = {0x0e, 0x11, 0x01, 0x06, 0x01, 0x11, 0x0e};
+constexpr std::uint8_t kFont4[7] = {0x02, 0x06, 0x0a, 0x12, 0x1f, 0x02, 0x02};
+constexpr std::uint8_t kFont5[7] = {0x1f, 0x10, 0x1e, 0x01, 0x01, 0x11, 0x0e};
+constexpr std::uint8_t kFont6[7] = {0x06, 0x08, 0x10, 0x1e, 0x11, 0x11, 0x0e};
+constexpr std::uint8_t kFont7[7] = {0x1f, 0x01, 0x02, 0x04, 0x08, 0x08, 0x08};
+constexpr std::uint8_t kFont8[7] = {0x0e, 0x11, 0x11, 0x0e, 0x11, 0x11, 0x0e};
+constexpr std::uint8_t kFont9[7] = {0x0e, 0x11, 0x11, 0x0f, 0x01, 0x02, 0x0c};
+
+constexpr std::uint8_t kFontP[7] = {0x1e, 0x11, 0x11, 0x1e, 0x10, 0x10, 0x10};
+constexpr std::uint8_t kFontA[7] = {0x0e, 0x11, 0x11, 0x1f, 0x11, 0x11, 0x11};
+constexpr std::uint8_t kFontU[7] = {0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x0e};
+constexpr std::uint8_t kFontS[7] = {0x0e, 0x11, 0x10, 0x0e, 0x01, 0x11, 0x0e};
+constexpr std::uint8_t kFontE[7] = {0x1f, 0x10, 0x10, 0x1e, 0x10, 0x10, 0x1f};
+constexpr std::uint8_t kFontO[7] = {0x0e, 0x11, 0x11, 0x11, 0x11, 0x11, 0x0e};
+constexpr std::uint8_t kFontV[7] = {0x11, 0x11, 0x11, 0x11, 0x11, 0x0a, 0x04};
+constexpr std::uint8_t kFontR[7] = {0x1e, 0x11, 0x11, 0x1e, 0x14, 0x12, 0x11};
+constexpr std::uint8_t kFontL[7] = {0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x1f};
+constexpr std::uint8_t kFontY[7] = {0x11, 0x11, 0x0a, 0x04, 0x04, 0x04, 0x04};
+constexpr std::uint8_t kFontI[7] = {0x0e, 0x04, 0x04, 0x04, 0x04, 0x04, 0x0e};
+constexpr std::uint8_t kFontN[7] = {0x11, 0x19, 0x15, 0x13, 0x11, 0x11, 0x11};
+constexpr std::uint8_t kFontC[7] = {0x0e, 0x11, 0x10, 0x10, 0x10, 0x11, 0x0e};
+constexpr std::uint8_t kFontB[7] = {0x1e, 0x11, 0x11, 0x1e, 0x11, 0x11, 0x1e};
+constexpr std::uint8_t kFontH[7] = {0x11, 0x11, 0x11, 0x1f, 0x11, 0x11, 0x11};
+constexpr std::uint8_t kFontX[7] = {0x11, 0x11, 0x0a, 0x04, 0x0a, 0x11, 0x11};
+constexpr std::uint8_t kFontEq[7] = {0x00, 0x00, 0x1f, 0x00, 0x1f, 0x00, 0x00};
+constexpr std::uint8_t kFontDot[7] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0x0c};
+
+const std::uint8_t* GlyphForChar(char ch)
+{
+    switch (ch)
+    {
+    case ' ':
+        return kFontSpace;
+    case '0':
+        return kFont0;
+    case '1':
+        return kFont1;
+    case '2':
+        return kFont2;
+    case '3':
+        return kFont3;
+    case '4':
+        return kFont4;
+    case '5':
+        return kFont5;
+    case '6':
+        return kFont6;
+    case '7':
+        return kFont7;
+    case '8':
+        return kFont8;
+    case '9':
+        return kFont9;
+    case 'p':
+        return kFontP;
+    case 'a':
+        return kFontA;
+    case 'u':
+        return kFontU;
+    case 's':
+        return kFontS;
+    case 'e':
+        return kFontE;
+    case 'o':
+        return kFontO;
+    case 'v':
+        return kFontV;
+    case 'r':
+        return kFontR;
+    case 'l':
+        return kFontL;
+    case 'y':
+        return kFontY;
+    case 'i':
+        return kFontI;
+    case 'n':
+        return kFontN;
+    case 'c':
+        return kFontC;
+    case 'b':
+        return kFontB;
+    case 'h':
+        return kFontH;
+    case 'x':
+        return kFontX;
+    case '=':
+        return kFontEq;
+    case '.':
+        return kFontDot;
+    default:
+        return kFontSpace;
+    }
+}
+
+void DrawGlyph(DrawList& list, char ch, float originX, float originY, Rgba color)
+{
+    const std::uint8_t* glyph = GlyphForChar(ch);
+    for (int row = 0; row < 7; ++row)
+    {
+        const std::uint8_t bits = glyph[row];
+        for (int col = 0; col < 5; ++col)
+        {
+            if ((bits >> (4 - col)) & 1)
+            {
+                DrawRect pixel;
+                pixel.min = Vector2(originX + static_cast<float>(col), originY + static_cast<float>(row));
+                pixel.max = Vector2(pixel.min.x, pixel.min.y);
+                pixel.filled = true;
+                pixel.color = color;
+                list.rects.push_back(pixel);
+            }
+        }
+    }
+}
+
+void DrawText(DrawList& list, const std::string& text, float x, float y, Rgba color)
+{
+    float cursor = x;
+    for (char ch : text)
+    {
+        DrawGlyph(list, ch, cursor, y, color);
+        cursor += 6.0f;
+    }
+}
+
+std::string OverlayBitsString(const OverlayFlags& flags)
+{
+    std::string bits;
+    bits.push_back(flags.collisions ? '1' : '0');
+    bits.push_back(flags.perception ? '1' : '0');
+    bits.push_back(flags.influence ? '1' : '0');
+    bits.push_back(flags.obstacles ? '1' : '0');
+    bits.push_back(flags.behaviorItems ? '1' : '0');
+    bits.push_back(flags.explosions ? '1' : '0');
+    return bits;
+}
+
+std::string FormatSpeed(float multiplier)
+{
+    if (multiplier == 0.5f)
+    {
+        return "0.5";
+    }
+    char buf[16];
+    std::snprintf(buf, sizeof(buf), "%d", static_cast<int>(multiplier));
+    return buf;
+}
+
+} // namespace
+
+void CollisionRecorder::OnCollision(const CollisionEvent& event)
+{
+    events_.push_back(event);
+    eventTimes_.push_back(referenceGameTime_);
+}
+
+void CollisionRecorder::ExpireOlderThan(float gameTime, float keepSeconds)
+{
+    const float cutoff = gameTime - keepSeconds;
+    std::size_t write = 0;
+    for (std::size_t i = 0; i < events_.size(); ++i)
+    {
+        if (eventTimes_[i] >= cutoff)
+        {
+            events_[write] = events_[i];
+            eventTimes_[write] = eventTimes_[i];
+            ++write;
+        }
+    }
+    events_.resize(write);
+    eventTimes_.resize(write);
+}
+
+void CollisionRecorder::Clear()
+{
+    events_.clear();
+    eventTimes_.clear();
+}
+
+void NoteExplosions(const RTSGameState& state, std::vector<ExplosionEcho>& echoes, float /*dt*/)
+{
+    for (const Explosion& explosion : state.GetExplosions())
+    {
+        ExplosionEcho echo;
+        echo.position = explosion.GetPosition();
+        echo.radius = explosion.GetRadius();
+        echo.secondsLeft = kExplosionEchoLifetimeSeconds;
+        echoes.push_back(echo);
+    }
+}
+
+void TickExplosionEchoes(std::vector<ExplosionEcho>& echoes, float dt)
+{
+    for (ExplosionEcho& echo : echoes)
+    {
+        echo.secondsLeft -= dt;
+    }
+    echoes.erase(
+        std::remove_if(
+            echoes.begin(),
+            echoes.end(),
+            [](const ExplosionEcho& e) { return e.secondsLeft <= 0.0f; }),
+        echoes.end());
+}
+
+void AppendOverlays(
+    DrawList& list,
+    RTSGameState& state,
+    const Camera& camera,
+    const OverlayFlags& flags,
+    const CollisionRecorder& collisions,
+    const std::vector<ExplosionEcho>& echoes)
+{
+    if (flags.collisions)
+    {
+        for (const CollisionEvent& event : collisions.Events())
+        {
+            const Vector2 contactScreen = camera.WorldToScreen(event.contactPoint);
+            PushCollisionCross(list, contactScreen, kViewerCollisionOverlayColor);
+            const Vector2 normalEnd = event.contactPoint + event.normal * 20.0f;
+            DrawLine normalLine;
+            normalLine.a = contactScreen;
+            normalLine.b = camera.WorldToScreen(normalEnd);
+            normalLine.color = kViewerCollisionOverlayColor;
+            list.lines.push_back(normalLine);
+        }
+    }
+
+    if (flags.perception)
+    {
+        const float ringRadius = state.GetPerceptionRadius() * camera.pixelsPerUnit;
+        for (IGameUnit* unit : state.GetAllUnits())
+        {
+            if (unit == nullptr)
+            {
+                continue;
+            }
+            PushHollowCircle(
+                list,
+                camera.WorldToScreen(unit->GetPosition()),
+                ringRadius,
+                kViewerPerceptionOutlineColor);
+        }
+    }
+
+    if (flags.influence)
+    {
+        const float markerPx = kMarkerWorldRadius * camera.pixelsPerUnit;
+        for (const InfluenceFieldItem& item : state.GetStaticItems())
+        {
+            PushFilledCircle(
+                list,
+                camera.WorldToScreen(item.GetPosition()),
+                markerPx,
+                ColorForInfluenceType(item.GetInfluenceType()));
+        }
+        for (const InfluenceFieldItem& item : state.GetStaticAttractors())
+        {
+            PushFilledCircle(
+                list,
+                camera.WorldToScreen(item.GetPosition()),
+                markerPx,
+                ColorForInfluenceType(item.GetInfluenceType()));
+        }
+    }
+
+    if (flags.obstacles)
+    {
+        const Map* map = state.GetMap();
+        if (map != nullptr)
+        {
+            for (const auto& entityPtr : map->GetEntities())
+            {
+                const MapEntity* entity = entityPtr.get();
+                if (entity == nullptr)
+                {
+                    continue;
+                }
+                const MapObstacleComponent* obstacle = entity->GetComponent<MapObstacleComponent>();
+                if (obstacle == nullptr)
+                {
+                    continue;
+                }
+                const float radiusPx = obstacle->GetRadius() * camera.pixelsPerUnit;
+                PushFilledCircle(
+                    list,
+                    camera.WorldToScreen(entity->GetPosition()),
+                    radiusPx,
+                    kViewerObstacleOverlayColor);
+            }
+        }
+    }
+
+    if (flags.behaviorItems)
+    {
+        const float markerPx = kMarkerWorldRadius * camera.pixelsPerUnit;
+        for (IGameUnit* unit : state.GetAllUnits())
+        {
+            if (unit == nullptr)
+            {
+                continue;
+            }
+            auto* host = dynamic_cast<IUnitBehaviorHost*>(unit);
+            if (host == nullptr)
+            {
+                continue;
+            }
+            IBehavior* behavior = host->GetCurrentBehavior();
+            if (behavior == nullptr)
+            {
+                continue;
+            }
+            BehaviorContext ctx = state.BuildContextForUnit(unit, 0.0f);
+            const std::vector<InfluenceFieldItem> items = behavior->GenerateFieldItems(ctx);
+            for (const InfluenceFieldItem& item : items)
+            {
+                PushFilledCircle(
+                    list,
+                    camera.WorldToScreen(item.GetPosition()),
+                    markerPx,
+                    ColorForInfluenceType(item.GetInfluenceType()));
+            }
+        }
+    }
+
+    if (flags.explosions)
+    {
+        for (const ExplosionEcho& echo : echoes)
+        {
+            const float radiusPx = echo.radius * camera.pixelsPerUnit;
+            PushHollowCircle(
+                list,
+                camera.WorldToScreen(echo.position),
+                radiusPx,
+                kViewerExplosionOutlineColor);
+        }
+    }
+}
+
+void AppendStatusLine(
+    DrawList& list,
+    const GameLogicEngine& engine,
+    const PlaybackController& playback,
+    const OverlayFlags& flags,
+    std::size_t unitCount)
+{
+    const std::string line = "pause=" + std::string(playback.IsPaused() ? "1" : "0") + " speed="
+        + FormatSpeed(engine.GetSpeedMultiplier()) + " overlays=" + OverlayBitsString(flags) + " units="
+        + std::to_string(unitCount);
+    const Rgba textColor{240, 240, 240, 255};
+    DrawText(list, line, 8.0f, 8.0f, textColor);
+}
+
+bool SetOverlayFlag(OverlayFlags& flags, const std::string& name, bool enabled, std::string& error)
+{
+    if (name == "collisions")
+    {
+        flags.collisions = enabled;
+        return true;
+    }
+    if (name == "perception")
+    {
+        flags.perception = enabled;
+        return true;
+    }
+    if (name == "influence")
+    {
+        flags.influence = enabled;
+        return true;
+    }
+    if (name == "obstacles")
+    {
+        flags.obstacles = enabled;
+        return true;
+    }
+    if (name == "behavior")
+    {
+        flags.behaviorItems = enabled;
+        return true;
+    }
+    if (name == "explosions")
+    {
+        flags.explosions = enabled;
+        return true;
+    }
+    error = "unknown overlay name: " + name;
+    return false;
+}
+
+bool ToggleOverlayFlag(OverlayFlags& flags, const std::string& name)
+{
+    std::string error;
+    if (name == "collisions")
+    {
+        flags.collisions = !flags.collisions;
+        return true;
+    }
+    if (name == "perception")
+    {
+        flags.perception = !flags.perception;
+        return true;
+    }
+    if (name == "influence")
+    {
+        flags.influence = !flags.influence;
+        return true;
+    }
+    if (name == "obstacles")
+    {
+        flags.obstacles = !flags.obstacles;
+        return true;
+    }
+    if (name == "behavior")
+    {
+        flags.behaviorItems = !flags.behaviorItems;
+        return true;
+    }
+    if (name == "explosions")
+    {
+        flags.explosions = !flags.explosions;
+        return true;
+    }
+    return false;
+}
+
+OverlayKey OverlayKeyFromViewerFKey(int keyIndex)
+{
+    switch (keyIndex)
+    {
+    case 1:
+        return OverlayKey::Collisions;
+    case 2:
+        return OverlayKey::Perception;
+    case 3:
+        return OverlayKey::Influence;
+    case 4:
+        return OverlayKey::Obstacles;
+    case 5:
+        return OverlayKey::BehaviorItems;
+    case 6:
+        return OverlayKey::Explosions;
+    default:
+        return OverlayKey::Unknown;
+    }
+}
+

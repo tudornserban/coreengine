@@ -1,1 +1,90 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiQ2FtZXJhLmgiCiNpbmNsdWRlICJEcmF3TGlzdC5oIgojaW5jbHVkZSAiU2NlbmFyaW8uaCIKCiNpbmNsdWRlICJjb3JlL2NvbGxpc2lvbi9Db2xsaXNpb25FdmVudC5oIgojaW5jbHVkZSAiY29yZS9jb2xsaXNpb24vSUNvbGxpc2lvbk9ic2VydmVyLmgiCiNpbmNsdWRlICJjb3JlL2dhbWVzdGF0ZS9SVFNHYW1lU3RhdGUuaCIKI2luY2x1ZGUgImNvcmUvZ2FtZWxvb3AvR2FtZUxvZ2ljRW5naW5lLmgiCiNpbmNsdWRlICJjb3JlL2dhbWVsb29wL1BsYXliYWNrQ29udHJvbGxlci5oIgojaW5jbHVkZSAiY29yZS9tYXRoL1ZlY3RvcjIuaCIKCiNpbmNsdWRlIDxjc3RkaW50PgojaW5jbHVkZSA8dmVjdG9yPgoKc3RydWN0IE92ZXJsYXlGbGFncwp7CiAgICBib29sIGNvbGxpc2lvbnMgPSBmYWxzZTsKICAgIGJvb2wgcGVyY2VwdGlvbiA9IGZhbHNlOwogICAgYm9vbCBpbmZsdWVuY2UgPSBmYWxzZTsKICAgIGJvb2wgb2JzdGFjbGVzID0gZmFsc2U7CiAgICBib29sIGJlaGF2aW9ySXRlbXMgPSBmYWxzZTsKICAgIGJvb2wgZXhwbG9zaW9ucyA9IGZhbHNlOwp9OwoKY2xhc3MgQ29sbGlzaW9uUmVjb3JkZXIgOiBwdWJsaWMgSUNvbGxpc2lvbk9ic2VydmVyCnsKcHVibGljOgogICAgdm9pZCBPbkNvbGxpc2lvbihjb25zdCBDb2xsaXNpb25FdmVudCYgZXZlbnQpIG92ZXJyaWRlOwogICAgdm9pZCBFeHBpcmVPbGRlclRoYW4oZmxvYXQgZ2FtZVRpbWUsIGZsb2F0IGtlZXBTZWNvbmRzKTsKICAgIHZvaWQgU2V0UmVmZXJlbmNlR2FtZVRpbWUoZmxvYXQgZ2FtZVRpbWUpIHsgcmVmZXJlbmNlR2FtZVRpbWVfID0gZ2FtZVRpbWU7IH0KICAgIHZvaWQgQ2xlYXIoKTsKICAgIGNvbnN0IHN0ZDo6dmVjdG9yPENvbGxpc2lvbkV2ZW50PiYgRXZlbnRzKCkgY29uc3QgeyByZXR1cm4gZXZlbnRzXzsgfQoKcHJpdmF0ZToKICAgIHN0ZDo6dmVjdG9yPENvbGxpc2lvbkV2ZW50PiBldmVudHNfOwogICAgc3RkOjp2ZWN0b3I8ZmxvYXQ+IGV2ZW50VGltZXNfOwogICAgZmxvYXQgcmVmZXJlbmNlR2FtZVRpbWVfID0gMC4wZjsKfTsKCnN0cnVjdCBFeHBsb3Npb25FY2hvCnsKICAgIFZlY3RvcjIgcG9zaXRpb247CiAgICBmbG9hdCByYWRpdXM7CiAgICBmbG9hdCBzZWNvbmRzTGVmdDsKfTsKCmNvbnN0ZXhwciBmbG9hdCBrRXhwbG9zaW9uRWNob0xpZmV0aW1lU2Vjb25kcyA9IDAuNWY7CmNvbnN0ZXhwciBmbG9hdCBrQ29sbGlzaW9uT3ZlcmxheUtlZXBTZWNvbmRzID0gMy4wZjsKCmNvbnN0ZXhwciBSZ2JhIGtWaWV3ZXJDb2xsaXNpb25PdmVybGF5Q29sb3J7MjU1LCAxNjAsIDQwLCAyNTV9Owpjb25zdGV4cHIgUmdiYSBrVmlld2VyUGVyY2VwdGlvbk91dGxpbmVDb2xvcnsxMjAsIDIyMCwgMjU1LCAyNTV9Owpjb25zdGV4cHIgUmdiYSBrVmlld2VyRXhwbG9zaW9uT3V0bGluZUNvbG9yezI1NSwgODAsIDQwLCAyNTV9Owpjb25zdGV4cHIgUmdiYSBrVmlld2VyT2JzdGFjbGVPdmVybGF5Q29sb3J7MTYwLCAxNjAsIDE2MCwgMjU1fTsKY29uc3RleHByIFJnYmEga1ZpZXdlckhvbGxvd0NpcmNsZUZpbGx7MCwgMCwgMCwgMH07Cgp2b2lkIE5vdGVFeHBsb3Npb25zKGNvbnN0IFJUU0dhbWVTdGF0ZSYgc3RhdGUsIHN0ZDo6dmVjdG9yPEV4cGxvc2lvbkVjaG8+JiBlY2hvZXMsIGZsb2F0IGR0KTsKdm9pZCBUaWNrRXhwbG9zaW9uRWNob2VzKHN0ZDo6dmVjdG9yPEV4cGxvc2lvbkVjaG8+JiBlY2hvZXMsIGZsb2F0IGR0KTsKCnZvaWQgQXBwZW5kT3ZlcmxheXMoCiAgICBEcmF3TGlzdCYgbGlzdCwKICAgIFJUU0dhbWVTdGF0ZSYgc3RhdGUsCiAgICBjb25zdCBDYW1lcmEmIGNhbWVyYSwKICAgIGNvbnN0IE92ZXJsYXlGbGFncyYgZmxhZ3MsCiAgICBjb25zdCBDb2xsaXNpb25SZWNvcmRlciYgY29sbGlzaW9ucywKICAgIGNvbnN0IHN0ZDo6dmVjdG9yPEV4cGxvc2lvbkVjaG8+JiBlY2hvZXMpOwoKdm9pZCBBcHBlbmRTdGF0dXNMaW5lKAogICAgRHJhd0xpc3QmIGxpc3QsCiAgICBjb25zdCBHYW1lTG9naWNFbmdpbmUmIGVuZ2luZSwKICAgIGNvbnN0IFBsYXliYWNrQ29udHJvbGxlciYgcGxheWJhY2ssCiAgICBjb25zdCBPdmVybGF5RmxhZ3MmIGZsYWdzLAogICAgc3RkOjpzaXplX3QgdW5pdENvdW50KTsKCmJvb2wgU2V0T3ZlcmxheUZsYWcoT3ZlcmxheUZsYWdzJiBmbGFncywgY29uc3Qgc3RkOjpzdHJpbmcmIG5hbWUsIGJvb2wgZW5hYmxlZCwgc3RkOjpzdHJpbmcmIGVycm9yKTsKYm9vbCBUb2dnbGVPdmVybGF5RmxhZyhPdmVybGF5RmxhZ3MmIGZsYWdzLCBjb25zdCBzdGQ6OnN0cmluZyYgbmFtZSk7CgplbnVtIGNsYXNzIE92ZXJsYXlLZXkKewogICAgQ29sbGlzaW9ucywKICAgIFBlcmNlcHRpb24sCiAgICBJbmZsdWVuY2UsCiAgICBPYnN0YWNsZXMsCiAgICBCZWhhdmlvckl0ZW1zLAogICAgRXhwbG9zaW9ucywKICAgIFVua25vd24KfTsKCk92ZXJsYXlLZXkgT3ZlcmxheUtleUZyb21WaWV3ZXJGS2V5KGludCBrZXlJbmRleCk7Cg==
+#pragma once
+
+#include "Camera.h"
+#include "DrawList.h"
+#include "Scenario.h"
+
+#include "core/collision/CollisionEvent.h"
+#include "core/collision/ICollisionObserver.h"
+#include "core/gamestate/RTSGameState.h"
+#include "core/gameloop/GameLogicEngine.h"
+#include "core/gameloop/PlaybackController.h"
+#include "core/math/Vector2.h"
+
+#include <cstdint>
+#include <vector>
+
+struct OverlayFlags
+{
+    bool collisions = false;
+    bool perception = false;
+    bool influence = false;
+    bool obstacles = false;
+    bool behaviorItems = false;
+    bool explosions = false;
+};
+
+class CollisionRecorder : public ICollisionObserver
+{
+public:
+    void OnCollision(const CollisionEvent& event) override;
+    void ExpireOlderThan(float gameTime, float keepSeconds);
+    void SetReferenceGameTime(float gameTime) { referenceGameTime_ = gameTime; }
+    void Clear();
+    const std::vector<CollisionEvent>& Events() const { return events_; }
+
+private:
+    std::vector<CollisionEvent> events_;
+    std::vector<float> eventTimes_;
+    float referenceGameTime_ = 0.0f;
+};
+
+struct ExplosionEcho
+{
+    Vector2 position;
+    float radius;
+    float secondsLeft;
+};
+
+constexpr float kExplosionEchoLifetimeSeconds = 0.5f;
+constexpr float kCollisionOverlayKeepSeconds = 3.0f;
+
+constexpr Rgba kViewerCollisionOverlayColor{255, 160, 40, 255};
+constexpr Rgba kViewerPerceptionOutlineColor{120, 220, 255, 255};
+constexpr Rgba kViewerExplosionOutlineColor{255, 80, 40, 255};
+constexpr Rgba kViewerObstacleOverlayColor{160, 160, 160, 255};
+constexpr Rgba kViewerHollowCircleFill{0, 0, 0, 0};
+
+void NoteExplosions(const RTSGameState& state, std::vector<ExplosionEcho>& echoes, float dt);
+void TickExplosionEchoes(std::vector<ExplosionEcho>& echoes, float dt);
+
+void AppendOverlays(
+    DrawList& list,
+    RTSGameState& state,
+    const Camera& camera,
+    const OverlayFlags& flags,
+    const CollisionRecorder& collisions,
+    const std::vector<ExplosionEcho>& echoes);
+
+void AppendStatusLine(
+    DrawList& list,
+    const GameLogicEngine& engine,
+    const PlaybackController& playback,
+    const OverlayFlags& flags,
+    std::size_t unitCount);
+
+bool SetOverlayFlag(OverlayFlags& flags, const std::string& name, bool enabled, std::string& error);
+bool ToggleOverlayFlag(OverlayFlags& flags, const std::string& name);
+
+enum class OverlayKey
+{
+    Collisions,
+    Perception,
+    Influence,
+    Obstacles,
+    BehaviorItems,
+    Explosions,
+    Unknown
+};
+
+OverlayKey OverlayKeyFromViewerFKey(int keyIndex);

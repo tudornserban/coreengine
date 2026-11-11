@@ -1,1 +1,36 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiY29yZS9nYW1lbG9vcC9HYW1lTG9naWNFbmdpbmUuaCIKCmVudW0gY2xhc3MgVmlld2VyS2V5CnsKICAgIFNwYWNlLAogICAgRGlnaXQxLAogICAgRGlnaXQyLAogICAgRGlnaXQzLAogICAgRGlnaXQ0LAogICAgUGVyaW9kLAogICAgUiwKICAgIFVua25vd24KfTsKCmVudW0gY2xhc3MgUGxheWJhY2tDb21tYW5kCnsKICAgIE5vbmUsCiAgICBUb2dnbGVQYXVzZSwKICAgIEhhbGZTcGVlZCwKICAgIE5vcm1hbFNwZWVkLAogICAgRG91YmxlU3BlZWQsCiAgICBRdWFkU3BlZWQsCiAgICBTdGVwT25jZSwKICAgIFJlc2V0U2NlbmUKfTsKClBsYXliYWNrQ29tbWFuZCBDb21tYW5kRm9yS2V5KFZpZXdlcktleSBrZXkpOwoKc3RydWN0IFRpY2tSZXN1bHQKewogICAgaW50IHN0ZXBzUnVuID0gMDsKfTsKClRpY2tSZXN1bHQgU3RlcE9uZVRpY2soR2FtZUxvZ2ljRW5naW5lJiBlbmdpbmUpOwo=
+#pragma once
+
+#include "core/gameloop/GameLogicEngine.h"
+
+enum class ViewerKey
+{
+    Space,
+    Digit1,
+    Digit2,
+    Digit3,
+    Digit4,
+    Period,
+    R,
+    Unknown
+};
+
+enum class PlaybackCommand
+{
+    None,
+    TogglePause,
+    HalfSpeed,
+    NormalSpeed,
+    DoubleSpeed,
+    QuadSpeed,
+    StepOnce,
+    ResetScene
+};
+
+PlaybackCommand CommandForKey(ViewerKey key);
+
+struct TickResult
+{
+    int stepsRun = 0;
+};
+
+TickResult StepOneTick(GameLogicEngine& engine);
