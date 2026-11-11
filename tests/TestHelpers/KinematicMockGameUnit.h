@@ -1,1 +1,13 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lVbml0S2luZW1hdGljcy5oIgojaW5jbHVkZSAidGVzdHMvVGVzdEhlbHBlcnMvTW9ja0dhbWVVbml0LmgiCgovLyBUZXN0IGRvdWJsZSBzbyBjb2xsaXNpb24gZ3Rlc3RzIGNhbiBleGVyY2lzZSBJVW5pdEtpbmVtYXRpY3Mgd2l0aG91dCBSVFNVbml0LgpjbGFzcyBLaW5lbWF0aWNNb2NrR2FtZVVuaXQgOiBwdWJsaWMgTW9ja0dhbWVVbml0LCBwdWJsaWMgSVVuaXRLaW5lbWF0aWNzIHsKcHVibGljOgogICAgdXNpbmcgTW9ja0dhbWVVbml0OjpNb2NrR2FtZVVuaXQ7CgogICAgdm9pZCBTZXRQb3NpdGlvbihWZWN0b3IyIHBvcykgb3ZlcnJpZGUgeyBNb2NrR2FtZVVuaXQ6OlNldFBvc2l0aW9uKHBvcyk7IH0KICAgIHZvaWQgU2V0VmVsb2NpdHkoVmVjdG9yMiB2ZWwpIG92ZXJyaWRlIHsgTW9ja0dhbWVVbml0OjpTZXRWZWxvY2l0eSh2ZWwpOyB9Cn07Cg==
+#pragma once
+
+#include "core/interfaces/IUnitKinematics.h"
+#include "tests/TestHelpers/MockGameUnit.h"
+
+// Test double so collision gtests can exercise IUnitKinematics without RTSUnit.
+class KinematicMockGameUnit : public MockGameUnit, public IUnitKinematics {
+public:
+    using MockGameUnit::MockGameUnit;
+
+    void SetPosition(Vector2 pos) override { MockGameUnit::SetPosition(pos); }
+    void SetVelocity(Vector2 vel) override { MockGameUnit::SetVelocity(vel); }
+};

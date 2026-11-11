@@ -1,1 +1,24 @@
-I2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgojaW5jbHVkZSAiY29yZS9haS9CZWhhdmlvckNvbnRleHQuaCIKI2luY2x1ZGUgImNvcmUvYWkvQmVoYXZpb3JGYWN0b3J5LmgiCiNpbmNsdWRlICJjb3JlL2FpL0JlaGF2aW9ycy9Db2hlc2lvbkJlaGF2aW9yLmgiCiNpbmNsdWRlICJjb3JlL2FpL0JlaGF2aW9ycy9GbGVlQmVoYXZpb3IuaCIKI2luY2x1ZGUgImNvcmUvYWkvQmVoYXZpb3JzL1NlZWtCZWhhdmlvci5oIgojaW5jbHVkZSAiY29yZS9haS9CZWhhdmlvcnMvU2VwYXJhdGlvbkJlaGF2aW9yLmgiCiNpbmNsdWRlICJjb3JlL2FpL0JlaGF2aW9ycy9XYW5kZXJCZWhhdmlvci5oIgojaW5jbHVkZSAiY29yZS9haS9Db25kaXRpb25zL0FsbGllc05lYXJieUNvbmRpdGlvbi5oIgojaW5jbHVkZSAiY29yZS9haS9Db25kaXRpb25zL0VuZW15SW5SYW5nZUNvbmRpdGlvbi5oIgojaW5jbHVkZSAiY29yZS9haS9Db25kaXRpb25zL1RpbWVFbGFwc2VkQ29uZGl0aW9uLmgiCiNpbmNsdWRlICJjb3JlL2FpL1N0YXRlTWFjaGluZS5oIgoKbmFtZXNwYWNlIHsKCi8vLyBTbW9rZSBjb21waWxlOiBleHBvcnRlZCBBSSBoZWFkZXJzIHBhcnNlIHVuZGVyIHJlcG8tcm9vdCBpbmNsdWRlcy4KY2xhc3MgQUlIZWFkZXJDb21waWxlVGVzdCA6IHB1YmxpYyA6OnRlc3Rpbmc6OlRlc3Qge307Cgp9ICAvLyBuYW1lc3BhY2UKClRFU1RfRihBSUhlYWRlckNvbXBpbGVUZXN0LCBBbGxFeHBvcnRlZEhlYWRlcnNJbmNsdWRlZCkgewogICAgU1VDQ0VFRCgpOwp9Cg==
+#include <gtest/gtest.h>
+
+#include "core/ai/BehaviorContext.h"
+#include "core/ai/BehaviorFactory.h"
+#include "core/ai/Behaviors/CohesionBehavior.h"
+#include "core/ai/Behaviors/FleeBehavior.h"
+#include "core/ai/Behaviors/SeekBehavior.h"
+#include "core/ai/Behaviors/SeparationBehavior.h"
+#include "core/ai/Behaviors/WanderBehavior.h"
+#include "core/ai/Conditions/AlliesNearbyCondition.h"
+#include "core/ai/Conditions/EnemyInRangeCondition.h"
+#include "core/ai/Conditions/TimeElapsedCondition.h"
+#include "core/ai/StateMachine.h"
+
+namespace {
+
+/// Smoke compile: exported AI headers parse under repo-root includes.
+class AIHeaderCompileTest : public ::testing::Test {};
+
+}  // namespace
+
+TEST_F(AIHeaderCompileTest, AllExportedHeadersIncluded) {
+    SUCCEED();
+}

@@ -1,1 +1,17 @@
-IyEvdXNyL2Jpbi9lbnYgYmFzaAojIENvbWJhdC1vbmx5IGJ1aWxkOiBjb3JlLm1hdGggKyBjb3JlLmludGVyZmFjZXMgKGhlYWRlcnMpICsgY29yZS5jb21iYXQgKyBDb21iYXQgZ3Rlc3RzIChubyBmdWxsIGNvcmVlbmdpbmUgbW9ub2xpdGgpLgpzZXQgLWV1byBwaXBlZmFpbAoKUk9PVD0iJChjZCAiJChkaXJuYW1lICIke0JBU0hfU09VUkNFWzBdfSIpLy4uIiAmJiBwd2QpIgpCVUlMRF9ESVI9IiR7Uk9PVH0vYnVpbGQtY29tYmF0IgpleHBvcnQgQ1hYPSIke0NYWDotZysrfSIKCmVjaG8gIltydW4tY29tYmF0LW1vZHVsZS10ZXN0c10gQ01BS0VfQklOQVJZX0RJUj0ke0JVSUxEX0RJUn0iCgpjbWFrZSAtUyAiJHtST09UfSIgLUIgIiR7QlVJTERfRElSfSIgLUcgTmluamEgXAogIC1EQlVJTERfVEVTVFM9T04gXAogIC1EQlVJTERfRkZJPU9GRiBcCiAgLURDT1JFRU5HSU5FX0NPTUJBVF9TVEFOREFMT05FPU9OCgpjbWFrZSAtLWJ1aWxkICIke0JVSUxEX0RJUn0iIC0tdGFyZ2V0IGNvcmVlbmdpbmVfY29tYmF0X3Rlc3RzCmN0ZXN0IC0tdGVzdC1kaXIgIiR7QlVJTERfRElSfSIgLS1vdXRwdXQtb24tZmFpbHVyZQo=
+#!/usr/bin/env bash
+# Combat-only build: core.math + core.interfaces (headers) + core.combat + Combat gtests (no full coreengine monolith).
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BUILD_DIR="${ROOT}/build-combat"
+export CXX="${CXX:-g++}"
+
+echo "[run-combat-module-tests] CMAKE_BINARY_DIR=${BUILD_DIR}"
+
+cmake -S "${ROOT}" -B "${BUILD_DIR}" -G Ninja \
+  -DBUILD_TESTS=ON \
+  -DBUILD_FFI=OFF \
+  -DCOREENGINE_COMBAT_STANDALONE=ON
+
+cmake --build "${BUILD_DIR}" --target coreengine_combat_tests
+ctest --test-dir "${BUILD_DIR}" --output-on-failure
