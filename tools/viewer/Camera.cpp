@@ -1,1 +1,59 @@
-I2luY2x1ZGUgIkNhbWVyYS5oIgoKI2luY2x1ZGUgPGFsZ29yaXRobT4KClZlY3RvcjIgQ2FtZXJhOjpXb3JsZFRvU2NyZWVuKFZlY3RvcjIgd29ybGQpIGNvbnN0CnsKICAgIFZlY3RvcjIgZCA9IHdvcmxkIC0gY2VudGVyOwogICAgcmV0dXJuIFZlY3RvcjIoCiAgICAgICAgdmlld3BvcnRXICogMC41ZiArIGQueCAqIHBpeGVsc1BlclVuaXQsCiAgICAgICAgdmlld3BvcnRIICogMC41ZiArIGQueSAqIHBpeGVsc1BlclVuaXQpOwp9CgpWZWN0b3IyIENhbWVyYTo6U2NyZWVuVG9Xb3JsZChWZWN0b3IyIHNjcmVlbikgY29uc3QKewogICAgcmV0dXJuIFZlY3RvcjIoCiAgICAgICAgY2VudGVyLnggKyAoc2NyZWVuLnggLSB2aWV3cG9ydFcgKiAwLjVmKSAvIHBpeGVsc1BlclVuaXQsCiAgICAgICAgY2VudGVyLnkgKyAoc2NyZWVuLnkgLSB2aWV3cG9ydEggKiAwLjVmKSAvIHBpeGVsc1BlclVuaXQpOwp9Cgp2b2lkIENhbWVyYTo6UGFuKFZlY3RvcjIgc2NyZWVuRGVsdGEpCnsKICAgIGNlbnRlci54IC09IHNjcmVlbkRlbHRhLnggLyBwaXhlbHNQZXJVbml0OwogICAgY2VudGVyLnkgLT0gc2NyZWVuRGVsdGEueSAvIHBpeGVsc1BlclVuaXQ7Cn0KCnZvaWQgQ2FtZXJhOjpab29tQXQoVmVjdG9yMiBzY3JlZW4sIGZsb2F0IGZhY3RvcikKewogICAgaWYgKGZhY3RvciA8PSAwLjBmKQogICAgewogICAgICAgIHJldHVybjsKICAgIH0KICAgIGNvbnN0IFZlY3RvcjIgYW5jaG9yV29ybGQgPSBTY3JlZW5Ub1dvcmxkKHNjcmVlbik7CiAgICBwaXhlbHNQZXJVbml0ICo9IGZhY3RvcjsKICAgIGNvbnN0IFZlY3RvcjIgYW5jaG9yQWZ0ZXIgPSBTY3JlZW5Ub1dvcmxkKHNjcmVlbik7CiAgICBjZW50ZXIueCArPSBhbmNob3JXb3JsZC54IC0gYW5jaG9yQWZ0ZXIueDsKICAgIGNlbnRlci55ICs9IGFuY2hvcldvcmxkLnkgLSBhbmNob3JBZnRlci55Owp9CgpDYW1lcmEgRml0TWFwKFZlY3RvcjIgbWFwU2l6ZSwgaW50IHZpZXdwb3J0VywgaW50IHZpZXdwb3J0SCwgZmxvYXQgbWFyZ2luUHgpCnsKICAgIENhbWVyYSBjYW1lcmE7CiAgICBjYW1lcmEudmlld3BvcnRXID0gdmlld3BvcnRXOwogICAgY2FtZXJhLnZpZXdwb3J0SCA9IHZpZXdwb3J0SDsKCiAgICBpZiAobWFwU2l6ZS54IDw9IDAuMGYgfHwgbWFwU2l6ZS55IDw9IDAuMGYgfHwgdmlld3BvcnRXIDw9IDAgfHwgdmlld3BvcnRIIDw9IDAKICAgICAgICB8fCBtYXJnaW5QeCAqIDIuMGYgPj0gc3RhdGljX2Nhc3Q8ZmxvYXQ+KHZpZXdwb3J0VykKICAgICAgICB8fCBtYXJnaW5QeCAqIDIuMGYgPj0gc3RhdGljX2Nhc3Q8ZmxvYXQ+KHZpZXdwb3J0SCkpCiAgICB7CiAgICAgICAgY2FtZXJhLmNlbnRlciA9IFZlY3RvcjIoMC4wZiwgMC4wZik7CiAgICAgICAgY2FtZXJhLnBpeGVsc1BlclVuaXQgPSAxLjBmOwogICAgICAgIHJldHVybiBjYW1lcmE7CiAgICB9CgogICAgY2FtZXJhLmNlbnRlciA9IG1hcFNpemUgKiAwLjVmOwogICAgZmxvYXQgdXNhYmxlVyA9IHZpZXdwb3J0VyAtIDIuMGYgKiBtYXJnaW5QeDsKICAgIGZsb2F0IHVzYWJsZUggPSB2aWV3cG9ydEggLSAyLjBmICogbWFyZ2luUHg7CiAgICBjYW1lcmEucGl4ZWxzUGVyVW5pdCA9IHN0ZDo6bWluKHVzYWJsZVcgLyBtYXBTaXplLngsIHVzYWJsZUggLyBtYXBTaXplLnkpOwogICAgcmV0dXJuIGNhbWVyYTsKfQo=
+#include "Camera.h"
+
+#include <algorithm>
+
+Vector2 Camera::WorldToScreen(Vector2 world) const
+{
+    Vector2 d = world - center;
+    return Vector2(
+        viewportW * 0.5f + d.x * pixelsPerUnit,
+        viewportH * 0.5f + d.y * pixelsPerUnit);
+}
+
+Vector2 Camera::ScreenToWorld(Vector2 screen) const
+{
+    return Vector2(
+        center.x + (screen.x - viewportW * 0.5f) / pixelsPerUnit,
+        center.y + (screen.y - viewportH * 0.5f) / pixelsPerUnit);
+}
+
+void Camera::Pan(Vector2 screenDelta)
+{
+    center.x -= screenDelta.x / pixelsPerUnit;
+    center.y -= screenDelta.y / pixelsPerUnit;
+}
+
+void Camera::ZoomAt(Vector2 screen, float factor)
+{
+    if (factor <= 0.0f)
+    {
+        return;
+    }
+    const Vector2 anchorWorld = ScreenToWorld(screen);
+    pixelsPerUnit *= factor;
+    const Vector2 anchorAfter = ScreenToWorld(screen);
+    center.x += anchorWorld.x - anchorAfter.x;
+    center.y += anchorWorld.y - anchorAfter.y;
+}
+
+Camera FitMap(Vector2 mapSize, int viewportW, int viewportH, float marginPx)
+{
+    Camera camera;
+    camera.viewportW = viewportW;
+    camera.viewportH = viewportH;
+
+    if (mapSize.x <= 0.0f || mapSize.y <= 0.0f || viewportW <= 0 || viewportH <= 0
+        || marginPx * 2.0f >= static_cast<float>(viewportW)
+        || marginPx * 2.0f >= static_cast<float>(viewportH))
+    {
+        camera.center = Vector2(0.0f, 0.0f);
+        camera.pixelsPerUnit = 1.0f;
+        return camera;
+    }
+
+    camera.center = mapSize * 0.5f;
+    float usableW = viewportW - 2.0f * marginPx;
+    float usableH = viewportH - 2.0f * marginPx;
+    camera.pixelsPerUnit = std::min(usableW / mapSize.x, usableH / mapSize.y);
+    return camera;
+}

@@ -1,1 +1,17 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiY29yZS9tYXRoL1ZlY3RvcjIuaCIKCnN0cnVjdCBDYW1lcmEKewogICAgVmVjdG9yMiBjZW50ZXI7CiAgICBmbG9hdCBwaXhlbHNQZXJVbml0OwogICAgaW50IHZpZXdwb3J0VzsKICAgIGludCB2aWV3cG9ydEg7CiAgICBWZWN0b3IyIFdvcmxkVG9TY3JlZW4oVmVjdG9yMiB3b3JsZCkgY29uc3Q7CiAgICBWZWN0b3IyIFNjcmVlblRvV29ybGQoVmVjdG9yMiBzY3JlZW4pIGNvbnN0OwogICAgdm9pZCBQYW4oVmVjdG9yMiBzY3JlZW5EZWx0YSk7CiAgICB2b2lkIFpvb21BdChWZWN0b3IyIHNjcmVlbiwgZmxvYXQgZmFjdG9yKTsKfTsKCkNhbWVyYSBGaXRNYXAoVmVjdG9yMiBtYXBTaXplLCBpbnQgdmlld3BvcnRXLCBpbnQgdmlld3BvcnRILCBmbG9hdCBtYXJnaW5QeCk7Cg==
+#pragma once
+
+#include "core/math/Vector2.h"
+
+struct Camera
+{
+    Vector2 center;
+    float pixelsPerUnit;
+    int viewportW;
+    int viewportH;
+    Vector2 WorldToScreen(Vector2 world) const;
+    Vector2 ScreenToWorld(Vector2 screen) const;
+    void Pan(Vector2 screenDelta);
+    void ZoomAt(Vector2 screen, float factor);
+};
+
+Camera FitMap(Vector2 mapSize, int viewportW, int viewportH, float marginPx);
