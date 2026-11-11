@@ -63,6 +63,33 @@ lib.ce_engine_get_seed.argtypes = (ctypes.c_void_p,)
 
 lib.ce_engine_reset.argtypes = (ctypes.c_void_p,)
 
+lib.ce_behavior_register_accel.restype = ctypes.c_int
+AccelFn = ctypes.CFUNCTYPE(
+    None,
+    ctypes.c_float,
+    ctypes.c_float,
+    ctypes.c_float,
+    ctypes.c_float,
+    ctypes.c_int,
+    ctypes.c_float,
+    ctypes.POINTER(ctypes.c_float),
+    ctypes.POINTER(ctypes.c_float),
+    ctypes.c_void_p,
+)
+lib.ce_behavior_register_accel.argtypes = (
+    ctypes.c_char_p,
+    AccelFn,
+    ctypes.c_void_p,
+)
+
+def noop_accel(x, y, vx, vy, team, dt, out_ax, out_ay, userdata):
+    out_ax[0] = 0.0
+    out_ay[0] = 0.0
+
+if lib.ce_behavior_register_accel(b"VerifyAccel", AccelFn(noop_accel), None) != 1:
+    print("verify-ffi-build: ce_behavior_register_accel failed", file=sys.stderr)
+    sys.exit(1)
+
 engine = lib.ce_engine_create(1600.0, 900.0, 42)
 if not engine:
     print("verify-ffi-build: ce_engine_create returned NULL", file=sys.stderr)

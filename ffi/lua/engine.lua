@@ -36,6 +36,11 @@ ffi.cdef[[
     int   ce_timer_grant_charge(void* engine, int teamId);
     int   ce_last_result(void* engine);
     float ce_territory_get_pct(void* engine, int teamId);
+    typedef void (*CE_AccelFn)(float x, float y, float vx, float vy,
+        int team, float dt, float* outAx, float* outAy, void* userdata);
+    void ce_behavior_register(const char* name);
+    int  ce_behavior_register_accel(const char* name, CE_AccelFn fn, void* userdata);
+    int  ce_behavior_list(char* buffer, int bufferSize);
     const char* ce_version(void);
     const char* ce_ffi_version(void);
 ]]

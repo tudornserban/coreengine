@@ -21,9 +21,9 @@ extern "C" {
 #include <stdint.h>
 
 #define CE_FFI_VERSION_MAJOR 1
-#define CE_FFI_VERSION_MINOR 2
+#define CE_FFI_VERSION_MINOR 3
 #define CE_FFI_VERSION_PATCH 0
-#define CE_FFI_VERSION       "1.2.0"
+#define CE_FFI_VERSION       "1.3.0"
 
 typedef enum CE_Result {
     CE_OK = 0,
@@ -148,10 +148,19 @@ float ce_territory_get_pct(CE_Engine engine, int teamId);
 
 /* ---- Behavior factory ---- */
 
-/** Register a behavior name so it can be used with ce_unit_set_behavior().
- *  Game-specific behaviors must be registered before use.
- *  Built-in behaviors (Seek, Flee, Wander, Cohesion, Separation) are pre-registered. */
+typedef void (*CE_AccelFn)(
+    float x, float y, float vx, float vy,
+    int team, float dt,
+    float* outAx, float* outAy,
+    void* userdata);
+
+/** @deprecated No-op — does not register a behavior creator. Use ce_behavior_register_accel. */
 void ce_behavior_register(const char* name);
+
+/** Register a direct-acceleration behavior by name.
+ *  Copies name; fn and userdata must outlive later simulation ticks.
+ *  @return 1 on success, 0 if name is NULL/empty or fn is NULL */
+int ce_behavior_register_accel(const char* name, CE_AccelFn fn, void* userdata);
 
 /** Get all registered behavior names as a comma-separated string.
  *  @param buffer     Output buffer
@@ -164,7 +173,7 @@ int ce_behavior_list(char* buffer, int bufferSize);
 /** Returns the engine version string (e.g. "CoreEngine 1.0.0") */
 const char* ce_version();
 
-/** Returns the FFI package version string (CE_FFI_VERSION, e.g. "1.2.0") */
+/** Returns the FFI package version string (CE_FFI_VERSION, e.g. "1.3.0") */
 const char* ce_ffi_version(void);
 
 #ifdef __cplusplus

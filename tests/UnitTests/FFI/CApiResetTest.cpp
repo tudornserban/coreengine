@@ -160,12 +160,12 @@ TEST_F(CApiResetTest, NoCrossTalkBetweenEngines) {
     ce_engine_destroy(other);
 }
 
-TEST_F(CApiResetTest, FfiVersionIs120) {
-    EXPECT_STREQ(ce_ffi_version(), "1.2.0");
+TEST_F(CApiResetTest, FfiVersionIs130) {
+    EXPECT_STREQ(ce_ffi_version(), "1.3.0");
 }
 
-// Structural replay only (Wander does not consume RNG while static edge items are non-empty).
-TEST_F(CApiResetTest, StructuralReplayAfterResetMatchesFresh_Seed12345_NotRngOracle) {
+// RNG oracle: built-in Wander consumes deterministic RNG via CalculateAcceleration after F1.2 hub fix.
+TEST_F(CApiResetTest, WanderReplayAfterResetMatchesFresh_Seed12345_RngOracle) {
     CE_Engine fresh = ce_engine_create(1600.0f, 900.0f, kSeed12345);
     ASSERT_NE(fresh, nullptr);
     RunWanderSequence(fresh);

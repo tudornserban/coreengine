@@ -67,7 +67,7 @@ All module presets use map `800×600`, seed `1`, and perception radius `80` (exc
 | `two-units` | Default map + two idle teams |
 | `collision` | Two units at `(380,300)` / `(420,300)` with opposing `SetVelocity`; viewer-local **Coast** influence behavior integrates motion until overlap (hub does not integrate bare velocity) |
 | `combat` | Four units at fixed spawn positions with stored ±X velocities (the hub does **not** integrate velocity without a behavior). Scheduled center explosion at **t = 0.5 s**; visible motion is mostly **explosion impulse**, not convergence (**no HP damage**) |
-| `ai` | Seek / flee / separation state machines. **Viewer-local:** `Scenario.cpp` adds a static attractor at **(700, 300)** because `RTSGameState::Update` always merges the four map-edge static field items into the influence path, so `CalculateAcceleration` on builtins is skipped; the attractor is what pulls units through `InfluenceField::CalculateTotalForce` |
+| `ai` | Seek / flee / separation state machines (direct acceleration when they emit no field items, plus map-edge static forces). **Viewer-local:** `Scenario.cpp` still adds a static attractor at **(700, 300)** so units visibly curve through `InfluenceField::CalculateTotalForce` toward a focal point, not only along builtin seek vectors |
 
 ## Script grammar
 

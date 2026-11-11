@@ -54,6 +54,7 @@ Allowed `#include` in `core/gamestate/**`: standard library (`<…>`), headers u
 
 - **Legacy forwarders** in `IGameState.h` / `IGameLogicRenderer.h` remain; canonical contracts live under `core/interfaces/`.
 - **`SetAgentState` / `SetAgentParameter`** forwarder bodies stay verbatim on `RTSUnit` / command paths.
+- **`RTSGameState::Update`:** when a behavior’s `GenerateFieldItems` is empty, the hub applies `CalculateAcceleration` first, then adds static map-edge (and other static) field forces via `InfluenceField::CalculateTotalForce`; behaviors that emit field items still use the field path only (static items are not folded into the non-empty branch).
 - **`RTSGameState::Update`:** AI tick gates on `dynamic_cast<IUnitBehaviorHost*>`; explosion impulse and bounds fallback remain `dynamic_cast<RTSUnit*>` participation filters (do not widen those two gates to `IGameUnit` / `IUnitKinematics`).
 - Bounds fallback center-clamps `RTSUnit` centers onto `[0, mapSize]` after explosions; collision still performs radius-aware map-edge inset via `IUnitKinematics` for non-`RTSUnit` kinematic doubles (see `RTSGameStateNonRTSUnitGateTest`).
 - **`RTSUnit`** multiply-inherits `IGameUnit`, `IUnitKinematics`, `IUnitAgent`, and `IUnitBehaviorHost`; ABI/size changed for out-of-tree binaries when the behavior-host base was added (in-tree tests use concrete `RTSUnit`).

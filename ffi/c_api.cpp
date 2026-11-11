@@ -12,11 +12,16 @@
 #include "../core/gameloop/GameLogicEngine.h"
 #include "../core/gameloop/DeploymentTimer.h"
 #include "../core/ai/BehaviorFactory.h"
+#include "../core/ai/BehaviorContext.h"
+#include "../core/interfaces/IBehavior.h"
 #include "../core/influence/TerritoryCalculator.h"
 #include "../core/serialization/GameStateSerializer.h"
+#include "../core/math/Vector2.h"
+#include <map>
 #include <memory>
 #include <cstring>
 #include <sstream>
+#include <string>
 
 static constexpr float kSpawnChargeSeconds = 10.0f;
 
@@ -48,6 +53,52 @@ static DeploymentTimer* TimerForTeam(EngineContext* c, int teamId)
 {
     return teamId == 1 ? &c->p1Timer : &c->p2Timer;
 }
+
+namespace {
+
+class CAccelBehavior : public IBehavior {
+public:
+    CAccelBehavior(std::string name, CE_AccelFn fn, void* userdata)
+        : name_(std::move(name)), fn_(fn), userdata_(userdata)
+    {
+    }
+
+    std::vector<InfluenceFieldItem> GenerateFieldItems(const BehaviorContext& /*ctx*/) override
+    {
+        return {};
+    }
+
+    Vector2 CalculateAcceleration(const BehaviorContext& ctx) override
+    {
+        float ax = 0.0f;
+        float ay = 0.0f;
+        if (fn_ && ctx.self) {
+            fn_(ctx.self->GetPosition().x,
+                ctx.self->GetPosition().y,
+                ctx.self->GetVelocity().x,
+                ctx.self->GetVelocity().y,
+                ctx.self->GetTeam(),
+                ctx.deltaTime,
+                &ax,
+                &ay,
+                userdata_);
+        }
+        return Vector2(ax, ay);
+    }
+
+    const char* GetName() const override { return name_.c_str(); }
+
+    std::map<std::string, float>& GetParameters() override { return params_; }
+    const std::map<std::string, float>& GetParameters() const override { return params_; }
+
+private:
+    std::string name_;
+    CE_AccelFn fn_ = nullptr;
+    void* userdata_ = nullptr;
+    std::map<std::string, float> params_;
+};
+
+}  // namespace
 
 // --- Lifecycle ---
 
@@ -294,10 +345,19 @@ float ce_territory_get_pct(CE_Engine engine, int teamId)
 
 void ce_behavior_register(const char* name)
 {
-    // Game-specific behaviors registered from game project code.
-    // This function is a hook for the C API caller to trigger registration.
-    // The actual IBehavior creator must be registered in C++ before this call.
     (void)name;
+}
+
+int ce_behavior_register_accel(const char* name, CE_AccelFn fn, void* userdata)
+{
+    if (!name || name[0] == '\0' || !fn) {
+        return 0;
+    }
+    const std::string key(name);
+    BehaviorFactory::Register(key, [key, fn, userdata]() {
+        return std::make_unique<CAccelBehavior>(key, fn, userdata);
+    });
+    return 1;
 }
 
 int ce_behavior_list(char* buffer, int bufferSize)
