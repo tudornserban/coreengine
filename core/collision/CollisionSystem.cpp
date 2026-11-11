@@ -1,1 +1,195 @@
-I2luY2x1ZGUgIkNvbGxpc2lvblN5c3RlbS5oIgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lHYW1lVW5pdC5oIgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lVbml0S2luZW1hdGljcy5oIgojaW5jbHVkZSAiSUNvbGxpc2lvbkRldGVjdG9yLmgiICAvLyBGb3IgTWFwQm91bmRzCiNpbmNsdWRlICJjb3JlL2xvZ2dpbmcvTG9nZ2VyLmgiCiNpbmNsdWRlIDxhbGdvcml0aG0+CiNpbmNsdWRlIDxjbWF0aD4KCkNvbGxpc2lvblN5c3RlbTo6Q29sbGlzaW9uU3lzdGVtKCkKICAgIDogZGV0ZWN0b3Ioc3RkOjptYWtlX3VuaXF1ZTxDb2xsaXNpb25EZXRlY3Rvcj4oKSkKICAgICwgaW1tdW5pdHlNYW5hZ2VyKHNldHRpbmdzLmltbXVuaXR5RnJhbWVzKSB7Cn0KCkNvbGxpc2lvblN5c3RlbTo6Q29sbGlzaW9uU3lzdGVtKGNvbnN0IENvbGxpc2lvblNldHRpbmdzJiBjdXN0b21TZXR0aW5ncykKICAgIDogc2V0dGluZ3MoY3VzdG9tU2V0dGluZ3MpCiAgICAsIGRldGVjdG9yKHN0ZDo6bWFrZV91bmlxdWU8Q29sbGlzaW9uRGV0ZWN0b3I+KCkpCiAgICAsIGltbXVuaXR5TWFuYWdlcihzZXR0aW5ncy5pbW11bml0eUZyYW1lcykgewp9Cgp2b2lkIENvbGxpc2lvblN5c3RlbTo6UHJvY2Vzc0NvbGxpc2lvbnMoCiAgICBjb25zdCBzdGQ6OnZlY3RvcjxJR2FtZVVuaXQqPiYgdW5pdHMsCiAgICBjb25zdCBNYXBCb3VuZHMmIGJvdW5kcykgewoKICAgIGlmICh1bml0cy5lbXB0eSgpKSByZXR1cm47CgogICAgLy8gU3RvcmUgY3VycmVudCBib3VuZHMgZm9yIHVzZSBpbiBSZXNvbHZlQ29sbGlzaW9uCiAgICBjdXJyZW50Qm91bmRzID0gYm91bmRzOwoKICAgIC8vIERldGVjdCBjb2xsaXNpb25zCiAgICBzdGQ6OnZlY3RvcjxDb2xsaXNpb25Db250YWN0PiBjb250YWN0cyA9IGRldGVjdG9yLT5EZXRlY3RDb2xsaXNpb25zKHVuaXRzLCBib3VuZHMpOwoKICAgIC8vIFJlc29sdmUgY29sbGlzaW9ucwogICAgZm9yIChjb25zdCBhdXRvJiBjb250YWN0IDogY29udGFjdHMpIHsKICAgICAgICBSZXNvbHZlQ29sbGlzaW9uKGNvbnRhY3QpOwogICAgfQp9Cgp2b2lkIENvbGxpc2lvblN5c3RlbTo6UmVzb2x2ZUNvbGxpc2lvbihjb25zdCBDb2xsaXNpb25Db250YWN0JiBjb250YWN0KSB7CiAgICBpZiAoIWNvbnRhY3QudW5pdEEpIHJldHVybjsKCiAgICBJR2FtZVVuaXQqIHVuaXRBID0gY29udGFjdC51bml0QTsKCiAgICBpZiAoY29udGFjdC50eXBlID09IENvbGxpc2lvblR5cGU6OkFHRU5UX0FHRU5UICYmIGNvbnRhY3QudW5pdEIpIHsKICAgICAgICAvLyBBZ2VudC1BZ2VudCBjb2xsaXNpb246IHJlcXVpcmUga2luZW1hdGljcyBvbiBib3RoIHNpZGVzIChzYW1lIGFzIHByZS1SMS4yIFJUU1VuaXQgZ2F0ZSkuCiAgICAgICAgaWYgKCFkeW5hbWljX2Nhc3Q8SVVuaXRLaW5lbWF0aWNzKj4oY29udGFjdC51bml0QSkpIHJldHVybjsKICAgICAgICBpZiAoIWR5bmFtaWNfY2FzdDxJVW5pdEtpbmVtYXRpY3MqPihjb250YWN0LnVuaXRCKSkgcmV0dXJuOwoKICAgICAgICBJR2FtZVVuaXQqIHVuaXRCID0gY29udGFjdC51bml0QjsKCiAgICAgICAgZmxvYXQgbWFzc0EgPSB1bml0QS0+Q2FsY3VsYXRlTWFzcygpOwogICAgICAgIGZsb2F0IHJlc3RpdHV0aW9uQSA9IHVuaXRBLT5HZXRSZXN0aXR1dGlvbigpOwogICAgICAgIGZsb2F0IHBvc2l0aW9uQ29ycmVjdGlvbkEgPSB1bml0QS0+R2V0UG9zaXRpb25Db3JyZWN0aW9uKCk7CgogICAgICAgIGZsb2F0IG1hc3NCID0gdW5pdEItPkNhbGN1bGF0ZU1hc3MoKTsKICAgICAgICBmbG9hdCByZXN0aXR1dGlvbkIgPSB1bml0Qi0+R2V0UmVzdGl0dXRpb24oKTsKICAgICAgICBmbG9hdCBwb3NpdGlvbkNvcnJlY3Rpb25CID0gdW5pdEItPkdldFBvc2l0aW9uQ29ycmVjdGlvbigpOwoKICAgICAgICAvLyBDYWxjdWxhdGUgaW1wdWxzZSBtYWduaXR1ZGUKICAgICAgICBmbG9hdCBpbXB1bHNlTWFnbml0dWRlID0gQ2FsY3VsYXRlSW1wdWxzZU1hZ25pdHVkZSh1bml0QSwgdW5pdEIsIGNvbnRhY3QpOwoKICAgICAgICAvLyBSZXNvbHZlIGNvbGxpc2lvbgogICAgICAgIENvbGxpc2lvblJlc29sdmVyOjpSZXNvbHZlQWdlbnRBZ2VudCgKICAgICAgICAgICAgdW5pdEEsIHVuaXRCLCBjb250YWN0LAogICAgICAgICAgICByZXN0aXR1dGlvbkEsIHJlc3RpdHV0aW9uQiwKICAgICAgICAgICAgbWFzc0EsIG1hc3NCCiAgICAgICAgKTsKCiAgICAgICAgLy8gUG9zaXRpb24gY29ycmVjdGlvbgogICAgICAgIGZsb2F0IGF2Z0NvcnJlY3Rpb24gPSAocG9zaXRpb25Db3JyZWN0aW9uQSArIHBvc2l0aW9uQ29ycmVjdGlvbkIpICogMC41ZjsKICAgICAgICBpZiAoYXZnQ29ycmVjdGlvbiA+IDAuMGYpIHsKICAgICAgICAgICAgUG9zaXRpb25Db3JyZWN0b3I6OkNvcnJlY3RBZ2VudEFnZW50KAogICAgICAgICAgICAgICAgdW5pdEEsIHVuaXRCLCBjb250YWN0LAogICAgICAgICAgICAgICAgYXZnQ29ycmVjdGlvbiwgbWFzc0EsIG1hc3NCCiAgICAgICAgICAgICk7CiAgICAgICAgfQoKICAgICAgICAvLyBDYWxjdWxhdGUgaW1wdWxzZSBkaWZmZXJlbnRpYWwgKG5vcm1hbCBjb21wb25lbnQgb2YgaW1wdWxzZSB2ZWN0b3IgZGlmZmVyZW5jZSkKICAgICAgICBWZWN0b3IyIHZlbG9jaXR5QSA9IHVuaXRBLT5HZXRWZWxvY2l0eSgpOwogICAgICAgIFZlY3RvcjIgdmVsb2NpdHlCID0gdW5pdEItPkdldFZlbG9jaXR5KCk7CiAgICAgICAgVmVjdG9yMiByZWxhdGl2ZVZlbG9jaXR5ID0gdmVsb2NpdHlBIC0gdmVsb2NpdHlCOwogICAgICAgIGZsb2F0IGltcHVsc2VEaWZmZXJlbnRpYWwgPSByZWxhdGl2ZVZlbG9jaXR5LkRvdChjb250YWN0Lm5vcm1hbCk7CgogICAgICAgIC8vIENyZWF0ZSBhbmQgZW1pdCBldmVudCAoaWYgbm90IGltbXVuZSkKICAgICAgICBpZiAoaW1tdW5pdHlNYW5hZ2VyLlNob3VsZEdlbmVyYXRlRXZlbnQodW5pdEEsIHVuaXRCKSkgewogICAgICAgICAgICBDb2xsaXNpb25FdmVudCBldmVudCA9IENyZWF0ZUNvbGxpc2lvbkV2ZW50KGNvbnRhY3QsIGltcHVsc2VNYWduaXR1ZGUsIGltcHVsc2VEaWZmZXJlbnRpYWwpOwogICAgICAgICAgICBldmVudE1hbmFnZXIuRW1pdENvbGxpc2lvbihldmVudCk7CgogICAgICAgICAgICAvLyBTZXQgaW1tdW5pdHkKICAgICAgICAgICAgaW1tdW5pdHlNYW5hZ2VyLlNldEltbXVuaXR5KHVuaXRBLCB1bml0Qiwgc2V0dGluZ3MuaW1tdW5pdHlGcmFtZXMpOwogICAgICAgIH0KCiAgICB9IGVsc2UgaWYgKGNvbnRhY3QudHlwZSA9PSBDb2xsaXNpb25UeXBlOjpBR0VOVF9NQVBfRURHRSkgewogICAgICAgIC8vIEFnZW50LU1hcCBjb2xsaXNpb246IGFsd2F5cyBlbWl0IGFuIGV2ZW50OyBraW5lbWF0aWNzIGdhdGUgYXBwbGllcyBvbmx5IHRvIHdyaXRlcy4KICAgICAgICBmbG9hdCBtYXNzQSA9IHVuaXRBLT5DYWxjdWxhdGVNYXNzKCk7CiAgICAgICAgZmxvYXQgcG9zaXRpb25Db3JyZWN0aW9uQSA9IHVuaXRBLT5HZXRQb3NpdGlvbkNvcnJlY3Rpb24oKTsKCiAgICAgICAgZmxvYXQgaW1wdWxzZU1hZ25pdHVkZSA9IENhbGN1bGF0ZUltcHVsc2VNYWduaXR1ZGUodW5pdEEsIG51bGxwdHIsIGNvbnRhY3QpOwoKICAgICAgICBpZiAoZHluYW1pY19jYXN0PElVbml0S2luZW1hdGljcyo+KHVuaXRBKSkgewogICAgICAgICAgICBDb2xsaXNpb25SZXNvbHZlcjo6UmVzb2x2ZUFnZW50TWFwKAogICAgICAgICAgICAgICAgdW5pdEEsIGNvbnRhY3QsCiAgICAgICAgICAgICAgICBzZXR0aW5ncy5tYXBSZXN0aXR1dGlvbiwKICAgICAgICAgICAgICAgIG1hc3NBCiAgICAgICAgICAgICk7CgogICAgICAgICAgICBpZiAocG9zaXRpb25Db3JyZWN0aW9uQSA+IDAuMGYpIHsKICAgICAgICAgICAgICAgIFBvc2l0aW9uQ29ycmVjdG9yOjpDb3JyZWN0QWdlbnRNYXAodW5pdEEsIGNvbnRhY3QsIHBvc2l0aW9uQ29ycmVjdGlvbkEpOwogICAgICAgICAgICB9CgogICAgICAgICAgICBNYXBDb2xsaXNpb25IYW5kbGVyOjpQdXNoSW5zaWRlQm91bmRzKAogICAgICAgICAgICAgICAgdW5pdEEsCiAgICAgICAgICAgICAgICBjdXJyZW50Qm91bmRzLm1pbiwKICAgICAgICAgICAgICAgIGN1cnJlbnRCb3VuZHMubWF4CiAgICAgICAgICAgICk7CiAgICAgICAgfQoKICAgICAgICBDb2xsaXNpb25FdmVudCBldmVudCA9IENyZWF0ZUNvbGxpc2lvbkV2ZW50KGNvbnRhY3QsIGltcHVsc2VNYWduaXR1ZGUsIDAuMGYpOwogICAgICAgIGV2ZW50TWFuYWdlci5FbWl0Q29sbGlzaW9uKGV2ZW50KTsKICAgIH0KfQoKQ29sbGlzaW9uRXZlbnQgQ29sbGlzaW9uU3lzdGVtOjpDcmVhdGVDb2xsaXNpb25FdmVudCgKICAgIGNvbnN0IENvbGxpc2lvbkNvbnRhY3QmIGNvbnRhY3QsCiAgICBmbG9hdCBpbXB1bHNlTWFnbml0dWRlLAogICAgZmxvYXQgaW1wdWxzZURpZmZlcmVudGlhbCkgewoKICAgIENvbGxpc2lvbkV2ZW50IGV2ZW50OwogICAgZXZlbnQuYWdlbnQgPSBjb250YWN0LnVuaXRBOwogICAgZXZlbnQub3RoZXJBZ2VudCA9IGNvbnRhY3QudW5pdEI7CiAgICBldmVudC5jb250YWN0UG9pbnQgPSBjb250YWN0LmNvbnRhY3RQb2ludDsKICAgIGV2ZW50Lm5vcm1hbCA9IGNvbnRhY3Qubm9ybWFsOwogICAgZXZlbnQuaW1wdWxzZU1hZ25pdHVkZSA9IGltcHVsc2VNYWduaXR1ZGU7CiAgICBldmVudC5pbXB1bHNlRGlmZmVyZW50aWFsID0gaW1wdWxzZURpZmZlcmVudGlhbDsKICAgIGV2ZW50LnR5cGUgPSBjb250YWN0LnR5cGU7CgogICAgLy8gQ2FsY3VsYXRlIHJlbGF0aXZlIHZlbG9jaXR5CiAgICBpZiAoY29udGFjdC51bml0QikgewogICAgICAgIFZlY3RvcjIgdmVsb2NpdHlBID0gY29udGFjdC51bml0QS0+R2V0VmVsb2NpdHkoKTsKICAgICAgICBWZWN0b3IyIHZlbG9jaXR5QiA9IGNvbnRhY3QudW5pdEItPkdldFZlbG9jaXR5KCk7CiAgICAgICAgVmVjdG9yMiByZWxhdGl2ZVZlbG9jaXR5ID0gdmVsb2NpdHlBIC0gdmVsb2NpdHlCOwogICAgICAgIGV2ZW50LnJlbGF0aXZlVmVsb2NpdHkgPSByZWxhdGl2ZVZlbG9jaXR5LkRvdChjb250YWN0Lm5vcm1hbCk7CiAgICB9IGVsc2UgewogICAgICAgIGV2ZW50LnJlbGF0aXZlVmVsb2NpdHkgPSBjb250YWN0LnVuaXRBLT5HZXRWZWxvY2l0eSgpLkRvdChjb250YWN0Lm5vcm1hbCk7CiAgICB9CgogICAgLy8gR2V0IGRhbWFnZSBtb2RpZmllciAodmlhIElHYW1lVW5pdCBjb250cmFjdCkKICAgIGV2ZW50LmRhbWFnZU1vZGlmaWVyID0gY29udGFjdC51bml0QS0+R2V0RGFtYWdlTW9kaWZpZXIoKTsKCiAgICByZXR1cm4gZXZlbnQ7Cn0KCmZsb2F0IENvbGxpc2lvblN5c3RlbTo6Q2FsY3VsYXRlSW1wdWxzZU1hZ25pdHVkZSgKICAgIElHYW1lVW5pdCogdW5pdEEsCiAgICBJR2FtZVVuaXQqIHVuaXRCLAogICAgY29uc3QgQ29sbGlzaW9uQ29udGFjdCYgY29udGFjdCkgewoKICAgIGZsb2F0IG1hc3NBID0gdW5pdEEtPkNhbGN1bGF0ZU1hc3MoKTsKICAgIGZsb2F0IHJlc3RpdHV0aW9uQSA9IHVuaXRBLT5HZXRSZXN0aXR1dGlvbigpOwoKICAgIGlmICh1bml0QikgewogICAgICAgIC8vIEFnZW50LUFnZW50IGNvbGxpc2lvbgogICAgICAgIGZsb2F0IG1hc3NCID0gdW5pdEItPkNhbGN1bGF0ZU1hc3MoKTsKICAgICAgICBmbG9hdCByZXN0aXR1dGlvbkIgPSB1bml0Qi0+R2V0UmVzdGl0dXRpb24oKTsKICAgICAgICBmbG9hdCByZXN0aXR1dGlvbiA9IChyZXN0aXR1dGlvbkEgKyByZXN0aXR1dGlvbkIpICogMC41ZjsKCiAgICAgICAgVmVjdG9yMiByZWxhdGl2ZVZlbG9jaXR5ID0gdW5pdEEtPkdldFZlbG9jaXR5KCkgLSB1bml0Qi0+R2V0VmVsb2NpdHkoKTsKICAgICAgICByZXR1cm4gQ29sbGlzaW9uUmVzb2x2ZXI6OkNhbGN1bGF0ZUltcHVsc2VNYWduaXR1ZGUoCiAgICAgICAgICAgIHJlbGF0aXZlVmVsb2NpdHksIGNvbnRhY3Qubm9ybWFsLCByZXN0aXR1dGlvbiwgbWFzc0EsIG1hc3NCCiAgICAgICAgKTsKICAgIH0gZWxzZSB7CiAgICAgICAgLy8gQWdlbnQtTWFwIGNvbGxpc2lvbgogICAgICAgIFZlY3RvcjIgdmVsb2NpdHkgPSB1bml0QS0+R2V0VmVsb2NpdHkoKTsKICAgICAgICBmbG9hdCBub3JtYWxWZWxvY2l0eSA9IHZlbG9jaXR5LkRvdChjb250YWN0Lm5vcm1hbCk7CgogICAgICAgIGlmIChub3JtYWxWZWxvY2l0eSA+IDAuMGYpIHsKICAgICAgICAgICAgcmV0dXJuIG5vcm1hbFZlbG9jaXR5ICogKDEuMGYgKyBzZXR0aW5ncy5tYXBSZXN0aXR1dGlvbikgKiBtYXNzQTsKICAgICAgICB9CiAgICAgICAgcmV0dXJuIDAuMGY7CiAgICB9Cn0KCnZvaWQgQ29sbGlzaW9uU3lzdGVtOjpTdWJzY3JpYmUoSUNvbGxpc2lvbk9ic2VydmVyKiBvYnNlcnZlcikgewogICAgTE9HX0RFQlVHKCJDb2xsaXNpb25TeXN0ZW06OlN1YnNjcmliZTogU3Vic2NyaWJpbmcgb2JzZXJ2ZXIgJXAiLCBvYnNlcnZlcik7CiAgICBldmVudE1hbmFnZXIuU3Vic2NyaWJlKG9ic2VydmVyKTsKICAgIExPR19ERUJVRygiQ29sbGlzaW9uU3lzdGVtOjpTdWJzY3JpYmU6IE9ic2VydmVyIHN1YnNjcmliZWQgc3VjY2Vzc2Z1bGx5Iik7Cn0KCnZvaWQgQ29sbGlzaW9uU3lzdGVtOjpVbnN1YnNjcmliZShJQ29sbGlzaW9uT2JzZXJ2ZXIqIG9ic2VydmVyKSB7CiAgICBldmVudE1hbmFnZXIuVW5zdWJzY3JpYmUob2JzZXJ2ZXIpOwp9Cgp2b2lkIENvbGxpc2lvblN5c3RlbTo6VXBkYXRlSW1tdW5pdHkoKSB7CiAgICBpbW11bml0eU1hbmFnZXIuVXBkYXRlKCk7Cn0KCg==
+#include "CollisionSystem.h"
+#include "core/interfaces/IGameUnit.h"
+#include "core/interfaces/IUnitKinematics.h"
+#include "ICollisionDetector.h"  // For MapBounds
+#include "core/logging/Logger.h"
+#include <algorithm>
+#include <cmath>
+
+CollisionSystem::CollisionSystem()
+    : detector(std::make_unique<CollisionDetector>())
+    , immunityManager(settings.immunityFrames) {
+}
+
+CollisionSystem::CollisionSystem(const CollisionSettings& customSettings)
+    : settings(customSettings)
+    , detector(std::make_unique<CollisionDetector>())
+    , immunityManager(settings.immunityFrames) {
+}
+
+void CollisionSystem::ProcessCollisions(
+    const std::vector<IGameUnit*>& units,
+    const MapBounds& bounds) {
+
+    if (units.empty()) return;
+
+    // Store current bounds for use in ResolveCollision
+    currentBounds = bounds;
+
+    // Detect collisions
+    std::vector<CollisionContact> contacts = detector->DetectCollisions(units, bounds);
+
+    // Resolve collisions
+    for (const auto& contact : contacts) {
+        ResolveCollision(contact);
+    }
+}
+
+void CollisionSystem::ResolveCollision(const CollisionContact& contact) {
+    if (!contact.unitA) return;
+
+    IGameUnit* unitA = contact.unitA;
+
+    if (contact.type == CollisionType::AGENT_AGENT && contact.unitB) {
+        // Agent-Agent collision: require kinematics on both sides (same as pre-R1.2 RTSUnit gate).
+        if (!dynamic_cast<IUnitKinematics*>(contact.unitA)) return;
+        if (!dynamic_cast<IUnitKinematics*>(contact.unitB)) return;
+
+        IGameUnit* unitB = contact.unitB;
+
+        float massA = unitA->CalculateMass();
+        float restitutionA = unitA->GetRestitution();
+        float positionCorrectionA = unitA->GetPositionCorrection();
+
+        float massB = unitB->CalculateMass();
+        float restitutionB = unitB->GetRestitution();
+        float positionCorrectionB = unitB->GetPositionCorrection();
+
+        // Calculate impulse magnitude
+        float impulseMagnitude = CalculateImpulseMagnitude(unitA, unitB, contact);
+
+        // Resolve collision
+        CollisionResolver::ResolveAgentAgent(
+            unitA, unitB, contact,
+            restitutionA, restitutionB,
+            massA, massB
+        );
+
+        // Position correction
+        float avgCorrection = (positionCorrectionA + positionCorrectionB) * 0.5f;
+        if (avgCorrection > 0.0f) {
+            PositionCorrector::CorrectAgentAgent(
+                unitA, unitB, contact,
+                avgCorrection, massA, massB
+            );
+        }
+
+        // Calculate impulse differential (normal component of impulse vector difference)
+        Vector2 velocityA = unitA->GetVelocity();
+        Vector2 velocityB = unitB->GetVelocity();
+        Vector2 relativeVelocity = velocityA - velocityB;
+        float impulseDifferential = relativeVelocity.Dot(contact.normal);
+
+        // Create and emit event (if not immune)
+        if (immunityManager.ShouldGenerateEvent(unitA, unitB)) {
+            CollisionEvent event = CreateCollisionEvent(contact, impulseMagnitude, impulseDifferential);
+            eventManager.EmitCollision(event);
+
+            // Set immunity
+            immunityManager.SetImmunity(unitA, unitB, settings.immunityFrames);
+        }
+
+    } else if (contact.type == CollisionType::AGENT_MAP_EDGE) {
+        // Agent-Map collision: always emit an event; kinematics gate applies only to writes.
+        float massA = unitA->CalculateMass();
+        float positionCorrectionA = unitA->GetPositionCorrection();
+
+        float impulseMagnitude = CalculateImpulseMagnitude(unitA, nullptr, contact);
+
+        if (dynamic_cast<IUnitKinematics*>(unitA)) {
+            CollisionResolver::ResolveAgentMap(
+                unitA, contact,
+                settings.mapRestitution,
+                massA
+            );
+
+            if (positionCorrectionA > 0.0f) {
+                PositionCorrector::CorrectAgentMap(unitA, contact, positionCorrectionA);
+            }
+
+            MapCollisionHandler::PushInsideBounds(
+                unitA,
+                currentBounds.min,
+                currentBounds.max
+            );
+        }
+
+        CollisionEvent event = CreateCollisionEvent(contact, impulseMagnitude, 0.0f);
+        eventManager.EmitCollision(event);
+    }
+}
+
+CollisionEvent CollisionSystem::CreateCollisionEvent(
+    const CollisionContact& contact,
+    float impulseMagnitude,
+    float impulseDifferential) {
+
+    CollisionEvent event;
+    event.agent = contact.unitA;
+    event.otherAgent = contact.unitB;
+    event.contactPoint = contact.contactPoint;
+    event.normal = contact.normal;
+    event.impulseMagnitude = impulseMagnitude;
+    event.impulseDifferential = impulseDifferential;
+    event.type = contact.type;
+
+    // Calculate relative velocity
+    if (contact.unitB) {
+        Vector2 velocityA = contact.unitA->GetVelocity();
+        Vector2 velocityB = contact.unitB->GetVelocity();
+        Vector2 relativeVelocity = velocityA - velocityB;
+        event.relativeVelocity = relativeVelocity.Dot(contact.normal);
+    } else {
+        event.relativeVelocity = contact.unitA->GetVelocity().Dot(contact.normal);
+    }
+
+    // Get damage modifier (via IGameUnit contract)
+    event.damageModifier = contact.unitA->GetDamageModifier();
+
+    return event;
+}
+
+float CollisionSystem::CalculateImpulseMagnitude(
+    IGameUnit* unitA,
+    IGameUnit* unitB,
+    const CollisionContact& contact) {
+
+    float massA = unitA->CalculateMass();
+    float restitutionA = unitA->GetRestitution();
+
+    if (unitB) {
+        // Agent-Agent collision
+        float massB = unitB->CalculateMass();
+        float restitutionB = unitB->GetRestitution();
+        float restitution = (restitutionA + restitutionB) * 0.5f;
+
+        Vector2 relativeVelocity = unitA->GetVelocity() - unitB->GetVelocity();
+        return CollisionResolver::CalculateImpulseMagnitude(
+            relativeVelocity, contact.normal, restitution, massA, massB
+        );
+    } else {
+        // Agent-Map collision
+        Vector2 velocity = unitA->GetVelocity();
+        float normalVelocity = velocity.Dot(contact.normal);
+
+        if (normalVelocity > 0.0f) {
+            return normalVelocity * (1.0f + settings.mapRestitution) * massA;
+        }
+        return 0.0f;
+    }
+}
+
+void CollisionSystem::Subscribe(ICollisionObserver* observer) {
+    LOG_DEBUG("CollisionSystem::Subscribe: Subscribing observer %p", observer);
+    eventManager.Subscribe(observer);
+    LOG_DEBUG("CollisionSystem::Subscribe: Observer subscribed successfully");
+}
+
+void CollisionSystem::Unsubscribe(ICollisionObserver* observer) {
+    eventManager.Unsubscribe(observer);
+}
+
+void CollisionSystem::UpdateImmunity() {
+    immunityManager.Update();
+}
+

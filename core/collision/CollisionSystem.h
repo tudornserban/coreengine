@@ -1,1 +1,61 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiSUNvbGxpc2lvbkRldGVjdG9yLmgiCiNpbmNsdWRlICJDb2xsaXNpb25EZXRlY3Rvci5oIgojaW5jbHVkZSAiQ29sbGlzaW9uUmVzb2x2ZXIuaCIKI2luY2x1ZGUgIlBvc2l0aW9uQ29ycmVjdG9yLmgiCiNpbmNsdWRlICJNYXBDb2xsaXNpb25IYW5kbGVyLmgiCiNpbmNsdWRlICJDb2xsaXNpb25FdmVudE1hbmFnZXIuaCIKI2luY2x1ZGUgIkltbXVuaXR5TWFuYWdlci5oIgojaW5jbHVkZSAiQ29sbGlzaW9uU2V0dGluZ3MuaCIKI2luY2x1ZGUgIkNvbGxpc2lvbkV2ZW50LmgiCiNpbmNsdWRlICJJQ29sbGlzaW9uRGV0ZWN0b3IuaCIgIC8vIEluY2x1ZGVzIE1hcEJvdW5kcwojaW5jbHVkZSAiY29yZS9tYXRoL1ZlY3RvcjIuaCIKI2luY2x1ZGUgPHZlY3Rvcj4KI2luY2x1ZGUgPG1lbW9yeT4KCmNsYXNzIElHYW1lVW5pdDsKCmNsYXNzIENvbGxpc2lvblN5c3RlbSB7CnByaXZhdGU6CiAgICBzdGQ6OnVuaXF1ZV9wdHI8Q29sbGlzaW9uRGV0ZWN0b3I+IGRldGVjdG9yOwogICAgQ29sbGlzaW9uRXZlbnRNYW5hZ2VyIGV2ZW50TWFuYWdlcjsKICAgIEltbXVuaXR5TWFuYWdlciBpbW11bml0eU1hbmFnZXI7CiAgICBDb2xsaXNpb25TZXR0aW5ncyBzZXR0aW5nczsKICAgIE1hcEJvdW5kcyBjdXJyZW50Qm91bmRzOyAgLy8gQ3VycmVudCBtYXAgYm91bmRzIGZvciBjb2xsaXNpb24gcmVzb2x1dGlvbgoKcHVibGljOgogICAgQ29sbGlzaW9uU3lzdGVtKCk7CiAgICBDb2xsaXNpb25TeXN0ZW0oY29uc3QgQ29sbGlzaW9uU2V0dGluZ3MmIGN1c3RvbVNldHRpbmdzKTsKCiAgICAvLyBNYWluIGNvbGxpc2lvbiBwcm9jZXNzaW5nCiAgICB2b2lkIFByb2Nlc3NDb2xsaXNpb25zKAogICAgICAgIGNvbnN0IHN0ZDo6dmVjdG9yPElHYW1lVW5pdCo+JiB1bml0cywKICAgICAgICBjb25zdCBNYXBCb3VuZHMmIGJvdW5kcwogICAgKTsKCiAgICAvLyBFdmVudCBzeXN0ZW0KICAgIHZvaWQgU3Vic2NyaWJlKElDb2xsaXNpb25PYnNlcnZlciogb2JzZXJ2ZXIpOwogICAgdm9pZCBVbnN1YnNjcmliZShJQ29sbGlzaW9uT2JzZXJ2ZXIqIG9ic2VydmVyKTsKCiAgICAvLyBJbW11bml0eSBzeXN0ZW0KICAgIHZvaWQgVXBkYXRlSW1tdW5pdHkoKTsgIC8vIENhbGwgZWFjaCBnYW1lIHVwZGF0ZSBmcmFtZQoKICAgIC8vIFNldHRpbmdzCiAgICBDb2xsaXNpb25TZXR0aW5ncyYgR2V0U2V0dGluZ3MoKSB7IHJldHVybiBzZXR0aW5nczsgfQogICAgY29uc3QgQ29sbGlzaW9uU2V0dGluZ3MmIEdldFNldHRpbmdzKCkgY29uc3QgeyByZXR1cm4gc2V0dGluZ3M7IH0KCnByaXZhdGU6CiAgICB2b2lkIFJlc29sdmVDb2xsaXNpb24oY29uc3QgQ29sbGlzaW9uQ29udGFjdCYgY29udGFjdCk7CiAgICBDb2xsaXNpb25FdmVudCBDcmVhdGVDb2xsaXNpb25FdmVudCgKICAgICAgICBjb25zdCBDb2xsaXNpb25Db250YWN0JiBjb250YWN0LAogICAgICAgIGZsb2F0IGltcHVsc2VNYWduaXR1ZGUsCiAgICAgICAgZmxvYXQgaW1wdWxzZURpZmZlcmVudGlhbAogICAgKTsKICAgIGZsb2F0IENhbGN1bGF0ZUltcHVsc2VNYWduaXR1ZGUoCiAgICAgICAgSUdhbWVVbml0KiB1bml0QSwKICAgICAgICBJR2FtZVVuaXQqIHVuaXRCLAogICAgICAgIGNvbnN0IENvbGxpc2lvbkNvbnRhY3QmIGNvbnRhY3QKICAgICk7Cn07Cgo=
+#pragma once
+
+#include "ICollisionDetector.h"
+#include "CollisionDetector.h"
+#include "CollisionResolver.h"
+#include "PositionCorrector.h"
+#include "MapCollisionHandler.h"
+#include "CollisionEventManager.h"
+#include "ImmunityManager.h"
+#include "CollisionSettings.h"
+#include "CollisionEvent.h"
+#include "ICollisionDetector.h"  // Includes MapBounds
+#include "core/math/Vector2.h"
+#include <vector>
+#include <memory>
+
+class IGameUnit;
+
+class CollisionSystem {
+private:
+    std::unique_ptr<CollisionDetector> detector;
+    CollisionEventManager eventManager;
+    ImmunityManager immunityManager;
+    CollisionSettings settings;
+    MapBounds currentBounds;  // Current map bounds for collision resolution
+
+public:
+    CollisionSystem();
+    CollisionSystem(const CollisionSettings& customSettings);
+
+    // Main collision processing
+    void ProcessCollisions(
+        const std::vector<IGameUnit*>& units,
+        const MapBounds& bounds
+    );
+
+    // Event system
+    void Subscribe(ICollisionObserver* observer);
+    void Unsubscribe(ICollisionObserver* observer);
+
+    // Immunity system
+    void UpdateImmunity();  // Call each game update frame
+
+    // Settings
+    CollisionSettings& GetSettings() { return settings; }
+    const CollisionSettings& GetSettings() const { return settings; }
+
+private:
+    void ResolveCollision(const CollisionContact& contact);
+    CollisionEvent CreateCollisionEvent(
+        const CollisionContact& contact,
+        float impulseMagnitude,
+        float impulseDifferential
+    );
+    float CalculateImpulseMagnitude(
+        IGameUnit* unitA,
+        IGameUnit* unitB,
+        const CollisionContact& contact
+    );
+};
+

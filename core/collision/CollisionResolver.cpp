@@ -1,1 +1,105 @@
-I2luY2x1ZGUgIkNvbGxpc2lvblJlc29sdmVyLmgiCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSVVuaXRLaW5lbWF0aWNzLmgiCgp2b2lkIENvbGxpc2lvblJlc29sdmVyOjpSZXNvbHZlQWdlbnRBZ2VudCgKICAgIElHYW1lVW5pdCogdW5pdEEsCiAgICBJR2FtZVVuaXQqIHVuaXRCLAogICAgY29uc3QgQ29sbGlzaW9uQ29udGFjdCYgY29udGFjdCwKICAgIGZsb2F0IHJlc3RpdHV0aW9uQSwKICAgIGZsb2F0IHJlc3RpdHV0aW9uQiwKICAgIGZsb2F0IG1hc3NBLAogICAgZmxvYXQgbWFzc0IpIHsKCiAgICBpZiAoIXVuaXRBIHx8ICF1bml0QikgcmV0dXJuOwoKICAgIC8vIFVzZSBhdmVyYWdlIHJlc3RpdHV0aW9uIGZvciB0aGUgY29sbGlzaW9uCiAgICBmbG9hdCByZXN0aXR1dGlvbiA9IChyZXN0aXR1dGlvbkEgKyByZXN0aXR1dGlvbkIpICogMC41ZjsKCiAgICAvLyBDYWxjdWxhdGUgcmVsYXRpdmUgdmVsb2NpdHkKICAgIFZlY3RvcjIgdmVsb2NpdHlBID0gdW5pdEEtPkdldFZlbG9jaXR5KCk7CiAgICBWZWN0b3IyIHZlbG9jaXR5QiA9IHVuaXRCLT5HZXRWZWxvY2l0eSgpOwogICAgVmVjdG9yMiByZWxhdGl2ZVZlbG9jaXR5ID0gdmVsb2NpdHlBIC0gdmVsb2NpdHlCOwoKICAgIC8vIENhbGN1bGF0ZSBpbXB1bHNlIG1hZ25pdHVkZQogICAgZmxvYXQgaW1wdWxzZU1hZ25pdHVkZSA9IENhbGN1bGF0ZUltcHVsc2VNYWduaXR1ZGUoCiAgICAgICAgcmVsYXRpdmVWZWxvY2l0eSwKICAgICAgICBjb250YWN0Lm5vcm1hbCwKICAgICAgICByZXN0aXR1dGlvbiwKICAgICAgICBtYXNzQSwKICAgICAgICBtYXNzQgogICAgKTsKCiAgICAvLyBDYWxjdWxhdGUgaW1wdWxzZSB2ZWN0b3IKICAgIFZlY3RvcjIgaW1wdWxzZSA9IGNvbnRhY3Qubm9ybWFsICogaW1wdWxzZU1hZ25pdHVkZTsKCiAgICAvLyBBcHBseSBpbXB1bHNlcyAob3Bwb3NpdGUgZGlyZWN0aW9ucykKICAgIEFwcGx5SW1wdWxzZSh1bml0QSwgaW1wdWxzZSwgbWFzc0EpOwogICAgQXBwbHlJbXB1bHNlKHVuaXRCLCAtaW1wdWxzZSwgbWFzc0IpOwp9Cgp2b2lkIENvbGxpc2lvblJlc29sdmVyOjpSZXNvbHZlQWdlbnRNYXAoCiAgICBJR2FtZVVuaXQqIHVuaXQsCiAgICBjb25zdCBDb2xsaXNpb25Db250YWN0JiBjb250YWN0LAogICAgZmxvYXQgbWFwUmVzdGl0dXRpb24sCiAgICBmbG9hdCBtYXNzKSB7CgogICAgaWYgKCF1bml0KSByZXR1cm47CgogICAgLy8gRm9yIG1hcCBjb2xsaXNpb24sIHdlIHJlZmxlY3QgdGhlIHZlbG9jaXR5CiAgICBWZWN0b3IyIHZlbG9jaXR5ID0gdW5pdC0+R2V0VmVsb2NpdHkoKTsKCiAgICAvLyBQcm9qZWN0IHZlbG9jaXR5IG9udG8gbm9ybWFsCiAgICBmbG9hdCBub3JtYWxWZWxvY2l0eSA9IHZlbG9jaXR5LkRvdChjb250YWN0Lm5vcm1hbCk7CgogICAgLy8gT25seSByZXNvbHZlIGlmIG1vdmluZyB0b3dhcmRzIHRoZSBtYXAKICAgIGlmIChub3JtYWxWZWxvY2l0eSA+IDAuMGYpIHsKICAgICAgICAvLyBDYWxjdWxhdGUgaW1wdWxzZSB0byByZWZsZWN0IHZlbG9jaXR5CiAgICAgICAgZmxvYXQgaW1wdWxzZU1hZ25pdHVkZSA9IG5vcm1hbFZlbG9jaXR5ICogKDEuMGYgKyBtYXBSZXN0aXR1dGlvbik7CiAgICAgICAgVmVjdG9yMiBpbXB1bHNlID0gY29udGFjdC5ub3JtYWwgKiBpbXB1bHNlTWFnbml0dWRlOwoKICAgICAgICBBcHBseUltcHVsc2UodW5pdCwgaW1wdWxzZSwgbWFzcyk7CiAgICB9Cn0KCmZsb2F0IENvbGxpc2lvblJlc29sdmVyOjpDYWxjdWxhdGVJbXB1bHNlTWFnbml0dWRlKAogICAgVmVjdG9yMiByZWxhdGl2ZVZlbG9jaXR5LAogICAgVmVjdG9yMiBub3JtYWwsCiAgICBmbG9hdCByZXN0aXR1dGlvbiwKICAgIGZsb2F0IG1hc3NBLAogICAgZmxvYXQgbWFzc0IpIHsKCiAgICAvLyBSZWxhdGl2ZSB2ZWxvY2l0eSBhbG9uZyBub3JtYWwKICAgIGZsb2F0IG5vcm1hbFZlbG9jaXR5ID0gcmVsYXRpdmVWZWxvY2l0eS5Eb3Qobm9ybWFsKTsKCiAgICAvLyBPbmx5IHJlc29sdmUgaWYgbW92aW5nIHRvd2FyZHMgZWFjaCBvdGhlcgogICAgaWYgKG5vcm1hbFZlbG9jaXR5ID4gMC4wZikgewogICAgICAgIHJldHVybiAwLjBmOyAgLy8gTW92aW5nIGFwYXJ0LCBubyBjb2xsaXNpb24KICAgIH0KCiAgICAvLyBFZmZlY3RpdmUgbWFzcyAocmVkdWNlZCBtYXNzKQogICAgZmxvYXQgZWZmZWN0aXZlTWFzcyA9IDEuMGYgLyAoMS4wZiAvIG1hc3NBICsgMS4wZiAvIG1hc3NCKTsKCiAgICAvLyBJbXB1bHNlIG1hZ25pdHVkZSB3aXRoIHJlc3RpdHV0aW9uCiAgICBmbG9hdCBpbXB1bHNlID0gLSgxLjBmICsgcmVzdGl0dXRpb24pICogbm9ybWFsVmVsb2NpdHkgKiBlZmZlY3RpdmVNYXNzOwoKICAgIHJldHVybiBpbXB1bHNlOwp9Cgp2b2lkIENvbGxpc2lvblJlc29sdmVyOjpBcHBseUltcHVsc2UoSUdhbWVVbml0KiB1bml0LCBWZWN0b3IyIGltcHVsc2UsIGZsb2F0IG1hc3MpIHsKICAgIGlmICghdW5pdCB8fCBtYXNzIDw9IDAuMGYpIHJldHVybjsKCiAgICAvLyBWZWxvY2l0eSBjaGFuZ2UgZnJvbSBpbXB1bHNlCiAgICBWZWN0b3IyIHZlbG9jaXR5Q2hhbmdlID0gaW1wdWxzZSAvIG1hc3M7CgogICAgLy8gR2V0IGN1cnJlbnQgdmVsb2NpdHkKICAgIFZlY3RvcjIgY3VycmVudFZlbG9jaXR5ID0gdW5pdC0+R2V0VmVsb2NpdHkoKTsKCiAgICAvLyBBcHBseSB2ZWxvY2l0eSBjaGFuZ2UKICAgIFZlY3RvcjIgbmV3VmVsb2NpdHkgPSBjdXJyZW50VmVsb2NpdHkgKyB2ZWxvY2l0eUNoYW5nZTsKCiAgICBJVW5pdEtpbmVtYXRpY3MqIGtpbmVtYXRpY3MgPSBkeW5hbWljX2Nhc3Q8SVVuaXRLaW5lbWF0aWNzKj4odW5pdCk7CiAgICBpZiAoa2luZW1hdGljcykgewogICAgICAgIGtpbmVtYXRpY3MtPlNldFZlbG9jaXR5KG5ld1ZlbG9jaXR5KTsKICAgIH0KfQoK
+#include "CollisionResolver.h"
+#include "core/interfaces/IUnitKinematics.h"
+
+void CollisionResolver::ResolveAgentAgent(
+    IGameUnit* unitA,
+    IGameUnit* unitB,
+    const CollisionContact& contact,
+    float restitutionA,
+    float restitutionB,
+    float massA,
+    float massB) {
+
+    if (!unitA || !unitB) return;
+
+    // Use average restitution for the collision
+    float restitution = (restitutionA + restitutionB) * 0.5f;
+
+    // Calculate relative velocity
+    Vector2 velocityA = unitA->GetVelocity();
+    Vector2 velocityB = unitB->GetVelocity();
+    Vector2 relativeVelocity = velocityA - velocityB;
+
+    // Calculate impulse magnitude
+    float impulseMagnitude = CalculateImpulseMagnitude(
+        relativeVelocity,
+        contact.normal,
+        restitution,
+        massA,
+        massB
+    );
+
+    // Calculate impulse vector
+    Vector2 impulse = contact.normal * impulseMagnitude;
+
+    // Apply impulses (opposite directions)
+    ApplyImpulse(unitA, impulse, massA);
+    ApplyImpulse(unitB, -impulse, massB);
+}
+
+void CollisionResolver::ResolveAgentMap(
+    IGameUnit* unit,
+    const CollisionContact& contact,
+    float mapRestitution,
+    float mass) {
+
+    if (!unit) return;
+
+    // For map collision, we reflect the velocity
+    Vector2 velocity = unit->GetVelocity();
+
+    // Project velocity onto normal
+    float normalVelocity = velocity.Dot(contact.normal);
+
+    // Only resolve if moving towards the map
+    if (normalVelocity > 0.0f) {
+        // Calculate impulse to reflect velocity
+        float impulseMagnitude = normalVelocity * (1.0f + mapRestitution);
+        Vector2 impulse = contact.normal * impulseMagnitude;
+
+        ApplyImpulse(unit, impulse, mass);
+    }
+}
+
+float CollisionResolver::CalculateImpulseMagnitude(
+    Vector2 relativeVelocity,
+    Vector2 normal,
+    float restitution,
+    float massA,
+    float massB) {
+
+    // Relative velocity along normal
+    float normalVelocity = relativeVelocity.Dot(normal);
+
+    // Only resolve if moving towards each other
+    if (normalVelocity > 0.0f) {
+        return 0.0f;  // Moving apart, no collision
+    }
+
+    // Effective mass (reduced mass)
+    float effectiveMass = 1.0f / (1.0f / massA + 1.0f / massB);
+
+    // Impulse magnitude with restitution
+    float impulse = -(1.0f + restitution) * normalVelocity * effectiveMass;
+
+    return impulse;
+}
+
+void CollisionResolver::ApplyImpulse(IGameUnit* unit, Vector2 impulse, float mass) {
+    if (!unit || mass <= 0.0f) return;
+
+    // Velocity change from impulse
+    Vector2 velocityChange = impulse / mass;
+
+    // Get current velocity
+    Vector2 currentVelocity = unit->GetVelocity();
+
+    // Apply velocity change
+    Vector2 newVelocity = currentVelocity + velocityChange;
+
+    IUnitKinematics* kinematics = dynamic_cast<IUnitKinematics*>(unit);
+    if (kinematics) {
+        kinematics->SetVelocity(newVelocity);
+    }
+}
+

@@ -1,1 +1,40 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiQ29sbGlzaW9uQ29udGFjdC5oIgojaW5jbHVkZSAiQ29sbGlzaW9uUGh5c2ljcy5oIgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lHYW1lVW5pdC5oIgoKY2xhc3MgQ29sbGlzaW9uUmVzb2x2ZXIgewpwdWJsaWM6CiAgICAvLyBSZXNvbHZlIGNvbGxpc2lvbiBiZXR3ZWVuIHR3byBhZ2VudHMKICAgIHN0YXRpYyB2b2lkIFJlc29sdmVBZ2VudEFnZW50KAogICAgICAgIElHYW1lVW5pdCogdW5pdEEsCiAgICAgICAgSUdhbWVVbml0KiB1bml0QiwKICAgICAgICBjb25zdCBDb2xsaXNpb25Db250YWN0JiBjb250YWN0LAogICAgICAgIGZsb2F0IHJlc3RpdHV0aW9uQSwKICAgICAgICBmbG9hdCByZXN0aXR1dGlvbkIsCiAgICAgICAgZmxvYXQgbWFzc0EsCiAgICAgICAgZmxvYXQgbWFzc0IKICAgICk7CgogICAgLy8gUmVzb2x2ZSBjb2xsaXNpb24gYmV0d2VlbiBhZ2VudCBhbmQgbWFwCiAgICBzdGF0aWMgdm9pZCBSZXNvbHZlQWdlbnRNYXAoCiAgICAgICAgSUdhbWVVbml0KiB1bml0LAogICAgICAgIGNvbnN0IENvbGxpc2lvbkNvbnRhY3QmIGNvbnRhY3QsCiAgICAgICAgZmxvYXQgbWFwUmVzdGl0dXRpb24sCiAgICAgICAgZmxvYXQgbWFzcwogICAgKTsKCiAgICAvLyBDYWxjdWxhdGUgaW1wdWxzZSBtYWduaXR1ZGUKICAgIHN0YXRpYyBmbG9hdCBDYWxjdWxhdGVJbXB1bHNlTWFnbml0dWRlKAogICAgICAgIFZlY3RvcjIgcmVsYXRpdmVWZWxvY2l0eSwKICAgICAgICBWZWN0b3IyIG5vcm1hbCwKICAgICAgICBmbG9hdCByZXN0aXR1dGlvbiwKICAgICAgICBmbG9hdCBtYXNzQSwKICAgICAgICBmbG9hdCBtYXNzQgogICAgKTsKCiAgICAvLyBBcHBseSBpbXB1bHNlIHRvIHVuaXQKICAgIHN0YXRpYyB2b2lkIEFwcGx5SW1wdWxzZShJR2FtZVVuaXQqIHVuaXQsIFZlY3RvcjIgaW1wdWxzZSwgZmxvYXQgbWFzcyk7Cn07Cgo=
+#pragma once
+
+#include "CollisionContact.h"
+#include "CollisionPhysics.h"
+#include "core/interfaces/IGameUnit.h"
+
+class CollisionResolver {
+public:
+    // Resolve collision between two agents
+    static void ResolveAgentAgent(
+        IGameUnit* unitA,
+        IGameUnit* unitB,
+        const CollisionContact& contact,
+        float restitutionA,
+        float restitutionB,
+        float massA,
+        float massB
+    );
+
+    // Resolve collision between agent and map
+    static void ResolveAgentMap(
+        IGameUnit* unit,
+        const CollisionContact& contact,
+        float mapRestitution,
+        float mass
+    );
+
+    // Calculate impulse magnitude
+    static float CalculateImpulseMagnitude(
+        Vector2 relativeVelocity,
+        Vector2 normal,
+        float restitution,
+        float massA,
+        float massB
+    );
+
+    // Apply impulse to unit
+    static void ApplyImpulse(IGameUnit* unit, Vector2 impulse, float mass);
+};
+
