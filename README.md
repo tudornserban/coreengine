@@ -54,6 +54,17 @@ cmake --build build
 ctest --test-dir build
 ```
 
+### Optional SDL2 simulation viewer
+
+Off by default. Requires `libsdl2-dev`. Does not change default `ctest` or module manifests.
+
+```bash
+cmake -B build-viewer -DBUILD_TESTS=ON -DCOREENGINE_BUILD_SDL2_VIEWER=ON
+cmake --build build-viewer
+```
+
+See [docs/VIEWER.md](docs/VIEWER.md) for flags, keys, presets, and smoke commands.
+
 ---
 
 ## Quick Start (C++)

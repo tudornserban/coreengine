@@ -14,6 +14,7 @@ from check_module_deps import (
     INCLUDE_ENFORCED_MODULES,
     build_dependency_graph,
     check_include_boundaries,
+    check_standalone_test_link_libraries,
     detect_requires_cycles,
     render_dependency_graph_json,
     render_dependency_summary_md,
@@ -28,6 +29,231 @@ class CheckModuleDepsRegression(unittest.TestCase):
         repo_root = Path(__file__).resolve().parents[1]
         result = run_checks(repo_root)
         self.assertTrue(result.ok, result.errors)
+
+    def test_real_cmake_standalone_links_pass(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        manifests = self._manifests(repo_root)
+        errors, ran = check_standalone_test_link_libraries(repo_root, manifests, require_top_level_cmake=True)
+        self.assertTrue(ran)
+        self.assertEqual(errors, [])
+
+    def test_standalone_collision_illegal_gamestate_link_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            modules_dir = root / "docs/agentic/modules"
+            registry = json.loads((modules_dir / "registry.json").read_text(encoding="utf-8"))
+            registry["modules"].append("core.gamestate")
+            (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+            (modules_dir / "core.gamestate.module.json").write_text(
+                json.dumps(
+                    {
+                        "id": "core.gamestate",
+                        "version": "1.0.0",
+                        "path": "core/gamestate",
+                        "exports": ["RTSGameState"],
+                        "requires": {"core.math": "^1.0.0"},
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (root / "core/gamestate").mkdir(parents=True, exist_ok=True)
+            self._stub_core_object_lib(root, "core/gamestate")
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "\n".join(
+                    [
+                        "if(COREENGINE_COLLISION_STANDALONE)",
+                        "add_executable(coreengine_collision_tests foo.cpp)",
+                        "target_link_libraries(coreengine_collision_tests",
+                        "    coreengine_collision",
+                        "    coreengine_gamestate",
+                        "    coreengine_math",
+                        "    GTest::gtest",
+                        ")",
+                        "endif()",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            errors, _ran = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertEqual(len(errors), 1, errors)
+            self.assertIn("coreengine_collision_tests", errors[0])
+            self.assertIn("coreengine_gamestate", errors[0])
+            self.assertIn("core.gamestate", errors[0])
+
+    def test_standalone_missing_top_level_cmake_on_real_path_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_min_registry(root)
+            (root / "core/math").mkdir(parents=True)
+            (root / "core/logging").mkdir(parents=True)
+            errors, ran = check_standalone_test_link_libraries(
+                root, self._manifests(root), require_top_level_cmake=True
+            )
+            self.assertFalse(ran)
+            self.assertEqual(len(errors), 1)
+            self.assertIn("missing top-level CMakeLists.txt", errors[0])
+
+    def test_standalone_same_line_private_illegal_lib_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "target_link_libraries(coreengine_collision_tests PRIVATE coreengine_gamestate)\n",
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertTrue(errors)
+            self.assertIn("coreengine_gamestate", errors[0])
+
+    def test_standalone_two_libs_one_line_one_illegal_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "target_link_libraries(coreengine_collision_tests "
+                "coreengine_collision coreengine_gamestate)\n",
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertEqual(len(errors), 1)
+            self.assertIn("coreengine_gamestate", errors[0])
+
+    def test_standalone_one_line_call_illegal_lib_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "target_link_libraries(coreengine_collision_tests coreengine_gamestate)\n",
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertTrue(errors)
+
+    def test_standalone_commented_illegal_lib_ignored(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "\n".join(
+                    [
+                        "target_link_libraries(coreengine_collision_tests",
+                        "    coreengine_collision",
+                        "    # coreengine_gamestate",
+                        "    coreengine_math",
+                        ")",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertEqual(errors, [])
+
+    def test_standalone_quoted_illegal_lib_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                'target_link_libraries(coreengine_collision_tests "coreengine_gamestate")\n',
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertTrue(any("coreengine_gamestate" in e for e in errors))
+
+    def test_standalone_target_objects_genexpr_illegal_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "target_link_libraries(coreengine_collision_tests "
+                "$<TARGET_OBJECTS:coreengine_gamestate> coreengine_math)\n",
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertTrue(any("coreengine_gamestate" in e for e in errors))
+
+    def test_standalone_cmake_var_fails_explicit_libraries_message(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "target_link_libraries(coreengine_collision_tests ${COLLISION_LIBS})\n",
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertTrue(errors)
+            self.assertTrue(
+                any("list coreengine_* object libraries explicitly" in e for e in errors), errors
+            )
+
+    def test_standalone_two_link_calls_second_illegal_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "\n".join(
+                    [
+                        "target_link_libraries(coreengine_collision_tests coreengine_collision)",
+                        "target_link_libraries(coreengine_collision_tests coreengine_gamestate)",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertTrue(any("coreengine_gamestate" in e for e in errors))
+
+    def test_standalone_unknown_coreengine_foo_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "target_link_libraries(coreengine_collision_tests coreengine_foo)\n",
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertTrue(errors)
+            self.assertTrue(any("coreengine_foo" in e for e in errors))
+
+    def test_standalone_serialization_transitive_links_pass(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_gamestate_registry(root)
+            cmake = root / "CMakeLists.txt"
+            cmake.write_text(
+                "\n".join(
+                    [
+                        "if(COREENGINE_SERIALIZATION_STANDALONE)",
+                        "add_executable(coreengine_serialization_tests foo.cpp)",
+                        "target_link_libraries(coreengine_serialization_tests",
+                        "    coreengine_serialization",
+                        "    coreengine_gamestate",
+                        "    coreengine_collision",
+                        "    coreengine_combat",
+                        "    coreengine_ai",
+                        "    coreengine_map",
+                        "    coreengine_influence",
+                        "    coreengine_influence_types",
+                        "    coreengine_logging",
+                        "    coreengine_math",
+                        "    GTest::gtest",
+                        ")",
+                        "endif()",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            errors, _ = check_standalone_test_link_libraries(root, self._manifests(root), cmake_path=cmake)
+            self.assertEqual(errors, [], errors)
 
     def test_core_interfaces_changelog_requires_version_heading(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -135,12 +361,12 @@ class CheckModuleDepsRegression(unittest.TestCase):
             (deps / "SUMMARY.md").write_text(
                 render_dependency_summary_md(graph, module_ids, manifests), encoding="utf-8"
             )
-            self.assertTrue(run_checks(root).ok)
+            self.assertTrue(run_checks(root, skip_standalone_link_check=True).ok)
             (deps / "graph.json").write_text(
                 render_dependency_graph_json(graph).replace('"schemaVersion": 1', '"schemaVersion": 99'),
                 encoding="utf-8",
             )
-            r = run_checks(root)
+            r = run_checks(root, skip_standalone_link_check=True)
             self.assertFalse(r.ok)
             self.assertTrue(any("graph.json" in e for e in r.errors), r.errors)
 
@@ -163,7 +389,7 @@ class CheckModuleDepsRegression(unittest.TestCase):
             (deps / "SUMMARY.md").write_text(
                 render_dependency_summary_md(graph, module_ids, manifests), encoding="utf-8"
             )
-            result = run_checks(root)
+            result = run_checks(root, skip_standalone_link_check=True)
             self.assertFalse(result.ok)
             self.assertTrue(any("cycle" in e for e in result.errors), result.errors)
 
@@ -526,6 +752,240 @@ class CheckModuleDepsRegression(unittest.TestCase):
             )
             self.assertEqual(errors, [])
 
+    def test_serialization_rejects_undeclared_sibling_include(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_serialization_registry(root)
+            ser_dir = root / "core/serialization"
+            log_dir = root / "core/logging"
+            log_dir.mkdir(parents=True)
+            (log_dir / "Logger.h").write_text("#pragma once\n", encoding="utf-8")
+            (ser_dir / "Bad.cpp").write_text(
+                '#include "core/logging/Logger.h"\n',
+                encoding="utf-8",
+            )
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.serialization"})
+            )
+            self.assertTrue(any("core/logging" in e for e in errors), errors)
+
+    def test_serialization_allows_declared_gamestate_and_interfaces(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_serialization_registry(root)
+            gs_dir = root / "core/gamestate"
+            ifaces = root / "core/interfaces"
+            ser_dir = root / "core/serialization"
+            (gs_dir / "RTSGameState.h").write_text("#pragma once\n", encoding="utf-8")
+            (ifaces / "ISerializer.h").write_text("#pragma once\n", encoding="utf-8")
+            (ser_dir / "Ok.cpp").write_text(
+                '#include "core/gamestate/RTSGameState.h"\n'
+                '#include "core/interfaces/ISerializer.h"\n'
+                '#include "GameStateSerializer.h"\n'
+                '#include <sstream>\n',
+                encoding="utf-8",
+            )
+            (ser_dir / "GameStateSerializer.h").write_text("#pragma once\n", encoding="utf-8")
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.serialization"})
+            )
+            self.assertEqual(errors, [])
+
+    def test_collision_rejects_undeclared_sibling_include(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            col_dir = root / "core/collision"
+            gs_dir = root / "core/gamestate"
+            gs_dir.mkdir(parents=True)
+            (gs_dir / "RTSGameState.h").write_text("#pragma once\n", encoding="utf-8")
+            (col_dir / "Bad.cpp").write_text(
+                '#include "core/gamestate/RTSGameState.h"\n',
+                encoding="utf-8",
+            )
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.collision"})
+            )
+            self.assertTrue(any("core/gamestate" in e for e in errors), errors)
+
+    def test_collision_allows_declared_interfaces_math_logging(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_collision_registry(root)
+            math_dir = root / "core/math"
+            ifaces = root / "core/interfaces"
+            log_dir = root / "core/logging"
+            col_dir = root / "core/collision"
+            (math_dir / "Vector2.h").write_text("#pragma once\n", encoding="utf-8")
+            (ifaces / "IGameUnit.h").write_text("#pragma once\n", encoding="utf-8")
+            (log_dir / "Logger.h").write_text("#pragma once\n", encoding="utf-8")
+            (col_dir / "Ok.cpp").write_text(
+                '#include "CollisionSystem.h"\n'
+                '#include "core/math/Vector2.h"\n'
+                '#include "core/interfaces/IGameUnit.h"\n'
+                '#include "core/logging/Logger.h"\n'
+                '#include <vector>\n',
+                encoding="utf-8",
+            )
+            (col_dir / "CollisionSystem.h").write_text("#pragma once\n", encoding="utf-8")
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.collision"})
+            )
+            self.assertEqual(errors, [])
+
+    def test_combat_rejects_undeclared_sibling_include(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_combat_registry(root)
+            cbt_dir = root / "core/combat"
+            gs_dir = root / "core/gamestate"
+            gs_dir.mkdir(parents=True)
+            (gs_dir / "RTSGameState.h").write_text("#pragma once\n", encoding="utf-8")
+            (cbt_dir / "Bad.cpp").write_text(
+                '#include "core/gamestate/RTSGameState.h"\n',
+                encoding="utf-8",
+            )
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.combat"})
+            )
+            self.assertTrue(any("core/gamestate" in e for e in errors), errors)
+
+    def test_gamestate_rejects_undeclared_serialization_include(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_gamestate_registry(root)
+            gs_dir = root / "core/gamestate"
+            ser_dir = root / "core/serialization"
+            (ser_dir / "GameStateSerializer.h").write_text("#pragma once\n", encoding="utf-8")
+            (gs_dir / "Bad.cpp").write_text(
+                '#include "core/serialization/GameStateSerializer.h"\n',
+                encoding="utf-8",
+            )
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.gamestate"})
+            )
+            self.assertTrue(
+                any(
+                    e.startswith("core.gamestate:")
+                    and "core.serialization" in e
+                    and "manifest requires does not list it" in e
+                    for e in errors
+                ),
+                errors,
+            )
+
+    def test_gamestate_allows_declared_deps_and_own_headers(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_gamestate_registry(root)
+            gs_dir = root / "core/gamestate"
+            (root / "core/math/Vector2.h").write_text("#pragma once\n", encoding="utf-8")
+            (root / "core/logging/Logger.h").write_text("#pragma once\n", encoding="utf-8")
+            (root / "core/interfaces/IGameState.h").write_text("#pragma once\n", encoding="utf-8")
+            (root / "core/ai/BehaviorContext.h").write_text("#pragma once\n", encoding="utf-8")
+            (root / "core/combat/CommandSystem.h").write_text("#pragma once\n", encoding="utf-8")
+            (root / "core/map/Map.h").write_text("#pragma once\n", encoding="utf-8")
+            (root / "core/influence/InfluenceFieldItem.h").write_text("#pragma once\n", encoding="utf-8")
+            (root / "core/collision/CollisionSystem.h").write_text("#pragma once\n", encoding="utf-8")
+            (gs_dir / "Ok.cpp").write_text(
+                '#include "RTSGameState.h"\n'
+                '#include "../logging/Logger.h"\n'
+                '#include "core/interfaces/IGameState.h"\n'
+                '#include "../math/Vector2.h"\n'
+                '#include "../combat/CommandSystem.h"\n'
+                '#include "../map/Map.h"\n'
+                '#include "../influence/InfluenceFieldItem.h"\n'
+                '#include "../collision/CollisionSystem.h"\n'
+                '#include "../ai/BehaviorContext.h"\n'
+                '#include <vector>\n',
+                encoding="utf-8",
+            )
+            (gs_dir / "RTSGameState.h").write_text("#pragma once\n", encoding="utf-8")
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.gamestate"})
+            )
+            self.assertEqual(errors, [])
+
+    def test_combat_allows_declared_interfaces_math(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_combat_registry(root)
+            math_dir = root / "core/math"
+            ifaces = root / "core/interfaces"
+            cbt_dir = root / "core/combat"
+            (math_dir / "Vector2.h").write_text("#pragma once\n", encoding="utf-8")
+            (ifaces / "IGameUnit.h").write_text("#pragma once\n", encoding="utf-8")
+            (ifaces / "IUnitAgent.h").write_text("#pragma once\n", encoding="utf-8")
+            (cbt_dir / "Ok.cpp").write_text(
+                '#include "CommandSystem.h"\n'
+                '#include "core/math/Vector2.h"\n'
+                '#include "core/interfaces/IGameUnit.h"\n'
+                '#include "core/interfaces/IUnitAgent.h"\n'
+                '#include <vector>\n',
+                encoding="utf-8",
+            )
+            (cbt_dir / "CommandSystem.h").write_text("#pragma once\n", encoding="utf-8")
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.combat"})
+            )
+            self.assertEqual(errors, [])
+
+    def test_ai_rejects_undeclared_sibling_include(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_ai_registry(root)
+            ai_dir = root / "core/ai"
+            gs_dir = root / "core/gamestate"
+            gs_dir.mkdir(parents=True)
+            (gs_dir / "RTSGameState.h").write_text("#pragma once\n", encoding="utf-8")
+            (ai_dir / "Bad.cpp").write_text(
+                '#include "core/gamestate/RTSGameState.h"\n',
+                encoding="utf-8",
+            )
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.ai"})
+            )
+            self.assertTrue(any("core/gamestate" in e for e in errors), errors)
+
+    def test_ai_allows_declared_deps_and_own_headers(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_ai_registry(root)
+            math_dir = root / "core/math"
+            types_dir = root / "core/influence_types"
+            log_dir = root / "core/logging"
+            ifaces = root / "core/interfaces"
+            ai_dir = root / "core/ai"
+            (math_dir / "Vector2.h").write_text("#pragma once\n", encoding="utf-8")
+            (types_dir / "InfluenceFieldItem.h").write_text("#pragma once\n", encoding="utf-8")
+            (log_dir / "Logger.h").write_text("#pragma once\n", encoding="utf-8")
+            (ifaces / "IGameUnit.h").write_text("#pragma once\n", encoding="utf-8")
+            (ifaces / "IBehavior.h").write_text("#pragma once\n", encoding="utf-8")
+            (ai_dir / "Ok.cpp").write_text(
+                '#include "BehaviorContext.h"\n'
+                '#include "core/math/Vector2.h"\n'
+                '#include "core/influence_types/InfluenceFieldItem.h"\n'
+                '#include "core/logging/Logger.h"\n'
+                '#include "core/interfaces/IGameUnit.h"\n'
+                '#include <vector>\n',
+                encoding="utf-8",
+            )
+            (ai_dir / "BehaviorContext.h").write_text("#pragma once\n", encoding="utf-8")
+            manifests = self._manifests(root)
+            errors = check_include_boundaries(
+                root, list(manifests.keys()), manifests, frozenset({"core.ai"})
+            )
+            self.assertEqual(errors, [])
+
     @staticmethod
     def _write_interfaces_registry(root: Path) -> None:
         modules_dir = root / "docs/agentic/modules"
@@ -670,6 +1130,410 @@ class CheckModuleDepsRegression(unittest.TestCase):
         (root / "core/influence_types").mkdir(parents=True, exist_ok=True)
         (root / "core/interfaces").mkdir(parents=True, exist_ok=True)
         (root / "core/map").mkdir(parents=True, exist_ok=True)
+
+    @staticmethod
+    def _write_serialization_registry(root: Path) -> None:
+        modules_dir = root / "docs/agentic/modules"
+        modules_dir.mkdir(parents=True)
+        registry = {
+            "modules": ["core.math", "core.interfaces", "core.gamestate", "core.serialization"]
+        }
+        (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+        (modules_dir / "core.math.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.math",
+                    "version": "1.0.0",
+                    "path": "core/math",
+                    "exports": ["Vector2"],
+                    "requires": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.interfaces.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.interfaces",
+                    "version": "1.0.0",
+                    "path": "core/interfaces",
+                    "exports": ["ISerializer"],
+                    "requires": {"core.math": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.gamestate.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.gamestate",
+                    "version": "1.0.0",
+                    "path": "core/gamestate",
+                    "exports": ["RTSGameState"],
+                    "requires": {"core.math": "^1.0.0", "core.interfaces": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.serialization.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.serialization",
+                    "version": "1.0.0",
+                    "path": "core/serialization",
+                    "exports": ["GameStateSerializer"],
+                    "requires": {"core.gamestate": "^1.0.0", "core.interfaces": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (root / "core/math").mkdir(parents=True, exist_ok=True)
+        (root / "core/interfaces").mkdir(parents=True, exist_ok=True)
+        (root / "core/gamestate").mkdir(parents=True, exist_ok=True)
+        (root / "core/serialization").mkdir(parents=True, exist_ok=True)
+
+    @staticmethod
+    def _write_gamestate_registry(root: Path) -> None:
+        modules_dir = root / "docs/agentic/modules"
+        modules_dir.mkdir(parents=True)
+        registry = {
+            "modules": [
+                "core.math",
+                "core.logging",
+                "core.interfaces",
+                "core.influence.types",
+                "core.ai",
+                "core.combat",
+                "core.map",
+                "core.influence",
+                "core.collision",
+                "core.gamestate",
+                "core.serialization",
+            ]
+        }
+        (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+        stubs = {
+            "core.math": ("core/math", ["Vector2"], {}),
+            "core.logging": ("core/logging", ["Logger"], {}),
+            "core.influence.types": (
+                "core/influence_types",
+                ["InfluenceFieldItem"],
+                {"core.math": "^1.0.0"},
+            ),
+            "core.interfaces": (
+                "core/interfaces",
+                ["IGameState"],
+                {"core.math": "^1.0.0", "core.influence.types": "^1.0.0"},
+            ),
+            "core.ai": (
+                "core/ai",
+                ["BehaviorContext"],
+                {
+                    "core.math": "^1.0.0",
+                    "core.influence.types": "^1.0.0",
+                    "core.logging": "^1.0.0",
+                    "core.interfaces": "^1.0.0",
+                },
+            ),
+            "core.combat": (
+                "core/combat",
+                ["CommandSystem"],
+                {"core.math": "^1.0.0", "core.interfaces": "^1.0.0"},
+            ),
+            "core.map": (
+                "core/map",
+                ["Map"],
+                {
+                    "core.math": "^1.0.0",
+                    "core.interfaces": "^1.0.0",
+                    "core.influence.types": "^1.0.0",
+                },
+            ),
+            "core.influence": (
+                "core/influence",
+                ["InfluenceFieldItem"],
+                {
+                    "core.math": "^1.0.0",
+                    "core.interfaces": "^1.0.0",
+                    "core.influence.types": "^1.0.0",
+                },
+            ),
+            "core.collision": (
+                "core/collision",
+                ["CollisionSystem"],
+                {
+                    "core.math": "^1.0.0",
+                    "core.interfaces": "^1.0.0",
+                    "core.influence.types": "^1.0.0",
+                    "core.logging": "^1.0.0",
+                },
+            ),
+            "core.gamestate": (
+                "core/gamestate",
+                ["RTSGameState"],
+                {
+                    "core.ai": "^1.0.0",
+                    "core.combat": "^1.0.0",
+                    "core.map": "^1.0.0",
+                    "core.influence": "^1.0.0",
+                    "core.collision": "^1.0.0",
+                    "core.math": "^1.0.0",
+                    "core.logging": "^1.0.0",
+                    "core.interfaces": "^1.0.0",
+                },
+            ),
+            "core.serialization": (
+                "core/serialization",
+                ["GameStateSerializer"],
+                {"core.gamestate": "^1.0.0", "core.interfaces": "^1.0.0"},
+            ),
+        }
+        for mid, (path, exports, requires) in stubs.items():
+            (modules_dir / f"{mid}.module.json").write_text(
+                json.dumps(
+                    {
+                        "id": mid,
+                        "version": "1.0.0",
+                        "path": path,
+                        "exports": exports,
+                        "requires": requires,
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (root / path).mkdir(parents=True, exist_ok=True)
+            CheckModuleDepsRegression._stub_core_object_lib(root, path)
+
+    @staticmethod
+    def _stub_core_object_lib(root: Path, rel_path: str) -> None:
+        if rel_path == "core/interfaces":
+            return
+        suffix = rel_path.removeprefix("core/").replace("/", "_")
+        target = f"coreengine_{suffix}"
+        d = root / rel_path
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "CMakeLists.txt").write_text(f"add_library({target} OBJECT)\n", encoding="utf-8")
+
+    @staticmethod
+    def _write_combat_registry(root: Path) -> None:
+        modules_dir = root / "docs/agentic/modules"
+        modules_dir.mkdir(parents=True)
+        registry = {"modules": ["core.math", "core.interfaces", "core.combat"]}
+        (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+        (modules_dir / "core.math.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.math",
+                    "version": "1.0.0",
+                    "path": "core/math",
+                    "exports": ["Vector2"],
+                    "requires": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.interfaces.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.interfaces",
+                    "version": "1.0.0",
+                    "path": "core/interfaces",
+                    "exports": ["IGameUnit", "IUnitAgent"],
+                    "requires": {"core.math": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.combat.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.combat",
+                    "version": "1.0.0",
+                    "path": "core/combat",
+                    "exports": ["CommandSystem"],
+                    "requires": {"core.math": "^1.0.0", "core.interfaces": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (root / "core/math").mkdir(parents=True, exist_ok=True)
+        (root / "core/interfaces").mkdir(parents=True, exist_ok=True)
+        (root / "core/combat").mkdir(parents=True, exist_ok=True)
+
+    @staticmethod
+    def _write_collision_registry(root: Path) -> None:
+        modules_dir = root / "docs/agentic/modules"
+        modules_dir.mkdir(parents=True)
+        registry = {
+            "modules": [
+                "core.math",
+                "core.influence.types",
+                "core.interfaces",
+                "core.logging",
+                "core.collision",
+            ]
+        }
+        (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+        (modules_dir / "core.math.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.math",
+                    "version": "1.0.0",
+                    "path": "core/math",
+                    "exports": ["Vector2"],
+                    "requires": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.influence.types.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.influence.types",
+                    "version": "1.0.0",
+                    "path": "core/influence_types",
+                    "exports": ["InfluenceFieldItem"],
+                    "requires": {"core.math": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.interfaces.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.interfaces",
+                    "version": "1.0.0",
+                    "path": "core/interfaces",
+                    "exports": ["IGameUnit"],
+                    "requires": {"core.math": "^1.0.0", "core.influence.types": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.logging.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.logging",
+                    "version": "1.0.0",
+                    "path": "core/logging",
+                    "exports": ["Logger"],
+                    "requires": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.collision.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.collision",
+                    "version": "1.0.0",
+                    "path": "core/collision",
+                    "exports": ["CollisionSystem"],
+                    "requires": {
+                        "core.math": "^1.0.0",
+                        "core.interfaces": "^1.0.0",
+                        "core.logging": "^1.0.0",
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        for rel in (
+            "core/math",
+            "core/influence_types",
+            "core/interfaces",
+            "core/logging",
+            "core/collision",
+        ):
+            if rel == "core/interfaces":
+                (root / rel).mkdir(parents=True, exist_ok=True)
+            else:
+                CheckModuleDepsRegression._stub_core_object_lib(root, rel)
+
+    @staticmethod
+    def _write_ai_registry(root: Path) -> None:
+        modules_dir = root / "docs/agentic/modules"
+        modules_dir.mkdir(parents=True)
+        registry = {
+            "modules": [
+                "core.math",
+                "core.influence.types",
+                "core.interfaces",
+                "core.logging",
+                "core.ai",
+            ]
+        }
+        (modules_dir / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+        (modules_dir / "core.math.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.math",
+                    "version": "1.0.0",
+                    "path": "core/math",
+                    "exports": ["Vector2"],
+                    "requires": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.influence.types.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.influence.types",
+                    "version": "1.0.0",
+                    "path": "core/influence_types",
+                    "exports": ["InfluenceFieldItem"],
+                    "requires": {"core.math": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.interfaces.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.interfaces",
+                    "version": "1.0.0",
+                    "path": "core/interfaces",
+                    "exports": ["IGameUnit"],
+                    "requires": {"core.math": "^1.0.0", "core.influence.types": "^1.0.0"},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.logging.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.logging",
+                    "version": "1.0.0",
+                    "path": "core/logging",
+                    "exports": ["Logger"],
+                    "requires": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        (modules_dir / "core.ai.module.json").write_text(
+            json.dumps(
+                {
+                    "id": "core.ai",
+                    "version": "1.0.0",
+                    "path": "core/ai",
+                    "exports": ["StateMachine"],
+                    "requires": {
+                        "core.math": "^1.0.0",
+                        "core.interfaces": "^1.0.0",
+                        "core.logging": "^1.0.0",
+                        "core.influence.types": "^1.0.0",
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        (root / "core/math").mkdir(parents=True, exist_ok=True)
+        (root / "core/influence_types").mkdir(parents=True, exist_ok=True)
+        (root / "core/interfaces").mkdir(parents=True, exist_ok=True)
+        (root / "core/logging").mkdir(parents=True, exist_ok=True)
+        (root / "core/ai").mkdir(parents=True, exist_ok=True)
 
     @staticmethod
     def _write_logging_registry(root: Path) -> None:

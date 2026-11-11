@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../interfaces/IGameUnit.h"
-#include "../math/Vector2.h"
+#include "core/interfaces/IGameUnit.h"
+#include "core/math/Vector2.h"
 #include "CollisionTypes.h"
 
 class ICollidable;

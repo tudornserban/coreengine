@@ -21,7 +21,7 @@ Modules below match **CMake source globs** and **ARCHITECTURE.md** layers. Subfo
 | `core.gameloop` | `core/gameloop/` | Fixed-timestep `GameLogicEngine`, deployment/think timers, playback | 4 |
 | `core.map` | `core/map/` (+ `MapComponents/`) | ECS-style map, placement validation | 5 |
 | `core.combat` | `core/combat/` | Selection, commands, explosions, combat manager | 4 |
-| `core.gamestate` | `core/gamestate/` | `RTSGameState`, `RTSUnit`, state manager | 3 |
+| `core.gamestate` | `core/gamestate/` | Simulation hub (`RTSGameState`, `RTSUnit`, selection/commands/collision/RNG); `GameStateManager` single active menu/mission state — include enforcement R2.1 | 3 |
 | `core.serialization` | `core/serialization/` | Game state serialize/deserialize | 1 |
 | `core.ai_advanced` | `core/ai_advanced/` | Bot genomes, genetic trainer (experimental) | 1 |
 
@@ -47,6 +47,9 @@ Modules below match **CMake source globs** and **ARCHITECTURE.md** layers. Subfo
 | `BUILD_TESTS` | OFF | `coreengine_tests` + `ctest` discovery |
 | `BUILD_SDL2` | OFF | `coreengine_sdl2` (needs SDL2) |
 | `BUILD_RAYLIB` | OFF | `coreengine_raylib` (needs raylib) |
+| `COREENGINE_BUILD_SDL2_VIEWER` | OFF | `coreengine_sdl2_viewer` + optional viewer tests (needs SDL2; `libsdl2-dev`) |
+| `COREENGINE_COLLISION_STANDALONE` | OFF | `coreengine_collision_tests` (collision + declared deps only; standalone target links math + influence types + logging + collision) |
+| `COREENGINE_COMBAT_STANDALONE` | OFF | `coreengine_combat_tests` (combat + declared deps only; standalone target links math + combat) |
 
 **Typical CI / local test command** (matches `.gitlab-ci.yml`):
 
@@ -56,7 +59,7 @@ cmake --build build --parallel
 cd build && ctest --output-on-failure
 ```
 
-**Agentic dependency check** (manifests + Phase 2 `core.math` `#include` enforcement):
+**Agentic dependency check** (manifests + opted-in modules `#include` enforcement):
 
 ```bash
 ./scripts/check-module-deps.sh
@@ -73,6 +76,18 @@ python3 scripts/test_check_module_deps.py
 
 ```bash
 ./scripts/run-influence-module-tests.sh
+```
+
+**Collision-only tests** (OBJECT lib + math + influence types + logging + collision):
+
+```bash
+./scripts/run-collision-module-tests.sh
+```
+
+**Combat-only tests** (OBJECT lib + math + combat):
+
+```bash
+./scripts/run-combat-module-tests.sh
 ```
 
 ### CI
@@ -95,10 +110,10 @@ python3 scripts/test_check_module_deps.py
 
 | Issue | Files | Notes |
 |-------|-------|-------|
-| **Collision → concrete `RTSUnit`** | `CollisionResolver.cpp`, `CollisionSystem.cpp`, `PositionCorrector.cpp`, `MapCollisionHandler.cpp` | Guidelines say avoid `RTSUnit*` outside gamestate/collision; ideal fix is `IGameUnit` only (Phase 2+). |
-| **Combat → `RTSUnit`** | `CommandSystem.cpp` | Same pattern. |
+| **Collision → `IUnitKinematics` gate** | `CollisionSystem.cpp`, `CollisionResolver.cpp`, `PositionCorrector.cpp`, `MapCollisionHandler.cpp` | All four resolve/write paths gate on `IUnitKinematics`; no `#include` of `RTSUnit` in `core/collision` (`core.collision` is include-enforced as of R1.3). |
+| **Combat → `IUnitAgent`** | `CommandSystem.cpp` | `CommandSystem` commands via `dynamic_cast<IUnitAgent*>`; no `#include` of `RTSUnit` in `core/combat` (`core.combat` is include-enforced as of R1.6). |
 | **Serialization → `RTSGameState`** | `GameStateSerializer.cpp` | Expected for now; may stay in `gamestate` or `serialization` bundle. |
-| **Duplicate interface headers** | `core/gamestate/IGameState.h`, `IGameLogicRenderer.h` vs `core/interfaces/` | `GameStateManager` includes local `IGameState.h`; risk of drift from `core/interfaces/`. |
+| **Duplicate interface headers** | `core/gamestate/IGameState.h`, `IGameLogicRenderer.h` vs `core/interfaces/` | Legacy paths forward to `core/interfaces/` (R1.4); canonical contract is under `core/interfaces/`. |
 | **Hub module** | `RTSGameState.h` | Pulls combat, map, influence, collision, AI context — natural integration point, hard to edit in isolation. |
 | **Interface completeness** | `IBehavior.h` | ~~GCC 13 fails~~ **Fixed:** include complete `InfluenceFieldItem` for `std::vector` in interface (see [BUILD_INTEGRATION.md](BUILD_INTEGRATION.md)). |
 
@@ -143,7 +158,7 @@ flowchart BT
   adv --> gs
 ```
 
-*(Solid arrows = direct `#include` today or expected; collision→gamestate dashed in policy as **to remove**.)*
+*(Solid arrows = direct `#include` today or expected. For game units, `core.collision`’s only unit-facing dependencies are `IGameUnit` / `IUnitKinematics` (no `RTSUnit` / `core.gamestate`); per its manifest it also requires `core.math`, `core.logging`, and `core.influence.types`. Standalone tests use `KinematicMockGameUnit` since R3.1.)*
 
 ---
 
@@ -154,13 +169,13 @@ flowchart BT
 | `core.math` | `DeterministicRNGTest`, `MathConstantsTest`, `Vector2Test` | Used in `DeterminismTest` |
 | `core.ai` | `StateMachineTest`, `BehaviorsTest`, `ConditionsTest`, `BehaviorFactoryTest` | `BehaviorRuntimeSwapTest` |
 | `core.influence` | `InfluenceFieldTest` | — |
-| `core.collision` | `SpatialGridTest`, `ImmunityManagerTest` | — |
+| `core.collision` | `SpatialGridTest`, `ImmunityManagerTest`, `UnitKinematicsWriteTest`, `CollisionSystemKinematicsGateTest`, `CollisionModuleHeaderCompileTest` | — |
 | `core.gameloop` | `GameLogicEngineTest`, `DeploymentTimerTest`, `ThinkTimerTest` | — |
 | `core.map` | `MapTest` | — |
-| `core.combat` | `ExplosionTest` (under `Map/` folder name) | — |
-| `core.gamestate` | — | `DeterminismTest` |
+| `core.combat` | `ExplosionTest`, `CommandSystemAgentContractTest`, `CombatModuleHeaderCompileTest`, `CommandSystemTest` (full-engine) | `./scripts/run-combat-module-tests.sh` |
+| `core.gamestate` | `GamestateModuleHeaderCompileTest`, `RTSGameStateNonRTSUnitGateTest` | `DeterminismTest` |
 | `core.logging` | — | — |
-| `core.serialization` | — | — |
+| `core.serialization` | `SerializationModuleHeaderCompileTest` | — |
 | `core.ai_advanced` | — | — |
 
 ---
@@ -179,7 +194,7 @@ flowchart BT
 
 **Runner-up:** `core.influence` — good tests and mostly depends on `math`, but ties to AI behavior field generation.
 
-**Defer:** `core.gamestate` and `core.collision` until interfaces are cleaned (collision↔gamestate coupling).
+**`core.gamestate`:** include enforcement active as of R2.1 — see [core/gamestate/MODULE.md](../../core/gamestate/MODULE.md) and [PHASE3_GAMESTATE.md](PHASE3_GAMESTATE.md).
 
 ---
 

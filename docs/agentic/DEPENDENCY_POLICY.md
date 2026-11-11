@@ -1,6 +1,6 @@
 # Module dependency policy (draft)
 
-Enforcement is **active** for `core.math`, `core.influence.types`, `core.influence`, `core.logging`, `core.interfaces`, `core.gameloop`, and `core.map` in Phase 2–3 (`scripts/check-module-deps.sh`). Other registry modules remain **manifest-only** until opted in. **`requires` graphs must be acyclic** — no checker exceptions.
+Enforcement is **active** for `core.math`, `core.influence.types`, `core.influence`, `core.logging`, `core.interfaces`, `core.gameloop`, `core.map`, `core.ai`, `core.serialization`, `core.collision`, `core.combat`, and `core.gamestate` (`scripts/check-module-deps.sh`). **`core.ai_advanced`** remains manifest-only until opted in. **`requires` graphs must be acyclic** — no checker exceptions. Standalone `COREENGINE_*_STANDALONE` test executables in the top-level `CMakeLists.txt` may only link `coreengine_*` object libraries for that module and the transitive closure of its manifest `requires` (header-only `core.interfaces` has no object target). The link checker tokenises each `target_link_libraries` call literally: `${...}` variables and unexpanded generator expressions fail the check—list required `coreengine_*` libraries explicitly in CMake.
 
 The committed manifest-only **`requires` graph** (machine-readable JSON plus a human summary) lives under [`docs/deps/`](../deps/). `scripts/check_module_deps.py` regenerates and byte-compares these files on every run so committed artifacts cannot drift from the manifests.
 
@@ -18,7 +18,7 @@ The committed manifest-only **`requires` graph** (machine-readable JSON plus a h
 |------|-----------|
 | No `#include` from `core/` to `platform/` or `ffi/` | Platform-agnostic core |
 | Systems must not `#include` concrete types from `core.gamestate/` except integration modules | Keeps agents scoped to one module |
-| `core.collision` should depend on `IGameUnit`, not `RTSUnit` | Documented violation today; remove in Phase 2 pilot follow-ups |
+| `core.collision` depends on `IGameUnit` and `IUnitKinematics`; includes enforced since R1.3; standalone tests construct `KinematicMockGameUnit` as of R3.1 | Interface-only dependency on game units |
 | Depend only on modules listed in `requires` with satisfied semver | Agent + CI guardrail |
 | No cycles in `requires` | Enables ordered extraction; strictly enforced |
 

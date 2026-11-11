@@ -1,26 +1,41 @@
 #include "GameStateSerializer.h"
-#include "../gamestate/RTSGameState.h"
+
+#include "core/gamestate/RTSGameState.h"
+#include "core/interfaces/ISimulationSnapshot.h"
+
 #include <sstream>
 
 // NOTE: Full serialization requires a JSON library (e.g. nlohmann/json).
 // This implementation provides the minimal scaffold; extend as needed.
 // The serialize/deserialize cycle must be lossless for deterministic replays.
 
-GameStateSerializer::GameStateSerializer(const RTSGameState* state) : state_(state) {}
+GameStateSerializer::GameStateSerializer(const RTSGameState* state) : snapshot_(state) {}
+
+GameStateSerializer::GameStateSerializer(const ISimulationSnapshot* snapshot) : snapshot_(snapshot) {}
+
+void GameStateSerializer::SetState(const RTSGameState* state)
+{
+    snapshot_ = state;
+}
+
+void GameStateSerializer::SetSnapshot(const ISimulationSnapshot* snapshot)
+{
+    snapshot_ = snapshot;
+}
 
 std::string GameStateSerializer::SerializeToString() const
 {
-    if (!state_) return "{}";
+    if (!snapshot_) return "{}";
 
     std::ostringstream oss;
     oss << "{\n";
     oss << "  \"version\": " << FORMAT_VERSION << ",\n";
     oss << "  \"format\": \"" << GetFormatName() << "\",\n";
 
-    Vector2 mapSize = state_->GetMapSize();
+    Vector2 mapSize = snapshot_->GetMapSize();
     oss << "  \"map\": { \"width\": " << mapSize.x << ", \"height\": " << mapSize.y << " },\n";
 
-    auto units = state_->GetAllUnits();
+    auto units = snapshot_->GetAllUnits();
     oss << "  \"units\": [\n";
     for (size_t i = 0; i < units.size(); ++i) {
         const IGameUnit* u = units[i];

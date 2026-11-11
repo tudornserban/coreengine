@@ -4,10 +4,14 @@
 #include "core/interfaces/IGameLogicRenderer.h"
 #include "core/interfaces/IGameState.h"
 #include "core/interfaces/IGameUnit.h"
+#include "core/interfaces/IUnitKinematics.h"
+#include "core/interfaces/IUnitAgent.h"
 #include "core/interfaces/IInputReader.h"
 #include "core/interfaces/IMapComponent.h"
 #include "core/interfaces/ISerializer.h"
 #include "core/interfaces/ITransitionCondition.h"
+#include "core/interfaces/ISimulationSnapshot.h"
+#include "core/interfaces/IUnitBehaviorHost.h"
 
 namespace {
 

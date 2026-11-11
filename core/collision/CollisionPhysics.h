@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../math/Vector2.h"
+#include "core/math/Vector2.h"
 
 struct CollisionPhysics {
     float mass;  // Starts at 100, proportional to HP

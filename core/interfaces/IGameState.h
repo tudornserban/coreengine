@@ -1,7 +1,7 @@
 #pragma once
 
 /// Base interface for all game states (menus, missions, lobbies, etc.).
-/// Managed by GameStateManager via a simple single-active-state stack.
+/// Managed by GameStateManager via a single active state.
 class IGameState {
 public:
     virtual ~IGameState() = default;

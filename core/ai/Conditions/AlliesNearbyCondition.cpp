@@ -1,6 +1,6 @@
 #include "AlliesNearbyCondition.h"
-#include "../../ai/BehaviorContext.h"
-#include "../../interfaces/IGameUnit.h"
+#include "core/ai/BehaviorContext.h"
+#include "core/interfaces/IGameUnit.h"
 #include <cstdio>
 
 AlliesNearbyCondition::AlliesNearbyCondition(int minimumAllies, float detectionRange)

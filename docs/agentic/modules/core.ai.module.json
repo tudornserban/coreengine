@@ -19,8 +19,8 @@
     "core.interfaces": "^1.0.0",
     "core.math": "^1.0.0",
     "core.logging": "^1.0.0",
-    "core.influence": "^1.0.0"
+    "core.influence.types": "^1.0.0"
   },
   "tags": ["gameplay", "fsm"],
-  "notes": "Behaviors reference InfluenceFieldItem via IBehavior; influence coupling is structural."
+  "notes": "BehaviorContext stores InfluenceFieldItem from core.influence.types; aligns with IBehavior and map obstacle components."
 }

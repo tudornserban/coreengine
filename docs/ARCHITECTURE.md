@@ -67,10 +67,11 @@ These are the FFI boundary contracts — the minimal surface area each system de
 | Interface | Purpose |
 |-----------|---------|
 | `IGameUnit.h` | Position, velocity, HP, team, radius |
+| `IUnitKinematics.h` | Optional `SetPosition` / `SetVelocity` for systems that must write kinematics (e.g. collision); `RTSUnit` implements |
 | `IBehavior.h` | GenerateFieldItems() or CalculateAcceleration() + lifecycle hooks |
 | `ITransitionCondition.h` | Evaluate(BehaviorContext) → bool |
 | `IGameState.h` | OnEnter/OnExit/Update/Render |
-| `IGameLogicRenderer.h` | GetCurrentGameState() — read-only renderer contract |
+| `IGameLogicRenderer.h` | GetCurrentGameState() — read-only renderer contract; GetSimulationSnapshot() optional (default nullptr) |
 | `IInputReader.h` | PollEvents(), IsKeyDown(), GetMousePosition() etc. |
 | `ISerializer.h` | Serialize/Deserialize to byte buffer or string |
 | `IMapComponent.h` | ECS component base for map entities |
@@ -122,8 +123,8 @@ Directly from VenusWars — broadphase SpatialGrid + narrowphase circle detectio
 ### `core/gamestate/`
 - `RTSGameState` — canonical simulation state (units, map, collision, RNG)
 - `RTSUnit` — concrete IGameUnit with StateMachine + InfluenceFieldController
-- `GameStateManager` — single-active-state stack (transitions via SetState)
-- `IGameState` / `IGameLogicRenderer` — mirror interfaces (also in `core/interfaces/`)
+- `GameStateManager` — single active state (transitions via SetState)
+- `IGameState` / `IGameLogicRenderer` — thin `#include` forwarders to `core/interfaces/` (canonical contract)
 
 ### `core/logging/`
 - `Logger` (singleton) — level-filtered console + file output, `LOG_DEBUG/INFO/WARN/ERROR/FATAL` macros
@@ -192,3 +193,9 @@ each frame:
 | `TerritoryCalculator` in core | Shared win condition system for DynamicGO + AscendantExpanse |
 | `DeploymentTimer` in core | Universal spawn charge system across all four games |
 | `IGameLogicRenderer` read-only | Logic state never mutated by renderer |
+
+---
+
+## Optional viewer (`tools/viewer/`)
+
+`core/` remains free of SDL, platform adapters, and FFI headers. The optional SDL2 simulation viewer (`-DCOREENGINE_BUILD_SDL2_VIEWER=ON`, default OFF) lives entirely under `tools/viewer/` and links the existing `coreengine` static library. It is not registered in `docs/agentic/modules/` and does not change engine simulation code. See [VIEWER.md](VIEWER.md).
