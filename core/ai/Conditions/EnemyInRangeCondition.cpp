@@ -1,1 +1,22 @@
-I2luY2x1ZGUgIkVuZW15SW5SYW5nZUNvbmRpdGlvbi5oIgojaW5jbHVkZSAiY29yZS9haS9CZWhhdmlvckNvbnRleHQuaCIKI2luY2x1ZGUgImNvcmUvaW50ZXJmYWNlcy9JR2FtZVVuaXQuaCIKI2luY2x1ZGUgPGNzdGRpbz4KCkVuZW15SW5SYW5nZUNvbmRpdGlvbjo6RW5lbXlJblJhbmdlQ29uZGl0aW9uKGZsb2F0IGRldGVjdGlvblJhbmdlKSA6IHJhbmdlXyhkZXRlY3Rpb25SYW5nZSkge30KCmJvb2wgRW5lbXlJblJhbmdlQ29uZGl0aW9uOjpFdmFsdWF0ZShjb25zdCBCZWhhdmlvckNvbnRleHQmIGN0eCkgY29uc3QKewogICAgaWYgKCFjdHguc2VsZikgcmV0dXJuIGZhbHNlOwogICAgVmVjdG9yMiBwb3MgPSBjdHguc2VsZi0+R2V0UG9zaXRpb24oKTsKICAgIGZvciAoSUdhbWVVbml0KiBlbmVteSA6IGN0eC5uZWFyYnlFbmVtaWVzKSB7CiAgICAgICAgaWYgKGVuZW15LT5HZXRQb3NpdGlvbigpLkRpc3RhbmNlKHBvcykgPD0gcmFuZ2VfKSByZXR1cm4gdHJ1ZTsKICAgIH0KICAgIHJldHVybiBmYWxzZTsKfQoKY29uc3QgY2hhciogRW5lbXlJblJhbmdlQ29uZGl0aW9uOjpHZXREZXNjcmlwdGlvbigpIGNvbnN0CnsKICAgIHNucHJpbnRmKGRlc2NyaXB0aW9uXywgc2l6ZW9mKGRlc2NyaXB0aW9uXyksICJFbmVteSB3aXRoaW4gJS4wZiB1bml0cyIsIHJhbmdlXyk7CiAgICByZXR1cm4gZGVzY3JpcHRpb25fOwp9Cg==
+#include "EnemyInRangeCondition.h"
+#include "core/ai/BehaviorContext.h"
+#include "core/interfaces/IGameUnit.h"
+#include <cstdio>
+
+EnemyInRangeCondition::EnemyInRangeCondition(float detectionRange) : range_(detectionRange) {}
+
+bool EnemyInRangeCondition::Evaluate(const BehaviorContext& ctx) const
+{
+    if (!ctx.self) return false;
+    Vector2 pos = ctx.self->GetPosition();
+    for (IGameUnit* enemy : ctx.nearbyEnemies) {
+        if (enemy->GetPosition().Distance(pos) <= range_) return true;
+    }
+    return false;
+}
+
+const char* EnemyInRangeCondition::GetDescription() const
+{
+    snprintf(description_, sizeof(description_), "Enemy within %.0f units", range_);
+    return description_;
+}

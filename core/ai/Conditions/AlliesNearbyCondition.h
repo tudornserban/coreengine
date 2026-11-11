@@ -1,1 +1,15 @@
-I3ByYWdtYSBvbmNlCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSVRyYW5zaXRpb25Db25kaXRpb24uaCIKCmNsYXNzIEFsbGllc05lYXJieUNvbmRpdGlvbiA6IHB1YmxpYyBJVHJhbnNpdGlvbkNvbmRpdGlvbiB7CnByaXZhdGU6CiAgICBpbnQgICBtaW5BbGxpZXNfOwogICAgZmxvYXQgcmFuZ2VfOwogICAgbXV0YWJsZSBjaGFyIGRlc2NyaXB0aW9uX1sxMjhdOwoKcHVibGljOgogICAgQWxsaWVzTmVhcmJ5Q29uZGl0aW9uKGludCBtaW5pbXVtQWxsaWVzLCBmbG9hdCBkZXRlY3Rpb25SYW5nZSk7CgogICAgYm9vbCBFdmFsdWF0ZShjb25zdCBCZWhhdmlvckNvbnRleHQmIGN0eCkgY29uc3Qgb3ZlcnJpZGU7CiAgICBjb25zdCBjaGFyKiBHZXREZXNjcmlwdGlvbigpIGNvbnN0IG92ZXJyaWRlOwp9Owo=
+#pragma once
+#include "core/interfaces/ITransitionCondition.h"
+
+class AlliesNearbyCondition : public ITransitionCondition {
+private:
+    int   minAllies_;
+    float range_;
+    mutable char description_[128];
+
+public:
+    AlliesNearbyCondition(int minimumAllies, float detectionRange);
+
+    bool Evaluate(const BehaviorContext& ctx) const override;
+    const char* GetDescription() const override;
+};
