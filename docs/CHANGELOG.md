@@ -5,6 +5,16 @@ Each entry links back to the originating proposal document where applicable.
 
 ---
 
+## 2026-03-25 — FFI 1.2.0: reset keeps RNG seed
+
+### F1.3 — `ce_engine_reset` preserves create seed
+
+- `EngineContext` stores the `rngSeed` from `ce_engine_create`; reset rebuilds `RTSGameState` with that seed instead of defaulting to 0.
+- New `ce_engine_get_seed` reads the live `DeterministicRNG` seed (null engine → `0`).
+- `CE_FFI_VERSION` bumped to **1.2.0**; bindings and docs updated.
+
+---
+
 ## 2026-03-14 — RationalInsanity Bootstrap Sprint
 
 Source: `GameSeeds/RationalInsanity/docs/strategic/engine-proposals.md`

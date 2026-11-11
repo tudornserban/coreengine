@@ -29,6 +29,7 @@ struct EngineContext {
     DeploymentTimer                  p2Timer{kSpawnChargeSeconds};
     float                            mapWidth  = 1600.0f;
     float                            mapHeight = 900.0f;
+    uint64_t                         rngSeed   = 0;
     bool                             running   = true;
     int                              lastResult = CE_OK;
 };
@@ -57,6 +58,7 @@ CE_Engine ce_engine_create(float mapWidth, float mapHeight, uint64_t rngSeed)
     auto* c = new EngineContext();
     c->mapWidth    = mapWidth;
     c->mapHeight   = mapHeight;
+    c->rngSeed     = rngSeed;
     c->lastResult  = CE_OK;
     c->gameState   = std::make_unique<RTSGameState>(Vector2(mapWidth, mapHeight), rngSeed);
     c->logicEngine = std::make_unique<GameLogicEngine>(1.0f / 30.0f);
@@ -85,12 +87,20 @@ void ce_engine_reset(CE_Engine engine)
 {
     auto* c = ctx(engine);
     if (!c) return;
-    c->gameState   = std::make_unique<RTSGameState>(Vector2(c->mapWidth, c->mapHeight));
+    c->gameState   = std::make_unique<RTSGameState>(
+        Vector2(c->mapWidth, c->mapHeight), c->rngSeed);
     c->logicEngine->Reset();
     c->p1Timer     = DeploymentTimer(kSpawnChargeSeconds);
     c->p2Timer     = DeploymentTimer(kSpawnChargeSeconds);
     c->running     = true;
     c->lastResult  = CE_OK;
+}
+
+uint64_t ce_engine_get_seed(CE_Engine engine)
+{
+    auto* c = ctx(engine);
+    if (!c) return 0;
+    return c->gameState->GetRNG().GetSeed();
 }
 
 // --- Unit management ---

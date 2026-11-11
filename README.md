@@ -149,7 +149,7 @@ ce_engine_destroy(e);
 
 **Deployment timer:** teams **1** and **2** each have a separate 10 s charge timer. A new engine starts with **no** charge; earn one with `ce_timer_grant_charge` or ~**300** logic steps at `1/30` s (`ce_engine_update`). `ce_unit_spawn` returns `0` without a charge or for invalid team ids; use `ce_last_result` for the reason.
 
-Current FFI limitations (full list in [FFI guide](docs/FFI_GUIDE.md#current-limitations)): `ce_behavior_register` is a no-op; `ce_engine_reset` rebuilds state with **rng seed 0** (drops the original seed); `ce_snapshot_get` always leaves `winner` at `0` and only sets `matchOver` when the engine marks itself stopped; built-in behavior names are Seek/Flee/Wander/Cohesion/Separation only (**not** `Aggro`).
+Current FFI limitations (full list in [FFI guide](docs/FFI_GUIDE.md#current-limitations)): `ce_behavior_register` is a no-op; `ce_engine_reset` clears units, both deployment timers, and simulated time but **keeps the create-time map size and RNG seed** (use `ce_engine_get_seed` to read it); `ce_snapshot_get` always leaves `winner` at `0` and only sets `matchOver` when the engine marks itself stopped; built-in behavior names are Seek/Flee/Wander/Cohesion/Separation only (**not** `Aggro`).
 
 Also available: `ce_unit_set_behavior`, `ce_field_query`, `ce_snapshot_get`, deployment timer, territory and behavior-list queries, and `ce_version`. There are ready-made examples for Python ctypes ([engine.pyi](ffi/python/engine.pyi)) and LuaJIT ([engine.lua](ffi/lua/engine.lua)), and the [FFI guide](docs/FFI_GUIDE.md) adds Rust, Go, C# and Emscripten recipes. `./scripts/verify-ffi-build.sh` builds the shared library and loads it from Python.
 

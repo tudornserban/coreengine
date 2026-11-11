@@ -150,7 +150,7 @@ TEST_F(CApiSpawnTest, SingleTenSecondUpdateDoesNotGrantCharge) {
 }
 
 TEST_F(CApiSpawnTest, FfiVersionString) {
-    EXPECT_STREQ(ce_ffi_version(), "1.1.0");
+    EXPECT_STREQ(ce_ffi_version(), "1.2.0");
 }
 
 TEST_F(CApiSpawnTest, LastResultCodesUsePlannedNumericValues) {

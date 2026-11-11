@@ -24,7 +24,8 @@ ffi.cdef[[
     void* ce_engine_create(float mapWidth, float mapHeight, uint64_t rngSeed);
     void  ce_engine_destroy(void* engine);
     int   ce_engine_update(void* engine, float deltaTime);
-    void  ce_engine_reset(void* engine);
+    void      ce_engine_reset(void* engine);
+    uint64_t  ce_engine_get_seed(void* engine);
     int   ce_unit_spawn(void* engine, int teamId, float x, float y);
     int   ce_unit_count(void* engine);
     int   ce_unit_set_behavior(void* engine, int index, const char* name);
@@ -47,6 +48,7 @@ function M.create(w, h, seed)   return lib.ce_engine_create(w, h, seed or 0) end
 function M.destroy(e)            lib.ce_engine_destroy(e) end
 function M.update(e, dt)         return lib.ce_engine_update(e, dt) end
 function M.reset(e)              lib.ce_engine_reset(e) end
+function M.get_seed(e)           return lib.ce_engine_get_seed(e) end
 function M.spawn(e, team, x, y)  return lib.ce_unit_spawn(e, team, x, y) end
 function M.has_charge(e, team)   return lib.ce_timer_has_charge(e, team) ~= 0 end
 function M.grant_charge(e, team) return lib.ce_timer_grant_charge(e, team) ~= 0 end
