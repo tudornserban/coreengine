@@ -1,15 +1,1 @@
-#pragma once
-
-/// Base interface for all game states (menus, missions, lobbies, etc.).
-/// Managed by GameStateManager via a simple single-active-state stack.
-class IGameState {
-public:
-    virtual ~IGameState() = default;
-
-    virtual void OnEnter() = 0;
-    virtual void OnExit() = 0;
-    virtual void Update(float deltaTime) = 0;
-
-    /// Rendering is optional — may be delegated to a separate renderer.
-    virtual void Render() {}
-};
+I3ByYWdtYSBvbmNlCgovLy8gQmFzZSBpbnRlcmZhY2UgZm9yIGFsbCBnYW1lIHN0YXRlcyAobWVudXMsIG1pc3Npb25zLCBsb2JiaWVzLCBldGMuKS4KLy8vIE1hbmFnZWQgYnkgR2FtZVN0YXRlTWFuYWdlciB2aWEgYSBzaW5nbGUgYWN0aXZlIHN0YXRlLgpjbGFzcyBJR2FtZVN0YXRlIHsKcHVibGljOgogICAgdmlydHVhbCB+SUdhbWVTdGF0ZSgpID0gZGVmYXVsdDsKCiAgICB2aXJ0dWFsIHZvaWQgT25FbnRlcigpID0gMDsKICAgIHZpcnR1YWwgdm9pZCBPbkV4aXQoKSA9IDA7CiAgICB2aXJ0dWFsIHZvaWQgVXBkYXRlKGZsb2F0IGRlbHRhVGltZSkgPSAwOwoKICAgIC8vLyBSZW5kZXJpbmcgaXMgb3B0aW9uYWwg4oCUIG1heSBiZSBkZWxlZ2F0ZWQgdG8gYSBzZXBhcmF0ZSByZW5kZXJlci4KICAgIHZpcnR1YWwgdm9pZCBSZW5kZXIoKSB7fQp9Owo=
