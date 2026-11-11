@@ -1,17 +1,1 @@
-#pragma once
-#include "../../interfaces/IBehavior.h"
-
-class CohesionBehavior : public IBehavior {
-private:
-    std::map<std::string, float> params_;
-
-public:
-    CohesionBehavior();
-
-    std::vector<InfluenceFieldItem> GenerateFieldItems(const BehaviorContext& ctx) override { return {}; }
-    Vector2 CalculateAcceleration(const BehaviorContext& ctx) override;
-    const char* GetName() const override { return "Cohesion"; }
-
-    std::map<std::string, float>& GetParameters() override { return params_; }
-    const std::map<std::string, float>& GetParameters() const override { return params_; }
-};
+I3ByYWdtYSBvbmNlCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSUJlaGF2aW9yLmgiCgpjbGFzcyBDb2hlc2lvbkJlaGF2aW9yIDogcHVibGljIElCZWhhdmlvciB7CnByaXZhdGU6CiAgICBzdGQ6Om1hcDxzdGQ6OnN0cmluZywgZmxvYXQ+IHBhcmFtc187CgpwdWJsaWM6CiAgICBDb2hlc2lvbkJlaGF2aW9yKCk7CgogICAgc3RkOjp2ZWN0b3I8SW5mbHVlbmNlRmllbGRJdGVtPiBHZW5lcmF0ZUZpZWxkSXRlbXMoY29uc3QgQmVoYXZpb3JDb250ZXh0JiBjdHgpIG92ZXJyaWRlIHsgcmV0dXJuIHt9OyB9CiAgICBWZWN0b3IyIENhbGN1bGF0ZUFjY2VsZXJhdGlvbihjb25zdCBCZWhhdmlvckNvbnRleHQmIGN0eCkgb3ZlcnJpZGU7CiAgICBjb25zdCBjaGFyKiBHZXROYW1lKCkgY29uc3Qgb3ZlcnJpZGUgeyByZXR1cm4gIkNvaGVzaW9uIjsgfQoKICAgIHN0ZDo6bWFwPHN0ZDo6c3RyaW5nLCBmbG9hdD4mIEdldFBhcmFtZXRlcnMoKSBvdmVycmlkZSB7IHJldHVybiBwYXJhbXNfOyB9CiAgICBjb25zdCBzdGQ6Om1hcDxzdGQ6OnN0cmluZywgZmxvYXQ+JiBHZXRQYXJhbWV0ZXJzKCkgY29uc3Qgb3ZlcnJpZGUgeyByZXR1cm4gcGFyYW1zXzsgfQp9Owo=
