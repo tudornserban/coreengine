@@ -255,7 +255,7 @@ TEST_F(RTSGameStateUpdateCharacterizationTest, BoundsFallbackClampsCenterNotRadi
     EXPECT_FLOAT_EQ(unit->GetVelocity().y, 0.0f);
 }
 
-TEST_F(RTSGameStateUpdateCharacterizationTest, AiTickVisitsSpyBehaviorEdgesOnly) {
+TEST_F(RTSGameStateUpdateCharacterizationTest, AiTickUsesCalculateAccelerationWhenFieldItemsEmpty) {
     RTSGameState large(Vector2(1000.0f, 1000.0f), kSeed);
     RTSUnit* unit = AddRts(large, Vector2(500.0f, 500.0f), 0);
     SpyBehavior* spy = InstallOwnedSpy(*unit);
@@ -264,9 +264,9 @@ TEST_F(RTSGameStateUpdateCharacterizationTest, AiTickVisitsSpyBehaviorEdgesOnly)
     large.Update(0.016f);
 
     EXPECT_EQ(spy->generateFieldItemsCalls, 1);
-    EXPECT_EQ(spy->calculateAccelerationCalls, 0);
-    EXPECT_FLOAT_EQ(unit->GetPosition().x, start.x);
-    EXPECT_FLOAT_EQ(unit->GetPosition().y, start.y);
+    EXPECT_EQ(spy->calculateAccelerationCalls, 1);
+    EXPECT_NE(unit->GetPosition().x, start.x);
+    EXPECT_NE(unit->GetPosition().y, start.y);
 }
 
 TEST_F(RTSGameStateUpdateCharacterizationTest, AiTickSkipsMockUnit) {

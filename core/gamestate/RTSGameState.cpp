@@ -89,24 +89,30 @@ void RTSGameState::Update(float deltaTime)
         IBehavior* currentBehavior = behaviorHost->GetCurrentBehavior();
         if (currentBehavior)
         {
-            Vector2 acceleration;
-
-            // Behavior field items + static influences (map edges, obstacles, static attractors)
-            std::vector<InfluenceFieldItem> items = currentBehavior->GenerateFieldItems(ctx);
-            items.insert(items.end(), ctx.staticFieldItems.begin(), ctx.staticFieldItems.end());
-
-            if (!items.empty())
+            std::vector<InfluenceFieldItem> behaviorItems =
+                currentBehavior->GenerateFieldItems(ctx);
+            Vector2 acceleration = Vector2::Zero();
+            if (!behaviorItems.empty())
             {
                 acceleration = InfluenceField::CalculateTotalForce(
                     unit->GetPosition(),
                     unit->GetVelocity(),
-                    items,
+                    behaviorItems,
                     300.0f  // max acceleration
                 );
             }
             else
             {
                 acceleration = currentBehavior->CalculateAcceleration(ctx);
+            }
+            if (!ctx.staticFieldItems.empty())
+            {
+                acceleration += InfluenceField::CalculateTotalForce(
+                    unit->GetPosition(),
+                    unit->GetVelocity(),
+                    ctx.staticFieldItems,
+                    300.0f  // max acceleration
+                );
             }
 
             unit->ApplyAcceleration(acceleration, deltaTime);

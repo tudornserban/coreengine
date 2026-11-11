@@ -5,6 +5,17 @@ Each entry links back to the originating proposal document where applicable.
 
 ---
 
+## 2026-03-25 — FFI 1.3.0 / core.gamestate 1.3.0: behavior acceleration registration
+
+### F1.2 — `ce_behavior_register_accel` and hub acceleration path
+
+- `ce_behavior_register_accel` registers a C callback as a direct-acceleration behavior (`CE_AccelFn` + optional `userdata`).
+- `ce_behavior_register(const char*)` documented as deprecated no-op (symbol retained for ABI).
+- `RTSGameState::Update` applies `CalculateAcceleration` when `GenerateFieldItems` is empty, then adds static field forces (map edges).
+- `core.gamestate` manifest **1.3.0**; `CE_FFI_VERSION` **1.3.0**.
+
+---
+
 ## 2026-03-25 — FFI 1.2.0: reset keeps RNG seed
 
 ### F1.3 — `ce_engine_reset` preserves create seed

@@ -128,7 +128,7 @@ std::string json = GameStateSerializer(&state).GetStateJSON();
 
 Things that will surprise you (also [VIEWER.md](docs/VIEWER.md#known-limitations)):
 
-- **Static field items skip `CalculateAcceleration`.** `RTSGameState::Update` always adds the map-edge field items to a unit's influence items, so the item list is never empty. That means a behavior's `CalculateAcceleration` fallback is skipped and only field items move units. That's why the snippet adds a static attractor.
+- **Built-in steering behaviors use `CalculateAcceleration` when they emit no field items**; map-edge static forces are applied afterward (at map center, edges contribute ~0). For influence-only movement, attach field items via `GenerateFieldItems` or add static attractors as in the snippet below.
 - **Automatic FSM transitions don't fire.** The hub never calls `StateMachine::Update`. Switch states with `SetState` or `CommandSystem`, or call `StateMachine::Update(ctx)` yourself, as the UE5 example in the porting guide does.
 - **Collisions don't cost HP**, and `GameStateSerializer::DeserializeFromString` always returns `false`, so saving works but loading doesn't yet.
 
@@ -149,9 +149,9 @@ ce_engine_destroy(e);
 
 **Deployment timer:** teams **1** and **2** each have a separate 10 s charge timer. A new engine starts with **no** charge; earn one with `ce_timer_grant_charge` or ~**300** logic steps at `1/30` s (`ce_engine_update`). `ce_unit_spawn` returns `0` without a charge or for invalid team ids; use `ce_last_result` for the reason.
 
-Current FFI limitations (full list in [FFI guide](docs/FFI_GUIDE.md#current-limitations)): `ce_behavior_register` is a no-op; `ce_engine_reset` clears units, both deployment timers, and simulated time but **keeps the create-time map size and RNG seed** (use `ce_engine_get_seed` to read it); `ce_snapshot_get` always leaves `winner` at `0` and only sets `matchOver` when the engine marks itself stopped; built-in behavior names are Seek/Flee/Wander/Cohesion/Separation only (**not** `Aggro`).
+Current FFI limitations (full list in [FFI guide](docs/FFI_GUIDE.md#current-limitations)): `ce_behavior_register(const char*)` remains a deprecated no-op — use `ce_behavior_register_accel` for script-defined steering; `ce_engine_reset` clears units, both deployment timers, and simulated time but **keeps the create-time map size and RNG seed** (use `ce_engine_get_seed` to read it); `ce_snapshot_get` always leaves `winner` at `0` and only sets `matchOver` when the engine marks itself stopped; built-in behavior names are Seek/Flee/Wander/Cohesion/Separation only (**not** `Aggro`).
 
-Also available: `ce_unit_set_behavior`, `ce_field_query`, `ce_snapshot_get`, deployment timer, territory and behavior-list queries, and `ce_version`. There are ready-made examples for Python ctypes ([engine.pyi](ffi/python/engine.pyi)) and LuaJIT ([engine.lua](ffi/lua/engine.lua)), and the [FFI guide](docs/FFI_GUIDE.md) adds Rust, Go, C# and Emscripten recipes. `./scripts/verify-ffi-build.sh` builds the shared library and loads it from Python.
+Also available: `ce_unit_set_behavior`, `ce_behavior_register_accel`, `ce_field_query`, `ce_snapshot_get`, deployment timer, territory and behavior-list queries, and `ce_version`. There are ready-made examples for Python ctypes ([engine.pyi](ffi/python/engine.pyi)) and LuaJIT ([engine.lua](ffi/lua/engine.lua)), and the [FFI guide](docs/FFI_GUIDE.md) adds Rust, Go, C# and Emscripten recipes. `./scripts/verify-ffi-build.sh` builds the shared library and loads it from Python.
 
 ### Porting
 

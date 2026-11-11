@@ -47,13 +47,15 @@ uint32_t FirstRngDrawFromEngineHandle(CE_Engine engine)
     return gameState->GetRNG().NextUInt32();
 }
 
-void RunWanderSequence(CE_Engine e)
+constexpr int kWanderOracleSteps = 90;  // >61 so directionChangeTime (2 s) elapses and RNG draws
+
+void RunWanderOracleSequence(CE_Engine eng)
 {
-    ASSERT_EQ(ce_timer_grant_charge(e, 1), 1);
-    ASSERT_EQ(ce_unit_spawn(e, 1, 800.0f, 450.0f), 1);
-    ASSERT_EQ(ce_unit_set_behavior(e, 0, "Wander"), 1);
-    for (int i = 0; i < 30; ++i) {
-        ASSERT_EQ(ce_engine_update(e, kStep), 1);
+    ASSERT_EQ(ce_timer_grant_charge(eng, 1), 1);
+    ASSERT_EQ(ce_unit_spawn(eng, 1, 800.0f, 450.0f), 1);
+    ASSERT_EQ(ce_unit_set_behavior(eng, 0, "Wander"), 1);
+    for (int i = 0; i < kWanderOracleSteps; ++i) {
+        ASSERT_EQ(ce_engine_update(eng, kStep), 1);
     }
 }
 
@@ -160,27 +162,33 @@ TEST_F(CApiResetTest, NoCrossTalkBetweenEngines) {
     ce_engine_destroy(other);
 }
 
-TEST_F(CApiResetTest, FfiVersionIs120) {
-    EXPECT_STREQ(ce_ffi_version(), "1.2.0");
+TEST_F(CApiResetTest, FfiVersionIs130) {
+    EXPECT_STREQ(ce_ffi_version(), "1.3.0");
 }
 
-// Structural replay only (Wander does not consume RNG while static edge items are non-empty).
-TEST_F(CApiResetTest, StructuralReplayAfterResetMatchesFresh_Seed12345_NotRngOracle) {
+// RNG oracle: Wander draws RNG at first directionChangeTime (2 s ≈ step 61); 90 steps pins post-draw state.
+TEST_F(CApiResetTest, WanderReplayAfterResetMatchesFresh_Seed12345_RngOracle) {
     CE_Engine fresh = ce_engine_create(1600.0f, 900.0f, kSeed12345);
     ASSERT_NE(fresh, nullptr);
-    RunWanderSequence(fresh);
+    RunWanderOracleSequence(fresh);
 
     CE_UnitState freshUnit{};
     ASSERT_EQ(ce_unit_get_state(fresh, 0, &freshUnit), 1);
     CE_GameSnapshot freshSnap{};
     ASSERT_EQ(ce_snapshot_get(fresh, &freshSnap), 1);
 
+    // Pin exact fresh-run literals (seed 12345, 90 × 1/30 s after Wander set).
+    EXPECT_EQ(FloatBits(freshUnit.x), 0x44700547u);
+    EXPECT_EQ(FloatBits(freshUnit.y), 0x43cad8dau);
+    EXPECT_EQ(FloatBits(freshUnit.vx), 0xc1e4db68u);
+    EXPECT_EQ(FloatBits(freshUnit.vy), 0xc287baa2u);
+
     e = ce_engine_create(1600.0f, 900.0f, kSeed12345);
     ASSERT_NE(e, nullptr);
-    RunWanderSequence(e);
+    RunWanderOracleSequence(e);
     ASSERT_EQ(ce_engine_update(e, kStep), 1);
     ce_engine_reset(e);
-    RunWanderSequence(e);
+    RunWanderOracleSequence(e);
 
     CE_UnitState resetUnit{};
     ASSERT_EQ(ce_unit_get_state(e, 0, &resetUnit), 1);

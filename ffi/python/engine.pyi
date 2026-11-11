@@ -44,6 +44,25 @@ Usage with ctypes:
     lib.ce_engine_reset.restype = None
     lib.ce_engine_reset.argtypes = [ctypes.c_void_p]
 
+    AccelFn = ctypes.CFUNCTYPE(
+        None,
+        ctypes.c_float,
+        ctypes.c_float,
+        ctypes.c_float,
+        ctypes.c_float,
+        ctypes.c_int,
+        ctypes.c_float,
+        ctypes.POINTER(ctypes.c_float),
+        ctypes.POINTER(ctypes.c_float),
+        ctypes.c_void_p,
+    )
+    lib.ce_behavior_register_accel.restype = ctypes.c_int
+    lib.ce_behavior_register_accel.argtypes = [
+        ctypes.c_char_p,
+        AccelFn,
+        ctypes.c_void_p,
+    ]
+
     # Create engine (opaque handle must stay c_void_p — do not pass as bare int)
     engine = lib.ce_engine_create(1600.0, 900.0, 0)
 
@@ -80,5 +99,10 @@ def ce_timer_get_progress(engine: int, teamId: int) -> float: ...
 def ce_timer_grant_charge(engine: int, teamId: int) -> int: ...
 def ce_last_result(engine: int) -> int: ...
 def ce_territory_get_pct(engine: int, teamId: int) -> float: ...
+# CE_AccelFn = CFUNCTYPE(None, c_float, c_float, c_float, c_float, c_int, c_float,
+#                        POINTER(c_float), POINTER(c_float), c_void_p)
+def ce_behavior_register(name: bytes) -> None: ...
+def ce_behavior_register_accel(name: bytes, fn: int, userdata: int) -> int: ...
+def ce_behavior_list(buffer: bytes, buffer_size: int) -> int: ...
 def ce_version() -> str: ...
 def ce_ffi_version() -> str: ...

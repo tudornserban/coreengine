@@ -47,7 +47,9 @@ These match today's `ffi/c_api.cpp` implementation (not aspirational docs):
 
 | API / topic | Actual behavior |
 |-------------|-----------------|
-| `ce_behavior_register` | **No-op** — does not register creators; register behaviors in C++ via `BehaviorFactory::Register` before creating the engine |
+| `ce_behavior_register` | **Deprecated no-op** — does not register creators; use `ce_behavior_register_accel` or C++ `BehaviorFactory::Register` |
+| `ce_behavior_register_accel` | Registers a direct-acceleration behavior from a C callback (`CE_AccelFn`); builtins still register at `ce_engine_create` |
+| Built-in steering | Seek/Flee/Wander/Cohesion/Separation now run via `CalculateAcceleration` when they emit no field items, then map-edge static forces apply |
 | `ce_engine_reset` | Clears units, deployment timers, and game time; **rebuilds `RTSGameState` with the same map size and RNG seed** passed to `ce_engine_create` (including seed **0**, which is deterministic) |
 | `ce_snapshot_get` | Fills map size, unit count, and elapsed time; **`winner` is always `0`**; `matchOver` is `1` only when the internal `running` flag is false (nothing in core sets a match winner today) |
 | Built-in behavior names | `Seek`, `Flee`, `Wander`, `Cohesion`, `Separation` from `BehaviorFactory::RegisterBuiltins()` — **`Aggro` is not built-in** |
@@ -236,6 +238,7 @@ ce_unit_spawn(eng, 1, 400, 450);
 | `ce_last_result(engine)` | Last spawn/timer/territory/grant result code |
 | `ce_territory_get_pct(engine, team)` | Territory **0–100** percent (teams 1 and 2; not normalized yet) |
 | `ce_behavior_list(buf, size)` | List registered behaviors |
-| `ce_behavior_register(name)` | **No-op hook** (see limitations) |
+| `ce_behavior_register(name)` | **Deprecated no-op** (see limitations) |
+| `ce_behavior_register_accel(name, fn, userdata)` | Register direct-acceleration behavior (`1` / `0`) |
 | `ce_version()` | Engine version string |
 | `ce_ffi_version()` | FFI package version (`CE_FFI_VERSION`) |
