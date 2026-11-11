@@ -1,1 +1,72 @@
-I2luY2x1ZGUgIklucHV0U2NyaXB0LmgiCgojaW5jbHVkZSA8Z3Rlc3QvZ3Rlc3QuaD4KClRFU1QoSW5wdXRTY3JpcHRUZXN0LCBQYXVzZVRoZW5TdGVwSXNUd29Db21tYW5kcykKewogICAgc3RkOjpzdHJpbmcgZXJyb3I7CiAgICBhdXRvIGNtZHMgPSBQYXJzZVNjcmlwdCgicGF1c2VcbnN0ZXBcbiIsIGVycm9yKTsKICAgIEFTU0VSVF9UUlVFKGVycm9yLmVtcHR5KCkpOwogICAgQVNTRVJUX0VRKGNtZHMuc2l6ZSgpLCAydSk7CiAgICBFWFBFQ1RfRVEoY21kc1swXS5raW5kLCBTY3JpcHRDb21tYW5kOjpLaW5kOjpQYXVzZSk7CiAgICBFWFBFQ1RfRVEoY21kc1sxXS5raW5kLCBTY3JpcHRDb21tYW5kOjpLaW5kOjpTdGVwKTsKfQoKVEVTVChJbnB1dFNjcmlwdFRlc3QsIFBhcnNlc0NsaWNrQW5kUmlnaHRDbGljaykKewogICAgc3RkOjpzdHJpbmcgZXJyb3I7CiAgICBhdXRvIGNtZHMgPSBQYXJzZVNjcmlwdCgiY2xpY2sgNDI2LjcgMzYwXG5yY2xpY2sgNjQwIDM2MFxuIiwgZXJyb3IpOwogICAgQVNTRVJUX1RSVUUoZXJyb3IuZW1wdHkoKSk7CiAgICBBU1NFUlRfRVEoY21kcy5zaXplKCksIDJ1KTsKICAgIEVYUEVDVF9FUShjbWRzWzBdLmtpbmQsIFNjcmlwdENvbW1hbmQ6OktpbmQ6OkNsaWNrKTsKICAgIEVYUEVDVF9ORUFSKGNtZHNbMF0uZmxvYXRBcmcsIDQyNi43ZiwgMC4wMWYpOwogICAgRVhQRUNUX05FQVIoY21kc1swXS54LCA0MjYuN2YsIDAuMDFmKTsKICAgIEVYUEVDVF9ORUFSKGNtZHNbMF0ueSwgMzYwLjBmLCAwLjAxZik7CiAgICBFWFBFQ1RfRVEoY21kc1sxXS5raW5kLCBTY3JpcHRDb21tYW5kOjpLaW5kOjpSaWdodENsaWNrKTsKfQoKVEVTVChJbnB1dFNjcmlwdFRlc3QsIFBhcnNlc0JveCkKewogICAgc3RkOjpzdHJpbmcgZXJyb3I7CiAgICBhdXRvIGNtZHMgPSBQYXJzZVNjcmlwdCgiYm94IDEwIDIwIDMwMCA0MDBcbiIsIGVycm9yKTsKICAgIEFTU0VSVF9UUlVFKGVycm9yLmVtcHR5KCkpOwogICAgQVNTRVJUX0VRKGNtZHMuc2l6ZSgpLCAxdSk7CiAgICBFWFBFQ1RfRVEoY21kc1swXS5raW5kLCBTY3JpcHRDb21tYW5kOjpLaW5kOjpCb3gpOwogICAgRVhQRUNUX0ZMT0FUX0VRKGNtZHNbMF0ueCwgMTAuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKGNtZHNbMF0ueSwgMjAuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKGNtZHNbMF0ueDIsIDMwMC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEoY21kc1swXS55MiwgNDAwLjBmKTsKfQoKVEVTVChJbnB1dFNjcmlwdFRlc3QsIFBhcnNlc0Rlc3RQYXVzZUZyYW1lcykKewogICAgc3RkOjpzdHJpbmcgZXJyb3I7CiAgICBhdXRvIGNtZHMgPSBQYXJzZVNjcmlwdCgicGF1c2VcbmRlc3QgMCA0MDAgMzAwXG5mcmFtZXMgMlxuIiwgZXJyb3IpOwogICAgQVNTRVJUX1RSVUUoZXJyb3IuZW1wdHkoKSk7CiAgICBBU1NFUlRfRVEoY21kcy5zaXplKCksIDN1KTsKICAgIEVYUEVDVF9FUShjbWRzWzBdLmtpbmQsIFNjcmlwdENvbW1hbmQ6OktpbmQ6OlBhdXNlKTsKICAgIEVYUEVDVF9FUShjbWRzWzFdLmtpbmQsIFNjcmlwdENvbW1hbmQ6OktpbmQ6OkRlc3QpOwogICAgRVhQRUNUX0VRKGNtZHNbMV0uaW50QXJnLCAwKTsKICAgIEVYUEVDVF9GTE9BVF9FUShjbWRzWzFdLngsIDQwMC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEoY21kc1sxXS55LCAzMDAuMGYpOwogICAgRVhQRUNUX0VRKGNtZHNbMl0ua2luZCwgU2NyaXB0Q29tbWFuZDo6S2luZDo6RnJhbWVzKTsKICAgIEVYUEVDVF9FUShjbWRzWzJdLmludEFyZywgMik7Cn0KClRFU1QoSW5wdXRTY3JpcHRUZXN0LCBQYXJzZXNQcmVzZXRDb21tYW5kKQp7CiAgICBzdGQ6OnN0cmluZyBlcnJvcjsKICAgIGF1dG8gY21kcyA9IFBhcnNlU2NyaXB0KCJwcmVzZXQgY29tYmF0XG4iLCBlcnJvcik7CiAgICBBU1NFUlRfVFJVRShlcnJvci5lbXB0eSgpKTsKICAgIEFTU0VSVF9FUShjbWRzLnNpemUoKSwgMXUpOwogICAgRVhQRUNUX0VRKGNtZHNbMF0ua2luZCwgU2NyaXB0Q29tbWFuZDo6S2luZDo6UHJlc2V0KTsKICAgIEVYUEVDVF9FUShjbWRzWzBdLnN0ckFyZywgImNvbWJhdCIpOwp9CgpURVNUKElucHV0U2NyaXB0VGVzdCwgUmVqZWN0c1Vua25vd25QcmVzZXQpCnsKICAgIHN0ZDo6c3RyaW5nIGVycm9yOwogICAgYXV0byBjbWRzID0gUGFyc2VTY3JpcHQoInByZXNldCB1bmtub3duLW5hbWVcbiIsIGVycm9yKTsKICAgIEVYUEVDVF9GQUxTRShlcnJvci5lbXB0eSgpKTsKICAgIEVYUEVDVF9UUlVFKGNtZHMuZW1wdHkoKSk7Cn0K
+#include "InputScript.h"
+
+#include <gtest/gtest.h>
+
+TEST(InputScriptTest, PauseThenStepIsTwoCommands)
+{
+    std::string error;
+    auto cmds = ParseScript("pause\nstep\n", error);
+    ASSERT_TRUE(error.empty());
+    ASSERT_EQ(cmds.size(), 2u);
+    EXPECT_EQ(cmds[0].kind, ScriptCommand::Kind::Pause);
+    EXPECT_EQ(cmds[1].kind, ScriptCommand::Kind::Step);
+}
+
+TEST(InputScriptTest, ParsesClickAndRightClick)
+{
+    std::string error;
+    auto cmds = ParseScript("click 426.7 360\nrclick 640 360\n", error);
+    ASSERT_TRUE(error.empty());
+    ASSERT_EQ(cmds.size(), 2u);
+    EXPECT_EQ(cmds[0].kind, ScriptCommand::Kind::Click);
+    EXPECT_NEAR(cmds[0].floatArg, 426.7f, 0.01f);
+    EXPECT_NEAR(cmds[0].x, 426.7f, 0.01f);
+    EXPECT_NEAR(cmds[0].y, 360.0f, 0.01f);
+    EXPECT_EQ(cmds[1].kind, ScriptCommand::Kind::RightClick);
+}
+
+TEST(InputScriptTest, ParsesBox)
+{
+    std::string error;
+    auto cmds = ParseScript("box 10 20 300 400\n", error);
+    ASSERT_TRUE(error.empty());
+    ASSERT_EQ(cmds.size(), 1u);
+    EXPECT_EQ(cmds[0].kind, ScriptCommand::Kind::Box);
+    EXPECT_FLOAT_EQ(cmds[0].x, 10.0f);
+    EXPECT_FLOAT_EQ(cmds[0].y, 20.0f);
+    EXPECT_FLOAT_EQ(cmds[0].x2, 300.0f);
+    EXPECT_FLOAT_EQ(cmds[0].y2, 400.0f);
+}
+
+TEST(InputScriptTest, ParsesDestPauseFrames)
+{
+    std::string error;
+    auto cmds = ParseScript("pause\ndest 0 400 300\nframes 2\n", error);
+    ASSERT_TRUE(error.empty());
+    ASSERT_EQ(cmds.size(), 3u);
+    EXPECT_EQ(cmds[0].kind, ScriptCommand::Kind::Pause);
+    EXPECT_EQ(cmds[1].kind, ScriptCommand::Kind::Dest);
+    EXPECT_EQ(cmds[1].intArg, 0);
+    EXPECT_FLOAT_EQ(cmds[1].x, 400.0f);
+    EXPECT_FLOAT_EQ(cmds[1].y, 300.0f);
+    EXPECT_EQ(cmds[2].kind, ScriptCommand::Kind::Frames);
+    EXPECT_EQ(cmds[2].intArg, 2);
+}
+
+TEST(InputScriptTest, ParsesPresetCommand)
+{
+    std::string error;
+    auto cmds = ParseScript("preset combat\n", error);
+    ASSERT_TRUE(error.empty());
+    ASSERT_EQ(cmds.size(), 1u);
+    EXPECT_EQ(cmds[0].kind, ScriptCommand::Kind::Preset);
+    EXPECT_EQ(cmds[0].strArg, "combat");
+}
+
+TEST(InputScriptTest, RejectsUnknownPreset)
+{
+    std::string error;
+    auto cmds = ParseScript("preset unknown-name\n", error);
+    EXPECT_FALSE(error.empty());
+    EXPECT_TRUE(cmds.empty());
+}

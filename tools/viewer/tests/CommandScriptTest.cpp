@@ -1,1 +1,133 @@
-I2luY2x1ZGUgIkNhbWVyYS5oIgojaW5jbHVkZSAiRHJhd0xpc3QuaCIKI2luY2x1ZGUgIkZyYW1lTG9vcC5oIgojaW5jbHVkZSAiSW5wdXRTY3JpcHQuaCIKI2luY2x1ZGUgIlNjZW5hcmlvLmgiCgojaW5jbHVkZSAiY29yZS9jb21iYXQvU2VsZWN0aW9uU3lzdGVtLmgiCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSUdhbWVVbml0LmgiCgojaW5jbHVkZSA8Z3Rlc3QvZ3Rlc3QuaD4KClRFU1QoQ29tbWFuZFNjcmlwdFRlc3QsIENsaWNrT25Vbml0VGhlblJpZ2h0Q2xpY2tNb3Zlc0l0Q2xvc2VyKQp7CiAgICBTY2VuZSBzY2VuZSA9IEJ1aWxkUHJlc2V0KFByZXNldDo6VHdvVW5pdHMsIDEpOwogICAgQ2FtZXJhIGNhbWVyYSA9IEZpdE1hcChzY2VuZS5zdGF0ZS0+R2V0TWFwU2l6ZSgpLCAxMjgwLCA3MjAsIDQwLjBmKTsKICAgIFZlY3RvcjIgc2NyZWVuID0gY2FtZXJhLldvcmxkVG9TY3JlZW4oVmVjdG9yMigyMDAuMGYsIDMwMC4wZikpOwogICAgQXBwbHlDbGljaygqc2NlbmUuc3RhdGUsIGNhbWVyYSwgc2NyZWVuKTsKICAgIEFTU0VSVF9UUlVFKHNjZW5lLnN0YXRlLT5HZXRBbGxVbml0cygpWzBdLT5Jc1NlbGVjdGVkKCkpOwogICAgRVhQRUNUX0ZBTFNFKHNjZW5lLnN0YXRlLT5HZXRBbGxVbml0cygpWzFdLT5Jc1NlbGVjdGVkKCkpOwogICAgVmVjdG9yMiBkZXN0U2NyZWVuID0gY2FtZXJhLldvcmxkVG9TY3JlZW4oVmVjdG9yMig0MDAuMGYsIDMwMC4wZikpOwogICAgQXBwbHlSaWdodENsaWNrKCpzY2VuZS5zdGF0ZSwgY2FtZXJhLCBkZXN0U2NyZWVuKTsKICAgIEVYUEVDVF9UUlVFKHNjZW5lLnN0YXRlLT5HZXRBbGxVbml0cygpWzBdLT5Jc0luRGVidWdNb2RlKCkpOwogICAgRVhQRUNUX0ZBTFNFKHNjZW5lLnN0YXRlLT5HZXRBbGxVbml0cygpWzFdLT5Jc0luRGVidWdNb2RlKCkpOwogICAgc2NlbmUuc3RhdGUtPlVwZGF0ZSgxLjBmKTsKICAgIEVYUEVDVF9HVChzY2VuZS5zdGF0ZS0+R2V0QWxsVW5pdHMoKVswXS0+R2V0UG9zaXRpb24oKS54LCAyNTAuMGYpOwp9CgpURVNUKENvbW1hbmRTY3JpcHRUZXN0LCBCb3hTZWxlY3RzQm90aFVuaXRzKQp7CiAgICBTY2VuZSBzY2VuZSA9IEJ1aWxkUHJlc2V0KFByZXNldDo6VHdvVW5pdHMsIDEpOwogICAgQ2FtZXJhIGNhbWVyYSA9IEZpdE1hcChzY2VuZS5zdGF0ZS0+R2V0TWFwU2l6ZSgpLCAxMjgwLCA3MjAsIDQwLjBmKTsKICAgIFZlY3RvcjIgYSA9IGNhbWVyYS5Xb3JsZFRvU2NyZWVuKFZlY3RvcjIoMTAwLjBmLCAyMDAuMGYpKTsKICAgIFZlY3RvcjIgYiA9IGNhbWVyYS5Xb3JsZFRvU2NyZWVuKFZlY3RvcjIoNzAwLjBmLCA0MDAuMGYpKTsKICAgIEFwcGx5Qm94KCpzY2VuZS5zdGF0ZSwgY2FtZXJhLCBhLCBiKTsKICAgIEVYUEVDVF9UUlVFKHNjZW5lLnN0YXRlLT5HZXRBbGxVbml0cygpWzBdLT5Jc1NlbGVjdGVkKCkpOwogICAgRVhQRUNUX1RSVUUoc2NlbmUuc3RhdGUtPkdldEFsbFVuaXRzKClbMV0tPklzU2VsZWN0ZWQoKSk7Cn0KClRFU1QoQ29tbWFuZFNjcmlwdFRlc3QsIEJveFNlbGVjdHNCb3RoVW5pdHNXaXRoUmV2ZXJzZWRDb3JuZXJzKQp7CiAgICBTY2VuZSBzY2VuZSA9IEJ1aWxkUHJlc2V0KFByZXNldDo6VHdvVW5pdHMsIDEpOwogICAgQ2FtZXJhIGNhbWVyYSA9IEZpdE1hcChzY2VuZS5zdGF0ZS0+R2V0TWFwU2l6ZSgpLCAxMjgwLCA3MjAsIDQwLjBmKTsKICAgIFZlY3RvcjIgYSA9IGNhbWVyYS5Xb3JsZFRvU2NyZWVuKFZlY3RvcjIoNzAwLjBmLCA0MDAuMGYpKTsKICAgIFZlY3RvcjIgYiA9IGNhbWVyYS5Xb3JsZFRvU2NyZWVuKFZlY3RvcjIoMTAwLjBmLCAyMDAuMGYpKTsKICAgIEFwcGx5Qm94KCpzY2VuZS5zdGF0ZSwgY2FtZXJhLCBhLCBiKTsKICAgIEVYUEVDVF9UUlVFKHNjZW5lLnN0YXRlLT5HZXRBbGxVbml0cygpWzBdLT5Jc1NlbGVjdGVkKCkpOwogICAgRVhQRUNUX1RSVUUoc2NlbmUuc3RhdGUtPkdldEFsbFVuaXRzKClbMV0tPklzU2VsZWN0ZWQoKSk7Cn0KClRFU1QoQ29tbWFuZFNjcmlwdFRlc3QsIFJpZ2h0Q2xpY2tXaXRob3V0U2VsZWN0aW9uSXNOb09wKQp7CiAgICBTY2VuZSBzY2VuZSA9IEJ1aWxkUHJlc2V0KFByZXNldDo6VHdvVW5pdHMsIDEpOwogICAgQ2FtZXJhIGNhbWVyYSA9IEZpdE1hcChzY2VuZS5zdGF0ZS0+R2V0TWFwU2l6ZSgpLCAxMjgwLCA3MjAsIDQwLjBmKTsKICAgIFZlY3RvcjIgZGVzdFNjcmVlbiA9IGNhbWVyYS5Xb3JsZFRvU2NyZWVuKFZlY3RvcjIoNDAwLjBmLCAzMDAuMGYpKTsKICAgIEFwcGx5UmlnaHRDbGljaygqc2NlbmUuc3RhdGUsIGNhbWVyYSwgZGVzdFNjcmVlbik7CiAgICBFWFBFQ1RfRkFMU0Uoc2NlbmUuc3RhdGUtPkdldEFsbFVuaXRzKClbMF0tPklzSW5EZWJ1Z01vZGUoKSk7CiAgICBFWFBFQ1RfRkFMU0Uoc2NlbmUuc3RhdGUtPkdldEFsbFVuaXRzKClbMV0tPklzSW5EZWJ1Z01vZGUoKSk7Cn0KClRFU1QoQ29tbWFuZFNjcmlwdFRlc3QsIENsaWNrTWlzc2VzVW5pdE91dHNpZGVIaXRSYWRpdXMpCnsKICAgIFNjZW5lIHNjZW5lID0gQnVpbGRQcmVzZXQoUHJlc2V0OjpUd29Vbml0cywgMSk7CiAgICBDYW1lcmEgY2FtZXJhID0gRml0TWFwKHNjZW5lLnN0YXRlLT5HZXRNYXBTaXplKCksIDEyODAsIDcyMCwgNDAuMGYpOwogICAgLy8gVGVhbS0xIGF0ICgyMDAsMzAwKSwgcmFkaXVzIDEyLCBkZWZhdWx0IHRvbGVyYW5jZSAxNSA9PiBvdXRlciBoaXQgcmluZyBhdCAyNyB3b3JsZCB1bml0cy4KICAgIGNvbnN0ZXhwciBmbG9hdCBrT3V0ZXJIaXQgPSAxMi4wZiArIDE1LjBmOwogICAgVmVjdG9yMiBuZWFyTWlzc1dvcmxkKDIwMC4wZiArIGtPdXRlckhpdCArIDEuMGYsIDMwMC4wZik7CiAgICBWZWN0b3IyIHNjcmVlbiA9IGNhbWVyYS5Xb3JsZFRvU2NyZWVuKG5lYXJNaXNzV29ybGQpOwogICAgQXBwbHlDbGljaygqc2NlbmUuc3RhdGUsIGNhbWVyYSwgc2NyZWVuKTsKICAgIEVYUEVDVF9GQUxTRShzY2VuZS5zdGF0ZS0+R2V0QWxsVW5pdHMoKVswXS0+SXNTZWxlY3RlZCgpKTsKICAgIEVYUEVDVF9GQUxTRShzY2VuZS5zdGF0ZS0+R2V0QWxsVW5pdHMoKVsxXS0+SXNTZWxlY3RlZCgpKTsKfQoKVEVTVChDb21tYW5kU2NyaXB0VGVzdCwgQ2xpY2tIaXRzVW5pdEF0UmFkaXVzQm91bmRhcnkpCnsKICAgIFNjZW5lIHNjZW5lID0gQnVpbGRQcmVzZXQoUHJlc2V0OjpUd29Vbml0cywgMSk7CiAgICBDYW1lcmEgY2FtZXJhID0gRml0TWFwKHNjZW5lLnN0YXRlLT5HZXRNYXBTaXplKCksIDEyODAsIDcyMCwgNDAuMGYpOwogICAgY29uc3RleHByIGZsb2F0IGtPdXRlckhpdCA9IDEyLjBmICsgMTUuMGY7CiAgICBWZWN0b3IyIGJvdW5kYXJ5V29ybGQoMjAwLjBmICsga091dGVySGl0IC0gMC4wMWYsIDMwMC4wZik7CiAgICBWZWN0b3IyIHNjcmVlbiA9IGNhbWVyYS5Xb3JsZFRvU2NyZWVuKGJvdW5kYXJ5V29ybGQpOwogICAgQXBwbHlDbGljaygqc2NlbmUuc3RhdGUsIGNhbWVyYSwgc2NyZWVuKTsKICAgIEVYUEVDVF9UUlVFKHNjZW5lLnN0YXRlLT5HZXRBbGxVbml0cygpWzBdLT5Jc1NlbGVjdGVkKCkpOwp9CgpURVNUKENvbW1hbmRTY3JpcHRUZXN0LCBEcmFnU2VsZWN0aW9uQm94T3V0bGluZVVzZXNXb3JsZFRvU2NyZWVuQ29ybmVycykKewogICAgU2NlbmUgc2NlbmUgPSBCdWlsZFByZXNldChQcmVzZXQ6OlR3b1VuaXRzLCAxKTsKICAgIENhbWVyYSBjYW1lcmEgPSBGaXRNYXAoc2NlbmUuc3RhdGUtPkdldE1hcFNpemUoKSwgMTI4MCwgNzIwLCA0MC4wZik7CiAgICBjb25zdCBWZWN0b3IyIHdvcmxkU3RhcnQoMTAwLjBmLCAyMDAuMGYpOwogICAgY29uc3QgVmVjdG9yMiB3b3JsZEVuZCg3MDAuMGYsIDQwMC4wZik7CiAgICBTZWxlY3Rpb25TeXN0ZW0mIHNlbGVjdGlvbiA9IHNjZW5lLnN0YXRlLT5HZXRTZWxlY3Rpb25TeXN0ZW0oKTsKICAgIHNlbGVjdGlvbi5TdGFydEJveFNlbGVjdGlvbih3b3JsZFN0YXJ0KTsKICAgIHNlbGVjdGlvbi5VcGRhdGVCb3hTZWxlY3Rpb24od29ybGRFbmQpOwogICAgQVNTRVJUX1RSVUUoc2VsZWN0aW9uLklzQm94U2VsZWN0aW5nKCkpOwoKICAgIERyYXdMaXN0IGxpc3Q7CiAgICBBcHBlbmRTZWxlY3Rpb25Cb3gobGlzdCwgc2VsZWN0aW9uLCBjYW1lcmEpOwogICAgQVNTRVJUX0VRKGxpc3QucmVjdHMuc2l6ZSgpLCAxdSk7CiAgICBjb25zdCBEcmF3UmVjdCYgYm94ID0gbGlzdC5yZWN0c1swXTsKICAgIEVYUEVDVF9GQUxTRShib3guZmlsbGVkKTsKICAgIEVYUEVDVF9FUShib3guY29sb3IuciwgMjU1KTsKICAgIEVYUEVDVF9FUShib3guY29sb3IuZywgMjIwKTsKICAgIEVYUEVDVF9FUShib3guY29sb3IuYiwgNDApOwogICAgRVhQRUNUX0VRKGJveC5jb2xvci5hLCAyNTUpOwogICAgY29uc3QgVmVjdG9yMiBleHBlY3RlZE1pbiA9IGNhbWVyYS5Xb3JsZFRvU2NyZWVuKHNlbGVjdGlvbi5HZXRCb3hTdGFydCgpKTsKICAgIGNvbnN0IFZlY3RvcjIgZXhwZWN0ZWRNYXggPSBjYW1lcmEuV29ybGRUb1NjcmVlbihzZWxlY3Rpb24uR2V0Qm94RW5kKCkpOwogICAgRVhQRUNUX05FQVIoYm94Lm1pbi54LCBleHBlY3RlZE1pbi54LCAwLjAxZik7CiAgICBFWFBFQ1RfTkVBUihib3gubWluLnksIGV4cGVjdGVkTWluLnksIDAuMDFmKTsKICAgIEVYUEVDVF9ORUFSKGJveC5tYXgueCwgZXhwZWN0ZWRNYXgueCwgMC4wMWYpOwogICAgRVhQRUNUX05FQVIoYm94Lm1heC55LCBleHBlY3RlZE1heC55LCAwLjAxZik7Cn0KClRFU1QoQ29tbWFuZFNjcmlwdFRlc3QsIEZyYW1lTG9vcFNjcmlwdENsaWNrUmNsaWNrQW5kRnJhbWVzKQp7CiAgICBGcmFtZUxvb3AgbG9vcChQcmVzZXQ6OlR3b1VuaXRzLCAxLCAxMjgwLCA3MjApOwogICAgc3RkOjpzdHJpbmcgZXJyb3I7CiAgICBhdXRvIGNtZHMgPSBQYXJzZVNjcmlwdCgiY2xpY2sgNDI3IDM2MFxucmNsaWNrIDY0MCAzNjBcbmZyYW1lcyAzMFxuIiwgZXJyb3IpOwogICAgQVNTRVJUX1RSVUUoZXJyb3IuZW1wdHkoKSk7CiAgICBBU1NFUlRfVFJVRShsb29wLkV4ZWN1dGVTY3JpcHQoY21kcywgZXJyb3IpKTsKICAgIEFTU0VSVF9UUlVFKGVycm9yLmVtcHR5KCkpOwogICAgRVhQRUNUX1RSVUUobG9vcC5TdGF0ZSgpLkdldEFsbFVuaXRzKClbMF0tPklzU2VsZWN0ZWQoKSk7CiAgICBFWFBFQ1RfR1QobG9vcC5TdGF0ZSgpLkdldEFsbFVuaXRzKClbMF0tPkdldFBvc2l0aW9uKCkueCwgMjIwLjBmKTsKfQoKVEVTVChDb21tYW5kU2NyaXB0VGVzdCwgU2NyZWVuV29ybGRNYXBwaW5nUmVxdWlyZWRGb3JDbGljaykKewogICAgU2NlbmUgc2NlbmUgPSBCdWlsZFByZXNldChQcmVzZXQ6OlR3b1VuaXRzLCAxKTsKICAgIENhbWVyYSBjYW1lcmEgPSBGaXRNYXAoc2NlbmUuc3RhdGUtPkdldE1hcFNpemUoKSwgMTI4MCwgNzIwLCA0MC4wZik7CiAgICBWZWN0b3IyIHNjcmVlbiA9IGNhbWVyYS5Xb3JsZFRvU2NyZWVuKFZlY3RvcjIoMjAwLjBmLCAzMDAuMGYpKTsKICAgIEFwcGx5Q2xpY2soKnNjZW5lLnN0YXRlLCBjYW1lcmEsIFZlY3RvcjIoMjAwLjBmLCAzMDAuMGYpKTsKICAgIEVYUEVDVF9GQUxTRShzY2VuZS5zdGF0ZS0+R2V0QWxsVW5pdHMoKVswXS0+SXNTZWxlY3RlZCgpKTsKICAgIEFwcGx5Q2xpY2soKnNjZW5lLnN0YXRlLCBjYW1lcmEsIHNjcmVlbik7CiAgICBFWFBFQ1RfVFJVRShzY2VuZS5zdGF0ZS0+R2V0QWxsVW5pdHMoKVswXS0+SXNTZWxlY3RlZCgpKTsKfQo=
+#include "Camera.h"
+#include "DrawList.h"
+#include "FrameLoop.h"
+#include "InputScript.h"
+#include "Scenario.h"
+
+#include "core/combat/SelectionSystem.h"
+#include "core/interfaces/IGameUnit.h"
+
+#include <gtest/gtest.h>
+
+TEST(CommandScriptTest, ClickOnUnitThenRightClickMovesItCloser)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    Vector2 screen = camera.WorldToScreen(Vector2(200.0f, 300.0f));
+    ApplyClick(*scene.state, camera, screen);
+    ASSERT_TRUE(scene.state->GetAllUnits()[0]->IsSelected());
+    EXPECT_FALSE(scene.state->GetAllUnits()[1]->IsSelected());
+    Vector2 destScreen = camera.WorldToScreen(Vector2(400.0f, 300.0f));
+    ApplyRightClick(*scene.state, camera, destScreen);
+    EXPECT_TRUE(scene.state->GetAllUnits()[0]->IsInDebugMode());
+    EXPECT_FALSE(scene.state->GetAllUnits()[1]->IsInDebugMode());
+    scene.state->Update(1.0f);
+    EXPECT_GT(scene.state->GetAllUnits()[0]->GetPosition().x, 250.0f);
+}
+
+TEST(CommandScriptTest, BoxSelectsBothUnits)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    Vector2 a = camera.WorldToScreen(Vector2(100.0f, 200.0f));
+    Vector2 b = camera.WorldToScreen(Vector2(700.0f, 400.0f));
+    ApplyBox(*scene.state, camera, a, b);
+    EXPECT_TRUE(scene.state->GetAllUnits()[0]->IsSelected());
+    EXPECT_TRUE(scene.state->GetAllUnits()[1]->IsSelected());
+}
+
+TEST(CommandScriptTest, BoxSelectsBothUnitsWithReversedCorners)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    Vector2 a = camera.WorldToScreen(Vector2(700.0f, 400.0f));
+    Vector2 b = camera.WorldToScreen(Vector2(100.0f, 200.0f));
+    ApplyBox(*scene.state, camera, a, b);
+    EXPECT_TRUE(scene.state->GetAllUnits()[0]->IsSelected());
+    EXPECT_TRUE(scene.state->GetAllUnits()[1]->IsSelected());
+}
+
+TEST(CommandScriptTest, RightClickWithoutSelectionIsNoOp)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    Vector2 destScreen = camera.WorldToScreen(Vector2(400.0f, 300.0f));
+    ApplyRightClick(*scene.state, camera, destScreen);
+    EXPECT_FALSE(scene.state->GetAllUnits()[0]->IsInDebugMode());
+    EXPECT_FALSE(scene.state->GetAllUnits()[1]->IsInDebugMode());
+}
+
+TEST(CommandScriptTest, ClickMissesUnitOutsideHitRadius)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    // Team-1 at (200,300), radius 12, default tolerance 15 => outer hit ring at 27 world units.
+    constexpr float kOuterHit = 12.0f + 15.0f;
+    Vector2 nearMissWorld(200.0f + kOuterHit + 1.0f, 300.0f);
+    Vector2 screen = camera.WorldToScreen(nearMissWorld);
+    ApplyClick(*scene.state, camera, screen);
+    EXPECT_FALSE(scene.state->GetAllUnits()[0]->IsSelected());
+    EXPECT_FALSE(scene.state->GetAllUnits()[1]->IsSelected());
+}
+
+TEST(CommandScriptTest, ClickHitsUnitAtRadiusBoundary)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    constexpr float kOuterHit = 12.0f + 15.0f;
+    Vector2 boundaryWorld(200.0f + kOuterHit - 0.01f, 300.0f);
+    Vector2 screen = camera.WorldToScreen(boundaryWorld);
+    ApplyClick(*scene.state, camera, screen);
+    EXPECT_TRUE(scene.state->GetAllUnits()[0]->IsSelected());
+}
+
+TEST(CommandScriptTest, DragSelectionBoxOutlineUsesWorldToScreenCorners)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    const Vector2 worldStart(100.0f, 200.0f);
+    const Vector2 worldEnd(700.0f, 400.0f);
+    SelectionSystem& selection = scene.state->GetSelectionSystem();
+    selection.StartBoxSelection(worldStart);
+    selection.UpdateBoxSelection(worldEnd);
+    ASSERT_TRUE(selection.IsBoxSelecting());
+
+    DrawList list;
+    AppendSelectionBox(list, selection, camera);
+    ASSERT_EQ(list.rects.size(), 1u);
+    const DrawRect& box = list.rects[0];
+    EXPECT_FALSE(box.filled);
+    EXPECT_EQ(box.color.r, 255);
+    EXPECT_EQ(box.color.g, 220);
+    EXPECT_EQ(box.color.b, 40);
+    EXPECT_EQ(box.color.a, 255);
+    const Vector2 expectedMin = camera.WorldToScreen(selection.GetBoxStart());
+    const Vector2 expectedMax = camera.WorldToScreen(selection.GetBoxEnd());
+    EXPECT_NEAR(box.min.x, expectedMin.x, 0.01f);
+    EXPECT_NEAR(box.min.y, expectedMin.y, 0.01f);
+    EXPECT_NEAR(box.max.x, expectedMax.x, 0.01f);
+    EXPECT_NEAR(box.max.y, expectedMax.y, 0.01f);
+}
+
+TEST(CommandScriptTest, FrameLoopScriptClickRclickAndFrames)
+{
+    FrameLoop loop(Preset::TwoUnits, 1, 1280, 720);
+    std::string error;
+    auto cmds = ParseScript("click 427 360\nrclick 640 360\nframes 30\n", error);
+    ASSERT_TRUE(error.empty());
+    ASSERT_TRUE(loop.ExecuteScript(cmds, error));
+    ASSERT_TRUE(error.empty());
+    EXPECT_TRUE(loop.State().GetAllUnits()[0]->IsSelected());
+    EXPECT_GT(loop.State().GetAllUnits()[0]->GetPosition().x, 220.0f);
+}
+
+TEST(CommandScriptTest, ScreenWorldMappingRequiredForClick)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    Vector2 screen = camera.WorldToScreen(Vector2(200.0f, 300.0f));
+    ApplyClick(*scene.state, camera, Vector2(200.0f, 300.0f));
+    EXPECT_FALSE(scene.state->GetAllUnits()[0]->IsSelected());
+    ApplyClick(*scene.state, camera, screen);
+    EXPECT_TRUE(scene.state->GetAllUnits()[0]->IsSelected());
+}

@@ -1,1 +1,545 @@
-I2luY2x1ZGUgIkNhbWVyYS5oIgojaW5jbHVkZSAiRHJhd0xpc3QuaCIKI2luY2x1ZGUgIkZyYW1lTG9vcC5oIgojaW5jbHVkZSAiSW5wdXRTY3JpcHQuaCIKI2luY2x1ZGUgIk92ZXJsYXkuaCIKI2luY2x1ZGUgIlJhc3Rlci5oIgojaW5jbHVkZSAiU2NlbmFyaW8uaCIKI2luY2x1ZGUgIlNuYXBzaG90UmVuZGVyZXIuaCIKI2luY2x1ZGUgIlZpZXdlcklucHV0LmgiCgojaW5jbHVkZSAiY29yZS9haS9CZWhhdmlvcnMvU2Vla0JlaGF2aW9yLmgiCiNpbmNsdWRlICJjb3JlL2NvbWJhdC9FeHBsb3Npb24uaCIKI2luY2x1ZGUgImNvcmUvZ2FtZXN0YXRlL1JUU0dhbWVTdGF0ZS5oIgojaW5jbHVkZSAiY29yZS9nYW1lc3RhdGUvUlRTVW5pdC5oIgojaW5jbHVkZSAiY29yZS9pbmZsdWVuY2VfdHlwZXMvSW5mbHVlbmNlRmllbGRJdGVtLmgiCiNpbmNsdWRlICJjb3JlL2luZmx1ZW5jZV90eXBlcy9JbmZsdWVuY2VGaWVsZFBhcmFtZXRlcnMuaCIKI2luY2x1ZGUgImNvcmUvaW50ZXJmYWNlcy9JQmVoYXZpb3IuaCIKI2luY2x1ZGUgImNvcmUvaW50ZXJmYWNlcy9JVW5pdEtpbmVtYXRpY3MuaCIKCiNpbmNsdWRlIDxjbWF0aD4KI2luY2x1ZGUgPGNzdHJpbmc+CiNpbmNsdWRlIDxndGVzdC9ndGVzdC5oPgojaW5jbHVkZSA8bWFwPgojaW5jbHVkZSA8c3RyaW5nPgojaW5jbHVkZSA8dmVjdG9yPgoKbmFtZXNwYWNlCnsKCmNsYXNzIFNpbmdsZUZpZWxkSXRlbUJlaGF2aW9yIDogcHVibGljIElCZWhhdmlvcgp7CnB1YmxpYzoKICAgIGV4cGxpY2l0IFNpbmdsZUZpZWxkSXRlbUJlaGF2aW9yKFZlY3RvcjIgcG9zaXRpb24pCiAgICAgICAgOiBwb3NpdGlvbl8ocG9zaXRpb24pCiAgICB7CiAgICB9CgogICAgc3RkOjp2ZWN0b3I8SW5mbHVlbmNlRmllbGRJdGVtPiBHZW5lcmF0ZUZpZWxkSXRlbXMoY29uc3QgQmVoYXZpb3JDb250ZXh0Jikgb3ZlcnJpZGUKICAgIHsKICAgICAgICByZXR1cm4ge0luZmx1ZW5jZUZpZWxkSXRlbTo6Q3JlYXRlQXR0cmFjdG9yKHBvc2l0aW9uXywgMS4wZil9OwogICAgfQoKICAgIGNvbnN0IGNoYXIqIEdldE5hbWUoKSBjb25zdCBvdmVycmlkZSB7IHJldHVybiAiU2luZ2xlRmllbGRJdGVtIjsgfQogICAgc3RkOjptYXA8c3RkOjpzdHJpbmcsIGZsb2F0PiYgR2V0UGFyYW1ldGVycygpIG92ZXJyaWRlIHsgcmV0dXJuIHBhcmFtc187IH0KICAgIGNvbnN0IHN0ZDo6bWFwPHN0ZDo6c3RyaW5nLCBmbG9hdD4mIEdldFBhcmFtZXRlcnMoKSBjb25zdCBvdmVycmlkZSB7IHJldHVybiBwYXJhbXNfOyB9Cgpwcml2YXRlOgogICAgVmVjdG9yMiBwb3NpdGlvbl87CiAgICBzdGQ6Om1hcDxzdGQ6OnN0cmluZywgZmxvYXQ+IHBhcmFtc187Cn07CgpDYW1lcmEgTWFrZU9mZnNldENhbWVyYSgpCnsKICAgIENhbWVyYSBjYW1lcmE7CiAgICBjYW1lcmEudmlld3BvcnRXID0gNjQwOwogICAgY2FtZXJhLnZpZXdwb3J0SCA9IDQ4MDsKICAgIGNhbWVyYS5jZW50ZXIgPSBWZWN0b3IyKDM1MC4wZiwgMjgwLjBmKTsKICAgIGNhbWVyYS5waXhlbHNQZXJVbml0ID0gMi4yNWY7CiAgICByZXR1cm4gY2FtZXJhOwp9Cgpib29sIFJnYmFFcXVhbChSZ2JhIGEsIFJnYmEgYikKewogICAgcmV0dXJuIGEuciA9PSBiLnIgJiYgYS5nID09IGIuZyAmJiBhLmIgPT0gYi5iICYmIGEuYSA9PSBiLmE7Cn0KCnZvaWQgRXhwZWN0UmdiYUxpdGVyYWwoY29uc3QgUmdiYSYgY29sb3IsIHN0ZDo6dWludDhfdCByLCBzdGQ6OnVpbnQ4X3QgZywgc3RkOjp1aW50OF90IGIsIHN0ZDo6dWludDhfdCBhKQp7CiAgICBFWFBFQ1RfRVEoY29sb3Iuciwgcik7CiAgICBFWFBFQ1RfRVEoY29sb3IuZywgZyk7CiAgICBFWFBFQ1RfRVEoY29sb3IuYiwgYik7CiAgICBFWFBFQ1RfRVEoY29sb3IuYSwgYSk7Cn0KCmludCBDb3VudFBpeGVscyhjb25zdCBGcmFtZWJ1ZmZlciYgZmIsIFJnYmEgY29sb3IpCnsKICAgIGludCBjb3VudCA9IDA7CiAgICBmb3IgKGludCB5ID0gMDsgeSA8IGZiLmhlaWdodDsgKyt5KQogICAgewogICAgICAgIGZvciAoaW50IHggPSAwOyB4IDwgZmIud2lkdGg7ICsreCkKICAgICAgICB7CiAgICAgICAgICAgIGNvbnN0IHNpemVfdCBpID0gc3RhdGljX2Nhc3Q8c2l6ZV90PigoeSAqIGZiLndpZHRoICsgeCkgKiA0KTsKICAgICAgICAgICAgUmdiYSBweHtmYi5yZ2JhW2ldLCBmYi5yZ2JhW2kgKyAxXSwgZmIucmdiYVtpICsgMl0sIGZiLnJnYmFbaSArIDNdfTsKICAgICAgICAgICAgaWYgKFJnYmFFcXVhbChweCwgY29sb3IpKQogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICArK2NvdW50OwogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQogICAgcmV0dXJuIGNvdW50Owp9Cgpib29sIFJ1blNjcmlwdChGcmFtZUxvb3AmIGxvb3AsIGNvbnN0IHN0ZDo6c3RyaW5nJiB0ZXh0KQp7CiAgICBzdGQ6OnN0cmluZyBlcnJvcjsKICAgIGNvbnN0IHN0ZDo6dmVjdG9yPFNjcmlwdENvbW1hbmQ+IGNvbW1hbmRzID0gUGFyc2VTY3JpcHQodGV4dCwgZXJyb3IpOwogICAgaWYgKCFlcnJvci5lbXB0eSgpKQogICAgewogICAgICAgIHJldHVybiBmYWxzZTsKICAgIH0KICAgIHJldHVybiBsb29wLkV4ZWN1dGVTY3JpcHQoY29tbWFuZHMsIGVycm9yKTsKfQoKY29uc3QgRHJhd0NpcmNsZSogRmluZEV4cGxvc2lvbkNpcmNsZShjb25zdCBEcmF3TGlzdCYgbGlzdCkKewogICAgZm9yIChjb25zdCBEcmF3Q2lyY2xlJiBjaXJjbGUgOiBsaXN0LmNpcmNsZXMpCiAgICB7CiAgICAgICAgaWYgKGNpcmNsZS5vdXRsaW5lLnIgPT0gMjU1ICYmIGNpcmNsZS5vdXRsaW5lLmcgPT0gODAgJiYgY2lyY2xlLm91dGxpbmUuYiA9PSA0MCAmJiBjaXJjbGUub3V0bGluZS5hID09IDI1NQogICAgICAgICAgICAmJiBjaXJjbGUuZmlsbC5yID09IDAgJiYgY2lyY2xlLmZpbGwuZyA9PSAwICYmIGNpcmNsZS5maWxsLmIgPT0gMCAmJiBjaXJjbGUuZmlsbC5hID09IDApCiAgICAgICAgewogICAgICAgICAgICByZXR1cm4gJmNpcmNsZTsKICAgICAgICB9CiAgICB9CiAgICByZXR1cm4gbnVsbHB0cjsKfQoKfSAvLyBuYW1lc3BhY2UKClRFU1QoT3ZlcmxheVRlc3QsIEV4cGxvc2lvbkVjaG9TdXJ2aXZlc1RoZVRpY2tUaGF0Q2xlYXJzVGhlRW5naW5lKQp7CiAgICBTY2VuZSBzY2VuZSA9IEJ1aWxkUHJlc2V0KFByZXNldDo6VHdvVW5pdHMsIDEpOwogICAgc2NlbmUuc3RhdGUtPkFkZEV4cGxvc2lvbihFeHBsb3Npb24oVmVjdG9yMig0MDAsIDMwMCksIDgwLjBmLCA1MDAwLjBmKSk7CiAgICBzdGQ6OnZlY3RvcjxFeHBsb3Npb25FY2hvPiBlY2hvZXM7CiAgICBOb3RlRXhwbG9zaW9ucygqc2NlbmUuc3RhdGUsIGVjaG9lcywga0ZpeGVkRHQpOwogICAgQVNTRVJUX0VRKGVjaG9lcy5zaXplKCksIDF1KTsKICAgIHNjZW5lLnN0YXRlLT5VcGRhdGUoa0ZpeGVkRHQpOwogICAgRVhQRUNUX1RSVUUoc2NlbmUuc3RhdGUtPkdldEV4cGxvc2lvbnMoKS5lbXB0eSgpKTsKICAgIENhbWVyYSBjYW1lcmEgPSBGaXRNYXAoc2NlbmUuc3RhdGUtPkdldE1hcFNpemUoKSwgMTI4MCwgNzIwLCA0MC4wZik7CiAgICBPdmVybGF5RmxhZ3MgZmxhZ3M7CiAgICBmbGFncy5leHBsb3Npb25zID0gdHJ1ZTsKICAgIERyYXdMaXN0IGxpc3Q7CiAgICBBcHBlbmRPdmVybGF5cyhsaXN0LCAqc2NlbmUuc3RhdGUsIGNhbWVyYSwgZmxhZ3MsIENvbGxpc2lvblJlY29yZGVye30sIGVjaG9lcyk7CiAgICBBU1NFUlRfRVEobGlzdC5jaXJjbGVzLnNpemUoKSwgMXUpOwogICAgRVhQRUNUX05FQVIobGlzdC5jaXJjbGVzWzBdLnJhZGl1cywgODAuMGYgKiBjYW1lcmEucGl4ZWxzUGVyVW5pdCwgMC4wMWYpOwp9CgpURVNUKE92ZXJsYXlUZXN0LCBGbGFnc09mZkFkZE5vT3ZlcmxheVByaW1pdGl2ZXMpCnsKICAgIFNjZW5lIHNjZW5lID0gQnVpbGRQcmVzZXQoUHJlc2V0OjpUd29Vbml0cywgMSk7CiAgICBDYW1lcmEgY2FtZXJhID0gRml0TWFwKHNjZW5lLnN0YXRlLT5HZXRNYXBTaXplKCksIDEyODAsIDcyMCwgNDAuMGYpOwogICAgRHJhd0xpc3QgbGlzdDsKICAgIEFwcGVuZE92ZXJsYXlzKGxpc3QsICpzY2VuZS5zdGF0ZSwgY2FtZXJhLCBPdmVybGF5RmxhZ3N7fSwgQ29sbGlzaW9uUmVjb3JkZXJ7fSwge30pOwogICAgRVhQRUNUX1RSVUUobGlzdC5jaXJjbGVzLmVtcHR5KCkpOwogICAgRVhQRUNUX1RSVUUobGlzdC5saW5lcy5lbXB0eSgpKTsKfQoKVEVTVChPdmVybGF5VGVzdCwgSW5mbHVlbmNlVG9nZ2xlRHJhd3NGb3VyRWRnZU1hcmtlcnMpCnsKICAgIFNjZW5lIHNjZW5lID0gQnVpbGRQcmVzZXQoUHJlc2V0OjpUd29Vbml0cywgMSk7CiAgICBDYW1lcmEgY2FtZXJhID0gRml0TWFwKHNjZW5lLnN0YXRlLT5HZXRNYXBTaXplKCksIDEyODAsIDcyMCwgNDAuMGYpOwogICAgT3ZlcmxheUZsYWdzIGZsYWdzOwogICAgZmxhZ3MuaW5mbHVlbmNlID0gdHJ1ZTsKICAgIERyYXdMaXN0IGxpc3Q7CiAgICBBcHBlbmRPdmVybGF5cyhsaXN0LCAqc2NlbmUuc3RhdGUsIGNhbWVyYSwgZmxhZ3MsIENvbGxpc2lvblJlY29yZGVye30sIHt9KTsKICAgIEVYUEVDVF9FUShsaXN0LmNpcmNsZXMuc2l6ZSgpLCA0dSk7Cn0KClRFU1QoT3ZlcmxheVRlc3QsIENvbGxpc2lvblJlY29yZGVyQ2FwdHVyZXNPdmVybGFwKQp7CiAgICBTY2VuZSBzY2VuZTsKICAgIHNjZW5lLnN0YXRlID0gc3RkOjptYWtlX3VuaXF1ZTxSVFNHYW1lU3RhdGU+KFZlY3RvcjIoODAwLjBmLCA2MDAuMGYpLCAxKTsKICAgIGF1dG8gdW5pdEEgPSBzdGQ6Om1ha2VfdW5pcXVlPFJUU1VuaXQ+KFZlY3RvcjIoMzkwLjBmLCAzMDAuMGYpLCAxLCAxMi4wZiwgMTAwLjBmKTsKICBhdXRvIHVuaXRCID0gc3RkOjptYWtlX3VuaXF1ZTxSVFNVbml0PihWZWN0b3IyKDQwMC4wZiwgMzAwLjBmKSwgMiwgMTIuMGYsIDEwMC4wZik7CiAgYXV0byoga2luQSA9IGR5bmFtaWNfY2FzdDxJVW5pdEtpbmVtYXRpY3MqPih1bml0QS5nZXQoKSk7CiAgYXV0byoga2luQiA9IGR5bmFtaWNfY2FzdDxJVW5pdEtpbmVtYXRpY3MqPih1bml0Qi5nZXQoKSk7CiAgQVNTRVJUX05FKGtpbkEsIG51bGxwdHIpOwogIEFTU0VSVF9ORShraW5CLCBudWxscHRyKTsKICBraW5BLT5TZXRWZWxvY2l0eShWZWN0b3IyKDUwLjBmLCAwLjBmKSk7CiAga2luQi0+U2V0VmVsb2NpdHkoVmVjdG9yMigtNTAuMGYsIDAuMGYpKTsKICBzY2VuZS5zdGF0ZS0+QWRkVW5pdChzdGQ6Om1vdmUodW5pdEEpKTsKICBzY2VuZS5zdGF0ZS0+QWRkVW5pdChzdGQ6Om1vdmUodW5pdEIpKTsKCiAgQ29sbGlzaW9uUmVjb3JkZXIgcmVjb3JkZXI7CiAgc2NlbmUuc3RhdGUtPkdldENvbGxpc2lvblN5c3RlbSgpLlN1YnNjcmliZSgmcmVjb3JkZXIpOwogIHJlY29yZGVyLlNldFJlZmVyZW5jZUdhbWVUaW1lKDAuMGYpOwogIHNjZW5lLnN0YXRlLT5VcGRhdGUoa0ZpeGVkRHQpOwogIEVYUEVDVF9HRShyZWNvcmRlci5FdmVudHMoKS5zaXplKCksIDF1KTsKICBzY2VuZS5zdGF0ZS0+R2V0Q29sbGlzaW9uU3lzdGVtKCkuVW5zdWJzY3JpYmUoJnJlY29yZGVyKTsKfQoKVEVTVChPdmVybGF5VGVzdCwgQ29sbGlzaW9uT3ZlcmxheVByb2plY3RzQ3Jvc3NBbmROb3JtYWwpCnsKICAgIFNjZW5lIHNjZW5lID0gQnVpbGRQcmVzZXQoUHJlc2V0OjpUd29Vbml0cywgMSk7CiAgICBjb25zdCBDYW1lcmEgY2FtZXJhID0gTWFrZU9mZnNldENhbWVyYSgpOwogICAgQ29sbGlzaW9uUmVjb3JkZXIgcmVjb3JkZXI7CiAgICBDb2xsaXNpb25FdmVudCBldmVudDsKICAgIGV2ZW50LmNvbnRhY3RQb2ludCA9IFZlY3RvcjIoMjIwLjBmLCAxODAuMGYpOwogICAgZXZlbnQubm9ybWFsID0gVmVjdG9yMigwLjBmLCAxLjBmKTsKICAgIHJlY29yZGVyLk9uQ29sbGlzaW9uKGV2ZW50KTsKCiAgICBPdmVybGF5RmxhZ3MgZmxhZ3M7CiAgICBmbGFncy5jb2xsaXNpb25zID0gdHJ1ZTsKICAgIERyYXdMaXN0IGxpc3Q7CiAgICBBcHBlbmRPdmVybGF5cyhsaXN0LCAqc2NlbmUuc3RhdGUsIGNhbWVyYSwgZmxhZ3MsIHJlY29yZGVyLCB7fSk7CiAgICBBU1NFUlRfRVEobGlzdC5saW5lcy5zaXplKCksIDN1KTsKICAgIGZvciAoY29uc3QgRHJhd0xpbmUmIGxpbmUgOiBsaXN0LmxpbmVzKQogICAgewogICAgICAgIEV4cGVjdFJnYmFMaXRlcmFsKGxpbmUuY29sb3IsIDI1NSwgMTYwLCA0MCwgMjU1KTsKICAgIH0KICAgIGNvbnN0IFZlY3RvcjIgY29udGFjdFNjcmVlbiA9IGNhbWVyYS5Xb3JsZFRvU2NyZWVuKGV2ZW50LmNvbnRhY3RQb2ludCk7CiAgICBFWFBFQ1RfTkVBUihsaXN0LmxpbmVzWzBdLmEueCwgY29udGFjdFNjcmVlbi54IC0gMy4wZiwgMC4wMWYpOwogICAgY29uc3QgVmVjdG9yMiBub3JtYWxTY3JlZW4gPSBjYW1lcmEuV29ybGRUb1NjcmVlbihldmVudC5jb250YWN0UG9pbnQgKyBldmVudC5ub3JtYWwgKiAyMC4wZik7CiAgICBFWFBFQ1RfTkVBUihsaXN0LmxpbmVzWzJdLmIueSwgbm9ybWFsU2NyZWVuLnksIDAuMDFmKTsKfQoKVEVTVChPdmVybGF5VGVzdCwgUGVyY2VwdGlvblJpbmdVc2VzQ2FtZXJhQW5kTGFyZ2VSYWRpdXMpCnsKICAgIFNjZW5lIHNjZW5lID0gQnVpbGRQcmVzZXQoUHJlc2V0OjpUd29Vbml0cywgMSk7CiAgICBzY2VuZS5zdGF0ZS0+U2V0UGVyY2VwdGlvblJhZGl1cygxMDAwLjBmKTsKICAgIGNvbnN0IENhbWVyYSBjYW1lcmEgPSBNYWtlT2Zmc2V0Q2FtZXJhKCk7CiAgICBPdmVybGF5RmxhZ3MgZmxhZ3M7CiAgICBmbGFncy5wZXJjZXB0aW9uID0gdHJ1ZTsKICAgIERyYXdMaXN0IGxpc3Q7CiAgICBBcHBlbmRPdmVybGF5cyhsaXN0LCAqc2NlbmUuc3RhdGUsIGNhbWVyYSwgZmxhZ3MsIENvbGxpc2lvblJlY29yZGVye30sIHt9KTsKCiAgICBJR2FtZVVuaXQqIHVuaXQgPSBzY2VuZS5zdGF0ZS0+R2V0QWxsVW5pdHMoKVswXTsKICAgIGNvbnN0IFZlY3RvcjIgdW5pdFNjcmVlbiA9IGNhbWVyYS5Xb3JsZFRvU2NyZWVuKHVuaXQtPkdldFBvc2l0aW9uKCkpOwogICAgQVNTRVJUX0VRKGxpc3QuY2lyY2xlcy5zaXplKCksIDJ1KTsKICAgIEVYUEVDVF9ORUFSKGxpc3QuY2lyY2xlc1swXS5yYWRpdXMsIDEwMDAuMGYgKiBjYW1lcmEucGl4ZWxzUGVyVW5pdCwgMC4wMWYpOwogICAgRXhwZWN0UmdiYUxpdGVyYWwobGlzdC5jaXJjbGVzWzBdLm91dGxpbmUsIDEyMCwgMjIwLCAyNTUsIDI1NSk7CiAgICBFeHBlY3RSZ2JhTGl0ZXJhbChsaXN0LmNpcmNsZXNbMF0uZmlsbCwgMCwgMCwgMCwgMCk7CgogICAgc2NlbmUuc3RhdGUtPlNldFBlcmNlcHRpb25SYWRpdXMoNDUuMGYpOwogICAgbGlzdC5jaXJjbGVzLmNsZWFyKCk7CiAgICBBcHBlbmRPdmVybGF5cyhsaXN0LCAqc2NlbmUuc3RhdGUsIGNhbWVyYSwgZmxhZ3MsIENvbGxpc2lvblJlY29yZGVye30sIHt9KTsKICAgIGNvbnN0IGZsb2F0IHJhc3RlclJpbmcgPSBsaXN0LmNpcmNsZXNbMF0ucmFkaXVzOwogICAgRnJhbWVidWZmZXIgZmI7CiAgICBmYi53aWR0aCA9IGNhbWVyYS52aWV3cG9ydFc7CiAgICBmYi5oZWlnaHQgPSBjYW1lcmEudmlld3BvcnRIOwogICAgRHJhd0xpc3QgYmFzZSA9IEJ1aWxkU25hcHNob3REcmF3TGlzdCgqc2NlbmUuc3RhdGUsIGNhbWVyYSk7CiAgICBSYXN0ZXJpemUoYmFzZSwgZmIpOwogICAgY29uc3QgaW50IGN4ID0gc3RhdGljX2Nhc3Q8aW50PihzdGQ6Omxyb3VuZCh1bml0U2NyZWVuLngpKTsKICAgIGNvbnN0IGludCBjeSA9IHN0YXRpY19jYXN0PGludD4oc3RkOjpscm91bmQodW5pdFNjcmVlbi55KSk7CiAgICBjb25zdCBzaXplX3QgY2VudGVySW5kZXggPSBzdGF0aWNfY2FzdDxzaXplX3Q+KChjeSAqIGZiLndpZHRoICsgY3gpICogNCk7CiAgICBjb25zdCBSZ2JhIGNlbnRlckJlZm9yZXtmYi5yZ2JhW2NlbnRlckluZGV4XSwgZmIucmdiYVtjZW50ZXJJbmRleCArIDFdLCBmYi5yZ2JhW2NlbnRlckluZGV4ICsgMl0sIGZiLnJnYmFbY2VudGVySW5kZXggKyAzXX07CiAgICBsaXN0ID0gYmFzZTsKICAgIEFwcGVuZE92ZXJsYXlzKGxpc3QsICpzY2VuZS5zdGF0ZSwgY2FtZXJhLCBmbGFncywgQ29sbGlzaW9uUmVjb3JkZXJ7fSwge30pOwogICAgUmFzdGVyaXplKGxpc3QsIGZiKTsKICAgIGNvbnN0IFJnYmEgY2VudGVyQWZ0ZXJ7ZmIucmdiYVtjZW50ZXJJbmRleF0sIGZiLnJnYmFbY2VudGVySW5kZXggKyAxXSwgZmIucmdiYVtjZW50ZXJJbmRleCArIDJdLCBmYi5yZ2JhW2NlbnRlckluZGV4ICsgM119OwogICAgRVhQRUNUX1RSVUUoUmdiYUVxdWFsKGNlbnRlckJlZm9yZSwgY2VudGVyQWZ0ZXIpKTsKCiAgICBib29sIGZvdW5kUmluZ1BpeGVsID0gZmFsc2U7CiAgICBmb3IgKGludCB5ID0gMDsgeSA8IGZiLmhlaWdodDsgKyt5KQogICAgewogICAgICAgIGZvciAoaW50IHggPSAwOyB4IDwgZmIud2lkdGg7ICsreCkKICAgICAgICB7CiAgICAgICAgICAgIGNvbnN0IHNpemVfdCBpID0gc3RhdGljX2Nhc3Q8c2l6ZV90PigoeSAqIGZiLndpZHRoICsgeCkgKiA0KTsKICAgICAgICAgICAgUmdiYSBweHtmYi5yZ2JhW2ldLCBmYi5yZ2JhW2kgKyAxXSwgZmIucmdiYVtpICsgMl0sIGZiLnJnYmFbaSArIDNdfTsKICAgICAgICAgICAgaWYgKHB4LnIgIT0gMTIwIHx8IHB4LmcgIT0gMjIwIHx8IHB4LmIgIT0gMjU1IHx8IHB4LmEgIT0gMjU1KQogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICBjb250aW51ZTsKICAgICAgICAgICAgfQogICAgICAgICAgICBjb25zdCBmbG9hdCBkeCA9IHN0YXRpY19jYXN0PGZsb2F0Pih4KSAtIHVuaXRTY3JlZW4ueDsKICAgICAgICAgICAgY29uc3QgZmxvYXQgZHkgPSBzdGF0aWNfY2FzdDxmbG9hdD4oeSkgLSB1bml0U2NyZWVuLnk7CiAgICAgICAgICAgIGlmIChzdGQ6OmZhYnMoc3RkOjpzcXJ0KGR4ICogZHggKyBkeSAqIGR5KSAtIHJhc3RlclJpbmcpIDw9IDIuMGYpCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIGZvdW5kUmluZ1BpeGVsID0gdHJ1ZTsKICAgICAgICAgICAgICAgIGJyZWFrOwogICAgICAgICAgICB9CiAgICAgICAgfQogICAgICAgIGlmIChmb3VuZFJpbmdQaXhlbCkKICAgICAgICB7CiAgICAgICAgICAgIGJyZWFrOwogICAgICAgIH0KICAgIH0KICAgIEVYUEVDVF9UUlVFKGZvdW5kUmluZ1BpeGVsKTsKfQoKVEVTVChPdmVybGF5VGVzdCwgTm90ZUV4cGxvc2lvbnNTZXRzTGlmZXRpbWVBbmRUaWNrRGVjYXlzKQp7CiAgICBTY2VuZSBzY2VuZSA9IEJ1aWxkUHJlc2V0KFByZXNldDo6VHdvVW5pdHMsIDEpOwogICAgc2NlbmUuc3RhdGUtPkFkZEV4cGxvc2lvbihFeHBsb3Npb24oVmVjdG9yMigxMCwgMTApLCA1LjBmLCAxLjBmKSk7CiAgICBzdGQ6OnZlY3RvcjxFeHBsb3Npb25FY2hvPiBlY2hvZXM7CiAgICBOb3RlRXhwbG9zaW9ucygqc2NlbmUuc3RhdGUsIGVjaG9lcywga0ZpeGVkRHQpOwogICAgQVNTRVJUX0VRKGVjaG9lcy5zaXplKCksIDF1KTsKICAgIEVYUEVDVF9GTE9BVF9FUShlY2hvZXNbMF0uc2Vjb25kc0xlZnQsIGtFeHBsb3Npb25FY2hvTGlmZXRpbWVTZWNvbmRzKTsKICAgIFRpY2tFeHBsb3Npb25FY2hvZXMoZWNob2VzLCBrRml4ZWREdCk7CiAgICBBU1NFUlRfRVEoZWNob2VzLnNpemUoKSwgMXUpOwogICAgRVhQRUNUX05FQVIoZWNob2VzWzBdLnNlY29uZHNMZWZ0LCBrRXhwbG9zaW9uRWNob0xpZmV0aW1lU2Vjb25kcyAtIGtGaXhlZER0LCAwLjAwMDFmKTsKfQoKVEVTVChPdmVybGF5VGVzdCwgRnJhbWVMb29wU3RlcE5vdGVzRXhwbG9zaW9uQmVmb3JlVXBkYXRlKQp7CiAgICBGcmFtZUxvb3AgbG9vcChQcmVzZXQ6OlR3b1VuaXRzLCAxLCAxMjgwLCA3MjApOwogICAgY29uc3QgVmVjdG9yMiBleHBsb3Npb25Qb3MoNDAwLjBmLCAzMDAuMGYpOwogICAgY29uc3QgZmxvYXQgZXhwbG9zaW9uUmFkaXVzID0gODAuMGY7CiAgICBsb29wLlN0YXRlKCkuQWRkRXhwbG9zaW9uKEV4cGxvc2lvbihleHBsb3Npb25Qb3MsIGV4cGxvc2lvblJhZGl1cywgNTAwMC4wZikpOwogICAgQVNTRVJUX1RSVUUoUnVuU2NyaXB0KGxvb3AsICJvdmVybGF5IGV4cGxvc2lvbnMgMVxucGF1c2VcbnN0ZXBcbiIpKTsKICAgIEVYUEVDVF9UUlVFKGxvb3AuU3RhdGUoKS5HZXRFeHBsb3Npb25zKCkuZW1wdHkoKSk7CiAgICBjb25zdCBDYW1lcmEgY2FtZXJhID0gbG9vcC5HZXRDYW1lcmEoKTsKICAgIGNvbnN0IERyYXdDaXJjbGUqIHJpbmcgPSBGaW5kRXhwbG9zaW9uQ2lyY2xlKGxvb3AuQnVpbGRWaWV3RHJhd0xpc3QoKSk7CiAgICBBU1NFUlRfTkUocmluZywgbnVsbHB0cik7CiAgICBFWFBFQ1RfTkVBUihyaW5nLT5jZW50ZXIueCwgY2FtZXJhLldvcmxkVG9TY3JlZW4oZXhwbG9zaW9uUG9zKS54LCAwLjAxZik7CiAgICBFWFBFQ1RfTkVBUihyaW5nLT5yYWRpdXMsIGV4cGxvc2lvblJhZGl1cyAqIGNhbWVyYS5waXhlbHNQZXJVbml0LCAwLjAxZik7CiAgICBFeHBlY3RSZ2JhTGl0ZXJhbChyaW5nLT5vdXRsaW5lLCAyNTUsIDgwLCA0MCwgMjU1KTsKfQoKVEVTVChPdmVybGF5VGVzdCwgUGF1c2VkRnJhbWVzRG9Ob3RSZU5vdGVFeHBsb3Npb24pCnsKICAgIEZyYW1lTG9vcCBsb29wKFByZXNldDo6VHdvVW5pdHMsIDEsIDEyODAsIDcyMCk7CiAgICBsb29wLlN0YXRlKCkuQWRkRXhwbG9zaW9uKEV4cGxvc2lvbihWZWN0b3IyKDQwMC4wZiwgMzAwLjBmKSwgODAuMGYsIDUwMDAuMGYpKTsKICAgIEFTU0VSVF9UUlVFKFJ1blNjcmlwdChsb29wLCAib3ZlcmxheSBleHBsb3Npb25zIDFcbnBhdXNlXG5mcmFtZXMgNDBcbiIpKTsKICAgIEVYUEVDVF9FUShsb29wLlN0YXRlKCkuR2V0RXhwbG9zaW9ucygpLnNpemUoKSwgMXUpOwogICAgRVhQRUNUX0VRKEZpbmRFeHBsb3Npb25DaXJjbGUobG9vcC5CdWlsZFZpZXdEcmF3TGlzdCgpKSwgbnVsbHB0cik7Cn0KClRFU1QoT3ZlcmxheVRlc3QsIEZyYW1lTG9vcEVjaG9WaXNpYmxlVGhlbkV4cGlyZXNBZnRlclNpbUZyYW1lcykKewogICAgRnJhbWVMb29wIGxvb3AoUHJlc2V0OjpUd29Vbml0cywgMSwgMTI4MCwgNzIwKTsKICAgIGxvb3AuU3RhdGUoKS5BZGRFeHBsb3Npb24oRXhwbG9zaW9uKFZlY3RvcjIoNDAwLjBmLCAzMDAuMGYpLCA4MC4wZiwgNTAwMC4wZikpOwogICAgQVNTRVJUX1RSVUUoUnVuU2NyaXB0KGxvb3AsICJvdmVybGF5IGV4cGxvc2lvbnMgMVxuZnJhbWVzIDFcbiIpKTsKICAgIEVYUEVDVF9ORShGaW5kRXhwbG9zaW9uQ2lyY2xlKGxvb3AuQnVpbGRWaWV3RHJhd0xpc3QoKSksIG51bGxwdHIpOwoKICAgIEZyYW1lTG9vcCBsb29wRnJlc2goUHJlc2V0OjpUd29Vbml0cywgMSwgMTI4MCwgNzIwKTsKICAgIGxvb3BGcmVzaC5TdGF0ZSgpLkFkZEV4cGxvc2lvbihFeHBsb3Npb24oVmVjdG9yMig0MDAuMGYsIDMwMC4wZiksIDgwLjBmLCA1MDAwLjBmKSk7CiAgICBBU1NFUlRfVFJVRShSdW5TY3JpcHQobG9vcEZyZXNoLCAib3ZlcmxheSBleHBsb3Npb25zIDFcbmZyYW1lcyAyMFxuIikpOwogICAgRVhQRUNUX0VRKEZpbmRFeHBsb3Npb25DaXJjbGUobG9vcEZyZXNoLkJ1aWxkVmlld0RyYXdMaXN0KCkpLCBudWxscHRyKTsKfQoKVEVTVChPdmVybGF5VGVzdCwgQ29sbGlzaW9uT3ZlcmxheUV4cGlyZXNBZnRlclNpbXVsYXRlZFRpbWUpCnsKICAgIEZyYW1lTG9vcCBsb29wKFByZXNldDo6VHdvVW5pdHMsIDEsIDEyODAsIDcyMCk7CiAgICBhdXRvIHVuaXRBID0gc3RkOjptYWtlX3VuaXF1ZTxSVFNVbml0PihWZWN0b3IyKDM5MC4wZiwgMzAwLjBmKSwgMSwgMTIuMGYsIDEwMC4wZik7CiAgICBhdXRvIHVuaXRCID0gc3RkOjptYWtlX3VuaXF1ZTxSVFNVbml0PihWZWN0b3IyKDQwMC4wZiwgMzAwLjBmKSwgMiwgMTIuMGYsIDEwMC4wZik7CiAgICBkeW5hbWljX2Nhc3Q8SVVuaXRLaW5lbWF0aWNzKj4odW5pdEEuZ2V0KCkpLT5TZXRWZWxvY2l0eShWZWN0b3IyKDgwLjBmLCAwLjBmKSk7CiAgICBkeW5hbWljX2Nhc3Q8SVVuaXRLaW5lbWF0aWNzKj4odW5pdEIuZ2V0KCkpLT5TZXRWZWxvY2l0eShWZWN0b3IyKC04MC4wZiwgMC4wZikpOwogICAgbG9vcC5TdGF0ZSgpLkFkZFVuaXQoc3RkOjptb3ZlKHVuaXRBKSk7CiAgICBsb29wLlN0YXRlKCkuQWRkVW5pdChzdGQ6Om1vdmUodW5pdEIpKTsKICAgIEFTU0VSVF9UUlVFKFJ1blNjcmlwdChsb29wLCAib3ZlcmxheSBjb2xsaXNpb25zIDFcbmZyYW1lcyAxXG4iKSk7CiAgICBGcmFtZWJ1ZmZlciBhZnRlckhpdDsKICAgIGxvb3AuUmFzdGVyaXplQ3VycmVudFZpZXcoYWZ0ZXJIaXQpOwogICAgRVhQRUNUX0dUKENvdW50UGl4ZWxzKGFmdGVySGl0LCB7MjU1LCAxNjAsIDQwLCAyNTV9KSwgMCk7CiAgICBpbnQgc3ByZWFkID0gMDsKICAgIGZvciAoSUdhbWVVbml0KiB1bml0IDogbG9vcC5TdGF0ZSgpLkdldEFsbFVuaXRzKCkpCiAgICB7CiAgICAgICAgaWYgKGF1dG8qIGtpbiA9IGR5bmFtaWNfY2FzdDxJVW5pdEtpbmVtYXRpY3MqPih1bml0KSkKICAgICAgICB7CiAgICAgICAgICAgIGtpbi0+U2V0VmVsb2NpdHkoVmVjdG9yMigwLjBmLCAwLjBmKSk7CiAgICAgICAgICAgIGtpbi0+U2V0UG9zaXRpb24oVmVjdG9yMig1MC4wZiArIHN0YXRpY19jYXN0PGZsb2F0PihzcHJlYWQpICogMTgwLjBmLCA1MC4wZikpOwogICAgICAgICAgICArK3NwcmVhZDsKICAgICAgICB9CiAgICB9CiAgICBBU1NFUlRfVFJVRShSdW5TY3JpcHQobG9vcCwgImZyYW1lcyAxMDBcbiIpKTsKICAgIEZyYW1lYnVmZmVyIGV4cGlyZWQ7CiAgICBsb29wLlJhc3Rlcml6ZUN1cnJlbnRWaWV3KGV4cGlyZWQpOwogICAgRVhQRUNUX0VRKDAsIENvdW50UGl4ZWxzKGV4cGlyZWQsIHsyNTUsIDE2MCwgNDAsIDI1NX0pKTsKfQoKVEVTVChPdmVybGF5VGVzdCwgSW5mbHVlbmNlRHJhd3NFZGdlQW5kQXR0cmFjdG9yUmVwdWxzb3JNYXJrZXJzKQp7CiAgICBTY2VuZSBzY2VuZSA9IEJ1aWxkUHJlc2V0KFByZXNldDo6VHdvVW5pdHMsIDEpOwogICAgY29uc3QgQ2FtZXJhIGNhbWVyYSA9IE1ha2VPZmZzZXRDYW1lcmEoKTsKICAgIGNvbnN0IGF1dG8mIGVkZ2VzID0gc2NlbmUuc3RhdGUtPkdldFN0YXRpY0l0ZW1zKCk7CiAgICBzY2VuZS5zdGF0ZS0+QWRkU3RhdGljQXR0cmFjdG9yKEluZmx1ZW5jZUZpZWxkSXRlbTo6Q3JlYXRlQXR0cmFjdG9yKFZlY3RvcjIoMTAwLjBmLCAxNTAuMGYpLCAxLjBmKSk7CiAgICBzY2VuZS5zdGF0ZS0+QWRkU3RhdGljQXR0cmFjdG9yKEluZmx1ZW5jZUZpZWxkSXRlbTo6Q3JlYXRlUmVwdWxzb3IoVmVjdG9yMig1MDAuMGYsIDQwMC4wZiksIDEuMGYpKTsKICAgIE92ZXJsYXlGbGFncyBmbGFnczsKICAgIGZsYWdzLmluZmx1ZW5jZSA9IHRydWU7CiAgICBEcmF3TGlzdCBsaXN0OwogICAgQXBwZW5kT3ZlcmxheXMobGlzdCwgKnNjZW5lLnN0YXRlLCBjYW1lcmEsIGZsYWdzLCBDb2xsaXNpb25SZWNvcmRlcnt9LCB7fSk7CiAgICBBU1NFUlRfRVEobGlzdC5jaXJjbGVzLnNpemUoKSwgNnUpOwogICAgY29uc3QgZmxvYXQgbWFya2VyUHggPSA2LjBmICogY2FtZXJhLnBpeGVsc1BlclVuaXQ7CiAgICBmb3IgKHNpemVfdCBpID0gMDsgaSA8IDR1OyArK2kpCiAgICB7CiAgICAgICAgRXhwZWN0UmdiYUxpdGVyYWwobGlzdC5jaXJjbGVzW2ldLmZpbGwsIDAsIDIyMCwgMjIwLCAyNTUpOwogICAgICAgIEVYUEVDVF9ORUFSKGxpc3QuY2lyY2xlc1tpXS5jZW50ZXIueCwgY2FtZXJhLldvcmxkVG9TY3JlZW4oZWRnZXNbaV0uR2V0UG9zaXRpb24oKSkueCwgMC4wMWYpOwogICAgICAgIEVYUEVDVF9ORUFSKGxpc3QuY2lyY2xlc1tpXS5yYWRpdXMsIG1hcmtlclB4LCAwLjAxZik7CiAgICB9CiAgICBFeHBlY3RSZ2JhTGl0ZXJhbChsaXN0LmNpcmNsZXNbNF0uZmlsbCwgODAsIDIyMCwgODAsIDI1NSk7CiAgICBFeHBlY3RSZ2JhTGl0ZXJhbChsaXN0LmNpcmNsZXNbNV0uZmlsbCwgMjIwLCA2MCwgNjAsIDI1NSk7Cn0KClRFU1QoT3ZlcmxheVRlc3QsIE9ic3RhY2xlT3ZlcmxheVVzZXNFbnRpdHlQb3NpdGlvbkFuZFJhZGl1cykKewogICAgU2NlbmUgc2NlbmUgPSBCdWlsZFByZXNldChQcmVzZXQ6OlR3b1VuaXRzLCAxKTsKICAgIGNvbnN0IFZlY3RvcjIgb2JzdGFjbGVQb3MoMjUwLjBmLCAxNzUuMGYpOwogICAgY29uc3QgZmxvYXQgb2JzdGFjbGVSYWRpdXMgPSAyMi4wZjsKICAgIFJlcHVsc29yUGFyYW1zIHBhcmFtczsKICAgIHBhcmFtcy5EZXRlY3Rpb25SYW5nZSA9IG9ic3RhY2xlUmFkaXVzOwogICAgc2NlbmUuc3RhdGUtPkFkZE9ic3RhY2xlKEluZmx1ZW5jZUZpZWxkSXRlbTo6Q3JlYXRlUmVwdWxzb3Iob2JzdGFjbGVQb3MsIDEuMGYsIHBhcmFtcykpOwogICAgY29uc3QgQ2FtZXJhIGNhbWVyYSA9IE1ha2VPZmZzZXRDYW1lcmEoKTsKICAgIE92ZXJsYXlGbGFncyBmbGFnczsKICAgIGZsYWdzLm9ic3RhY2xlcyA9IHRydWU7CiAgICBEcmF3TGlzdCBsaXN0T247CiAgICBBcHBlbmRPdmVybGF5cyhsaXN0T24sICpzY2VuZS5zdGF0ZSwgY2FtZXJhLCBmbGFncywgQ29sbGlzaW9uUmVjb3JkZXJ7fSwge30pOwogICAgQVNTRVJUX0VRKGxpc3RPbi5jaXJjbGVzLnNpemUoKSwgMXUpOwogICAgRXhwZWN0UmdiYUxpdGVyYWwobGlzdE9uLmNpcmNsZXNbMF0uZmlsbCwgMTYwLCAxNjAsIDE2MCwgMjU1KTsKICAgIEV4cGVjdFJnYmFMaXRlcmFsKGxpc3RPbi5jaXJjbGVzWzBdLm91dGxpbmUsIDE2MCwgMTYwLCAxNjAsIDI1NSk7CiAgICBjb25zdCBWZWN0b3IyIGV4cGVjdGVkQ2VudGVyID0gY2FtZXJhLldvcmxkVG9TY3JlZW4ob2JzdGFjbGVQb3MpOwogICAgRVhQRUNUX05FQVIobGlzdE9uLmNpcmNsZXNbMF0uY2VudGVyLngsIGV4cGVjdGVkQ2VudGVyLngsIDAuMDFmKTsKICAgIEVYUEVDVF9ORUFSKGxpc3RPbi5jaXJjbGVzWzBdLmNlbnRlci55LCBleHBlY3RlZENlbnRlci55LCAwLjAxZik7CiAgICBFWFBFQ1RfTkVBUihsaXN0T24uY2lyY2xlc1swXS5yYWRpdXMsIG9ic3RhY2xlUmFkaXVzICogY2FtZXJhLnBpeGVsc1BlclVuaXQsIDAuMDFmKTsKfQoKVEVTVChPdmVybGF5VGVzdCwgQmVoYXZpb3JPdmVybGF5RW1wdHlGb3JTZWVrQW5kRHJhd3NFbWl0dGVkSXRlbSkKewogICAgU2NlbmUgc2NlbmUgPSBCdWlsZFByZXNldChQcmVzZXQ6OlR3b1VuaXRzLCAxKTsKICAgIElHYW1lVW5pdCogdW5pdCA9IHNjZW5lLnN0YXRlLT5HZXRBbGxVbml0cygpWzBdOwogICAgYXV0byogcnRzID0gZHluYW1pY19jYXN0PFJUU1VuaXQqPih1bml0KTsKICAgIEFTU0VSVF9ORShydHMsIG51bGxwdHIpOwogICAgcnRzLT5HZXRTdGF0ZU1hY2hpbmUoKS5BZGRTdGF0ZSgiU2VlayIsIHN0ZDo6bWFrZV91bmlxdWU8U2Vla0JlaGF2aW9yPihWZWN0b3IyKDcwMC4wZiwgMzAwLjBmKSkpOwogICAgcnRzLT5HZXRTdGF0ZU1hY2hpbmUoKS5TZXRTdGF0ZSgiU2VlayIpOwogICAgT3ZlcmxheUZsYWdzIGZsYWdzOwogICAgZmxhZ3MuYmVoYXZpb3JJdGVtcyA9IHRydWU7CiAgICBEcmF3TGlzdCBsaXN0OwogICAgQXBwZW5kT3ZlcmxheXMobGlzdCwgKnNjZW5lLnN0YXRlLCBGaXRNYXAoc2NlbmUuc3RhdGUtPkdldE1hcFNpemUoKSwgMTI4MCwgNzIwLCA0MC4wZiksIGZsYWdzLCBDb2xsaXNpb25SZWNvcmRlcnt9LCB7fSk7CiAgICBFWFBFQ1RfVFJVRShsaXN0LmNpcmNsZXMuZW1wdHkoKSk7CiAgICBjb25zdCBWZWN0b3IyIGVtaXRQb3MoNTEwLjBmLCAyMjAuMGYpOwogICAgcnRzLT5HZXRTdGF0ZU1hY2hpbmUoKS5BZGRTdGF0ZSgiRW1pdCIsIHN0ZDo6bWFrZV91bmlxdWU8U2luZ2xlRmllbGRJdGVtQmVoYXZpb3I+KGVtaXRQb3MpKTsKICAgIHJ0cy0+R2V0U3RhdGVNYWNoaW5lKCkuU2V0U3RhdGUoIkVtaXQiKTsKICAgIGxpc3QuY2lyY2xlcy5jbGVhcigpOwogICAgY29uc3QgQ2FtZXJhIG9mZnNldENhbWVyYSA9IE1ha2VPZmZzZXRDYW1lcmEoKTsKICAgIEFwcGVuZE92ZXJsYXlzKGxpc3QsICpzY2VuZS5zdGF0ZSwgb2Zmc2V0Q2FtZXJhLCBmbGFncywgQ29sbGlzaW9uUmVjb3JkZXJ7fSwge30pOwogICAgQVNTRVJUX0VRKGxpc3QuY2lyY2xlcy5zaXplKCksIDF1KTsKICAgIGNvbnN0IFZlY3RvcjIgZXhwZWN0ZWRDZW50ZXIgPSBvZmZzZXRDYW1lcmEuV29ybGRUb1NjcmVlbihlbWl0UG9zKTsKICAgIEVYUEVDVF9ORUFSKGxpc3QuY2lyY2xlc1swXS5jZW50ZXIueCwgZXhwZWN0ZWRDZW50ZXIueCwgMC4wMWYpOwogICAgRVhQRUNUX05FQVIobGlzdC5jaXJjbGVzWzBdLmNlbnRlci55LCBleHBlY3RlZENlbnRlci55LCAwLjAxZik7CiAgICBFeHBlY3RSZ2JhTGl0ZXJhbChsaXN0LmNpcmNsZXNbMF0uZmlsbCwgODAsIDIyMCwgODAsIDI1NSk7Cn0KClRFU1QoT3ZlcmxheVRlc3QsIFNjcmlwdFRvZ2dsZXNFdmVyeU92ZXJsYXlGbGFnKQp7CiAgICBGcmFtZUxvb3AgbG9vcChQcmVzZXQ6OlR3b1VuaXRzLCAxLCAxMjgwLCA3MjApOwogICAgc3RydWN0IEZsYWdDYXNlCiAgICB7CiAgICAgICAgY29uc3QgY2hhciogbmFtZTsKICAgICAgICBib29sIE92ZXJsYXlGbGFnczo6KiBtZW1iZXI7CiAgICB9OwogICAgY29uc3QgRmxhZ0Nhc2UgY2FzZXNbXSA9IHsKICAgICAgICB7ImNvbGxpc2lvbnMiLCAmT3ZlcmxheUZsYWdzOjpjb2xsaXNpb25zfSwKICAgICAgICB7InBlcmNlcHRpb24iLCAmT3ZlcmxheUZsYWdzOjpwZXJjZXB0aW9ufSwKICAgICAgICB7ImluZmx1ZW5jZSIsICZPdmVybGF5RmxhZ3M6OmluZmx1ZW5jZX0sCiAgICAgICAgeyJvYnN0YWNsZXMiLCAmT3ZlcmxheUZsYWdzOjpvYnN0YWNsZXN9LAogICAgICAgIHsiYmVoYXZpb3IiLCAmT3ZlcmxheUZsYWdzOjpiZWhhdmlvckl0ZW1zfSwKICAgICAgICB7ImV4cGxvc2lvbnMiLCAmT3ZlcmxheUZsYWdzOjpleHBsb3Npb25zfSwKICAgIH07CiAgICBmb3IgKGNvbnN0IEZsYWdDYXNlJiBmbGFnQ2FzZSA6IGNhc2VzKQogICAgewogICAgICAgIEFTU0VSVF9UUlVFKFJ1blNjcmlwdChsb29wLCBzdGQ6OnN0cmluZygib3ZlcmxheSAiKSArIGZsYWdDYXNlLm5hbWUgKyAiIDFcbiIpKTsKICAgICAgICBFWFBFQ1RfVFJVRShsb29wLkdldE92ZXJsYXlGbGFncygpLipmbGFnQ2FzZS5tZW1iZXIpOwogICAgICAgIEFTU0VSVF9UUlVFKFJ1blNjcmlwdChsb29wLCBzdGQ6OnN0cmluZygib3ZlcmxheSAiKSArIGZsYWdDYXNlLm5hbWUgKyAiIDBcbiIpKTsKICAgICAgICBFWFBFQ1RfRkFMU0UobG9vcC5HZXRPdmVybGF5RmxhZ3MoKS4qZmxhZ0Nhc2UubWVtYmVyKTsKICAgIH0KfQoKVEVTVChPdmVybGF5VGVzdCwgSGFuZGxlVmlld2VyS2V5Y29kZUZLZXlzVG9nZ2xlT3ZlcmxheUZsYWdzKQp7CiAgICBjb25zdGV4cHIgaW50IGtTZGxGMSA9IDEwNzM3NDE4ODI7CiAgICBGcmFtZUxvb3AgbG9vcChQcmVzZXQ6OlR3b1VuaXRzLCAxLCAxMjgwLCA3MjApOwogICAgc3RydWN0IFRvZ2dsZUNhc2UKICAgIHsKICAgICAgICBpbnQga2V5Y29kZTsKICAgICAgICBpbnQgZXhwZWN0ZWRJbmRleDsKICAgICAgICBib29sIE92ZXJsYXlGbGFnczo6KiBtZW1iZXI7CiAgICB9OwogICAgY29uc3QgVG9nZ2xlQ2FzZSBjYXNlc1tdID0gewogICAgICAgIHtrU2RsRjEgKyAwLCAxLCAmT3ZlcmxheUZsYWdzOjpjb2xsaXNpb25zfSwKICAgICAgICB7a1NkbEYxICsgMSwgMiwgJk92ZXJsYXlGbGFnczo6cGVyY2VwdGlvbn0sCiAgICAgICAge2tTZGxGMSArIDIsIDMsICZPdmVybGF5RmxhZ3M6OmluZmx1ZW5jZX0sCiAgICAgICAge2tTZGxGMSArIDMsIDQsICZPdmVybGF5RmxhZ3M6Om9ic3RhY2xlc30sCiAgICAgICAge2tTZGxGMSArIDQsIDUsICZPdmVybGF5RmxhZ3M6OmJlaGF2aW9ySXRlbXN9LAogICAgICAgIHtrU2RsRjEgKyA1LCA2LCAmT3ZlcmxheUZsYWdzOjpleHBsb3Npb25zfSwKICAgIH07CiAgICBmb3IgKGNvbnN0IFRvZ2dsZUNhc2UmIHRvZ2dsZUNhc2UgOiBjYXNlcykKICAgIHsKICAgICAgICBjb25zdCBWaWV3ZXJLZXlBY3Rpb24gYWN0aW9uID0gSGFuZGxlVmlld2VyS2V5Y29kZSh0b2dnbGVDYXNlLmtleWNvZGUpOwogICAgICAgIEFTU0VSVF9FUShhY3Rpb24ua2luZCwgVmlld2VyS2V5QWN0aW9uS2luZDo6T3ZlcmxheVRvZ2dsZSk7CiAgICAgICAgRVhQRUNUX0VRKGFjdGlvbi5vdmVybGF5VG9nZ2xlSW5kZXgsIHRvZ2dsZUNhc2UuZXhwZWN0ZWRJbmRleCk7CiAgICAgICAgbG9vcC5BcHBseVZpZXdlcktleUFjdGlvbihhY3Rpb24pOwogICAgICAgIEVYUEVDVF9UUlVFKGxvb3AuR2V0T3ZlcmxheUZsYWdzKCkuKnRvZ2dsZUNhc2UubWVtYmVyKTsKICAgICAgICBsb29wLkFwcGx5Vmlld2VyS2V5QWN0aW9uKGFjdGlvbik7CiAgICAgICAgRVhQRUNUX0ZBTFNFKGxvb3AuR2V0T3ZlcmxheUZsYWdzKCkuKnRvZ2dsZUNhc2UubWVtYmVyKTsKICAgIH0KfQoKVEVTVChPdmVybGF5VGVzdCwgQXBwZW5kU3RhdHVzTGluZVBpbnNUZXh0TGF5b3V0KQp7CiAgICBHYW1lTG9naWNFbmdpbmUgZW5naW5lKGtGaXhlZER0KTsKICAgIFBsYXliYWNrQ29udHJvbGxlciBwbGF5YmFjaygmZW5naW5lKTsKICAgIE92ZXJsYXlGbGFncyBmbGFnczsKICAgIGZsYWdzLmNvbGxpc2lvbnMgPSB0cnVlOwogICAgRHJhd0xpc3QgbGlzdDsKICAgIEFwcGVuZFN0YXR1c0xpbmUobGlzdCwgZW5naW5lLCBwbGF5YmFjaywgZmxhZ3MsIDIpOwogICAgQVNTRVJUX0ZBTFNFKGxpc3QucmVjdHMuZW1wdHkoKSk7CiAgICBFWFBFQ1RfTkVBUihsaXN0LnJlY3RzWzBdLm1pbi54LCA4LjBmLCAwLjAxZik7CiAgICBEcmF3TGlzdCBjaGFuZ2VkOwogICAgcGxheWJhY2suUGF1c2UoKTsKICAgIEFwcGVuZFN0YXR1c0xpbmUoY2hhbmdlZCwgZW5naW5lLCBwbGF5YmFjaywgZmxhZ3MsIDIpOwogICAgRVhQRUNUX05FKGxpc3QucmVjdHMuc2l6ZSgpLCBjaGFuZ2VkLnJlY3RzLnNpemUoKSk7Cn0KClRFU1QoT3ZlcmxheVRlc3QsIEV4cGxvc2lvbk91dGxpbmVDb2xvclBpbm5lZCkKewogICAgc3RkOjp2ZWN0b3I8RXhwbG9zaW9uRWNobz4gZWNob2Vze3tWZWN0b3IyKDEsIDEpLCAxMC4wZiwgMC41Zn19OwogICAgRHJhd0xpc3QgbGlzdDsKICAgIFNjZW5lIHNjZW5lID0gQnVpbGRQcmVzZXQoUHJlc2V0OjpUd29Vbml0cywgMSk7CiAgICBPdmVybGF5RmxhZ3MgZmxhZ3M7CiAgICBmbGFncy5leHBsb3Npb25zID0gdHJ1ZTsKICAgIEFwcGVuZE92ZXJsYXlzKGxpc3QsICpzY2VuZS5zdGF0ZSwgRml0TWFwKHNjZW5lLnN0YXRlLT5HZXRNYXBTaXplKCksIDEyODAsIDcyMCwgNDAuMGYpLCBmbGFncywgQ29sbGlzaW9uUmVjb3JkZXJ7fSwgZWNob2VzKTsKICAgIEFTU0VSVF9FUShsaXN0LmNpcmNsZXMuc2l6ZSgpLCAxdSk7CiAgICBFeHBlY3RSZ2JhTGl0ZXJhbChsaXN0LmNpcmNsZXNbMF0ub3V0bGluZSwgMjU1LCA4MCwgNDAsIDI1NSk7Cn0KClRFU1QoT3ZlcmxheVRlc3QsIEZyYW1lTG9vcFNjcmlwdFR1cm5zSW5mbHVlbmNlT3ZlcmxheU9uQW5kT2ZmKQp7CiAgICBGcmFtZUxvb3AgbG9vcChQcmVzZXQ6OlR3b1VuaXRzLCAxLCAxMjgwLCA3MjApOwogICAgc3RkOjpzdHJpbmcgZXJyb3I7CiAgICBGcmFtZWJ1ZmZlciBiYXNlbGluZTsKICAgIGxvb3AuUmFzdGVyaXplQ3VycmVudFZpZXcoYmFzZWxpbmUpOwoKICAgIHN0ZDo6dmVjdG9yPFNjcmlwdENvbW1hbmQ+IG9uQ21kOwogICAgU2NyaXB0Q29tbWFuZCBlbmFibGU7CiAgICBlbmFibGUua2luZCA9IFNjcmlwdENvbW1hbmQ6OktpbmQ6Ok92ZXJsYXk7CiAgICBlbmFibGUuc3RyQXJnID0gImluZmx1ZW5jZSI7CiAgICBlbmFibGUuaW50QXJnID0gMTsKICAgIG9uQ21kLnB1c2hfYmFjayhlbmFibGUpOwogICAgQVNTRVJUX1RSVUUobG9vcC5FeGVjdXRlU2NyaXB0KG9uQ21kLCBlcnJvcikpOwogICAgRVhQRUNUX1RSVUUobG9vcC5HZXRPdmVybGF5RmxhZ3MoKS5pbmZsdWVuY2UpOwoKICAgIEZyYW1lYnVmZmVyIGZiT247CiAgICBsb29wLlJhc3Rlcml6ZUN1cnJlbnRWaWV3KGZiT24pOwogICAgQVNTRVJUX0VRKGJhc2VsaW5lLnJnYmEuc2l6ZSgpLCBmYk9uLnJnYmEuc2l6ZSgpKTsKICAgIEVYUEVDVF9ORSgwLCBzdGQ6Om1lbWNtcChiYXNlbGluZS5yZ2JhLmRhdGEoKSwgZmJPbi5yZ2JhLmRhdGEoKSwgYmFzZWxpbmUucmdiYS5zaXplKCkpKTsKCiAgICBzdGQ6OnZlY3RvcjxTY3JpcHRDb21tYW5kPiBvZmZDbWQ7CiAgICBTY3JpcHRDb21tYW5kIGRpc2FibGUgPSBlbmFibGU7CiAgICBkaXNhYmxlLmludEFyZyA9IDA7CiAgICBvZmZDbWQucHVzaF9iYWNrKGRpc2FibGUpOwogICAgQVNTRVJUX1RSVUUobG9vcC5FeGVjdXRlU2NyaXB0KG9mZkNtZCwgZXJyb3IpKTsKICAgIEVYUEVDVF9GQUxTRShsb29wLkdldE92ZXJsYXlGbGFncygpLmluZmx1ZW5jZSk7CgogICAgRnJhbWVidWZmZXIgZmJPZmY7CiAgICBsb29wLlJhc3Rlcml6ZUN1cnJlbnRWaWV3KGZiT2ZmKTsKICAgIEVYUEVDVF9FUSgwLCBzdGQ6Om1lbWNtcChiYXNlbGluZS5yZ2JhLmRhdGEoKSwgZmJPZmYucmdiYS5kYXRhKCksIGJhc2VsaW5lLnJnYmEuc2l6ZSgpKSk7Cn0KClRFU1QoSW5wdXRTY3JpcHRUZXN0LCBQYXJzZXNPdmVybGF5Q29tbWFuZCkKewogICAgc3RkOjpzdHJpbmcgZXJyb3I7CiAgICBjb25zdCBhdXRvIGNtZHMgPSBQYXJzZVNjcmlwdCgib3ZlcmxheSBwZXJjZXB0aW9uIDFcbiIsIGVycm9yKTsKICAgIEFTU0VSVF9UUlVFKGVycm9yLmVtcHR5KCkpOwogICAgQVNTRVJUX0VRKGNtZHMuc2l6ZSgpLCAxdSk7CiAgICBFWFBFQ1RfRVEoY21kc1swXS5raW5kLCBTY3JpcHRDb21tYW5kOjpLaW5kOjpPdmVybGF5KTsKICAgIEVYUEVDVF9FUShjbWRzWzBdLnN0ckFyZywgInBlcmNlcHRpb24iKTsKICAgIEVYUEVDVF9FUShjbWRzWzBdLmludEFyZywgMSk7Cn0K
+#include "Camera.h"
+#include "DrawList.h"
+#include "FrameLoop.h"
+#include "InputScript.h"
+#include "Overlay.h"
+#include "Raster.h"
+#include "Scenario.h"
+#include "SnapshotRenderer.h"
+#include "ViewerInput.h"
+
+#include "core/ai/Behaviors/SeekBehavior.h"
+#include "core/combat/Explosion.h"
+#include "core/gamestate/RTSGameState.h"
+#include "core/gamestate/RTSUnit.h"
+#include "core/influence_types/InfluenceFieldItem.h"
+#include "core/influence_types/InfluenceFieldParameters.h"
+#include "core/interfaces/IBehavior.h"
+#include "core/interfaces/IUnitKinematics.h"
+
+#include <cmath>
+#include <cstring>
+#include <gtest/gtest.h>
+#include <map>
+#include <string>
+#include <vector>
+
+namespace
+{
+
+class SingleFieldItemBehavior : public IBehavior
+{
+public:
+    explicit SingleFieldItemBehavior(Vector2 position)
+        : position_(position)
+    {
+    }
+
+    std::vector<InfluenceFieldItem> GenerateFieldItems(const BehaviorContext&) override
+    {
+        return {InfluenceFieldItem::CreateAttractor(position_, 1.0f)};
+    }
+
+    const char* GetName() const override { return "SingleFieldItem"; }
+    std::map<std::string, float>& GetParameters() override { return params_; }
+    const std::map<std::string, float>& GetParameters() const override { return params_; }
+
+private:
+    Vector2 position_;
+    std::map<std::string, float> params_;
+};
+
+Camera MakeOffsetCamera()
+{
+    Camera camera;
+    camera.viewportW = 640;
+    camera.viewportH = 480;
+    camera.center = Vector2(350.0f, 280.0f);
+    camera.pixelsPerUnit = 2.25f;
+    return camera;
+}
+
+bool RgbaEqual(Rgba a, Rgba b)
+{
+    return a.r == b.r && a.g == b.g && a.b == b.b && a.a == b.a;
+}
+
+void ExpectRgbaLiteral(const Rgba& color, std::uint8_t r, std::uint8_t g, std::uint8_t b, std::uint8_t a)
+{
+    EXPECT_EQ(color.r, r);
+    EXPECT_EQ(color.g, g);
+    EXPECT_EQ(color.b, b);
+    EXPECT_EQ(color.a, a);
+}
+
+int CountPixels(const Framebuffer& fb, Rgba color)
+{
+    int count = 0;
+    for (int y = 0; y < fb.height; ++y)
+    {
+        for (int x = 0; x < fb.width; ++x)
+        {
+            const size_t i = static_cast<size_t>((y * fb.width + x) * 4);
+            Rgba px{fb.rgba[i], fb.rgba[i + 1], fb.rgba[i + 2], fb.rgba[i + 3]};
+            if (RgbaEqual(px, color))
+            {
+                ++count;
+            }
+        }
+    }
+    return count;
+}
+
+bool RunScript(FrameLoop& loop, const std::string& text)
+{
+    std::string error;
+    const std::vector<ScriptCommand> commands = ParseScript(text, error);
+    if (!error.empty())
+    {
+        return false;
+    }
+    return loop.ExecuteScript(commands, error);
+}
+
+const DrawCircle* FindExplosionCircle(const DrawList& list)
+{
+    for (const DrawCircle& circle : list.circles)
+    {
+        if (circle.outline.r == 255 && circle.outline.g == 80 && circle.outline.b == 40 && circle.outline.a == 255
+            && circle.fill.r == 0 && circle.fill.g == 0 && circle.fill.b == 0 && circle.fill.a == 0)
+        {
+            return &circle;
+        }
+    }
+    return nullptr;
+}
+
+} // namespace
+
+TEST(OverlayTest, ExplosionEchoSurvivesTheTickThatClearsTheEngine)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    scene.state->AddExplosion(Explosion(Vector2(400, 300), 80.0f, 5000.0f));
+    std::vector<ExplosionEcho> echoes;
+    NoteExplosions(*scene.state, echoes, kFixedDt);
+    ASSERT_EQ(echoes.size(), 1u);
+    scene.state->Update(kFixedDt);
+    EXPECT_TRUE(scene.state->GetExplosions().empty());
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    OverlayFlags flags;
+    flags.explosions = true;
+    DrawList list;
+    AppendOverlays(list, *scene.state, camera, flags, CollisionRecorder{}, echoes);
+    ASSERT_EQ(list.circles.size(), 1u);
+    EXPECT_NEAR(list.circles[0].radius, 80.0f * camera.pixelsPerUnit, 0.01f);
+}
+
+TEST(OverlayTest, FlagsOffAddNoOverlayPrimitives)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    DrawList list;
+    AppendOverlays(list, *scene.state, camera, OverlayFlags{}, CollisionRecorder{}, {});
+    EXPECT_TRUE(list.circles.empty());
+    EXPECT_TRUE(list.lines.empty());
+}
+
+TEST(OverlayTest, InfluenceToggleDrawsFourEdgeMarkers)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    OverlayFlags flags;
+    flags.influence = true;
+    DrawList list;
+    AppendOverlays(list, *scene.state, camera, flags, CollisionRecorder{}, {});
+    EXPECT_EQ(list.circles.size(), 4u);
+}
+
+TEST(OverlayTest, CollisionRecorderCapturesOverlap)
+{
+    Scene scene;
+    scene.state = std::make_unique<RTSGameState>(Vector2(800.0f, 600.0f), 1);
+    auto unitA = std::make_unique<RTSUnit>(Vector2(390.0f, 300.0f), 1, 12.0f, 100.0f);
+  auto unitB = std::make_unique<RTSUnit>(Vector2(400.0f, 300.0f), 2, 12.0f, 100.0f);
+  auto* kinA = dynamic_cast<IUnitKinematics*>(unitA.get());
+  auto* kinB = dynamic_cast<IUnitKinematics*>(unitB.get());
+  ASSERT_NE(kinA, nullptr);
+  ASSERT_NE(kinB, nullptr);
+  kinA->SetVelocity(Vector2(50.0f, 0.0f));
+  kinB->SetVelocity(Vector2(-50.0f, 0.0f));
+  scene.state->AddUnit(std::move(unitA));
+  scene.state->AddUnit(std::move(unitB));
+
+  CollisionRecorder recorder;
+  scene.state->GetCollisionSystem().Subscribe(&recorder);
+  recorder.SetReferenceGameTime(0.0f);
+  scene.state->Update(kFixedDt);
+  EXPECT_GE(recorder.Events().size(), 1u);
+  scene.state->GetCollisionSystem().Unsubscribe(&recorder);
+}
+
+TEST(OverlayTest, CollisionOverlayProjectsCrossAndNormal)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    const Camera camera = MakeOffsetCamera();
+    CollisionRecorder recorder;
+    CollisionEvent event;
+    event.contactPoint = Vector2(220.0f, 180.0f);
+    event.normal = Vector2(0.0f, 1.0f);
+    recorder.OnCollision(event);
+
+    OverlayFlags flags;
+    flags.collisions = true;
+    DrawList list;
+    AppendOverlays(list, *scene.state, camera, flags, recorder, {});
+    ASSERT_EQ(list.lines.size(), 3u);
+    for (const DrawLine& line : list.lines)
+    {
+        ExpectRgbaLiteral(line.color, 255, 160, 40, 255);
+    }
+    const Vector2 contactScreen = camera.WorldToScreen(event.contactPoint);
+    EXPECT_NEAR(list.lines[0].a.x, contactScreen.x - 3.0f, 0.01f);
+    const Vector2 normalScreen = camera.WorldToScreen(event.contactPoint + event.normal * 20.0f);
+    EXPECT_NEAR(list.lines[2].b.y, normalScreen.y, 0.01f);
+}
+
+TEST(OverlayTest, PerceptionRingUsesCameraAndLargeRadius)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    scene.state->SetPerceptionRadius(1000.0f);
+    const Camera camera = MakeOffsetCamera();
+    OverlayFlags flags;
+    flags.perception = true;
+    DrawList list;
+    AppendOverlays(list, *scene.state, camera, flags, CollisionRecorder{}, {});
+
+    IGameUnit* unit = scene.state->GetAllUnits()[0];
+    const Vector2 unitScreen = camera.WorldToScreen(unit->GetPosition());
+    ASSERT_EQ(list.circles.size(), 2u);
+    EXPECT_NEAR(list.circles[0].radius, 1000.0f * camera.pixelsPerUnit, 0.01f);
+    ExpectRgbaLiteral(list.circles[0].outline, 120, 220, 255, 255);
+    ExpectRgbaLiteral(list.circles[0].fill, 0, 0, 0, 0);
+
+    scene.state->SetPerceptionRadius(45.0f);
+    list.circles.clear();
+    AppendOverlays(list, *scene.state, camera, flags, CollisionRecorder{}, {});
+    const float rasterRing = list.circles[0].radius;
+    Framebuffer fb;
+    fb.width = camera.viewportW;
+    fb.height = camera.viewportH;
+    DrawList base = BuildSnapshotDrawList(*scene.state, camera);
+    Rasterize(base, fb);
+    const int cx = static_cast<int>(std::lround(unitScreen.x));
+    const int cy = static_cast<int>(std::lround(unitScreen.y));
+    const size_t centerIndex = static_cast<size_t>((cy * fb.width + cx) * 4);
+    const Rgba centerBefore{fb.rgba[centerIndex], fb.rgba[centerIndex + 1], fb.rgba[centerIndex + 2], fb.rgba[centerIndex + 3]};
+    list = base;
+    AppendOverlays(list, *scene.state, camera, flags, CollisionRecorder{}, {});
+    Rasterize(list, fb);
+    const Rgba centerAfter{fb.rgba[centerIndex], fb.rgba[centerIndex + 1], fb.rgba[centerIndex + 2], fb.rgba[centerIndex + 3]};
+    EXPECT_TRUE(RgbaEqual(centerBefore, centerAfter));
+
+    bool foundRingPixel = false;
+    for (int y = 0; y < fb.height; ++y)
+    {
+        for (int x = 0; x < fb.width; ++x)
+        {
+            const size_t i = static_cast<size_t>((y * fb.width + x) * 4);
+            Rgba px{fb.rgba[i], fb.rgba[i + 1], fb.rgba[i + 2], fb.rgba[i + 3]};
+            if (px.r != 120 || px.g != 220 || px.b != 255 || px.a != 255)
+            {
+                continue;
+            }
+            const float dx = static_cast<float>(x) - unitScreen.x;
+            const float dy = static_cast<float>(y) - unitScreen.y;
+            if (std::fabs(std::sqrt(dx * dx + dy * dy) - rasterRing) <= 2.0f)
+            {
+                foundRingPixel = true;
+                break;
+            }
+        }
+        if (foundRingPixel)
+        {
+            break;
+        }
+    }
+    EXPECT_TRUE(foundRingPixel);
+}
+
+TEST(OverlayTest, NoteExplosionsSetsLifetimeAndTickDecays)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    scene.state->AddExplosion(Explosion(Vector2(10, 10), 5.0f, 1.0f));
+    std::vector<ExplosionEcho> echoes;
+    NoteExplosions(*scene.state, echoes, kFixedDt);
+    ASSERT_EQ(echoes.size(), 1u);
+    EXPECT_FLOAT_EQ(echoes[0].secondsLeft, kExplosionEchoLifetimeSeconds);
+    TickExplosionEchoes(echoes, kFixedDt);
+    ASSERT_EQ(echoes.size(), 1u);
+    EXPECT_NEAR(echoes[0].secondsLeft, kExplosionEchoLifetimeSeconds - kFixedDt, 0.0001f);
+}
+
+TEST(OverlayTest, FrameLoopStepNotesExplosionBeforeUpdate)
+{
+    FrameLoop loop(Preset::TwoUnits, 1, 1280, 720);
+    const Vector2 explosionPos(400.0f, 300.0f);
+    const float explosionRadius = 80.0f;
+    loop.State().AddExplosion(Explosion(explosionPos, explosionRadius, 5000.0f));
+    ASSERT_TRUE(RunScript(loop, "overlay explosions 1\npause\nstep\n"));
+    EXPECT_TRUE(loop.State().GetExplosions().empty());
+    const Camera camera = loop.GetCamera();
+    const DrawCircle* ring = FindExplosionCircle(loop.BuildViewDrawList());
+    ASSERT_NE(ring, nullptr);
+    EXPECT_NEAR(ring->center.x, camera.WorldToScreen(explosionPos).x, 0.01f);
+    EXPECT_NEAR(ring->radius, explosionRadius * camera.pixelsPerUnit, 0.01f);
+    ExpectRgbaLiteral(ring->outline, 255, 80, 40, 255);
+}
+
+TEST(OverlayTest, PausedFramesDoNotReNoteExplosion)
+{
+    FrameLoop loop(Preset::TwoUnits, 1, 1280, 720);
+    loop.State().AddExplosion(Explosion(Vector2(400.0f, 300.0f), 80.0f, 5000.0f));
+    ASSERT_TRUE(RunScript(loop, "overlay explosions 1\npause\nframes 40\n"));
+    EXPECT_EQ(loop.State().GetExplosions().size(), 1u);
+    EXPECT_EQ(FindExplosionCircle(loop.BuildViewDrawList()), nullptr);
+}
+
+TEST(OverlayTest, FrameLoopEchoVisibleThenExpiresAfterSimFrames)
+{
+    FrameLoop loop(Preset::TwoUnits, 1, 1280, 720);
+    loop.State().AddExplosion(Explosion(Vector2(400.0f, 300.0f), 80.0f, 5000.0f));
+    ASSERT_TRUE(RunScript(loop, "overlay explosions 1\nframes 1\n"));
+    EXPECT_NE(FindExplosionCircle(loop.BuildViewDrawList()), nullptr);
+
+    FrameLoop loopFresh(Preset::TwoUnits, 1, 1280, 720);
+    loopFresh.State().AddExplosion(Explosion(Vector2(400.0f, 300.0f), 80.0f, 5000.0f));
+    ASSERT_TRUE(RunScript(loopFresh, "overlay explosions 1\nframes 20\n"));
+    EXPECT_EQ(FindExplosionCircle(loopFresh.BuildViewDrawList()), nullptr);
+}
+
+TEST(OverlayTest, CollisionOverlayExpiresAfterSimulatedTime)
+{
+    FrameLoop loop(Preset::TwoUnits, 1, 1280, 720);
+    auto unitA = std::make_unique<RTSUnit>(Vector2(390.0f, 300.0f), 1, 12.0f, 100.0f);
+    auto unitB = std::make_unique<RTSUnit>(Vector2(400.0f, 300.0f), 2, 12.0f, 100.0f);
+    dynamic_cast<IUnitKinematics*>(unitA.get())->SetVelocity(Vector2(80.0f, 0.0f));
+    dynamic_cast<IUnitKinematics*>(unitB.get())->SetVelocity(Vector2(-80.0f, 0.0f));
+    loop.State().AddUnit(std::move(unitA));
+    loop.State().AddUnit(std::move(unitB));
+    ASSERT_TRUE(RunScript(loop, "overlay collisions 1\nframes 1\n"));
+    Framebuffer afterHit;
+    loop.RasterizeCurrentView(afterHit);
+    EXPECT_GT(CountPixels(afterHit, {255, 160, 40, 255}), 0);
+    int spread = 0;
+    for (IGameUnit* unit : loop.State().GetAllUnits())
+    {
+        if (auto* kin = dynamic_cast<IUnitKinematics*>(unit))
+        {
+            kin->SetVelocity(Vector2(0.0f, 0.0f));
+            kin->SetPosition(Vector2(50.0f + static_cast<float>(spread) * 180.0f, 50.0f));
+            ++spread;
+        }
+    }
+    ASSERT_TRUE(RunScript(loop, "frames 100\n"));
+    Framebuffer expired;
+    loop.RasterizeCurrentView(expired);
+    EXPECT_EQ(0, CountPixels(expired, {255, 160, 40, 255}));
+}
+
+TEST(OverlayTest, InfluenceDrawsEdgeAndAttractorRepulsorMarkers)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    const Camera camera = MakeOffsetCamera();
+    const auto& edges = scene.state->GetStaticItems();
+    scene.state->AddStaticAttractor(InfluenceFieldItem::CreateAttractor(Vector2(100.0f, 150.0f), 1.0f));
+    scene.state->AddStaticAttractor(InfluenceFieldItem::CreateRepulsor(Vector2(500.0f, 400.0f), 1.0f));
+    OverlayFlags flags;
+    flags.influence = true;
+    DrawList list;
+    AppendOverlays(list, *scene.state, camera, flags, CollisionRecorder{}, {});
+    ASSERT_EQ(list.circles.size(), 6u);
+    const float markerPx = 6.0f * camera.pixelsPerUnit;
+    for (size_t i = 0; i < 4u; ++i)
+    {
+        ExpectRgbaLiteral(list.circles[i].fill, 0, 220, 220, 255);
+        EXPECT_NEAR(list.circles[i].center.x, camera.WorldToScreen(edges[i].GetPosition()).x, 0.01f);
+        EXPECT_NEAR(list.circles[i].radius, markerPx, 0.01f);
+    }
+    ExpectRgbaLiteral(list.circles[4].fill, 80, 220, 80, 255);
+    ExpectRgbaLiteral(list.circles[5].fill, 220, 60, 60, 255);
+}
+
+TEST(OverlayTest, ObstacleOverlayUsesEntityPositionAndRadius)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    const Vector2 obstaclePos(250.0f, 175.0f);
+    const float obstacleRadius = 22.0f;
+    RepulsorParams params;
+    params.DetectionRange = obstacleRadius;
+    scene.state->AddObstacle(InfluenceFieldItem::CreateRepulsor(obstaclePos, 1.0f, params));
+    const Camera camera = MakeOffsetCamera();
+    OverlayFlags flags;
+    flags.obstacles = true;
+    DrawList listOn;
+    AppendOverlays(listOn, *scene.state, camera, flags, CollisionRecorder{}, {});
+    ASSERT_EQ(listOn.circles.size(), 1u);
+    ExpectRgbaLiteral(listOn.circles[0].fill, 160, 160, 160, 255);
+    ExpectRgbaLiteral(listOn.circles[0].outline, 160, 160, 160, 255);
+    const Vector2 expectedCenter = camera.WorldToScreen(obstaclePos);
+    EXPECT_NEAR(listOn.circles[0].center.x, expectedCenter.x, 0.01f);
+    EXPECT_NEAR(listOn.circles[0].center.y, expectedCenter.y, 0.01f);
+    EXPECT_NEAR(listOn.circles[0].radius, obstacleRadius * camera.pixelsPerUnit, 0.01f);
+}
+
+TEST(OverlayTest, BehaviorOverlayEmptyForSeekAndDrawsEmittedItem)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    IGameUnit* unit = scene.state->GetAllUnits()[0];
+    auto* rts = dynamic_cast<RTSUnit*>(unit);
+    ASSERT_NE(rts, nullptr);
+    rts->GetStateMachine().AddState("Seek", std::make_unique<SeekBehavior>(Vector2(700.0f, 300.0f)));
+    rts->GetStateMachine().SetState("Seek");
+    OverlayFlags flags;
+    flags.behaviorItems = true;
+    DrawList list;
+    AppendOverlays(list, *scene.state, FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f), flags, CollisionRecorder{}, {});
+    EXPECT_TRUE(list.circles.empty());
+    const Vector2 emitPos(510.0f, 220.0f);
+    rts->GetStateMachine().AddState("Emit", std::make_unique<SingleFieldItemBehavior>(emitPos));
+    rts->GetStateMachine().SetState("Emit");
+    list.circles.clear();
+    const Camera offsetCamera = MakeOffsetCamera();
+    AppendOverlays(list, *scene.state, offsetCamera, flags, CollisionRecorder{}, {});
+    ASSERT_EQ(list.circles.size(), 1u);
+    const Vector2 expectedCenter = offsetCamera.WorldToScreen(emitPos);
+    EXPECT_NEAR(list.circles[0].center.x, expectedCenter.x, 0.01f);
+    EXPECT_NEAR(list.circles[0].center.y, expectedCenter.y, 0.01f);
+    ExpectRgbaLiteral(list.circles[0].fill, 80, 220, 80, 255);
+}
+
+TEST(OverlayTest, ScriptTogglesEveryOverlayFlag)
+{
+    FrameLoop loop(Preset::TwoUnits, 1, 1280, 720);
+    struct FlagCase
+    {
+        const char* name;
+        bool OverlayFlags::* member;
+    };
+    const FlagCase cases[] = {
+        {"collisions", &OverlayFlags::collisions},
+        {"perception", &OverlayFlags::perception},
+        {"influence", &OverlayFlags::influence},
+        {"obstacles", &OverlayFlags::obstacles},
+        {"behavior", &OverlayFlags::behaviorItems},
+        {"explosions", &OverlayFlags::explosions},
+    };
+    for (const FlagCase& flagCase : cases)
+    {
+        ASSERT_TRUE(RunScript(loop, std::string("overlay ") + flagCase.name + " 1\n"));
+        EXPECT_TRUE(loop.GetOverlayFlags().*flagCase.member);
+        ASSERT_TRUE(RunScript(loop, std::string("overlay ") + flagCase.name + " 0\n"));
+        EXPECT_FALSE(loop.GetOverlayFlags().*flagCase.member);
+    }
+}
+
+TEST(OverlayTest, HandleViewerKeycodeFKeysToggleOverlayFlags)
+{
+    constexpr int kSdlF1 = 1073741882;
+    FrameLoop loop(Preset::TwoUnits, 1, 1280, 720);
+    struct ToggleCase
+    {
+        int keycode;
+        int expectedIndex;
+        bool OverlayFlags::* member;
+    };
+    const ToggleCase cases[] = {
+        {kSdlF1 + 0, 1, &OverlayFlags::collisions},
+        {kSdlF1 + 1, 2, &OverlayFlags::perception},
+        {kSdlF1 + 2, 3, &OverlayFlags::influence},
+        {kSdlF1 + 3, 4, &OverlayFlags::obstacles},
+        {kSdlF1 + 4, 5, &OverlayFlags::behaviorItems},
+        {kSdlF1 + 5, 6, &OverlayFlags::explosions},
+    };
+    for (const ToggleCase& toggleCase : cases)
+    {
+        const ViewerKeyAction action = HandleViewerKeycode(toggleCase.keycode);
+        ASSERT_EQ(action.kind, ViewerKeyActionKind::OverlayToggle);
+        EXPECT_EQ(action.overlayToggleIndex, toggleCase.expectedIndex);
+        loop.ApplyViewerKeyAction(action);
+        EXPECT_TRUE(loop.GetOverlayFlags().*toggleCase.member);
+        loop.ApplyViewerKeyAction(action);
+        EXPECT_FALSE(loop.GetOverlayFlags().*toggleCase.member);
+    }
+}
+
+TEST(OverlayTest, AppendStatusLinePinsTextLayout)
+{
+    GameLogicEngine engine(kFixedDt);
+    PlaybackController playback(&engine);
+    OverlayFlags flags;
+    flags.collisions = true;
+    DrawList list;
+    AppendStatusLine(list, engine, playback, flags, 2);
+    ASSERT_FALSE(list.rects.empty());
+    EXPECT_NEAR(list.rects[0].min.x, 8.0f, 0.01f);
+    DrawList changed;
+    playback.Pause();
+    AppendStatusLine(changed, engine, playback, flags, 2);
+    EXPECT_NE(list.rects.size(), changed.rects.size());
+}
+
+TEST(OverlayTest, ExplosionOutlineColorPinned)
+{
+    std::vector<ExplosionEcho> echoes{{Vector2(1, 1), 10.0f, 0.5f}};
+    DrawList list;
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    OverlayFlags flags;
+    flags.explosions = true;
+    AppendOverlays(list, *scene.state, FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f), flags, CollisionRecorder{}, echoes);
+    ASSERT_EQ(list.circles.size(), 1u);
+    ExpectRgbaLiteral(list.circles[0].outline, 255, 80, 40, 255);
+}
+
+TEST(OverlayTest, FrameLoopScriptTurnsInfluenceOverlayOnAndOff)
+{
+    FrameLoop loop(Preset::TwoUnits, 1, 1280, 720);
+    std::string error;
+    Framebuffer baseline;
+    loop.RasterizeCurrentView(baseline);
+
+    std::vector<ScriptCommand> onCmd;
+    ScriptCommand enable;
+    enable.kind = ScriptCommand::Kind::Overlay;
+    enable.strArg = "influence";
+    enable.intArg = 1;
+    onCmd.push_back(enable);
+    ASSERT_TRUE(loop.ExecuteScript(onCmd, error));
+    EXPECT_TRUE(loop.GetOverlayFlags().influence);
+
+    Framebuffer fbOn;
+    loop.RasterizeCurrentView(fbOn);
+    ASSERT_EQ(baseline.rgba.size(), fbOn.rgba.size());
+    EXPECT_NE(0, std::memcmp(baseline.rgba.data(), fbOn.rgba.data(), baseline.rgba.size()));
+
+    std::vector<ScriptCommand> offCmd;
+    ScriptCommand disable = enable;
+    disable.intArg = 0;
+    offCmd.push_back(disable);
+    ASSERT_TRUE(loop.ExecuteScript(offCmd, error));
+    EXPECT_FALSE(loop.GetOverlayFlags().influence);
+
+    Framebuffer fbOff;
+    loop.RasterizeCurrentView(fbOff);
+    EXPECT_EQ(0, std::memcmp(baseline.rgba.data(), fbOff.rgba.data(), baseline.rgba.size()));
+}
+
+TEST(InputScriptTest, ParsesOverlayCommand)
+{
+    std::string error;
+    const auto cmds = ParseScript("overlay perception 1\n", error);
+    ASSERT_TRUE(error.empty());
+    ASSERT_EQ(cmds.size(), 1u);
+    EXPECT_EQ(cmds[0].kind, ScriptCommand::Kind::Overlay);
+    EXPECT_EQ(cmds[0].strArg, "perception");
+    EXPECT_EQ(cmds[0].intArg, 1);
+}

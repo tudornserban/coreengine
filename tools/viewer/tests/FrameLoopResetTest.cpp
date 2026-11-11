@@ -1,1 +1,146 @@
-I2luY2x1ZGUgImNvcmUvZ2FtZXN0YXRlL1JUU0dhbWVTdGF0ZS5oIgoKI2luY2x1ZGUgIkRyYXdMaXN0LmgiCiNpbmNsdWRlICJGcmFtZUxvb3AuaCIKI2luY2x1ZGUgIklucHV0U2NyaXB0LmgiCiNpbmNsdWRlICJPdmVybGF5LmgiCiNpbmNsdWRlICJTY2VuYXJpby5oIgojaW5jbHVkZSAiVmlld2VySW5wdXQuaCIKCiNpbmNsdWRlIDxndGVzdC9ndGVzdC5oPgoKbmFtZXNwYWNlCnsKCnZvaWQgRXhwZWN0VHdvVW5pdHNQcmVzZXRBbmRGcmVzaEVuZ2luZShjb25zdCBGcmFtZUxvb3AmIGxvb3ApCnsKICAgIGNvbnN0IGF1dG8mIHVuaXRzID0gbG9vcC5TdGF0ZSgpLkdldEFsbFVuaXRzKCk7CiAgICBBU1NFUlRfRVEodW5pdHMuc2l6ZSgpLCAydSk7CiAgICBFWFBFQ1RfRkxPQVRfRVEodW5pdHNbMF0tPkdldFBvc2l0aW9uKCkueCwgMjAwLjBmKTsKICAgIEVYUEVDVF9GTE9BVF9FUSh1bml0c1swXS0+R2V0UG9zaXRpb24oKS55LCAzMDAuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHVuaXRzWzFdLT5HZXRQb3NpdGlvbigpLngsIDYwMC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEodW5pdHNbMV0tPkdldFBvc2l0aW9uKCkueSwgMzAwLjBmKTsKICAgIEVYUEVDVF9GQUxTRShsb29wLkVuZ2luZSgpLklzUGF1c2VkKCkpOwogICAgRVhQRUNUX0ZMT0FUX0VRKGxvb3AuRW5naW5lKCkuR2V0U3BlZWRNdWx0aXBsaWVyKCksIDEuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKGxvb3AuRW5naW5lKCkuR2V0R2FtZVRpbWUoKSwgMC4wZik7Cn0KCnZvaWQgUnVuVW50aWxVbml0c01vdmVkKEZyYW1lTG9vcCYgbG9vcCkKewogICAgc3RkOjpzdHJpbmcgZXJyb3I7CiAgICBBU1NFUlRfVFJVRShsb29wLkV4ZWN1dGVTY3JpcHQoCiAgICAgICAgUGFyc2VTY3JpcHQoInJlc3VtZVxuZGVzdCAwIDQwMCAzMDBcbmZyYW1lcyAyMFxuIiwgZXJyb3IpLCBlcnJvcikpOwogICAgRVhQRUNUX0dUKGxvb3AuU3RhdGUoKS5HZXRBbGxVbml0cygpWzBdLT5HZXRQb3NpdGlvbigpLngsIDIwMC4wZik7Cn0KCn0gLy8gbmFtZXNwYWNlCgpURVNUKEZyYW1lTG9vcFJlc2V0VGVzdCwgUmVzZXRTY2VuZVJlYnVpbGRzUHJlc2V0QW5kQ2xlYXJzRW5naW5lVGltaW5nKQp7CiAgICBGcmFtZUxvb3AgbG9vcChQcmVzZXQ6OlR3b1VuaXRzLCAxLCAxMjgwLCA3MjApOwogICAgUnVuVW50aWxVbml0c01vdmVkKGxvb3ApOwogICAgbG9vcC5QbGF5YmFjaygpLlNldFF1YWRTcGVlZCgpOwogICAgbG9vcC5QbGF5YmFjaygpLlBhdXNlKCk7CiAgICBsb29wLkFkdmFuY2VQcmVzZW50YXRpb25GcmFtZSgpOwogICAgRVhQRUNUX1RSVUUobG9vcC5FbmdpbmUoKS5Jc1BhdXNlZCgpKTsKICAgIEVYUEVDVF9GTE9BVF9FUShsb29wLkVuZ2luZSgpLkdldFNwZWVkTXVsdGlwbGllcigpLCA0LjBmKTsKICAgIEVYUEVDVF9HVChsb29wLkVuZ2luZSgpLkdldEdhbWVUaW1lKCksIDAuMGYpOwoKICAgIGxvb3AuUmVzZXRTY2VuZSgpOwogICAgRXhwZWN0VHdvVW5pdHNQcmVzZXRBbmRGcmVzaEVuZ2luZShsb29wKTsKfQoKVEVTVChGcmFtZUxvb3BSZXNldFRlc3QsIFNjcmlwdFJlc2V0VmVyYlJlYnVpbGRzUHJlc2V0QW5kQ2xlYXJzRW5naW5lVGltaW5nKQp7CiAgICBGcmFtZUxvb3AgbG9vcChQcmVzZXQ6OlR3b1VuaXRzLCAxLCAxMjgwLCA3MjApOwogICAgUnVuVW50aWxVbml0c01vdmVkKGxvb3ApOwogICAgbG9vcC5QbGF5YmFjaygpLlNldFF1YWRTcGVlZCgpOwogICAgbG9vcC5QbGF5YmFjaygpLlBhdXNlKCk7CiAgICBsb29wLkFkdmFuY2VQcmVzZW50YXRpb25GcmFtZSgpOwoKICAgIHN0ZDo6c3RyaW5nIGVycm9yOwogICAgQVNTRVJUX1RSVUUobG9vcC5FeGVjdXRlU2NyaXB0KFBhcnNlU2NyaXB0KCJyZXNldFxuIiwgZXJyb3IpLCBlcnJvcikpOwogICAgRXhwZWN0VHdvVW5pdHNQcmVzZXRBbmRGcmVzaEVuZ2luZShsb29wKTsKfQoKbmFtZXNwYWNlCnsKCmludCBDb3VudENvbGxpc2lvbk92ZXJsYXlMaW5lcyhjb25zdCBEcmF3TGlzdCYgbGlzdCkKewogICAgaW50IGNvdW50ID0gMDsKICAgIGZvciAoY29uc3QgRHJhd0xpbmUmIGxpbmUgOiBsaXN0LmxpbmVzKQogICAgewogICAgICAgIGlmIChsaW5lLmNvbG9yLnIgPT0gMjU1ICYmIGxpbmUuY29sb3IuZyA9PSAxNjAgJiYgbGluZS5jb2xvci5iID09IDQwCiAgICAgICAgICAgICYmIGxpbmUuY29sb3IuYSA9PSAyNTUpCiAgICAgICAgewogICAgICAgICAgICArK2NvdW50OwogICAgICAgIH0KICAgIH0KICAgIHJldHVybiBjb3VudDsKfQoKaW50IENvdW50RXhwbG9zaW9uT3ZlcmxheUNpcmNsZXMoY29uc3QgRHJhd0xpc3QmIGxpc3QpCnsKICAgIGludCBjb3VudCA9IDA7CiAgICBmb3IgKGNvbnN0IERyYXdDaXJjbGUmIGNpcmNsZSA6IGxpc3QuY2lyY2xlcykKICAgIHsKICAgICAgICBpZiAoY2lyY2xlLm91dGxpbmUuciA9PSAyNTUgJiYgY2lyY2xlLm91dGxpbmUuZyA9PSA4MCAmJiBjaXJjbGUub3V0bGluZS5iID09IDQwCiAgICAgICAgICAgICYmIGNpcmNsZS5vdXRsaW5lLmEgPT0gMjU1KQogICAgICAgIHsKICAgICAgICAgICAgKytjb3VudDsKICAgICAgICB9CiAgICB9CiAgICByZXR1cm4gY291bnQ7Cn0KCn0gLy8gbmFtZXNwYWNlCgpURVNUKEZyYW1lTG9vcFJlc2V0VGVzdCwgUmVzZXRTY2VuZUNsZWFyc0NvbGxpc2lvbkFuZEV4cGxvc2lvbk92ZXJsYXlTdGF0ZSkKewogICAgRnJhbWVMb29wIGxvb3AoUHJlc2V0OjpDb2xsaXNpb24sIDEsIDEyODAsIDcyMCk7CiAgICBzdGQ6OnN0cmluZyBlcnJvcjsKICAgIEFTU0VSVF9UUlVFKGxvb3AuRXhlY3V0ZVNjcmlwdCgKICAgICAgICBQYXJzZVNjcmlwdCgib3ZlcmxheSBjb2xsaXNpb25zIDFcbm92ZXJsYXkgZXhwbG9zaW9ucyAxXG5mcmFtZXMgMzBcbiIsIGVycm9yKSwgZXJyb3IpKTsKICAgIGNvbnN0IERyYXdMaXN0IGJlZm9yZVJlc2V0ID0gbG9vcC5CdWlsZFZpZXdEcmF3TGlzdCgpOwogICAgY29uc3QgaW50IGNvbGxpc2lvbkxpbmVzQmVmb3JlID0gQ291bnRDb2xsaXNpb25PdmVybGF5TGluZXMoYmVmb3JlUmVzZXQpOwogICAgQVNTRVJUX0dFKGNvbGxpc2lvbkxpbmVzQmVmb3JlLCAyKTsKCiAgICBsb29wLlJlc2V0U2NlbmUoKTsKICAgIEVYUEVDVF9FUShsb29wLkNvdW50RmlyZWRQZW5kaW5nU2NlbmFyaW9FdmVudHMoKSwgMCk7CiAgICBFWFBFQ1RfRVEobG9vcC5TdGF0ZSgpLkdldEV4cGxvc2lvbnMoKS5zaXplKCksIDB1KTsKICAgIGNvbnN0IERyYXdMaXN0IGFmdGVyUmVzZXQgPSBsb29wLkJ1aWxkVmlld0RyYXdMaXN0KCk7CiAgICBFWFBFQ1RfRVEoQ291bnRDb2xsaXNpb25PdmVybGF5TGluZXMoYWZ0ZXJSZXNldCksIDApOwogICAgRVhQRUNUX0VRKENvdW50RXhwbG9zaW9uT3ZlcmxheUNpcmNsZXMoYWZ0ZXJSZXNldCksIDApOwp9CgpURVNUKEZyYW1lTG9vcFJlc2V0VGVzdCwgUmVzZXRTY2VuZUFmdGVyQ29tYmF0RWNob0RvZXNOb3RMZWFrRXhwbG9zaW9uRHJhd2FibGVzKQp7CiAgICBGcmFtZUxvb3AgbG9vcChQcmVzZXQ6OkNvbWJhdCwgMSwgMTI4MCwgNzIwKTsKICAgIHN0ZDo6c3RyaW5nIGVycm9yOwogICAgQVNTRVJUX1RSVUUobG9vcC5FeGVjdXRlU2NyaXB0KAogICAgICAgIFBhcnNlU2NyaXB0KCJvdmVybGF5IGV4cGxvc2lvbnMgMVxuZnJhbWVzIDE4XG4iLCBlcnJvciksIGVycm9yKSk7CiAgICBFWFBFQ1RfRVEobG9vcC5Db3VudEZpcmVkUGVuZGluZ1NjZW5hcmlvRXZlbnRzKCksIDEpOwogICAgQVNTRVJUX0dFKENvdW50RXhwbG9zaW9uT3ZlcmxheUNpcmNsZXMobG9vcC5CdWlsZFZpZXdEcmF3TGlzdCgpKSwgMSk7CgogICAgbG9vcC5SZXNldFNjZW5lKCk7CiAgICBFWFBFQ1RfRVEoQ291bnRFeHBsb3Npb25PdmVybGF5Q2lyY2xlcyhsb29wLkJ1aWxkVmlld0RyYXdMaXN0KCkpLCAwKTsKICAgIEVYUEVDVF9FUShsb29wLkNvdW50RmlyZWRQZW5kaW5nU2NlbmFyaW9FdmVudHMoKSwgMCk7CiAgICBFWFBFQ1RfRVEobG9vcC5TdGF0ZSgpLkdldEV4cGxvc2lvbnMoKS5zaXplKCksIDB1KTsKfQoKVEVTVChGcmFtZUxvb3BSZXNldFRlc3QsIEhhbmRsZVZpZXdlcktleWNvZGVSZXNldE1hdGNoZXNTY3JpcHRSZXNldExlYWtDaGVjaykKewogICAgRnJhbWVMb29wIGxvb3AoUHJlc2V0OjpDb21iYXQsIDEsIDEyODAsIDcyMCk7CiAgICBzdGQ6OnN0cmluZyBlcnJvcjsKICAgIEFTU0VSVF9UUlVFKGxvb3AuRXhlY3V0ZVNjcmlwdChQYXJzZVNjcmlwdCgib3ZlcmxheSBleHBsb3Npb25zIDFcbmZyYW1lcyAyMFxuIiwgZXJyb3IpLCBlcnJvcikpOwogICAgRVhQRUNUX0VRKGxvb3AuQ291bnRGaXJlZFBlbmRpbmdTY2VuYXJpb0V2ZW50cygpLCAxKTsKCiAgICBjb25zdCBWaWV3ZXJLZXlBY3Rpb24gYWN0aW9uID0gSGFuZGxlVmlld2VyS2V5Y29kZSgxMTQpOwogICAgQVNTRVJUX0VRKGFjdGlvbi5raW5kLCBWaWV3ZXJLZXlBY3Rpb25LaW5kOjpQbGF5YmFjayk7CiAgICBsb29wLkFwcGx5Vmlld2VyS2V5QWN0aW9uKGFjdGlvbik7CgogICAgRVhQRUNUX0VRKENvdW50RXhwbG9zaW9uT3ZlcmxheUNpcmNsZXMobG9vcC5CdWlsZFZpZXdEcmF3TGlzdCgpKSwgMCk7CiAgICBFWFBFQ1RfRVEobG9vcC5Db3VudEZpcmVkUGVuZGluZ1NjZW5hcmlvRXZlbnRzKCksIDApOwogICAgRVhQRUNUX0ZMT0FUX0VRKGxvb3AuRW5naW5lKCkuR2V0R2FtZVRpbWUoKSwgMC4wZik7Cn0K
+#include "core/gamestate/RTSGameState.h"
+
+#include "DrawList.h"
+#include "FrameLoop.h"
+#include "InputScript.h"
+#include "Overlay.h"
+#include "Scenario.h"
+#include "ViewerInput.h"
+
+#include <gtest/gtest.h>
+
+namespace
+{
+
+void ExpectTwoUnitsPresetAndFreshEngine(const FrameLoop& loop)
+{
+    const auto& units = loop.State().GetAllUnits();
+    ASSERT_EQ(units.size(), 2u);
+    EXPECT_FLOAT_EQ(units[0]->GetPosition().x, 200.0f);
+    EXPECT_FLOAT_EQ(units[0]->GetPosition().y, 300.0f);
+    EXPECT_FLOAT_EQ(units[1]->GetPosition().x, 600.0f);
+    EXPECT_FLOAT_EQ(units[1]->GetPosition().y, 300.0f);
+    EXPECT_FALSE(loop.Engine().IsPaused());
+    EXPECT_FLOAT_EQ(loop.Engine().GetSpeedMultiplier(), 1.0f);
+    EXPECT_FLOAT_EQ(loop.Engine().GetGameTime(), 0.0f);
+}
+
+void RunUntilUnitsMoved(FrameLoop& loop)
+{
+    std::string error;
+    ASSERT_TRUE(loop.ExecuteScript(
+        ParseScript("resume\ndest 0 400 300\nframes 20\n", error), error));
+    EXPECT_GT(loop.State().GetAllUnits()[0]->GetPosition().x, 200.0f);
+}
+
+} // namespace
+
+TEST(FrameLoopResetTest, ResetSceneRebuildsPresetAndClearsEngineTiming)
+{
+    FrameLoop loop(Preset::TwoUnits, 1, 1280, 720);
+    RunUntilUnitsMoved(loop);
+    loop.Playback().SetQuadSpeed();
+    loop.Playback().Pause();
+    loop.AdvancePresentationFrame();
+    EXPECT_TRUE(loop.Engine().IsPaused());
+    EXPECT_FLOAT_EQ(loop.Engine().GetSpeedMultiplier(), 4.0f);
+    EXPECT_GT(loop.Engine().GetGameTime(), 0.0f);
+
+    loop.ResetScene();
+    ExpectTwoUnitsPresetAndFreshEngine(loop);
+}
+
+TEST(FrameLoopResetTest, ScriptResetVerbRebuildsPresetAndClearsEngineTiming)
+{
+    FrameLoop loop(Preset::TwoUnits, 1, 1280, 720);
+    RunUntilUnitsMoved(loop);
+    loop.Playback().SetQuadSpeed();
+    loop.Playback().Pause();
+    loop.AdvancePresentationFrame();
+
+    std::string error;
+    ASSERT_TRUE(loop.ExecuteScript(ParseScript("reset\n", error), error));
+    ExpectTwoUnitsPresetAndFreshEngine(loop);
+}
+
+namespace
+{
+
+int CountCollisionOverlayLines(const DrawList& list)
+{
+    int count = 0;
+    for (const DrawLine& line : list.lines)
+    {
+        if (line.color.r == 255 && line.color.g == 160 && line.color.b == 40
+            && line.color.a == 255)
+        {
+            ++count;
+        }
+    }
+    return count;
+}
+
+int CountExplosionOverlayCircles(const DrawList& list)
+{
+    int count = 0;
+    for (const DrawCircle& circle : list.circles)
+    {
+        if (circle.outline.r == 255 && circle.outline.g == 80 && circle.outline.b == 40
+            && circle.outline.a == 255)
+        {
+            ++count;
+        }
+    }
+    return count;
+}
+
+} // namespace
+
+TEST(FrameLoopResetTest, ResetSceneClearsCollisionAndExplosionOverlayState)
+{
+    FrameLoop loop(Preset::Collision, 1, 1280, 720);
+    std::string error;
+    ASSERT_TRUE(loop.ExecuteScript(
+        ParseScript("overlay collisions 1\noverlay explosions 1\nframes 30\n", error), error));
+    const DrawList beforeReset = loop.BuildViewDrawList();
+    const int collisionLinesBefore = CountCollisionOverlayLines(beforeReset);
+    ASSERT_GE(collisionLinesBefore, 2);
+
+    loop.ResetScene();
+    EXPECT_EQ(loop.CountFiredPendingScenarioEvents(), 0);
+    EXPECT_EQ(loop.State().GetExplosions().size(), 0u);
+    const DrawList afterReset = loop.BuildViewDrawList();
+    EXPECT_EQ(CountCollisionOverlayLines(afterReset), 0);
+    EXPECT_EQ(CountExplosionOverlayCircles(afterReset), 0);
+}
+
+TEST(FrameLoopResetTest, ResetSceneAfterCombatEchoDoesNotLeakExplosionDrawables)
+{
+    FrameLoop loop(Preset::Combat, 1, 1280, 720);
+    std::string error;
+    ASSERT_TRUE(loop.ExecuteScript(
+        ParseScript("overlay explosions 1\nframes 18\n", error), error));
+    EXPECT_EQ(loop.CountFiredPendingScenarioEvents(), 1);
+    ASSERT_GE(CountExplosionOverlayCircles(loop.BuildViewDrawList()), 1);
+
+    loop.ResetScene();
+    EXPECT_EQ(CountExplosionOverlayCircles(loop.BuildViewDrawList()), 0);
+    EXPECT_EQ(loop.CountFiredPendingScenarioEvents(), 0);
+    EXPECT_EQ(loop.State().GetExplosions().size(), 0u);
+}
+
+TEST(FrameLoopResetTest, HandleViewerKeycodeResetMatchesScriptResetLeakCheck)
+{
+    FrameLoop loop(Preset::Combat, 1, 1280, 720);
+    std::string error;
+    ASSERT_TRUE(loop.ExecuteScript(ParseScript("overlay explosions 1\nframes 20\n", error), error));
+    EXPECT_EQ(loop.CountFiredPendingScenarioEvents(), 1);
+
+    const ViewerKeyAction action = HandleViewerKeycode(114);
+    ASSERT_EQ(action.kind, ViewerKeyActionKind::Playback);
+    loop.ApplyViewerKeyAction(action);
+
+    EXPECT_EQ(CountExplosionOverlayCircles(loop.BuildViewDrawList()), 0);
+    EXPECT_EQ(loop.CountFiredPendingScenarioEvents(), 0);
+    EXPECT_FLOAT_EQ(loop.Engine().GetGameTime(), 0.0f);
+}
