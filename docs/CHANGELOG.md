@@ -25,7 +25,7 @@ Fixes applied during the RationalInsanity bootstrap to make CoreEngine compile c
 
 ### EP-003: `RTSGameState` Perception Radius Setter/Getter ✅
 
-**File changed:** `CoreEngine/core/gamestate/RTSGameState.h`
+**File changed:** `core/gamestate/RTSGameState.h`
 
 `perceptionRadius_` was hardcoded at 300.0f in the constructor with no public accessor. Added:
 

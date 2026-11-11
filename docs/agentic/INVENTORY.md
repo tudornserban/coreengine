@@ -1,37 +1,39 @@
 # CoreEngine — Phase 0 Inventory
 
-**Date:** 2025-11-05  
-**Repo layout:** `core/` (engine), `platform/` (adapters), `ffi/` (C API), `tests/`, `docs/`  
-**Build:** single static target `coreengine` from `CMakeLists.txt` (no per-module CMake targets yet).
+**Date:** 2026-11-11 (refreshed)  
+**Repo layout:** `core/` (engine), `platform/` (adapter headers), `ffi/` (C API), `tools/viewer/` (optional SDL2 viewer), `scripts/`, `tests/`, `docs/`  
+**Build:** static `coreengine` links **OBJECT** libraries `coreengine_<module>` from `core/*/CMakeLists.txt`, plus optional `coreengine_ffi`, platform stubs, and viewer targets.
 
 ---
 
 ## 1. Logical modules under `core/`
 
-Modules below match **CMake source globs** and **ARCHITECTURE.md** layers. Subfolders `Behaviors/`, `Conditions/`, and `MapComponents/` are part of their parent module until Phase 2 splits them.
+Registry: [modules/registry.json](modules/registry.json) (13 modules). Subfolders `Behaviors/`, `Conditions/`, and `MapComponents/` belong to their parent module.
 
-| Module ID | Path | Role | `.cpp` sources (approx.) |
-|-----------|------|------|---------------------------|
-| `core.math` | `core/math/` | Vectors, constants, deterministic RNG | 1 |
-| `core.interfaces` | `core/interfaces/` | Cross-system contracts (`IGameUnit`, `IBehavior`, …) | 0 (headers) |
-| `core.logging` | `core/logging/` | `Logger`, levels, integration hooks | 1 |
-| `core.ai` | `core/ai/` (+ `Behaviors/`, `Conditions/`) | FSM, `BehaviorFactory`, steering behaviors & transition conditions | 12 |
-| `core.influence` | `core/influence/` | APF items, calculator, territory (Voronoi) | 3 |
-| `core.collision` | `core/collision/` | Spatial grid, detection, resolution, events, immunity | 10 |
-| `core.gameloop` | `core/gameloop/` | Fixed-timestep `GameLogicEngine`, deployment/think timers, playback | 4 |
-| `core.map` | `core/map/` (+ `MapComponents/`) | ECS-style map, placement validation | 5 |
-| `core.combat` | `core/combat/` | Selection, commands, explosions, combat manager | 4 |
-| `core.gamestate` | `core/gamestate/` | Simulation hub (`RTSGameState`, `RTSUnit`, selection/commands/collision/RNG); `GameStateManager` single active menu/mission state — include enforcement R2.1 | 3 |
-| `core.serialization` | `core/serialization/` | Game state serialize/deserialize | 1 |
-| `core.ai_advanced` | `core/ai_advanced/` | Bot genomes, genetic trainer (experimental) | 1 |
+| Module ID | Path | Role | OBJECT lib | Include enforced |
+|-----------|------|------|------------|------------------|
+| `core.math` | `core/math/` | Vectors (`Vector2`, `Vector3`), constants, deterministic RNG | yes | yes |
+| `core.influence.types` | `core/influence_types/` | `InfluenceFieldItem` value types | yes | yes |
+| `core.interfaces` | `core/interfaces/` | Cross-system contracts | *(headers only)* | yes |
+| `core.logging` | `core/logging/` | `VenusWars::Logging::Logger`, levels, macros | yes | yes |
+| `core.influence` | `core/influence/` | APF (`InfluenceField::CalculateTotalForce`), territory | yes | yes |
+| `core.gameloop` | `core/gameloop/` | `GameLogicEngine`, deployment/think timers | yes | yes |
+| `core.map` | `core/map/` | ECS map, placement validation | yes | yes |
+| `core.ai` | `core/ai/` | FSM, `BehaviorFactory`, behaviors/conditions | yes | yes |
+| `core.collision` | `core/collision/` | Spatial grid, detection, resolution | yes | yes |
+| `core.combat` | `core/combat/` | Selection, commands, explosions; `CombatManager` stub | yes | yes |
+| `core.serialization` | `core/serialization/` | JSON snapshot serializer | yes | yes |
+| `core.gamestate` | `core/gamestate/` | `RTSGameState` hub, `RTSUnit` | yes | yes |
+| `core.ai_advanced` | `core/ai_advanced/` | Genome / bot trainer (experimental) | *(in monolithic glob)* | **manifest only** |
 
 ### Related trees (outside `core/`)
 
 | Area | Path | Relation to `core/` |
 |------|------|---------------------|
-| **Platform** | `platform/{null,sdl2,raylib,unity,unreal}/` | Implements `core/interfaces` reader/renderer stubs; optional CMake targets `coreengine_sdl2`, `coreengine_raylib` when `BUILD_SDL2` / `BUILD_RAYLIB` ON. No `#include` from `core/` into platform (verified). |
+| **Platform** | `platform/{null,sdl2,raylib,unity,unreal}/` | Header sketches implementing `core/interfaces` contracts; **no reference `.cpp` in-repo** for SDL2/Raylib (`Render()` stubs). Optional CMake targets `coreengine_sdl2`, `coreengine_raylib` when `BUILD_SDL2` / `BUILD_RAYLIB` ON (still need SDL2/raylib installed). Runnable SDL2 window: `tools/viewer` + `COREENGINE_BUILD_SDL2_VIEWER`. No `#include` from `core/` into platform (verified). |
 | **FFI** | `ffi/c_api.{h,cpp}` + `ffi/python`, `ffi/lua` | Shared lib `coreengine_ffi` when `BUILD_FFI=ON`; links **private** to monolithic `coreengine`. Public boundary is C types in `c_api.h`. |
 | **Tests** | `tests/UnitTests/<Area>/`, `tests/IntegrationTests/` | Single executable `coreengine_tests` when `BUILD_TESTS=ON`; links `coreengine` + GTest. Mirrors core areas (Math, AI, Collision, …). |
+| **Scripts** | `scripts/run-*-module-tests.sh` | Eleven standalone runners (no `gamestate` runner — use full `ctest`). |
 | **Docs** | `docs/ARCHITECTURE.md`, guides | Authoritative subsystem descriptions; coding rules in `docs/CODING_GUIDELINES.md`. |
 
 ---
@@ -42,60 +44,69 @@ Modules below match **CMake source globs** and **ARCHITECTURE.md** layers. Subfo
 
 | Option | Default | Output |
 |--------|---------|--------|
-| (none) | — | Static library `coreengine` |
+| (none) | — | Static library `coreengine` (OBJECT libs per module) |
 | `BUILD_FFI` | OFF | Shared `coreengine_ffi` |
-| `BUILD_TESTS` | OFF | `coreengine_tests` + `ctest` discovery |
-| `BUILD_SDL2` | OFF | `coreengine_sdl2` (needs SDL2) |
-| `BUILD_RAYLIB` | OFF | `coreengine_raylib` (needs raylib) |
+| `BUILD_TESTS` | OFF | `coreengine_tests` + `ctest` discovery (299 tests) |
+| `BUILD_SDL2` | OFF | `coreengine_sdl2` static lib (needs SDL2; stubs until you add `.cpp`) |
+| `BUILD_RAYLIB` | OFF | `coreengine_raylib` static lib (needs raylib; stubs until you add `.cpp`) |
 | `COREENGINE_BUILD_SDL2_VIEWER` | OFF | `coreengine_sdl2_viewer` + optional viewer tests (needs SDL2; `libsdl2-dev`) |
-| `COREENGINE_COLLISION_STANDALONE` | OFF | `coreengine_collision_tests` (collision + declared deps only; standalone target links math + influence types + logging + collision) |
-| `COREENGINE_COMBAT_STANDALONE` | OFF | `coreengine_combat_tests` (combat + declared deps only; standalone target links math + combat) |
+| `COREENGINE_<MODULE>_STANDALONE` | OFF | Per-module test executable + narrowed link closure (see each `MODULE.md`) |
 
-**Typical CI / local test command** (matches `.gitlab-ci.yml`):
+**GitLab CI `build-and-test` job** (not the full local gate):
 
 ```bash
+./scripts/check-module-deps.sh
 cmake -S . -B build -G Ninja -DBUILD_TESTS=ON
 cmake --build build --parallel
-cd build && ctest --output-on-failure
+ctest --output-on-failure
 ```
 
-**Agentic dependency check** (manifests + opted-in modules `#include` enforcement):
+**Recommended local merge gate** — [BUILD_INTEGRATION.md](BUILD_INTEGRATION.md) and [AGENTS.md](../../AGENTS.md#verification) (full `ctest`, all 11 standalone runners, guard scripts, doc links).
+
+**Agentic dependency check** (manifests, committed `docs/deps/*`, `#include` boundaries, `core.interfaces` changelog heading, standalone link closure):
 
 ```bash
 ./scripts/check-module-deps.sh
 python3 scripts/test_check_module_deps.py
 ```
 
-**Math-only tests** (Phase 2 pilot):
+### Standalone module runners (11)
 
-```bash
-./scripts/run-math-module-tests.sh
-```
+| Script | Module |
+|--------|--------|
+| `./scripts/run-math-module-tests.sh` | `core.math` |
+| `./scripts/run-influence-types-module-tests.sh` | `core.influence.types` |
+| `./scripts/run-influence-module-tests.sh` | `core.influence` |
+| `./scripts/run-logging-module-tests.sh` | `core.logging` |
+| `./scripts/run-interfaces-module-tests.sh` | `core.interfaces` |
+| `./scripts/run-gameloop-module-tests.sh` | `core.gameloop` |
+| `./scripts/run-map-module-tests.sh` | `core.map` |
+| `./scripts/run-ai-module-tests.sh` | `core.ai` |
+| `./scripts/run-serialization-module-tests.sh` | `core.serialization` |
+| `./scripts/run-collision-module-tests.sh` | `core.collision` |
+| `./scripts/run-combat-module-tests.sh` | `core.combat` |
 
-**Influence-only tests** (Phase 2 — does not compile other `core/` `.cpp` files):
+There is **no** `run-gamestate-module-tests.sh`; validate `core.gamestate` via full `ctest` and manifest include rules.
 
-```bash
-./scripts/run-influence-module-tests.sh
-```
+**FFI (local, not CI):** `./scripts/verify-ffi-build.sh`
 
-**Collision-only tests** (OBJECT lib + math + influence types + logging + collision):
+### CI (`.gitlab-ci.yml`)
 
-```bash
-./scripts/run-collision-module-tests.sh
-```
+| Job | Purpose |
+|-----|---------|
+| `agentic-module-manifests` | Manifest + checker scripts (Python only image) |
+| `math-module-pilot` | Math standalone runner |
+| `influence-module-pilot` | Influence standalone runner |
+| `logging-module-pilot` | Logging standalone runner |
+| `build-and-test` | Full engine compile + `ctest` |
 
-**Combat-only tests** (OBJECT lib + math + combat):
+Other standalone runners and `verify-ffi-build.sh` are **local-only** today.
 
-```bash
-./scripts/run-combat-module-tests.sh
-```
+### Manifest checker limits
 
-### CI
-
-| Pipeline | File | Stages |
-|----------|------|--------|
-| GitLab (source of truth) | `.gitlab-ci.yml` | `build`: configure with Ninja, `BUILD_TESTS=ON`, build, `ctest` |
-| GitHub mirror | *(none in repo yet)* | Relies on GitLab CI or future GitHub Actions |
+- Stores semver **ranges** in each module's `requires` map; does **not** evaluate whether a dependency's `version` satisfies the range.
+- Patch / minor / major bump rules in [AGENTS.md](../../AGENTS.md) are policy for humans and agents, not automated classification.
+- **`core.ai_advanced`:** listed in `registry.json` but **not** in `INCLUDE_ENFORCED_MODULES` (manifest validation only).
 
 ---
 
@@ -110,91 +121,45 @@ python3 scripts/test_check_module_deps.py
 
 | Issue | Files | Notes |
 |-------|-------|-------|
-| **Collision → `IUnitKinematics` gate** | `CollisionSystem.cpp`, `CollisionResolver.cpp`, `PositionCorrector.cpp`, `MapCollisionHandler.cpp` | All four resolve/write paths gate on `IUnitKinematics`; no `#include` of `RTSUnit` in `core/collision` (`core.collision` is include-enforced as of R1.3). |
-| **Combat → `IUnitAgent`** | `CommandSystem.cpp` | `CommandSystem` commands via `dynamic_cast<IUnitAgent*>`; no `#include` of `RTSUnit` in `core/combat` (`core.combat` is include-enforced as of R1.6). |
-| **Serialization → `RTSGameState`** | `GameStateSerializer.cpp` | Expected for now; may stay in `gamestate` or `serialization` bundle. |
-| **Duplicate interface headers** | `core/gamestate/IGameState.h`, `IGameLogicRenderer.h` vs `core/interfaces/` | Legacy paths forward to `core/interfaces/` (R1.4); canonical contract is under `core/interfaces/`. |
-| **Hub module** | `RTSGameState.h` | Pulls combat, map, influence, collision, AI context — natural integration point, hard to edit in isolation. |
-| **Interface completeness** | `IBehavior.h` | ~~GCC 13 fails~~ **Fixed:** include complete `InfluenceFieldItem` for `std::vector` in interface (see [BUILD_INTEGRATION.md](BUILD_INTEGRATION.md)). |
+| **Collision → `IUnitKinematics` gate** | `CollisionSystem.cpp`, `CollisionResolver.cpp`, … | No `#include` of `RTSUnit` in `core/collision` (R1.3). |
+| **Combat → `IUnitAgent`** | `CommandSystem.cpp` | No `RTSUnit` in `core/combat` (R1.6). |
+| **Serialization → hub** | `GameStateSerializer.cpp` | Depends on `RTSGameState` / snapshot interfaces. |
+| **Hub module** | `RTSGameState.h` | Integration point — edit only in gamestate-scoped tasks. |
+| **Interface completeness** | `IBehavior.h` | Fixed: full `InfluenceFieldItem` include ([BUILD_INTEGRATION.md](BUILD_INTEGRATION.md)). |
 
-### Dependency sketch (allowed direction, target state)
+### Dependency sketch (manifest `requires`, target state)
 
-```mermaid
-flowchart BT
-  math[core.math]
-  ifaces[core.interfaces]
-  log[core.logging]
-  ai[core.ai]
-  inf[core.influence]
-  col[core.collision]
-  map[core.map]
-  loop[core.gameloop]
-  cbt[core.combat]
-  gs[core.gamestate]
-  ser[core.serialization]
-  adv[core.ai_advanced]
-
-  ifaces --> math
-  log --> math
-  ai --> ifaces
-  ai --> math
-  ai --> log
-  inf --> math
-  col --> ifaces
-  col --> math
-  col --> log
-  map --> ifaces
-  map --> math
-  loop --> math
-  cbt --> ifaces
-  gs --> ai
-  gs --> inf
-  gs --> col
-  gs --> map
-  gs --> cbt
-  gs --> math
-  gs --> log
-  ser --> gs
-  adv --> gs
-```
-
-*(Solid arrows = direct `#include` today or expected. For game units, `core.collision`’s only unit-facing dependencies are `IGameUnit` / `IUnitKinematics` (no `RTSUnit` / `core.gamestate`); per its manifest it also requires `core.math`, `core.logging`, and `core.influence.types`. Standalone tests use `KinematicMockGameUnit` since R3.1.)*
+See committed [docs/deps/graph.json](../deps/graph.json) and [SUMMARY.md](../deps/SUMMARY.md); layered policy in [DEPENDENCY_POLICY.md](DEPENDENCY_POLICY.md).
 
 ---
 
 ## 4. Test coverage by module
 
-| Module | Unit tests | Integration |
-|--------|------------|-------------|
-| `core.math` | `DeterministicRNGTest`, `MathConstantsTest`, `Vector2Test` | Used in `DeterminismTest` |
-| `core.ai` | `StateMachineTest`, `BehaviorsTest`, `ConditionsTest`, `BehaviorFactoryTest` | `BehaviorRuntimeSwapTest` |
-| `core.influence` | `InfluenceFieldTest` | — |
-| `core.collision` | `SpatialGridTest`, `ImmunityManagerTest`, `UnitKinematicsWriteTest`, `CollisionSystemKinematicsGateTest`, `CollisionModuleHeaderCompileTest` | — |
-| `core.gameloop` | `GameLogicEngineTest`, `DeploymentTimerTest`, `ThinkTimerTest` | — |
-| `core.map` | `MapTest` | — |
-| `core.combat` | `ExplosionTest`, `CommandSystemAgentContractTest`, `CombatModuleHeaderCompileTest`, `CommandSystemTest` (full-engine) | `./scripts/run-combat-module-tests.sh` |
-| `core.gamestate` | `GamestateModuleHeaderCompileTest`, `RTSGameStateNonRTSUnitGateTest` | `DeterminismTest` |
-| `core.logging` | — | — |
-| `core.serialization` | `SerializationModuleHeaderCompileTest` | — |
-| `core.ai_advanced` | — | — |
+| Module | Unit tests (representative) | Integration / notes |
+|--------|----------------------------|---------------------|
+| `core.math` | `Vector2Test`, `Vector3Test`, `MathConstantsTest`, `DeterministicRNGTest` | `DeterminismTest` |
+| `core.influence.types` | `InfluenceTypesModuleTest`, `InfluenceTypesCanonicalHeaderCompileTest`, legacy header compiles | — |
+| `core.influence` | `InfluenceFieldTest`, legacy item/parameters header compiles | Standalone runner |
+| `core.logging` | `LoggerTest`, `Logging*HeaderCompileTest` (4 files) | GitLab `logging-module-pilot` |
+| `core.ai` | `StateMachineTest`, `BehaviorsTest`, `ConditionsTest`, `BehaviorFactoryTest`, `IBehaviorInterfaceTest`, `AIModuleHeaderCompileTest` | `BehaviorRuntimeSwapTest` |
+| `core.collision` | `SpatialGridTest`, `ImmunityManagerTest`, `UnitKinematicsWriteTest`, `CollisionSystemKinematicsGateTest`, header compile | Standalone runner |
+| `core.gameloop` | `GameLogicEngineTest`, `DeploymentTimerTest`, `ThinkTimerTest`, `GameloopInvariantsTest`, header compile | Standalone runner |
+| `core.map` | `MapTest`, `MapModuleHeaderCompileTest` | Standalone runner |
+| `core.combat` | `ExplosionTest`, `CommandSystemTest`, `CommandSystemAgentContractTest`, header compile | Standalone runner |
+| `core.gamestate` | `GamestateModuleHeaderCompileTest`, `RTSGameStateNonRTSUnitGateTest`, `RTSGameStateCharacterizationTest` | `DeterminismTest`; **no** standalone runner |
+| `core.serialization` | `SerializationModuleHeaderCompileTest`, `GameStateSerializerCharacterizationTest`, `GameStateSerializerSnapshotFakeTest` | Standalone runner |
+| `core.interfaces` | `InterfacesModuleHeaderCompileTest`, `IGameLogicRendererDefaultSnapshotTest`, `GameStateInterfaceForwardCompileTest` | Standalone runner |
+| `core.ai_advanced` | — | Manifest only |
 
 ---
 
 ## 5. Phase 2 pilot module recommendation
 
-**Recommended pilot: `core.math` (`core.math` manifest)**
+**Completed pilots:** `core.math`, `core.influence.types`, `core.influence`, `core.logging` (each has `MODULE.md`, checker opt-in, and a standalone runner except types/influence share CI partial coverage).
 
-| Criterion | Assessment |
-|-----------|------------|
-| Clear boundary | Header-heavy; one `.cpp`; no upstream core dependencies |
-| Existing tests | Three unit tests + determinism integration |
-| High value | Foundation for replay determinism and all spatial/AI systems |
-| Low blast radius | Changes rarely ripple through gamestate hub |
-| Semver story | Easy to version `1.0.0` and expose `exports` list |
+**Runner-up for future extraction work:** `core.gameloop` or `core.map` — clear boundaries, standalone runners already exist.
 
-**Runner-up:** `core.influence` — good tests and mostly depends on `math`, but ties to AI behavior field generation.
-
-**`core.gamestate`:** include enforcement active as of R2.1 — see [core/gamestate/MODULE.md](../../core/gamestate/MODULE.md) and [PHASE3_GAMESTATE.md](PHASE3_GAMESTATE.md).
+**`core.gamestate`:** include enforcement active (R2.1) — [core/gamestate/MODULE.md](../../core/gamestate/MODULE.md). Validate via full-engine tests, not a dedicated runner script.
 
 ---
 

@@ -4,7 +4,7 @@
 
 ## Goals
 
-1. Add `core/math/MODULE.md` from [MODULE.md.template](../MODULE.md.template). **Done**
+1. Add `core/math/MODULE.md` from [MODULE.md.template](MODULE.md.template). **Done**
 2. CMake OBJECT library `coreengine_math` + `COREENGINE_MATH_STANDALONE` math-only tests. **Done**
 3. Extend `scripts/check-module-deps.sh` to fail on illegal `#include` for `core.math`. **Done**
 4. Other modules: manifest validation only until opted in. **Documented**
@@ -31,4 +31,4 @@ python3 scripts/test_check_module_deps.py
 - **Rules:** no `platform/` or `ffi/`; no `core/…` outside this module unless listed in manifest `requires` (empty today); quoted includes must resolve inside `core/math/`.
 - **Not enforced yet:** all other registry modules (manifest + cycle check only); tests and `ffi/` trees; transitive includes through standard headers.
 
-See [INVENTORY.md](../INVENTORY.md) §5 for rationale.
+See [INVENTORY.md](INVENTORY.md) §5 for rationale.

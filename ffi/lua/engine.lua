@@ -8,7 +8,9 @@ Usage:
     local ce   = require "engine"
 
     local eng  = ce.create(1600, 900, 0)
-    ce.update(eng, 1/30)
+    while not ce.has_charge(eng, 1) do
+        ce.update(eng, 1/30)
+    end
     ce.spawn(eng, 1, 400, 450)
     print(ce.snapshot_json(eng))
     ce.destroy(eng)
@@ -41,6 +43,7 @@ function M.destroy(e)            lib.ce_engine_destroy(e) end
 function M.update(e, dt)         return lib.ce_engine_update(e, dt) end
 function M.reset(e)              lib.ce_engine_reset(e) end
 function M.spawn(e, team, x, y)  return lib.ce_unit_spawn(e, team, x, y) end
+function M.has_charge(e, team)   return lib.ce_timer_has_charge(e, team) ~= 0 end
 function M.unit_count(e)         return lib.ce_unit_count(e) end
 function M.set_behavior(e, i, n) return lib.ce_unit_set_behavior(e, i, n) end
 function M.field_query(e, x, y)  return lib.ce_field_query(e, x, y) end

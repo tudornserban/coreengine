@@ -18,7 +18,6 @@
 ## Layer Map
 
 ```
-CoreEngine/
 ├── core/           ← LAYER 1: Zero platform deps, pure C++17 STL
 │   ├── math/
 │   ├── interfaces/
@@ -32,9 +31,9 @@ CoreEngine/
 │   ├── logging/
 │   ├── ai_advanced/
 │   └── serialization/
-├── platform/       ← LAYER 2: Platform adapters (implement core/ interfaces)
-│   ├── sdl2/
-│   ├── raylib/
+├── platform/       ← LAYER 2: Platform adapter headers (implement core/ interfaces)
+│   ├── sdl2/       (SDLRenderer / SDLInputReader — stubs; no .cpp in repo)
+│   ├── raylib/     (RaylibRenderer::Render() unimplemented; header-only)
 │   ├── null/
 │   ├── unreal/
 │   └── unity/
@@ -42,8 +41,10 @@ CoreEngine/
 │   ├── c_api.h
 │   ├── c_api.cpp
 │   ├── python/
-│   ├── lua/
-│   └── wasm/
+│   └── lua/
+├── tools/          ← Optional SDL2 viewer (COREENGINE_BUILD_SDL2_VIEWER)
+├── scripts/        ← Module checks, standalone runners, doc link checker
+├── tests/          ← GTest when BUILD_TESTS=ON
 └── docs/
 ```
 
@@ -87,7 +88,7 @@ These are the FFI boundary contracts — the minimal surface area each system de
 Merged from VenusWars PotentialField* and DynamicGO InfluenceMap.
 
 - `InfluenceFieldItem` — attractor/repulsor/edge entry with typed parameters
-- `InfluenceFieldCalculator` — APF total force from item list (clamped to maxAccel)
+- `InfluenceField::CalculateTotalForce` — APF total force from item list (clamped to maxAccel)
 - `InfluenceFieldParameters` — AttractorParams, RepulsorParams, EdgeParams
 - `TerritoryCalculator` — Voronoi grid ownership % (win condition system)
 
@@ -115,7 +116,7 @@ Directly from VenusWars — broadphase SpatialGrid + narrowphase circle detectio
 - `GameMode` — DETERMINISTIC vs INTERACTIVE enum
 
 ### `core/combat/`
-- `CombatManager` — attrition damage + zone overlap combat (from DynamicGO)
+- `CombatManager` — **empty stub**; game-specific attrition/zone combat belongs in the game layer
 - `Explosion` — area impulse/damage with falloff
 - `SelectionSystem` — click/box unit selection
 - `CommandSystem` — unit state overrides, move-to commands, parameter tuning
@@ -127,7 +128,7 @@ Directly from VenusWars — broadphase SpatialGrid + narrowphase circle detectio
 - `IGameState` / `IGameLogicRenderer` — thin `#include` forwarders to `core/interfaces/` (canonical contract)
 
 ### `core/logging/`
-- `Logger` (singleton) — level-filtered console + file output, `LOG_DEBUG/INFO/WARN/ERROR/FATAL` macros
+- `VenusWars::Logging::Logger` (singleton) — level-filtered console + file output, `LOG_DEBUG/INFO/WARN/ERROR/FATAL` macros
 
 ### `core/ai_advanced/`
 - `Genome` — feature weight vector for placement evaluation
@@ -141,12 +142,12 @@ Directly from VenusWars — broadphase SpatialGrid + narrowphase circle detectio
 
 ## Layer 2: `platform/` — Platform Adapters
 
-Each adapter implements interfaces from `core/interfaces/`. The core engine never includes platform headers.
+Each adapter implements interfaces from `core/interfaces/`. The core engine never includes platform headers. **Today:** `platform/sdl2` and `platform/raylib` ship **header-only stubs** (no reference `.cpp`); enabling `BUILD_SDL2` / `BUILD_RAYLIB` still creates CMake targets but you must supply drawing/input implementations (or use the SDL2 viewer under `tools/viewer/`).
 
 | Adapter | Implements | Use |
 |---------|-----------|-----|
-| `sdl2/` | `IGameLogicRenderer`, `IInputReader` | VenusWars, standalone prototypes |
-| `raylib/` | `IGameLogicRenderer`, `IInputReader` | DynamicGO, lightweight prototypes |
+| `sdl2/` | `IGameLogicRenderer`, `IInputReader` | Reference stubs; copy from VenusWars or use `tools/viewer` |
+| `raylib/` | `IGameLogicRenderer`, `IInputReader` | Reference stubs; `RaylibRenderer::Render()` is declared but not implemented |
 | `null/` | `IGameLogicRenderer`, `IInputReader` | Headless server, unit tests |
 | `unreal/` | Stubs + porting guide | UE5 integration |
 | `unity/` | Stubs → delegates to ffi/ | Unity C# P/Invoke |
@@ -162,11 +163,10 @@ ffi/
 ├── c_api.h        ← public header (include from any language)
 ├── c_api.cpp      ← implementation (links coreengine static lib)
 ├── python/        ← ctypes/cffi stubs + usage example
-├── lua/           ← LuaJIT FFI bindings
-└── wasm/          ← WebAssembly stub (Emscripten)
+└── lua/           ← LuaJIT FFI bindings
 ```
 
-Build: `cmake -DBUILD_FFI=ON ..` → `libcoreengine_ffi.so`
+Build: `cmake -DBUILD_FFI=ON ..` → `libcoreengine_ffi.so`. WebAssembly builds link the same `coreengine_ffi` target with Emscripten (see [FFI_GUIDE.md](FFI_GUIDE.md)).
 
 ---
 
