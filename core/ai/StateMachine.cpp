@@ -1,1 +1,93 @@
-I2luY2x1ZGUgIlN0YXRlTWFjaGluZS5oIgojaW5jbHVkZSAiQmVoYXZpb3JDb250ZXh0LmgiCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSUdhbWVVbml0LmgiCiNpbmNsdWRlICJjb3JlL2xvZ2dpbmcvTG9nZ2VyLmgiCgp2b2lkIFN0YXRlTWFjaGluZTo6QWRkU3RhdGUoY29uc3Qgc3RkOjpzdHJpbmcmIG5hbWUsIHN0ZDo6dW5pcXVlX3B0cjxJQmVoYXZpb3I+IGJlaGF2aW9yKQp7CiAgICBpZiAoIWJlaGF2aW9yKSB7CiAgICAgICAgTE9HX0VSUk9SKCJTdGF0ZU1hY2hpbmU6OkFkZFN0YXRlOiBudWxsIGJlaGF2aW9yIGZvciBzdGF0ZSAnJXMnIiwgbmFtZS5jX3N0cigpKTsKICAgICAgICByZXR1cm47CiAgICB9CgogICAgc3RhdGVzX1tuYW1lXSA9IHN0ZDo6bW92ZShiZWhhdmlvcik7CgogICAgaWYgKGN1cnJlbnRTdGF0ZV8uZW1wdHkoKSkgewogICAgICAgIGN1cnJlbnRTdGF0ZV8gPSBuYW1lOwogICAgICAgIGlmIChvd25lcl8gJiYgc3RhdGVzX1tuYW1lXSkgewogICAgICAgICAgICBzdGF0ZXNfW25hbWVdLT5PbkVudGVyKG93bmVyXyk7CiAgICAgICAgfQogICAgfQp9Cgp2b2lkIFN0YXRlTWFjaGluZTo6QWRkVHJhbnNpdGlvbihTdGF0ZVRyYW5zaXRpb24gdHJhbnNpdGlvbikKewogICAgdHJhbnNpdGlvbnNfLnB1c2hfYmFjayhzdGQ6Om1vdmUodHJhbnNpdGlvbikpOwp9CgpWZWN0b3IyIFN0YXRlTWFjaGluZTo6VXBkYXRlKGNvbnN0IEJlaGF2aW9yQ29udGV4dCYgY3R4KQp7CiAgICBmb3IgKGNvbnN0IGF1dG8mIHRyYW5zaXRpb24gOiB0cmFuc2l0aW9uc18pIHsKICAgICAgICBpZiAoIXRyYW5zaXRpb24uaXNBdXRvbWF0aWMpIGNvbnRpbnVlOwogICAgICAgIGlmICh0cmFuc2l0aW9uLmZyb21TdGF0ZSAhPSBjdXJyZW50U3RhdGVfKSBjb250aW51ZTsKICAgICAgICBpZiAodHJhbnNpdGlvbi5jb25kaXRpb24gJiYgdHJhbnNpdGlvbi5jb25kaXRpb24tPkV2YWx1YXRlKGN0eCkpIHsKICAgICAgICAgICAgU2V0U3RhdGUodHJhbnNpdGlvbi50b1N0YXRlKTsKICAgICAgICAgICAgYnJlYWs7CiAgICAgICAgfQogICAgfQoKICAgIGF1dG8gaXQgPSBzdGF0ZXNfLmZpbmQoY3VycmVudFN0YXRlXyk7CiAgICBpZiAoaXQgIT0gc3RhdGVzXy5lbmQoKSAmJiBpdC0+c2Vjb25kKSB7CiAgICAgICAgcmV0dXJuIGl0LT5zZWNvbmQtPkNhbGN1bGF0ZUFjY2VsZXJhdGlvbihjdHgpOwogICAgfQoKICAgIHJldHVybiBWZWN0b3IyOjpaZXJvKCk7Cn0KCnZvaWQgU3RhdGVNYWNoaW5lOjpTZXRTdGF0ZShjb25zdCBzdGQ6OnN0cmluZyYgc3RhdGVOYW1lKQp7CiAgICBpZiAoc3RhdGVOYW1lID09IGN1cnJlbnRTdGF0ZV8pIHJldHVybjsKCiAgICBhdXRvIGl0ID0gc3RhdGVzXy5maW5kKHN0YXRlTmFtZSk7CiAgICBpZiAoaXQgPT0gc3RhdGVzXy5lbmQoKSkgewogICAgICAgIExPR19FUlJPUigiU3RhdGVNYWNoaW5lOjpTZXRTdGF0ZTogdW5rbm93biBzdGF0ZSAnJXMnIiwgc3RhdGVOYW1lLmNfc3RyKCkpOwogICAgICAgIHJldHVybjsKICAgIH0KCiAgICBpZiAoIWN1cnJlbnRTdGF0ZV8uZW1wdHkoKSkgewogICAgICAgIGF1dG8gY3VyID0gc3RhdGVzXy5maW5kKGN1cnJlbnRTdGF0ZV8pOwogICAgICAgIGlmIChjdXIgIT0gc3RhdGVzXy5lbmQoKSAmJiBjdXItPnNlY29uZCAmJiBvd25lcl8pIHsKICAgICAgICAgICAgY3VyLT5zZWNvbmQtPk9uRXhpdChvd25lcl8pOwogICAgICAgIH0KICAgIH0KCiAgICBjdXJyZW50U3RhdGVfID0gc3RhdGVOYW1lOwoKICAgIGlmIChpdC0+c2Vjb25kICYmIG93bmVyXykgewogICAgICAgIGl0LT5zZWNvbmQtPk9uRW50ZXIob3duZXJfKTsKICAgIH0KfQoKdm9pZCBTdGF0ZU1hY2hpbmU6OkNsZWFyQ3VycmVudFN0YXRlKCkKewogICAgaWYgKGN1cnJlbnRTdGF0ZV8uZW1wdHkoKSkgewogICAgICAgIHJldHVybjsKICAgIH0KICAgIGF1dG8gY3VyID0gc3RhdGVzXy5maW5kKGN1cnJlbnRTdGF0ZV8pOwogICAgaWYgKGN1ciAhPSBzdGF0ZXNfLmVuZCgpICYmIGN1ci0+c2Vjb25kICYmIG93bmVyXykgewogICAgICAgIGN1ci0+c2Vjb25kLT5PbkV4aXQob3duZXJfKTsKICAgIH0KICAgIGN1cnJlbnRTdGF0ZV8uY2xlYXIoKTsKfQoKSUJlaGF2aW9yKiBTdGF0ZU1hY2hpbmU6OkdldEN1cnJlbnRCZWhhdmlvcigpCnsKICAgIGF1dG8gaXQgPSBzdGF0ZXNfLmZpbmQoY3VycmVudFN0YXRlXyk7CiAgICByZXR1cm4gKGl0ICE9IHN0YXRlc18uZW5kKCkpID8gaXQtPnNlY29uZC5nZXQoKSA6IG51bGxwdHI7Cn0KCmNvbnN0IElCZWhhdmlvciogU3RhdGVNYWNoaW5lOjpHZXRDdXJyZW50QmVoYXZpb3IoKSBjb25zdAp7CiAgICBhdXRvIGl0ID0gc3RhdGVzXy5maW5kKGN1cnJlbnRTdGF0ZV8pOwogICAgcmV0dXJuIChpdCAhPSBzdGF0ZXNfLmVuZCgpKSA/IGl0LT5zZWNvbmQuZ2V0KCkgOiBudWxscHRyOwp9Cg==
+#include "StateMachine.h"
+#include "BehaviorContext.h"
+#include "core/interfaces/IGameUnit.h"
+#include "core/logging/Logger.h"
+
+void StateMachine::AddState(const std::string& name, std::unique_ptr<IBehavior> behavior)
+{
+    if (!behavior) {
+        LOG_ERROR("StateMachine::AddState: null behavior for state '%s'", name.c_str());
+        return;
+    }
+
+    states_[name] = std::move(behavior);
+
+    if (currentState_.empty()) {
+        currentState_ = name;
+        if (owner_ && states_[name]) {
+            states_[name]->OnEnter(owner_);
+        }
+    }
+}
+
+void StateMachine::AddTransition(StateTransition transition)
+{
+    transitions_.push_back(std::move(transition));
+}
+
+Vector2 StateMachine::Update(const BehaviorContext& ctx)
+{
+    for (const auto& transition : transitions_) {
+        if (!transition.isAutomatic) continue;
+        if (transition.fromState != currentState_) continue;
+        if (transition.condition && transition.condition->Evaluate(ctx)) {
+            SetState(transition.toState);
+            break;
+        }
+    }
+
+    auto it = states_.find(currentState_);
+    if (it != states_.end() && it->second) {
+        return it->second->CalculateAcceleration(ctx);
+    }
+
+    return Vector2::Zero();
+}
+
+void StateMachine::SetState(const std::string& stateName)
+{
+    if (stateName == currentState_) return;
+
+    auto it = states_.find(stateName);
+    if (it == states_.end()) {
+        LOG_ERROR("StateMachine::SetState: unknown state '%s'", stateName.c_str());
+        return;
+    }
+
+    if (!currentState_.empty()) {
+        auto cur = states_.find(currentState_);
+        if (cur != states_.end() && cur->second && owner_) {
+            cur->second->OnExit(owner_);
+        }
+    }
+
+    currentState_ = stateName;
+
+    if (it->second && owner_) {
+        it->second->OnEnter(owner_);
+    }
+}
+
+void StateMachine::ClearCurrentState()
+{
+    if (currentState_.empty()) {
+        return;
+    }
+    auto cur = states_.find(currentState_);
+    if (cur != states_.end() && cur->second && owner_) {
+        cur->second->OnExit(owner_);
+    }
+    currentState_.clear();
+}
+
+IBehavior* StateMachine::GetCurrentBehavior()
+{
+    auto it = states_.find(currentState_);
+    return (it != states_.end()) ? it->second.get() : nullptr;
+}
+
+const IBehavior* StateMachine::GetCurrentBehavior() const
+{
+    auto it = states_.find(currentState_);
+    return (it != states_.end()) ? it->second.get() : nullptr;
+}
