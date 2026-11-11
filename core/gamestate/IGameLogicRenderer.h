@@ -1,1 +1,3 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lHYW1lTG9naWNSZW5kZXJlci5oIgo=
+#pragma once
+
+#include "core/interfaces/IGameLogicRenderer.h"

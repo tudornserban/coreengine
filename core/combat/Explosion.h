@@ -1,1 +1,41 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiY29yZS9tYXRoL1ZlY3RvcjIuaCIKI2luY2x1ZGUgPGNtYXRoPgoKY2xhc3MgRXhwbG9zaW9uIAp7CnB1YmxpYzoKICAgIC8vIERlZmF1bHQgZXhwbG9zaW9uIHN0cmVuZ3RoIGNvbnN0YW50CiAgICBzdGF0aWMgY29uc3RleHByIGZsb2F0IERFRkFVTFRfRVhQTE9TSU9OX1NUUkVOR1RIID0gMC4wZjsKCnByaXZhdGU6CiAgICBWZWN0b3IyIHBvc2l0aW9uXzsKICAgIGZsb2F0IHJhZGl1c187CiAgICBmbG9hdCBzdHJlbmd0aF87CiAgICBmbG9hdCBmYWxsb2ZmRXhwb25lbnRfOwoKcHVibGljOgogICAgRXhwbG9zaW9uKFZlY3RvcjIgcG9zaXRpb24sIGZsb2F0IHJhZGl1cywgZmxvYXQgc3RyZW5ndGggPSBERUZBVUxUX0VYUExPU0lPTl9TVFJFTkdUSCwgZmxvYXQgZmFsbG9mZkV4cG9uZW50ID0gMS4wZikKICAgICAgICA6IHBvc2l0aW9uXyhwb3NpdGlvbikKICAgICAgICAsIHJhZGl1c18ocmFkaXVzKQogICAgICAgICwgc3RyZW5ndGhfKHN0cmVuZ3RoKQogICAgICAgICwgZmFsbG9mZkV4cG9uZW50XyhmYWxsb2ZmRXhwb25lbnQpCiAgICB7CiAgICB9CgogICAgLy8gQ2FsY3VsYXRlIGltcHVsc2UgdmVjdG9yIGZvciBhIHVuaXQgYXQgdGhlIGdpdmVuIHBvc2l0aW9uCiAgICAvLyBJbXB1bHNlIGlzIHNjYWxlZCBieSB1bml0IG1hc3MgKGhlYXZpZXIgdW5pdHMgbW92ZSBsZXNzKQogICAgLy8gRGlyZWN0aW9uIGlzIGZyb20gZXhwbG9zaW9uIGNlbnRlciB0byB1bml0IHBvc2l0aW9uCiAgICBWZWN0b3IyIENhbGN1bGF0ZUltcHVsc2UoVmVjdG9yMiB1bml0UG9zaXRpb24sIGZsb2F0IHVuaXRNYXNzKSBjb25zdDsKCiAgICAvLyBDaGVjayBpZiBhIHBvc2l0aW9uIGlzIHdpdGhpbiB0aGUgZXhwbG9zaW9uIHJhZGl1cwogICAgYm9vbCBJc0luUmFkaXVzKFZlY3RvcjIgcG9zaXRpb24pIGNvbnN0OwoKICAgIC8vIEdldHRlcnMgKGZvciByZW5kZXJpbmcgYW5kIHF1ZXJpZXMpCiAgICBWZWN0b3IyIEdldFBvc2l0aW9uKCkgY29uc3QgeyByZXR1cm4gcG9zaXRpb25fOyB9CiAgICBmbG9hdCBHZXRSYWRpdXMoKSBjb25zdCB7IHJldHVybiByYWRpdXNfOyB9CiAgICBmbG9hdCBHZXRTdHJlbmd0aCgpIGNvbnN0IHsgcmV0dXJuIHN0cmVuZ3RoXzsgfQogICAgZmxvYXQgR2V0RmFsbG9mZkV4cG9uZW50KCkgY29uc3QgeyByZXR1cm4gZmFsbG9mZkV4cG9uZW50XzsgfQp9OwoK
+#pragma once
+
+#include "core/math/Vector2.h"
+#include <cmath>
+
+class Explosion 
+{
+public:
+    // Default explosion strength constant
+    static constexpr float DEFAULT_EXPLOSION_STRENGTH = 0.0f;
+
+private:
+    Vector2 position_;
+    float radius_;
+    float strength_;
+    float falloffExponent_;
+
+public:
+    Explosion(Vector2 position, float radius, float strength = DEFAULT_EXPLOSION_STRENGTH, float falloffExponent = 1.0f)
+        : position_(position)
+        , radius_(radius)
+        , strength_(strength)
+        , falloffExponent_(falloffExponent)
+    {
+    }
+
+    // Calculate impulse vector for a unit at the given position
+    // Impulse is scaled by unit mass (heavier units move less)
+    // Direction is from explosion center to unit position
+    Vector2 CalculateImpulse(Vector2 unitPosition, float unitMass) const;
+
+    // Check if a position is within the explosion radius
+    bool IsInRadius(Vector2 position) const;
+
+    // Getters (for rendering and queries)
+    Vector2 GetPosition() const { return position_; }
+    float GetRadius() const { return radius_; }
+    float GetStrength() const { return strength_; }
+    float GetFalloffExponent() const { return falloffExponent_; }
+};
+
