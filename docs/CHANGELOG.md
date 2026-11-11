@@ -5,6 +5,17 @@ Each entry links back to the originating proposal document where applicable.
 
 ---
 
+## 2026-03-25 — FFI 1.4.0 / core.gameloop 1.1.0: match end and territory fraction
+
+### F1.4 — `MatchState::Advance`, snapshot winner/matchOver
+
+- `MatchState::Advance` implements dominance hold (≥75% for 10 s) and 300 s timeout with draw on ties.
+- `GameLogicEngine` honors `shouldEndCallback` in the normal fixed-step loop.
+- FFI wires territory fractions into `MatchState`; `ce_snapshot_get` fills `winner` (`0`/`1`/`2`/`3`) and `matchOver`; `ce_engine_update` returns `0` after match end; `ce_territory_get_pct` returns a fraction in `[0, 1]`.
+- `core.gameloop` manifest **1.1.0**; `CE_FFI_VERSION` **1.4.0**.
+
+---
+
 ## 2026-03-25 — FFI 1.3.0 / core.gamestate 1.3.0: behavior acceleration registration
 
 ### F1.2 — `ce_behavior_register_accel` and hub acceleration path

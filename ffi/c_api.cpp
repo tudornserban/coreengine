@@ -11,6 +11,7 @@
 #include "../core/gamestate/RTSUnit.h"
 #include "../core/gameloop/GameLogicEngine.h"
 #include "../core/gameloop/DeploymentTimer.h"
+#include "../core/gameloop/MatchState.h"
 #include "../core/ai/BehaviorFactory.h"
 #include "../core/ai/BehaviorContext.h"
 #include "../core/interfaces/IBehavior.h"
@@ -38,6 +39,7 @@ struct EngineContext {
     uint64_t                         rngSeed   = 0;
     bool                             running   = true;
     int                              lastResult = CE_OK;
+    MatchState                       match;
 };
 
 static EngineContext* ctx(CE_Engine e)
@@ -122,7 +124,18 @@ CE_Engine ce_engine_create(float mapWidth, float mapHeight, uint64_t rngSeed)
         c->p1Timer.Update(dt);
         c->p2Timer.Update(dt);
         c->gameState->Update(dt);
+
+        TerritoryCalculator tc;
+        TerritoryCalculator::Arena arena{c->mapWidth, c->mapHeight};
+        auto territory = tc.Calculate(c->gameState->GetAllUnits(), arena);
+        c->match.team1TerritoryPct = territory.team1Pct / 100.0f;
+        c->match.team2TerritoryPct = territory.team2Pct / 100.0f;
+        c->match.Advance(dt);
+        if (c->match.IsOver()) {
+            c->running = false;
+        }
     });
+    c->logicEngine->SetShouldEndCallback([c]() { return !c->running; });
     return reinterpret_cast<CE_Engine>(c);
 }
 
@@ -148,6 +161,7 @@ void ce_engine_reset(CE_Engine engine)
     c->logicEngine->Reset();
     c->p1Timer     = DeploymentTimer(kSpawnChargeSeconds);
     c->p2Timer     = DeploymentTimer(kSpawnChargeSeconds);
+    c->match       = MatchState{};
     c->running     = true;
     c->lastResult  = CE_OK;
 }
@@ -261,8 +275,21 @@ int ce_snapshot_get(CE_Engine engine, CE_GameSnapshot* out)
     out->mapHeight        = c->mapHeight;
     out->unitCount        = ce_unit_count(engine);
     out->matchTimeElapsed = c->logicEngine->GetGameTime();
-    out->matchOver        = c->running ? 0 : 1;
-    out->winner           = 0;
+    out->matchOver        = c->match.IsOver() ? 1 : 0;
+    switch (c->match.result) {
+    case MatchResult::Team1Wins:
+        out->winner = 1;
+        break;
+    case MatchResult::Team2Wins:
+        out->winner = 2;
+        break;
+    case MatchResult::Draw:
+        out->winner = 3;
+        break;
+    default:
+        out->winner = 0;
+        break;
+    }
     return 1;
 }
 
@@ -343,7 +370,8 @@ float ce_territory_get_pct(CE_Engine engine, int teamId)
     auto result = tc.Calculate(c->gameState->GetAllUnits(), arena);
 
     c->lastResult = CE_OK;
-    return (teamId == 1) ? result.team1Pct : result.team2Pct;
+    const float pct = (teamId == 1) ? result.team1Pct : result.team2Pct;
+    return pct / 100.0f;
 }
 
 // --- Behavior factory ---
