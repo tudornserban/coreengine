@@ -1,1 +1,22 @@
-ewogICJpZCI6ICJjb3JlLmdhbWVzdGF0ZSIsCiAgInZlcnNpb24iOiAiMS4yLjAiLAogICJwYXRoIjogImNvcmUvZ2FtZXN0YXRlIiwKICAiZXhwb3J0cyI6IFsKICAgICJSVFNHYW1lU3RhdGUiLAogICAgIlJUU1VuaXQiLAogICAgIkdhbWVTdGF0ZU1hbmFnZXIiCiAgXSwKICAicmVxdWlyZXMiOiB7CiAgICAiY29yZS5haSI6ICJeMS4wLjAiLAogICAgImNvcmUuY29tYmF0IjogIl4xLjAuMCIsCiAgICAiY29yZS5tYXAiOiAiXjEuMC4wIiwKICAgICJjb3JlLmluZmx1ZW5jZSI6ICJeMS4wLjAiLAogICAgImNvcmUuY29sbGlzaW9uIjogIl4xLjAuMCIsCiAgICAiY29yZS5tYXRoIjogIl4xLjAuMCIsCiAgICAiY29yZS5sb2dnaW5nIjogIl4xLjAuMCIsCiAgICAiY29yZS5pbnRlcmZhY2VzIjogIl4xLjAuMCIKICB9LAogICJ0YWdzIjogWyJpbnRlZ3JhdGlvbiIsICJnYW1lcGxheSJdLAogICJub3RlcyI6ICJTaW11bGF0aW9uIGh1YiAodW5pdHMsIG1hcCwgc2VsZWN0aW9uLCBjb21tYW5kcywgY29sbGlzaW9uLCBSTkcsIGV4cGxvc2lvbnMsIHN0YXRpYyBpbmZsdWVuY2UpIHBsdXMgR2FtZVN0YXRlTWFuYWdlciBzaW5nbGUgYWN0aXZlIG1lbnUvbWlzc2lvbiBzdGF0ZS4gYCNpbmNsdWRlYCBib3VuZGFyaWVzIGFyZSBlbmZvcmNlZCB2aWEgSU5DTFVERV9FTkZPUkNFRF9NT0RVTEVTIChSMi4xKS4iCn0K
+{
+  "id": "core.gamestate",
+  "version": "1.2.0",
+  "path": "core/gamestate",
+  "exports": [
+    "RTSGameState",
+    "RTSUnit",
+    "GameStateManager"
+  ],
+  "requires": {
+    "core.ai": "^1.0.0",
+    "core.combat": "^1.0.0",
+    "core.map": "^1.0.0",
+    "core.influence": "^1.0.0",
+    "core.collision": "^1.0.0",
+    "core.math": "^1.0.0",
+    "core.logging": "^1.0.0",
+    "core.interfaces": "^1.0.0"
+  },
+  "tags": ["integration", "gameplay"],
+  "notes": "Simulation hub (units, map, selection, commands, collision, RNG, explosions, static influence) plus GameStateManager single active menu/mission state. `#include` boundaries are enforced via INCLUDE_ENFORCED_MODULES (R2.1)."
+}

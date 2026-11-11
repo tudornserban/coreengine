@@ -1,1 +1,24 @@
-ewogICJpZCI6ICJjb3JlLmludGVyZmFjZXMiLAogICJ2ZXJzaW9uIjogIjEuNS4wIiwKICAicGF0aCI6ICJjb3JlL2ludGVyZmFjZXMiLAogICJleHBvcnRzIjogWwogICAgIklHYW1lVW5pdCIsCiAgICAiSVVuaXRLaW5lbWF0aWNzIiwKICAgICJJVW5pdEFnZW50IiwKICAgICJJQmVoYXZpb3IiLAogICAgIklUcmFuc2l0aW9uQ29uZGl0aW9uIiwKICAgICJJR2FtZVN0YXRlIiwKICAgICJJR2FtZUxvZ2ljUmVuZGVyZXIiLAogICAgIklJbnB1dFJlYWRlciIsCiAgICAiSVNlcmlhbGl6ZXIiLAogICAgIklNYXBDb21wb25lbnQiLAogICAgIklTaW11bGF0aW9uU25hcHNob3QiLAogICAgIklVbml0QmVoYXZpb3JIb3N0IgogIF0sCiAgInJlcXVpcmVzIjogewogICAgImNvcmUubWF0aCI6ICJeMS4wLjAiLAogICAgImNvcmUuaW5mbHVlbmNlLnR5cGVzIjogIl4xLjAuMCIKICB9LAogICJ0YWdzIjogWyJjb250cmFjdHMiXQp9
+{
+  "id": "core.interfaces",
+  "version": "1.5.0",
+  "path": "core/interfaces",
+  "exports": [
+    "IGameUnit",
+    "IUnitKinematics",
+    "IUnitAgent",
+    "IBehavior",
+    "ITransitionCondition",
+    "IGameState",
+    "IGameLogicRenderer",
+    "IInputReader",
+    "ISerializer",
+    "IMapComponent",
+    "ISimulationSnapshot",
+    "IUnitBehaviorHost"
+  ],
+  "requires": {
+    "core.math": "^1.0.0",
+    "core.influence.types": "^1.0.0"
+  },
+  "tags": ["contracts"]
+}
