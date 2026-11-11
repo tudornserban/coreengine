@@ -1,1 +1,85 @@
-I2luY2x1ZGUgIkRyYXdMaXN0LmgiCiNpbmNsdWRlICJSYXN0ZXIuaCIKCiNpbmNsdWRlIDxndGVzdC9ndGVzdC5oPgoKVEVTVChSYXN0ZXJUZXN0LCBDbGVhckFuZEZpbGxlZFJlY3RQYWludFRob3NlUGl4ZWxzKQp7CiAgICBEcmF3TGlzdCBsaXN0OwogICAgbGlzdC5jbGVhciA9IHsyMCwgMjQsIDI4LCAyNTV9OwogICAgbGlzdC5yZWN0cy5wdXNoX2JhY2soe3sxLCAxfSwgezIsIDJ9LCB0cnVlLCB7MzIsIDM2LCA0MiwgMjU1fX0pOwogICAgRnJhbWVidWZmZXIgZmI7CiAgICBmYi53aWR0aCA9IDQ7CiAgICBmYi5oZWlnaHQgPSA0OwogICAgUmFzdGVyaXplKGxpc3QsIGZiKTsKICAgIGF1dG8gcHggPSBbJl0oaW50IHgsIGludCB5KSB7CiAgICAgICAgY29uc3Qgc3RkOjp1aW50OF90KiBwID0gJmZiLnJnYmFbKHkgKiBmYi53aWR0aCArIHgpICogNF07CiAgICAgICAgcmV0dXJuIFJnYmF7cFswXSwgcFsxXSwgcFsyXSwgcFszXX07CiAgICB9OwogICAgRVhQRUNUX0VRKHB4KDAsIDApLnIsIDIwKTsKICAgIEVYUEVDVF9FUShweCgwLCAwKS5nLCAyNCk7CiAgICBFWFBFQ1RfRVEocHgoMCwgMCkuYiwgMjgpOwogICAgRVhQRUNUX0VRKHB4KDEsIDEpLnIsIDMyKTsKICAgIEVYUEVDVF9FUShweCgxLCAxKS5nLCAzNik7CiAgICBFWFBFQ1RfRVEocHgoMSwgMSkuYiwgNDIpOwp9CgpURVNUKFJhc3RlclRlc3QsIE91dE9mQm91bmRzUmVjdHNMZWF2ZUZyYW1lYnVmZmVyQXRDbGVhckNvbG9yKQp7CiAgICBGcmFtZWJ1ZmZlciBmYjsKICAgIGZiLndpZHRoID0gNDsKICAgIGZiLmhlaWdodCA9IDQ7CiAgICBEcmF3TGlzdCBsaXN0OwogICAgbGlzdC5jbGVhciA9IHsxMCwgMTEsIDEyLCAyNTV9OwogICAgbGlzdC5yZWN0cy5wdXNoX2JhY2soe3s0LCAxfSwgezQsIDF9LCB0cnVlLCB7OTksIDAsIDAsIDI1NX19KTsKICAgIGxpc3QucmVjdHMucHVzaF9iYWNrKHt7MSwgNH0sIHsxLCA0fSwgdHJ1ZSwgezAsIDk5LCAwLCAyNTV9fSk7CiAgICBSYXN0ZXJpemUobGlzdCwgZmIpOwogICAgYXV0byBweCA9IFsmXShpbnQgeCwgaW50IHkpIHsKICAgICAgICBjb25zdCBzdGQ6OnVpbnQ4X3QqIHAgPSAmZmIucmdiYVsoeSAqIGZiLndpZHRoICsgeCkgKiA0XTsKICAgICAgICByZXR1cm4gUmdiYXtwWzBdLCBwWzFdLCBwWzJdLCBwWzNdfTsKICAgIH07CiAgICBmb3IgKGludCB5ID0gMDsgeSA8IDQ7ICsreSkKICAgIHsKICAgICAgICBmb3IgKGludCB4ID0gMDsgeCA8IDQ7ICsreCkKICAgICAgICB7CiAgICAgICAgICAgIEVYUEVDVF9FUShweCh4LCB5KS5yLCAxMCkgPDwgImF0ICgiIDw8IHggPDwgIiwiIDw8IHkgPDwgIikiOwogICAgICAgICAgICBFWFBFQ1RfRVEocHgoeCwgeSkuZywgMTEpOwogICAgICAgICAgICBFWFBFQ1RfRVEocHgoeCwgeSkuYiwgMTIpOwogICAgICAgIH0KICAgIH0KfQoKVEVTVChSYXN0ZXJUZXN0LCBHdWFyZFJvd0JlbG93U3Vydml2ZXNPdXRPZkJvdW5kc1Byb2JlT25ZKQp7CiAgICBGcmFtZWJ1ZmZlciBmYjsKICAgIEZyYW1lYnVmZmVySW5pdFdpdGhCb3R0b21Sb3dHdWFyZChmYiwgNCwgNCk7CiAgICBEcmF3TGlzdCBsaXN0OwogICAgbGlzdC5jbGVhciA9IHsxMCwgMTEsIDEyLCAyNTV9OwogICAgbGlzdC5yZWN0cy5wdXNoX2JhY2soe3syLCAxfSwgezIsIDF9LCB0cnVlLCB7MCwgMCwgMjAwLCAyNTV9fSk7CiAgICBsaXN0LnJlY3RzLnB1c2hfYmFjayh7ezEsIDR9LCB7MSwgNH0sIHRydWUsIHswLCAyMDAsIDAsIDI1NX19KTsKICAgIFJhc3Rlcml6ZShsaXN0LCBmYik7CiAgICBFWFBFQ1RfVFJVRShGcmFtZWJ1ZmZlckd1YXJkUm93QmVsb3dJc0NsZWFuKGZiKSk7CiAgICBhdXRvIHB4ID0gWyZdKGludCB4LCBpbnQgeSkgewogICAgICAgIGNvbnN0IHN0ZDo6dWludDhfdCogcCA9ICZmYi5yZ2JhWyh5ICogZmIud2lkdGggKyB4KSAqIDRdOwogICAgICAgIHJldHVybiBSZ2Jhe3BbMF0sIHBbMV0sIHBbMl0sIHBbM119OwogICAgfTsKICAgIEVYUEVDVF9FUShweCgyLCAxKS5iLCAyMDApOwp9CgpURVNUKFJhc3RlclRlc3QsIEd1YXJkQ29sdW1uUmlnaHRTdXJ2aXZlc091dE9mQm91bmRzUHJvYmVPblgpCnsKICAgIEZyYW1lYnVmZmVyIGZiOwogICAgRnJhbWVidWZmZXJJbml0V2l0aFJpZ2h0Q29sdW1uR3VhcmQoZmIsIDQsIDQpOwogICAgRHJhd0xpc3QgbGlzdDsKICAgIGxpc3QuY2xlYXIgPSB7MTAsIDExLCAxMiwgMjU1fTsKICAgIGxpc3QucmVjdHMucHVzaF9iYWNrKHt7MiwgMX0sIHsyLCAxfSwgdHJ1ZSwgezIwMCwgMCwgMCwgMjU1fX0pOwogICAgbGlzdC5yZWN0cy5wdXNoX2JhY2soe3s0LCAxfSwgezQsIDF9LCB0cnVlLCB7MCwgMjAwLCAwLCAyNTV9fSk7CiAgICBSYXN0ZXJpemUobGlzdCwgZmIpOwogICAgRVhQRUNUX1RSVUUoRnJhbWVidWZmZXJHdWFyZENvbHVtblJpZ2h0SXNDbGVhbihmYikpOwogICAgYXV0byBweCA9IFsmXShpbnQgeCwgaW50IHkpIHsKICAgICAgICBjb25zdCBzdGQ6OnVpbnQ4X3QqIHAgPSAmZmIucmdiYVsoeSAqIChmYi53aWR0aCArIGZiLmd1YXJkQ29sdW1uc1JpZ2h0KSArIHgpICogNF07CiAgICAgICAgcmV0dXJuIFJnYmF7cFswXSwgcFsxXSwgcFsyXSwgcFszXX07CiAgICB9OwogICAgRVhQRUNUX0VRKHB4KDIsIDEpLnIsIDIwMCk7CiAgICBFWFBFQ1RfRVEocHgoMywgMSkuciwgMTApOwp9Cg==
+#include "DrawList.h"
+#include "Raster.h"
+
+#include <gtest/gtest.h>
+
+TEST(RasterTest, ClearAndFilledRectPaintThosePixels)
+{
+    DrawList list;
+    list.clear = {20, 24, 28, 255};
+    list.rects.push_back({{1, 1}, {2, 2}, true, {32, 36, 42, 255}});
+    Framebuffer fb;
+    fb.width = 4;
+    fb.height = 4;
+    Rasterize(list, fb);
+    auto px = [&](int x, int y) {
+        const std::uint8_t* p = &fb.rgba[(y * fb.width + x) * 4];
+        return Rgba{p[0], p[1], p[2], p[3]};
+    };
+    EXPECT_EQ(px(0, 0).r, 20);
+    EXPECT_EQ(px(0, 0).g, 24);
+    EXPECT_EQ(px(0, 0).b, 28);
+    EXPECT_EQ(px(1, 1).r, 32);
+    EXPECT_EQ(px(1, 1).g, 36);
+    EXPECT_EQ(px(1, 1).b, 42);
+}
+
+TEST(RasterTest, OutOfBoundsRectsLeaveFramebufferAtClearColor)
+{
+    Framebuffer fb;
+    fb.width = 4;
+    fb.height = 4;
+    DrawList list;
+    list.clear = {10, 11, 12, 255};
+    list.rects.push_back({{4, 1}, {4, 1}, true, {99, 0, 0, 255}});
+    list.rects.push_back({{1, 4}, {1, 4}, true, {0, 99, 0, 255}});
+    Rasterize(list, fb);
+    auto px = [&](int x, int y) {
+        const std::uint8_t* p = &fb.rgba[(y * fb.width + x) * 4];
+        return Rgba{p[0], p[1], p[2], p[3]};
+    };
+    for (int y = 0; y < 4; ++y)
+    {
+        for (int x = 0; x < 4; ++x)
+        {
+            EXPECT_EQ(px(x, y).r, 10) << "at (" << x << "," << y << ")";
+            EXPECT_EQ(px(x, y).g, 11);
+            EXPECT_EQ(px(x, y).b, 12);
+        }
+    }
+}
+
+TEST(RasterTest, GuardRowBelowSurvivesOutOfBoundsProbeOnY)
+{
+    Framebuffer fb;
+    FramebufferInitWithBottomRowGuard(fb, 4, 4);
+    DrawList list;
+    list.clear = {10, 11, 12, 255};
+    list.rects.push_back({{2, 1}, {2, 1}, true, {0, 0, 200, 255}});
+    list.rects.push_back({{1, 4}, {1, 4}, true, {0, 200, 0, 255}});
+    Rasterize(list, fb);
+    EXPECT_TRUE(FramebufferGuardRowBelowIsClean(fb));
+    auto px = [&](int x, int y) {
+        const std::uint8_t* p = &fb.rgba[(y * fb.width + x) * 4];
+        return Rgba{p[0], p[1], p[2], p[3]};
+    };
+    EXPECT_EQ(px(2, 1).b, 200);
+}
+
+TEST(RasterTest, GuardColumnRightSurvivesOutOfBoundsProbeOnX)
+{
+    Framebuffer fb;
+    FramebufferInitWithRightColumnGuard(fb, 4, 4);
+    DrawList list;
+    list.clear = {10, 11, 12, 255};
+    list.rects.push_back({{2, 1}, {2, 1}, true, {200, 0, 0, 255}});
+    list.rects.push_back({{4, 1}, {4, 1}, true, {0, 200, 0, 255}});
+    Rasterize(list, fb);
+    EXPECT_TRUE(FramebufferGuardColumnRightIsClean(fb));
+    auto px = [&](int x, int y) {
+        const std::uint8_t* p = &fb.rgba[(y * (fb.width + fb.guardColumnsRight) + x) * 4];
+        return Rgba{p[0], p[1], p[2], p[3]};
+    };
+    EXPECT_EQ(px(2, 1).r, 200);
+    EXPECT_EQ(px(3, 1).r, 10);
+}

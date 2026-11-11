@@ -1,1 +1,91 @@
-I2luY2x1ZGUgImNvcmUvZ2FtZXN0YXRlL1JUU0dhbWVTdGF0ZS5oIgoKI2luY2x1ZGUgIkRyYXdMaXN0LmgiCiNpbmNsdWRlICJGcmFtZUxvb3AuaCIKI2luY2x1ZGUgIklucHV0U2NyaXB0LmgiCiNpbmNsdWRlICJQbGF5YmFja0NvbnRyb2wuaCIKI2luY2x1ZGUgIlNjZW5hcmlvLmgiCgojaW5jbHVkZSA8Z3Rlc3QvZ3Rlc3QuaD4KClRFU1QoUGxheWJhY2tDb250cm9sVGVzdCwgU3RlcFdoaWxlUGF1c2VkUnVuc1RoZUNhbGxiYWNrT25jZUFuZEFkdmFuY2VzR2FtZVRpbWUpCnsKICAgIGludCBjYWxscyA9IDA7CiAgICBHYW1lTG9naWNFbmdpbmUgZW5naW5lKGtGaXhlZER0KTsKICAgIGVuZ2luZS5TZXRVcGRhdGVDYWxsYmFjayhbJl0oZmxvYXQgZHQpIHsKICAgICAgICBFWFBFQ1RfRkxPQVRfRVEoZHQsIGtGaXhlZER0KTsKICAgICAgICArK2NhbGxzOwogICAgfSk7CiAgICBlbmdpbmUuU2V0UGF1c2VkKHRydWUpOwogICAgZW5naW5lLlNldFNwZWVkTXVsdGlwbGllcig0LjBmKTsKICAgIFRpY2tSZXN1bHQgcmVzdWx0ID0gU3RlcE9uZVRpY2soZW5naW5lKTsKICAgIEVYUEVDVF9FUShyZXN1bHQuc3RlcHNSdW4sIDEpOwogICAgRVhQRUNUX0VRKGNhbGxzLCAxKTsKICAgIEVYUEVDVF9UUlVFKGVuZ2luZS5Jc1BhdXNlZCgpKTsKICAgIEVYUEVDVF9GTE9BVF9FUShlbmdpbmUuR2V0U3BlZWRNdWx0aXBsaWVyKCksIDQuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKGVuZ2luZS5HZXRHYW1lVGltZSgpLCBrRml4ZWREdCk7Cn0KClRFU1QoUGxheWJhY2tDb250cm9sVGVzdCwgU3RlcFdoaWxlUnVubmluZ0RvZXNOb3RoaW5nKQp7CiAgICBpbnQgY2FsbHMgPSAwOwogICAgR2FtZUxvZ2ljRW5naW5lIGVuZ2luZShrRml4ZWREdCk7CiAgICBlbmdpbmUuU2V0VXBkYXRlQ2FsbGJhY2soWyZdKGZsb2F0KSB7ICsrY2FsbHM7IH0pOwogICAgRVhQRUNUX0VRKFN0ZXBPbmVUaWNrKGVuZ2luZSkuc3RlcHNSdW4sIDApOwogICAgRVhQRUNUX0VRKGNhbGxzLCAwKTsKfQoKVEVTVChQbGF5YmFja0NvbnRyb2xUZXN0LCBTcGFjZUlzUGF1c2VBbmRQZXJpb2RJc1N0ZXApCnsKICAgIEVYUEVDVF9FUShDb21tYW5kRm9yS2V5KFZpZXdlcktleTo6U3BhY2UpLCBQbGF5YmFja0NvbW1hbmQ6OlRvZ2dsZVBhdXNlKTsKICAgIEVYUEVDVF9FUShDb21tYW5kRm9yS2V5KFZpZXdlcktleTo6UGVyaW9kKSwgUGxheWJhY2tDb21tYW5kOjpTdGVwT25jZSk7CiAgICBFWFBFQ1RfRVEoQ29tbWFuZEZvcktleShWaWV3ZXJLZXk6OkRpZ2l0MyksIFBsYXliYWNrQ29tbWFuZDo6RG91YmxlU3BlZWQpOwp9CgpURVNUKFBsYXliYWNrQ29udHJvbFRlc3QsIFVua25vd25LZXlNYXBzVG9Ob1BsYXliYWNrQ29tbWFuZCkKewogICAgRVhQRUNUX0VRKENvbW1hbmRGb3JLZXkoVmlld2VyS2V5OjpVbmtub3duKSwgUGxheWJhY2tDb21tYW5kOjpOb25lKTsKfQoKVEVTVChQbGF5YmFja0NvbnRyb2xUZXN0LCBSZXNldFJlc3RvcmVzVGhlU3RhcnRQb3NpdGlvbikKewogICAgU2NlbmUgc2NlbmUgPSBCdWlsZFByZXNldChQcmVzZXQ6OlR3b1VuaXRzLCAxKTsKICAgIElHYW1lVW5pdCogdW5pdCA9IHNjZW5lLnN0YXRlLT5HZXRBbGxVbml0cygpWzBdOwogICAgdW5pdC0+U2V0RGVidWdEZXN0aW5hdGlvbihWZWN0b3IyKDQwMC4wZiwgMzAwLjBmKSk7CiAgICBzY2VuZS5zdGF0ZS0+VXBkYXRlKGtGaXhlZER0KTsKICAgIEVYUEVDVF9HVCh1bml0LT5HZXRQb3NpdGlvbigpLngsIDIwMC4wZik7CiAgICBzY2VuZSA9IEJ1aWxkUHJlc2V0KFByZXNldDo6VHdvVW5pdHMsIDEpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHNjZW5lLnN0YXRlLT5HZXRBbGxVbml0cygpWzBdLT5HZXRQb3NpdGlvbigpLngsIDIwMC4wZik7Cn0KClRFU1QoUGxheWJhY2tDb250cm9sVGVzdCwgU2NyaXB0U3RlcE1vdmVzVW5pdFdoaWxlUGF1c2VkRnJhbWVzRG9Ob3QpCnsKICAgIHN0ZDo6c3RyaW5nIGVycm9yOwogICAgewogICAgICAgIEZyYW1lTG9vcCBsb29wKFByZXNldDo6VHdvVW5pdHMsIDEsIDEyODAsIDcyMCk7CiAgICAgICAgQVNTRVJUX1RSVUUobG9vcC5FeGVjdXRlU2NyaXB0KFBhcnNlU2NyaXB0KCJwYXVzZVxuZGVzdCAwIDQwMCAzMDBcbmZyYW1lcyAyXG4iLCBlcnJvciksIGVycm9yKSk7CiAgICAgICAgY29uc3QgZmxvYXQgcGF1c2VkWCA9IGxvb3AuU3RhdGUoKS5HZXRBbGxVbml0cygpWzBdLT5HZXRQb3NpdGlvbigpLng7CiAgICAgICAgRVhQRUNUX0ZMT0FUX0VRKHBhdXNlZFgsIDIwMC4wZik7CiAgICB9CiAgICB7CiAgICAgICAgRnJhbWVMb29wIGxvb3AoUHJlc2V0OjpUd29Vbml0cywgMSwgMTI4MCwgNzIwKTsKICAgICAgICBBU1NFUlRfVFJVRShsb29wLkV4ZWN1dGVTY3JpcHQoCiAgICAgICAgICAgIFBhcnNlU2NyaXB0KCJwYXVzZVxuZGVzdCAwIDQwMCAzMDBcbnN0ZXBcbmZyYW1lcyAxXG4iLCBlcnJvciksIGVycm9yKSk7CiAgICAgICAgY29uc3QgZmxvYXQgc3RlcHBlZFggPSBsb29wLlN0YXRlKCkuR2V0QWxsVW5pdHMoKVswXS0+R2V0UG9zaXRpb24oKS54OwogICAgICAgIEVYUEVDVF9HVChzdGVwcGVkWCwgMjAwLjBmKTsKICAgICAgICBFWFBFQ1RfTFQoc3RlcHBlZFgsIDIxMC4wZik7CiAgICB9Cn0KClRFU1QoUGxheWJhY2tDb250cm9sVGVzdCwgU3RlcFdpdGhEZXN0aW5hdGlvbk1vdmVzVW5pdE9uZVRpY2spCnsKICAgIFNjZW5lIHNjZW5lID0gQnVpbGRQcmVzZXQoUHJlc2V0OjpUd29Vbml0cywgMSk7CiAgICBHYW1lTG9naWNFbmdpbmUgZW5naW5lKGtGaXhlZER0KTsKICAgIGVuZ2luZS5TZXRVcGRhdGVDYWxsYmFjayhbJl0oZmxvYXQgZHQpIHsgc2NlbmUuc3RhdGUtPlVwZGF0ZShkdCk7IH0pOwogICAgc2NlbmUuc3RhdGUtPkdldEFsbFVuaXRzKClbMF0tPlNldERlYnVnRGVzdGluYXRpb24oVmVjdG9yMig0MDAuMGYsIDMwMC4wZikpOwogICAgZW5naW5lLlNldFBhdXNlZCh0cnVlKTsKICAgIFN0ZXBPbmVUaWNrKGVuZ2luZSk7CiAgICBjb25zdCBmbG9hdCB4ID0gc2NlbmUuc3RhdGUtPkdldEFsbFVuaXRzKClbMF0tPkdldFBvc2l0aW9uKCkueDsKICAgIEVYUEVDVF9HVCh4LCAyMDAuMGYpOwogICAgRVhQRUNUX0xUKHgsIDIxMC4wZik7Cn0K
+#include "core/gamestate/RTSGameState.h"
+
+#include "DrawList.h"
+#include "FrameLoop.h"
+#include "InputScript.h"
+#include "PlaybackControl.h"
+#include "Scenario.h"
+
+#include <gtest/gtest.h>
+
+TEST(PlaybackControlTest, StepWhilePausedRunsTheCallbackOnceAndAdvancesGameTime)
+{
+    int calls = 0;
+    GameLogicEngine engine(kFixedDt);
+    engine.SetUpdateCallback([&](float dt) {
+        EXPECT_FLOAT_EQ(dt, kFixedDt);
+        ++calls;
+    });
+    engine.SetPaused(true);
+    engine.SetSpeedMultiplier(4.0f);
+    TickResult result = StepOneTick(engine);
+    EXPECT_EQ(result.stepsRun, 1);
+    EXPECT_EQ(calls, 1);
+    EXPECT_TRUE(engine.IsPaused());
+    EXPECT_FLOAT_EQ(engine.GetSpeedMultiplier(), 4.0f);
+    EXPECT_FLOAT_EQ(engine.GetGameTime(), kFixedDt);
+}
+
+TEST(PlaybackControlTest, StepWhileRunningDoesNothing)
+{
+    int calls = 0;
+    GameLogicEngine engine(kFixedDt);
+    engine.SetUpdateCallback([&](float) { ++calls; });
+    EXPECT_EQ(StepOneTick(engine).stepsRun, 0);
+    EXPECT_EQ(calls, 0);
+}
+
+TEST(PlaybackControlTest, SpaceIsPauseAndPeriodIsStep)
+{
+    EXPECT_EQ(CommandForKey(ViewerKey::Space), PlaybackCommand::TogglePause);
+    EXPECT_EQ(CommandForKey(ViewerKey::Period), PlaybackCommand::StepOnce);
+    EXPECT_EQ(CommandForKey(ViewerKey::Digit3), PlaybackCommand::DoubleSpeed);
+}
+
+TEST(PlaybackControlTest, UnknownKeyMapsToNoPlaybackCommand)
+{
+    EXPECT_EQ(CommandForKey(ViewerKey::Unknown), PlaybackCommand::None);
+}
+
+TEST(PlaybackControlTest, ResetRestoresTheStartPosition)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    IGameUnit* unit = scene.state->GetAllUnits()[0];
+    unit->SetDebugDestination(Vector2(400.0f, 300.0f));
+    scene.state->Update(kFixedDt);
+    EXPECT_GT(unit->GetPosition().x, 200.0f);
+    scene = BuildPreset(Preset::TwoUnits, 1);
+    EXPECT_FLOAT_EQ(scene.state->GetAllUnits()[0]->GetPosition().x, 200.0f);
+}
+
+TEST(PlaybackControlTest, ScriptStepMovesUnitWhilePausedFramesDoNot)
+{
+    std::string error;
+    {
+        FrameLoop loop(Preset::TwoUnits, 1, 1280, 720);
+        ASSERT_TRUE(loop.ExecuteScript(ParseScript("pause\ndest 0 400 300\nframes 2\n", error), error));
+        const float pausedX = loop.State().GetAllUnits()[0]->GetPosition().x;
+        EXPECT_FLOAT_EQ(pausedX, 200.0f);
+    }
+    {
+        FrameLoop loop(Preset::TwoUnits, 1, 1280, 720);
+        ASSERT_TRUE(loop.ExecuteScript(
+            ParseScript("pause\ndest 0 400 300\nstep\nframes 1\n", error), error));
+        const float steppedX = loop.State().GetAllUnits()[0]->GetPosition().x;
+        EXPECT_GT(steppedX, 200.0f);
+        EXPECT_LT(steppedX, 210.0f);
+    }
+}
+
+TEST(PlaybackControlTest, StepWithDestinationMovesUnitOneTick)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    GameLogicEngine engine(kFixedDt);
+    engine.SetUpdateCallback([&](float dt) { scene.state->Update(dt); });
+    scene.state->GetAllUnits()[0]->SetDebugDestination(Vector2(400.0f, 300.0f));
+    engine.SetPaused(true);
+    StepOneTick(engine);
+    const float x = scene.state->GetAllUnits()[0]->GetPosition().x;
+    EXPECT_GT(x, 200.0f);
+    EXPECT_LT(x, 210.0f);
+}
