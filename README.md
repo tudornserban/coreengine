@@ -134,7 +134,7 @@ Things that will surprise you (also [VIEWER.md](docs/VIEWER.md#known-limitations
 
 ### Other languages and engines: C FFI
 
-[`ffi/c_api.h`](ffi/c_api.h) is the only cross-language boundary. It uses opaque handles, POD structs, and 0/-1 error returns. Call it from one thread unless you add your own locking.
+[`ffi/c_api.h`](ffi/c_api.h) is the only cross-language boundary. It uses opaque handles, POD structs, and plain `int` status returns (`1`/`0` for most calls; buffer functions return `-1` on error). Call it from one thread unless you add your own locking.
 
 ```c
 CE_Engine e = ce_engine_create(1600.0f, 900.0f, 42);  /* LCG seed; 0 is valid and deterministic */
@@ -147,7 +147,7 @@ char buf[65536]; ce_snapshot_get_json(e, buf, sizeof buf);
 ce_engine_destroy(e);
 ```
 
-**Deployment timer:** each team gets one spawn charge every **10 s** of simulated time (`ce_engine_update`). `ce_unit_spawn` returns `0` without a charge. Only `teamId == 1` uses the team-1 timer; **any other team id shares the team-2 timer.**
+**Deployment timer:** teams **1** and **2** each have a separate 10 s charge timer. A new engine starts with **no** charge; earn one with `ce_timer_grant_charge` or ~**300** logic steps at `1/30` s (`ce_engine_update`). `ce_unit_spawn` returns `0` without a charge or for invalid team ids; use `ce_last_result` for the reason.
 
 Current FFI limitations (full list in [FFI guide](docs/FFI_GUIDE.md#current-limitations)): `ce_behavior_register` is a no-op; `ce_engine_reset` rebuilds state with **rng seed 0** (drops the original seed); `ce_snapshot_get` always leaves `winner` at `0` and only sets `matchOver` when the engine marks itself stopped; built-in behavior names are Seek/Flee/Wander/Cohesion/Separation only (**not** `Aggro`).
 

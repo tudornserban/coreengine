@@ -426,6 +426,7 @@ else()
 
         file(GLOB_RECURSE TEST_SOURCES "tests/*.cpp")
         add_executable(coreengine_tests ${TEST_SOURCES})
+        target_sources(coreengine_tests PRIVATE ffi/c_api.cpp)
 
         target_include_directories(coreengine_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 

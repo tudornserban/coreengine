@@ -20,6 +20,18 @@ extern "C" {
 
 #include <stdint.h>
 
+#define CE_FFI_VERSION_MAJOR 1
+#define CE_FFI_VERSION_MINOR 1
+#define CE_FFI_VERSION_PATCH 0
+#define CE_FFI_VERSION       "1.1.0"
+
+typedef enum CE_Result {
+    CE_OK = 0,
+    CE_ERR_NULL = 1,
+    CE_ERR_NO_CHARGE = 2,
+    CE_ERR_INVALID_TEAM = 3
+} CE_Result;
+
 /* ---- Opaque handle types ---- */
 typedef void* CE_Engine;    /**< Opaque pointer to the engine instance */
 typedef void* CE_Unit;      /**< Opaque pointer to a game unit */
@@ -72,8 +84,9 @@ void ce_engine_reset(CE_Engine engine);
 
 /* ---- Unit management ---- */
 
-/** Spawn a unit at (x, y) for the given team.
- *  @return 1 on success, 0 if placement invalid or no charge */
+/** Spawn a unit at (x, y) for the given team (team ids **1** or **2** only).
+ *  Requires a deployment charge unless you called `ce_timer_grant_charge`.
+ *  @return 1 on success, 0 if no charge, invalid team, or null engine */
 int ce_unit_spawn(CE_Engine engine, int teamId, float x, float y);
 
 /** Get the total number of units currently in the simulation. */
@@ -115,9 +128,19 @@ int ce_timer_has_charge(CE_Engine engine, int teamId);
 /** Get deployment charge progress in [0.0, 1.0] */
 float ce_timer_get_progress(CE_Engine engine, int teamId);
 
+/** Grant one deployment charge immediately (simulates 10 s of timer fill).
+ *  @param teamId 1 or 2 only
+ *  @return 1 on success, 0 on error */
+int ce_timer_grant_charge(CE_Engine engine, int teamId);
+
+/** Result code from the last spawn, timer, territory, or grant call.
+ *  NULL handle -> CE_ERR_NULL */
+int ce_last_result(CE_Engine engine);
+
 /* ---- Territory ---- */
 
-/** Get territory ownership fraction for a team in [0.0, 1.0] */
+/** Get territory ownership percent for a team on the **0–100** scale (teams 1 and 2).
+ *  Values are not normalized to [0, 1] until a future FFI release. */
 float ce_territory_get_pct(CE_Engine engine, int teamId);
 
 /* ---- Behavior factory ---- */
@@ -137,6 +160,9 @@ int ce_behavior_list(char* buffer, int bufferSize);
 
 /** Returns the engine version string (e.g. "CoreEngine 1.0.0") */
 const char* ce_version();
+
+/** Returns the FFI package version string (CE_FFI_VERSION, e.g. "1.1.0") */
+const char* ce_ffi_version(void);
 
 #ifdef __cplusplus
 }
