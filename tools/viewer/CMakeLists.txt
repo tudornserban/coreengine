@@ -45,6 +45,7 @@ if(BUILD_TESTS)
         tests/CommandScriptTest.cpp
         tests/OverlayTest.cpp
         tests/ScenarioTest.cpp
+        tests/ViewerInputTest.cpp
     )
     target_link_libraries(coreengine_sdl2_viewer_tests PRIVATE
         coreengine_viewer_logic
@@ -56,7 +57,6 @@ if(BUILD_TESTS)
     )
     include(GoogleTest)
     gtest_discover_tests(coreengine_sdl2_viewer_tests)
-    add_test(NAME coreengine_sdl2_viewer_tests COMMAND coreengine_sdl2_viewer_tests)
 
     set(VIEWER_CTEST_COLLISION_PNG "${CMAKE_CURRENT_BINARY_DIR}/ctest_collision_cli.png")
     add_test(

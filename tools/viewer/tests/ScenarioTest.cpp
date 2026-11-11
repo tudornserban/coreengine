@@ -66,9 +66,11 @@ TEST(ScenarioTest, CollisionPresetSpawnAndVelocityLiterals)
     EXPECT_FLOAT_EQ(scene.state->GetAllUnits()[0]->GetPosition().x, 380.0f);
     EXPECT_FLOAT_EQ(scene.state->GetAllUnits()[0]->GetPosition().y, 300.0f);
     EXPECT_FLOAT_EQ(scene.state->GetAllUnits()[1]->GetPosition().x, 420.0f);
+    EXPECT_FLOAT_EQ(scene.state->GetAllUnits()[1]->GetPosition().y, 300.0f);
     EXPECT_EQ(scene.state->GetAllUnits()[0]->GetTeam(), 1);
     EXPECT_EQ(scene.state->GetAllUnits()[1]->GetTeam(), 2);
     EXPECT_FLOAT_EQ(scene.state->GetAllUnits()[0]->GetRadius(), 16.0f);
+    EXPECT_FLOAT_EQ(scene.state->GetAllUnits()[1]->GetRadius(), 16.0f);
     EXPECT_FLOAT_EQ(scene.state->GetAllUnits()[0]->GetVelocity().x, 80.0f);
     EXPECT_FLOAT_EQ(scene.state->GetAllUnits()[0]->GetVelocity().y, 0.0f);
     EXPECT_FLOAT_EQ(scene.state->GetAllUnits()[1]->GetVelocity().x, -80.0f);
@@ -155,6 +157,35 @@ TEST(ScenarioTest, CombatExplosionFiresOnceAfterTwentyFrames)
         ParseScript("overlay explosions 1\nframes 20\n", error), error));
     EXPECT_EQ(loop.CountFiredPendingScenarioEvents(), 1);
     EXPECT_EQ(CountExplosionOutlineCircles(loop.BuildViewDrawList()), 1);
+}
+
+TEST(ScenarioTest, CombatScheduledExplosionFiresExactlyOnceFromFrame15Through40)
+{
+    FrameLoop loop(Preset::Combat, 1, 1280, 720);
+    const float spawnX = loop.State().GetAllUnits()[0]->GetPosition().x;
+    int zeroToOneTransitions = 0;
+    int previousFired = 0;
+    for (int frame = 1; frame <= 40; ++frame)
+    {
+        loop.AdvancePresentationFrame();
+        const int firedNow = loop.CountFiredPendingScenarioEvents();
+        if (previousFired == 0 && firedNow == 1)
+        {
+            ++zeroToOneTransitions;
+        }
+        previousFired = firedNow;
+        if (frame < 15)
+        {
+            EXPECT_EQ(firedNow, 0) << "frame " << frame;
+        }
+        else
+        {
+            EXPECT_EQ(firedNow, 1) << "frame " << frame;
+        }
+    }
+    EXPECT_EQ(zeroToOneTransitions, 1);
+    EXPECT_GT(std::abs(loop.State().GetAllUnits()[0]->GetPosition().x - spawnX), 2.5f);
+    EXPECT_EQ(CountExplosionOutlineCircles(loop.BuildViewDrawList()), 0);
 }
 
 TEST(ScenarioTest, CombatPresetFiresExplosionAndDisplacesUnits)

@@ -16,4 +16,7 @@ struct ViewerKeyAction
     PlaybackCommand playback = PlaybackCommand::None;
 };
 
+/// SDL keysym-style integers (e.g. 32 = space, 1073741882 = F1); no SDL headers required.
+ViewerKey ViewerKeyFromPlaybackKeycode(int keycode);
+int OverlayFKeyIndexFromKeycode(int keycode);
 ViewerKeyAction HandleViewerKeycode(int keycode);

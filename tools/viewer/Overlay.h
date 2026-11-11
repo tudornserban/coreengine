@@ -88,5 +88,3 @@ enum class OverlayKey
 };
 
 OverlayKey OverlayKeyFromViewerFKey(int keyIndex);
-
-int OverlayFKeyIndexFromKeycode(int keycode);

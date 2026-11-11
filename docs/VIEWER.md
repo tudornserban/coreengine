@@ -52,7 +52,9 @@ Exit codes: `0` success, `2` bad CLI args, `3` SDL failure, `4` PNG write failur
 | Left drag | Box select |
 | Right click | Move selected units (`CommandSystem::MoveUnitsTo`) |
 | Mouse wheel | Zoom around cursor |
-| Middle drag | Pan camera (screen drag **right** decreases `Camera::center.x`; drag **down** increases `center.y`) |
+| Middle drag | Pan camera (see convention below) |
+
+**Screen vs world Y:** Both use a top-left origin with **Y increasing downward** (same as `Camera::WorldToScreen`). Middle-mouse pan applies `Camera::Pan(screenDelta)`, which subtracts each screen-pixel delta from `center` in world space: drag **right** decreases `center.x`, drag **down** decreases `center.y` (the map moves with the pointer).
 
 Screenshots use the **software raster buffer**, not SDL readback.
 
@@ -93,6 +95,11 @@ Debug verb `dest` sets `SetDebugDestination` directly (not a player-facing comma
 2. **Explosion overlay echo.** `RTSGameState::Update` clears the engine `explosions_` vector at the end of each tick. The viewer copies pending engine explosions into **echoes** with **0.5 s** lifetime inside `NoteExplosions`, which runs **before** `Update`, so the orange ring can still draw after the engine list is empty.
 3. **FSM automatic transitions do not tick.** The hub never calls `StateMachine::Update`; only manually `SetState` presets drive behaviors.
 4. **`GameStateSerializer::DeserializeFromString` always returns false.** Presets are C++ factories only (no JSON scenario load).
+
+## Test coverage notes
+
+- **Key mapping** (`ViewerKeyFromKeycode`, `OverlayFKeyIndexFromKeycode`, `HandleViewerKeycode`) is covered in `coreengine_sdl2_viewer_tests` with literal SDL keycode integers (no `SDL.h` in the logic library).
+- **SDL presenter path:** `SdlPresenter.cpp` forwards `SDL_KEYDOWN` `keysym.sym` values into `HandleViewerKeycode`; that wiring is not exercised without a real SDL window (headless tests call `HandleViewerKeycode` / `FrameLoop::ApplyViewerKeyAction` directly).
 
 ## Smoke commands
 

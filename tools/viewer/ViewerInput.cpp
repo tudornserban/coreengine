@@ -2,10 +2,17 @@
 
 #include "Overlay.h"
 
-namespace
+int OverlayFKeyIndexFromKeycode(int keycode)
 {
+    constexpr int kSdlF1 = 1073741882;
+    if (keycode >= kSdlF1 && keycode < kSdlF1 + 6)
+    {
+        return keycode - kSdlF1 + 1;
+    }
+    return 0;
+}
 
-ViewerKey ViewerKeyFromKeycode(int keycode)
+ViewerKey ViewerKeyFromPlaybackKeycode(int keycode)
 {
     switch (keycode)
     {
@@ -28,8 +35,6 @@ ViewerKey ViewerKeyFromKeycode(int keycode)
     }
 }
 
-} // namespace
-
 ViewerKeyAction HandleViewerKeycode(int keycode)
 {
     ViewerKeyAction action;
@@ -41,7 +46,7 @@ ViewerKeyAction HandleViewerKeycode(int keycode)
         return action;
     }
 
-    const ViewerKey viewerKey = ViewerKeyFromKeycode(keycode);
+    const ViewerKey viewerKey = ViewerKeyFromPlaybackKeycode(keycode);
     const PlaybackCommand playback = CommandForKey(viewerKey);
     if (playback != PlaybackCommand::None)
     {

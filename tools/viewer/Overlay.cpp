@@ -520,12 +520,3 @@ OverlayKey OverlayKeyFromViewerFKey(int keyIndex)
     }
 }
 
-int OverlayFKeyIndexFromKeycode(int keycode)
-{
-    constexpr int kSdlF1 = 1073741882;
-    if (keycode >= kSdlF1 && keycode < kSdlF1 + 6)
-    {
-        return keycode - kSdlF1 + 1;
-    }
-    return 0;
-}
