@@ -1,1 +1,17 @@
-ewogICJpZCI6ICJjb3JlLmNvbWJhdCIsCiAgInZlcnNpb24iOiAiMS4wLjEiLAogICJwYXRoIjogImNvcmUvY29tYmF0IiwKICAiZXhwb3J0cyI6IFsKICAgICJDb21iYXRNYW5hZ2VyIiwKICAgICJDb21tYW5kU3lzdGVtIiwKICAgICJTZWxlY3Rpb25TeXN0ZW0iLAogICAgIkV4cGxvc2lvbiIKICBdLAogICJyZXF1aXJlcyI6IHsKICAgICJjb3JlLmludGVyZmFjZXMiOiAiXjEuMi4wIiwKICAgICJjb3JlLm1hdGgiOiAiXjEuMC4wIgogIH0sCiAgInRhZ3MiOiBbImdhbWVwbGF5Il0sCiAgIm5vdGVzIjogIkNvbW1hbmRTeXN0ZW0gdXNlcyBJVW5pdEFnZW50IGZvciBTZXRVbml0U3RhdGUgLyBTZXRCZWhhdmlvclBhcmFtZXRlciAobm8gUlRTVW5pdCBpbmNsdWRlKS4gYCNpbmNsdWRlYCBib3VuZGFyaWVzIGFyZSBlbmZvcmNlZCB2aWEgSU5DTFVERV9FTkZPUkNFRF9NT0RVTEVTIChSMS42KS4iCn0=
+{
+  "id": "core.combat",
+  "version": "1.0.1",
+  "path": "core/combat",
+  "exports": [
+    "CombatManager",
+    "CommandSystem",
+    "SelectionSystem",
+    "Explosion"
+  ],
+  "requires": {
+    "core.interfaces": "^1.2.0",
+    "core.math": "^1.0.0"
+  },
+  "tags": ["gameplay"],
+  "notes": "CommandSystem uses IUnitAgent for SetUnitState / SetBehaviorParameter (no RTSUnit include). `#include` boundaries are enforced via INCLUDE_ENFORCED_MODULES (R1.6)."
+}

@@ -1,1 +1,24 @@
-ewogICJpZCI6ICJjb3JlLmNvbGxpc2lvbiIsCiAgInZlcnNpb24iOiAiMS4wLjQiLAogICJwYXRoIjogImNvcmUvY29sbGlzaW9uIiwKICAiZXhwb3J0cyI6IFsKICAgICJDb2xsaXNpb25TeXN0ZW0iLAogICAgIkNvbGxpc2lvbkRldGVjdG9yIiwKICAgICJTcGF0aWFsR3JpZCIsCiAgICAiQ29sbGlzaW9uUmVzb2x2ZXIiLAogICAgIlBvc2l0aW9uQ29ycmVjdG9yIiwKICAgICJJbW11bml0eU1hbmFnZXIiLAogICAgIklDb2xsaXNpb25EZXRlY3RvciIsCiAgICAiSUNvbGxpZGFibGUiLAogICAgIklDb2xsaXNpb25PYnNlcnZlciIKICBdLAogICJyZXF1aXJlcyI6IHsKICAgICJjb3JlLmludGVyZmFjZXMiOiAiXjEuMC4wIiwKICAgICJjb3JlLmluZmx1ZW5jZS50eXBlcyI6ICJeMS4wLjAiLAogICAgImNvcmUubWF0aCI6ICJeMS4wLjAiLAogICAgImNvcmUubG9nZ2luZyI6ICJeMS4wLjAiCiAgfSwKICAidGFncyI6IFsiZ2FtZXBsYXkiLCAicGh5c2ljcyJdLAogICJub3RlcyI6ICJBZ2VudC1hZ2VudCByZXNvbHV0aW9uIHJlcXVpcmVzIElVbml0S2luZW1hdGljcyBvbiBib3RoIHVuaXRzLiBNYXAtZWRnZSBjb250YWN0cyBhbHdheXMgZW1pdCBhIGNvbGxpc2lvbiBldmVudDsgaW1wdWxzZS9jb3JyZWN0aW9uL3B1c2ggcnVucyBvbmx5IHdoZW4gdW5pdCBBIGltcGxlbWVudHMgSVVuaXRLaW5lbWF0aWNzLiBgI2luY2x1ZGVgIGJvdW5kYXJpZXMgYXJlIGVuZm9yY2VkIHZpYSBJTkNMVURFX0VORk9SQ0VEX01PRFVMRVMgKFIxLjMpLiIKfQ==
+{
+  "id": "core.collision",
+  "version": "1.0.4",
+  "path": "core/collision",
+  "exports": [
+    "CollisionSystem",
+    "CollisionDetector",
+    "SpatialGrid",
+    "CollisionResolver",
+    "PositionCorrector",
+    "ImmunityManager",
+    "ICollisionDetector",
+    "ICollidable",
+    "ICollisionObserver"
+  ],
+  "requires": {
+    "core.interfaces": "^1.0.0",
+    "core.influence.types": "^1.0.0",
+    "core.math": "^1.0.0",
+    "core.logging": "^1.0.0"
+  },
+  "tags": ["gameplay", "physics"],
+  "notes": "Agent-agent resolution requires IUnitKinematics on both units. Map-edge contacts always emit a collision event; impulse/correction/push runs only when unit A implements IUnitKinematics. `#include` boundaries are enforced via INCLUDE_ENFORCED_MODULES (R1.3)."
+}
