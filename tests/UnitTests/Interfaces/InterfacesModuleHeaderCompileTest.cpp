@@ -1,1 +1,25 @@
-I2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lCZWhhdmlvci5oIgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lHYW1lTG9naWNSZW5kZXJlci5oIgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lHYW1lU3RhdGUuaCIKI2luY2x1ZGUgImNvcmUvaW50ZXJmYWNlcy9JR2FtZVVuaXQuaCIKI2luY2x1ZGUgImNvcmUvaW50ZXJmYWNlcy9JVW5pdEtpbmVtYXRpY3MuaCIKI2luY2x1ZGUgImNvcmUvaW50ZXJmYWNlcy9JVW5pdEFnZW50LmgiCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSUlucHV0UmVhZGVyLmgiCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSU1hcENvbXBvbmVudC5oIgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lTZXJpYWxpemVyLmgiCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSVRyYW5zaXRpb25Db25kaXRpb24uaCIKI2luY2x1ZGUgImNvcmUvaW50ZXJmYWNlcy9JU2ltdWxhdGlvblNuYXBzaG90LmgiCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSVVuaXRCZWhhdmlvckhvc3QuaCIKCm5hbWVzcGFjZSB7CgovLy8gU21va2UgY29tcGlsZTogZXhwb3J0ZWQgaW50ZXJmYWNlIGhlYWRlcnMgcGFyc2Ugd2l0aCBkZWNsYXJlZCBmb3VuZGF0aW9uIGRlcHMgb25seS4KY2xhc3MgSW50ZXJmYWNlc0hlYWRlckNvbXBpbGVUZXN0IDogcHVibGljIDo6dGVzdGluZzo6VGVzdCB7fTsKCn0gIC8vIG5hbWVzcGFjZQoKVEVTVF9GKEludGVyZmFjZXNIZWFkZXJDb21waWxlVGVzdCwgQWxsRXhwb3J0ZWRIZWFkZXJzSW5jbHVkZWQpIHsKICAgIFNVQ0NFRUQoKTsKfQ==
+#include <gtest/gtest.h>
+
+#include "core/interfaces/IBehavior.h"
+#include "core/interfaces/IGameLogicRenderer.h"
+#include "core/interfaces/IGameState.h"
+#include "core/interfaces/IGameUnit.h"
+#include "core/interfaces/IUnitKinematics.h"
+#include "core/interfaces/IUnitAgent.h"
+#include "core/interfaces/IInputReader.h"
+#include "core/interfaces/IMapComponent.h"
+#include "core/interfaces/ISerializer.h"
+#include "core/interfaces/ITransitionCondition.h"
+#include "core/interfaces/ISimulationSnapshot.h"
+#include "core/interfaces/IUnitBehaviorHost.h"
+
+namespace {
+
+/// Smoke compile: exported interface headers parse with declared foundation deps only.
+class InterfacesHeaderCompileTest : public ::testing::Test {};
+
+}  // namespace
+
+TEST_F(InterfacesHeaderCompileTest, AllExportedHeadersIncluded) {
+    SUCCEED();
+}
