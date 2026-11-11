@@ -1,8 +1,17 @@
 #include <gtest/gtest.h>
 #include <cstdint>
 #include <cstring>
+#include <map>
+#include <memory>
+#include <stdexcept>
+#include <string>
+#include <vector>
 
+#include "core/ai/BehaviorContext.h"
 #include "core/ai/BehaviorFactory.h"
+#include "core/influence_types/InfluenceFieldItem.h"
+#include "core/interfaces/IBehavior.h"
+#include "core/math/Vector2.h"
 #include "ffi/c_api.h"
 
 namespace {
@@ -32,6 +41,33 @@ void ZeroAccel(float /*x*/, float /*y*/, float /*vx*/, float /*vy*/, int /*team*
     *outAy = 0.0f;
 }
 
+class FieldAttractorBehavior : public IBehavior {
+public:
+    explicit FieldAttractorBehavior(Vector2 attractor) : attractor_(attractor) {}
+
+    std::vector<InfluenceFieldItem> GenerateFieldItems(const BehaviorContext& /*ctx*/) override
+    {
+        AttractorParams params;
+        params.AttractorStrength = 5000.0f;
+        params.functionType = AttractorType::LINEAR;
+        return {InfluenceFieldItem::CreateAttractor(attractor_, 1.0f, params)};
+    }
+
+    const char* GetName() const override { return "FieldAttractor"; }
+
+    std::map<std::string, float>& GetParameters() override { return params_; }
+    const std::map<std::string, float>& GetParameters() const override { return params_; }
+
+private:
+    Vector2 attractor_;
+    std::map<std::string, float> params_;
+};
+
+extern "C" void ThrowingPushAccel(float, float, float, float, int, float, float*, float*, void*)
+{
+    throw std::runtime_error("callback throw");
+}
+
 struct UserdataProbe {
     int calls = 0;
     int expectedTeam = 0;
@@ -58,6 +94,9 @@ protected:
         BehaviorFactory::Unregister("Push");
         BehaviorFactory::Unregister("PushZero");
         BehaviorFactory::Unregister("UserdataBehavior");
+        BehaviorFactory::Unregister("FieldAttractor");
+        BehaviorFactory::Unregister("ThrowingPush");
+        // Push may already be unregistered in individual tests.
         if (e) {
             ce_engine_destroy(e);
             e = nullptr;
@@ -98,6 +137,36 @@ TEST_F(CApiBehaviorTest, CenterUnitStaysStillBeforeBehavior) {
     EXPECT_EQ(FloatBits(st.y), FloatBits(450.0f));
     EXPECT_EQ(FloatBits(st.vx), FloatBits(0.0f));
     EXPECT_EQ(FloatBits(st.vy), FloatBits(0.0f));
+}
+
+TEST_F(CApiBehaviorTest, PushNearLeftEdgeAddsStaticForceToVelocity) {
+    e = ce_engine_create(kMapW, kMapH, 1);
+    ASSERT_NE(e, nullptr);
+    ASSERT_EQ(ce_behavior_register_accel("Push", PushAccel, nullptr), 1);
+    ASSERT_EQ(ce_timer_grant_charge(e, 1), 1);
+    ASSERT_EQ(ce_unit_spawn(e, 1, 20.0f, 450.0f), 1);
+    ASSERT_EQ(ce_unit_set_behavior(e, 0, "Push"), 1);
+    ASSERT_EQ(ce_engine_update(e, kStep), 1);
+
+    CE_UnitState st{};
+    ASSERT_EQ(ce_unit_get_state(e, 0, &st), 1);
+    EXPECT_EQ(FloatBits(st.vx), 0x3f800031u);
+    EXPECT_EQ(FloatBits(st.vy), 0xbeccccceu);
+}
+
+TEST_F(CApiBehaviorTest, PushNearTopEdgeAddsStaticForceToVelocity) {
+    e = ce_engine_create(kMapW, kMapH, 1);
+    ASSERT_NE(e, nullptr);
+    ASSERT_EQ(ce_behavior_register_accel("Push", PushAccel, nullptr), 1);
+    ASSERT_EQ(ce_timer_grant_charge(e, 1), 1);
+    ASSERT_EQ(ce_unit_spawn(e, 1, 800.0f, 20.0f), 1);
+    ASSERT_EQ(ce_unit_set_behavior(e, 0, "Push"), 1);
+    ASSERT_EQ(ce_engine_update(e, kStep), 1);
+
+    CE_UnitState st{};
+    ASSERT_EQ(ce_unit_get_state(e, 0, &st), 1);
+    EXPECT_EQ(FloatBits(st.vx), 0x3f800000u);
+    EXPECT_EQ(FloatBits(st.vy), 0xbecccc0bu);
 }
 
 TEST_F(CApiBehaviorTest, PushCallbackIntegratesExactLiterals) {
@@ -148,6 +217,50 @@ TEST_F(CApiBehaviorTest, UserdataPassthrough) {
     EXPECT_EQ(probe.calls, 1);
     EXPECT_EQ(probe.expectedTeam, 1);
     EXPECT_EQ(FloatBits(probe.lastDt), FloatBits(kStep));
+}
+
+TEST_F(CApiBehaviorTest, FieldItemsNearLeftEdgeSplitStaticAndBehaviorForces) {
+    BehaviorFactory::Register(
+        "FieldAttractor",
+        [] { return std::make_unique<FieldAttractorBehavior>(Vector2(1500.0f, 450.0f)); });
+
+    e = ce_engine_create(kMapW, kMapH, 1);
+    ASSERT_NE(e, nullptr);
+    ASSERT_EQ(ce_timer_grant_charge(e, 1), 1);
+    ASSERT_EQ(ce_unit_spawn(e, 1, 20.0f, 450.0f), 1);
+    ASSERT_EQ(ce_unit_set_behavior(e, 0, "FieldAttractor"), 1);
+    ASSERT_EQ(ce_engine_update(e, kStep), 1);
+
+    CE_UnitState st{};
+    ASSERT_EQ(ce_unit_get_state(e, 0, &st), 1);
+    // Split hub: behavior field pull capped to 300 then left-edge static adds on X (0x41200007 vs 0x41200000 w/o edges).
+    EXPECT_EQ(FloatBits(st.vx), 0x41200007u);
+    EXPECT_EQ(FloatBits(st.vy), FloatBits(0.0f));
+}
+
+TEST_F(CApiBehaviorTest, UnregisteredBehaviorSetBehaviorFails) {
+    e = ce_engine_create(kMapW, kMapH, 1);
+    ASSERT_NE(e, nullptr);
+    ASSERT_EQ(ce_behavior_register_accel("Push", PushAccel, nullptr), 1);
+    BehaviorFactory::Unregister("Push");
+    ASSERT_EQ(ce_timer_grant_charge(e, 1), 1);
+    ASSERT_EQ(ce_unit_spawn(e, 1, 400.0f, 450.0f), 1);
+    EXPECT_EQ(ce_unit_set_behavior(e, 0, "Push"), 0);
+}
+
+TEST_F(CApiBehaviorTest, ThrowingCallbackDoesNotEscapeEngineUpdate) {
+    e = ce_engine_create(kMapW, kMapH, 1);
+    ASSERT_NE(e, nullptr);
+    ASSERT_EQ(ce_behavior_register_accel("ThrowingPush", ThrowingPushAccel, nullptr), 1);
+    ASSERT_EQ(ce_timer_grant_charge(e, 1), 1);
+    ASSERT_EQ(ce_unit_spawn(e, 1, 800.0f, 450.0f), 1);
+    ASSERT_EQ(ce_unit_set_behavior(e, 0, "ThrowingPush"), 1);
+    EXPECT_EQ(ce_engine_update(e, kStep), 1);
+
+    CE_UnitState st{};
+    ASSERT_EQ(ce_unit_get_state(e, 0, &st), 1);
+    EXPECT_EQ(FloatBits(st.vx), FloatBits(0.0f));
+    EXPECT_EQ(FloatBits(st.vy), FloatBits(0.0f));
 }
 
 TEST_F(CApiBehaviorTest, FfiVersionIs130) {

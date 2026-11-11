@@ -22,6 +22,7 @@
 #include <cstring>
 #include <sstream>
 #include <string>
+#include <exception>
 
 static constexpr float kSpawnChargeSeconds = 10.0f;
 
@@ -73,15 +74,19 @@ public:
         float ax = 0.0f;
         float ay = 0.0f;
         if (fn_ && ctx.self) {
-            fn_(ctx.self->GetPosition().x,
-                ctx.self->GetPosition().y,
-                ctx.self->GetVelocity().x,
-                ctx.self->GetVelocity().y,
-                ctx.self->GetTeam(),
-                ctx.deltaTime,
-                &ax,
-                &ay,
-                userdata_);
+            try {
+                fn_(ctx.self->GetPosition().x,
+                    ctx.self->GetPosition().y,
+                    ctx.self->GetVelocity().x,
+                    ctx.self->GetVelocity().y,
+                    ctx.self->GetTeam(),
+                    ctx.deltaTime,
+                    &ax,
+                    &ay,
+                    userdata_);
+            } catch (...) {
+                return Vector2::Zero();
+            }
         }
         return Vector2(ax, ay);
     }
@@ -353,11 +358,15 @@ int ce_behavior_register_accel(const char* name, CE_AccelFn fn, void* userdata)
     if (!name || name[0] == '\0' || !fn) {
         return 0;
     }
-    const std::string key(name);
-    BehaviorFactory::Register(key, [key, fn, userdata]() {
-        return std::make_unique<CAccelBehavior>(key, fn, userdata);
-    });
-    return 1;
+    try {
+        const std::string key(name);
+        BehaviorFactory::Register(key, [key, fn, userdata]() {
+            return std::make_unique<CAccelBehavior>(key, fn, userdata);
+        });
+        return 1;
+    } catch (...) {
+        return 0;
+    }
 }
 
 int ce_behavior_list(char* buffer, int bufferSize)
