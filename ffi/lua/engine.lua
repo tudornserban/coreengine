@@ -30,8 +30,11 @@ ffi.cdef[[
     int   ce_snapshot_get_json(void* engine, char* buf, int size);
     int   ce_timer_has_charge(void* engine, int teamId);
     float ce_timer_get_progress(void* engine, int teamId);
+    int   ce_timer_grant_charge(void* engine, int teamId);
+    int   ce_last_result(void* engine);
     float ce_territory_get_pct(void* engine, int teamId);
-    const char* ce_version();
+    const char* ce_version(void);
+    const char* ce_ffi_version(void);
 ]]
 
 local lib = ffi.load("coreengine_ffi")
@@ -44,11 +47,14 @@ function M.update(e, dt)         return lib.ce_engine_update(e, dt) end
 function M.reset(e)              lib.ce_engine_reset(e) end
 function M.spawn(e, team, x, y)  return lib.ce_unit_spawn(e, team, x, y) end
 function M.has_charge(e, team)   return lib.ce_timer_has_charge(e, team) ~= 0 end
+function M.grant_charge(e, team) return lib.ce_timer_grant_charge(e, team) ~= 0 end
+function M.last_result(e)        return lib.ce_last_result(e) end
 function M.unit_count(e)         return lib.ce_unit_count(e) end
 function M.set_behavior(e, i, n) return lib.ce_unit_set_behavior(e, i, n) end
 function M.field_query(e, x, y)  return lib.ce_field_query(e, x, y) end
 function M.territory(e, team)    return lib.ce_territory_get_pct(e, team) end
 function M.version()             return ffi.string(lib.ce_version()) end
+function M.ffi_version()         return ffi.string(lib.ce_ffi_version()) end
 
 function M.snapshot_json(e)
     local buf = ffi.new("char[65536]")

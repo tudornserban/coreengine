@@ -4,6 +4,12 @@ How to use CoreEngine in different game engines and platforms.
 
 ---
 
+## C FFI — deployment and teams
+
+When using `ffi/c_api.h` (`coreengine_ffi`), playable teams are **`1`** and **`2`** only. A new engine has **no** spawn charge until you either call `ce_timer_grant_charge(engine, team)` or advance ~**300** logic steps at `1/30` s via `ce_engine_update`. If `ce_unit_spawn` returns `0`, call `ce_last_result(engine)` for `CE_ERR_NO_CHARGE` or `CE_ERR_INVALID_TEAM`. See [FFI_GUIDE.md](FFI_GUIDE.md) for full API notes.
+
+---
+
 ## Unreal Engine 5
 
 ### Step 1: Copy `core/` into your UE5 project
@@ -99,6 +105,8 @@ public static class CoreEngine
     [DllImport(LIB)] public static extern void   ce_engine_destroy(System.IntPtr engine);
     [DllImport(LIB)] public static extern int    ce_engine_update(System.IntPtr engine, float dt);
     [DllImport(LIB)] public static extern int    ce_timer_has_charge(System.IntPtr engine, int team);
+    [DllImport(LIB)] public static extern int    ce_timer_grant_charge(System.IntPtr engine, int team);
+    [DllImport(LIB)] public static extern int    ce_last_result(System.IntPtr engine);
     [DllImport(LIB)] public static extern int    ce_unit_spawn(System.IntPtr engine, int team, float x, float y);
     [DllImport(LIB)] public static extern int    ce_unit_count(System.IntPtr engine);
     [DllImport(LIB)] public static extern float  ce_territory_get_pct(System.IntPtr engine, int team);

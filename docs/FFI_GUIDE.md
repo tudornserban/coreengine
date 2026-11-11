@@ -11,7 +11,7 @@ The entire public surface is in `ffi/c_api.h`. Rules:
 - All handles are opaque `void*` — never dereference from the foreign side
 - All strings are null-terminated C strings
 - All output structs (`CE_UnitState`, `CE_GameSnapshot`) are plain C POD
-- No exceptions cross the boundary — errors return 0 or -1
+- No exceptions cross the boundary — most functions return `1`/`0`; string buffer calls return `-1` on error; use `ce_last_result` after spawn/timer/territory/grant calls
 - Thread safety: call all functions from the same thread unless you add a mutex
 
 ---
@@ -22,11 +22,13 @@ The FFI engine owns two `DeploymentTimer` instances (10 s charge interval each).
 
 | Rule | Behavior |
 |------|----------|
-| First charge | Arrives after **10 s** of simulated time (≈300 updates at 1/30 s) unless you fast-forward with larger `dt` |
-| `ce_unit_spawn` | Returns `0` when the team has no charge; otherwise spends one charge and returns `1` |
-| Team id | **`teamId == 1`** uses the player-1 timer; **any other `teamId` uses the player-2 timer** |
+| Fresh engine | **No** deployment charge; use `ce_timer_grant_charge(engine, team)` or ~**300** updates at `1/30` s |
+| First natural charge | Arrives after **10 s** of simulated time (300 logic steps at 1/30 s) — a single `ce_engine_update(engine, 10.f)` is **not** enough (299 steps worth) |
+| `ce_unit_spawn` | Returns `0` when the team has no charge or `teamId` is not 1 or 2; otherwise spends one charge and returns `1` |
+| Team id | Only **`1`** and **`2`** are valid; other ids fail with `CE_ERR_INVALID_TEAM` and do not touch either timer |
+| Diagnostics | `ce_last_result(engine)` returns `CE_ERR_NO_CHARGE`, `CE_ERR_INVALID_TEAM`, etc. |
 
-Always step the simulation until `ce_timer_has_charge(engine, team)` is true before calling `ce_unit_spawn`.
+Always step the simulation until `ce_timer_has_charge(engine, team)` is true, or call `ce_timer_grant_charge`, before `ce_unit_spawn`.
 
 ```c
 CE_Engine eng = ce_engine_create(1600.0f, 900.0f, 42);
@@ -199,9 +201,12 @@ ce_unit_spawn(eng, 1, 400, 450);
 | `ce_field_query(engine, x, y)` | Sample influence field |
 | `ce_snapshot_get(engine, out)` | Match summary (winner not populated) |
 | `ce_snapshot_get_json(engine, buf, size)` | Get JSON snapshot |
-| `ce_timer_has_charge(engine, team)` | Check spawn charge |
+| `ce_timer_has_charge(engine, team)` | Check spawn charge (teams 1 and 2) |
 | `ce_timer_get_progress(engine, team)` | Charge progress [0,1] |
-| `ce_territory_get_pct(engine, team)` | Territory % |
+| `ce_timer_grant_charge(engine, team)` | Grant one charge immediately (FFI 1.1.0+) |
+| `ce_last_result(engine)` | Last spawn/timer/territory/grant result code |
+| `ce_territory_get_pct(engine, team)` | Territory % (teams 1 and 2) |
 | `ce_behavior_list(buf, size)` | List registered behaviors |
 | `ce_behavior_register(name)` | **No-op hook** (see limitations) |
 | `ce_version()` | Engine version string |
+| `ce_ffi_version()` | FFI package version (`CE_FFI_VERSION`) |

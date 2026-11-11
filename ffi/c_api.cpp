@@ -18,21 +18,34 @@
 #include <cstring>
 #include <sstream>
 
+static constexpr float kSpawnChargeSeconds = 10.0f;
+
 // --- Internal engine context ---
 
 struct EngineContext {
-    std::unique_ptr<RTSGameState>   gameState;
+    std::unique_ptr<RTSGameState>    gameState;
     std::unique_ptr<GameLogicEngine> logicEngine;
-    DeploymentTimer                  p1Timer{10.0f};
-    DeploymentTimer                  p2Timer{10.0f};
+    DeploymentTimer                  p1Timer{kSpawnChargeSeconds};
+    DeploymentTimer                  p2Timer{kSpawnChargeSeconds};
     float                            mapWidth  = 1600.0f;
     float                            mapHeight = 900.0f;
     bool                             running   = true;
+    int                              lastResult = CE_OK;
 };
 
 static EngineContext* ctx(CE_Engine e)
 {
     return reinterpret_cast<EngineContext*>(e);
+}
+
+static bool IsPlayableTeam(int teamId)
+{
+    return teamId == 1 || teamId == 2;
+}
+
+static DeploymentTimer* TimerForTeam(EngineContext* c, int teamId)
+{
+    return teamId == 1 ? &c->p1Timer : &c->p2Timer;
 }
 
 // --- Lifecycle ---
@@ -44,6 +57,7 @@ CE_Engine ce_engine_create(float mapWidth, float mapHeight, uint64_t rngSeed)
     auto* c = new EngineContext();
     c->mapWidth    = mapWidth;
     c->mapHeight   = mapHeight;
+    c->lastResult  = CE_OK;
     c->gameState   = std::make_unique<RTSGameState>(Vector2(mapWidth, mapHeight), rngSeed);
     c->logicEngine = std::make_unique<GameLogicEngine>(1.0f / 30.0f);
     c->logicEngine->SetUpdateCallback([c](float dt) {
@@ -73,9 +87,10 @@ void ce_engine_reset(CE_Engine engine)
     if (!c) return;
     c->gameState   = std::make_unique<RTSGameState>(Vector2(c->mapWidth, c->mapHeight));
     c->logicEngine->Reset();
-    c->p1Timer     = DeploymentTimer(10.0f);
-    c->p2Timer     = DeploymentTimer(10.0f);
+    c->p1Timer     = DeploymentTimer(kSpawnChargeSeconds);
+    c->p2Timer     = DeploymentTimer(kSpawnChargeSeconds);
     c->running     = true;
+    c->lastResult  = CE_OK;
 }
 
 // --- Unit management ---
@@ -85,12 +100,21 @@ int ce_unit_spawn(CE_Engine engine, int teamId, float x, float y)
     auto* c = ctx(engine);
     if (!c) return 0;
 
-    DeploymentTimer& timer = (teamId == 1) ? c->p1Timer : c->p2Timer;
-    if (!timer.HasCharge()) return 0;
+    if (!IsPlayableTeam(teamId)) {
+        c->lastResult = CE_ERR_INVALID_TEAM;
+        return 0;
+    }
+
+    DeploymentTimer& timer = *TimerForTeam(c, teamId);
+    if (!timer.HasCharge()) {
+        c->lastResult = CE_ERR_NO_CHARGE;
+        return 0;
+    }
 
     timer.SpendCharge();
     auto unit = std::make_unique<RTSUnit>(Vector2(x, y), teamId);
     c->gameState->AddUnit(std::move(unit));
+    c->lastResult = CE_OK;
     return 1;
 }
 
@@ -197,14 +221,44 @@ int ce_timer_has_charge(CE_Engine engine, int teamId)
 {
     auto* c = ctx(engine);
     if (!c) return 0;
-    return ((teamId == 1) ? c->p1Timer : c->p2Timer).HasCharge() ? 1 : 0;
+    if (!IsPlayableTeam(teamId)) {
+        c->lastResult = CE_ERR_INVALID_TEAM;
+        return 0;
+    }
+    c->lastResult = CE_OK;
+    return TimerForTeam(c, teamId)->HasCharge() ? 1 : 0;
 }
 
 float ce_timer_get_progress(CE_Engine engine, int teamId)
 {
     auto* c = ctx(engine);
     if (!c) return 0.0f;
-    return ((teamId == 1) ? c->p1Timer : c->p2Timer).GetChargeProgress();
+    if (!IsPlayableTeam(teamId)) {
+        c->lastResult = CE_ERR_INVALID_TEAM;
+        return 0.0f;
+    }
+    c->lastResult = CE_OK;
+    return TimerForTeam(c, teamId)->GetChargeProgress();
+}
+
+int ce_timer_grant_charge(CE_Engine engine, int teamId)
+{
+    auto* c = ctx(engine);
+    if (!c) return 0;
+    if (!IsPlayableTeam(teamId)) {
+        c->lastResult = CE_ERR_INVALID_TEAM;
+        return 0;
+    }
+    TimerForTeam(c, teamId)->Update(kSpawnChargeSeconds);
+    c->lastResult = CE_OK;
+    return 1;
+}
+
+int ce_last_result(CE_Engine engine)
+{
+    auto* c = ctx(engine);
+    if (!c) return CE_ERR_NULL;
+    return c->lastResult;
 }
 
 // --- Territory ---
@@ -213,11 +267,16 @@ float ce_territory_get_pct(CE_Engine engine, int teamId)
 {
     auto* c = ctx(engine);
     if (!c) return 0.0f;
+    if (!IsPlayableTeam(teamId)) {
+        c->lastResult = CE_ERR_INVALID_TEAM;
+        return 0.0f;
+    }
 
     TerritoryCalculator tc;
     TerritoryCalculator::Arena arena{c->mapWidth, c->mapHeight};
     auto result = tc.Calculate(c->gameState->GetAllUnits(), arena);
 
+    c->lastResult = CE_OK;
     return (teamId == 1) ? result.team1Pct : result.team2Pct;
 }
 
@@ -251,4 +310,9 @@ int ce_behavior_list(char* buffer, int bufferSize)
 const char* ce_version()
 {
     return "CoreEngine 1.0.0";
+}
+
+const char* ce_ffi_version(void)
+{
+    return CE_FFI_VERSION;
 }
