@@ -1,1 +1,65 @@
-IyBNb2R1bGU6IGBjb3JlLnNlcmlhbGl6YXRpb25gCgpNYW5pZmVzdDogW2RvY3MvYWdlbnRpYy9tb2R1bGVzL2NvcmUuc2VyaWFsaXphdGlvbi5tb2R1bGUuanNvbl0oLi4vLi4vZG9jcy9hZ2VudGljL21vZHVsZXMvY29yZS5zZXJpYWxpemF0aW9uLm1vZHVsZS5qc29uKQoKIyMgUHVycG9zZQoKKipKU09OLW9yaWVudGVkIGdhbWUgc3RhdGUgc25hcHNob3RzKiogZm9yIGBSVFNHYW1lU3RhdGVgOiBpbXBsZW1lbnRzIGBJU2VyaWFsaXplcmAgc28gY2FsbGVycyBjYW4gZXhjaGFuZ2UgcG9ydGFibGUgc3RhdGUgc3RyaW5ncyBvciBieXRlIGJ1ZmZlcnMgKHNlcnZlciB2YWxpZGF0aW9uLCByZXBsYXkgc2NhZmZvbGRpbmcsIEZGSSBoZWxwZXJzKS4gVGhpcyBtb2R1bGUgZG9lcyBub3Qgb3duIHNpbXVsYXRpb24sIG1hcCBsYXlvdXQsIGNvbWJhdCwgb3IgQUkgYmVoYXZpb3IuCgojIyBQdWJsaWMgc3VyZmFjZSAoYGV4cG9ydHNgKQoKSW5jbHVkZSBoZWFkZXJzIGZyb20gdGhlIHJlcG8gcm9vdCwgZS5nLiBgI2luY2x1ZGUgImNvcmUvc2VyaWFsaXphdGlvbi9HYW1lU3RhdGVTZXJpYWxpemVyLmgiYC4KCnwgU3ltYm9sIHwgS2luZCB8IEhlYWRlciB8IE5vdGVzIHwKfC0tLS0tLS0tfC0tLS0tLXwtLS0tLS0tLXwtLS0tLS0tfAp8IGBHYW1lU3RhdGVTZXJpYWxpemVyYCB8IGNsYXNzIHwgYEdhbWVTdGF0ZVNlcmlhbGl6ZXIuaGAgfCBJbXBsZW1lbnRzIGBJU2VyaWFsaXplcmAg4oCUIGAuY3BwYCBpbiB0aGlzIG1vZHVsZSB8CgojIyMgQ29udHJhY3QgaGlnaGxpZ2h0cwoKLSAqKkludGVyZmFjZXM6KiogZGVwZW5kIG9uIGBJU2VyaWFsaXplcmAgZnJvbSBgY29yZS9pbnRlcmZhY2VzL2AuCi0gKipHYW1lIHN0YXRlOioqIHJlYWRzIG1hcCBzaXplIGFuZCB1bml0cyB0aHJvdWdoIGBJU2ltdWxhdGlvblNuYXBzaG90YDsgcmV0YWlucyBgR2FtZVN0YXRlU2VyaWFsaXplcihjb25zdCBSVFNHYW1lU3RhdGUqKWAgLyBgU2V0U3RhdGVgIGFuZCB0aGUgYGNvcmUuZ2FtZXN0YXRlYCBtYW5pZmVzdCBlZGdlIChgLmNwcGAgc3RpbGwgaW5jbHVkZXMgYFJUU0dhbWVTdGF0ZS5oYCkuCi0gKipPdmVybG9hZDoqKiBgR2FtZVN0YXRlU2VyaWFsaXplcihjb25zdCBJU2ltdWxhdGlvblNuYXBzaG90KilgIC8gYFNldFNuYXBzaG90YCBmb3Igbm9uLWh1YiBzbmFwc2hvdCBzb3VyY2VzLgoKIyMgRGVwZW5kZW5jaWVzIChgcmVxdWlyZXNgKQoKfCBNb2R1bGUgfCBSYW5nZSB8IFdoeSB8CnwtLS0tLS0tLXwtLS0tLS0tfC0tLS0tfAp8IGBjb3JlLmdhbWVzdGF0ZWAgfCBgXjEuMC4wYCB8IFNlcmlhbGl6ZS9kZXNlcmlhbGl6ZSBhZ2FpbnN0IGBSVFNHYW1lU3RhdGVgIHwKfCBgY29yZS5pbnRlcmZhY2VzYCB8IGBeMS4wLjBgIHwgYElTZXJpYWxpemVyYCBiYXNlIGNvbnRyYWN0IHwKCkFsbG93ZWQgYCNpbmNsdWRlYCBpbiBgY29yZS9zZXJpYWxpemF0aW9uLyoqYDogc3RhbmRhcmQgbGlicmFyeSAoYDzigKY+YCksIGhlYWRlcnMgdW5kZXIgYGNvcmUvc2VyaWFsaXphdGlvbi9gLCBvciBwYXRocyB1bmRlciBgcmVxdWlyZXNgIG1vZHVsZXMuIE5vIG90aGVyIGBjb3JlLypgIHNpYmxpbmdzLCBgcGxhdGZvcm0vYCwgb3IgYGZmaS9gIChlbmZvcmNlZCBieSBgLi9zY3JpcHRzL2NoZWNrLW1vZHVsZS1kZXBzLnNoYCkuCgojIyBBZ2VudCBlZGl0IHNjb3BlCgp8IEFsbG93IHwgUGF0aCB8CnwtLS0tLS0tfC0tLS0tLXwKfCBJbXBsZW1lbnRhdGlvbiB8IGBjb3JlL3NlcmlhbGl6YXRpb24vKipgIHwKfCBNYW5pZmVzdCB8IGBkb2NzL2FnZW50aWMvbW9kdWxlcy9jb3JlLnNlcmlhbGl6YXRpb24ubW9kdWxlLmpzb25gIHwKfCBVbml0IHRlc3RzIHwgYHRlc3RzL1VuaXRUZXN0cy9TZXJpYWxpemF0aW9uLyoqYCB8CnwgU2hhcmVkIGFnZW50aWMgZG9jcyB8IGBkb2NzL2FnZW50aWMvKmAgKHdoZW4gcG9saWN5IHJlcXVpcmVzKSB8CgojIyBJbnZhcmlhbnRzCgotIERvIG5vdCBpbnRyb2R1Y2UgYCNpbmNsdWRlYCBvZiBvdGhlciBDb3JlRW5naW5lIG1vZHVsZXMgd2l0aG91dCB1cGRhdGluZyBtYW5pZmVzdCBgcmVxdWlyZXNgLCBkZXBlbmRlbmN5IHBvbGljeSwgYW5kIHJlZ2VuZXJhdGluZyBgZG9jcy9kZXBzLypgLgotIEtlZXAgcHVibGljIGluY2x1ZGVzIHN0YWJsZSBhdCBgY29yZS9zZXJpYWxpemF0aW9uL+KApmAgKHJlcG8tcm9vdCBpbmNsdWRlIHBhdGgpLgoKIyMgVGVzdHMKCnwgU3VpdGUgfCBQYXRoIHwKfC0tLS0tLS18LS0tLS0tfAp8IEhlYWRlciBjb21waWxlIHNtb2tlIHwgYHRlc3RzL1VuaXRUZXN0cy9TZXJpYWxpemF0aW9uL1NlcmlhbGl6YXRpb25Nb2R1bGVIZWFkZXJDb21waWxlVGVzdC5jcHBgIHwKCiMjIyBTZXJpYWxpemF0aW9uLW9ubHkgKE9CSkVDVCBsaWIgKyBgUlRTR2FtZVN0YXRlYCBodWIgY2xvc3VyZTsgbm8gZnVsbCBgY29yZWVuZ2luZWAgc3RhdGljIGxpYikKCmBgYGJhc2gKY2htb2QgK3ggc2NyaXB0cy9ydW4tc2VyaWFsaXphdGlvbi1tb2R1bGUtdGVzdHMuc2gKLi9zY3JpcHRzL3J1bi1zZXJpYWxpemF0aW9uLW1vZHVsZS10ZXN0cy5zaApgYGAKCkVxdWl2YWxlbnQgbWFudWFsIHN0ZXBzOgoKYGBgYmFzaApjbWFrZSAtUyAuIC1CIGJ1aWxkLXNlcmlhbGl6YXRpb24gLUcgTmluamEgLURCVUlMRF9URVNUUz1PTiAtREJVSUxEX0ZGST1PRkYgLURDT1JFRU5HSU5FX1NFUklBTElaQVRJT05fU1RBTkRBTE9ORT1PTgpjbWFrZSAtLWJ1aWxkIGJ1aWxkLXNlcmlhbGl6YXRpb24gLS10YXJnZXQgY29yZWVuZ2luZV9zZXJpYWxpemF0aW9uX3Rlc3RzCmN0ZXN0IC0tdGVzdC1kaXIgYnVpbGQtc2VyaWFsaXphdGlvbiAtLW91dHB1dC1vbi1mYWlsdXJlCmBgYAo=
+# Module: `core.serialization`
+
+Manifest: [docs/agentic/modules/core.serialization.module.json](../../docs/agentic/modules/core.serialization.module.json)
+
+## Purpose
+
+**JSON-oriented game state snapshots** for `RTSGameState`: implements `ISerializer` so callers can exchange portable state strings or byte buffers (server validation, replay scaffolding, FFI helpers). This module does not own simulation, map layout, combat, or AI behavior.
+
+## Public surface (`exports`)
+
+Include headers from the repo root, e.g. `#include "core/serialization/GameStateSerializer.h"`.
+
+| Symbol | Kind | Header | Notes |
+|--------|------|--------|-------|
+| `GameStateSerializer` | class | `GameStateSerializer.h` | Implements `ISerializer` — `.cpp` in this module |
+
+### Contract highlights
+
+- **Interfaces:** depend on `ISerializer` from `core/interfaces/`.
+- **Game state:** reads map size and units through `ISimulationSnapshot`; retains `GameStateSerializer(const RTSGameState*)` / `SetState` and the `core.gamestate` manifest edge (`.cpp` still includes `RTSGameState.h`).
+- **Overload:** `GameStateSerializer(const ISimulationSnapshot*)` / `SetSnapshot` for non-hub snapshot sources.
+
+## Dependencies (`requires`)
+
+| Module | Range | Why |
+|--------|-------|-----|
+| `core.gamestate` | `^1.0.0` | Serialize/deserialize against `RTSGameState` |
+| `core.interfaces` | `^1.0.0` | `ISerializer` base contract |
+
+Allowed `#include` in `core/serialization/**`: standard library (`<…>`), headers under `core/serialization/`, or paths under `requires` modules. No other `core/*` siblings, `platform/`, or `ffi/` (enforced by `./scripts/check-module-deps.sh`).
+
+## Agent edit scope
+
+| Allow | Path |
+|-------|------|
+| Implementation | `core/serialization/**` |
+| Manifest | `docs/agentic/modules/core.serialization.module.json` |
+| Unit tests | `tests/UnitTests/Serialization/**` |
+| Shared agentic docs | `docs/agentic/*` (when policy requires) |
+
+## Invariants
+
+- Do not introduce `#include` of other CoreEngine modules without updating manifest `requires`, dependency policy, and regenerating `docs/deps/*`.
+- Keep public includes stable at `core/serialization/…` (repo-root include path).
+
+## Tests
+
+| Suite | Path |
+|-------|------|
+| Header compile smoke | `tests/UnitTests/Serialization/SerializationModuleHeaderCompileTest.cpp` |
+
+### Serialization-only (OBJECT lib + `RTSGameState` hub closure; no full `coreengine` static lib)
+
+```bash
+chmod +x scripts/run-serialization-module-tests.sh
+./scripts/run-serialization-module-tests.sh
+```
+
+Equivalent manual steps:
+
+```bash
+cmake -S . -B build-serialization -G Ninja -DBUILD_TESTS=ON -DBUILD_FFI=OFF -DCOREENGINE_SERIALIZATION_STANDALONE=ON
+cmake --build build-serialization --target coreengine_serialization_tests
+ctest --test-dir build-serialization --output-on-failure
+```

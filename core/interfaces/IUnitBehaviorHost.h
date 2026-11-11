@@ -1,1 +1,12 @@
-I3ByYWdtYSBvbmNlCgpjbGFzcyBJQmVoYXZpb3I7CgovLy8gT3B0aW9uYWwgY29udHJhY3QgZm9yIHVuaXRzIHdob3NlIGh1YiBBSSB0aWNrIHJlYWRzIHRoZSBhY3RpdmUgYmVoYXZpb3IuCi8vLyBPbmx5IGNvbmNyZXRlIFJUUyB1bml0cyBpbXBsZW1lbnQgdGhpczsgbW9ja3Mgd2l0aG91dCBhIHN0YXRlIG1hY2hpbmUgZG8gbm90LgpjbGFzcyBJVW5pdEJlaGF2aW9ySG9zdCB7CnB1YmxpYzoKICAgIHZpcnR1YWwgfklVbml0QmVoYXZpb3JIb3N0KCkgPSBkZWZhdWx0OwoKICAgIHZpcnR1YWwgSUJlaGF2aW9yKiBHZXRDdXJyZW50QmVoYXZpb3IoKSA9IDA7Cn07Cg==
+#pragma once
+
+class IBehavior;
+
+/// Optional contract for units whose hub AI tick reads the active behavior.
+/// Only concrete RTS units implement this; mocks without a state machine do not.
+class IUnitBehaviorHost {
+public:
+    virtual ~IUnitBehaviorHost() = default;
+
+    virtual IBehavior* GetCurrentBehavior() = 0;
+};

@@ -1,1 +1,12 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiLi4vbWF0aC9WZWN0b3IyLmgiCgovLy8gT3B0aW9uYWwgd3JpdGUtb25seSBraW5lbWF0aWNzIHN1cmZhY2UgZm9yIGNvbGxpc2lvbiBhbmQgc2ltaWxhciBzeXN0ZW1zLgovLy8gTm90IHBhcnQgb2YgSUdhbWVVbml0OyBvbmx5IGNvbmNyZXRlIHR5cGVzIHRoYXQgc3VwcG9ydCBkaXJlY3QgbW90aW9uIHdyaXRlcyBpbXBsZW1lbnQgdGhpcy4KY2xhc3MgSVVuaXRLaW5lbWF0aWNzIHsKcHVibGljOgogICAgdmlydHVhbCB+SVVuaXRLaW5lbWF0aWNzKCkgPSBkZWZhdWx0OwogICAgdmlydHVhbCB2b2lkIFNldFBvc2l0aW9uKFZlY3RvcjIgcG9zKSA9IDA7CiAgICB2aXJ0dWFsIHZvaWQgU2V0VmVsb2NpdHkoVmVjdG9yMiB2ZWwpID0gMDsKfTsK
+#pragma once
+
+#include "../math/Vector2.h"
+
+/// Optional write-only kinematics surface for collision and similar systems.
+/// Not part of IGameUnit; only concrete types that support direct motion writes implement this.
+class IUnitKinematics {
+public:
+    virtual ~IUnitKinematics() = default;
+    virtual void SetPosition(Vector2 pos) = 0;
+    virtual void SetVelocity(Vector2 vel) = 0;
+};
