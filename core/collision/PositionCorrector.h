@@ -1,1 +1,27 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiQ29sbGlzaW9uQ29udGFjdC5oIgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lHYW1lVW5pdC5oIgoKY2xhc3MgUG9zaXRpb25Db3JyZWN0b3IgewpwdWJsaWM6CiAgICAvLyBDb3JyZWN0IHBvc2l0aW9uIG92ZXJsYXAgZm9yIGFnZW50LWFnZW50IGNvbGxpc2lvbgogICAgc3RhdGljIHZvaWQgQ29ycmVjdEFnZW50QWdlbnQoCiAgICAgICAgSUdhbWVVbml0KiB1bml0QSwKICAgICAgICBJR2FtZVVuaXQqIHVuaXRCLAogICAgICAgIGNvbnN0IENvbGxpc2lvbkNvbnRhY3QmIGNvbnRhY3QsCiAgICAgICAgZmxvYXQgY29ycmVjdGlvbkZhY3RvciwKICAgICAgICBmbG9hdCBtYXNzQSwKICAgICAgICBmbG9hdCBtYXNzQgogICAgKTsKCiAgICAvLyBDb3JyZWN0IHBvc2l0aW9uIG92ZXJsYXAgZm9yIGFnZW50LW1hcCBjb2xsaXNpb24KICAgIHN0YXRpYyB2b2lkIENvcnJlY3RBZ2VudE1hcCgKICAgICAgICBJR2FtZVVuaXQqIHVuaXQsCiAgICAgICAgY29uc3QgQ29sbGlzaW9uQ29udGFjdCYgY29udGFjdCwKICAgICAgICBmbG9hdCBjb3JyZWN0aW9uRmFjdG9yCiAgICApOwoKICAgIHN0YXRpYyB2b2lkIEFwcGx5Q29ycmVjdGlvbihJR2FtZVVuaXQqIHVuaXQsIFZlY3RvcjIgY29ycmVjdGlvbik7Cn07Cgo=
+#pragma once
+
+#include "CollisionContact.h"
+#include "core/interfaces/IGameUnit.h"
+
+class PositionCorrector {
+public:
+    // Correct position overlap for agent-agent collision
+    static void CorrectAgentAgent(
+        IGameUnit* unitA,
+        IGameUnit* unitB,
+        const CollisionContact& contact,
+        float correctionFactor,
+        float massA,
+        float massB
+    );
+
+    // Correct position overlap for agent-map collision
+    static void CorrectAgentMap(
+        IGameUnit* unit,
+        const CollisionContact& contact,
+        float correctionFactor
+    );
+
+    static void ApplyCorrection(IGameUnit* unit, Vector2 correction);
+};
+
