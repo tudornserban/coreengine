@@ -1,1 +1,299 @@
-I2luY2x1ZGUgIlJhc3Rlci5oIgoKI2luY2x1ZGUgPGFsZ29yaXRobT4KI2luY2x1ZGUgPGNtYXRoPgojaW5jbHVkZSA8Y3N0ZGludD4KI2luY2x1ZGUgPGNzdGRsaWI+CgpuYW1lc3BhY2UKewoKaW50IFJvd1N0cmlkZVBpeGVscyhjb25zdCBGcmFtZWJ1ZmZlciYgZmIpCnsKICAgIHJldHVybiBmYi53aWR0aCArIGZiLmd1YXJkQ29sdW1uc1JpZ2h0Owp9CgppbnQgU3RvcmFnZVJvd3MoY29uc3QgRnJhbWVidWZmZXImIGZiKQp7CiAgICByZXR1cm4gZmIuaGVpZ2h0ICsgZmIuZ3VhcmRSb3dzQmVsb3c7Cn0KCnNpemVfdCBQaXhlbEJ5dGVJbmRleChjb25zdCBGcmFtZWJ1ZmZlciYgZmIsIGludCB4LCBpbnQgeSkKewogICAgcmV0dXJuIHN0YXRpY19jYXN0PHNpemVfdD4oKHkgKiBSb3dTdHJpZGVQaXhlbHMoZmIpICsgeCkgKiA0KTsKfQoKdm9pZCBXcml0ZUd1YXJkUmVnaW9ucyhGcmFtZWJ1ZmZlciYgZmIpCnsKICAgIGlmIChmYi5ndWFyZFJvd3NCZWxvdyA+IDApCiAgICB7CiAgICAgICAgZm9yIChpbnQgeCA9IDA7IHggPCBmYi53aWR0aDsgKyt4KQogICAgICAgIHsKICAgICAgICAgICAgY29uc3Qgc2l6ZV90IGkgPSBQaXhlbEJ5dGVJbmRleChmYiwgeCwgZmIuaGVpZ2h0KTsKICAgICAgICAgICAgZmIucmdiYVtpXSA9IGtSYXN0ZXJHdWFyZFNlbnRpbmVsLnI7CiAgICAgICAgICAgIGZiLnJnYmFbaSArIDFdID0ga1Jhc3Rlckd1YXJkU2VudGluZWwuZzsKICAgICAgICAgICAgZmIucmdiYVtpICsgMl0gPSBrUmFzdGVyR3VhcmRTZW50aW5lbC5iOwogICAgICAgICAgICBmYi5yZ2JhW2kgKyAzXSA9IGtSYXN0ZXJHdWFyZFNlbnRpbmVsLmE7CiAgICAgICAgfQogICAgfQogICAgaWYgKGZiLmd1YXJkQ29sdW1uc1JpZ2h0ID4gMCkKICAgIHsKICAgICAgICBjb25zdCBpbnQgZ3VhcmRYID0gZmIud2lkdGg7CiAgICAgICAgZm9yIChpbnQgeSA9IDA7IHkgPCBTdG9yYWdlUm93cyhmYik7ICsreSkKICAgICAgICB7CiAgICAgICAgICAgIGNvbnN0IHNpemVfdCBpID0gUGl4ZWxCeXRlSW5kZXgoZmIsIGd1YXJkWCwgeSk7CiAgICAgICAgICAgIGZiLnJnYmFbaV0gPSBrUmFzdGVyR3VhcmRTZW50aW5lbC5yOwogICAgICAgICAgICBmYi5yZ2JhW2kgKyAxXSA9IGtSYXN0ZXJHdWFyZFNlbnRpbmVsLmc7CiAgICAgICAgICAgIGZiLnJnYmFbaSArIDJdID0ga1Jhc3Rlckd1YXJkU2VudGluZWwuYjsKICAgICAgICAgICAgZmIucmdiYVtpICsgM10gPSBrUmFzdGVyR3VhcmRTZW50aW5lbC5hOwogICAgICAgIH0KICAgIH0KfQoKdm9pZCBQdXRQaXhlbChGcmFtZWJ1ZmZlciYgZmIsIGludCB4LCBpbnQgeSwgUmdiYSBjb2xvcikKewogICAgaWYgKHggPCAwIHx8IHkgPCAwIHx8IHggPj0gZmIud2lkdGggfHwgeSA+PSBmYi5oZWlnaHQpCiAgICB7CiAgICAgICAgcmV0dXJuOwogICAgfQogICAgY29uc3Qgc2l6ZV90IGkgPSBQaXhlbEJ5dGVJbmRleChmYiwgeCwgeSk7CiAgICBmYi5yZ2JhW2ldID0gY29sb3IucjsKICAgIGZiLnJnYmFbaSArIDFdID0gY29sb3IuZzsKICAgIGZiLnJnYmFbaSArIDJdID0gY29sb3IuYjsKICAgIGZiLnJnYmFbaSArIDNdID0gY29sb3IuYTsKfQoKdm9pZCBEcmF3SExpbmUoRnJhbWVidWZmZXImIGZiLCBpbnQgeDAsIGludCB4MSwgaW50IHksIFJnYmEgY29sb3IpCnsKICAgIGlmICh4MCA+IHgxKQogICAgewogICAgICAgIHN0ZDo6c3dhcCh4MCwgeDEpOwogICAgfQogICAgZm9yIChpbnQgeCA9IHgwOyB4IDw9IHgxOyArK3gpCiAgICB7CiAgICAgICAgUHV0UGl4ZWwoZmIsIHgsIHksIGNvbG9yKTsKICAgIH0KfQoKdm9pZCBEcmF3VkxpbmUoRnJhbWVidWZmZXImIGZiLCBpbnQgeCwgaW50IHkwLCBpbnQgeTEsIFJnYmEgY29sb3IpCnsKICAgIGlmICh5MCA+IHkxKQogICAgewogICAgICAgIHN0ZDo6c3dhcCh5MCwgeTEpOwogICAgfQogICAgZm9yIChpbnQgeSA9IHkwOyB5IDw9IHkxOyArK3kpCiAgICB7CiAgICAgICAgUHV0UGl4ZWwoZmIsIHgsIHksIGNvbG9yKTsKICAgIH0KfQoKdm9pZCBSYXN0ZXJpemVSZWN0KGNvbnN0IERyYXdSZWN0JiByZWN0LCBGcmFtZWJ1ZmZlciYgZmIpCnsKICAgIGNvbnN0IGludCB4MCA9IHN0YXRpY19jYXN0PGludD4oc3RkOjpscm91bmQocmVjdC5taW4ueCkpOwogICAgY29uc3QgaW50IHkwID0gc3RhdGljX2Nhc3Q8aW50PihzdGQ6Omxyb3VuZChyZWN0Lm1pbi55KSk7CiAgICBjb25zdCBpbnQgeDEgPSBzdGF0aWNfY2FzdDxpbnQ+KHN0ZDo6bHJvdW5kKHJlY3QubWF4LngpKTsKICAgIGNvbnN0IGludCB5MSA9IHN0YXRpY19jYXN0PGludD4oc3RkOjpscm91bmQocmVjdC5tYXgueSkpOwoKICAgIGlmIChyZWN0LmZpbGxlZCkKICAgIHsKICAgICAgICBmb3IgKGludCB5ID0geTA7IHkgPD0geTE7ICsreSkKICAgICAgICB7CiAgICAgICAgICAgIERyYXdITGluZShmYiwgeDAsIHgxLCB5LCByZWN0LmNvbG9yKTsKICAgICAgICB9CiAgICB9CiAgICBlbHNlCiAgICB7CiAgICAgICAgRHJhd0hMaW5lKGZiLCB4MCwgeDEsIHkwLCByZWN0LmNvbG9yKTsKICAgICAgICBEcmF3SExpbmUoZmIsIHgwLCB4MSwgeTEsIHJlY3QuY29sb3IpOwogICAgICAgIERyYXdWTGluZShmYiwgeDAsIHkwLCB5MSwgcmVjdC5jb2xvcik7CiAgICAgICAgRHJhd1ZMaW5lKGZiLCB4MSwgeTAsIHkxLCByZWN0LmNvbG9yKTsKICAgIH0KfQoKdm9pZCBSYXN0ZXJpemVMaW5lKGNvbnN0IERyYXdMaW5lJiBsaW5lLCBGcmFtZWJ1ZmZlciYgZmIpCnsKICAgIGNvbnN0IGludCB4MCA9IHN0YXRpY19jYXN0PGludD4oc3RkOjpscm91bmQobGluZS5hLngpKTsKICAgIGNvbnN0IGludCB5MCA9IHN0YXRpY19jYXN0PGludD4oc3RkOjpscm91bmQobGluZS5hLnkpKTsKICAgIGNvbnN0IGludCB4MSA9IHN0YXRpY19jYXN0PGludD4oc3RkOjpscm91bmQobGluZS5iLngpKTsKICAgIGNvbnN0IGludCB5MSA9IHN0YXRpY19jYXN0PGludD4oc3RkOjpscm91bmQobGluZS5iLnkpKTsKCiAgICBpbnQgZHggPSBzdGQ6OmFicyh4MSAtIHgwKTsKICAgIGludCBkeSA9IHN0ZDo6YWJzKHkxIC0geTApOwogICAgaW50IHN4ID0geDAgPCB4MSA/IDEgOiAtMTsKICAgIGludCBzeSA9IHkwIDwgeTEgPyAxIDogLTE7CiAgICBpbnQgZXJyID0gZHggLSBkeTsKICAgIGludCB4ID0geDA7CiAgICBpbnQgeSA9IHkwOwoKICAgIHdoaWxlICh0cnVlKQogICAgewogICAgICAgIFB1dFBpeGVsKGZiLCB4LCB5LCBsaW5lLmNvbG9yKTsKICAgICAgICBpZiAoeCA9PSB4MSAmJiB5ID09IHkxKQogICAgICAgIHsKICAgICAgICAgICAgYnJlYWs7CiAgICAgICAgfQogICAgICAgIGludCBlMiA9IDIgKiBlcnI7CiAgICAgICAgaWYgKGUyID4gLWR5KQogICAgICAgIHsKICAgICAgICAgICAgZXJyIC09IGR5OwogICAgICAgICAgICB4ICs9IHN4OwogICAgICAgIH0KICAgICAgICBpZiAoZTIgPCBkeCkKICAgICAgICB7CiAgICAgICAgICAgIGVyciArPSBkeDsKICAgICAgICAgICAgeSArPSBzeTsKICAgICAgICB9CiAgICB9Cn0KCmJvb2wgUmdiYUVxdWFsKFJnYmEgYSwgUmdiYSBiKQp7CiAgICByZXR1cm4gYS5yID09IGIuciAmJiBhLmcgPT0gYi5nICYmIGEuYiA9PSBiLmIgJiYgYS5hID09IGIuYTsKfQoKdm9pZCBSYXN0ZXJpemVDaXJjbGUoY29uc3QgRHJhd0NpcmNsZSYgY2lyY2xlLCBGcmFtZWJ1ZmZlciYgZmIpCnsKICAgIGNvbnN0IGludCBjeCA9IHN0YXRpY19jYXN0PGludD4oc3RkOjpscm91bmQoY2lyY2xlLmNlbnRlci54KSk7CiAgICBjb25zdCBpbnQgY3kgPSBzdGF0aWNfY2FzdDxpbnQ+KHN0ZDo6bHJvdW5kKGNpcmNsZS5jZW50ZXIueSkpOwogICAgY29uc3QgZmxvYXQgZmlsbFJhZGl1cyA9IGNpcmNsZS5yYWRpdXM7CiAgICBjb25zdCBib29sIGhvbGxvd09ubHkgPSBjaXJjbGUuZmlsbC5hID09IDA7CiAgICBjb25zdCBib29sIHNlbGVjdGlvblJpbmcgPSAhaG9sbG93T25seSAmJiAhUmdiYUVxdWFsKGNpcmNsZS5maWxsLCBjaXJjbGUub3V0bGluZSk7CiAgICBjb25zdCBmbG9hdCBvdXRsaW5lUmFkaXVzID0gc2VsZWN0aW9uUmluZyA/IGZpbGxSYWRpdXMgKyAyLjBmIDogZmlsbFJhZGl1czsKICAgIGNvbnN0IGludCBib3VuZCA9IHN0YXRpY19jYXN0PGludD4oc3RkOjpjZWlsKG91dGxpbmVSYWRpdXMpKTsKICAgIGNvbnN0IGZsb2F0IGlubmVyQmFuZCA9IHN0ZDo6bWF4KDAuMGYsIGZpbGxSYWRpdXMgLSAxLjBmKTsKCiAgICBmb3IgKGludCB5ID0gY3kgLSBib3VuZDsgeSA8PSBjeSArIGJvdW5kOyArK3kpCiAgICB7CiAgICAgICAgZm9yIChpbnQgeCA9IGN4IC0gYm91bmQ7IHggPD0gY3ggKyBib3VuZDsgKyt4KQogICAgICAgIHsKICAgICAgICAgICAgY29uc3QgZmxvYXQgZHggPSBzdGF0aWNfY2FzdDxmbG9hdD4oeCAtIGN4KTsKICAgICAgICAgICAgY29uc3QgZmxvYXQgZHkgPSBzdGF0aWNfY2FzdDxmbG9hdD4oeSAtIGN5KTsKICAgICAgICAgICAgY29uc3QgZmxvYXQgZGlzdFNxID0gZHggKiBkeCArIGR5ICogZHk7CiAgICAgICAgICAgIGlmIChob2xsb3dPbmx5KQogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICBpZiAoZGlzdFNxIDw9IGZpbGxSYWRpdXMgKiBmaWxsUmFkaXVzICYmIGRpc3RTcSA+PSBpbm5lckJhbmQgKiBpbm5lckJhbmQpCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgUHV0UGl4ZWwoZmIsIHgsIHksIGNpcmNsZS5vdXRsaW5lKTsKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgICAgICBlbHNlIGlmIChkaXN0U3EgPD0gZmlsbFJhZGl1cyAqIGZpbGxSYWRpdXMpCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIFB1dFBpeGVsKGZiLCB4LCB5LCBjaXJjbGUuZmlsbCk7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxzZSBpZiAoc2VsZWN0aW9uUmluZyAmJiBkaXN0U3EgPD0gb3V0bGluZVJhZGl1cyAqIG91dGxpbmVSYWRpdXMpCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIFB1dFBpeGVsKGZiLCB4LCB5LCBjaXJjbGUub3V0bGluZSk7CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CiAgICBpZiAoIWhvbGxvd09ubHkpCiAgICB7CiAgICAgICAgUHV0UGl4ZWwoZmIsIGN4LCBjeSwgY2lyY2xlLmZpbGwpOwogICAgfQp9Cgp9IC8vIG5hbWVzcGFjZQoKdm9pZCBSYXN0ZXJpemUoY29uc3QgRHJhd0xpc3QmIGxpc3QsIEZyYW1lYnVmZmVyJiBmYikKewogICAgaWYgKGZiLndpZHRoIDw9IDAgfHwgZmIuaGVpZ2h0IDw9IDApCiAgICB7CiAgICAgICAgcmV0dXJuOwogICAgfQogICAgY29uc3Qgc2l6ZV90IHN0b3JhZ2VCeXRlcyA9CiAgICAgICAgc3RhdGljX2Nhc3Q8c2l6ZV90PihTdG9yYWdlUm93cyhmYikgKiBSb3dTdHJpZGVQaXhlbHMoZmIpICogNCk7CiAgICBjb25zdCBib29sIGhhc0d1YXJkcyA9IGZiLmd1YXJkUm93c0JlbG93ID4gMCB8fCBmYi5ndWFyZENvbHVtbnNSaWdodCA+IDA7CiAgICBpZiAoaGFzR3VhcmRzKQogICAgewogICAgICAgIGlmIChmYi5yZ2JhLnNpemUoKSAhPSBzdG9yYWdlQnl0ZXMpCiAgICAgICAgewogICAgICAgICAgICBmYi5yZ2JhLmFzc2lnbihzdG9yYWdlQnl0ZXMsIDApOwogICAgICAgICAgICBXcml0ZUd1YXJkUmVnaW9ucyhmYik7CiAgICAgICAgfQogICAgfQogICAgZWxzZQogICAgewogICAgICAgIGZiLnJnYmEuYXNzaWduKHN0YXRpY19jYXN0PHNpemVfdD4oZmIud2lkdGggKiBmYi5oZWlnaHQgKiA0KSwgMCk7CiAgICB9CiAgICBmb3IgKGludCB5ID0gMDsgeSA8IGZiLmhlaWdodDsgKyt5KQogICAgewogICAgICAgIGZvciAoaW50IHggPSAwOyB4IDwgZmIud2lkdGg7ICsreCkKICAgICAgICB7CiAgICAgICAgICAgIFB1dFBpeGVsKGZiLCB4LCB5LCBsaXN0LmNsZWFyKTsKICAgICAgICB9CiAgICB9CgogICAgZm9yIChjb25zdCBEcmF3UmVjdCYgcmVjdCA6IGxpc3QucmVjdHMpCiAgICB7CiAgICAgICAgUmFzdGVyaXplUmVjdChyZWN0LCBmYik7CiAgICB9CiAgICBmb3IgKGNvbnN0IERyYXdMaW5lJiBsaW5lIDogbGlzdC5saW5lcykKICAgIHsKICAgICAgICBSYXN0ZXJpemVMaW5lKGxpbmUsIGZiKTsKICAgIH0KICAgIGZvciAoY29uc3QgRHJhd0NpcmNsZSYgY2lyY2xlIDogbGlzdC5jaXJjbGVzKQogICAgewogICAgICAgIFJhc3Rlcml6ZUNpcmNsZShjaXJjbGUsIGZiKTsKICAgIH0KfQoKdm9pZCBGcmFtZWJ1ZmZlckluaXRXaXRoQm90dG9tUm93R3VhcmQoRnJhbWVidWZmZXImIGZiLCBpbnQgd2lkdGgsIGludCBoZWlnaHQpCnsKICAgIGZiLndpZHRoID0gd2lkdGg7CiAgICBmYi5oZWlnaHQgPSBoZWlnaHQ7CiAgICBmYi5ndWFyZFJvd3NCZWxvdyA9IDE7CiAgICBmYi5ndWFyZENvbHVtbnNSaWdodCA9IDA7CiAgICBjb25zdCBzaXplX3Qgc3RvcmFnZUJ5dGVzID0KICAgICAgICBzdGF0aWNfY2FzdDxzaXplX3Q+KFN0b3JhZ2VSb3dzKGZiKSAqIFJvd1N0cmlkZVBpeGVscyhmYikgKiA0KTsKICAgIGZiLnJnYmEuYXNzaWduKHN0b3JhZ2VCeXRlcywgMCk7CiAgICBXcml0ZUd1YXJkUmVnaW9ucyhmYik7Cn0KCnZvaWQgRnJhbWVidWZmZXJJbml0V2l0aFJpZ2h0Q29sdW1uR3VhcmQoRnJhbWVidWZmZXImIGZiLCBpbnQgd2lkdGgsIGludCBoZWlnaHQpCnsKICAgIGZiLndpZHRoID0gd2lkdGg7CiAgICBmYi5oZWlnaHQgPSBoZWlnaHQ7CiAgICBmYi5ndWFyZFJvd3NCZWxvdyA9IDA7CiAgICBmYi5ndWFyZENvbHVtbnNSaWdodCA9IDE7CiAgICBjb25zdCBzaXplX3Qgc3RvcmFnZUJ5dGVzID0KICAgICAgICBzdGF0aWNfY2FzdDxzaXplX3Q+KFN0b3JhZ2VSb3dzKGZiKSAqIFJvd1N0cmlkZVBpeGVscyhmYikgKiA0KTsKICAgIGZiLnJnYmEuYXNzaWduKHN0b3JhZ2VCeXRlcywgMCk7CiAgICBXcml0ZUd1YXJkUmVnaW9ucyhmYik7Cn0KCmJvb2wgRnJhbWVidWZmZXJHdWFyZFJvd0JlbG93SXNDbGVhbihjb25zdCBGcmFtZWJ1ZmZlciYgZmIpCnsKICAgIGlmIChmYi5ndWFyZFJvd3NCZWxvdyA8PSAwKQogICAgewogICAgICAgIHJldHVybiB0cnVlOwogICAgfQogICAgZm9yIChpbnQgeCA9IDA7IHggPCBmYi53aWR0aDsgKyt4KQogICAgewogICAgICAgIGNvbnN0IHNpemVfdCBpID0gUGl4ZWxCeXRlSW5kZXgoZmIsIHgsIGZiLmhlaWdodCk7CiAgICAgICAgaWYgKGZiLnJnYmFbaV0gIT0ga1Jhc3Rlckd1YXJkU2VudGluZWwuciB8fCBmYi5yZ2JhW2kgKyAxXSAhPSBrUmFzdGVyR3VhcmRTZW50aW5lbC5nCiAgICAgICAgICAgIHx8IGZiLnJnYmFbaSArIDJdICE9IGtSYXN0ZXJHdWFyZFNlbnRpbmVsLmIgfHwgZmIucmdiYVtpICsgM10gIT0ga1Jhc3Rlckd1YXJkU2VudGluZWwuYSkKICAgICAgICB7CiAgICAgICAgICAgIHJldHVybiBmYWxzZTsKICAgICAgICB9CiAgICB9CiAgICByZXR1cm4gdHJ1ZTsKfQoKYm9vbCBGcmFtZWJ1ZmZlckd1YXJkQ29sdW1uUmlnaHRJc0NsZWFuKGNvbnN0IEZyYW1lYnVmZmVyJiBmYikKewogICAgaWYgKGZiLmd1YXJkQ29sdW1uc1JpZ2h0IDw9IDApCiAgICB7CiAgICAgICAgcmV0dXJuIHRydWU7CiAgICB9CiAgICBjb25zdCBpbnQgZ3VhcmRYID0gZmIud2lkdGg7CiAgICBmb3IgKGludCB5ID0gMDsgeSA8IFN0b3JhZ2VSb3dzKGZiKTsgKyt5KQogICAgewogICAgICAgIGNvbnN0IHNpemVfdCBpID0gUGl4ZWxCeXRlSW5kZXgoZmIsIGd1YXJkWCwgeSk7CiAgICAgICAgaWYgKGZiLnJnYmFbaV0gIT0ga1Jhc3Rlckd1YXJkU2VudGluZWwuciB8fCBmYi5yZ2JhW2kgKyAxXSAhPSBrUmFzdGVyR3VhcmRTZW50aW5lbC5nCiAgICAgICAgICAgIHx8IGZiLnJnYmFbaSArIDJdICE9IGtSYXN0ZXJHdWFyZFNlbnRpbmVsLmIgfHwgZmIucmdiYVtpICsgM10gIT0ga1Jhc3Rlckd1YXJkU2VudGluZWwuYSkKICAgICAgICB7CiAgICAgICAgICAgIHJldHVybiBmYWxzZTsKICAgICAgICB9CiAgICB9CiAgICByZXR1cm4gdHJ1ZTsKfQo=
+#include "Raster.h"
+
+#include <algorithm>
+#include <cmath>
+#include <cstdint>
+#include <cstdlib>
+
+namespace
+{
+
+int RowStridePixels(const Framebuffer& fb)
+{
+    return fb.width + fb.guardColumnsRight;
+}
+
+int StorageRows(const Framebuffer& fb)
+{
+    return fb.height + fb.guardRowsBelow;
+}
+
+size_t PixelByteIndex(const Framebuffer& fb, int x, int y)
+{
+    return static_cast<size_t>((y * RowStridePixels(fb) + x) * 4);
+}
+
+void WriteGuardRegions(Framebuffer& fb)
+{
+    if (fb.guardRowsBelow > 0)
+    {
+        for (int x = 0; x < fb.width; ++x)
+        {
+            const size_t i = PixelByteIndex(fb, x, fb.height);
+            fb.rgba[i] = kRasterGuardSentinel.r;
+            fb.rgba[i + 1] = kRasterGuardSentinel.g;
+            fb.rgba[i + 2] = kRasterGuardSentinel.b;
+            fb.rgba[i + 3] = kRasterGuardSentinel.a;
+        }
+    }
+    if (fb.guardColumnsRight > 0)
+    {
+        const int guardX = fb.width;
+        for (int y = 0; y < StorageRows(fb); ++y)
+        {
+            const size_t i = PixelByteIndex(fb, guardX, y);
+            fb.rgba[i] = kRasterGuardSentinel.r;
+            fb.rgba[i + 1] = kRasterGuardSentinel.g;
+            fb.rgba[i + 2] = kRasterGuardSentinel.b;
+            fb.rgba[i + 3] = kRasterGuardSentinel.a;
+        }
+    }
+}
+
+void PutPixel(Framebuffer& fb, int x, int y, Rgba color)
+{
+    if (x < 0 || y < 0 || x >= fb.width || y >= fb.height)
+    {
+        return;
+    }
+    const size_t i = PixelByteIndex(fb, x, y);
+    fb.rgba[i] = color.r;
+    fb.rgba[i + 1] = color.g;
+    fb.rgba[i + 2] = color.b;
+    fb.rgba[i + 3] = color.a;
+}
+
+void DrawHLine(Framebuffer& fb, int x0, int x1, int y, Rgba color)
+{
+    if (x0 > x1)
+    {
+        std::swap(x0, x1);
+    }
+    for (int x = x0; x <= x1; ++x)
+    {
+        PutPixel(fb, x, y, color);
+    }
+}
+
+void DrawVLine(Framebuffer& fb, int x, int y0, int y1, Rgba color)
+{
+    if (y0 > y1)
+    {
+        std::swap(y0, y1);
+    }
+    for (int y = y0; y <= y1; ++y)
+    {
+        PutPixel(fb, x, y, color);
+    }
+}
+
+void RasterizeRect(const DrawRect& rect, Framebuffer& fb)
+{
+    const int x0 = static_cast<int>(std::lround(rect.min.x));
+    const int y0 = static_cast<int>(std::lround(rect.min.y));
+    const int x1 = static_cast<int>(std::lround(rect.max.x));
+    const int y1 = static_cast<int>(std::lround(rect.max.y));
+
+    if (rect.filled)
+    {
+        for (int y = y0; y <= y1; ++y)
+        {
+            DrawHLine(fb, x0, x1, y, rect.color);
+        }
+    }
+    else
+    {
+        DrawHLine(fb, x0, x1, y0, rect.color);
+        DrawHLine(fb, x0, x1, y1, rect.color);
+        DrawVLine(fb, x0, y0, y1, rect.color);
+        DrawVLine(fb, x1, y0, y1, rect.color);
+    }
+}
+
+void RasterizeLine(const DrawLine& line, Framebuffer& fb)
+{
+    const int x0 = static_cast<int>(std::lround(line.a.x));
+    const int y0 = static_cast<int>(std::lround(line.a.y));
+    const int x1 = static_cast<int>(std::lround(line.b.x));
+    const int y1 = static_cast<int>(std::lround(line.b.y));
+
+    int dx = std::abs(x1 - x0);
+    int dy = std::abs(y1 - y0);
+    int sx = x0 < x1 ? 1 : -1;
+    int sy = y0 < y1 ? 1 : -1;
+    int err = dx - dy;
+    int x = x0;
+    int y = y0;
+
+    while (true)
+    {
+        PutPixel(fb, x, y, line.color);
+        if (x == x1 && y == y1)
+        {
+            break;
+        }
+        int e2 = 2 * err;
+        if (e2 > -dy)
+        {
+            err -= dy;
+            x += sx;
+        }
+        if (e2 < dx)
+        {
+            err += dx;
+            y += sy;
+        }
+    }
+}
+
+bool RgbaEqual(Rgba a, Rgba b)
+{
+    return a.r == b.r && a.g == b.g && a.b == b.b && a.a == b.a;
+}
+
+void RasterizeCircle(const DrawCircle& circle, Framebuffer& fb)
+{
+    const int cx = static_cast<int>(std::lround(circle.center.x));
+    const int cy = static_cast<int>(std::lround(circle.center.y));
+    const float fillRadius = circle.radius;
+    const bool hollowOnly = circle.fill.a == 0;
+    const bool selectionRing = !hollowOnly && !RgbaEqual(circle.fill, circle.outline);
+    const float outlineRadius = selectionRing ? fillRadius + 2.0f : fillRadius;
+    const int bound = static_cast<int>(std::ceil(outlineRadius));
+    const float innerBand = std::max(0.0f, fillRadius - 1.0f);
+
+    for (int y = cy - bound; y <= cy + bound; ++y)
+    {
+        for (int x = cx - bound; x <= cx + bound; ++x)
+        {
+            const float dx = static_cast<float>(x - cx);
+            const float dy = static_cast<float>(y - cy);
+            const float distSq = dx * dx + dy * dy;
+            if (hollowOnly)
+            {
+                if (distSq <= fillRadius * fillRadius && distSq >= innerBand * innerBand)
+                {
+                    PutPixel(fb, x, y, circle.outline);
+                }
+            }
+            else if (distSq <= fillRadius * fillRadius)
+            {
+                PutPixel(fb, x, y, circle.fill);
+            }
+            else if (selectionRing && distSq <= outlineRadius * outlineRadius)
+            {
+                PutPixel(fb, x, y, circle.outline);
+            }
+        }
+    }
+    if (!hollowOnly)
+    {
+        PutPixel(fb, cx, cy, circle.fill);
+    }
+}
+
+} // namespace
+
+void Rasterize(const DrawList& list, Framebuffer& fb)
+{
+    if (fb.width <= 0 || fb.height <= 0)
+    {
+        return;
+    }
+    const size_t storageBytes =
+        static_cast<size_t>(StorageRows(fb) * RowStridePixels(fb) * 4);
+    const bool hasGuards = fb.guardRowsBelow > 0 || fb.guardColumnsRight > 0;
+    if (hasGuards)
+    {
+        if (fb.rgba.size() != storageBytes)
+        {
+            fb.rgba.assign(storageBytes, 0);
+            WriteGuardRegions(fb);
+        }
+    }
+    else
+    {
+        fb.rgba.assign(static_cast<size_t>(fb.width * fb.height * 4), 0);
+    }
+    for (int y = 0; y < fb.height; ++y)
+    {
+        for (int x = 0; x < fb.width; ++x)
+        {
+            PutPixel(fb, x, y, list.clear);
+        }
+    }
+
+    for (const DrawRect& rect : list.rects)
+    {
+        RasterizeRect(rect, fb);
+    }
+    for (const DrawLine& line : list.lines)
+    {
+        RasterizeLine(line, fb);
+    }
+    for (const DrawCircle& circle : list.circles)
+    {
+        RasterizeCircle(circle, fb);
+    }
+}
+
+void FramebufferInitWithBottomRowGuard(Framebuffer& fb, int width, int height)
+{
+    fb.width = width;
+    fb.height = height;
+    fb.guardRowsBelow = 1;
+    fb.guardColumnsRight = 0;
+    const size_t storageBytes =
+        static_cast<size_t>(StorageRows(fb) * RowStridePixels(fb) * 4);
+    fb.rgba.assign(storageBytes, 0);
+    WriteGuardRegions(fb);
+}
+
+void FramebufferInitWithRightColumnGuard(Framebuffer& fb, int width, int height)
+{
+    fb.width = width;
+    fb.height = height;
+    fb.guardRowsBelow = 0;
+    fb.guardColumnsRight = 1;
+    const size_t storageBytes =
+        static_cast<size_t>(StorageRows(fb) * RowStridePixels(fb) * 4);
+    fb.rgba.assign(storageBytes, 0);
+    WriteGuardRegions(fb);
+}
+
+bool FramebufferGuardRowBelowIsClean(const Framebuffer& fb)
+{
+    if (fb.guardRowsBelow <= 0)
+    {
+        return true;
+    }
+    for (int x = 0; x < fb.width; ++x)
+    {
+        const size_t i = PixelByteIndex(fb, x, fb.height);
+        if (fb.rgba[i] != kRasterGuardSentinel.r || fb.rgba[i + 1] != kRasterGuardSentinel.g
+            || fb.rgba[i + 2] != kRasterGuardSentinel.b || fb.rgba[i + 3] != kRasterGuardSentinel.a)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool FramebufferGuardColumnRightIsClean(const Framebuffer& fb)
+{
+    if (fb.guardColumnsRight <= 0)
+    {
+        return true;
+    }
+    const int guardX = fb.width;
+    for (int y = 0; y < StorageRows(fb); ++y)
+    {
+        const size_t i = PixelByteIndex(fb, guardX, y);
+        if (fb.rgba[i] != kRasterGuardSentinel.r || fb.rgba[i + 1] != kRasterGuardSentinel.g
+            || fb.rgba[i + 2] != kRasterGuardSentinel.b || fb.rgba[i + 3] != kRasterGuardSentinel.a)
+        {
+            return false;
+        }
+    }
+    return true;
+}

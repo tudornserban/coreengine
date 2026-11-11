@@ -1,1 +1,171 @@
-I2luY2x1ZGUgIlBuZ1dyaXRlci5oIgoKI2luY2x1ZGUgPGNzdGRpbnQ+CiNpbmNsdWRlIDxmc3RyZWFtPgojaW5jbHVkZSA8dmVjdG9yPgoKbmFtZXNwYWNlCnsKCnN0ZDo6dWludDMyX3QgQ3JjMzIoY29uc3Qgc3RkOjp1aW50OF90KiBkYXRhLCBzaXplX3QgbGVuKQp7CiAgICBzdGF0aWMgc3RkOjp1aW50MzJfdCB0YWJsZVsyNTZdOwogICAgc3RhdGljIGJvb2wgaW5pdCA9IGZhbHNlOwogICAgaWYgKCFpbml0KQogICAgewogICAgICAgIGZvciAoc3RkOjp1aW50MzJfdCBuID0gMDsgbiA8IDI1NjsgKytuKQogICAgICAgIHsKICAgICAgICAgICAgc3RkOjp1aW50MzJfdCBjID0gbjsKICAgICAgICAgICAgZm9yIChpbnQgayA9IDA7IGsgPCA4OyArK2spCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIGlmIChjICYgMSkKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBjID0gMHhlZGI4ODMyMHUgXiAoYyA+PiAxKTsKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIGVsc2UKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBjID4+PSAxOwogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgICAgIHRhYmxlW25dID0gYzsKICAgICAgICB9CiAgICAgICAgaW5pdCA9IHRydWU7CiAgICB9CiAgICBzdGQ6OnVpbnQzMl90IGNyYyA9IDB4ZmZmZmZmZmZ1OwogICAgZm9yIChzaXplX3QgaSA9IDA7IGkgPCBsZW47ICsraSkKICAgIHsKICAgICAgICBjcmMgPSB0YWJsZVsoY3JjIF4gZGF0YVtpXSkgJiAweGZmdV0gXiAoY3JjID4+IDgpOwogICAgfQogICAgcmV0dXJuIGNyYyBeIDB4ZmZmZmZmZmZ1Owp9Cgp2b2lkIEFwcGVuZFUzMkJlKHN0ZDo6dmVjdG9yPHN0ZDo6dWludDhfdD4mIG91dCwgc3RkOjp1aW50MzJfdCB2YWx1ZSkKewogICAgb3V0LnB1c2hfYmFjayhzdGF0aWNfY2FzdDxzdGQ6OnVpbnQ4X3Q+KCh2YWx1ZSA+PiAyNCkgJiAweGZmdSkpOwogICAgb3V0LnB1c2hfYmFjayhzdGF0aWNfY2FzdDxzdGQ6OnVpbnQ4X3Q+KCh2YWx1ZSA+PiAxNikgJiAweGZmdSkpOwogICAgb3V0LnB1c2hfYmFjayhzdGF0aWNfY2FzdDxzdGQ6OnVpbnQ4X3Q+KCh2YWx1ZSA+PiA4KSAmIDB4ZmZ1KSk7CiAgICBvdXQucHVzaF9iYWNrKHN0YXRpY19jYXN0PHN0ZDo6dWludDhfdD4odmFsdWUgJiAweGZmdSkpOwp9Cgp2b2lkIEFwcGVuZENodW5rKHN0ZDo6dmVjdG9yPHN0ZDo6dWludDhfdD4mIG91dCwgY29uc3QgY2hhciogdHlwZSwgY29uc3Qgc3RkOjp1aW50OF90KiBkYXRhLCBzaXplX3QgbGVuKQp7CiAgICBBcHBlbmRVMzJCZShvdXQsIHN0YXRpY19jYXN0PHN0ZDo6dWludDMyX3Q+KGxlbikpOwogICAgY29uc3Qgc2l6ZV90IHR5cGVTdGFydCA9IG91dC5zaXplKCk7CiAgICBmb3IgKGludCBpID0gMDsgdHlwZVtpXSAhPSAnXDAnOyArK2kpCiAgICB7CiAgICAgICAgb3V0LnB1c2hfYmFjayhzdGF0aWNfY2FzdDxzdGQ6OnVpbnQ4X3Q+KHR5cGVbaV0pKTsKICAgIH0KICAgIGlmIChsZW4gPiAwKQogICAgewogICAgICAgIG91dC5pbnNlcnQob3V0LmVuZCgpLCBkYXRhLCBkYXRhICsgbGVuKTsKICAgIH0KICAgIHN0ZDo6dmVjdG9yPHN0ZDo6dWludDhfdD4gdHlwZUFuZERhdGE7CiAgICB0eXBlQW5kRGF0YS5pbnNlcnQodHlwZUFuZERhdGEuZW5kKCksIG91dC5iZWdpbigpICsgc3RhdGljX2Nhc3Q8bG9uZz4odHlwZVN0YXJ0KSwgb3V0LmVuZCgpKTsKICAgIGNvbnN0IHN0ZDo6dWludDMyX3QgY3JjID0gQ3JjMzIodHlwZUFuZERhdGEuZGF0YSgpLCB0eXBlQW5kRGF0YS5zaXplKCkpOwogICAgQXBwZW5kVTMyQmUob3V0LCBjcmMpOwp9CgpzdGQ6OnVpbnQzMl90IEFkbGVyMzIoY29uc3Qgc3RkOjp1aW50OF90KiBkYXRhLCBzaXplX3QgbGVuKQp7CiAgICBzdGQ6OnVpbnQzMl90IGEgPSAxOwogICAgc3RkOjp1aW50MzJfdCBiID0gMDsKICAgIGZvciAoc2l6ZV90IGkgPSAwOyBpIDwgbGVuOyArK2kpCiAgICB7CiAgICAgICAgYSA9IChhICsgZGF0YVtpXSkgJSA2NTUyMTsKICAgICAgICBiID0gKGIgKyBhKSAlIDY1NTIxOwogICAgfQogICAgcmV0dXJuIChiIDw8IDE2KSB8IGE7Cn0KCnN0ZDo6dmVjdG9yPHN0ZDo6dWludDhfdD4gQnVpbGRabGliU3RvcmVkKGNvbnN0IHN0ZDo6dWludDhfdCogcmF3LCBzaXplX3QgcmF3TGVuKQp7CiAgICBzdGQ6OnZlY3RvcjxzdGQ6OnVpbnQ4X3Q+IHpsaWI7CiAgICB6bGliLnB1c2hfYmFjaygweDc4KTsKICAgIHpsaWIucHVzaF9iYWNrKDB4MDEpOwoKICAgIHNpemVfdCBvZmZzZXQgPSAwOwogICAgYm9vbCBmaXJzdCA9IHRydWU7CiAgICB3aGlsZSAob2Zmc2V0IDwgcmF3TGVuIHx8IGZpcnN0KQogICAgewogICAgICAgIGZpcnN0ID0gZmFsc2U7CiAgICAgICAgY29uc3Qgc2l6ZV90IHJlbWFpbiA9IHJhd0xlbiAtIG9mZnNldDsKICAgICAgICBjb25zdCBzaXplX3QgYmxvY2tMZW4gPSByZW1haW4gPiA2NTUzNSA/IDY1NTM1IDogcmVtYWluOwogICAgICAgIGNvbnN0IGJvb2wgYmZpbmFsID0gKG9mZnNldCArIGJsb2NrTGVuKSA+PSByYXdMZW47CiAgICAgICAgemxpYi5wdXNoX2JhY2soYmZpbmFsID8gMHgwMSA6IDB4MDApOwogICAgICAgIHpsaWIucHVzaF9iYWNrKHN0YXRpY19jYXN0PHN0ZDo6dWludDhfdD4oYmxvY2tMZW4gJiAweGZmKSk7CiAgICAgICAgemxpYi5wdXNoX2JhY2soc3RhdGljX2Nhc3Q8c3RkOjp1aW50OF90PigoYmxvY2tMZW4gPj4gOCkgJiAweGZmKSk7CiAgICAgICAgY29uc3Qgc3RkOjp1aW50MTZfdCBubGVuID0gc3RhdGljX2Nhc3Q8c3RkOjp1aW50MTZfdD4ofmJsb2NrTGVuKTsKICAgICAgICB6bGliLnB1c2hfYmFjayhzdGF0aWNfY2FzdDxzdGQ6OnVpbnQ4X3Q+KG5sZW4gJiAweGZmKSk7CiAgICAgICAgemxpYi5wdXNoX2JhY2soc3RhdGljX2Nhc3Q8c3RkOjp1aW50OF90PigobmxlbiA+PiA4KSAmIDB4ZmYpKTsKICAgICAgICB6bGliLmluc2VydCh6bGliLmVuZCgpLCByYXcgKyBvZmZzZXQsIHJhdyArIG9mZnNldCArIGJsb2NrTGVuKTsKICAgICAgICBvZmZzZXQgKz0gYmxvY2tMZW47CiAgICAgICAgaWYgKGJsb2NrTGVuID09IDAgJiYgYmZpbmFsKQogICAgICAgIHsKICAgICAgICAgICAgYnJlYWs7CiAgICAgICAgfQogICAgfQoKICAgIGNvbnN0IHN0ZDo6dWludDMyX3QgYWRsZXIgPSBBZGxlcjMyKHJhdywgcmF3TGVuKTsKICAgIHpsaWIucHVzaF9iYWNrKHN0YXRpY19jYXN0PHN0ZDo6dWludDhfdD4oKGFkbGVyID4+IDI0KSAmIDB4ZmYpKTsKICAgIHpsaWIucHVzaF9iYWNrKHN0YXRpY19jYXN0PHN0ZDo6dWludDhfdD4oKGFkbGVyID4+IDE2KSAmIDB4ZmYpKTsKICAgIHpsaWIucHVzaF9iYWNrKHN0YXRpY19jYXN0PHN0ZDo6dWludDhfdD4oKGFkbGVyID4+IDgpICYgMHhmZikpOwogICAgemxpYi5wdXNoX2JhY2soc3RhdGljX2Nhc3Q8c3RkOjp1aW50OF90PihhZGxlciAmIDB4ZmYpKTsKICAgIHJldHVybiB6bGliOwp9Cgp9IC8vIG5hbWVzcGFjZQoKYm9vbCBXcml0ZVJnYmFQbmcoY29uc3Qgc3RkOjpzdHJpbmcmIHBhdGgsIGNvbnN0IEZyYW1lYnVmZmVyJiBmYikKewogICAgaWYgKGZiLndpZHRoIDw9IDAgfHwgZmIuaGVpZ2h0IDw9IDAKICAgICAgICB8fCBmYi5yZ2JhLnNpemUoKSA8IHN0YXRpY19jYXN0PHNpemVfdD4oZmIud2lkdGggKiBmYi5oZWlnaHQgKiA0KSkKICAgIHsKICAgICAgICByZXR1cm4gZmFsc2U7CiAgICB9CgogICAgc3RkOjp2ZWN0b3I8c3RkOjp1aW50OF90PiByYXc7CiAgICByYXcucmVzZXJ2ZShzdGF0aWNfY2FzdDxzaXplX3Q+KGZiLmhlaWdodCkgKiAoMSArIHN0YXRpY19jYXN0PHNpemVfdD4oZmIud2lkdGgpICogMykpOwogICAgZm9yIChpbnQgeSA9IDA7IHkgPCBmYi5oZWlnaHQ7ICsreSkKICAgIHsKICAgICAgICByYXcucHVzaF9iYWNrKDApOwogICAgICAgIGZvciAoaW50IHggPSAwOyB4IDwgZmIud2lkdGg7ICsreCkKICAgICAgICB7CiAgICAgICAgICAgIGNvbnN0IHNpemVfdCBpID0gc3RhdGljX2Nhc3Q8c2l6ZV90PigoeSAqIGZiLndpZHRoICsgeCkgKiA0KTsKICAgICAgICAgICAgcmF3LnB1c2hfYmFjayhmYi5yZ2JhW2ldKTsKICAgICAgICAgICAgcmF3LnB1c2hfYmFjayhmYi5yZ2JhW2kgKyAxXSk7CiAgICAgICAgICAgIHJhdy5wdXNoX2JhY2soZmIucmdiYVtpICsgMl0pOwogICAgICAgIH0KICAgIH0KCiAgICBjb25zdCBzdGQ6OnZlY3RvcjxzdGQ6OnVpbnQ4X3Q+IGlkYXREYXRhID0gQnVpbGRabGliU3RvcmVkKHJhdy5kYXRhKCksIHJhdy5zaXplKCkpOwoKICAgIHN0ZDo6dmVjdG9yPHN0ZDo6dWludDhfdD4gZmlsZTsKICAgIGNvbnN0IHN0ZDo6dWludDhfdCBzaWdbXSA9IHsweDg5LCAnUCcsICdOJywgJ0cnLCAnXHInLCAnXG4nLCAweDFhLCAnXG4nfTsKICAgIGZpbGUuaW5zZXJ0KGZpbGUuZW5kKCksIHNpZywgc2lnICsgOCk7CgogICAgc3RkOjp1aW50OF90IGloZHJbMTNdOwogICAgaWhkclswXSA9IHN0YXRpY19jYXN0PHN0ZDo6dWludDhfdD4oKGZiLndpZHRoID4+IDI0KSAmIDB4ZmYpOwogICAgaWhkclsxXSA9IHN0YXRpY19jYXN0PHN0ZDo6dWludDhfdD4oKGZiLndpZHRoID4+IDE2KSAmIDB4ZmYpOwogICAgaWhkclsyXSA9IHN0YXRpY19jYXN0PHN0ZDo6dWludDhfdD4oKGZiLndpZHRoID4+IDgpICYgMHhmZik7CiAgICBpaGRyWzNdID0gc3RhdGljX2Nhc3Q8c3RkOjp1aW50OF90PihmYi53aWR0aCAmIDB4ZmYpOwogICAgaWhkcls0XSA9IHN0YXRpY19jYXN0PHN0ZDo6dWludDhfdD4oKGZiLmhlaWdodCA+PiAyNCkgJiAweGZmKTsKICAgIGloZHJbNV0gPSBzdGF0aWNfY2FzdDxzdGQ6OnVpbnQ4X3Q+KChmYi5oZWlnaHQgPj4gMTYpICYgMHhmZik7CiAgICBpaGRyWzZdID0gc3RhdGljX2Nhc3Q8c3RkOjp1aW50OF90PigoZmIuaGVpZ2h0ID4+IDgpICYgMHhmZik7CiAgICBpaGRyWzddID0gc3RhdGljX2Nhc3Q8c3RkOjp1aW50OF90PihmYi5oZWlnaHQgJiAweGZmKTsKICAgIGloZHJbOF0gPSA4OwogICAgaWhkcls5XSA9IDI7CiAgICBpaGRyWzEwXSA9IDA7CiAgICBpaGRyWzExXSA9IDA7CiAgICBpaGRyWzEyXSA9IDA7CiAgICBBcHBlbmRDaHVuayhmaWxlLCAiSUhEUiIsIGloZHIsIHNpemVvZihpaGRyKSk7CiAgICBBcHBlbmRDaHVuayhmaWxlLCAiSURBVCIsIGlkYXREYXRhLmRhdGEoKSwgaWRhdERhdGEuc2l6ZSgpKTsKICAgIEFwcGVuZENodW5rKGZpbGUsICJJRU5EIiwgbnVsbHB0ciwgMCk7CgogICAgc3RkOjpvZnN0cmVhbSBvdXQocGF0aCwgc3RkOjppb3M6OmJpbmFyeSk7CiAgICBpZiAoIW91dCkKICAgIHsKICAgICAgICByZXR1cm4gZmFsc2U7CiAgICB9CiAgICBvdXQud3JpdGUocmVpbnRlcnByZXRfY2FzdDxjb25zdCBjaGFyKj4oZmlsZS5kYXRhKCkpLCBzdGF0aWNfY2FzdDxzdGQ6OnN0cmVhbXNpemU+KGZpbGUuc2l6ZSgpKSk7CiAgICByZXR1cm4gc3RhdGljX2Nhc3Q8Ym9vbD4ob3V0KTsKfQo=
+#include "PngWriter.h"
+
+#include <cstdint>
+#include <fstream>
+#include <vector>
+
+namespace
+{
+
+std::uint32_t Crc32(const std::uint8_t* data, size_t len)
+{
+    static std::uint32_t table[256];
+    static bool init = false;
+    if (!init)
+    {
+        for (std::uint32_t n = 0; n < 256; ++n)
+        {
+            std::uint32_t c = n;
+            for (int k = 0; k < 8; ++k)
+            {
+                if (c & 1)
+                {
+                    c = 0xedb88320u ^ (c >> 1);
+                }
+                else
+                {
+                    c >>= 1;
+                }
+            }
+            table[n] = c;
+        }
+        init = true;
+    }
+    std::uint32_t crc = 0xffffffffu;
+    for (size_t i = 0; i < len; ++i)
+    {
+        crc = table[(crc ^ data[i]) & 0xffu] ^ (crc >> 8);
+    }
+    return crc ^ 0xffffffffu;
+}
+
+void AppendU32Be(std::vector<std::uint8_t>& out, std::uint32_t value)
+{
+    out.push_back(static_cast<std::uint8_t>((value >> 24) & 0xffu));
+    out.push_back(static_cast<std::uint8_t>((value >> 16) & 0xffu));
+    out.push_back(static_cast<std::uint8_t>((value >> 8) & 0xffu));
+    out.push_back(static_cast<std::uint8_t>(value & 0xffu));
+}
+
+void AppendChunk(std::vector<std::uint8_t>& out, const char* type, const std::uint8_t* data, size_t len)
+{
+    AppendU32Be(out, static_cast<std::uint32_t>(len));
+    const size_t typeStart = out.size();
+    for (int i = 0; type[i] != '\0'; ++i)
+    {
+        out.push_back(static_cast<std::uint8_t>(type[i]));
+    }
+    if (len > 0)
+    {
+        out.insert(out.end(), data, data + len);
+    }
+    std::vector<std::uint8_t> typeAndData;
+    typeAndData.insert(typeAndData.end(), out.begin() + static_cast<long>(typeStart), out.end());
+    const std::uint32_t crc = Crc32(typeAndData.data(), typeAndData.size());
+    AppendU32Be(out, crc);
+}
+
+std::uint32_t Adler32(const std::uint8_t* data, size_t len)
+{
+    std::uint32_t a = 1;
+    std::uint32_t b = 0;
+    for (size_t i = 0; i < len; ++i)
+    {
+        a = (a + data[i]) % 65521;
+        b = (b + a) % 65521;
+    }
+    return (b << 16) | a;
+}
+
+std::vector<std::uint8_t> BuildZlibStored(const std::uint8_t* raw, size_t rawLen)
+{
+    std::vector<std::uint8_t> zlib;
+    zlib.push_back(0x78);
+    zlib.push_back(0x01);
+
+    size_t offset = 0;
+    bool first = true;
+    while (offset < rawLen || first)
+    {
+        first = false;
+        const size_t remain = rawLen - offset;
+        const size_t blockLen = remain > 65535 ? 65535 : remain;
+        const bool bfinal = (offset + blockLen) >= rawLen;
+        zlib.push_back(bfinal ? 0x01 : 0x00);
+        zlib.push_back(static_cast<std::uint8_t>(blockLen & 0xff));
+        zlib.push_back(static_cast<std::uint8_t>((blockLen >> 8) & 0xff));
+        const std::uint16_t nlen = static_cast<std::uint16_t>(~blockLen);
+        zlib.push_back(static_cast<std::uint8_t>(nlen & 0xff));
+        zlib.push_back(static_cast<std::uint8_t>((nlen >> 8) & 0xff));
+        zlib.insert(zlib.end(), raw + offset, raw + offset + blockLen);
+        offset += blockLen;
+        if (blockLen == 0 && bfinal)
+        {
+            break;
+        }
+    }
+
+    const std::uint32_t adler = Adler32(raw, rawLen);
+    zlib.push_back(static_cast<std::uint8_t>((adler >> 24) & 0xff));
+    zlib.push_back(static_cast<std::uint8_t>((adler >> 16) & 0xff));
+    zlib.push_back(static_cast<std::uint8_t>((adler >> 8) & 0xff));
+    zlib.push_back(static_cast<std::uint8_t>(adler & 0xff));
+    return zlib;
+}
+
+} // namespace
+
+bool WriteRgbaPng(const std::string& path, const Framebuffer& fb)
+{
+    if (fb.width <= 0 || fb.height <= 0
+        || fb.rgba.size() < static_cast<size_t>(fb.width * fb.height * 4))
+    {
+        return false;
+    }
+
+    std::vector<std::uint8_t> raw;
+    raw.reserve(static_cast<size_t>(fb.height) * (1 + static_cast<size_t>(fb.width) * 3));
+    for (int y = 0; y < fb.height; ++y)
+    {
+        raw.push_back(0);
+        for (int x = 0; x < fb.width; ++x)
+        {
+            const size_t i = static_cast<size_t>((y * fb.width + x) * 4);
+            raw.push_back(fb.rgba[i]);
+            raw.push_back(fb.rgba[i + 1]);
+            raw.push_back(fb.rgba[i + 2]);
+        }
+    }
+
+    const std::vector<std::uint8_t> idatData = BuildZlibStored(raw.data(), raw.size());
+
+    std::vector<std::uint8_t> file;
+    const std::uint8_t sig[] = {0x89, 'P', 'N', 'G', '\r', '\n', 0x1a, '\n'};
+    file.insert(file.end(), sig, sig + 8);
+
+    std::uint8_t ihdr[13];
+    ihdr[0] = static_cast<std::uint8_t>((fb.width >> 24) & 0xff);
+    ihdr[1] = static_cast<std::uint8_t>((fb.width >> 16) & 0xff);
+    ihdr[2] = static_cast<std::uint8_t>((fb.width >> 8) & 0xff);
+    ihdr[3] = static_cast<std::uint8_t>(fb.width & 0xff);
+    ihdr[4] = static_cast<std::uint8_t>((fb.height >> 24) & 0xff);
+    ihdr[5] = static_cast<std::uint8_t>((fb.height >> 16) & 0xff);
+    ihdr[6] = static_cast<std::uint8_t>((fb.height >> 8) & 0xff);
+    ihdr[7] = static_cast<std::uint8_t>(fb.height & 0xff);
+    ihdr[8] = 8;
+    ihdr[9] = 2;
+    ihdr[10] = 0;
+    ihdr[11] = 0;
+    ihdr[12] = 0;
+    AppendChunk(file, "IHDR", ihdr, sizeof(ihdr));
+    AppendChunk(file, "IDAT", idatData.data(), idatData.size());
+    AppendChunk(file, "IEND", nullptr, 0);
+
+    std::ofstream out(path, std::ios::binary);
+    if (!out)
+    {
+        return false;
+    }
+    out.write(reinterpret_cast<const char*>(file.data()), static_cast<std::streamsize>(file.size()));
+    return static_cast<bool>(out);
+}

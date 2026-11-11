@@ -1,1 +1,7 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSA8c3RyaW5nPgoKI2luY2x1ZGUgIkRyYXdMaXN0LmgiCgpib29sIFdyaXRlUmdiYVBuZyhjb25zdCBzdGQ6OnN0cmluZyYgcGF0aCwgY29uc3QgRnJhbWVidWZmZXImIGZiKTsK
+#pragma once
+
+#include <string>
+
+#include "DrawList.h"
+
+bool WriteRgbaPng(const std::string& path, const Framebuffer& fb);
