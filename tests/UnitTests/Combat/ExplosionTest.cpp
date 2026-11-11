@@ -1,1 +1,103 @@
-I2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CiNpbmNsdWRlICJjb3JlL2NvbWJhdC9FeHBsb3Npb24uaCIKI2luY2x1ZGUgImNvcmUvbWF0aC9WZWN0b3IyLmgiCiNpbmNsdWRlICJ0ZXN0cy9UZXN0SGVscGVycy9UZXN0SGVscGVycy5oIgoKLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09Ci8vIENvbnN0cnVjdGlvbiAvIGdldHRlcnMKLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CgpURVNUKEV4cGxvc2lvblRlc3QsIENvbnN0cnVjdGlvblN0b3Jlc1ZhbHVlcykgewogICAgRXhwbG9zaW9uIGUoVmVjdG9yMigxMDAuMGYsIDIwMC4wZiksIDUwLjBmLCAxMDAuMGYsIDIuMGYpOwogICAgRVhQRUNUX1RSVUUoVGVzdEhlbHBlcnM6OlZlY3RvcjJFcXVhbHMoZS5HZXRQb3NpdGlvbigpLCBWZWN0b3IyKDEwMC4wZiwgMjAwLjBmKSkpOwogICAgRVhQRUNUX0ZMT0FUX0VRKGUuR2V0UmFkaXVzKCksIDUwLjBmKTsKICAgIEVYUEVDVF9GTE9BVF9FUShlLkdldFN0cmVuZ3RoKCksIDEwMC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEoZS5HZXRGYWxsb2ZmRXhwb25lbnQoKSwgMi4wZik7Cn0KClRFU1QoRXhwbG9zaW9uVGVzdCwgRGVmYXVsdFN0cmVuZ3RoSXNaZXJvKSB7CiAgICBFeHBsb3Npb24gZShWZWN0b3IyKDAuMGYsIDAuMGYpLCA1MC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEoZS5HZXRTdHJlbmd0aCgpLCBFeHBsb3Npb246OkRFRkFVTFRfRVhQTE9TSU9OX1NUUkVOR1RIKTsKICAgIEVYUEVDVF9GTE9BVF9FUShlLkdldFN0cmVuZ3RoKCksIDAuMGYpOwp9CgpURVNUKEV4cGxvc2lvblRlc3QsIERlZmF1bHRGYWxsb2ZmSXNMaW5lYXIpIHsKICAgIEV4cGxvc2lvbiBlKFZlY3RvcjIoMC4wZiwgMC4wZiksIDUwLjBmLCAxMDAuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKGUuR2V0RmFsbG9mZkV4cG9uZW50KCksIDEuMGYpOwp9CgovLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KLy8gSXNJblJhZGl1cwovLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KClRFU1QoRXhwbG9zaW9uVGVzdCwgQ2VudGVySXNJblJhZGl1cykgewogICAgRXhwbG9zaW9uIGUoVmVjdG9yMigxMDAuMGYsIDEwMC4wZiksIDUwLjBmLCAxMDAuMGYpOwogICAgRVhQRUNUX1RSVUUoZS5Jc0luUmFkaXVzKFZlY3RvcjIoMTAwLjBmLCAxMDAuMGYpKSk7Cn0KClRFU1QoRXhwbG9zaW9uVGVzdCwgUG9zaXRpb25JbnNpZGVJc0luUmFkaXVzKSB7CiAgICBFeHBsb3Npb24gZShWZWN0b3IyKDEwMC4wZiwgMTAwLjBmKSwgNTAuMGYsIDEwMC4wZik7CiAgICBFWFBFQ1RfVFJVRShlLklzSW5SYWRpdXMoVmVjdG9yMigxMjAuMGYsIDEwMC4wZikpKTsgIC8vIDIwIDwgNTAKfQoKVEVTVChFeHBsb3Npb25UZXN0LCBQb3NpdGlvbkF0RWRnZUlzSW5SYWRpdXMpIHsKICAgIEV4cGxvc2lvbiBlKFZlY3RvcjIoMTAwLjBmLCAxMDAuMGYpLCA1MC4wZiwgMTAwLjBmKTsKICAgIEVYUEVDVF9UUlVFKGUuSXNJblJhZGl1cyhWZWN0b3IyKDE1MC4wZiwgMTAwLjBmKSkpOyAgLy8gZXhhY3RseSBhdCByYWRpdXMKfQoKVEVTVChFeHBsb3Npb25UZXN0LCBQb3NpdGlvbk91dHNpZGVJc05vdEluUmFkaXVzKSB7CiAgICBFeHBsb3Npb24gZShWZWN0b3IyKDEwMC4wZiwgMTAwLjBmKSwgNTAuMGYsIDEwMC4wZik7CiAgICBFWFBFQ1RfRkFMU0UoZS5Jc0luUmFkaXVzKFZlY3RvcjIoMTYwLjBmLCAxMDAuMGYpKSk7ICAvLyA2MCA+IDUwCn0KCi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQovLyBDYWxjdWxhdGVJbXB1bHNlCi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQoKVEVTVChFeHBsb3Npb25UZXN0LCBaZXJvU3RyZW5ndGhHaXZlc1plcm9JbXB1bHNlKSB7CiAgICBFeHBsb3Npb24gZShWZWN0b3IyKDAuMGYsIDAuMGYpLCA1MC4wZiwgMC4wZik7CiAgICBFWFBFQ1RfVFJVRShUZXN0SGVscGVyczo6VmVjdG9yMkVxdWFscygKICAgICAgICBlLkNhbGN1bGF0ZUltcHVsc2UoVmVjdG9yMigxMC4wZiwgMC4wZiksIDEwMC4wZiksIFZlY3RvcjI6Olplcm8oKSkpOwp9CgpURVNUKEV4cGxvc2lvblRlc3QsIFVuaXRBdEV4YWN0Q2VudGVyR2l2ZXNaZXJvSW1wdWxzZSkgewogICAgRXhwbG9zaW9uIGUoVmVjdG9yMigwLjBmLCAwLjBmKSwgNTAuMGYsIDEwMC4wZik7CiAgICBFWFBFQ1RfVFJVRShUZXN0SGVscGVyczo6VmVjdG9yMkVxdWFscygKICAgICAgICBlLkNhbGN1bGF0ZUltcHVsc2UoVmVjdG9yMigwLjBmLCAwLjBmKSwgMTAwLjBmKSwgVmVjdG9yMjo6WmVybygpKSk7Cn0KClRFU1QoRXhwbG9zaW9uVGVzdCwgVW5pdE91dHNpZGVSYWRpdXNHaXZlc1plcm9JbXB1bHNlKSB7CiAgICBFeHBsb3Npb24gZShWZWN0b3IyKDAuMGYsIDAuMGYpLCA1MC4wZiwgMTAwLjBmKTsKICAgIEVYUEVDVF9UUlVFKFRlc3RIZWxwZXJzOjpWZWN0b3IyRXF1YWxzKAogICAgICAgIGUuQ2FsY3VsYXRlSW1wdWxzZShWZWN0b3IyKDEwMC4wZiwgMC4wZiksIDEwMC4wZiksIFZlY3RvcjI6Olplcm8oKSkpOwp9CgpURVNUKEV4cGxvc2lvblRlc3QsIEltcHVsc2VEaXJlY3RlZEF3YXlGcm9tQ2VudGVyKSB7CiAgICBFeHBsb3Npb24gZShWZWN0b3IyKDAuMGYsIDAuMGYpLCA1MC4wZiwgMTAwLjBmKTsKICAgIFZlY3RvcjIgaW1wdWxzZSA9IGUuQ2FsY3VsYXRlSW1wdWxzZShWZWN0b3IyKDIwLjBmLCAwLjBmKSwgMTAwLjBmKTsKICAgIEVYUEVDVF9HVChpbXB1bHNlLngsIDAuMGYpOwogICAgRVhQRUNUX05FQVIoaW1wdWxzZS55LCAwLjBmLCAwLjAxZik7Cn0KClRFU1QoRXhwbG9zaW9uVGVzdCwgSW1wdWxzZURlY3JlYXNlc1dpdGhEaXN0YW5jZSkgewogICAgRXhwbG9zaW9uIGUoVmVjdG9yMigwLjBmLCAwLjBmKSwgMTAwLjBmLCAxMDAuMGYsIDEuMGYpOwogICAgZmxvYXQgbmVhck1hZyA9IGUuQ2FsY3VsYXRlSW1wdWxzZShWZWN0b3IyKDI1LjBmLCAwLjBmKSwgMTAwLjBmKS5MZW5ndGgoKTsKICAgIGZsb2F0IGZhck1hZyAgPSBlLkNhbGN1bGF0ZUltcHVsc2UoVmVjdG9yMig3NS4wZiwgMC4wZiksIDEwMC4wZikuTGVuZ3RoKCk7CiAgICBFWFBFQ1RfR1QobmVhck1hZywgZmFyTWFnKTsKfQoKVEVTVChFeHBsb3Npb25UZXN0LCBMaWdodGVyVW5pdFJlY2VpdmVzTW9yZUltcHVsc2UpIHsKICAgIEV4cGxvc2lvbiBlKFZlY3RvcjIoMC4wZiwgMC4wZiksIDUwLjBmLCAxMDAuMGYpOwogICAgZmxvYXQgbGlnaHRJbXB1bHNlID0gZS5DYWxjdWxhdGVJbXB1bHNlKFZlY3RvcjIoMTAuMGYsIDAuMGYpLCA1MC4wZikuTGVuZ3RoKCk7CiAgICBmbG9hdCBoZWF2eUltcHVsc2UgPSBlLkNhbGN1bGF0ZUltcHVsc2UoVmVjdG9yMigxMC4wZiwgMC4wZiksIDIwMC4wZikuTGVuZ3RoKCk7CiAgICBFWFBFQ1RfR1QobGlnaHRJbXB1bHNlLCBoZWF2eUltcHVsc2UpOwp9CgpURVNUKEV4cGxvc2lvblRlc3QsIFF1YWRyYXRpY0ZhbGxvZmZIYXNTbWFsbGVyTWlkcG9pbnRJbXB1bHNlKSB7CiAgICAvLyBBdCA1MCUgcmFkaXVzLCBxdWFkcmF0aWMgZ2l2ZXMgKDEgLSAwLjUpXjIgPSAwLjI1LCBsaW5lYXIgZ2l2ZXMgMC41CiAgICBFeHBsb3Npb24gbGluZWFyKFZlY3RvcjIoMC4wZiwgMC4wZiksIDEwMC4wZiwgMTAwLjBmLCAxLjBmKTsKICAgIEV4cGxvc2lvbiBxdWFkcmF0aWMoVmVjdG9yMigwLjBmLCAwLjBmKSwgMTAwLjBmLCAxMDAuMGYsIDIuMGYpOwogICAgZmxvYXQgbE1hZyA9IGxpbmVhci5DYWxjdWxhdGVJbXB1bHNlKFZlY3RvcjIoNTAuMGYsIDAuMGYpLCAxMDAuMGYpLkxlbmd0aCgpOwogICAgZmxvYXQgcU1hZyA9IHF1YWRyYXRpYy5DYWxjdWxhdGVJbXB1bHNlKFZlY3RvcjIoNTAuMGYsIDAuMGYpLCAxMDAuMGYpLkxlbmd0aCgpOwogICAgRVhQRUNUX0dUKGxNYWcsIHFNYWcpOwp9Cg==
+#include <gtest/gtest.h>
+#include "core/combat/Explosion.h"
+#include "core/math/Vector2.h"
+#include "tests/TestHelpers/TestHelpers.h"
+
+// ============================================================
+// Construction / getters
+// ============================================================
+
+TEST(ExplosionTest, ConstructionStoresValues) {
+    Explosion e(Vector2(100.0f, 200.0f), 50.0f, 100.0f, 2.0f);
+    EXPECT_TRUE(TestHelpers::Vector2Equals(e.GetPosition(), Vector2(100.0f, 200.0f)));
+    EXPECT_FLOAT_EQ(e.GetRadius(), 50.0f);
+    EXPECT_FLOAT_EQ(e.GetStrength(), 100.0f);
+    EXPECT_FLOAT_EQ(e.GetFalloffExponent(), 2.0f);
+}
+
+TEST(ExplosionTest, DefaultStrengthIsZero) {
+    Explosion e(Vector2(0.0f, 0.0f), 50.0f);
+    EXPECT_FLOAT_EQ(e.GetStrength(), Explosion::DEFAULT_EXPLOSION_STRENGTH);
+    EXPECT_FLOAT_EQ(e.GetStrength(), 0.0f);
+}
+
+TEST(ExplosionTest, DefaultFalloffIsLinear) {
+    Explosion e(Vector2(0.0f, 0.0f), 50.0f, 100.0f);
+    EXPECT_FLOAT_EQ(e.GetFalloffExponent(), 1.0f);
+}
+
+// ============================================================
+// IsInRadius
+// ============================================================
+
+TEST(ExplosionTest, CenterIsInRadius) {
+    Explosion e(Vector2(100.0f, 100.0f), 50.0f, 100.0f);
+    EXPECT_TRUE(e.IsInRadius(Vector2(100.0f, 100.0f)));
+}
+
+TEST(ExplosionTest, PositionInsideIsInRadius) {
+    Explosion e(Vector2(100.0f, 100.0f), 50.0f, 100.0f);
+    EXPECT_TRUE(e.IsInRadius(Vector2(120.0f, 100.0f)));  // 20 < 50
+}
+
+TEST(ExplosionTest, PositionAtEdgeIsInRadius) {
+    Explosion e(Vector2(100.0f, 100.0f), 50.0f, 100.0f);
+    EXPECT_TRUE(e.IsInRadius(Vector2(150.0f, 100.0f)));  // exactly at radius
+}
+
+TEST(ExplosionTest, PositionOutsideIsNotInRadius) {
+    Explosion e(Vector2(100.0f, 100.0f), 50.0f, 100.0f);
+    EXPECT_FALSE(e.IsInRadius(Vector2(160.0f, 100.0f)));  // 60 > 50
+}
+
+// ============================================================
+// CalculateImpulse
+// ============================================================
+
+TEST(ExplosionTest, ZeroStrengthGivesZeroImpulse) {
+    Explosion e(Vector2(0.0f, 0.0f), 50.0f, 0.0f);
+    EXPECT_TRUE(TestHelpers::Vector2Equals(
+        e.CalculateImpulse(Vector2(10.0f, 0.0f), 100.0f), Vector2::Zero()));
+}
+
+TEST(ExplosionTest, UnitAtExactCenterGivesZeroImpulse) {
+    Explosion e(Vector2(0.0f, 0.0f), 50.0f, 100.0f);
+    EXPECT_TRUE(TestHelpers::Vector2Equals(
+        e.CalculateImpulse(Vector2(0.0f, 0.0f), 100.0f), Vector2::Zero()));
+}
+
+TEST(ExplosionTest, UnitOutsideRadiusGivesZeroImpulse) {
+    Explosion e(Vector2(0.0f, 0.0f), 50.0f, 100.0f);
+    EXPECT_TRUE(TestHelpers::Vector2Equals(
+        e.CalculateImpulse(Vector2(100.0f, 0.0f), 100.0f), Vector2::Zero()));
+}
+
+TEST(ExplosionTest, ImpulseDirectedAwayFromCenter) {
+    Explosion e(Vector2(0.0f, 0.0f), 50.0f, 100.0f);
+    Vector2 impulse = e.CalculateImpulse(Vector2(20.0f, 0.0f), 100.0f);
+    EXPECT_GT(impulse.x, 0.0f);
+    EXPECT_NEAR(impulse.y, 0.0f, 0.01f);
+}
+
+TEST(ExplosionTest, ImpulseDecreasesWithDistance) {
+    Explosion e(Vector2(0.0f, 0.0f), 100.0f, 100.0f, 1.0f);
+    float nearMag = e.CalculateImpulse(Vector2(25.0f, 0.0f), 100.0f).Length();
+    float farMag  = e.CalculateImpulse(Vector2(75.0f, 0.0f), 100.0f).Length();
+    EXPECT_GT(nearMag, farMag);
+}
+
+TEST(ExplosionTest, LighterUnitReceivesMoreImpulse) {
+    Explosion e(Vector2(0.0f, 0.0f), 50.0f, 100.0f);
+    float lightImpulse = e.CalculateImpulse(Vector2(10.0f, 0.0f), 50.0f).Length();
+    float heavyImpulse = e.CalculateImpulse(Vector2(10.0f, 0.0f), 200.0f).Length();
+    EXPECT_GT(lightImpulse, heavyImpulse);
+}
+
+TEST(ExplosionTest, QuadraticFalloffHasSmallerMidpointImpulse) {
+    // At 50% radius, quadratic gives (1 - 0.5)^2 = 0.25, linear gives 0.5
+    Explosion linear(Vector2(0.0f, 0.0f), 100.0f, 100.0f, 1.0f);
+    Explosion quadratic(Vector2(0.0f, 0.0f), 100.0f, 100.0f, 2.0f);
+    float lMag = linear.CalculateImpulse(Vector2(50.0f, 0.0f), 100.0f).Length();
+    float qMag = quadratic.CalculateImpulse(Vector2(50.0f, 0.0f), 100.0f).Length();
+    EXPECT_GT(lMag, qMag);
+}

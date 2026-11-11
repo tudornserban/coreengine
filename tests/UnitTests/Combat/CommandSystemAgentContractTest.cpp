@@ -1,1 +1,95 @@
-I2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgojaW5jbHVkZSA8dHlwZV90cmFpdHM+CiNpbmNsdWRlIDx2ZWN0b3I+CgojaW5jbHVkZSAiY29yZS9jb21iYXQvQ29tbWFuZFN5c3RlbS5oIgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lHYW1lVW5pdC5oIgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lVbml0QWdlbnQuaCIKI2luY2x1ZGUgImNvcmUvbWF0aC9WZWN0b3IyLmgiCiNpbmNsdWRlICJ0ZXN0cy9UZXN0SGVscGVycy9Nb2NrR2FtZVVuaXQuaCIKI2luY2x1ZGUgInRlc3RzL1Rlc3RIZWxwZXJzL1Rlc3RIZWxwZXJzLmgiCgpuYW1lc3BhY2UgewoKY2xhc3MgQWdlbnRSZWNvcmRpbmdVbml0IDogcHVibGljIE1vY2tHYW1lVW5pdCwgcHVibGljIElVbml0QWdlbnQgewpwdWJsaWM6CiAgICBzdGQ6OnZlY3RvcjxzdGQ6OnN0cmluZz4gcmVjb3JkZWRTdGF0ZXM7CiAgICBzdHJ1Y3QgUmVjb3JkZWRQYXJhbWV0ZXIgewogICAgICAgIHN0ZDo6c3RyaW5nIG5hbWU7CiAgICAgICAgZmxvYXQgdmFsdWU7CiAgICB9OwogICAgc3RkOjp2ZWN0b3I8UmVjb3JkZWRQYXJhbWV0ZXI+IHJlY29yZGVkUGFyYW1ldGVyczsKCiAgICB2b2lkIFNldEFnZW50U3RhdGUoY29uc3Qgc3RkOjpzdHJpbmcmIHN0YXRlTmFtZSkgb3ZlcnJpZGUgeyByZWNvcmRlZFN0YXRlcy5wdXNoX2JhY2soc3RhdGVOYW1lKTsgfQoKICAgIHZvaWQgU2V0QWdlbnRQYXJhbWV0ZXIoY29uc3Qgc3RkOjpzdHJpbmcmIHBhcmFtTmFtZSwgZmxvYXQgdmFsdWUpIG92ZXJyaWRlIHsKICAgICAgICByZWNvcmRlZFBhcmFtZXRlcnMucHVzaF9iYWNrKHtwYXJhbU5hbWUsIHZhbHVlfSk7CiAgICB9Cn07CgpjbGFzcyBEZWJ1Z0Rlc3RpbmF0aW9uUmVjb3JkaW5nVW5pdCA6IHB1YmxpYyBNb2NrR2FtZVVuaXQgewpwdWJsaWM6CiAgICBWZWN0b3IyIGxhc3REZWJ1Z0Rlc3RpbmF0aW9ue1ZlY3RvcjI6Olplcm8oKX07CgogICAgdm9pZCBTZXREZWJ1Z0Rlc3RpbmF0aW9uKFZlY3RvcjIgdGFyZ2V0KSBvdmVycmlkZSB7CiAgICAgICAgbGFzdERlYnVnRGVzdGluYXRpb24gPSB0YXJnZXQ7CiAgICAgICAgTW9ja0dhbWVVbml0OjpTZXREZWJ1Z0Rlc3RpbmF0aW9uKHRhcmdldCk7CiAgICB9Cn07Cgp9ICAvLyBuYW1lc3BhY2UKClRFU1QoQ29tbWFuZFN5c3RlbUFnZW50Q29udHJhY3RUZXN0LCBGb3J3YXJkc1NldFVuaXRTdGF0ZVRvSVVuaXRBZ2VudCkgewogICAgQ29tbWFuZFN5c3RlbSBjb21tYW5kczsKICAgIEFnZW50UmVjb3JkaW5nVW5pdCB1bml0OwoKICAgIHN0YXRpY19hc3NlcnQoc3RkOjppc19iYXNlX29mX3Y8SVVuaXRBZ2VudCwgQWdlbnRSZWNvcmRpbmdVbml0Pik7CgogICAgY29tbWFuZHMuU2V0VW5pdFN0YXRlKCZ1bml0LCAicGF0cm9sIik7CiAgICBBU1NFUlRfRVEodW5pdC5yZWNvcmRlZFN0YXRlcy5zaXplKCksIDF1KTsKICAgIEVYUEVDVF9FUSh1bml0LnJlY29yZGVkU3RhdGVzLmZyb250KCksICJwYXRyb2wiKTsKfQoKVEVTVChDb21tYW5kU3lzdGVtQWdlbnRDb250cmFjdFRlc3QsIEZvcndhcmRzU2V0VW5pdHNTdGF0ZVRvRWFjaElVbml0QWdlbnQpIHsKICAgIENvbW1hbmRTeXN0ZW0gY29tbWFuZHM7CiAgICBBZ2VudFJlY29yZGluZ1VuaXQgZmlyc3Q7CiAgICBBZ2VudFJlY29yZGluZ1VuaXQgc2Vjb25kOwoKICAgIGNvbW1hbmRzLlNldFVuaXRzU3RhdGUoeyZmaXJzdCwgJnNlY29uZH0sICJlbmdhZ2UiKTsKCiAgICBBU1NFUlRfRVEoZmlyc3QucmVjb3JkZWRTdGF0ZXMuc2l6ZSgpLCAxdSk7CiAgICBBU1NFUlRfRVEoc2Vjb25kLnJlY29yZGVkU3RhdGVzLnNpemUoKSwgMXUpOwogICAgRVhQRUNUX0VRKGZpcnN0LnJlY29yZGVkU3RhdGVzLmZyb250KCksICJlbmdhZ2UiKTsKICAgIEVYUEVDVF9FUShzZWNvbmQucmVjb3JkZWRTdGF0ZXMuZnJvbnQoKSwgImVuZ2FnZSIpOwp9CgpURVNUKENvbW1hbmRTeXN0ZW1BZ2VudENvbnRyYWN0VGVzdCwgRm9yd2FyZHNTZXRCZWhhdmlvclBhcmFtZXRlclRvSVVuaXRBZ2VudCkgewogICAgQ29tbWFuZFN5c3RlbSBjb21tYW5kczsKICAgIEFnZW50UmVjb3JkaW5nVW5pdCB1bml0OwoKICAgIGNvbW1hbmRzLlNldEJlaGF2aW9yUGFyYW1ldGVyKCZ1bml0LCAic3RyZW5ndGgiLCAxMi41Zik7CiAgICBBU1NFUlRfRVEodW5pdC5yZWNvcmRlZFBhcmFtZXRlcnMuc2l6ZSgpLCAxdSk7CiAgICBFWFBFQ1RfRVEodW5pdC5yZWNvcmRlZFBhcmFtZXRlcnMuZnJvbnQoKS5uYW1lLCAic3RyZW5ndGgiKTsKICAgIEVYUEVDVF9GTE9BVF9FUSh1bml0LnJlY29yZGVkUGFyYW1ldGVycy5mcm9udCgpLnZhbHVlLCAxMi41Zik7Cn0KClRFU1QoQ29tbWFuZFN5c3RlbUFnZW50Q29udHJhY3RUZXN0LCBNb2NrR2FtZVVuaXRXaXRob3V0SVVuaXRBZ2VudElzTm9PcCkgewogICAgQ29tbWFuZFN5c3RlbSBjb21tYW5kczsKICAgIE1vY2tHYW1lVW5pdCB1bml0OwoKICAgIHN0YXRpY19hc3NlcnQoIXN0ZDo6aXNfYmFzZV9vZl92PElVbml0QWdlbnQsIE1vY2tHYW1lVW5pdD4pOwoKICAgIGNvbW1hbmRzLlNldFVuaXRTdGF0ZSgmdW5pdCwgImlnbm9yZWQiKTsKICAgIGNvbW1hbmRzLlNldEJlaGF2aW9yUGFyYW1ldGVyKCZ1bml0LCAiaWdub3JlZCIsIDEuMGYpOwp9CgpURVNUKENvbW1hbmRTeXN0ZW1BZ2VudENvbnRyYWN0VGVzdCwgTW92ZVVuaXRzVG9TZXRzRGVidWdEZXN0aW5hdGlvbk9uVW5pdCkgewogICAgQ29tbWFuZFN5c3RlbSBjb21tYW5kczsKICAgIERlYnVnRGVzdGluYXRpb25SZWNvcmRpbmdVbml0IHVuaXQ7CiAgICBjb25zdCBWZWN0b3IyIGRlc3RpbmF0aW9uKDQwMC4wZiwgMzAwLjBmKTsKCiAgICBjb21tYW5kcy5Nb3ZlVW5pdHNUbyh7JnVuaXR9LCBkZXN0aW5hdGlvbik7CgogICAgRVhQRUNUX1RSVUUoVGVzdEhlbHBlcnM6OlZlY3RvcjJFcXVhbHModW5pdC5sYXN0RGVidWdEZXN0aW5hdGlvbiwgZGVzdGluYXRpb24pKTsKfQo=
+#include <gtest/gtest.h>
+
+#include <type_traits>
+#include <vector>
+
+#include "core/combat/CommandSystem.h"
+#include "core/interfaces/IGameUnit.h"
+#include "core/interfaces/IUnitAgent.h"
+#include "core/math/Vector2.h"
+#include "tests/TestHelpers/MockGameUnit.h"
+#include "tests/TestHelpers/TestHelpers.h"
+
+namespace {
+
+class AgentRecordingUnit : public MockGameUnit, public IUnitAgent {
+public:
+    std::vector<std::string> recordedStates;
+    struct RecordedParameter {
+        std::string name;
+        float value;
+    };
+    std::vector<RecordedParameter> recordedParameters;
+
+    void SetAgentState(const std::string& stateName) override { recordedStates.push_back(stateName); }
+
+    void SetAgentParameter(const std::string& paramName, float value) override {
+        recordedParameters.push_back({paramName, value});
+    }
+};
+
+class DebugDestinationRecordingUnit : public MockGameUnit {
+public:
+    Vector2 lastDebugDestination{Vector2::Zero()};
+
+    void SetDebugDestination(Vector2 target) override {
+        lastDebugDestination = target;
+        MockGameUnit::SetDebugDestination(target);
+    }
+};
+
+}  // namespace
+
+TEST(CommandSystemAgentContractTest, ForwardsSetUnitStateToIUnitAgent) {
+    CommandSystem commands;
+    AgentRecordingUnit unit;
+
+    static_assert(std::is_base_of_v<IUnitAgent, AgentRecordingUnit>);
+
+    commands.SetUnitState(&unit, "patrol");
+    ASSERT_EQ(unit.recordedStates.size(), 1u);
+    EXPECT_EQ(unit.recordedStates.front(), "patrol");
+}
+
+TEST(CommandSystemAgentContractTest, ForwardsSetUnitsStateToEachIUnitAgent) {
+    CommandSystem commands;
+    AgentRecordingUnit first;
+    AgentRecordingUnit second;
+
+    commands.SetUnitsState({&first, &second}, "engage");
+
+    ASSERT_EQ(first.recordedStates.size(), 1u);
+    ASSERT_EQ(second.recordedStates.size(), 1u);
+    EXPECT_EQ(first.recordedStates.front(), "engage");
+    EXPECT_EQ(second.recordedStates.front(), "engage");
+}
+
+TEST(CommandSystemAgentContractTest, ForwardsSetBehaviorParameterToIUnitAgent) {
+    CommandSystem commands;
+    AgentRecordingUnit unit;
+
+    commands.SetBehaviorParameter(&unit, "strength", 12.5f);
+    ASSERT_EQ(unit.recordedParameters.size(), 1u);
+    EXPECT_EQ(unit.recordedParameters.front().name, "strength");
+    EXPECT_FLOAT_EQ(unit.recordedParameters.front().value, 12.5f);
+}
+
+TEST(CommandSystemAgentContractTest, MockGameUnitWithoutIUnitAgentIsNoOp) {
+    CommandSystem commands;
+    MockGameUnit unit;
+
+    static_assert(!std::is_base_of_v<IUnitAgent, MockGameUnit>);
+
+    commands.SetUnitState(&unit, "ignored");
+    commands.SetBehaviorParameter(&unit, "ignored", 1.0f);
+}
+
+TEST(CommandSystemAgentContractTest, MoveUnitsToSetsDebugDestinationOnUnit) {
+    CommandSystem commands;
+    DebugDestinationRecordingUnit unit;
+    const Vector2 destination(400.0f, 300.0f);
+
+    commands.MoveUnitsTo({&unit}, destination);
+
+    EXPECT_TRUE(TestHelpers::Vector2Equals(unit.lastDebugDestination, destination));
+}

@@ -1,1 +1,49 @@
-I2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgojaW5jbHVkZSA8dHlwZV90cmFpdHM+CgojaW5jbHVkZSAiY29yZS9jb21iYXQvQ29tbWFuZFN5c3RlbS5oIgojaW5jbHVkZSAiY29yZS9nYW1lc3RhdGUvUlRTVW5pdC5oIgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lVbml0QWdlbnQuaCIKI2luY2x1ZGUgImNvcmUvbWF0aC9WZWN0b3IyLmgiCiNpbmNsdWRlICJ0ZXN0cy9UZXN0SGVscGVycy9Nb2NrQmVoYXZpb3IuaCIKI2luY2x1ZGUgInRlc3RzL1Rlc3RIZWxwZXJzL01vY2tHYW1lVW5pdC5oIgoKVEVTVChDb21tYW5kU3lzdGVtVGVzdCwgTW9ja0dhbWVVbml0X05vSVVuaXRBZ2VudF9TZXRTdGF0ZUFuZFBhcmFtZXRlckFyZU5vT3ApIHsKICAgIENvbW1hbmRTeXN0ZW0gY29tbWFuZHM7CiAgICBNb2NrR2FtZVVuaXQgdW5pdDsKCiAgICBzdGF0aWNfYXNzZXJ0KCFzdGQ6OmlzX2Jhc2Vfb2ZfdjxJVW5pdEFnZW50LCBNb2NrR2FtZVVuaXQ+KTsKCiAgICBjb21tYW5kcy5TZXRVbml0U3RhdGUoJnVuaXQsICJhbnlfc3RhdGUiKTsKICAgIGNvbW1hbmRzLlNldEJlaGF2aW9yUGFyYW1ldGVyKCZ1bml0LCAic3RyZW5ndGgiLCA0Mi4wZik7Cn0KClRFU1QoQ29tbWFuZFN5c3RlbVRlc3QsIFJUU1VuaXRfU2V0VW5pdFN0YXRlRGVsZWdhdGVzVG9TdGF0ZU1hY2hpbmUpIHsKICAgIENvbW1hbmRTeXN0ZW0gY29tbWFuZHM7CiAgICBSVFNVbml0IHVuaXQoVmVjdG9yMjo6WmVybygpLCAwKTsKCiAgICB1bml0LkdldFN0YXRlTWFjaGluZSgpLkFkZFN0YXRlKCJBIiwgc3RkOjptYWtlX3VuaXF1ZTxNb2NrQmVoYXZpb3I+KCJCZWhBIikpOwogICAgdW5pdC5HZXRTdGF0ZU1hY2hpbmUoKS5BZGRTdGF0ZSgiQiIsIHN0ZDo6bWFrZV91bmlxdWU8TW9ja0JlaGF2aW9yPigiQmVoQiIpKTsKCiAgICBjb21tYW5kcy5TZXRVbml0U3RhdGUoJnVuaXQsICJCIik7CiAgICBFWFBFQ1RfRVEodW5pdC5HZXRTdGF0ZU1hY2hpbmUoKS5HZXRDdXJyZW50U3RhdGUoKSwgIkIiKTsKICAgIEFTU0VSVF9ORSh1bml0LkdldFN0YXRlTWFjaGluZSgpLkdldEN1cnJlbnRCZWhhdmlvcigpLCBudWxscHRyKTsKICAgIEVYUEVDVF9TVFJFUSh1bml0LkdldFN0YXRlTWFjaGluZSgpLkdldEN1cnJlbnRCZWhhdmlvcigpLT5HZXROYW1lKCksICJCZWhCIik7Cn0KClRFU1QoQ29tbWFuZFN5c3RlbVRlc3QsIFJUU1VuaXRfU2V0QmVoYXZpb3JQYXJhbWV0ZXJVcGRhdGVzQ3VycmVudEJlaGF2aW9yKSB7CiAgICBDb21tYW5kU3lzdGVtIGNvbW1hbmRzOwogICAgUlRTVW5pdCB1bml0KFZlY3RvcjI6Olplcm8oKSwgMCk7CgogICAgYXV0byBiZWggPSBzdGQ6Om1ha2VfdW5pcXVlPE1vY2tCZWhhdmlvcj4oIkJlaCIpOwogICAgYmVoLT5TZXRQYXJhbWV0ZXIoInN0cmVuZ3RoIiwgMTAwLjBmKTsKICAgIHVuaXQuR2V0U3RhdGVNYWNoaW5lKCkuQWRkU3RhdGUoIlMiLCBzdGQ6Om1vdmUoYmVoKSk7CiAgICB1bml0LkdldFN0YXRlTWFjaGluZSgpLlNldFN0YXRlKCJTIik7CgogICAgQVNTRVJUX05FKHVuaXQuR2V0U3RhdGVNYWNoaW5lKCkuR2V0Q3VycmVudEJlaGF2aW9yKCksIG51bGxwdHIpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHVuaXQuR2V0U3RhdGVNYWNoaW5lKCkuR2V0Q3VycmVudEJlaGF2aW9yKCktPkdldFBhcmFtZXRlcnMoKS5hdCgic3RyZW5ndGgiKSwgMTAwLjBmKTsKCiAgICBjb21tYW5kcy5TZXRCZWhhdmlvclBhcmFtZXRlcigmdW5pdCwgInN0cmVuZ3RoIiwgNy41Zik7CiAgICBFWFBFQ1RfRkxPQVRfRVEodW5pdC5HZXRTdGF0ZU1hY2hpbmUoKS5HZXRDdXJyZW50QmVoYXZpb3IoKS0+R2V0UGFyYW1ldGVycygpLmF0KCJzdHJlbmd0aCIpLCA3LjVmKTsKfQo=
+#include <gtest/gtest.h>
+
+#include <type_traits>
+
+#include "core/combat/CommandSystem.h"
+#include "core/gamestate/RTSUnit.h"
+#include "core/interfaces/IUnitAgent.h"
+#include "core/math/Vector2.h"
+#include "tests/TestHelpers/MockBehavior.h"
+#include "tests/TestHelpers/MockGameUnit.h"
+
+TEST(CommandSystemTest, MockGameUnit_NoIUnitAgent_SetStateAndParameterAreNoOp) {
+    CommandSystem commands;
+    MockGameUnit unit;
+
+    static_assert(!std::is_base_of_v<IUnitAgent, MockGameUnit>);
+
+    commands.SetUnitState(&unit, "any_state");
+    commands.SetBehaviorParameter(&unit, "strength", 42.0f);
+}
+
+TEST(CommandSystemTest, RTSUnit_SetUnitStateDelegatesToStateMachine) {
+    CommandSystem commands;
+    RTSUnit unit(Vector2::Zero(), 0);
+
+    unit.GetStateMachine().AddState("A", std::make_unique<MockBehavior>("BehA"));
+    unit.GetStateMachine().AddState("B", std::make_unique<MockBehavior>("BehB"));
+
+    commands.SetUnitState(&unit, "B");
+    EXPECT_EQ(unit.GetStateMachine().GetCurrentState(), "B");
+    ASSERT_NE(unit.GetStateMachine().GetCurrentBehavior(), nullptr);
+    EXPECT_STREQ(unit.GetStateMachine().GetCurrentBehavior()->GetName(), "BehB");
+}
+
+TEST(CommandSystemTest, RTSUnit_SetBehaviorParameterUpdatesCurrentBehavior) {
+    CommandSystem commands;
+    RTSUnit unit(Vector2::Zero(), 0);
+
+    auto beh = std::make_unique<MockBehavior>("Beh");
+    beh->SetParameter("strength", 100.0f);
+    unit.GetStateMachine().AddState("S", std::move(beh));
+    unit.GetStateMachine().SetState("S");
+
+    ASSERT_NE(unit.GetStateMachine().GetCurrentBehavior(), nullptr);
+    EXPECT_FLOAT_EQ(unit.GetStateMachine().GetCurrentBehavior()->GetParameters().at("strength"), 100.0f);
+
+    commands.SetBehaviorParameter(&unit, "strength", 7.5f);
+    EXPECT_FLOAT_EQ(unit.GetStateMachine().GetCurrentBehavior()->GetParameters().at("strength"), 7.5f);
+}

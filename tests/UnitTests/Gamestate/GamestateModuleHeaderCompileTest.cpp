@@ -1,1 +1,18 @@
-I2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgojaW5jbHVkZSAiY29yZS9nYW1lc3RhdGUvR2FtZVN0YXRlTWFuYWdlci5oIgojaW5jbHVkZSAiY29yZS9nYW1lc3RhdGUvSUdhbWVMb2dpY1JlbmRlcmVyLmgiCiNpbmNsdWRlICJjb3JlL2dhbWVzdGF0ZS9JR2FtZVN0YXRlLmgiCiNpbmNsdWRlICJjb3JlL2dhbWVzdGF0ZS9SVFNHYW1lU3RhdGUuaCIKI2luY2x1ZGUgImNvcmUvZ2FtZXN0YXRlL1JUU1VuaXQuaCIKCm5hbWVzcGFjZSB7CgovLy8gU21va2UgY29tcGlsZTogZXhwb3J0ZWQgZ2FtZXN0YXRlIGhlYWRlcnMgcGFyc2UgdW5kZXIgcmVwby1yb290IGluY2x1ZGVzLgpjbGFzcyBHYW1lc3RhdGVIZWFkZXJDb21waWxlVGVzdCA6IHB1YmxpYyA6OnRlc3Rpbmc6OlRlc3Qge307Cgp9ICAvLyBuYW1lc3BhY2UKClRFU1RfRihHYW1lc3RhdGVIZWFkZXJDb21waWxlVGVzdCwgQWxsRXhwb3J0ZWRIZWFkZXJzSW5jbHVkZWQpIHsKICAgIFNVQ0NFRUQoKTsKfQo=
+#include <gtest/gtest.h>
+
+#include "core/gamestate/GameStateManager.h"
+#include "core/gamestate/IGameLogicRenderer.h"
+#include "core/gamestate/IGameState.h"
+#include "core/gamestate/RTSGameState.h"
+#include "core/gamestate/RTSUnit.h"
+
+namespace {
+
+/// Smoke compile: exported gamestate headers parse under repo-root includes.
+class GamestateHeaderCompileTest : public ::testing::Test {};
+
+}  // namespace
+
+TEST_F(GamestateHeaderCompileTest, AllExportedHeadersIncluded) {
+    SUCCEED();
+}
