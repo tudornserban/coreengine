@@ -1,1 +1,19 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiU2NlbmFyaW8uaCIKCiNpbmNsdWRlIDxzdHJpbmc+CgpzdHJ1Y3QgVmlld2VyQ29uZmlnCnsKICAgIGludCBmcmFtZXMgPSAwOwogICAgc3RkOjpzdHJpbmcgc2NyZWVuc2hvdFBhdGg7CiAgICBib29sIG5vV2luZG93ID0gZmFsc2U7CiAgICBpbnQgd2lkdGggPSAxMjgwOwogICAgaW50IGhlaWdodCA9IDcyMDsKICAgIHN0ZDo6c3RyaW5nIHNjcmlwdFBhdGg7CiAgICBQcmVzZXQgcHJlc2V0ID0gUHJlc2V0OjpUd29Vbml0czsKICAgIGJvb2wgcGFyc2VFcnJvciA9IGZhbHNlOwp9OwoKVmlld2VyQ29uZmlnIFBhcnNlVmlld2VyQ29uZmlnKGludCBhcmdjLCBjaGFyKiogYXJndik7Cg==
+#pragma once
+
+#include "Scenario.h"
+
+#include <string>
+
+struct ViewerConfig
+{
+    int frames = 0;
+    std::string screenshotPath;
+    bool noWindow = false;
+    int width = 1280;
+    int height = 720;
+    std::string scriptPath;
+    Preset preset = Preset::TwoUnits;
+    bool parseError = false;
+};
+
+ViewerConfig ParseViewerConfig(int argc, char** argv);

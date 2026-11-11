@@ -1,1 +1,110 @@
-I2luY2x1ZGUgIlZpZXdlckNvbmZpZy5oIgoKI2luY2x1ZGUgPGNzdGRsaWI+CiNpbmNsdWRlIDxjc3RyaW5nPgojaW5jbHVkZSA8c3RyaW5nPgoKVmlld2VyQ29uZmlnIFBhcnNlVmlld2VyQ29uZmlnKGludCBhcmdjLCBjaGFyKiogYXJndikKewogICAgVmlld2VyQ29uZmlnIGNvbmZpZzsKICAgIGZvciAoaW50IGkgPSAxOyBpIDwgYXJnYzsgKytpKQogICAgewogICAgICAgIGNvbnN0IGNoYXIqIGFyZyA9IGFyZ3ZbaV07CiAgICAgICAgaWYgKHN0ZDo6c3RyY21wKGFyZywgIi0tZnJhbWVzIikgPT0gMCkKICAgICAgICB7CiAgICAgICAgICAgIGlmIChpICsgMSA+PSBhcmdjKQogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICBjb25maWcucGFyc2VFcnJvciA9IHRydWU7CiAgICAgICAgICAgICAgICByZXR1cm4gY29uZmlnOwogICAgICAgICAgICB9CiAgICAgICAgICAgIGNoYXIqIGVuZCA9IG51bGxwdHI7CiAgICAgICAgICAgIGxvbmcgdmFsdWUgPSBzdGQ6OnN0cnRvbChhcmd2WysraV0sICZlbmQsIDEwKTsKICAgICAgICAgICAgaWYgKGVuZCA9PSBhcmd2W2ldIHx8ICplbmQgIT0gJ1wwJyB8fCB2YWx1ZSA8IDApCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIGNvbmZpZy5wYXJzZUVycm9yID0gdHJ1ZTsKICAgICAgICAgICAgICAgIHJldHVybiBjb25maWc7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgY29uZmlnLmZyYW1lcyA9IHN0YXRpY19jYXN0PGludD4odmFsdWUpOwogICAgICAgIH0KICAgICAgICBlbHNlIGlmIChzdGQ6OnN0cmNtcChhcmcsICItLXNjcmVlbnNob3QiKSA9PSAwKQogICAgICAgIHsKICAgICAgICAgICAgaWYgKGkgKyAxID49IGFyZ2MpCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIGNvbmZpZy5wYXJzZUVycm9yID0gdHJ1ZTsKICAgICAgICAgICAgICAgIHJldHVybiBjb25maWc7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgY29uZmlnLnNjcmVlbnNob3RQYXRoID0gYXJndlsrK2ldOwogICAgICAgIH0KICAgICAgICBlbHNlIGlmIChzdGQ6OnN0cmNtcChhcmcsICItLW5vLXdpbmRvdyIpID09IDApCiAgICAgICAgewogICAgICAgICAgICBjb25maWcubm9XaW5kb3cgPSB0cnVlOwogICAgICAgIH0KICAgICAgICBlbHNlIGlmIChzdGQ6OnN0cmNtcChhcmcsICItLXdpZHRoIikgPT0gMCkKICAgICAgICB7CiAgICAgICAgICAgIGlmIChpICsgMSA+PSBhcmdjKQogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICBjb25maWcucGFyc2VFcnJvciA9IHRydWU7CiAgICAgICAgICAgICAgICByZXR1cm4gY29uZmlnOwogICAgICAgICAgICB9CiAgICAgICAgICAgIGNoYXIqIGVuZCA9IG51bGxwdHI7CiAgICAgICAgICAgIGxvbmcgdmFsdWUgPSBzdGQ6OnN0cnRvbChhcmd2WysraV0sICZlbmQsIDEwKTsKICAgICAgICAgICAgaWYgKGVuZCA9PSBhcmd2W2ldIHx8ICplbmQgIT0gJ1wwJyB8fCB2YWx1ZSA8PSAwKQogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICBjb25maWcucGFyc2VFcnJvciA9IHRydWU7CiAgICAgICAgICAgICAgICByZXR1cm4gY29uZmlnOwogICAgICAgICAgICB9CiAgICAgICAgICAgIGNvbmZpZy53aWR0aCA9IHN0YXRpY19jYXN0PGludD4odmFsdWUpOwogICAgICAgIH0KICAgICAgICBlbHNlIGlmIChzdGQ6OnN0cmNtcChhcmcsICItLXNjcmlwdCIpID09IDApCiAgICAgICAgewogICAgICAgICAgICBpZiAoaSArIDEgPj0gYXJnYykKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgY29uZmlnLnBhcnNlRXJyb3IgPSB0cnVlOwogICAgICAgICAgICAgICAgcmV0dXJuIGNvbmZpZzsKICAgICAgICAgICAgfQogICAgICAgICAgICBjb25maWcuc2NyaXB0UGF0aCA9IGFyZ3ZbKytpXTsKICAgICAgICB9CiAgICAgICAgZWxzZSBpZiAoc3RkOjpzdHJjbXAoYXJnLCAiLS1wcmVzZXQiKSA9PSAwKQogICAgICAgIHsKICAgICAgICAgICAgaWYgKGkgKyAxID49IGFyZ2MpCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIGNvbmZpZy5wYXJzZUVycm9yID0gdHJ1ZTsKICAgICAgICAgICAgICAgIHJldHVybiBjb25maWc7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgY29uc3Qgc3RkOjpzdHJpbmcgcHJlc2V0TmFtZSA9IGFyZ3ZbKytpXTsKICAgICAgICAgICAgaWYgKCFQYXJzZVByZXNldEZyb21TdHJpbmcocHJlc2V0TmFtZSwgY29uZmlnLnByZXNldCkpCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIGNvbmZpZy5wYXJzZUVycm9yID0gdHJ1ZTsKICAgICAgICAgICAgICAgIHJldHVybiBjb25maWc7CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICAgICAgZWxzZSBpZiAoc3RkOjpzdHJjbXAoYXJnLCAiLS1oZWlnaHQiKSA9PSAwKQogICAgICAgIHsKICAgICAgICAgICAgaWYgKGkgKyAxID49IGFyZ2MpCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIGNvbmZpZy5wYXJzZUVycm9yID0gdHJ1ZTsKICAgICAgICAgICAgICAgIHJldHVybiBjb25maWc7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgY2hhciogZW5kID0gbnVsbHB0cjsKICAgICAgICAgICAgbG9uZyB2YWx1ZSA9IHN0ZDo6c3RydG9sKGFyZ3ZbKytpXSwgJmVuZCwgMTApOwogICAgICAgICAgICBpZiAoZW5kID09IGFyZ3ZbaV0gfHwgKmVuZCAhPSAnXDAnIHx8IHZhbHVlIDw9IDApCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIGNvbmZpZy5wYXJzZUVycm9yID0gdHJ1ZTsKICAgICAgICAgICAgICAgIHJldHVybiBjb25maWc7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgY29uZmlnLmhlaWdodCA9IHN0YXRpY19jYXN0PGludD4odmFsdWUpOwogICAgICAgIH0KICAgICAgICBlbHNlCiAgICAgICAgewogICAgICAgICAgICBjb25maWcucGFyc2VFcnJvciA9IHRydWU7CiAgICAgICAgICAgIHJldHVybiBjb25maWc7CiAgICAgICAgfQogICAgfQoKICAgIGlmIChjb25maWcubm9XaW5kb3cgJiYgY29uZmlnLmZyYW1lcyA9PSAwKQogICAgewogICAgICAgIGNvbmZpZy5mcmFtZXMgPSAxOwogICAgfQoKICAgIHJldHVybiBjb25maWc7Cn0K
+#include "ViewerConfig.h"
+
+#include <cstdlib>
+#include <cstring>
+#include <string>
+
+ViewerConfig ParseViewerConfig(int argc, char** argv)
+{
+    ViewerConfig config;
+    for (int i = 1; i < argc; ++i)
+    {
+        const char* arg = argv[i];
+        if (std::strcmp(arg, "--frames") == 0)
+        {
+            if (i + 1 >= argc)
+            {
+                config.parseError = true;
+                return config;
+            }
+            char* end = nullptr;
+            long value = std::strtol(argv[++i], &end, 10);
+            if (end == argv[i] || *end != '\0' || value < 0)
+            {
+                config.parseError = true;
+                return config;
+            }
+            config.frames = static_cast<int>(value);
+        }
+        else if (std::strcmp(arg, "--screenshot") == 0)
+        {
+            if (i + 1 >= argc)
+            {
+                config.parseError = true;
+                return config;
+            }
+            config.screenshotPath = argv[++i];
+        }
+        else if (std::strcmp(arg, "--no-window") == 0)
+        {
+            config.noWindow = true;
+        }
+        else if (std::strcmp(arg, "--width") == 0)
+        {
+            if (i + 1 >= argc)
+            {
+                config.parseError = true;
+                return config;
+            }
+            char* end = nullptr;
+            long value = std::strtol(argv[++i], &end, 10);
+            if (end == argv[i] || *end != '\0' || value <= 0)
+            {
+                config.parseError = true;
+                return config;
+            }
+            config.width = static_cast<int>(value);
+        }
+        else if (std::strcmp(arg, "--script") == 0)
+        {
+            if (i + 1 >= argc)
+            {
+                config.parseError = true;
+                return config;
+            }
+            config.scriptPath = argv[++i];
+        }
+        else if (std::strcmp(arg, "--preset") == 0)
+        {
+            if (i + 1 >= argc)
+            {
+                config.parseError = true;
+                return config;
+            }
+            const std::string presetName = argv[++i];
+            if (!ParsePresetFromString(presetName, config.preset))
+            {
+                config.parseError = true;
+                return config;
+            }
+        }
+        else if (std::strcmp(arg, "--height") == 0)
+        {
+            if (i + 1 >= argc)
+            {
+                config.parseError = true;
+                return config;
+            }
+            char* end = nullptr;
+            long value = std::strtol(argv[++i], &end, 10);
+            if (end == argv[i] || *end != '\0' || value <= 0)
+            {
+                config.parseError = true;
+                return config;
+            }
+            config.height = static_cast<int>(value);
+        }
+        else
+        {
+            config.parseError = true;
+            return config;
+        }
+    }
+
+    if (config.noWindow && config.frames == 0)
+    {
+        config.frames = 1;
+    }
+
+    return config;
+}

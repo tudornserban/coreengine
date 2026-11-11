@@ -1,1 +1,22 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiUGxheWJhY2tDb250cm9sLmgiCgplbnVtIGNsYXNzIFZpZXdlcktleUFjdGlvbktpbmQKewogICAgTm9uZSwKICAgIE92ZXJsYXlUb2dnbGUsCiAgICBQbGF5YmFjawp9OwoKc3RydWN0IFZpZXdlcktleUFjdGlvbgp7CiAgICBWaWV3ZXJLZXlBY3Rpb25LaW5kIGtpbmQgPSBWaWV3ZXJLZXlBY3Rpb25LaW5kOjpOb25lOwogICAgaW50IG92ZXJsYXlUb2dnbGVJbmRleCA9IDA7CiAgICBQbGF5YmFja0NvbW1hbmQgcGxheWJhY2sgPSBQbGF5YmFja0NvbW1hbmQ6Ok5vbmU7Cn07CgovLy8gU0RMIGtleXN5bS1zdHlsZSBpbnRlZ2VycyAoZS5nLiAzMiA9IHNwYWNlLCAxMDczNzQxODgyID0gRjEpOyBubyBTREwgaGVhZGVycyByZXF1aXJlZC4KVmlld2VyS2V5IFZpZXdlcktleUZyb21QbGF5YmFja0tleWNvZGUoaW50IGtleWNvZGUpOwppbnQgT3ZlcmxheUZLZXlJbmRleEZyb21LZXljb2RlKGludCBrZXljb2RlKTsKVmlld2VyS2V5QWN0aW9uIEhhbmRsZVZpZXdlcktleWNvZGUoaW50IGtleWNvZGUpOwo=
+#pragma once
+
+#include "PlaybackControl.h"
+
+enum class ViewerKeyActionKind
+{
+    None,
+    OverlayToggle,
+    Playback
+};
+
+struct ViewerKeyAction
+{
+    ViewerKeyActionKind kind = ViewerKeyActionKind::None;
+    int overlayToggleIndex = 0;
+    PlaybackCommand playback = PlaybackCommand::None;
+};
+
+/// SDL keysym-style integers (e.g. 32 = space, 1073741882 = F1); no SDL headers required.
+ViewerKey ViewerKeyFromPlaybackKeycode(int keycode);
+int OverlayFKeyIndexFromKeycode(int keycode);
+ViewerKeyAction HandleViewerKeycode(int keycode);

@@ -1,1 +1,57 @@
-I2luY2x1ZGUgIlZpZXdlcklucHV0LmgiCgojaW5jbHVkZSAiT3ZlcmxheS5oIgoKaW50IE92ZXJsYXlGS2V5SW5kZXhGcm9tS2V5Y29kZShpbnQga2V5Y29kZSkKewogICAgY29uc3RleHByIGludCBrU2RsRjEgPSAxMDczNzQxODgyOwogICAgaWYgKGtleWNvZGUgPj0ga1NkbEYxICYmIGtleWNvZGUgPCBrU2RsRjEgKyA2KQogICAgewogICAgICAgIHJldHVybiBrZXljb2RlIC0ga1NkbEYxICsgMTsKICAgIH0KICAgIHJldHVybiAwOwp9CgpWaWV3ZXJLZXkgVmlld2VyS2V5RnJvbVBsYXliYWNrS2V5Y29kZShpbnQga2V5Y29kZSkKewogICAgc3dpdGNoIChrZXljb2RlKQogICAgewogICAgY2FzZSAzMjoKICAgICAgICByZXR1cm4gVmlld2VyS2V5OjpTcGFjZTsKICAgIGNhc2UgNDk6CiAgICAgICAgcmV0dXJuIFZpZXdlcktleTo6RGlnaXQxOwogICAgY2FzZSA1MDoKICAgICAgICByZXR1cm4gVmlld2VyS2V5OjpEaWdpdDI7CiAgICBjYXNlIDUxOgogICAgICAgIHJldHVybiBWaWV3ZXJLZXk6OkRpZ2l0MzsKICAgIGNhc2UgNTI6CiAgICAgICAgcmV0dXJuIFZpZXdlcktleTo6RGlnaXQ0OwogICAgY2FzZSA0NjoKICAgICAgICByZXR1cm4gVmlld2VyS2V5OjpQZXJpb2Q7CiAgICBjYXNlIDExNDoKICAgICAgICByZXR1cm4gVmlld2VyS2V5OjpSOwogICAgZGVmYXVsdDoKICAgICAgICByZXR1cm4gVmlld2VyS2V5OjpVbmtub3duOwogICAgfQp9CgpWaWV3ZXJLZXlBY3Rpb24gSGFuZGxlVmlld2VyS2V5Y29kZShpbnQga2V5Y29kZSkKewogICAgVmlld2VyS2V5QWN0aW9uIGFjdGlvbjsKICAgIGNvbnN0IGludCBmS2V5SW5kZXggPSBPdmVybGF5RktleUluZGV4RnJvbUtleWNvZGUoa2V5Y29kZSk7CiAgICBpZiAoZktleUluZGV4ID4gMCkKICAgIHsKICAgICAgICBhY3Rpb24ua2luZCA9IFZpZXdlcktleUFjdGlvbktpbmQ6Ok92ZXJsYXlUb2dnbGU7CiAgICAgICAgYWN0aW9uLm92ZXJsYXlUb2dnbGVJbmRleCA9IGZLZXlJbmRleDsKICAgICAgICByZXR1cm4gYWN0aW9uOwogICAgfQoKICAgIGNvbnN0IFZpZXdlcktleSB2aWV3ZXJLZXkgPSBWaWV3ZXJLZXlGcm9tUGxheWJhY2tLZXljb2RlKGtleWNvZGUpOwogICAgY29uc3QgUGxheWJhY2tDb21tYW5kIHBsYXliYWNrID0gQ29tbWFuZEZvcktleSh2aWV3ZXJLZXkpOwogICAgaWYgKHBsYXliYWNrICE9IFBsYXliYWNrQ29tbWFuZDo6Tm9uZSkKICAgIHsKICAgICAgICBhY3Rpb24ua2luZCA9IFZpZXdlcktleUFjdGlvbktpbmQ6OlBsYXliYWNrOwogICAgICAgIGFjdGlvbi5wbGF5YmFjayA9IHBsYXliYWNrOwogICAgfQogICAgcmV0dXJuIGFjdGlvbjsKfQo=
+#include "ViewerInput.h"
+
+#include "Overlay.h"
+
+int OverlayFKeyIndexFromKeycode(int keycode)
+{
+    constexpr int kSdlF1 = 1073741882;
+    if (keycode >= kSdlF1 && keycode < kSdlF1 + 6)
+    {
+        return keycode - kSdlF1 + 1;
+    }
+    return 0;
+}
+
+ViewerKey ViewerKeyFromPlaybackKeycode(int keycode)
+{
+    switch (keycode)
+    {
+    case 32:
+        return ViewerKey::Space;
+    case 49:
+        return ViewerKey::Digit1;
+    case 50:
+        return ViewerKey::Digit2;
+    case 51:
+        return ViewerKey::Digit3;
+    case 52:
+        return ViewerKey::Digit4;
+    case 46:
+        return ViewerKey::Period;
+    case 114:
+        return ViewerKey::R;
+    default:
+        return ViewerKey::Unknown;
+    }
+}
+
+ViewerKeyAction HandleViewerKeycode(int keycode)
+{
+    ViewerKeyAction action;
+    const int fKeyIndex = OverlayFKeyIndexFromKeycode(keycode);
+    if (fKeyIndex > 0)
+    {
+        action.kind = ViewerKeyActionKind::OverlayToggle;
+        action.overlayToggleIndex = fKeyIndex;
+        return action;
+    }
+
+    const ViewerKey viewerKey = ViewerKeyFromPlaybackKeycode(keycode);
+    const PlaybackCommand playback = CommandForKey(viewerKey);
+    if (playback != PlaybackCommand::None)
+    {
+        action.kind = ViewerKeyActionKind::Playback;
+        action.playback = playback;
+    }
+    return action;
+}
