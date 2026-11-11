@@ -3,7 +3,7 @@ CoreEngine Lua bindings.
 
 Uses LuaJIT FFI (or luaffi for standard Lua).
 
-Deployment timers and spawn only accept team ids **1** and **2** (see ce_last_result).
+Deployment timers, spawn, and territory queries accept team ids **1** and **2** only (see ce_last_result).
 
 Usage:
     local ffi  = require "ffi"

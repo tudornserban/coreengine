@@ -75,35 +75,54 @@ See `ffi/python/engine.pyi` for the full example.
 
 ```python
 import ctypes
+from ctypes import c_float, c_int, c_uint64
+
 lib = ctypes.CDLL("./libcoreengine_ffi.so")
-# ... (see engine.pyi for full setup)
+lib.ce_engine_create.restype = ctypes.c_void_p
+lib.ce_engine_create.argtypes = [c_float, c_float, c_uint64]
+lib.ce_engine_update.restype = c_int
+lib.ce_engine_update.argtypes = [ctypes.c_void_p, c_float]
+lib.ce_timer_has_charge.restype = c_int
+lib.ce_timer_has_charge.argtypes = [ctypes.c_void_p, c_int]
+lib.ce_unit_spawn.restype = c_int
+lib.ce_unit_spawn.argtypes = [ctypes.c_void_p, c_int, c_float, c_float]
+
 eng = lib.ce_engine_create(1600.0, 900.0, 0)
-while not lib.ce_timer_has_charge(eng, 1):
+while lib.ce_timer_has_charge(eng, 1) == 0:
     lib.ce_engine_update(eng, 1.0 / 30.0)
 lib.ce_unit_spawn(eng, 1, 400.0, 450.0)
 ```
 
+See `ffi/python/engine.pyi` for grant, `ce_last_result`, and the rest of the surface.
+
 ## Python (cffi) — alternative
 
-Do **not** strip the first `}` from `ffi/c_api.h` (that breaks the `CE_Result` enum). Drop only the C++ linkage guards:
+`ffi.cdef` accepts **declarations only** — drop every preprocessor line (`#…`), the `extern "C" {` / `}` wrapper lines, and `#include` / `#define` macros from `ffi/c_api.h`.
 
 ```python
-import re
 from pathlib import Path
 from cffi import FFI
 
-raw = Path("ffi/c_api.h").read_text()
-raw = raw.replace("#pragma once", "")
-raw = re.sub(r"#ifdef __cplusplus\s*\nextern \"C\" \{\s*\n", "", raw, count=1)
-raw = re.sub(r"#ifdef __cplusplus\s*\n\}\s*\n#endif\s*\Z", "", raw, count=1)
+def cdef_from_c_api_header(path: str) -> str:
+    out: list[str] = ["typedef unsigned long long uint64_t;"]
+    for line in Path(path).read_text().splitlines():
+        s = line.strip()
+        if not s or s.startswith("#"):
+            continue
+        if s in ('extern "C" {', '}'):
+            continue
+        out.append(line)
+    return "\n".join(out)
 
 ffi = FFI()
-ffi.cdef(raw)
-lib = ffi.dlopen("./libcoreengine_ffi.so")
-eng = lib.ce_engine_create(1600, 900, 0)
-while lib.ce_timer_has_charge(eng, 1) == 0:
-    lib.ce_engine_update(eng, 1.0 / 30.0)
-lib.ce_unit_spawn(eng, 1, 400, 450)
+ffi.cdef(cdef_from_c_api_header("ffi/c_api.h"))
+lib = ffi.dlopen("./build/libcoreengine_ffi.so")
+
+eng = lib.ce_engine_create(1600.0, 900.0, 0)
+print("grant", lib.ce_timer_grant_charge(eng, 1))
+print("spawn", lib.ce_unit_spawn(eng, 1, 400.0, 450.0))
+print("last_result", lib.ce_last_result(eng))
+lib.ce_engine_destroy(eng)
 ```
 
 ---
