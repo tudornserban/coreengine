@@ -1,1 +1,23 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiY29yZS9tYXRoL1ZlY3RvcjIuaCIKCnN0cnVjdCBDb2xsaXNpb25QaHlzaWNzIHsKICAgIGZsb2F0IG1hc3M7ICAvLyBTdGFydHMgYXQgMTAwLCBwcm9wb3J0aW9uYWwgdG8gSFAKICAgIGZsb2F0IHJlc3RpdHV0aW9uOyAgLy8gQm91bmNlIGNvZWZmaWNpZW50ICgwLjAtMS4wKQogICAgZmxvYXQgbWFwUmVzdGl0dXRpb247ICAvLyBNYXAtc3BlY2lmaWMgcmVzdGl0dXRpb24KICAgIGZsb2F0IHBvc2l0aW9uQ29ycmVjdGlvbjsgIC8vIDAuMCA9IGRpc2FibGVkLCAxLjAgPSBmdWxsIGNvcnJlY3Rpb24KICAgIFZlY3RvcjIgdmVsb2NpdHk7CiAgICBWZWN0b3IyIHBvc2l0aW9uOwogICAgZmxvYXQgcmFkaXVzOwoKICAgIENvbGxpc2lvblBoeXNpY3MoKQogICAgICAgIDogbWFzcygxMDAuMGYpCiAgICAgICAgLCByZXN0aXR1dGlvbigwLjdmKQogICAgICAgICwgbWFwUmVzdGl0dXRpb24oMC44ZikKICAgICAgICAsIHBvc2l0aW9uQ29ycmVjdGlvbigwLjJmKQogICAgICAgICwgdmVsb2NpdHkoVmVjdG9yMjo6WmVybygpKQogICAgICAgICwgcG9zaXRpb24oVmVjdG9yMjo6WmVybygpKQogICAgICAgICwgcmFkaXVzKDAuMGYpIHt9Cn07Cgo=
+#pragma once
+
+#include "core/math/Vector2.h"
+
+struct CollisionPhysics {
+    float mass;  // Starts at 100, proportional to HP
+    float restitution;  // Bounce coefficient (0.0-1.0)
+    float mapRestitution;  // Map-specific restitution
+    float positionCorrection;  // 0.0 = disabled, 1.0 = full correction
+    Vector2 velocity;
+    Vector2 position;
+    float radius;
+
+    CollisionPhysics()
+        : mass(100.0f)
+        , restitution(0.7f)
+        , mapRestitution(0.8f)
+        , positionCorrection(0.2f)
+        , velocity(Vector2::Zero())
+        , position(Vector2::Zero())
+        , radius(0.0f) {}
+};
+
