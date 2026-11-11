@@ -19,7 +19,7 @@ The committed manifest-only **`requires` graph** (machine-readable JSON plus a h
 | No `#include` from `core/` to `platform/` or `ffi/` | Platform-agnostic core |
 | Systems must not `#include` concrete types from `core.gamestate/` except integration modules | Keeps agents scoped to one module |
 | `core.collision` depends on `IGameUnit` and `IUnitKinematics`; includes enforced since R1.3; standalone tests construct `KinematicMockGameUnit` as of R3.1 | Interface-only dependency on game units |
-| Depend only on modules listed in `requires` with satisfied semver | Agent + CI guardrail |
+| Depend only on modules listed in manifest `requires` | Checker validates presence and acyclic graph; **does not** verify that dependency `version` satisfies the stored range string |
 | No cycles in `requires` | Enables ordered extraction; strictly enforced |
 
 ## Version bumps

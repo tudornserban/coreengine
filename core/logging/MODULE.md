@@ -4,7 +4,7 @@ Manifest: [docs/agentic/modules/core.logging.module.json](../../docs/agentic/mod
 
 ## Purpose
 
-Foundation logging: levels, singleton `Logger`, optional file append, and compile-time `LOG_*` macros. No gameplay, platform, or FFI dependencies.
+Foundation logging: levels, singleton `VenusWars::Logging::Logger`, optional file append, and compile-time `LOG_*` macros. Types live in namespace `VenusWars::Logging` (`Logger.h`, `LogLevel.h`). No gameplay, platform, or FFI dependencies.
 
 ## Public surface (`exports`)
 

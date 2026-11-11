@@ -2,7 +2,7 @@
 
 After the **IBehavior / InfluenceFieldItem compile repair**, a green full-engine build is the required gate before further module rollout (Phase 2+ extractions).
 
-## Standard full suite (matches `.gitlab-ci.yml`)
+## Local full gate (recommended before merge)
 
 Run from the **repository root** (do not `cd build` before `./scripts/…`):
 
@@ -15,6 +15,7 @@ ctest --test-dir build --output-on-failure
 python3 scripts/test_check_module_deps.py
 ./scripts/run-math-module-tests.sh
 ./scripts/run-influence-module-tests.sh
+./scripts/run-influence-types-module-tests.sh
 ./scripts/run-logging-module-tests.sh
 ./scripts/run-interfaces-module-tests.sh
 ./scripts/run-gameloop-module-tests.sh
@@ -24,6 +25,30 @@ python3 scripts/test_check_module_deps.py
 ./scripts/run-collision-module-tests.sh
 ./scripts/run-combat-module-tests.sh
 ```
+
+`./scripts/check-module-deps.sh` also runs `scripts/check_docs_links.py` and `scripts/test_check_docs_links.py`.
+
+This list is **stricter than GitLab CI** (see below): CI does not run every standalone module runner, the doc-link checker's pytest module in isolation (it is invoked inside `check-module-deps.sh`), or FFI verification.
+
+### Not in GitLab CI (local / release hygiene)
+
+```bash
+./scripts/verify-ffi-build.sh   # BUILD_FFI=ON shared library + Python ctypes smoke
+```
+
+There is **no** `./scripts/run-gamestate-module-tests.sh`; `core.gamestate` is covered by the monolithic `coreengine_tests` / `ctest` and include enforcement only.
+
+## What `.gitlab-ci.yml` runs today
+
+| Job | What it executes |
+|-----|------------------|
+| `agentic-module-manifests` | `check-module-deps.sh`, `test_check_module_deps.py` |
+| `math-module-pilot` | `check-module-deps.sh`, `run-math-module-tests.sh` |
+| `influence-module-pilot` | `check-module-deps.sh`, `run-influence-module-tests.sh` |
+| `logging-module-pilot` | `check-module-deps.sh`, `run-logging-module-tests.sh` |
+| `build-and-test` | `check-module-deps.sh`, full configure/build, `ctest` (299 tests) |
+
+**Not in CI:** `run-influence-types-module-tests.sh`, `run-interfaces-module-tests.sh`, `run-gameloop-module-tests.sh`, `run-map-module-tests.sh`, `run-ai-module-tests.sh`, `run-serialization-module-tests.sh`, `run-collision-module-tests.sh`, `run-combat-module-tests.sh`, `verify-ffi-build.sh`, optional SDL2 viewer builds.
 
 ## FFI shared library (`BUILD_FFI=ON`)
 
@@ -48,10 +73,14 @@ Behavior and public API unchanged; only include completeness and documented depe
 
 ## Integration with `main`
 
-Math pilot (PR #2) is merged on `main` (`fd718ef`). This repair lands on top via PR #3; after merge, the commands above validate the combined tree on `main`.
+Math, logging, influence, and influence-types pilots are merged on `main`; module manifests and `COREENGINE_*_STANDALONE` runners follow the pattern documented in each module's `MODULE.md`.
 
 GitHub mirror PR merges do not sync to GitLab `gamedev4680743/coreengine`.
 
-## Next module step (after gates)
+## Module status
 
-With full CI green on `main`: **`core.logging`** is a possible future Phase 2 target (not started in this PR) — same MODULE.md + checker opt-in pattern as `core.math`.
+**`core.logging`** — Phase 2 complete (`MODULE.md`, checker opt-in, `./scripts/run-logging-module-tests.sh`, GitLab `logging-module-pilot` job).
+
+**`core.influence.types`** — split foundation module with `./scripts/run-influence-types-module-tests.sh` (local full gate only; not a separate CI job yet).
+
+**`core.ai_advanced`** — manifest entry only; no include enforcement and no standalone runner.

@@ -30,7 +30,9 @@ This repository uses an **additive, module-by-module** workflow. Phase 1 scaffol
 
 Update the module’s `*.module.json` in the same PR as the code change.
 
-For **`core.interfaces`** (headers under `core/interfaces/`), treat the manifest **`exports`** list as the published API surface — the same table applies (add/remove/rename an export, or break implementers or callers, drives minor vs major; doc-only or internal manifest tweaks with no contract change can be patch). **Every** manifest version bump for `core.interfaces` must append an entry under the matching `## [version]` heading in [`core/interfaces/CHANGELOG.md`](core/interfaces/CHANGELOG.md). Do not bump the module version in a PR without updating that changelog; CI-style checks may enforce the version string is present. If you add a new published interface package later, add a semver-keyed changelog beside it and wire the same rule in docs.
+For **`core.interfaces`** (headers under `core/interfaces/`), treat the manifest **`exports`** list as the published API surface — the same table applies (add/remove/rename an export, or break implementers or callers, drives minor vs major; doc-only or internal manifest tweaks with no contract change can be patch). **Every** manifest version bump for `core.interfaces` must append an entry under the matching `## [version]` heading in [`core/interfaces/CHANGELOG.md`](core/interfaces/CHANGELOG.md). Do not bump the module version in a PR without updating that changelog; `./scripts/check-module-deps.sh` (via `scripts/check_module_deps.py`) **fails** if `core/interfaces/CHANGELOG.md` lacks a `## [version]` heading matching the manifest. If you add a new published interface package later, add a semver-keyed changelog beside it and wire the same rule in docs.
+
+Manifest `requires` entries store SemVer **ranges** (e.g. `^1.0.0`), but the checker does **not** verify that a dependency's published `version` satisfies those ranges—it only checks graph shape, cycles, `#include` boundaries, and (for standalones) link closure. Patch/minor/major bump rules are a **human/agent convention**, not enforced in code.
 
 ## Verification
 
@@ -45,6 +47,8 @@ ctest --test-dir build --output-on-failure
 python3 scripts/test_check_module_deps.py
 ./scripts/run-math-module-tests.sh
 ./scripts/run-influence-module-tests.sh
+./scripts/run-influence-types-module-tests.sh
+./scripts/run-logging-module-tests.sh
 ./scripts/run-interfaces-module-tests.sh
 ./scripts/run-gameloop-module-tests.sh
 ./scripts/run-map-module-tests.sh
@@ -52,7 +56,13 @@ python3 scripts/test_check_module_deps.py
 ./scripts/run-serialization-module-tests.sh
 ./scripts/run-collision-module-tests.sh
 ./scripts/run-combat-module-tests.sh
+./scripts/check_docs_links.py
+python3 scripts/test_check_docs_links.py
 ```
+
+Optional (not in `.gitlab-ci.yml`): `./scripts/verify-ffi-build.sh`
+
+GitLab CI runs `check-module-deps.sh`, full `ctest` in `build-and-test`, and standalone runners for **math**, **influence**, and **logging** only — see [docs/agentic/BUILD_INTEGRATION.md](docs/agentic/BUILD_INTEGRATION.md).
 
 **Include enforcement:** `./scripts/check-module-deps.sh` enforces `#include` boundaries for opted-in registry modules (see `INCLUDE_ENFORCED_MODULES` in `scripts/check_module_deps.py`), including `core.gameloop` as of Phase 3 A3.2, `core.map` as of Phase 3 A3.3, `core.ai` as of Phase 3 A3.4, `core.serialization` as of Phase 3 A3.5, `core.collision` as of R1.3 (A3.6), `core.combat` as of R1.6, and `core.gamestate` as of R2.1.
 
