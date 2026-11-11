@@ -1,1 +1,63 @@
-I2luY2x1ZGUgIlNuYXBzaG90UmVuZGVyZXIuaCIKCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSUdhbWVVbml0LmgiCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSVNpbXVsYXRpb25TbmFwc2hvdC5oIgoKUmdiYSBDb2xvckZvclRlYW0oaW50IHRlYW0pCnsKICAgIHN3aXRjaCAodGVhbSkKICAgIHsKICAgIGNhc2UgMDoKICAgICAgICByZXR1cm4gezgwLCAyMDAsIDEyMCwgMjU1fTsKICAgIGNhc2UgMToKICAgICAgICByZXR1cm4gezcwLCAxNDAsIDIzMCwgMjU1fTsKICAgIGNhc2UgMjoKICAgICAgICByZXR1cm4gezIyMCwgODAsIDgwLCAyNTV9OwogICAgZGVmYXVsdDoKICAgICAgICByZXR1cm4gezIzMCwgMjMwLCAyMzAsIDI1NX07CiAgICB9Cn0KCkRyYXdMaXN0IEJ1aWxkU25hcHNob3REcmF3TGlzdChjb25zdCBJU2ltdWxhdGlvblNuYXBzaG90JiBzbmFwc2hvdCwgY29uc3QgQ2FtZXJhJiBjYW1lcmEpCnsKICAgIERyYXdMaXN0IGxpc3Q7CiAgICBsaXN0LmNsZWFyID0gezIwLCAyNCwgMjgsIDI1NX07CgogICAgY29uc3QgVmVjdG9yMiBtYXBTaXplID0gc25hcHNob3QuR2V0TWFwU2l6ZSgpOwogICAgY29uc3QgVmVjdG9yMiB3b3JsZE1pbigwLjBmLCAwLjBmKTsKICAgIGNvbnN0IFZlY3RvcjIgd29ybGRNYXggPSBtYXBTaXplOwogICAgY29uc3QgVmVjdG9yMiBzY3JlZW5NaW4gPSBjYW1lcmEuV29ybGRUb1NjcmVlbih3b3JsZE1pbik7CiAgICBjb25zdCBWZWN0b3IyIHNjcmVlbk1heCA9IGNhbWVyYS5Xb3JsZFRvU2NyZWVuKHdvcmxkTWF4KTsKCiAgICBEcmF3UmVjdCBmaWxsOwogICAgZmlsbC5taW4gPSBzY3JlZW5NaW47CiAgICBmaWxsLm1heCA9IHNjcmVlbk1heDsKICAgIGZpbGwuZmlsbGVkID0gdHJ1ZTsKICAgIGZpbGwuY29sb3IgPSB7MzIsIDM2LCA0MiwgMjU1fTsKICAgIGxpc3QucmVjdHMucHVzaF9iYWNrKGZpbGwpOwoKICAgIERyYXdSZWN0IGJvcmRlcjsKICAgIGJvcmRlci5taW4gPSBzY3JlZW5NaW47CiAgICBib3JkZXIubWF4ID0gc2NyZWVuTWF4OwogICAgYm9yZGVyLmZpbGxlZCA9IGZhbHNlOwogICAgYm9yZGVyLmNvbG9yID0gezE4MCwgMTgwLCAxODAsIDI1NX07CiAgICBsaXN0LnJlY3RzLnB1c2hfYmFjayhib3JkZXIpOwoKICAgIGNvbnN0ZXhwciBSZ2JhIGtTZWxlY3Rpb25PdXRsaW5lezI1NSwgMjIwLCA0MCwgMjU1fTsKCiAgICBmb3IgKElHYW1lVW5pdCogdW5pdCA6IHNuYXBzaG90LkdldEFsbFVuaXRzKCkpCiAgICB7CiAgICAgICAgaWYgKHVuaXQgPT0gbnVsbHB0cikKICAgICAgICB7CiAgICAgICAgICAgIGNvbnRpbnVlOwogICAgICAgIH0KICAgICAgICBEcmF3Q2lyY2xlIGNpcmNsZTsKICAgICAgICBjaXJjbGUuY2VudGVyID0gY2FtZXJhLldvcmxkVG9TY3JlZW4odW5pdC0+R2V0UG9zaXRpb24oKSk7CiAgICAgICAgY2lyY2xlLnJhZGl1cyA9IHVuaXQtPkdldFJhZGl1cygpICogY2FtZXJhLnBpeGVsc1BlclVuaXQ7CiAgICAgICAgY2lyY2xlLmZpbGwgPSBDb2xvckZvclRlYW0odW5pdC0+R2V0VGVhbSgpKTsKICAgICAgICBjaXJjbGUub3V0bGluZSA9IHVuaXQtPklzU2VsZWN0ZWQoKSA/IGtTZWxlY3Rpb25PdXRsaW5lIDogY2lyY2xlLmZpbGw7CiAgICAgICAgbGlzdC5jaXJjbGVzLnB1c2hfYmFjayhjaXJjbGUpOwogICAgfQoKICAgIHJldHVybiBsaXN0Owp9Cg==
+#include "SnapshotRenderer.h"
+
+#include "core/interfaces/IGameUnit.h"
+#include "core/interfaces/ISimulationSnapshot.h"
+
+Rgba ColorForTeam(int team)
+{
+    switch (team)
+    {
+    case 0:
+        return {80, 200, 120, 255};
+    case 1:
+        return {70, 140, 230, 255};
+    case 2:
+        return {220, 80, 80, 255};
+    default:
+        return {230, 230, 230, 255};
+    }
+}
+
+DrawList BuildSnapshotDrawList(const ISimulationSnapshot& snapshot, const Camera& camera)
+{
+    DrawList list;
+    list.clear = {20, 24, 28, 255};
+
+    const Vector2 mapSize = snapshot.GetMapSize();
+    const Vector2 worldMin(0.0f, 0.0f);
+    const Vector2 worldMax = mapSize;
+    const Vector2 screenMin = camera.WorldToScreen(worldMin);
+    const Vector2 screenMax = camera.WorldToScreen(worldMax);
+
+    DrawRect fill;
+    fill.min = screenMin;
+    fill.max = screenMax;
+    fill.filled = true;
+    fill.color = {32, 36, 42, 255};
+    list.rects.push_back(fill);
+
+    DrawRect border;
+    border.min = screenMin;
+    border.max = screenMax;
+    border.filled = false;
+    border.color = {180, 180, 180, 255};
+    list.rects.push_back(border);
+
+    constexpr Rgba kSelectionOutline{255, 220, 40, 255};
+
+    for (IGameUnit* unit : snapshot.GetAllUnits())
+    {
+        if (unit == nullptr)
+        {
+            continue;
+        }
+        DrawCircle circle;
+        circle.center = camera.WorldToScreen(unit->GetPosition());
+        circle.radius = unit->GetRadius() * camera.pixelsPerUnit;
+        circle.fill = ColorForTeam(unit->GetTeam());
+        circle.outline = unit->IsSelected() ? kSelectionOutline : circle.fill;
+        list.circles.push_back(circle);
+    }
+
+    return list;
+}

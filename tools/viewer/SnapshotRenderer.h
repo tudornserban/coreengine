@@ -1,1 +1,9 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiQ2FtZXJhLmgiCiNpbmNsdWRlICJEcmF3TGlzdC5oIgoKY2xhc3MgSVNpbXVsYXRpb25TbmFwc2hvdDsKClJnYmEgQ29sb3JGb3JUZWFtKGludCB0ZWFtKTsKRHJhd0xpc3QgQnVpbGRTbmFwc2hvdERyYXdMaXN0KGNvbnN0IElTaW11bGF0aW9uU25hcHNob3QmIHNuYXBzaG90LCBjb25zdCBDYW1lcmEmIGNhbWVyYSk7Cg==
+#pragma once
+
+#include "Camera.h"
+#include "DrawList.h"
+
+class ISimulationSnapshot;
+
+Rgba ColorForTeam(int team);
+DrawList BuildSnapshotDrawList(const ISimulationSnapshot& snapshot, const Camera& camera);

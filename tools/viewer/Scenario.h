@@ -1,1 +1,36 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiY29yZS9jb21iYXQvRXhwbG9zaW9uLmgiCgojaW5jbHVkZSA8Y3N0ZGludD4KI2luY2x1ZGUgPG1lbW9yeT4KI2luY2x1ZGUgPHN0cmluZz4KI2luY2x1ZGUgPHZlY3Rvcj4KCmNsYXNzIFJUU0dhbWVTdGF0ZTsKCmVudW0gY2xhc3MgUHJlc2V0CnsKICAgIFR3b1VuaXRzLAogICAgQ29sbGlzaW9uLAogICAgQ29tYmF0LAogICAgQWkKfTsKCnN0cnVjdCBTY2VuZQp7CiAgICBzdGQ6OnVuaXF1ZV9wdHI8UlRTR2FtZVN0YXRlPiBzdGF0ZTsKfTsKCnN0cnVjdCBTY2VuYXJpb0V2ZW50CnsKICAgIGZsb2F0IHRpbWUgPSAwLjBmOwogICAgRXhwbG9zaW9uIGV4cGxvc2lvbntWZWN0b3IyOjpaZXJvKCksIDAuMGYsIDAuMGZ9OwogICAgYm9vbCBmaXJlZCA9IGZhbHNlOwp9OwoKU2NlbmUgQnVpbGRQcmVzZXQoUHJlc2V0IHByZXNldCwgc3RkOjp1aW50NjRfdCBzZWVkKTsKc3RkOjp2ZWN0b3I8U2NlbmFyaW9FdmVudD4gUGVuZGluZ0V2ZW50cyhQcmVzZXQgcHJlc2V0LCBjb25zdCBSVFNHYW1lU3RhdGUmIHN0YXRlKTsKCmNvbnN0IGNoYXIqIFByZXNldFRvQ2xpTmFtZShQcmVzZXQgcHJlc2V0KTsKYm9vbCBQYXJzZVByZXNldEZyb21TdHJpbmcoY29uc3Qgc3RkOjpzdHJpbmcmIG5hbWUsIFByZXNldCYgb3V0KTsK
+#pragma once
+
+#include "core/combat/Explosion.h"
+
+#include <cstdint>
+#include <memory>
+#include <string>
+#include <vector>
+
+class RTSGameState;
+
+enum class Preset
+{
+    TwoUnits,
+    Collision,
+    Combat,
+    Ai
+};
+
+struct Scene
+{
+    std::unique_ptr<RTSGameState> state;
+};
+
+struct ScenarioEvent
+{
+    float time = 0.0f;
+    Explosion explosion{Vector2::Zero(), 0.0f, 0.0f};
+    bool fired = false;
+};
+
+Scene BuildPreset(Preset preset, std::uint64_t seed);
+std::vector<ScenarioEvent> PendingEvents(Preset preset, const RTSGameState& state);
+
+const char* PresetToCliName(Preset preset);
+bool ParsePresetFromString(const std::string& name, Preset& out);
