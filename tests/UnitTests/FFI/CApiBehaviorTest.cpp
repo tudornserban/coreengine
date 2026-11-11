@@ -96,7 +96,6 @@ protected:
         BehaviorFactory::Unregister("UserdataBehavior");
         BehaviorFactory::Unregister("FieldAttractor");
         BehaviorFactory::Unregister("ThrowingPush");
-        // Push may already be unregistered in individual tests.
         if (e) {
             ce_engine_destroy(e);
             e = nullptr;
