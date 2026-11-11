@@ -1,18 +1,1 @@
-#pragma once
-
-#include "../math/Vector2.h"
-
-enum class CollisionShape {
-    CIRCLE,
-    AABB,  // Axis-Aligned Bounding Box
-    POLYGON  // Future
-};
-
-class ICollidable {
-public:
-    virtual ~ICollidable() = default;
-    virtual Vector2 GetPosition() const = 0;
-    virtual float GetRadius() const = 0;  // For circles
-    virtual CollisionShape GetShape() const = 0;
-};
-
+I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiY29yZS9tYXRoL1ZlY3RvcjIuaCIKCmVudW0gY2xhc3MgQ29sbGlzaW9uU2hhcGUgewogICAgQ0lSQ0xFLAogICAgQUFCQiwgIC8vIEF4aXMtQWxpZ25lZCBCb3VuZGluZyBCb3gKICAgIFBPTFlHT04gIC8vIEZ1dHVyZQp9OwoKY2xhc3MgSUNvbGxpZGFibGUgewpwdWJsaWM6CiAgICB2aXJ0dWFsIH5JQ29sbGlkYWJsZSgpID0gZGVmYXVsdDsKICAgIHZpcnR1YWwgVmVjdG9yMiBHZXRQb3NpdGlvbigpIGNvbnN0ID0gMDsKICAgIHZpcnR1YWwgZmxvYXQgR2V0UmFkaXVzKCkgY29uc3QgPSAwOyAgLy8gRm9yIGNpcmNsZXMKICAgIHZpcnR1YWwgQ29sbGlzaW9uU2hhcGUgR2V0U2hhcGUoKSBjb25zdCA9IDA7Cn07Cgo=
