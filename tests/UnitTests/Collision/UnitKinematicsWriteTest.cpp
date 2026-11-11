@@ -1,1 +1,72 @@
-I2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgojaW5jbHVkZSAiY29yZS9jb2xsaXNpb24vQ29sbGlzaW9uUmVzb2x2ZXIuaCIKI2luY2x1ZGUgImNvcmUvY29sbGlzaW9uL01hcENvbGxpc2lvbkhhbmRsZXIuaCIKI2luY2x1ZGUgImNvcmUvY29sbGlzaW9uL1Bvc2l0aW9uQ29ycmVjdG9yLmgiCiNpbmNsdWRlICJ0ZXN0cy9UZXN0SGVscGVycy9LaW5lbWF0aWNNb2NrR2FtZVVuaXQuaCIKI2luY2x1ZGUgImNvcmUvbWF0aC9WZWN0b3IyLmgiCiNpbmNsdWRlICJ0ZXN0cy9UZXN0SGVscGVycy9Nb2NrR2FtZVVuaXQuaCIKClRFU1QoVW5pdEtpbmVtYXRpY3NXcml0ZVRlc3QsIEFwcGx5SW1wdWxzZV91cGRhdGVzX2tpbmVtYXRpY191bml0X3ZpYV9pdW5pdF9raW5lbWF0aWNzKSB7CiAgICBLaW5lbWF0aWNNb2NrR2FtZVVuaXQgdW5pdChWZWN0b3IyOjpaZXJvKCksIDAsIDEwLjBmLCAxMDAuMGYpOwogICAgQVNTRVJUX0ZMT0FUX0VRKHVuaXQuQ2FsY3VsYXRlTWFzcygpLCAxMDAuMGYpOwogICAgdW5pdC5TZXRWZWxvY2l0eShWZWN0b3IyKDEuMGYsIDAuMGYpKTsKCiAgICBDb2xsaXNpb25SZXNvbHZlcjo6QXBwbHlJbXB1bHNlKCZ1bml0LCBWZWN0b3IyKDEwLjBmLCAwLjBmKSwgMTAwLjBmKTsKCiAgICBWZWN0b3IyIHYgPSB1bml0LkdldFZlbG9jaXR5KCk7CiAgICBFWFBFQ1RfRkxPQVRfRVEodi54LCAxLjFmKTsKICAgIEVYUEVDVF9GTE9BVF9FUSh2LnksIDAuMGYpOwp9CgpURVNUKFVuaXRLaW5lbWF0aWNzV3JpdGVUZXN0LCBBcHBseUltcHVsc2Vfc2tpcHNfbW9ja193aXRob3V0X2l1bml0X2tpbmVtYXRpY3MpIHsKICAgIE1vY2tHYW1lVW5pdCBtb2NrOwogICAgbW9jay5TZXRWZWxvY2l0eShWZWN0b3IyKDEuMGYsIDAuMGYpKTsKCiAgICBDb2xsaXNpb25SZXNvbHZlcjo6QXBwbHlJbXB1bHNlKCZtb2NrLCBWZWN0b3IyKDEwLjBmLCAwLjBmKSwgMTAwLjBmKTsKCiAgICBWZWN0b3IyIHYgPSBtb2NrLkdldFZlbG9jaXR5KCk7CiAgICBFWFBFQ1RfRkxPQVRfRVEodi54LCAxLjBmKTsKICAgIEVYUEVDVF9GTE9BVF9FUSh2LnksIDAuMGYpOwp9CgpURVNUKFVuaXRLaW5lbWF0aWNzV3JpdGVUZXN0LCBBcHBseUNvcnJlY3Rpb25fbW92ZXNfa2luZW1hdGljX3VuaXQpIHsKICAgIEtpbmVtYXRpY01vY2tHYW1lVW5pdCB1bml0KFZlY3RvcjI6Olplcm8oKSwgMCk7CiAgICB1bml0LlNldFBvc2l0aW9uKFZlY3RvcjIoMC4wZiwgMC4wZikpOwoKICAgIFBvc2l0aW9uQ29ycmVjdG9yOjpBcHBseUNvcnJlY3Rpb24oJnVuaXQsIFZlY3RvcjIoMy4wZiwgNC4wZikpOwoKICAgIFZlY3RvcjIgcCA9IHVuaXQuR2V0UG9zaXRpb24oKTsKICAgIEVYUEVDVF9GTE9BVF9FUShwLngsIDMuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHAueSwgNC4wZik7Cn0KClRFU1QoVW5pdEtpbmVtYXRpY3NXcml0ZVRlc3QsIEFwcGx5Q29ycmVjdGlvbl9sZWF2ZXNfbW9ja191bmNoYW5nZWQpIHsKICAgIE1vY2tHYW1lVW5pdCBtb2NrKFZlY3RvcjIoMC4wZiwgMC4wZikpOwoKICAgIFBvc2l0aW9uQ29ycmVjdG9yOjpBcHBseUNvcnJlY3Rpb24oJm1vY2ssIFZlY3RvcjIoMy4wZiwgNC4wZikpOwoKICAgIFZlY3RvcjIgcCA9IG1vY2suR2V0UG9zaXRpb24oKTsKICAgIEVYUEVDVF9GTE9BVF9FUShwLngsIDAuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHAueSwgMC4wZik7Cn0KClRFU1QoVW5pdEtpbmVtYXRpY3NXcml0ZVRlc3QsIFB1c2hJbnNpZGVCb3VuZHNfY2xhbXBzX2tpbmVtYXRpY191bml0KSB7CiAgICBLaW5lbWF0aWNNb2NrR2FtZVVuaXQgdW5pdChWZWN0b3IyKDAuMGYsIDAuMGYpLCAwLCAxMC4wZiwgMTAwLjBmKTsKCiAgICBNYXBDb2xsaXNpb25IYW5kbGVyOjpQdXNoSW5zaWRlQm91bmRzKCZ1bml0LCBWZWN0b3IyKDAuMGYsIDAuMGYpLCBWZWN0b3IyKDEwMC4wZiwgMTAwLjBmKSk7CgogICAgVmVjdG9yMiBwID0gdW5pdC5HZXRQb3NpdGlvbigpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHAueCwgMTAuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHAueSwgMTAuMGYpOwp9CgpURVNUKFVuaXRLaW5lbWF0aWNzV3JpdGVUZXN0LCBQdXNoSW5zaWRlQm91bmRzX3NraXBzX21vY2spIHsKICAgIE1vY2tHYW1lVW5pdCBtb2NrKFZlY3RvcjIoMC4wZiwgMC4wZiksIDAsIDEwLjBmLCAxMDAuMGYpOwoKICAgIE1hcENvbGxpc2lvbkhhbmRsZXI6OlB1c2hJbnNpZGVCb3VuZHMoJm1vY2ssIFZlY3RvcjIoMC4wZiwgMC4wZiksIFZlY3RvcjIoMTAwLjBmLCAxMDAuMGYpKTsKCiAgICBWZWN0b3IyIHAgPSBtb2NrLkdldFBvc2l0aW9uKCk7CiAgICBFWFBFQ1RfRkxPQVRfRVEocC54LCAwLjBmKTsKICAgIEVYUEVDVF9GTE9BVF9FUShwLnksIDAuMGYpOwp9Cg==
+#include <gtest/gtest.h>
+
+#include "core/collision/CollisionResolver.h"
+#include "core/collision/MapCollisionHandler.h"
+#include "core/collision/PositionCorrector.h"
+#include "tests/TestHelpers/KinematicMockGameUnit.h"
+#include "core/math/Vector2.h"
+#include "tests/TestHelpers/MockGameUnit.h"
+
+TEST(UnitKinematicsWriteTest, ApplyImpulse_updates_kinematic_unit_via_iunit_kinematics) {
+    KinematicMockGameUnit unit(Vector2::Zero(), 0, 10.0f, 100.0f);
+    ASSERT_FLOAT_EQ(unit.CalculateMass(), 100.0f);
+    unit.SetVelocity(Vector2(1.0f, 0.0f));
+
+    CollisionResolver::ApplyImpulse(&unit, Vector2(10.0f, 0.0f), 100.0f);
+
+    Vector2 v = unit.GetVelocity();
+    EXPECT_FLOAT_EQ(v.x, 1.1f);
+    EXPECT_FLOAT_EQ(v.y, 0.0f);
+}
+
+TEST(UnitKinematicsWriteTest, ApplyImpulse_skips_mock_without_iunit_kinematics) {
+    MockGameUnit mock;
+    mock.SetVelocity(Vector2(1.0f, 0.0f));
+
+    CollisionResolver::ApplyImpulse(&mock, Vector2(10.0f, 0.0f), 100.0f);
+
+    Vector2 v = mock.GetVelocity();
+    EXPECT_FLOAT_EQ(v.x, 1.0f);
+    EXPECT_FLOAT_EQ(v.y, 0.0f);
+}
+
+TEST(UnitKinematicsWriteTest, ApplyCorrection_moves_kinematic_unit) {
+    KinematicMockGameUnit unit(Vector2::Zero(), 0);
+    unit.SetPosition(Vector2(0.0f, 0.0f));
+
+    PositionCorrector::ApplyCorrection(&unit, Vector2(3.0f, 4.0f));
+
+    Vector2 p = unit.GetPosition();
+    EXPECT_FLOAT_EQ(p.x, 3.0f);
+    EXPECT_FLOAT_EQ(p.y, 4.0f);
+}
+
+TEST(UnitKinematicsWriteTest, ApplyCorrection_leaves_mock_unchanged) {
+    MockGameUnit mock(Vector2(0.0f, 0.0f));
+
+    PositionCorrector::ApplyCorrection(&mock, Vector2(3.0f, 4.0f));
+
+    Vector2 p = mock.GetPosition();
+    EXPECT_FLOAT_EQ(p.x, 0.0f);
+    EXPECT_FLOAT_EQ(p.y, 0.0f);
+}
+
+TEST(UnitKinematicsWriteTest, PushInsideBounds_clamps_kinematic_unit) {
+    KinematicMockGameUnit unit(Vector2(0.0f, 0.0f), 0, 10.0f, 100.0f);
+
+    MapCollisionHandler::PushInsideBounds(&unit, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f));
+
+    Vector2 p = unit.GetPosition();
+    EXPECT_FLOAT_EQ(p.x, 10.0f);
+    EXPECT_FLOAT_EQ(p.y, 10.0f);
+}
+
+TEST(UnitKinematicsWriteTest, PushInsideBounds_skips_mock) {
+    MockGameUnit mock(Vector2(0.0f, 0.0f), 0, 10.0f, 100.0f);
+
+    MapCollisionHandler::PushInsideBounds(&mock, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f));
+
+    Vector2 p = mock.GetPosition();
+    EXPECT_FLOAT_EQ(p.x, 0.0f);
+    EXPECT_FLOAT_EQ(p.y, 0.0f);
+}

@@ -1,1 +1,78 @@
-I2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgojaW5jbHVkZSAiY29yZS9jb2xsaXNpb24vQ29sbGlzaW9uU3lzdGVtLmgiCiNpbmNsdWRlICJjb3JlL2NvbGxpc2lvbi9Db2xsaXNpb25FdmVudC5oIgojaW5jbHVkZSAiY29yZS9jb2xsaXNpb24vSUNvbGxpc2lvbkRldGVjdG9yLmgiCiNpbmNsdWRlICJjb3JlL2NvbGxpc2lvbi9JQ29sbGlzaW9uT2JzZXJ2ZXIuaCIKI2luY2x1ZGUgInRlc3RzL1Rlc3RIZWxwZXJzL0tpbmVtYXRpY01vY2tHYW1lVW5pdC5oIgojaW5jbHVkZSAiY29yZS9tYXRoL1ZlY3RvcjIuaCIKI2luY2x1ZGUgInRlc3RzL1Rlc3RIZWxwZXJzL01vY2tHYW1lVW5pdC5oIgoKbmFtZXNwYWNlIHsKCmNsYXNzIFJlY29yZGluZ0NvbGxpc2lvbk9ic2VydmVyIDogcHVibGljIElDb2xsaXNpb25PYnNlcnZlciB7CnB1YmxpYzoKICAgIHZvaWQgT25Db2xsaXNpb24oY29uc3QgQ29sbGlzaW9uRXZlbnQmIGV2ZW50KSBvdmVycmlkZSB7CiAgICAgICAgKytldmVudENvdW50OwogICAgICAgIGxhc3REYW1hZ2VNb2RpZmllciA9IGV2ZW50LmRhbWFnZU1vZGlmaWVyOwogICAgfQoKICAgIGludCBldmVudENvdW50ID0gMDsKICAgIGZsb2F0IGxhc3REYW1hZ2VNb2RpZmllciA9IDAuMGY7Cn07Cgp9ICAvLyBuYW1lc3BhY2UKClRFU1QoQ29sbGlzaW9uU3lzdGVtS2luZW1hdGljc0dhdGVUZXN0LCBhZ2VudF9hZ2VudF9za2lwc193aGVuX2VpdGhlcl9zaWRlX2xhY2tzX2l1bml0X2tpbmVtYXRpY3MpIHsKICAgIENvbGxpc2lvblN5c3RlbSBzeXN0ZW07CiAgICBSZWNvcmRpbmdDb2xsaXNpb25PYnNlcnZlciBvYnNlcnZlcjsKICAgIHN5c3RlbS5TdWJzY3JpYmUoJm9ic2VydmVyKTsKCiAgICAvLyBPdmVybGFwcGluZyBjaXJjbGVzLCBmYXIgZnJvbSBtYXAgZWRnZXMgKGVkZ2UgZGV0ZWN0aW9uIGNhbiBlbWl0IGV2ZW50cyBldmVuIHdpdGhvdXQga2luZW1hdGljcykuCiAgICBNb2NrR2FtZVVuaXQgYShWZWN0b3IyKDIwMDAuMGYsIDIwMDAuMGYpLCAwLCAxMC4wZiwgMTAwLjBmKTsKICAgIE1vY2tHYW1lVW5pdCBiKFZlY3RvcjIoMjAxNS4wZiwgMjAwMC4wZiksIDAsIDEwLjBmLCAxMDAuMGYpOwoKICAgIE1hcEJvdW5kcyBib3VuZHMoVmVjdG9yMigxMDAwLjBmLCAxMDAwLjBmKSwgVmVjdG9yMigzMDAwLjBmLCAzMDAwLjBmKSk7CiAgICBzdGQ6OnZlY3RvcjxJR2FtZVVuaXQqPiB1bml0cyA9IHsmYSwgJmJ9OwoKICAgIHN5c3RlbS5Qcm9jZXNzQ29sbGlzaW9ucyh1bml0cywgYm91bmRzKTsKCiAgICBFWFBFQ1RfRVEob2JzZXJ2ZXIuZXZlbnRDb3VudCwgMCk7Cn0KClRFU1QoQ29sbGlzaW9uU3lzdGVtS2luZW1hdGljc0dhdGVUZXN0LCBtYXBfZWRnZV9lbWl0c19mb3JfbW9ja193aXRob3V0X2l1bml0X2tpbmVtYXRpY3MpIHsKICAgIENvbGxpc2lvblN5c3RlbSBzeXN0ZW07CiAgICBSZWNvcmRpbmdDb2xsaXNpb25PYnNlcnZlciBvYnNlcnZlcjsKICAgIHN5c3RlbS5TdWJzY3JpYmUoJm9ic2VydmVyKTsKCiAgICAvLyBQYXN0IHRoZSBsZWZ0IGVkZ2U7IE1vY2tHYW1lVW5pdCBkb2VzIG5vdCBpbXBsZW1lbnQgSVVuaXRLaW5lbWF0aWNzLgogICAgTW9ja0dhbWVVbml0IHVuaXQoVmVjdG9yMigtNS4wZiwgNTAuMGYpLCAwLCAxMC4wZiwgMTAwLjBmKTsKCiAgICBNYXBCb3VuZHMgYm91bmRzKFZlY3RvcjIoMC4wZiwgMC4wZiksIFZlY3RvcjIoMTAwLjBmLCAxMDAuMGYpKTsKICAgIHN0ZDo6dmVjdG9yPElHYW1lVW5pdCo+IHVuaXRzID0geyZ1bml0fTsKCiAgICBWZWN0b3IyIHBvc0JlZm9yZSA9IHVuaXQuR2V0UG9zaXRpb24oKTsKICAgIHN5c3RlbS5Qcm9jZXNzQ29sbGlzaW9ucyh1bml0cywgYm91bmRzKTsKCiAgICBFWFBFQ1RfRVEob2JzZXJ2ZXIuZXZlbnRDb3VudCwgMSk7CiAgICBFWFBFQ1RfRkxPQVRfRVEob2JzZXJ2ZXIubGFzdERhbWFnZU1vZGlmaWVyLCB1bml0LkdldERhbWFnZU1vZGlmaWVyKCkpOwogICAgRVhQRUNUX0VRKHVuaXQuR2V0UG9zaXRpb24oKS54LCBwb3NCZWZvcmUueCk7CiAgICBFWFBFQ1RfRVEodW5pdC5HZXRQb3NpdGlvbigpLnksIHBvc0JlZm9yZS55KTsKfQoKVEVTVChDb2xsaXNpb25TeXN0ZW1LaW5lbWF0aWNzR2F0ZVRlc3QsIG1hcF9lZGdlX3Jlc29sdmVzX2Zvcl9raW5lbWF0aWNfdW5pdCkgewogICAgQ29sbGlzaW9uU3lzdGVtIHN5c3RlbTsKICAgIFJlY29yZGluZ0NvbGxpc2lvbk9ic2VydmVyIG9ic2VydmVyOwogICAgc3lzdGVtLlN1YnNjcmliZSgmb2JzZXJ2ZXIpOwoKICAgIC8vIENlbnRlciBsZWZ0IG9mIHRoZSBtYXAgc28gdGhlIGNpcmNsZSBzdGlja3Mgb3V0IHBhc3QgeD0wIChtYXAtZWRnZSBjb250YWN0KS4KICAgIEtpbmVtYXRpY01vY2tHYW1lVW5pdCB1bml0KFZlY3RvcjIoLTUuMGYsIDUwLjBmKSwgMCwgMTAuMGYsIDEwMC4wZik7CgogICAgTWFwQm91bmRzIGJvdW5kcyhWZWN0b3IyKDAuMGYsIDAuMGYpLCBWZWN0b3IyKDEwMC4wZiwgMTAwLjBmKSk7CiAgICBzdGQ6OnZlY3RvcjxJR2FtZVVuaXQqPiB1bml0cyA9IHsmdW5pdH07CgogICAgc3lzdGVtLlByb2Nlc3NDb2xsaXNpb25zKHVuaXRzLCBib3VuZHMpOwoKICAgIEVYUEVDVF9FUShvYnNlcnZlci5ldmVudENvdW50LCAxKTsKICAgIEVYUEVDVF9GTE9BVF9FUShvYnNlcnZlci5sYXN0RGFtYWdlTW9kaWZpZXIsIHVuaXQuR2V0RGFtYWdlTW9kaWZpZXIoKSk7Cn0K
+#include <gtest/gtest.h>
+
+#include "core/collision/CollisionSystem.h"
+#include "core/collision/CollisionEvent.h"
+#include "core/collision/ICollisionDetector.h"
+#include "core/collision/ICollisionObserver.h"
+#include "tests/TestHelpers/KinematicMockGameUnit.h"
+#include "core/math/Vector2.h"
+#include "tests/TestHelpers/MockGameUnit.h"
+
+namespace {
+
+class RecordingCollisionObserver : public ICollisionObserver {
+public:
+    void OnCollision(const CollisionEvent& event) override {
+        ++eventCount;
+        lastDamageModifier = event.damageModifier;
+    }
+
+    int eventCount = 0;
+    float lastDamageModifier = 0.0f;
+};
+
+}  // namespace
+
+TEST(CollisionSystemKinematicsGateTest, agent_agent_skips_when_either_side_lacks_iunit_kinematics) {
+    CollisionSystem system;
+    RecordingCollisionObserver observer;
+    system.Subscribe(&observer);
+
+    // Overlapping circles, far from map edges (edge detection can emit events even without kinematics).
+    MockGameUnit a(Vector2(2000.0f, 2000.0f), 0, 10.0f, 100.0f);
+    MockGameUnit b(Vector2(2015.0f, 2000.0f), 0, 10.0f, 100.0f);
+
+    MapBounds bounds(Vector2(1000.0f, 1000.0f), Vector2(3000.0f, 3000.0f));
+    std::vector<IGameUnit*> units = {&a, &b};
+
+    system.ProcessCollisions(units, bounds);
+
+    EXPECT_EQ(observer.eventCount, 0);
+}
+
+TEST(CollisionSystemKinematicsGateTest, map_edge_emits_for_mock_without_iunit_kinematics) {
+    CollisionSystem system;
+    RecordingCollisionObserver observer;
+    system.Subscribe(&observer);
+
+    // Past the left edge; MockGameUnit does not implement IUnitKinematics.
+    MockGameUnit unit(Vector2(-5.0f, 50.0f), 0, 10.0f, 100.0f);
+
+    MapBounds bounds(Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f));
+    std::vector<IGameUnit*> units = {&unit};
+
+    Vector2 posBefore = unit.GetPosition();
+    system.ProcessCollisions(units, bounds);
+
+    EXPECT_EQ(observer.eventCount, 1);
+    EXPECT_FLOAT_EQ(observer.lastDamageModifier, unit.GetDamageModifier());
+    EXPECT_EQ(unit.GetPosition().x, posBefore.x);
+    EXPECT_EQ(unit.GetPosition().y, posBefore.y);
+}
+
+TEST(CollisionSystemKinematicsGateTest, map_edge_resolves_for_kinematic_unit) {
+    CollisionSystem system;
+    RecordingCollisionObserver observer;
+    system.Subscribe(&observer);
+
+    // Center left of the map so the circle sticks out past x=0 (map-edge contact).
+    KinematicMockGameUnit unit(Vector2(-5.0f, 50.0f), 0, 10.0f, 100.0f);
+
+    MapBounds bounds(Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f));
+    std::vector<IGameUnit*> units = {&unit};
+
+    system.ProcessCollisions(units, bounds);
+
+    EXPECT_EQ(observer.eventCount, 1);
+    EXPECT_FLOAT_EQ(observer.lastDamageModifier, unit.GetDamageModifier());
+}

@@ -1,1 +1,17 @@
-I2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgojaW5jbHVkZSAiY29yZS9jb21iYXQvQ29tYmF0TWFuYWdlci5oIgojaW5jbHVkZSAiY29yZS9jb21iYXQvQ29tbWFuZFN5c3RlbS5oIgojaW5jbHVkZSAiY29yZS9jb21iYXQvRXhwbG9zaW9uLmgiCiNpbmNsdWRlICJjb3JlL2NvbWJhdC9TZWxlY3Rpb25TeXN0ZW0uaCIKCm5hbWVzcGFjZSB7CgovLy8gU21va2UgY29tcGlsZTogZXhwb3J0ZWQgY29tYmF0IGhlYWRlcnMgcGFyc2UgdW5kZXIgcmVwby1yb290IGluY2x1ZGVzLgpjbGFzcyBDb21iYXRIZWFkZXJDb21waWxlVGVzdCA6IHB1YmxpYyA6OnRlc3Rpbmc6OlRlc3Qge307Cgp9ICAvLyBuYW1lc3BhY2UKClRFU1RfRihDb21iYXRIZWFkZXJDb21waWxlVGVzdCwgQWxsRXhwb3J0ZWRIZWFkZXJzSW5jbHVkZWQpIHsKICAgIFNVQ0NFRUQoKTsKfQo=
+#include <gtest/gtest.h>
+
+#include "core/combat/CombatManager.h"
+#include "core/combat/CommandSystem.h"
+#include "core/combat/Explosion.h"
+#include "core/combat/SelectionSystem.h"
+
+namespace {
+
+/// Smoke compile: exported combat headers parse under repo-root includes.
+class CombatHeaderCompileTest : public ::testing::Test {};
+
+}  // namespace
+
+TEST_F(CombatHeaderCompileTest, AllExportedHeadersIncluded) {
+    SUCCEED();
+}

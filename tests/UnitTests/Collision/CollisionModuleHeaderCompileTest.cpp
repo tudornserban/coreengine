@@ -1,1 +1,22 @@
-I2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgojaW5jbHVkZSAiY29yZS9jb2xsaXNpb24vQ29sbGlzaW9uRGV0ZWN0b3IuaCIKI2luY2x1ZGUgImNvcmUvY29sbGlzaW9uL0NvbGxpc2lvblJlc29sdmVyLmgiCiNpbmNsdWRlICJjb3JlL2NvbGxpc2lvbi9Db2xsaXNpb25TeXN0ZW0uaCIKI2luY2x1ZGUgImNvcmUvY29sbGlzaW9uL0lDb2xsaWRhYmxlLmgiCiNpbmNsdWRlICJjb3JlL2NvbGxpc2lvbi9JQ29sbGlzaW9uRGV0ZWN0b3IuaCIKI2luY2x1ZGUgImNvcmUvY29sbGlzaW9uL0lDb2xsaXNpb25PYnNlcnZlci5oIgojaW5jbHVkZSAiY29yZS9jb2xsaXNpb24vSW1tdW5pdHlNYW5hZ2VyLmgiCiNpbmNsdWRlICJjb3JlL2NvbGxpc2lvbi9Qb3NpdGlvbkNvcnJlY3Rvci5oIgojaW5jbHVkZSAiY29yZS9jb2xsaXNpb24vU3BhdGlhbEdyaWQuaCIKCm5hbWVzcGFjZSB7CgovLy8gU21va2UgY29tcGlsZTogZXhwb3J0ZWQgY29sbGlzaW9uIGhlYWRlcnMgcGFyc2UgdW5kZXIgcmVwby1yb290IGluY2x1ZGVzLgpjbGFzcyBDb2xsaXNpb25IZWFkZXJDb21waWxlVGVzdCA6IHB1YmxpYyA6OnRlc3Rpbmc6OlRlc3Qge307Cgp9ICAvLyBuYW1lc3BhY2UKClRFU1RfRihDb2xsaXNpb25IZWFkZXJDb21waWxlVGVzdCwgQWxsRXhwb3J0ZWRIZWFkZXJzSW5jbHVkZWQpIHsKICAgIFNVQ0NFRUQoKTsKfQo=
+#include <gtest/gtest.h>
+
+#include "core/collision/CollisionDetector.h"
+#include "core/collision/CollisionResolver.h"
+#include "core/collision/CollisionSystem.h"
+#include "core/collision/ICollidable.h"
+#include "core/collision/ICollisionDetector.h"
+#include "core/collision/ICollisionObserver.h"
+#include "core/collision/ImmunityManager.h"
+#include "core/collision/PositionCorrector.h"
+#include "core/collision/SpatialGrid.h"
+
+namespace {
+
+/// Smoke compile: exported collision headers parse under repo-root includes.
+class CollisionHeaderCompileTest : public ::testing::Test {};
+
+}  // namespace
+
+TEST_F(CollisionHeaderCompileTest, AllExportedHeadersIncluded) {
+    SUCCEED();
+}
