@@ -1,1 +1,24 @@
-IyEvdXNyL2Jpbi9lbnYgYmFzaAojIEFJLW9ubHkgYnVpbGQ6IGNvcmUubWF0aCArIGNvcmUuaW5mbHVlbmNlLnR5cGVzICsgY29yZS5sb2dnaW5nICsgY29yZS5haSArIEFJIGd0ZXN0cyAobm8gZnVsbCBjb3JlZW5naW5lIG1vbm9saXRoKS4Kc2V0IC1ldW8gcGlwZWZhaWwKClJPT1Q9IiQoY2QgIiQoZGlybmFtZSAiJHtCQVNIX1NPVVJDRVswXX0iKS8uLiIgJiYgcHdkKSIKQlVJTERfRElSPSIke1JPT1R9L2J1aWxkLWFpIgpleHBvcnQgQ1hYPSIke0NYWDotZysrfSIKCmVjaG8gIltydW4tYWktbW9kdWxlLXRlc3RzXSBDTUFLRV9CSU5BUllfRElSPSR7QlVJTERfRElSfSIKCmlmIGNvbW1hbmQgLXYgbmluamEgPi9kZXYvbnVsbCAyPiYxOyB0aGVuCiAgQ01BS0VfR0VOPSJOaW5qYSIKZWxzZQogIENNQUtFX0dFTj0iVW5peCBNYWtlZmlsZXMiCmZpCgpjbWFrZSAtUyAiJHtST09UfSIgLUIgIiR7QlVJTERfRElSfSIgLUcgIiR7Q01BS0VfR0VOfSIgXAogIC1EQ01BS0VfQ1hYX0NPTVBJTEVSPSIke0NYWH0iIFwKICAtREJVSUxEX1RFU1RTPU9OIFwKICAtREJVSUxEX0ZGST1PRkYgXAogIC1EQ09SRUVOR0lORV9BSV9TVEFOREFMT05FPU9OCgpjbWFrZSAtLWJ1aWxkICIke0JVSUxEX0RJUn0iIC0tdGFyZ2V0IGNvcmVlbmdpbmVfYWlfdGVzdHMKY3Rlc3QgLS10ZXN0LWRpciAiJHtCVUlMRF9ESVJ9IiAtLW91dHB1dC1vbi1mYWlsdXJlCg==
+#!/usr/bin/env bash
+# AI-only build: core.math + core.influence.types + core.logging + core.ai + AI gtests (no full coreengine monolith).
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BUILD_DIR="${ROOT}/build-ai"
+export CXX="${CXX:-g++}"
+
+echo "[run-ai-module-tests] CMAKE_BINARY_DIR=${BUILD_DIR}"
+
+if command -v ninja >/dev/null 2>&1; then
+  CMAKE_GEN="Ninja"
+else
+  CMAKE_GEN="Unix Makefiles"
+fi
+
+cmake -S "${ROOT}" -B "${BUILD_DIR}" -G "${CMAKE_GEN}" \
+  -DCMAKE_CXX_COMPILER="${CXX}" \
+  -DBUILD_TESTS=ON \
+  -DBUILD_FFI=OFF \
+  -DCOREENGINE_AI_STANDALONE=ON
+
+cmake --build "${BUILD_DIR}" --target coreengine_ai_tests
+ctest --test-dir "${BUILD_DIR}" --output-on-failure

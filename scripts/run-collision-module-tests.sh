@@ -1,1 +1,17 @@
-IyEvdXNyL2Jpbi9lbnYgYmFzaAojIENvbGxpc2lvbi1vbmx5IGJ1aWxkOiBjb3JlLm1hdGggKyBjb3JlLmludGVyZmFjZXMgKGhlYWRlcnMpICsgY29yZS5sb2dnaW5nICsgY29yZS5jb2xsaXNpb24gKyBDb2xsaXNpb24gZ3Rlc3RzIChubyBmdWxsIGNvcmVlbmdpbmUgbW9ub2xpdGgpLgpzZXQgLWV1byBwaXBlZmFpbAoKUk9PVD0iJChjZCAiJChkaXJuYW1lICIke0JBU0hfU09VUkNFWzBdfSIpLy4uIiAmJiBwd2QpIgpCVUlMRF9ESVI9IiR7Uk9PVH0vYnVpbGQtY29sbGlzaW9uIgpleHBvcnQgQ1hYPSIke0NYWDotZysrfSIKCmVjaG8gIltydW4tY29sbGlzaW9uLW1vZHVsZS10ZXN0c10gQ01BS0VfQklOQVJZX0RJUj0ke0JVSUxEX0RJUn0iCgpjbWFrZSAtUyAiJHtST09UfSIgLUIgIiR7QlVJTERfRElSfSIgLUcgTmluamEgXAogIC1EQlVJTERfVEVTVFM9T04gXAogIC1EQlVJTERfRkZJPU9GRiBcCiAgLURDT1JFRU5HSU5FX0NPTExJU0lPTl9TVEFOREFMT05FPU9OCgpjbWFrZSAtLWJ1aWxkICIke0JVSUxEX0RJUn0iIC0tdGFyZ2V0IGNvcmVlbmdpbmVfY29sbGlzaW9uX3Rlc3RzCmN0ZXN0IC0tdGVzdC1kaXIgIiR7QlVJTERfRElSfSIgLS1vdXRwdXQtb24tZmFpbHVyZQo=
+#!/usr/bin/env bash
+# Collision-only build: core.math + core.interfaces (headers) + core.logging + core.collision + Collision gtests (no full coreengine monolith).
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BUILD_DIR="${ROOT}/build-collision"
+export CXX="${CXX:-g++}"
+
+echo "[run-collision-module-tests] CMAKE_BINARY_DIR=${BUILD_DIR}"
+
+cmake -S "${ROOT}" -B "${BUILD_DIR}" -G Ninja \
+  -DBUILD_TESTS=ON \
+  -DBUILD_FFI=OFF \
+  -DCOREENGINE_COLLISION_STANDALONE=ON
+
+cmake --build "${BUILD_DIR}" --target coreengine_collision_tests
+ctest --test-dir "${BUILD_DIR}" --output-on-failure
