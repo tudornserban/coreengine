@@ -1,1 +1,82 @@
-IyBNb2R1bGU6IGBjb3JlLmNvbGxpc2lvbmAKCk1hbmlmZXN0OiBbZG9jcy9hZ2VudGljL21vZHVsZXMvY29yZS5jb2xsaXNpb24ubW9kdWxlLmpzb25dKC4uLy4uL2RvY3MvYWdlbnRpYy9tb2R1bGVzL2NvcmUuY29sbGlzaW9uLm1vZHVsZS5qc29uKQoKIyMgUHVycG9zZQoKKipTcGF0aWFsIHF1ZXJpZXMsIGNvbnRhY3QgZGV0ZWN0aW9uLCBpbXB1bHNlIHJlc29sdXRpb24sIGV2ZW50cywgYW5kIGltbXVuaXR5KiogZm9yIHVuaXRzLiBXcml0ZXJzIHJlc29sdmUga2luZW1hdGljcyB0aHJvdWdoIGBJVW5pdEtpbmVtYXRpY3NgIHdoZW4gcHJlc2VudDsgYWdlbnTigJNhZ2VudCBhbmQgbWFwLWVkZ2UgcGF0aHMgdXNlIGBJR2FtZVVuaXRgIGZvciByZWFkLW9ubHkgcXVlcmllcy4gVGhpcyBtb2R1bGUgZG9lcyBub3Qgb3duIGdhbWVzdGF0ZSBvcmNoZXN0cmF0aW9uLCBjb21iYXQgcnVsZXMsIG9yIG1hcCBwbGFjZW1lbnQuCgojIyBQdWJsaWMgc3VyZmFjZSAoYGV4cG9ydHNgKQoKSW5jbHVkZSBoZWFkZXJzIGZyb20gdGhlIHJlcG8gcm9vdCwgZS5nLiBgI2luY2x1ZGUgImNvcmUvY29sbGlzaW9uL0NvbGxpc2lvblN5c3RlbS5oImAuCgp8IFN5bWJvbCB8IEtpbmQgfCBIZWFkZXIgfCBOb3RlcyB8CnwtLS0tLS0tLXwtLS0tLS18LS0tLS0tLS18LS0tLS0tLXwKfCBgQ29sbGlzaW9uU3lzdGVtYCB8IGNsYXNzIHwgYENvbGxpc2lvblN5c3RlbS5oYCB8IE9yY2hlc3RyYXRlcyBkZXRlY3Rpb24gYW5kIHJlc29sdXRpb24g4oCUIGAuY3BwYCBpbiB0aGlzIG1vZHVsZSB8CnwgYENvbGxpc2lvbkRldGVjdG9yYCB8IGNsYXNzIHwgYENvbGxpc2lvbkRldGVjdG9yLmhgIHwgQnJvYWQgKyBuYXJyb3cgcGhhc2Ug4oCUIGAuY3BwYCBpbiB0aGlzIG1vZHVsZSB8CnwgYFNwYXRpYWxHcmlkYCB8IGNsYXNzIHwgYFNwYXRpYWxHcmlkLmhgIHwgU3BhdGlhbCBoYXNoIOKAlCBgLmNwcGAgaW4gdGhpcyBtb2R1bGUgfAp8IGBDb2xsaXNpb25SZXNvbHZlcmAgfCBjbGFzcyB8IGBDb2xsaXNpb25SZXNvbHZlci5oYCB8IEltcHVsc2UgcmVzb2x1dGlvbiDigJQgYC5jcHBgIGluIHRoaXMgbW9kdWxlIHwKfCBgUG9zaXRpb25Db3JyZWN0b3JgIHwgY2xhc3MgfCBgUG9zaXRpb25Db3JyZWN0b3IuaGAgfCBQb3NpdGlvbmFsIGNvcnJlY3Rpb24g4oCUIGAuY3BwYCBpbiB0aGlzIG1vZHVsZSB8CnwgYEltbXVuaXR5TWFuYWdlcmAgfCBjbGFzcyB8IGBJbW11bml0eU1hbmFnZXIuaGAgfCBQYWlyIGltbXVuaXR5IOKAlCBgLmNwcGAgaW4gdGhpcyBtb2R1bGUgfAp8IGBJQ29sbGlzaW9uRGV0ZWN0b3JgIHwgaW50ZXJmYWNlIHwgYElDb2xsaXNpb25EZXRlY3Rvci5oYCB8IERldGVjdG9yIGNvbnRyYWN0IHwKfCBgSUNvbGxpZGFibGVgIHwgaW50ZXJmYWNlIHwgYElDb2xsaWRhYmxlLmhgIHwgQ29sbGlkYWJsZSBjb250cmFjdCB8CnwgYElDb2xsaXNpb25PYnNlcnZlcmAgfCBpbnRlcmZhY2UgfCBgSUNvbGxpc2lvbk9ic2VydmVyLmhgIHwgRXZlbnQgb2JzZXJ2ZXIgfAoKIyMjIENvbnRyYWN0IGhpZ2hsaWdodHMKCi0gKipLaW5lbWF0aWNzIGdhdGU6KiogcmVzb2x1dGlvbiBwYXRocyB0aGF0IGFwcGx5IGltcHVsc2VzIG9yIGNvcnJlY3QgcG9zaXRpb25zIHJlcXVpcmUgYElVbml0S2luZW1hdGljc2AgKG9wdGlvbmFsIGludGVyZmFjZSk7IGNhbGxlcnMgbXVzdCBub3QgYXNzdW1lIGV2ZXJ5IGBJR2FtZVVuaXRgIGltcGxlbWVudHMgaXQuCi0gKipObyBgUlRTVW5pdGA6KiogZG8gbm90IGluY2x1ZGUgZ2FtZXN0YXRlIHVuaXQgdHlwZXMgZnJvbSB0aGlzIG1vZHVsZTsgdXNlIGBJR2FtZVVuaXRgIC8gYElVbml0S2luZW1hdGljc2Agb25seS4KCiMjIERlcGVuZGVuY2llcyAoYHJlcXVpcmVzYCkKCnwgTW9kdWxlIHwgUmFuZ2UgfCBXaHkgfAp8LS0tLS0tLS18LS0tLS0tLXwtLS0tLXwKfCBgY29yZS5tYXRoYCB8IGBeMS4wLjBgIHwgYFZlY3RvcjJgLCBnZW9tZXRyeSB8CnwgYGNvcmUuaW50ZXJmYWNlc2AgfCBgXjEuMC4wYCB8IGBJR2FtZVVuaXRgLCBgSVVuaXRLaW5lbWF0aWNzYCB8CnwgYGNvcmUuaW5mbHVlbmNlLnR5cGVzYCB8IGBeMS4wLjBgIHwgVHJhbnNpdGl2ZSBjb21wbGV0ZW5lc3Mgd2hlbiBwYXJzaW5nIGludGVyZmFjZSBoZWFkZXJzIChtYXRjaGVzIGBjb3JlLmludGVyZmFjZXNgIGNvbnRyYWN0KSB8CnwgYGNvcmUubG9nZ2luZ2AgfCBgXjEuMC4wYCB8IGBMb2dnZXJgIGluIGBDb2xsaXNpb25TeXN0ZW1gIHwKCkFsbG93ZWQgYCNpbmNsdWRlYCBpbiBgY29yZS9jb2xsaXNpb24vKipgOiBzdGFuZGFyZCBsaWJyYXJ5IChgPOKApj5gKSwgaGVhZGVycyB1bmRlciBgY29yZS9jb2xsaXNpb24vYCwgb3IgcGF0aHMgdW5kZXIgYHJlcXVpcmVzYCBtb2R1bGVzIChgY29yZS9tYXRoL+KApmAsIGBjb3JlL2ludGVyZmFjZXMv4oCmYCwgYGNvcmUvaW5mbHVlbmNlX3R5cGVzL+KApmAsIGBjb3JlL2xvZ2dpbmcv4oCmYCkuIE5vIG90aGVyIGBjb3JlLypgIHNpYmxpbmdzLCBgcGxhdGZvcm0vYCwgb3IgYGZmaS9gIChlbmZvcmNlZCBieSBgLi9zY3JpcHRzL2NoZWNrLW1vZHVsZS1kZXBzLnNoYCkuCgojIyBBZ2VudCBlZGl0IHNjb3BlCgp8IEFsbG93IHwgUGF0aCB8CnwtLS0tLS0tfC0tLS0tLXwKfCBJbXBsZW1lbnRhdGlvbiB8IGBjb3JlL2NvbGxpc2lvbi8qKmAgfAp8IE1hbmlmZXN0IHwgYGRvY3MvYWdlbnRpYy9tb2R1bGVzL2NvcmUuY29sbGlzaW9uLm1vZHVsZS5qc29uYCB8CnwgVW5pdCB0ZXN0cyB8IGB0ZXN0cy9Vbml0VGVzdHMvQ29sbGlzaW9uLyoqYCB8CnwgU2hhcmVkIGFnZW50aWMgZG9jcyB8IGBkb2NzL2FnZW50aWMvKmAgKHdoZW4gcG9saWN5IHJlcXVpcmVzKSB8CgpEbyBub3QgcmVhZCBvdGhlciBgY29yZS8qYCBpbXBsZW1lbnRhdGlvbiB0cmVlcyBmb3IgY29sbGlzaW9uLW9ubHkgdGFza3MuCgojIyBJbnZhcmlhbnRzCgotIERvIG5vdCBpbnRyb2R1Y2UgYCNpbmNsdWRlYCBvZiBvdGhlciBDb3JlRW5naW5lIG1vZHVsZXMgd2l0aG91dCB1cGRhdGluZyBtYW5pZmVzdCBgcmVxdWlyZXNgLCBkZXBlbmRlbmN5IHBvbGljeSwgYW5kIHJlZ2VuZXJhdGluZyBgZG9jcy9kZXBzLypgLgotIEtlZXAgcHVibGljIGluY2x1ZGVzIHN0YWJsZSBhdCBgY29yZS9jb2xsaXNpb24v4oCmYCAocmVwby1yb290IGluY2x1ZGUgcGF0aCkuCgojIyBUZXN0cwoKfCBTdWl0ZSB8IFBhdGggfAp8LS0tLS0tLXwtLS0tLS18CnwgU3BhdGlhbCBncmlkIHwgYHRlc3RzL1VuaXRUZXN0cy9Db2xsaXNpb24vU3BhdGlhbEdyaWRUZXN0LmNwcGAgfAp8IEltbXVuaXR5IHwgYHRlc3RzL1VuaXRUZXN0cy9Db2xsaXNpb24vSW1tdW5pdHlNYW5hZ2VyVGVzdC5jcHBgIHwKfCBLaW5lbWF0aWNzIHdyaXRlcyB8IGB0ZXN0cy9Vbml0VGVzdHMvQ29sbGlzaW9uL1VuaXRLaW5lbWF0aWNzV3JpdGVUZXN0LmNwcGAgfAp8IFN5c3RlbSBnYXRlIHwgYHRlc3RzL1VuaXRUZXN0cy9Db2xsaXNpb24vQ29sbGlzaW9uU3lzdGVtS2luZW1hdGljc0dhdGVUZXN0LmNwcGAgfAp8IEhlYWRlciBjb21waWxlIHNtb2tlIHwgYHRlc3RzL1VuaXRUZXN0cy9Db2xsaXNpb24vQ29sbGlzaW9uTW9kdWxlSGVhZGVyQ29tcGlsZVRlc3QuY3BwYCB8CgojIyMgQ29sbGlzaW9uLW9ubHkgKGBDT1JFRU5HSU5FX0NPTExJU0lPTl9TVEFOREFMT05FYCkKClN0YW5kYWxvbmUgdGFyZ2V0IGBjb3JlZW5naW5lX2NvbGxpc2lvbl90ZXN0c2AgbGlua3MgYGNvcmVlbmdpbmVfY29sbGlzaW9uYCwgYGNvcmVlbmdpbmVfbG9nZ2luZ2AsIGBjb3JlZW5naW5lX2luZmx1ZW5jZV90eXBlc2AsIGFuZCBgY29yZWVuZ2luZV9tYXRoYCAocGx1cyBHVGVzdCkuIEtpbmVtYXRpY3MgY292ZXJhZ2UgdXNlcyBgdGVzdHMvVGVzdEhlbHBlcnMvS2luZW1hdGljTW9ja0dhbWVVbml0LmhgIChgSVVuaXRLaW5lbWF0aWNzYCB0ZXN0IGRvdWJsZSkgaW5zdGVhZCBvZiBgUlRTVW5pdGAuCgpgYGBiYXNoCmNobW9kICt4IHNjcmlwdHMvcnVuLWNvbGxpc2lvbi1tb2R1bGUtdGVzdHMuc2gKLi9zY3JpcHRzL3J1bi1jb2xsaXNpb24tbW9kdWxlLXRlc3RzLnNoCmBgYAoKRXF1aXZhbGVudCBtYW51YWwgc3RlcHM6CgpgYGBiYXNoCmNtYWtlIC1TIC4gLUIgYnVpbGQtY29sbGlzaW9uIC1HIE5pbmphIC1EQlVJTERfVEVTVFM9T04gLURCVUlMRF9GRkk9T0ZGIC1EQ09SRUVOR0lORV9DT0xMSVNJT05fU1RBTkRBTE9ORT1PTgpjbWFrZSAtLWJ1aWxkIGJ1aWxkLWNvbGxpc2lvbiAtLXRhcmdldCBjb3JlZW5naW5lX2NvbGxpc2lvbl90ZXN0cwpjdGVzdCAtLXRlc3QtZGlyIGJ1aWxkLWNvbGxpc2lvbiAtLW91dHB1dC1vbi1mYWlsdXJlCmBgYAo=
+# Module: `core.collision`
+
+Manifest: [docs/agentic/modules/core.collision.module.json](../../docs/agentic/modules/core.collision.module.json)
+
+## Purpose
+
+**Spatial queries, contact detection, impulse resolution, events, and immunity** for units. Writers resolve kinematics through `IUnitKinematics` when present; agent–agent and map-edge paths use `IGameUnit` for read-only queries. This module does not own gamestate orchestration, combat rules, or map placement.
+
+## Public surface (`exports`)
+
+Include headers from the repo root, e.g. `#include "core/collision/CollisionSystem.h"`.
+
+| Symbol | Kind | Header | Notes |
+|--------|------|--------|-------|
+| `CollisionSystem` | class | `CollisionSystem.h` | Orchestrates detection and resolution — `.cpp` in this module |
+| `CollisionDetector` | class | `CollisionDetector.h` | Broad + narrow phase — `.cpp` in this module |
+| `SpatialGrid` | class | `SpatialGrid.h` | Spatial hash — `.cpp` in this module |
+| `CollisionResolver` | class | `CollisionResolver.h` | Impulse resolution — `.cpp` in this module |
+| `PositionCorrector` | class | `PositionCorrector.h` | Positional correction — `.cpp` in this module |
+| `ImmunityManager` | class | `ImmunityManager.h` | Pair immunity — `.cpp` in this module |
+| `ICollisionDetector` | interface | `ICollisionDetector.h` | Detector contract |
+| `ICollidable` | interface | `ICollidable.h` | Collidable contract |
+| `ICollisionObserver` | interface | `ICollisionObserver.h` | Event observer |
+
+### Contract highlights
+
+- **Kinematics gate:** resolution paths that apply impulses or correct positions require `IUnitKinematics` (optional interface); callers must not assume every `IGameUnit` implements it.
+- **No `RTSUnit`:** do not include gamestate unit types from this module; use `IGameUnit` / `IUnitKinematics` only.
+
+## Dependencies (`requires`)
+
+| Module | Range | Why |
+|--------|-------|-----|
+| `core.math` | `^1.0.0` | `Vector2`, geometry |
+| `core.interfaces` | `^1.0.0` | `IGameUnit`, `IUnitKinematics` |
+| `core.influence.types` | `^1.0.0` | Transitive completeness when parsing interface headers (matches `core.interfaces` contract) |
+| `core.logging` | `^1.0.0` | `Logger` in `CollisionSystem` |
+
+Allowed `#include` in `core/collision/**`: standard library (`<…>`), headers under `core/collision/`, or paths under `requires` modules (`core/math/…`, `core/interfaces/…`, `core/influence_types/…`, `core/logging/…`). No other `core/*` siblings, `platform/`, or `ffi/` (enforced by `./scripts/check-module-deps.sh`).
+
+## Agent edit scope
+
+| Allow | Path |
+|-------|------|
+| Implementation | `core/collision/**` |
+| Manifest | `docs/agentic/modules/core.collision.module.json` |
+| Unit tests | `tests/UnitTests/Collision/**` |
+| Shared agentic docs | `docs/agentic/*` (when policy requires) |
+
+Do not read other `core/*` implementation trees for collision-only tasks.
+
+## Invariants
+
+- Do not introduce `#include` of other CoreEngine modules without updating manifest `requires`, dependency policy, and regenerating `docs/deps/*`.
+- Keep public includes stable at `core/collision/…` (repo-root include path).
+
+## Tests
+
+| Suite | Path |
+|-------|------|
+| Spatial grid | `tests/UnitTests/Collision/SpatialGridTest.cpp` |
+| Immunity | `tests/UnitTests/Collision/ImmunityManagerTest.cpp` |
+| Kinematics writes | `tests/UnitTests/Collision/UnitKinematicsWriteTest.cpp` |
+| System gate | `tests/UnitTests/Collision/CollisionSystemKinematicsGateTest.cpp` |
+| Header compile smoke | `tests/UnitTests/Collision/CollisionModuleHeaderCompileTest.cpp` |
+
+### Collision-only (`COREENGINE_COLLISION_STANDALONE`)
+
+Standalone target `coreengine_collision_tests` links `coreengine_collision`, `coreengine_logging`, `coreengine_influence_types`, and `coreengine_math` (plus GTest). Kinematics coverage uses `tests/TestHelpers/KinematicMockGameUnit.h` (`IUnitKinematics` test double) instead of `RTSUnit`.
+
+```bash
+chmod +x scripts/run-collision-module-tests.sh
+./scripts/run-collision-module-tests.sh
+```
+
+Equivalent manual steps:
+
+```bash
+cmake -S . -B build-collision -G Ninja -DBUILD_TESTS=ON -DBUILD_FFI=OFF -DCOREENGINE_COLLISION_STANDALONE=ON
+cmake --build build-collision --target coreengine_collision_tests
+ctest --test-dir build-collision --output-on-failure
+```
