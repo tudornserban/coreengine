@@ -406,19 +406,16 @@ else()
     endif()
 
     if(BUILD_SDL2)
-        find_package(SDL2 REQUIRED)
-        file(GLOB SDL2_SOURCES "platform/sdl2/*.cpp")
-        add_library(coreengine_sdl2 STATIC ${SDL2_SOURCES})
-        target_link_libraries(coreengine_sdl2 PUBLIC coreengine SDL2::SDL2)
-        target_include_directories(coreengine_sdl2 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+        message(FATAL_ERROR
+            "BUILD_SDL2 is not buildable: platform/sdl2 is a header-only stub "
+            "with no .cpp files. Leave BUILD_SDL2=OFF. "
+            "For a windowed SDL2 loop use -DCOREENGINE_BUILD_SDL2_VIEWER=ON "
+            "(docs/VIEWER.md).")
     endif()
-
     if(BUILD_RAYLIB)
-        find_package(raylib QUIET)
-        file(GLOB RAYLIB_SOURCES "platform/raylib/*.cpp")
-        add_library(coreengine_raylib STATIC ${RAYLIB_SOURCES})
-        target_link_libraries(coreengine_raylib PUBLIC coreengine raylib)
-        target_include_directories(coreengine_raylib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+        message(FATAL_ERROR
+            "BUILD_RAYLIB is not buildable: platform/raylib is a header-only stub "
+            "with no .cpp files. Leave BUILD_RAYLIB=OFF.")
     endif()
 
     if(BUILD_TESTS)

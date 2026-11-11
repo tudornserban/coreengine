@@ -173,7 +173,7 @@ For a runnable SDL2 window that ticks `RTSGameState` through `GameLogicEngine` w
 - Enable `-DCOREENGINE_BUILD_SDL2_VIEWER=ON` (default OFF), install `libsdl2-dev`, build `coreengine_sdl2_viewer`.
 - Full flag/key/preset/script documentation: [VIEWER.md](VIEWER.md).
 
-`platform/sdl2` ships **header-only stubs** (`SDLRenderer::Render()` is declared, not implemented here). Game-specific ports copy VenusWars SDL code or use the viewer. `-DBUILD_SDL2=ON` **fails configure** until you add at least one `platform/sdl2/*.cpp` (empty glob → `No SOURCES given to target: coreengine_sdl2`).
+`platform/sdl2` ships **header-only stubs** (`SDLRenderer::Render()` is declared, not implemented here). Game-specific ports copy VenusWars SDL code or use the viewer. `-DBUILD_SDL2=ON` and `-DBUILD_RAYLIB=ON` **fail configure** immediately with a `header-only stub` message — add `platform/sdl2/*.cpp` or `platform/raylib/*.cpp` before enabling those options. Do **not** confuse `BUILD_SDL2` with `-DCOREENGINE_BUILD_SDL2_VIEWER=ON` ([VIEWER.md](VIEWER.md)).
 
 ---
 

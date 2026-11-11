@@ -288,7 +288,8 @@ TEST(OverlayTest, FrameLoopStepNotesExplosionBeforeUpdate)
     ASSERT_TRUE(RunScript(loop, "overlay explosions 1\npause\nstep\n"));
     EXPECT_TRUE(loop.State().GetExplosions().empty());
     const Camera camera = loop.GetCamera();
-    const DrawCircle* ring = FindExplosionCircle(loop.BuildViewDrawList());
+    const DrawList drawList = loop.BuildViewDrawList();
+    const DrawCircle* ring = FindExplosionCircle(drawList);
     ASSERT_NE(ring, nullptr);
     EXPECT_NEAR(ring->center.x, camera.WorldToScreen(explosionPos).x, 0.01f);
     EXPECT_NEAR(ring->radius, explosionRadius * camera.pixelsPerUnit, 0.01f);
