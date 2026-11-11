@@ -1,1 +1,102 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiLi4vaW50ZXJmYWNlcy9JR2FtZVVuaXQuaCIKI2luY2x1ZGUgIi4uL2ludGVyZmFjZXMvSVVuaXRLaW5lbWF0aWNzLmgiCiNpbmNsdWRlICIuLi9pbnRlcmZhY2VzL0lVbml0QWdlbnQuaCIKI2luY2x1ZGUgIi4uL2ludGVyZmFjZXMvSVVuaXRCZWhhdmlvckhvc3QuaCIKI2luY2x1ZGUgIi4uL2FpL1N0YXRlTWFjaGluZS5oIgojaW5jbHVkZSAiLi4vbWF0aC9WZWN0b3IyLmgiCiNpbmNsdWRlIDxhbGdvcml0aG0+CiNpbmNsdWRlIDxzdHJpbmc+CgpjbGFzcyBSVFNVbml0IDogcHVibGljIElHYW1lVW5pdCwgcHVibGljIElVbml0S2luZW1hdGljcywgcHVibGljIElVbml0QWdlbnQsIHB1YmxpYyBJVW5pdEJlaGF2aW9ySG9zdCB7CnByb3RlY3RlZDoKICAgIFZlY3RvcjIgcG9zaXRpb247CiAgICBWZWN0b3IyIHZlbG9jaXR5OwogICAgVmVjdG9yMiBhY2NlbGVyYXRpb247CgogICAgZmxvYXQgbWF4U3BlZWQ7CiAgICBmbG9hdCByYWRpdXM7CiAgICBpbnQgdGVhbTsKICAgIGJvb2wgc2VsZWN0ZWQ7CgogICAgLy8gSFAgYW5kIE1hc3MKICAgIGZsb2F0IGN1cnJlbnRIUDsKICAgIGZsb2F0IG1heEhQOwogICAgZmxvYXQgYmFzZU1hc3M7CiAgICBmbG9hdCBtYXNzTW9kaWZpZXI7CgogICAgLy8gQ29sbGlzaW9uIHByb3BlcnRpZXMKICAgIGZsb2F0IHJlc3RpdHV0aW9uOwogICAgZmxvYXQgcG9zaXRpb25Db3JyZWN0aW9uOwogICAgZmxvYXQgZGFtYWdlTW9kaWZpZXI7CgogICAgU3RhdGVNYWNoaW5lIHN0YXRlTWFjaGluZTsKCiAgICAvLyBEZWJ1ZyBtb2RlCiAgICBib29sIGRlYnVnTW9kZTsKICAgIFZlY3RvcjIgZGVidWdEZXN0aW5hdGlvbjsKCnB1YmxpYzoKICAgIFJUU1VuaXQoVmVjdG9yMiBzdGFydFBvcywgaW50IHRlYW1JZCwgZmxvYXQgdW5pdFJhZGl1cyA9IDEwLjBmLCBmbG9hdCB1bml0TWF4U3BlZWQgPSAxMDAuMGYpOwogICAgdmlydHVhbCB+UlRTVW5pdCgpID0gZGVmYXVsdDsKCiAgICAvLyBJR2FtZVVuaXQgaW1wbGVtZW50YXRpb24KICAgIHZvaWQgVXBkYXRlKGZsb2F0IGRlbHRhVGltZSkgb3ZlcnJpZGU7CiAgICBWZWN0b3IyIEdldFBvc2l0aW9uKCkgY29uc3Qgb3ZlcnJpZGUgeyByZXR1cm4gcG9zaXRpb247IH0KICAgIFZlY3RvcjIgR2V0VmVsb2NpdHkoKSBjb25zdCBvdmVycmlkZSB7IHJldHVybiB2ZWxvY2l0eTsgfQogICAgdm9pZCBBcHBseUFjY2VsZXJhdGlvbihWZWN0b3IyIGFjY2VsLCBmbG9hdCBkZWx0YVRpbWUpIG92ZXJyaWRlOwoKICAgIGJvb2wgSXNTZWxlY3RlZCgpIGNvbnN0IG92ZXJyaWRlIHsgcmV0dXJuIHNlbGVjdGVkOyB9CiAgICB2b2lkIFNldFNlbGVjdGVkKGJvb2wgc2VsKSBvdmVycmlkZSB7IHNlbGVjdGVkID0gc2VsOyB9CgogICAgaW50IEdldFRlYW0oKSBjb25zdCBvdmVycmlkZSB7IHJldHVybiB0ZWFtOyB9CiAgICBmbG9hdCBHZXRSYWRpdXMoKSBjb25zdCBvdmVycmlkZSB7IHJldHVybiByYWRpdXM7IH0KICAgIGZsb2F0IEdldFZpc3VhbFJhZGl1cygpIGNvbnN0IHsKICAgICAgICBpZiAobWF4SFAgPD0gMC4wZikgcmV0dXJuIHJhZGl1czsKICAgICAgICBmbG9hdCBocFJhdGlvID0gY3VycmVudEhQIC8gbWF4SFA7CiAgICAgICAgcmV0dXJuIHJhZGl1cyAqIGhwUmF0aW87CiAgICB9CiAgICBmbG9hdCBHZXRNYXhTcGVlZCgpIGNvbnN0IG92ZXJyaWRlIHsgcmV0dXJuIG1heFNwZWVkOyB9CgogICAgdm9pZCBTZXREZWJ1Z0Rlc3RpbmF0aW9uKFZlY3RvcjIgdGFyZ2V0KSBvdmVycmlkZSB7CiAgICAgICAgZGVidWdEZXN0aW5hdGlvbiA9IHRhcmdldDsKICAgICAgICBkZWJ1Z01vZGUgPSB0cnVlOwogICAgfQogICAgYm9vbCBJc0luRGVidWdNb2RlKCkgY29uc3Qgb3ZlcnJpZGUgeyByZXR1cm4gZGVidWdNb2RlOyB9CiAgICB2b2lkIENsZWFyRGVidWdNb2RlKCkgeyBkZWJ1Z01vZGUgPSBmYWxzZTsgfQoKICAgIC8vIFN0YXRlIG1hY2hpbmUgYWNjZXNzCiAgICBTdGF0ZU1hY2hpbmUmIEdldFN0YXRlTWFjaGluZSgpIHsgcmV0dXJuIHN0YXRlTWFjaGluZTsgfQogICAgY29uc3QgU3RhdGVNYWNoaW5lJiBHZXRTdGF0ZU1hY2hpbmUoKSBjb25zdCB7IHJldHVybiBzdGF0ZU1hY2hpbmU7IH0KCiAgICAvLyBTZXR0ZXJzIChJVW5pdEtpbmVtYXRpY3MpCiAgICB2b2lkIFNldFBvc2l0aW9uKFZlY3RvcjIgcG9zKSBvdmVycmlkZSB7IHBvc2l0aW9uID0gcG9zOyB9CiAgICB2b2lkIFNldFZlbG9jaXR5KFZlY3RvcjIgdmVsKSBvdmVycmlkZSB7IHZlbG9jaXR5ID0gdmVsOyB9CiAgICB2b2lkIFNldE1heFNwZWVkKGZsb2F0IHNwZWVkKSB7IG1heFNwZWVkID0gc3BlZWQ7IH0KCiAgICAvLyBJVW5pdEFnZW50IChjb21tYW5kIHN1cmZhY2UgZm9yIEZTTSAvIGJlaGF2aW9yIHBhcmFtZXRlcnMpCiAgICB2b2lkIFNldEFnZW50U3RhdGUoY29uc3Qgc3RkOjpzdHJpbmcmIHN0YXRlTmFtZSkgb3ZlcnJpZGU7CiAgICB2b2lkIFNldEFnZW50UGFyYW1ldGVyKGNvbnN0IHN0ZDo6c3RyaW5nJiBwYXJhbU5hbWUsIGZsb2F0IHZhbHVlKSBvdmVycmlkZTsKCiAgICAvLyBJVW5pdEJlaGF2aW9ySG9zdAogICAgSUJlaGF2aW9yKiBHZXRDdXJyZW50QmVoYXZpb3IoKSBvdmVycmlkZTsKCiAgICAvLyBIUCBhbmQgTWFzcwogICAgZmxvYXQgR2V0Q3VycmVudEhQKCkgY29uc3Qgb3ZlcnJpZGUgeyByZXR1cm4gY3VycmVudEhQOyB9CiAgICBmbG9hdCBHZXRNYXhIUCgpIGNvbnN0IG92ZXJyaWRlIHsgcmV0dXJuIG1heEhQOyB9CiAgICBmbG9hdCBHZXRCYXNlTWFzcygpIGNvbnN0IG92ZXJyaWRlIHsgcmV0dXJuIGJhc2VNYXNzOyB9CiAgICBmbG9hdCBHZXRNYXNzTW9kaWZpZXIoKSBjb25zdCBvdmVycmlkZSB7IHJldHVybiBtYXNzTW9kaWZpZXI7IH0KICAgIGZsb2F0IENhbGN1bGF0ZU1hc3MoKSBjb25zdCBvdmVycmlkZTsKICAgIHZvaWQgU2V0SFAoZmxvYXQgaHApIHsgY3VycmVudEhQID0gc3RkOjptYXgoMC4wZiwgc3RkOjptaW4obWF4SFAsIGhwKSk7IH0KICAgIHZvaWQgVGFrZURhbWFnZShmbG9hdCBkYW1hZ2UpIHsgY3VycmVudEhQID0gc3RkOjptYXgoMC4wZiwgY3VycmVudEhQIC0gZGFtYWdlKTsgfQoKICAgIC8vIENvbGxpc2lvbiBwcm9wZXJ0aWVzCiAgICBmbG9hdCBHZXRSZXN0aXR1dGlvbigpIGNvbnN0IG92ZXJyaWRlIHsgcmV0dXJuIHJlc3RpdHV0aW9uOyB9CiAgICBmbG9hdCBHZXRQb3NpdGlvbkNvcnJlY3Rpb24oKSBjb25zdCBvdmVycmlkZSB7IHJldHVybiBwb3NpdGlvbkNvcnJlY3Rpb247IH0KICAgIGZsb2F0IEdldERhbWFnZU1vZGlmaWVyKCkgY29uc3Qgb3ZlcnJpZGUgeyByZXR1cm4gZGFtYWdlTW9kaWZpZXI7IH0KICAgIHZvaWQgU2V0UmVzdGl0dXRpb24oZmxvYXQgcmVzdCkgeyByZXN0aXR1dGlvbiA9IHJlc3Q7IH0KICAgIHZvaWQgU2V0TWFzc01vZGlmaWVyKGZsb2F0IG1vZCkgeyBtYXNzTW9kaWZpZXIgPSBtb2Q7IH0KICAgIHZvaWQgU2V0RGFtYWdlTW9kaWZpZXIoZmxvYXQgbW9kKSB7IGRhbWFnZU1vZGlmaWVyID0gbW9kOyB9CiAgICB2b2lkIFNldFBvc2l0aW9uQ29ycmVjdGlvbihmbG9hdCBjb3JyKSB7IHBvc2l0aW9uQ29ycmVjdGlvbiA9IGNvcnI7IH0KfTsK
+#pragma once
+
+#include "../interfaces/IGameUnit.h"
+#include "../interfaces/IUnitKinematics.h"
+#include "../interfaces/IUnitAgent.h"
+#include "../interfaces/IUnitBehaviorHost.h"
+#include "../ai/StateMachine.h"
+#include "../math/Vector2.h"
+#include <algorithm>
+#include <string>
+
+class RTSUnit : public IGameUnit, public IUnitKinematics, public IUnitAgent, public IUnitBehaviorHost {
+protected:
+    Vector2 position;
+    Vector2 velocity;
+    Vector2 acceleration;
+
+    float maxSpeed;
+    float radius;
+    int team;
+    bool selected;
+
+    // HP and Mass
+    float currentHP;
+    float maxHP;
+    float baseMass;
+    float massModifier;
+
+    // Collision properties
+    float restitution;
+    float positionCorrection;
+    float damageModifier;
+
+    StateMachine stateMachine;
+
+    // Debug mode
+    bool debugMode;
+    Vector2 debugDestination;
+
+public:
+    RTSUnit(Vector2 startPos, int teamId, float unitRadius = 10.0f, float unitMaxSpeed = 100.0f);
+    virtual ~RTSUnit() = default;
+
+    // IGameUnit implementation
+    void Update(float deltaTime) override;
+    Vector2 GetPosition() const override { return position; }
+    Vector2 GetVelocity() const override { return velocity; }
+    void ApplyAcceleration(Vector2 accel, float deltaTime) override;
+
+    bool IsSelected() const override { return selected; }
+    void SetSelected(bool sel) override { selected = sel; }
+
+    int GetTeam() const override { return team; }
+    float GetRadius() const override { return radius; }
+    float GetVisualRadius() const {
+        if (maxHP <= 0.0f) return radius;
+        float hpRatio = currentHP / maxHP;
+        return radius * hpRatio;
+    }
+    float GetMaxSpeed() const override { return maxSpeed; }
+
+    void SetDebugDestination(Vector2 target) override {
+        debugDestination = target;
+        debugMode = true;
+    }
+    bool IsInDebugMode() const override { return debugMode; }
+    void ClearDebugMode() { debugMode = false; }
+
+    // State machine access
+    StateMachine& GetStateMachine() { return stateMachine; }
+    const StateMachine& GetStateMachine() const { return stateMachine; }
+
+    // Setters (IUnitKinematics)
+    void SetPosition(Vector2 pos) override { position = pos; }
+    void SetVelocity(Vector2 vel) override { velocity = vel; }
+    void SetMaxSpeed(float speed) { maxSpeed = speed; }
+
+    // IUnitAgent (command surface for FSM / behavior parameters)
+    void SetAgentState(const std::string& stateName) override;
+    void SetAgentParameter(const std::string& paramName, float value) override;
+
+    // IUnitBehaviorHost
+    IBehavior* GetCurrentBehavior() override;
+
+    // HP and Mass
+    float GetCurrentHP() const override { return currentHP; }
+    float GetMaxHP() const override { return maxHP; }
+    float GetBaseMass() const override { return baseMass; }
+    float GetMassModifier() const override { return massModifier; }
+    float CalculateMass() const override;
+    void SetHP(float hp) { currentHP = std::max(0.0f, std::min(maxHP, hp)); }
+    void TakeDamage(float damage) { currentHP = std::max(0.0f, currentHP - damage); }
+
+    // Collision properties
+    float GetRestitution() const override { return restitution; }
+    float GetPositionCorrection() const override { return positionCorrection; }
+    float GetDamageModifier() const override { return damageModifier; }
+    void SetRestitution(float rest) { restitution = rest; }
+    void SetMassModifier(float mod) { massModifier = mod; }
+    void SetDamageModifier(float mod) { damageModifier = mod; }
+    void SetPositionCorrection(float corr) { positionCorrection = corr; }
+};
