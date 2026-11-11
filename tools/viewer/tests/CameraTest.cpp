@@ -1,1 +1,49 @@
-I2luY2x1ZGUgIkNhbWVyYS5oIgoKI2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgojaW5jbHVkZSAiY29yZS9tYXRoL1ZlY3RvcjIuaCIKClRFU1QoQ2FtZXJhVGVzdCwgRml0TWFwVXNlc1RoZVRpZ2h0ZXJBeGlzQW5kQ2VudGVyc1RoZU1hcCkKewogICAgQ2FtZXJhIGNhbWVyYSA9IEZpdE1hcChWZWN0b3IyKDgwMC4wZiwgNjAwLjBmKSwgMTI4MCwgNzIwLCA0MC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEoY2FtZXJhLnBpeGVsc1BlclVuaXQsIDY0MC4wZiAvIDYwMC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEoY2FtZXJhLmNlbnRlci54LCA0MDAuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKGNhbWVyYS5jZW50ZXIueSwgMzAwLjBmKTsKfQoKVEVTVChDYW1lcmFUZXN0LCBXb3JsZFNjcmVlblJvdW5kVHJpcEF0TWFwQ2VudGVyQW5kQ29ybmVyKQp7CiAgICBDYW1lcmEgY2FtZXJhID0gRml0TWFwKFZlY3RvcjIoODAwLjBmLCA2MDAuMGYpLCAxMjgwLCA3MjAsIDQwLjBmKTsKICAgIFZlY3RvcjIgc2NyZWVuID0gY2FtZXJhLldvcmxkVG9TY3JlZW4oVmVjdG9yMig0MDAuMGYsIDMwMC4wZikpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHNjcmVlbi54LCA2NDAuMGYpOwogICAgRVhQRUNUX0ZMT0FUX0VRKHNjcmVlbi55LCAzNjAuMGYpOwogICAgVmVjdG9yMiB3b3JsZCA9IGNhbWVyYS5TY3JlZW5Ub1dvcmxkKGNhbWVyYS5Xb3JsZFRvU2NyZWVuKFZlY3RvcjIoMC4wZiwgMC4wZikpKTsKICAgIEVYUEVDVF9ORUFSKHdvcmxkLngsIDAuMGYsIDAuMDAxZik7CiAgICBFWFBFQ1RfTkVBUih3b3JsZC55LCAwLjBmLCAwLjAwMWYpOwp9CgpURVNUKENhbWVyYVRlc3QsIFBhbkFwcGxpZXNMaXRlcmFsV29ybGRTaGlmdEZvclNjcmVlbkRlbHRhKQp7CiAgICBDYW1lcmEgY2FtZXJhID0gRml0TWFwKFZlY3RvcjIoODAwLjBmLCA2MDAuMGYpLCAxMjgwLCA3MjAsIDQwLjBmKTsKICAgIEVYUEVDVF9GTE9BVF9FUShjYW1lcmEuY2VudGVyLngsIDQwMC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEoY2FtZXJhLmNlbnRlci55LCAzMDAuMGYpOwogICAgY2FtZXJhLlBhbihWZWN0b3IyKDY0LjBmLCAtMzIuMGYpKTsKICAgIEVYUEVDVF9GTE9BVF9FUShjYW1lcmEuY2VudGVyLngsIDM0MC4wZik7CiAgICBFWFBFQ1RfRkxPQVRfRVEoY2FtZXJhLmNlbnRlci55LCAzMzAuMGYpOwp9CgpURVNUKENhbWVyYVRlc3QsIFpvb21BdE9mZkNlbnRlclNjcmVlbktlZXBzV29ybGRBbmNob3JGaXhlZCkKewogICAgQ2FtZXJhIGNhbWVyYSA9IEZpdE1hcChWZWN0b3IyKDgwMC4wZiwgNjAwLjBmKSwgMTI4MCwgNzIwLCA0MC4wZik7CiAgICBjb25zdCBmbG9hdCBiYXNlUGl4ZWxzUGVyVW5pdCA9IDY0MC4wZiAvIDYwMC4wZjsKICAgIEVYUEVDVF9GTE9BVF9FUShjYW1lcmEucGl4ZWxzUGVyVW5pdCwgYmFzZVBpeGVsc1BlclVuaXQpOwogICAgY29uc3QgVmVjdG9yMiBzY3JlZW4oMTAwLjBmLCA4MC4wZik7CiAgICBjb25zdCBWZWN0b3IyIHdvcmxkQmVmb3JlID0gY2FtZXJhLlNjcmVlblRvV29ybGQoc2NyZWVuKTsKICAgIGNvbnN0ZXhwciBmbG9hdCBrWm9vbUZhY3RvciA9IDEuMjVmOwogICAgY2FtZXJhLlpvb21BdChzY3JlZW4sIGtab29tRmFjdG9yKTsKICAgIGNvbnN0IFZlY3RvcjIgd29ybGRBZnRlciA9IGNhbWVyYS5TY3JlZW5Ub1dvcmxkKHNjcmVlbik7CiAgICBFWFBFQ1RfTkVBUih3b3JsZEFmdGVyLngsIHdvcmxkQmVmb3JlLngsIDAuMDJmKTsKICAgIEVYUEVDVF9ORUFSKHdvcmxkQWZ0ZXIueSwgd29ybGRCZWZvcmUueSwgMC4wMmYpOwogICAgRVhQRUNUX05FQVIoY2FtZXJhLnBpeGVsc1BlclVuaXQsIGJhc2VQaXhlbHNQZXJVbml0ICoga1pvb21GYWN0b3IsIDAuMDAwMWYpOwp9Cg==
+#include "Camera.h"
+
+#include <gtest/gtest.h>
+
+#include "core/math/Vector2.h"
+
+TEST(CameraTest, FitMapUsesTheTighterAxisAndCentersTheMap)
+{
+    Camera camera = FitMap(Vector2(800.0f, 600.0f), 1280, 720, 40.0f);
+    EXPECT_FLOAT_EQ(camera.pixelsPerUnit, 640.0f / 600.0f);
+    EXPECT_FLOAT_EQ(camera.center.x, 400.0f);
+    EXPECT_FLOAT_EQ(camera.center.y, 300.0f);
+}
+
+TEST(CameraTest, WorldScreenRoundTripAtMapCenterAndCorner)
+{
+    Camera camera = FitMap(Vector2(800.0f, 600.0f), 1280, 720, 40.0f);
+    Vector2 screen = camera.WorldToScreen(Vector2(400.0f, 300.0f));
+    EXPECT_FLOAT_EQ(screen.x, 640.0f);
+    EXPECT_FLOAT_EQ(screen.y, 360.0f);
+    Vector2 world = camera.ScreenToWorld(camera.WorldToScreen(Vector2(0.0f, 0.0f)));
+    EXPECT_NEAR(world.x, 0.0f, 0.001f);
+    EXPECT_NEAR(world.y, 0.0f, 0.001f);
+}
+
+TEST(CameraTest, PanAppliesLiteralWorldShiftForScreenDelta)
+{
+    Camera camera = FitMap(Vector2(800.0f, 600.0f), 1280, 720, 40.0f);
+    EXPECT_FLOAT_EQ(camera.center.x, 400.0f);
+    EXPECT_FLOAT_EQ(camera.center.y, 300.0f);
+    camera.Pan(Vector2(64.0f, -32.0f));
+    EXPECT_FLOAT_EQ(camera.center.x, 340.0f);
+    EXPECT_FLOAT_EQ(camera.center.y, 330.0f);
+}
+
+TEST(CameraTest, ZoomAtOffCenterScreenKeepsWorldAnchorFixed)
+{
+    Camera camera = FitMap(Vector2(800.0f, 600.0f), 1280, 720, 40.0f);
+    const float basePixelsPerUnit = 640.0f / 600.0f;
+    EXPECT_FLOAT_EQ(camera.pixelsPerUnit, basePixelsPerUnit);
+    const Vector2 screen(100.0f, 80.0f);
+    const Vector2 worldBefore = camera.ScreenToWorld(screen);
+    constexpr float kZoomFactor = 1.25f;
+    camera.ZoomAt(screen, kZoomFactor);
+    const Vector2 worldAfter = camera.ScreenToWorld(screen);
+    EXPECT_NEAR(worldAfter.x, worldBefore.x, 0.02f);
+    EXPECT_NEAR(worldAfter.y, worldBefore.y, 0.02f);
+    EXPECT_NEAR(camera.pixelsPerUnit, basePixelsPerUnit * kZoomFactor, 0.0001f);
+}

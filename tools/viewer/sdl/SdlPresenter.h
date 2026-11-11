@@ -1,1 +1,7 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiRHJhd0xpc3QuaCIKI2luY2x1ZGUgIkZyYW1lTG9vcC5oIgojaW5jbHVkZSAiVmlld2VyQ29uZmlnLmgiCgpib29sIFByZXNlbnRTaW11bGF0aW9uKEZyYW1lTG9vcCYgbG9vcCwgY29uc3QgVmlld2VyQ29uZmlnJiBjb25maWcsIEZyYW1lYnVmZmVyJiBmcmFtZWJ1ZmZlcik7Cg==
+#pragma once
+
+#include "DrawList.h"
+#include "FrameLoop.h"
+#include "ViewerConfig.h"
+
+bool PresentSimulation(FrameLoop& loop, const ViewerConfig& config, Framebuffer& framebuffer);

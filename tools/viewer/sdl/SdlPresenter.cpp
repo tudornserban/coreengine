@@ -1,1 +1,168 @@
-I2luY2x1ZGUgIlNkbFByZXNlbnRlci5oIgoKI2luY2x1ZGUgIlZpZXdlcklucHV0LmgiCgojaW5jbHVkZSA8U0RMLmg+Cgpib29sIFByZXNlbnRTaW11bGF0aW9uKEZyYW1lTG9vcCYgbG9vcCwgY29uc3QgVmlld2VyQ29uZmlnJiBjb25maWcsIEZyYW1lYnVmZmVyJiBmcmFtZWJ1ZmZlcikKewogICAgaWYgKGNvbmZpZy5ub1dpbmRvdykKICAgIHsKICAgICAgICBpZiAoY29uZmlnLnNjcmlwdFBhdGguZW1wdHkoKSkKICAgICAgICB7CiAgICAgICAgICAgIGZvciAoaW50IGkgPSAwOyBpIDwgY29uZmlnLmZyYW1lczsgKytpKQogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICBsb29wLkFkdmFuY2VQcmVzZW50YXRpb25GcmFtZSgpOwogICAgICAgICAgICB9CiAgICAgICAgfQogICAgICAgIGxvb3AuUmFzdGVyaXplQ3VycmVudFZpZXcoZnJhbWVidWZmZXIpOwogICAgICAgIHJldHVybiB0cnVlOwogICAgfQoKICAgIGlmIChTRExfSW5pdChTRExfSU5JVF9WSURFTykgIT0gMCkKICAgIHsKICAgICAgICByZXR1cm4gZmFsc2U7CiAgICB9CgogICAgU0RMX1dpbmRvdyogd2luZG93ID0gU0RMX0NyZWF0ZVdpbmRvdygKICAgICAgICAiQ29yZUVuZ2luZSBWaWV3ZXIiLAogICAgICAgIFNETF9XSU5ET1dQT1NfQ0VOVEVSRUQsCiAgICAgICAgU0RMX1dJTkRPV1BPU19DRU5URVJFRCwKICAgICAgICBjb25maWcud2lkdGgsCiAgICAgICAgY29uZmlnLmhlaWdodCwKICAgICAgICBTRExfV0lORE9XX1NIT1dOKTsKICAgIGlmICh3aW5kb3cgPT0gbnVsbHB0cikKICAgIHsKICAgICAgICBTRExfUXVpdCgpOwogICAgICAgIHJldHVybiBmYWxzZTsKICAgIH0KCiAgICBTRExfUmVuZGVyZXIqIHJlbmRlcmVyID0gU0RMX0NyZWF0ZVJlbmRlcmVyKHdpbmRvdywgLTEsIFNETF9SRU5ERVJFUl9TT0ZUV0FSRSk7CiAgICBpZiAocmVuZGVyZXIgPT0gbnVsbHB0cikKICAgIHsKICAgICAgICBTRExfRGVzdHJveVdpbmRvdyh3aW5kb3cpOwogICAgICAgIFNETF9RdWl0KCk7CiAgICAgICAgcmV0dXJuIGZhbHNlOwogICAgfQoKICAgIFNETF9UZXh0dXJlKiB0ZXh0dXJlID0gU0RMX0NyZWF0ZVRleHR1cmUoCiAgICAgICAgcmVuZGVyZXIsCiAgICAgICAgU0RMX1BJWEVMRk9STUFUX1JHQkEzMiwKICAgICAgICBTRExfVEVYVFVSRUFDQ0VTU19TVFJFQU1JTkcsCiAgICAgICAgY29uZmlnLndpZHRoLAogICAgICAgIGNvbmZpZy5oZWlnaHQpOwogICAgaWYgKHRleHR1cmUgPT0gbnVsbHB0cikKICAgIHsKICAgICAgICBTRExfRGVzdHJveVJlbmRlcmVyKHJlbmRlcmVyKTsKICAgICAgICBTRExfRGVzdHJveVdpbmRvdyh3aW5kb3cpOwogICAgICAgIFNETF9RdWl0KCk7CiAgICAgICAgcmV0dXJuIGZhbHNlOwogICAgfQoKICAgIGNvbnN0IGludCB0YXJnZXRGcmFtZXMgPSBjb25maWcuZnJhbWVzID4gMCA/IGNvbmZpZy5mcmFtZXMgOiAwOwogICAgaW50IHByZXNlbnRlZCA9IDA7CiAgICBib29sIHJ1bm5pbmcgPSB0cnVlOwogICAgYm9vbCBtaWRkbGVEb3duID0gZmFsc2U7CgogICAgd2hpbGUgKHJ1bm5pbmcgJiYgKHRhcmdldEZyYW1lcyA9PSAwIHx8IHByZXNlbnRlZCA8IHRhcmdldEZyYW1lcykpCiAgICB7CiAgICAgICAgbG9vcC5BZHZhbmNlUHJlc2VudGF0aW9uRnJhbWUoKTsKICAgICAgICBsb29wLlJhc3Rlcml6ZUN1cnJlbnRWaWV3KGZyYW1lYnVmZmVyKTsKCiAgICAgICAgaWYgKFNETF9VcGRhdGVUZXh0dXJlKHRleHR1cmUsIG51bGxwdHIsIGZyYW1lYnVmZmVyLnJnYmEuZGF0YSgpLCBjb25maWcud2lkdGggKiA0KSAhPSAwKQogICAgICAgIHsKICAgICAgICAgICAgU0RMX0Rlc3Ryb3lUZXh0dXJlKHRleHR1cmUpOwogICAgICAgICAgICBTRExfRGVzdHJveVJlbmRlcmVyKHJlbmRlcmVyKTsKICAgICAgICAgICAgU0RMX0Rlc3Ryb3lXaW5kb3cod2luZG93KTsKICAgICAgICAgICAgU0RMX1F1aXQoKTsKICAgICAgICAgICAgcmV0dXJuIGZhbHNlOwogICAgICAgIH0KICAgICAgICBTRExfUmVuZGVyQ2xlYXIocmVuZGVyZXIpOwogICAgICAgIFNETF9SZW5kZXJDb3B5KHJlbmRlcmVyLCB0ZXh0dXJlLCBudWxscHRyLCBudWxscHRyKTsKICAgICAgICBTRExfUmVuZGVyUHJlc2VudChyZW5kZXJlcik7CiAgICAgICAgKytwcmVzZW50ZWQ7CgogICAgICAgIFNETF9FdmVudCBldmVudDsKICAgICAgICB3aGlsZSAoU0RMX1BvbGxFdmVudCgmZXZlbnQpKQogICAgICAgIHsKICAgICAgICAgICAgaWYgKGV2ZW50LnR5cGUgPT0gU0RMX1FVSVQpCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIHJ1bm5pbmcgPSBmYWxzZTsKICAgICAgICAgICAgfQogICAgICAgICAgICBlbHNlIGlmIChldmVudC50eXBlID09IFNETF9LRVlET1dOKQogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICBsb29wLkFwcGx5Vmlld2VyS2V5QWN0aW9uKEhhbmRsZVZpZXdlcktleWNvZGUoZXZlbnQua2V5LmtleXN5bS5zeW0pKTsKICAgICAgICAgICAgfQogICAgICAgICAgICBlbHNlIGlmIChldmVudC50eXBlID09IFNETF9NT1VTRUJVVFRPTkRPV04pCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIGNvbnN0IFZlY3RvcjIgc2NyZWVuKAogICAgICAgICAgICAgICAgICAgIHN0YXRpY19jYXN0PGZsb2F0PihldmVudC5idXR0b24ueCksCiAgICAgICAgICAgICAgICAgICAgc3RhdGljX2Nhc3Q8ZmxvYXQ+KGV2ZW50LmJ1dHRvbi55KSk7CiAgICAgICAgICAgICAgICBjb25zdCBib29sIHNoaWZ0SGVsZCA9IChTRExfR2V0TW9kU3RhdGUoKSAmIEtNT0RfU0hJRlQpICE9IDA7CiAgICAgICAgICAgICAgICBpZiAoZXZlbnQuYnV0dG9uLmJ1dHRvbiA9PSBTRExfQlVUVE9OX0xFRlQpCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgbG9vcC5Pbk1vdXNlTGVmdERvd24oc2NyZWVuLCBzaGlmdEhlbGQpOwogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgZWxzZSBpZiAoZXZlbnQuYnV0dG9uLmJ1dHRvbiA9PSBTRExfQlVUVE9OX1JJR0hUKQogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgIGxvb3AuT25Nb3VzZVJpZ2h0RG93bihzY3JlZW4sIHNoaWZ0SGVsZCk7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBlbHNlIGlmIChldmVudC5idXR0b24uYnV0dG9uID09IFNETF9CVVRUT05fTUlERExFKQogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgIG1pZGRsZURvd24gPSB0cnVlOwogICAgICAgICAgICAgICAgICAgIGxvb3AuT25Nb3VzZU1pZGRsZURvd24oc2NyZWVuKTsKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgICAgICBlbHNlIGlmIChldmVudC50eXBlID09IFNETF9NT1VTRUJVVFRPTlVQKQogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICBpZiAoZXZlbnQuYnV0dG9uLmJ1dHRvbiA9PSBTRExfQlVUVE9OX0xFRlQpCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgY29uc3QgVmVjdG9yMiBzY3JlZW4oCiAgICAgICAgICAgICAgICAgICAgICAgIHN0YXRpY19jYXN0PGZsb2F0PihldmVudC5idXR0b24ueCksCiAgICAgICAgICAgICAgICAgICAgICAgIHN0YXRpY19jYXN0PGZsb2F0PihldmVudC5idXR0b24ueSkpOwogICAgICAgICAgICAgICAgICAgIGNvbnN0IGJvb2wgc2hpZnRIZWxkID0gKFNETF9HZXRNb2RTdGF0ZSgpICYgS01PRF9TSElGVCkgIT0gMDsKICAgICAgICAgICAgICAgICAgICBsb29wLk9uTW91c2VMZWZ0VXAoc2NyZWVuLCBzaGlmdEhlbGQpOwogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgZWxzZSBpZiAoZXZlbnQuYnV0dG9uLmJ1dHRvbiA9PSBTRExfQlVUVE9OX01JRERMRSkKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBjb25zdCBWZWN0b3IyIHNjcmVlbigKICAgICAgICAgICAgICAgICAgICAgICAgc3RhdGljX2Nhc3Q8ZmxvYXQ+KGV2ZW50LmJ1dHRvbi54KSwKICAgICAgICAgICAgICAgICAgICAgICAgc3RhdGljX2Nhc3Q8ZmxvYXQ+KGV2ZW50LmJ1dHRvbi55KSk7CiAgICAgICAgICAgICAgICAgICAgbWlkZGxlRG93biA9IGZhbHNlOwogICAgICAgICAgICAgICAgICAgIGxvb3AuT25Nb3VzZU1pZGRsZVVwKHNjcmVlbik7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxzZSBpZiAoZXZlbnQudHlwZSA9PSBTRExfTU9VU0VNT1RJT04pCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIGNvbnN0IFZlY3RvcjIgc2NyZWVuKAogICAgICAgICAgICAgICAgICAgIHN0YXRpY19jYXN0PGZsb2F0PihldmVudC5tb3Rpb24ueCksCiAgICAgICAgICAgICAgICAgICAgc3RhdGljX2Nhc3Q8ZmxvYXQ+KGV2ZW50Lm1vdGlvbi55KSk7CiAgICAgICAgICAgICAgICBpZiAobWlkZGxlRG93bikKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBsb29wLk9uTW91c2VNaWRkbGVNb3Rpb24oc2NyZWVuKTsKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIGVsc2UKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBsb29wLk9uTW91c2VNb3Rpb24oc2NyZWVuKTsKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgICAgICBlbHNlIGlmIChldmVudC50eXBlID09IFNETF9NT1VTRVdIRUVMKQogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICBjb25zdCBmbG9hdCBtb3VzZVggPSBzdGF0aWNfY2FzdDxmbG9hdD4oZXZlbnQud2hlZWwubW91c2VYKTsKICAgICAgICAgICAgICAgIGNvbnN0IGZsb2F0IG1vdXNlWSA9IHN0YXRpY19jYXN0PGZsb2F0PihldmVudC53aGVlbC5tb3VzZVkpOwogICAgICAgICAgICAgICAgbG9vcC5Pbk1vdXNlV2hlZWwobW91c2VYLCBtb3VzZVksIHN0YXRpY19jYXN0PGZsb2F0PihldmVudC53aGVlbC55KSk7CiAgICAgICAgICAgIH0KICAgICAgICB9CgogICAgICAgIGlmICh0YXJnZXRGcmFtZXMgPT0gMCkKICAgICAgICB7CiAgICAgICAgICAgIFNETF9EZWxheSgxNik7CiAgICAgICAgfQogICAgfQoKICAgIFNETF9EZXN0cm95VGV4dHVyZSh0ZXh0dXJlKTsKICAgIFNETF9EZXN0cm95UmVuZGVyZXIocmVuZGVyZXIpOwogICAgU0RMX0Rlc3Ryb3lXaW5kb3cod2luZG93KTsKICAgIFNETF9RdWl0KCk7CiAgICByZXR1cm4gdHJ1ZTsKfQo=
+#include "SdlPresenter.h"
+
+#include "ViewerInput.h"
+
+#include <SDL.h>
+
+bool PresentSimulation(FrameLoop& loop, const ViewerConfig& config, Framebuffer& framebuffer)
+{
+    if (config.noWindow)
+    {
+        if (config.scriptPath.empty())
+        {
+            for (int i = 0; i < config.frames; ++i)
+            {
+                loop.AdvancePresentationFrame();
+            }
+        }
+        loop.RasterizeCurrentView(framebuffer);
+        return true;
+    }
+
+    if (SDL_Init(SDL_INIT_VIDEO) != 0)
+    {
+        return false;
+    }
+
+    SDL_Window* window = SDL_CreateWindow(
+        "CoreEngine Viewer",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        config.width,
+        config.height,
+        SDL_WINDOW_SHOWN);
+    if (window == nullptr)
+    {
+        SDL_Quit();
+        return false;
+    }
+
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
+    if (renderer == nullptr)
+    {
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return false;
+    }
+
+    SDL_Texture* texture = SDL_CreateTexture(
+        renderer,
+        SDL_PIXELFORMAT_RGBA32,
+        SDL_TEXTUREACCESS_STREAMING,
+        config.width,
+        config.height);
+    if (texture == nullptr)
+    {
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return false;
+    }
+
+    const int targetFrames = config.frames > 0 ? config.frames : 0;
+    int presented = 0;
+    bool running = true;
+    bool middleDown = false;
+
+    while (running && (targetFrames == 0 || presented < targetFrames))
+    {
+        loop.AdvancePresentationFrame();
+        loop.RasterizeCurrentView(framebuffer);
+
+        if (SDL_UpdateTexture(texture, nullptr, framebuffer.rgba.data(), config.width * 4) != 0)
+        {
+            SDL_DestroyTexture(texture);
+            SDL_DestroyRenderer(renderer);
+            SDL_DestroyWindow(window);
+            SDL_Quit();
+            return false;
+        }
+        SDL_RenderClear(renderer);
+        SDL_RenderCopy(renderer, texture, nullptr, nullptr);
+        SDL_RenderPresent(renderer);
+        ++presented;
+
+        SDL_Event event;
+        while (SDL_PollEvent(&event))
+        {
+            if (event.type == SDL_QUIT)
+            {
+                running = false;
+            }
+            else if (event.type == SDL_KEYDOWN)
+            {
+                loop.ApplyViewerKeyAction(HandleViewerKeycode(event.key.keysym.sym));
+            }
+            else if (event.type == SDL_MOUSEBUTTONDOWN)
+            {
+                const Vector2 screen(
+                    static_cast<float>(event.button.x),
+                    static_cast<float>(event.button.y));
+                const bool shiftHeld = (SDL_GetModState() & KMOD_SHIFT) != 0;
+                if (event.button.button == SDL_BUTTON_LEFT)
+                {
+                    loop.OnMouseLeftDown(screen, shiftHeld);
+                }
+                else if (event.button.button == SDL_BUTTON_RIGHT)
+                {
+                    loop.OnMouseRightDown(screen, shiftHeld);
+                }
+                else if (event.button.button == SDL_BUTTON_MIDDLE)
+                {
+                    middleDown = true;
+                    loop.OnMouseMiddleDown(screen);
+                }
+            }
+            else if (event.type == SDL_MOUSEBUTTONUP)
+            {
+                if (event.button.button == SDL_BUTTON_LEFT)
+                {
+                    const Vector2 screen(
+                        static_cast<float>(event.button.x),
+                        static_cast<float>(event.button.y));
+                    const bool shiftHeld = (SDL_GetModState() & KMOD_SHIFT) != 0;
+                    loop.OnMouseLeftUp(screen, shiftHeld);
+                }
+                else if (event.button.button == SDL_BUTTON_MIDDLE)
+                {
+                    const Vector2 screen(
+                        static_cast<float>(event.button.x),
+                        static_cast<float>(event.button.y));
+                    middleDown = false;
+                    loop.OnMouseMiddleUp(screen);
+                }
+            }
+            else if (event.type == SDL_MOUSEMOTION)
+            {
+                const Vector2 screen(
+                    static_cast<float>(event.motion.x),
+                    static_cast<float>(event.motion.y));
+                if (middleDown)
+                {
+                    loop.OnMouseMiddleMotion(screen);
+                }
+                else
+                {
+                    loop.OnMouseMotion(screen);
+                }
+            }
+            else if (event.type == SDL_MOUSEWHEEL)
+            {
+                const float mouseX = static_cast<float>(event.wheel.mouseX);
+                const float mouseY = static_cast<float>(event.wheel.mouseY);
+                loop.OnMouseWheel(mouseX, mouseY, static_cast<float>(event.wheel.y));
+            }
+        }
+
+        if (targetFrames == 0)
+        {
+            SDL_Delay(16);
+        }
+    }
+
+    SDL_DestroyTexture(texture);
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+    return true;
+}

@@ -1,1 +1,81 @@
-I2luY2x1ZGUgIkNhbWVyYS5oIgojaW5jbHVkZSAiRHJhd0xpc3QuaCIKI2luY2x1ZGUgIkZyYW1lTG9vcC5oIgojaW5jbHVkZSAiSW5wdXRTY3JpcHQuaCIKI2luY2x1ZGUgIlBuZ1dyaXRlci5oIgojaW5jbHVkZSAiU2NlbmFyaW8uaCIKI2luY2x1ZGUgIlZpZXdlckNvbmZpZy5oIgojaW5jbHVkZSAic2RsL1NkbFByZXNlbnRlci5oIgoKI2luY2x1ZGUgPGZzdHJlYW0+CiNpbmNsdWRlIDxpb3N0cmVhbT4KI2luY2x1ZGUgPHNzdHJlYW0+CgpuYW1lc3BhY2UKewoKYm9vbCBSZWFkRmlsZVRvU3RyaW5nKGNvbnN0IHN0ZDo6c3RyaW5nJiBwYXRoLCBzdGQ6OnN0cmluZyYgY29udGVudHMpCnsKICAgIHN0ZDo6aWZzdHJlYW0gaW4ocGF0aCwgc3RkOjppb3M6OmJpbmFyeSk7CiAgICBpZiAoIWluKQogICAgewogICAgICAgIHJldHVybiBmYWxzZTsKICAgIH0KICAgIHN0ZDo6b3N0cmluZ3N0cmVhbSBidWZmZXI7CiAgICBidWZmZXIgPDwgaW4ucmRidWYoKTsKICAgIGNvbnRlbnRzID0gYnVmZmVyLnN0cigpOwogICAgcmV0dXJuIHRydWU7Cn0KCn0gLy8gbmFtZXNwYWNlCgppbnQgbWFpbihpbnQgYXJnYywgY2hhcioqIGFyZ3YpCnsKICAgIFZpZXdlckNvbmZpZyBjb25maWcgPSBQYXJzZVZpZXdlckNvbmZpZyhhcmdjLCBhcmd2KTsKICAgIGlmIChjb25maWcucGFyc2VFcnJvcikKICAgIHsKICAgICAgICByZXR1cm4gMjsKICAgIH0KCiAgICBGcmFtZUxvb3AgbG9vcChjb25maWcucHJlc2V0LCBrRGVmYXVsdFNlZWQsIGNvbmZpZy53aWR0aCwgY29uZmlnLmhlaWdodCk7CgogICAgaWYgKCFjb25maWcuc2NyaXB0UGF0aC5lbXB0eSgpKQogICAgewogICAgICAgIHN0ZDo6c3RyaW5nIHNjcmlwdFRleHQ7CiAgICAgICAgaWYgKCFSZWFkRmlsZVRvU3RyaW5nKGNvbmZpZy5zY3JpcHRQYXRoLCBzY3JpcHRUZXh0KSkKICAgICAgICB7CiAgICAgICAgICAgIHN0ZDo6Y2VyciA8PCAiRmFpbGVkIHRvIHJlYWQgc2NyaXB0OiAiIDw8IGNvbmZpZy5zY3JpcHRQYXRoIDw8ICdcbic7CiAgICAgICAgICAgIHJldHVybiA1OwogICAgICAgIH0KICAgICAgICBzdGQ6OnN0cmluZyBzY3JpcHRFcnJvcjsKICAgICAgICBjb25zdCBzdGQ6OnZlY3RvcjxTY3JpcHRDb21tYW5kPiBjb21tYW5kcyA9IFBhcnNlU2NyaXB0KHNjcmlwdFRleHQsIHNjcmlwdEVycm9yKTsKICAgICAgICBpZiAoIXNjcmlwdEVycm9yLmVtcHR5KCkpCiAgICAgICAgewogICAgICAgICAgICBzdGQ6OmNlcnIgPDwgIlNjcmlwdCBwYXJzZSBlcnJvcjogIiA8PCBzY3JpcHRFcnJvciA8PCAnXG4nOwogICAgICAgICAgICByZXR1cm4gNTsKICAgICAgICB9CiAgICAgICAgaWYgKCFsb29wLkV4ZWN1dGVTY3JpcHQoY29tbWFuZHMsIHNjcmlwdEVycm9yKSkKICAgICAgICB7CiAgICAgICAgICAgIHN0ZDo6Y2VyciA8PCAiU2NyaXB0IGVycm9yOiAiIDw8IHNjcmlwdEVycm9yIDw8ICdcbic7CiAgICAgICAgICAgIHJldHVybiA1OwogICAgICAgIH0KICAgIH0KCiAgICBGcmFtZWJ1ZmZlciBmYjsKICAgIGlmICghUHJlc2VudFNpbXVsYXRpb24obG9vcCwgY29uZmlnLCBmYikpCiAgICB7CiAgICAgICAgc3RkOjpjZXJyIDw8ICJTREwgcHJlc2VudGF0aW9uIGZhaWxlZFxuIjsKICAgICAgICByZXR1cm4gMzsKICAgIH0KCiAgICBpZiAoIWNvbmZpZy5zY3JlZW5zaG90UGF0aC5lbXB0eSgpKQogICAgewogICAgICAgIGlmICghV3JpdGVSZ2JhUG5nKGNvbmZpZy5zY3JlZW5zaG90UGF0aCwgZmIpKQogICAgICAgIHsKICAgICAgICAgICAgc3RkOjpjZXJyIDw8ICJGYWlsZWQgdG8gd3JpdGUgc2NyZWVuc2hvdDogIiA8PCBjb25maWcuc2NyZWVuc2hvdFBhdGggPDwgJ1xuJzsKICAgICAgICAgICAgcmV0dXJuIDQ7CiAgICAgICAgfQogICAgfQoKICAgIHJldHVybiAwOwp9Cg==
+#include "Camera.h"
+#include "DrawList.h"
+#include "FrameLoop.h"
+#include "InputScript.h"
+#include "PngWriter.h"
+#include "Scenario.h"
+#include "ViewerConfig.h"
+#include "sdl/SdlPresenter.h"
+
+#include <fstream>
+#include <iostream>
+#include <sstream>
+
+namespace
+{
+
+bool ReadFileToString(const std::string& path, std::string& contents)
+{
+    std::ifstream in(path, std::ios::binary);
+    if (!in)
+    {
+        return false;
+    }
+    std::ostringstream buffer;
+    buffer << in.rdbuf();
+    contents = buffer.str();
+    return true;
+}
+
+} // namespace
+
+int main(int argc, char** argv)
+{
+    ViewerConfig config = ParseViewerConfig(argc, argv);
+    if (config.parseError)
+    {
+        return 2;
+    }
+
+    FrameLoop loop(config.preset, kDefaultSeed, config.width, config.height);
+
+    if (!config.scriptPath.empty())
+    {
+        std::string scriptText;
+        if (!ReadFileToString(config.scriptPath, scriptText))
+        {
+            std::cerr << "Failed to read script: " << config.scriptPath << '\n';
+            return 5;
+        }
+        std::string scriptError;
+        const std::vector<ScriptCommand> commands = ParseScript(scriptText, scriptError);
+        if (!scriptError.empty())
+        {
+            std::cerr << "Script parse error: " << scriptError << '\n';
+            return 5;
+        }
+        if (!loop.ExecuteScript(commands, scriptError))
+        {
+            std::cerr << "Script error: " << scriptError << '\n';
+            return 5;
+        }
+    }
+
+    Framebuffer fb;
+    if (!PresentSimulation(loop, config, fb))
+    {
+        std::cerr << "SDL presentation failed\n";
+        return 3;
+    }
+
+    if (!config.screenshotPath.empty())
+    {
+        if (!WriteRgbaPng(config.screenshotPath, fb))
+        {
+            std::cerr << "Failed to write screenshot: " << config.screenshotPath << '\n';
+            return 4;
+        }
+    }
+
+    return 0;
+}
