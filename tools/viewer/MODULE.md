@@ -1,1 +1,19 @@
-IyB0b29scy52aWV3ZXIgKGxvY2FsIGJvdW5kYXJ5IGRvY3VtZW50KQoKT3B0aW9uYWwgU0RMMiBzaW11bGF0aW9uIHZpZXdlci4gTm90IHJlZ2lzdGVyZWQgaW4gYGRvY3MvYWdlbnRpYy9tb2R1bGVzL3JlZ2lzdHJ5Lmpzb25gLgoKIyMgTGF5b3V0CgotIExvZ2ljIHNvdXJjZXMgdW5kZXIgYHRvb2xzL3ZpZXdlci9gIChubyBTREwpLgotIFNETCBwcmVzZW50YXRpb24gaW4gYHRvb2xzL3ZpZXdlci9zZGwvYCBvbmx5LgotIFRlc3RzIGluIGB0b29scy92aWV3ZXIvdGVzdHMvYC4KCiMjIEJ1aWxkCgpDTWFrZSBvcHRpb24gYENPUkVFTkdJTkVfQlVJTERfU0RMMl9WSUVXRVJgIChkZWZhdWx0IE9GRikuIFJlcXVpcmVzIFNETDIgdmlhIGBmaW5kX3BhY2thZ2UoU0RMMilgLgoKVmlld2VyIGV4ZWN1dGFibGUgKHZpZXdlciBPTik6IGBidWlsZC12aWV3ZXIvdG9vbHMvdmlld2VyL2NvcmVlbmdpbmVfc2RsMl92aWV3ZXJgCgojIyBEZXBlbmRlbmNpZXMKClRoZSBsb2dpYyBzdGF0aWMgbGlicmFyeSBsaW5rcyBgY29yZWVuZ2luZWAuIEl0IG11c3Qgbm90IGluY2x1ZGUgYHBsYXRmb3JtL2AsIGBmZmkvYCwgb3IgYFNETC5oYC4K
+# tools.viewer (local boundary document)
+
+Optional SDL2 simulation viewer. Not registered in `docs/agentic/modules/registry.json`.
+
+## Layout
+
+- Logic sources under `tools/viewer/` (no SDL).
+- SDL presentation in `tools/viewer/sdl/` only.
+- Tests in `tools/viewer/tests/`.
+
+## Build
+
+CMake option `COREENGINE_BUILD_SDL2_VIEWER` (default OFF). Requires SDL2 via `find_package(SDL2)`.
+
+Viewer executable (viewer ON): `build-viewer/tools/viewer/coreengine_sdl2_viewer`
+
+## Dependencies
+
+The logic static library links `coreengine`. It must not include `platform/`, `ffi/`, or `SDL.h`.

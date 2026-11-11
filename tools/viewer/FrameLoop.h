@@ -1,1 +1,98 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiQ2FtZXJhLmgiCiNpbmNsdWRlICJEcmF3TGlzdC5oIgojaW5jbHVkZSAiSW5wdXRTY3JpcHQuaCIKI2luY2x1ZGUgIlBsYXliYWNrQ29udHJvbC5oIgojaW5jbHVkZSAiT3ZlcmxheS5oIgojaW5jbHVkZSAiU2NlbmFyaW8uaCIKI2luY2x1ZGUgIlZpZXdlcklucHV0LmgiCgojaW5jbHVkZSAiY29yZS9nYW1lc3RhdGUvUlRTR2FtZVN0YXRlLmgiCiNpbmNsdWRlICJjb3JlL2dhbWVsb29wL0dhbWVMb2dpY0VuZ2luZS5oIgojaW5jbHVkZSAiY29yZS9nYW1lbG9vcC9QbGF5YmFja0NvbnRyb2xsZXIuaCIKCiNpbmNsdWRlIDxjc3RkaW50PgojaW5jbHVkZSA8bWVtb3J5PgojaW5jbHVkZSA8dmVjdG9yPgoKY2xhc3MgU2VsZWN0aW9uU3lzdGVtOwoKc3RydWN0IERyYXdMaXN0OwoKdm9pZCBBcHBseUNsaWNrKFJUU0dhbWVTdGF0ZSYgc3RhdGUsIGNvbnN0IENhbWVyYSYgY2FtZXJhLCBWZWN0b3IyIHNjcmVlbiwgYm9vbCBzaGlmdEhlbGQgPSBmYWxzZSk7CnZvaWQgQXBwbHlSaWdodENsaWNrKFJUU0dhbWVTdGF0ZSYgc3RhdGUsIGNvbnN0IENhbWVyYSYgY2FtZXJhLCBWZWN0b3IyIHNjcmVlbik7CnZvaWQgQXBwbHlCb3goUlRTR2FtZVN0YXRlJiBzdGF0ZSwgY29uc3QgQ2FtZXJhJiBjYW1lcmEsIFZlY3RvcjIgc2NyZWVuQSwgVmVjdG9yMiBzY3JlZW5CKTsKdm9pZCBBcHBlbmRTZWxlY3Rpb25Cb3goRHJhd0xpc3QmIGxpc3QsIGNvbnN0IFNlbGVjdGlvblN5c3RlbSYgc2VsZWN0aW9uLCBjb25zdCBDYW1lcmEmIGNhbWVyYSk7CgpjbGFzcyBGcmFtZUxvb3AKewpwdWJsaWM6CiAgICBGcmFtZUxvb3AoUHJlc2V0IHByZXNldCwgc3RkOjp1aW50NjRfdCBzZWVkLCBpbnQgdmlld3BvcnRXLCBpbnQgdmlld3BvcnRIKTsKICAgIH5GcmFtZUxvb3AoKTsKICAgIEZyYW1lTG9vcChjb25zdCBGcmFtZUxvb3AmKSA9IGRlbGV0ZTsKICAgIEZyYW1lTG9vcCYgb3BlcmF0b3I9KGNvbnN0IEZyYW1lTG9vcCYpID0gZGVsZXRlOwoKICAgIFJUU0dhbWVTdGF0ZSYgU3RhdGUoKSB7IHJldHVybiAqc3RhdGVfOyB9CiAgICBjb25zdCBSVFNHYW1lU3RhdGUmIFN0YXRlKCkgY29uc3QgeyByZXR1cm4gKnN0YXRlXzsgfQogICAgR2FtZUxvZ2ljRW5naW5lJiBFbmdpbmUoKSB7IHJldHVybiBlbmdpbmVfOyB9CiAgICBjb25zdCBHYW1lTG9naWNFbmdpbmUmIEVuZ2luZSgpIGNvbnN0IHsgcmV0dXJuIGVuZ2luZV87IH0KICAgIFBsYXliYWNrQ29udHJvbGxlciYgUGxheWJhY2soKSB7IHJldHVybiBwbGF5YmFja187IH0KCiAgICBDYW1lcmEgR2V0Q2FtZXJhKCkgY29uc3Q7CgogICAgdm9pZCBSZXNldFNjZW5lKCk7CiAgICB2b2lkIEFwcGx5UGxheWJhY2tDb21tYW5kKFBsYXliYWNrQ29tbWFuZCBjb21tYW5kKTsKCiAgICB2b2lkIEFkdmFuY2VQcmVzZW50YXRpb25GcmFtZSgpOwogICAgdm9pZCBSYXN0ZXJpemVDdXJyZW50VmlldyhGcmFtZWJ1ZmZlciYgZmIpIGNvbnN0OwogICAgRHJhd0xpc3QgQnVpbGRWaWV3RHJhd0xpc3QoKSBjb25zdDsKCiAgICBib29sIEV4ZWN1dGVTY3JpcHQoY29uc3Qgc3RkOjp2ZWN0b3I8U2NyaXB0Q29tbWFuZD4mIGNvbW1hbmRzLCBzdGQ6OnN0cmluZyYgZXJyb3IpOwoKICAgIHZvaWQgT25Nb3VzZUxlZnREb3duKFZlY3RvcjIgc2NyZWVuLCBib29sIHNoaWZ0SGVsZCk7CiAgICB2b2lkIE9uTW91c2VMZWZ0VXAoVmVjdG9yMiBzY3JlZW4sIGJvb2wgc2hpZnRIZWxkKTsKICAgIHZvaWQgT25Nb3VzZU1vdGlvbihWZWN0b3IyIHNjcmVlbik7CiAgICB2b2lkIE9uTW91c2VSaWdodERvd24oVmVjdG9yMiBzY3JlZW4sIGJvb2wgc2hpZnRIZWxkKTsKICAgIHZvaWQgT25Nb3VzZVdoZWVsKGZsb2F0IHNjcmVlblgsIGZsb2F0IHNjcmVlblksIGZsb2F0IHdoZWVsRGVsdGEpOwogICAgdm9pZCBPbk1vdXNlTWlkZGxlRG93bihWZWN0b3IyIHNjcmVlbik7CiAgICB2b2lkIE9uTW91c2VNaWRkbGVVcChWZWN0b3IyIHNjcmVlbik7CiAgICB2b2lkIE9uTW91c2VNaWRkbGVNb3Rpb24oVmVjdG9yMiBzY3JlZW4pOwoKICAgIHZvaWQgVG9nZ2xlT3ZlcmxheUZyb21GS2V5KGludCBmS2V5SW5kZXgpOwogICAgdm9pZCBBcHBseVZpZXdlcktleUFjdGlvbihjb25zdCBWaWV3ZXJLZXlBY3Rpb24mIGFjdGlvbik7CiAgICBjb25zdCBPdmVybGF5RmxhZ3MmIEdldE92ZXJsYXlGbGFncygpIGNvbnN0IHsgcmV0dXJuIG92ZXJsYXlGbGFnc187IH0KICAgIGludCBDb3VudEZpcmVkUGVuZGluZ1NjZW5hcmlvRXZlbnRzKCkgY29uc3Q7Cgpwcml2YXRlOgogICAgUHJlc2V0IHByZXNldF87CiAgICBzdGQ6OnVpbnQ2NF90IHNlZWRfOwogICAgaW50IHZpZXdwb3J0V187CiAgICBpbnQgdmlld3BvcnRIXzsKICAgIHN0ZDo6dW5pcXVlX3B0cjxSVFNHYW1lU3RhdGU+IHN0YXRlXzsKICAgIEdhbWVMb2dpY0VuZ2luZSBlbmdpbmVfOwogICAgUGxheWJhY2tDb250cm9sbGVyIHBsYXliYWNrXzsKCiAgICBib29sIGxlZnRCdXR0b25Eb3duXyA9IGZhbHNlOwogICAgYm9vbCBkcmFnU2VsZWN0QWN0aXZlXyA9IGZhbHNlOwogICAgVmVjdG9yMiBkcmFnU3RhcnRTY3JlZW5fOwoKICAgIE92ZXJsYXlGbGFncyBvdmVybGF5RmxhZ3NfOwogICAgQ29sbGlzaW9uUmVjb3JkZXIgY29sbGlzaW9uUmVjb3JkZXJfOwogICAgc3RkOjp2ZWN0b3I8RXhwbG9zaW9uRWNobz4gZXhwbG9zaW9uRWNob2VzXzsKICAgIHN0ZDo6dmVjdG9yPFNjZW5hcmlvRXZlbnQ+IHBlbmRpbmdFdmVudHNfOwogICAgQ2FtZXJhIGNhbWVyYV87CiAgICBib29sIG1pZGRsZU1vdXNlRG93bl8gPSBmYWxzZTsKICAgIFZlY3RvcjIgbWlkZGxlRHJhZ0xhc3RTY3JlZW5fOwoKICAgIHZvaWQgQmluZFVwZGF0ZUNhbGxiYWNrKCk7CiAgICB2b2lkIEZpcmVQZW5kaW5nU2NlbmFyaW9FdmVudHMoKTsKICAgIHZvaWQgUmVmcmVzaENhbWVyYUZyb21NYXAoKTsKICAgIHZvaWQgU3Vic2NyaWJlQ29sbGlzaW9uUmVjb3JkZXIoKTsKICAgIHZvaWQgVW5zdWJzY3JpYmVDb2xsaXNpb25SZWNvcmRlcigpOwogICAgYm9vbCBBcHBseVNjcmlwdENvbW1hbmQoY29uc3QgU2NyaXB0Q29tbWFuZCYgY29tbWFuZCwgc3RkOjpzdHJpbmcmIGVycm9yKTsKCiAgICB2b2lkIEJlZ2luU2ltdWxhdGlvblRpY2soKTsKICAgIHZvaWQgRW5kU2ltdWxhdGlvblRpY2soKTsKICAgIHZvaWQgUnVuU3RlcFNpbXVsYXRpb25UaWNrKCk7Cn07Cg==
+#pragma once
+
+#include "Camera.h"
+#include "DrawList.h"
+#include "InputScript.h"
+#include "PlaybackControl.h"
+#include "Overlay.h"
+#include "Scenario.h"
+#include "ViewerInput.h"
+
+#include "core/gamestate/RTSGameState.h"
+#include "core/gameloop/GameLogicEngine.h"
+#include "core/gameloop/PlaybackController.h"
+
+#include <cstdint>
+#include <memory>
+#include <vector>
+
+class SelectionSystem;
+
+struct DrawList;
+
+void ApplyClick(RTSGameState& state, const Camera& camera, Vector2 screen, bool shiftHeld = false);
+void ApplyRightClick(RTSGameState& state, const Camera& camera, Vector2 screen);
+void ApplyBox(RTSGameState& state, const Camera& camera, Vector2 screenA, Vector2 screenB);
+void AppendSelectionBox(DrawList& list, const SelectionSystem& selection, const Camera& camera);
+
+class FrameLoop
+{
+public:
+    FrameLoop(Preset preset, std::uint64_t seed, int viewportW, int viewportH);
+    ~FrameLoop();
+    FrameLoop(const FrameLoop&) = delete;
+    FrameLoop& operator=(const FrameLoop&) = delete;
+
+    RTSGameState& State() { return *state_; }
+    const RTSGameState& State() const { return *state_; }
+    GameLogicEngine& Engine() { return engine_; }
+    const GameLogicEngine& Engine() const { return engine_; }
+    PlaybackController& Playback() { return playback_; }
+
+    Camera GetCamera() const;
+
+    void ResetScene();
+    void ApplyPlaybackCommand(PlaybackCommand command);
+
+    void AdvancePresentationFrame();
+    void RasterizeCurrentView(Framebuffer& fb) const;
+    DrawList BuildViewDrawList() const;
+
+    bool ExecuteScript(const std::vector<ScriptCommand>& commands, std::string& error);
+
+    void OnMouseLeftDown(Vector2 screen, bool shiftHeld);
+    void OnMouseLeftUp(Vector2 screen, bool shiftHeld);
+    void OnMouseMotion(Vector2 screen);
+    void OnMouseRightDown(Vector2 screen, bool shiftHeld);
+    void OnMouseWheel(float screenX, float screenY, float wheelDelta);
+    void OnMouseMiddleDown(Vector2 screen);
+    void OnMouseMiddleUp(Vector2 screen);
+    void OnMouseMiddleMotion(Vector2 screen);
+
+    void ToggleOverlayFromFKey(int fKeyIndex);
+    void ApplyViewerKeyAction(const ViewerKeyAction& action);
+    const OverlayFlags& GetOverlayFlags() const { return overlayFlags_; }
+    int CountFiredPendingScenarioEvents() const;
+
+private:
+    Preset preset_;
+    std::uint64_t seed_;
+    int viewportW_;
+    int viewportH_;
+    std::unique_ptr<RTSGameState> state_;
+    GameLogicEngine engine_;
+    PlaybackController playback_;
+
+    bool leftButtonDown_ = false;
+    bool dragSelectActive_ = false;
+    Vector2 dragStartScreen_;
+
+    OverlayFlags overlayFlags_;
+    CollisionRecorder collisionRecorder_;
+    std::vector<ExplosionEcho> explosionEchoes_;
+    std::vector<ScenarioEvent> pendingEvents_;
+    Camera camera_;
+    bool middleMouseDown_ = false;
+    Vector2 middleDragLastScreen_;
+
+    void BindUpdateCallback();
+    void FirePendingScenarioEvents();
+    void RefreshCameraFromMap();
+    void SubscribeCollisionRecorder();
+    void UnsubscribeCollisionRecorder();
+    bool ApplyScriptCommand(const ScriptCommand& command, std::string& error);
+
+    void BeginSimulationTick();
+    void EndSimulationTick();
+    void RunStepSimulationTick();
+};

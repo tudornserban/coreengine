@@ -1,1 +1,34 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSA8c3RyaW5nPgojaW5jbHVkZSA8dmVjdG9yPgoKc3RydWN0IFNjcmlwdENvbW1hbmQKewogICAgZW51bSBjbGFzcyBLaW5kCiAgICB7CiAgICAgICAgRnJhbWVzLAogICAgICAgIFBhdXNlLAogICAgICAgIFJlc3VtZSwKICAgICAgICBTdGVwLAogICAgICAgIFNwZWVkLAogICAgICAgIFJlc2V0LAogICAgICAgIERlc3QsCiAgICAgICAgQ2xpY2ssCiAgICAgICAgUmlnaHRDbGljaywKICAgICAgICBCb3gsCiAgICAgICAgT3ZlcmxheSwKICAgICAgICBQcmVzZXQKICAgIH07CgogICAgS2luZCBraW5kID0gS2luZDo6RnJhbWVzOwogICAgaW50IGludEFyZyA9IDA7CiAgICBmbG9hdCBmbG9hdEFyZyA9IDAuMGY7CiAgICBzdGQ6OnN0cmluZyBzdHJBcmc7CiAgICBmbG9hdCB4ID0gMC4wZjsKICAgIGZsb2F0IHkgPSAwLjBmOwogICAgZmxvYXQgeDIgPSAwLjBmOwogICAgZmxvYXQgeTIgPSAwLjBmOwp9OwoKc3RkOjp2ZWN0b3I8U2NyaXB0Q29tbWFuZD4gUGFyc2VTY3JpcHQoY29uc3Qgc3RkOjpzdHJpbmcmIHRleHQsIHN0ZDo6c3RyaW5nJiBlcnJvcik7Cg==
+#pragma once
+
+#include <string>
+#include <vector>
+
+struct ScriptCommand
+{
+    enum class Kind
+    {
+        Frames,
+        Pause,
+        Resume,
+        Step,
+        Speed,
+        Reset,
+        Dest,
+        Click,
+        RightClick,
+        Box,
+        Overlay,
+        Preset
+    };
+
+    Kind kind = Kind::Frames;
+    int intArg = 0;
+    float floatArg = 0.0f;
+    std::string strArg;
+    float x = 0.0f;
+    float y = 0.0f;
+    float x2 = 0.0f;
+    float y2 = 0.0f;
+};
+
+std::vector<ScriptCommand> ParseScript(const std::string& text, std::string& error);
