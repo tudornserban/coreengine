@@ -1,1 +1,30 @@
-I2luY2x1ZGUgIlZpZXdlckNvbmZpZy5oIgoKI2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgpURVNUKFZpZXdlckNvbmZpZ1Rlc3QsIERlZmF1bHRzQW5kRnJhbWVzRmxhZykKewogICAgY29uc3QgY2hhciogYXJndltdID0geyJ2aWV3ZXIiLCAiLS1mcmFtZXMiLCAiNCIsICItLW5vLXdpbmRvdyIsICItLXNjcmVlbnNob3QiLCAiL3RtcC9hLnBuZyJ9OwogICAgVmlld2VyQ29uZmlnIGNvbmZpZyA9IFBhcnNlVmlld2VyQ29uZmlnKDYsIGNvbnN0X2Nhc3Q8Y2hhcioqPihhcmd2KSk7CiAgICBFWFBFQ1RfRVEoY29uZmlnLmZyYW1lcywgNCk7CiAgICBFWFBFQ1RfVFJVRShjb25maWcubm9XaW5kb3cpOwogICAgRVhQRUNUX0VRKGNvbmZpZy5zY3JlZW5zaG90UGF0aCwgIi90bXAvYS5wbmciKTsKICAgIEVYUEVDVF9FUShjb25maWcud2lkdGgsIDEyODApOwogICAgRVhQRUNUX0VRKGNvbmZpZy5oZWlnaHQsIDcyMCk7Cn0KClRFU1QoVmlld2VyQ29uZmlnVGVzdCwgUHJlc2V0RmxhZ1NlbGVjdHNDb2xsaXNpb24pCnsKICAgIGNvbnN0IGNoYXIqIGFyZ3ZbXSA9IHsidmlld2VyIiwgIi0tcHJlc2V0IiwgImNvbGxpc2lvbiIsICItLW5vLXdpbmRvdyIsICItLWZyYW1lcyIsICIxIn07CiAgICBWaWV3ZXJDb25maWcgY29uZmlnID0gUGFyc2VWaWV3ZXJDb25maWcoNiwgY29uc3RfY2FzdDxjaGFyKio+KGFyZ3YpKTsKICAgIEVYUEVDVF9GQUxTRShjb25maWcucGFyc2VFcnJvcik7CiAgICBFWFBFQ1RfRVEoY29uZmlnLnByZXNldCwgUHJlc2V0OjpDb2xsaXNpb24pOwogICAgRVhQRUNUX0VRKGNvbmZpZy5mcmFtZXMsIDEpOwp9CgpURVNUKFZpZXdlckNvbmZpZ1Rlc3QsIFVua25vd25QcmVzZXRGYWlsc1BhcnNlKQp7CiAgICBjb25zdCBjaGFyKiBhcmd2W10gPSB7InZpZXdlciIsICItLXByZXNldCIsICJib2d1cyJ9OwogICAgVmlld2VyQ29uZmlnIGNvbmZpZyA9IFBhcnNlVmlld2VyQ29uZmlnKDMsIGNvbnN0X2Nhc3Q8Y2hhcioqPihhcmd2KSk7CiAgICBFWFBFQ1RfVFJVRShjb25maWcucGFyc2VFcnJvcik7Cn0K
+#include "ViewerConfig.h"
+
+#include <gtest/gtest.h>
+
+TEST(ViewerConfigTest, DefaultsAndFramesFlag)
+{
+    const char* argv[] = {"viewer", "--frames", "4", "--no-window", "--screenshot", "/tmp/a.png"};
+    ViewerConfig config = ParseViewerConfig(6, const_cast<char**>(argv));
+    EXPECT_EQ(config.frames, 4);
+    EXPECT_TRUE(config.noWindow);
+    EXPECT_EQ(config.screenshotPath, "/tmp/a.png");
+    EXPECT_EQ(config.width, 1280);
+    EXPECT_EQ(config.height, 720);
+}
+
+TEST(ViewerConfigTest, PresetFlagSelectsCollision)
+{
+    const char* argv[] = {"viewer", "--preset", "collision", "--no-window", "--frames", "1"};
+    ViewerConfig config = ParseViewerConfig(6, const_cast<char**>(argv));
+    EXPECT_FALSE(config.parseError);
+    EXPECT_EQ(config.preset, Preset::Collision);
+    EXPECT_EQ(config.frames, 1);
+}
+
+TEST(ViewerConfigTest, UnknownPresetFailsParse)
+{
+    const char* argv[] = {"viewer", "--preset", "bogus"};
+    ViewerConfig config = ParseViewerConfig(3, const_cast<char**>(argv));
+    EXPECT_TRUE(config.parseError);
+}

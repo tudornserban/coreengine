@@ -1,1 +1,73 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJDVGVzdCBoZWxwZXI6IHJ1biBjb3JlZW5naW5lX3NkbDJfdmlld2VyIHdpdGggLS1wcmVzZXQgY29sbGlzaW9uIGFuZCBzYW1wbGUgb25lIHBpeGVsLiIiIgppbXBvcnQgc3RydWN0CmltcG9ydCBzdWJwcm9jZXNzCmltcG9ydCBzeXMKaW1wb3J0IHpsaWIKCgpkZWYgcmVhZF9wbmdfcmdiKHBhdGgpOgogICAgZGF0YSA9IG9wZW4ocGF0aCwgInJiIikucmVhZCgpCiAgICBpZiBkYXRhWzo4XSAhPSBiIlx4ODlQTkdcclxuXHgxYVxuIjoKICAgICAgICByYWlzZSBBc3NlcnRpb25FcnJvcigibm90IGEgUE5HIikKICAgIHdpZHRoLCBoZWlnaHQgPSBzdHJ1Y3QudW5wYWNrKCI+SUkiLCBkYXRhWzE2OjI0XSkKICAgIGluZGV4ID0gOAogICAgaWRhdCA9IGIiIgogICAgd2hpbGUgaW5kZXggPCBsZW4oZGF0YSk6CiAgICAgICAgbGVuZ3RoID0gc3RydWN0LnVucGFjaygiPkkiLCBkYXRhW2luZGV4IDogaW5kZXggKyA0XSlbMF0KICAgICAgICBjaHVua190eXBlID0gZGF0YVtpbmRleCArIDQgOiBpbmRleCArIDhdCiAgICAgICAgaW5kZXggKz0gOAogICAgICAgIGNodW5rID0gZGF0YVtpbmRleCA6IGluZGV4ICsgbGVuZ3RoXQogICAgICAgIGluZGV4ICs9IGxlbmd0aCArIDQKICAgICAgICBpZiBjaHVua190eXBlID09IGIiSURBVCI6CiAgICAgICAgICAgIGlkYXQgKz0gY2h1bmsKICAgICAgICBpZiBjaHVua190eXBlID09IGIiSUVORCI6CiAgICAgICAgICAgIGJyZWFrCiAgICByYXcgPSB6bGliLmRlY29tcHJlc3MoaWRhdCkKICAgIG9mZnNldCA9IDAKICAgIHJvd3MgPSBbXQogICAgZm9yIF8gaW4gcmFuZ2UoaGVpZ2h0KToKICAgICAgICBvZmZzZXQgKz0gMQogICAgICAgIHJvd3MuYXBwZW5kKHJhd1tvZmZzZXQgOiBvZmZzZXQgKyAzICogd2lkdGhdKQogICAgICAgIG9mZnNldCArPSAzICogd2lkdGgKICAgIHJldHVybiB3aWR0aCwgaGVpZ2h0LCByb3dzCgoKZGVmIHBpeGVsX3JnYihyb3dzLCBfd2lkdGgsIHgsIHkpOgogICAgaW5kZXggPSB4ICogMwogICAgcm93ID0gcm93c1t5XQogICAgcmV0dXJuIHJvd1tpbmRleF0sIHJvd1tpbmRleCArIDFdLCByb3dbaW5kZXggKyAyXQoKCmRlZiBtYWluKCk6CiAgICBpZiBsZW4oc3lzLmFyZ3YpICE9IDM6CiAgICAgICAgcHJpbnQoInVzYWdlOiBjaGVja19jb2xsaXNpb25fcHJlc2V0X2NsaS5weSBWSUVXRVJfRVhFQ1VUQUJMRSBPVVRQVVRfUE5HIiwgZmlsZT1zeXMuc3RkZXJyKQogICAgICAgIHN5cy5leGl0KDEpCiAgICB2aWV3ZXIsIG91dF9wYXRoID0gc3lzLmFyZ3ZbMV0sIHN5cy5hcmd2WzJdCiAgICByZXN1bHQgPSBzdWJwcm9jZXNzLnJ1bigKICAgICAgICBbCiAgICAgICAgICAgIHZpZXdlciwKICAgICAgICAgICAgIi0tbm8td2luZG93IiwKICAgICAgICAgICAgIi0tcHJlc2V0IiwKICAgICAgICAgICAgImNvbGxpc2lvbiIsCiAgICAgICAgICAgICItLWZyYW1lcyIsCiAgICAgICAgICAgICIxIiwKICAgICAgICAgICAgIi0tc2NyZWVuc2hvdCIsCiAgICAgICAgICAgIG91dF9wYXRoLAogICAgICAgIF0sCiAgICAgICAgY2hlY2s9RmFsc2UsCiAgICApCiAgICBpZiByZXN1bHQucmV0dXJuY29kZSAhPSAwOgogICAgICAgIHByaW50KGYidmlld2VyIGV4aXQge3Jlc3VsdC5yZXR1cm5jb2RlfSIsIGZpbGU9c3lzLnN0ZGVycikKICAgICAgICBzeXMuZXhpdChyZXN1bHQucmV0dXJuY29kZSkKICAgIF93LCBfaCwgcm93cyA9IHJlYWRfcG5nX3JnYihvdXRfcGF0aCkKICAgICMgVGVhbSAxIGF0IHdvcmxkICgzODAsMzAwKSAtPiBzY3JlZW4gfig2MTguNjcsMzYwKSAtPiBwaXhlbCAoNjE5LDM2MCkgUkdCICg3MCwxNDAsMjMwKQogICAgciwgZywgYiA9IHBpeGVsX3JnYihyb3dzLCBfdywgNjE5LCAzNjApCiAgICBpZiAociwgZywgYikgIT0gKDcwLCAxNDAsIDIzMCk6CiAgICAgICAgcHJpbnQoZiJwaXhlbCAoNjE5LDM2MCkgZ290IHsocixnLGIpfSBleHBlY3RlZCAoNzAsMTQwLDIzMCkiLCBmaWxlPXN5cy5zdGRlcnIpCiAgICAgICAgc3lzLmV4aXQoMSkKICAgIHByaW50KCJPSyBjb2xsaXNpb24gcHJlc2V0IENMSSBzbW9rZSIpCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIG1haW4oKQo=
+#!/usr/bin/env python3
+"""CTest helper: run coreengine_sdl2_viewer with --preset collision and sample one pixel."""
+import struct
+import subprocess
+import sys
+import zlib
+
+
+def read_png_rgb(path):
+    data = open(path, "rb").read()
+    if data[:8] != b"\x89PNG\r\n\x1a\n":
+        raise AssertionError("not a PNG")
+    width, height = struct.unpack(">II", data[16:24])
+    index = 8
+    idat = b""
+    while index < len(data):
+        length = struct.unpack(">I", data[index : index + 4])[0]
+        chunk_type = data[index + 4 : index + 8]
+        index += 8
+        chunk = data[index : index + length]
+        index += length + 4
+        if chunk_type == b"IDAT":
+            idat += chunk
+        if chunk_type == b"IEND":
+            break
+    raw = zlib.decompress(idat)
+    offset = 0
+    rows = []
+    for _ in range(height):
+        offset += 1
+        rows.append(raw[offset : offset + 3 * width])
+        offset += 3 * width
+    return width, height, rows
+
+
+def pixel_rgb(rows, _width, x, y):
+    index = x * 3
+    row = rows[y]
+    return row[index], row[index + 1], row[index + 2]
+
+
+def main():
+    if len(sys.argv) != 3:
+        print("usage: check_collision_preset_cli.py VIEWER_EXECUTABLE OUTPUT_PNG", file=sys.stderr)
+        sys.exit(1)
+    viewer, out_path = sys.argv[1], sys.argv[2]
+    result = subprocess.run(
+        [
+            viewer,
+            "--no-window",
+            "--preset",
+            "collision",
+            "--frames",
+            "1",
+            "--screenshot",
+            out_path,
+        ],
+        check=False,
+    )
+    if result.returncode != 0:
+        print(f"viewer exit {result.returncode}", file=sys.stderr)
+        sys.exit(result.returncode)
+    _w, _h, rows = read_png_rgb(out_path)
+    # Team 1 at world (380,300) -> screen ~(618.67,360) -> pixel (619,360) RGB (70,140,230)
+    r, g, b = pixel_rgb(rows, _w, 619, 360)
+    if (r, g, b) != (70, 140, 230):
+        print(f"pixel (619,360) got {(r,g,b)} expected (70,140,230)", file=sys.stderr)
+        sys.exit(1)
+    print("OK collision preset CLI smoke")
+
+
+if __name__ == "__main__":
+    main()

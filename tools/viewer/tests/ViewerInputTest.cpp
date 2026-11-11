@@ -1,1 +1,61 @@
-I2luY2x1ZGUgIk92ZXJsYXkuaCIKI2luY2x1ZGUgIlBsYXliYWNrQ29udHJvbC5oIgojaW5jbHVkZSAiVmlld2VySW5wdXQuaCIKCiNpbmNsdWRlIDxndGVzdC9ndGVzdC5oPgoKVEVTVChWaWV3ZXJJbnB1dFRlc3QsIFBsYXliYWNrS2V5Y29kZXNNYXBUb1ZpZXdlcktleXNXaXRoU2RsTGl0ZXJhbHMpCnsKICAgIEVYUEVDVF9FUShWaWV3ZXJLZXlGcm9tUGxheWJhY2tLZXljb2RlKDMyKSwgVmlld2VyS2V5OjpTcGFjZSk7CiAgICBFWFBFQ1RfRVEoVmlld2VyS2V5RnJvbVBsYXliYWNrS2V5Y29kZSg0OSksIFZpZXdlcktleTo6RGlnaXQxKTsKICAgIEVYUEVDVF9FUShWaWV3ZXJLZXlGcm9tUGxheWJhY2tLZXljb2RlKDUwKSwgVmlld2VyS2V5OjpEaWdpdDIpOwogICAgRVhQRUNUX0VRKFZpZXdlcktleUZyb21QbGF5YmFja0tleWNvZGUoNTEpLCBWaWV3ZXJLZXk6OkRpZ2l0Myk7CiAgICBFWFBFQ1RfRVEoVmlld2VyS2V5RnJvbVBsYXliYWNrS2V5Y29kZSg1MiksIFZpZXdlcktleTo6RGlnaXQ0KTsKICAgIEVYUEVDVF9FUShWaWV3ZXJLZXlGcm9tUGxheWJhY2tLZXljb2RlKDQ2KSwgVmlld2VyS2V5OjpQZXJpb2QpOwogICAgRVhQRUNUX0VRKFZpZXdlcktleUZyb21QbGF5YmFja0tleWNvZGUoMTE0KSwgVmlld2VyS2V5OjpSKTsKICAgIEVYUEVDVF9FUShWaWV3ZXJLZXlGcm9tUGxheWJhY2tLZXljb2RlKDk5OSksIFZpZXdlcktleTo6VW5rbm93bik7Cn0KClRFU1QoVmlld2VySW5wdXRUZXN0LCBPdmVybGF5RktleXNVc2VTZGxGMUxpdGVyYWxSYW5nZSkKewogICAgY29uc3RleHByIGludCBrU2RsRjEgPSAxMDczNzQxODgyOwogICAgRVhQRUNUX0VRKE92ZXJsYXlGS2V5SW5kZXhGcm9tS2V5Y29kZShrU2RsRjEgKyAwKSwgMSk7CiAgICBFWFBFQ1RfRVEoT3ZlcmxheUZLZXlJbmRleEZyb21LZXljb2RlKGtTZGxGMSArIDEpLCAyKTsKICAgIEVYUEVDVF9FUShPdmVybGF5RktleUluZGV4RnJvbUtleWNvZGUoa1NkbEYxICsgMiksIDMpOwogICAgRVhQRUNUX0VRKE92ZXJsYXlGS2V5SW5kZXhGcm9tS2V5Y29kZShrU2RsRjEgKyAzKSwgNCk7CiAgICBFWFBFQ1RfRVEoT3ZlcmxheUZLZXlJbmRleEZyb21LZXljb2RlKGtTZGxGMSArIDQpLCA1KTsKICAgIEVYUEVDVF9FUShPdmVybGF5RktleUluZGV4RnJvbUtleWNvZGUoa1NkbEYxICsgNSksIDYpOwogICAgRVhQRUNUX0VRKE92ZXJsYXlGS2V5SW5kZXhGcm9tS2V5Y29kZShrU2RsRjEgLSAxKSwgMCk7CiAgICBFWFBFQ1RfRVEoT3ZlcmxheUZLZXlJbmRleEZyb21LZXljb2RlKGtTZGxGMSArIDYpLCAwKTsKfQoKVEVTVChWaWV3ZXJJbnB1dFRlc3QsIEhhbmRsZVZpZXdlcktleWNvZGVQYXNzVGhyb3VnaFBsYXliYWNrQW5kT3ZlcmxheSkKewogICAgY29uc3RleHByIGludCBrU2RsRjEgPSAxMDczNzQxODgyOwoKICAgIHsKICAgICAgICBjb25zdCBWaWV3ZXJLZXlBY3Rpb24gYWN0aW9uID0gSGFuZGxlVmlld2VyS2V5Y29kZSgzMik7CiAgICAgICAgRVhQRUNUX0VRKGFjdGlvbi5raW5kLCBWaWV3ZXJLZXlBY3Rpb25LaW5kOjpQbGF5YmFjayk7CiAgICAgICAgRVhQRUNUX0VRKGFjdGlvbi5wbGF5YmFjaywgUGxheWJhY2tDb21tYW5kOjpUb2dnbGVQYXVzZSk7CiAgICB9CiAgICB7CiAgICAgICAgY29uc3QgVmlld2VyS2V5QWN0aW9uIGFjdGlvbiA9IEhhbmRsZVZpZXdlcktleWNvZGUoNTEpOwogICAgICAgIEVYUEVDVF9FUShhY3Rpb24ua2luZCwgVmlld2VyS2V5QWN0aW9uS2luZDo6UGxheWJhY2spOwogICAgICAgIEVYUEVDVF9FUShhY3Rpb24ucGxheWJhY2ssIFBsYXliYWNrQ29tbWFuZDo6RG91YmxlU3BlZWQpOwogICAgfQogICAgewogICAgICAgIGNvbnN0IFZpZXdlcktleUFjdGlvbiBhY3Rpb24gPSBIYW5kbGVWaWV3ZXJLZXljb2RlKDExNCk7CiAgICAgICAgRVhQRUNUX0VRKGFjdGlvbi5raW5kLCBWaWV3ZXJLZXlBY3Rpb25LaW5kOjpQbGF5YmFjayk7CiAgICAgICAgRVhQRUNUX0VRKGFjdGlvbi5wbGF5YmFjaywgUGxheWJhY2tDb21tYW5kOjpSZXNldFNjZW5lKTsKICAgIH0KICAgIHsKICAgICAgICBjb25zdCBWaWV3ZXJLZXlBY3Rpb24gYWN0aW9uID0gSGFuZGxlVmlld2VyS2V5Y29kZShrU2RsRjEgKyAyKTsKICAgICAgICBFWFBFQ1RfRVEoYWN0aW9uLmtpbmQsIFZpZXdlcktleUFjdGlvbktpbmQ6Ok92ZXJsYXlUb2dnbGUpOwogICAgICAgIEVYUEVDVF9FUShhY3Rpb24ub3ZlcmxheVRvZ2dsZUluZGV4LCAzKTsKICAgICAgICBFWFBFQ1RfRVEoT3ZlcmxheUtleUZyb21WaWV3ZXJGS2V5KGFjdGlvbi5vdmVybGF5VG9nZ2xlSW5kZXgpLCBPdmVybGF5S2V5OjpJbmZsdWVuY2UpOwogICAgfQogICAgewogICAgICAgIGNvbnN0IFZpZXdlcktleUFjdGlvbiBhY3Rpb24gPSBIYW5kbGVWaWV3ZXJLZXljb2RlKDk5OTkpOwogICAgICAgIEVYUEVDVF9FUShhY3Rpb24ua2luZCwgVmlld2VyS2V5QWN0aW9uS2luZDo6Tm9uZSk7CiAgICB9Cn0K
+#include "Overlay.h"
+#include "PlaybackControl.h"
+#include "ViewerInput.h"
+
+#include <gtest/gtest.h>
+
+TEST(ViewerInputTest, PlaybackKeycodesMapToViewerKeysWithSdlLiterals)
+{
+    EXPECT_EQ(ViewerKeyFromPlaybackKeycode(32), ViewerKey::Space);
+    EXPECT_EQ(ViewerKeyFromPlaybackKeycode(49), ViewerKey::Digit1);
+    EXPECT_EQ(ViewerKeyFromPlaybackKeycode(50), ViewerKey::Digit2);
+    EXPECT_EQ(ViewerKeyFromPlaybackKeycode(51), ViewerKey::Digit3);
+    EXPECT_EQ(ViewerKeyFromPlaybackKeycode(52), ViewerKey::Digit4);
+    EXPECT_EQ(ViewerKeyFromPlaybackKeycode(46), ViewerKey::Period);
+    EXPECT_EQ(ViewerKeyFromPlaybackKeycode(114), ViewerKey::R);
+    EXPECT_EQ(ViewerKeyFromPlaybackKeycode(999), ViewerKey::Unknown);
+}
+
+TEST(ViewerInputTest, OverlayFKeysUseSdlF1LiteralRange)
+{
+    constexpr int kSdlF1 = 1073741882;
+    EXPECT_EQ(OverlayFKeyIndexFromKeycode(kSdlF1 + 0), 1);
+    EXPECT_EQ(OverlayFKeyIndexFromKeycode(kSdlF1 + 1), 2);
+    EXPECT_EQ(OverlayFKeyIndexFromKeycode(kSdlF1 + 2), 3);
+    EXPECT_EQ(OverlayFKeyIndexFromKeycode(kSdlF1 + 3), 4);
+    EXPECT_EQ(OverlayFKeyIndexFromKeycode(kSdlF1 + 4), 5);
+    EXPECT_EQ(OverlayFKeyIndexFromKeycode(kSdlF1 + 5), 6);
+    EXPECT_EQ(OverlayFKeyIndexFromKeycode(kSdlF1 - 1), 0);
+    EXPECT_EQ(OverlayFKeyIndexFromKeycode(kSdlF1 + 6), 0);
+}
+
+TEST(ViewerInputTest, HandleViewerKeycodePassThroughPlaybackAndOverlay)
+{
+    constexpr int kSdlF1 = 1073741882;
+
+    {
+        const ViewerKeyAction action = HandleViewerKeycode(32);
+        EXPECT_EQ(action.kind, ViewerKeyActionKind::Playback);
+        EXPECT_EQ(action.playback, PlaybackCommand::TogglePause);
+    }
+    {
+        const ViewerKeyAction action = HandleViewerKeycode(51);
+        EXPECT_EQ(action.kind, ViewerKeyActionKind::Playback);
+        EXPECT_EQ(action.playback, PlaybackCommand::DoubleSpeed);
+    }
+    {
+        const ViewerKeyAction action = HandleViewerKeycode(114);
+        EXPECT_EQ(action.kind, ViewerKeyActionKind::Playback);
+        EXPECT_EQ(action.playback, PlaybackCommand::ResetScene);
+    }
+    {
+        const ViewerKeyAction action = HandleViewerKeycode(kSdlF1 + 2);
+        EXPECT_EQ(action.kind, ViewerKeyActionKind::OverlayToggle);
+        EXPECT_EQ(action.overlayToggleIndex, 3);
+        EXPECT_EQ(OverlayKeyFromViewerFKey(action.overlayToggleIndex), OverlayKey::Influence);
+    }
+    {
+        const ViewerKeyAction action = HandleViewerKeycode(9999);
+        EXPECT_EQ(action.kind, ViewerKeyActionKind::None);
+    }
+}

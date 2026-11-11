@@ -1,1 +1,80 @@
-I2luY2x1ZGUgImNvcmUvZ2FtZXN0YXRlL1JUU0dhbWVTdGF0ZS5oIgoKI2luY2x1ZGUgIkNhbWVyYS5oIgojaW5jbHVkZSAiRHJhd0xpc3QuaCIKI2luY2x1ZGUgIlJhc3Rlci5oIgojaW5jbHVkZSAiU2NlbmFyaW8uaCIKI2luY2x1ZGUgIlNuYXBzaG90UmVuZGVyZXIuaCIKCiNpbmNsdWRlIDxjbWF0aD4KI2luY2x1ZGUgPGd0ZXN0L2d0ZXN0Lmg+CgpURVNUKFNuYXBzaG90UmVuZGVyZXJUZXN0LCBUd29Vbml0c0JlY29tZVRlYW1Db2xvcmVkQ2lyY2xlc0F0UHJvamVjdGVkQ2VudGVycykKewogICAgU2NlbmUgc2NlbmUgPSBCdWlsZFByZXNldChQcmVzZXQ6OlR3b1VuaXRzLCAxKTsKICAgIENhbWVyYSBjYW1lcmEgPSBGaXRNYXAoc2NlbmUuc3RhdGUtPkdldE1hcFNpemUoKSwgMTI4MCwgNzIwLCA0MC4wZik7CiAgICBEcmF3TGlzdCBsaXN0ID0gQnVpbGRTbmFwc2hvdERyYXdMaXN0KCpzY2VuZS5zdGF0ZSwgY2FtZXJhKTsKICAgIEFTU0VSVF9FUShsaXN0LmNpcmNsZXMuc2l6ZSgpLCAydSk7CiAgICBhdXRvIGNlbnRlciA9IGNhbWVyYS5Xb3JsZFRvU2NyZWVuKFZlY3RvcjIoMjAwLjBmLCAzMDAuMGYpKTsKICAgIEVYUEVDVF9ORUFSKGxpc3QuY2lyY2xlc1swXS5jZW50ZXIueCwgY2VudGVyLngsIDAuMDFmKTsKICAgIEVYUEVDVF9ORUFSKGxpc3QuY2lyY2xlc1swXS5jZW50ZXIueSwgY2VudGVyLnksIDAuMDFmKTsKICAgIEVYUEVDVF9ORUFSKGxpc3QuY2lyY2xlc1swXS5yYWRpdXMsIDEyLjBmICogY2FtZXJhLnBpeGVsc1BlclVuaXQsIDAuMDFmKTsKICAgIEVYUEVDVF9FUShsaXN0LmNpcmNsZXNbMF0uZmlsbC5yLCA3MCk7CiAgICBFWFBFQ1RfRVEobGlzdC5jaXJjbGVzWzBdLmZpbGwuZywgMTQwKTsKICAgIEVYUEVDVF9FUShsaXN0LmNpcmNsZXNbMF0uZmlsbC5iLCAyMzApOwogICAgRVhQRUNUX0VRKGxpc3QuY2lyY2xlc1sxXS5maWxsLnIsIDIyMCk7CiAgICBFWFBFQ1RfRVEobGlzdC5jaXJjbGVzWzFdLmZpbGwuYiwgODApOwp9CgpURVNUKFNuYXBzaG90UmVuZGVyZXJUZXN0LCBSYXN0ZXJpemVkVGVhbU9uZUNlbnRlcklzQmx1ZUFuZEZhclBpeGVsSXNNYXBGaWxsKQp7CiAgICBTY2VuZSBzY2VuZSA9IEJ1aWxkUHJlc2V0KFByZXNldDo6VHdvVW5pdHMsIDEpOwogICAgQ2FtZXJhIGNhbWVyYSA9IEZpdE1hcChzY2VuZS5zdGF0ZS0+R2V0TWFwU2l6ZSgpLCAxMjgwLCA3MjAsIDQwLjBmKTsKICAgIERyYXdMaXN0IGxpc3QgPSBCdWlsZFNuYXBzaG90RHJhd0xpc3QoKnNjZW5lLnN0YXRlLCBjYW1lcmEpOwogICAgRnJhbWVidWZmZXIgZmI7CiAgICBmYi53aWR0aCA9IDEyODA7CiAgICBmYi5oZWlnaHQgPSA3MjA7CiAgICBSYXN0ZXJpemUobGlzdCwgZmIpOwogICAgYXV0byBweCA9IFsmXShpbnQgeCwgaW50IHkpIHsKICAgICAgICBjb25zdCBzdGQ6OnVpbnQ4X3QqIHAgPSAmZmIucmdiYVsoeSAqIGZiLndpZHRoICsgeCkgKiA0XTsKICAgICAgICByZXR1cm4gUmdiYXtwWzBdLCBwWzFdLCBwWzJdLCBwWzNdfTsKICAgIH07CiAgICBjb25zdCBpbnQgY3ggPSA0Mjc7CiAgICBjb25zdCBpbnQgY3kgPSAzNjA7CiAgICBFWFBFQ1RfRVEocHgoY3gsIGN5KS5yLCA3MCk7CiAgICBFWFBFQ1RfRVEocHgoY3gsIGN5KS5nLCAxNDApOwogICAgRVhQRUNUX0VRKHB4KGN4LCBjeSkuYiwgMjMwKTsKICAgIEVYUEVDVF9FUShweChjeCArIDMwLCBjeSkuciwgMzIpOwogICAgRVhQRUNUX0VRKHB4KGN4ICsgMzAsIGN5KS5nLCAzNik7CiAgICBFWFBFQ1RfRVEocHgoY3ggKyAzMCwgY3kpLmIsIDQyKTsKfQoKVEVTVChTbmFwc2hvdFJlbmRlcmVyVGVzdCwgU2VsZWN0ZWRVbml0R2V0c1llbGxvd091dGxpbmVSaW5nTGFyZ2VyVGhhbkZpbGwpCnsKICAgIFNjZW5lIHNjZW5lID0gQnVpbGRQcmVzZXQoUHJlc2V0OjpUd29Vbml0cywgMSk7CiAgICBzY2VuZS5zdGF0ZS0+R2V0QWxsVW5pdHMoKVswXS0+U2V0U2VsZWN0ZWQodHJ1ZSk7CiAgICBDYW1lcmEgY2FtZXJhID0gRml0TWFwKHNjZW5lLnN0YXRlLT5HZXRNYXBTaXplKCksIDEyODAsIDcyMCwgNDAuMGYpOwogICAgRHJhd0xpc3QgbGlzdCA9IEJ1aWxkU25hcHNob3REcmF3TGlzdCgqc2NlbmUuc3RhdGUsIGNhbWVyYSk7CiAgICBBU1NFUlRfR0UobGlzdC5jaXJjbGVzLnNpemUoKSwgMXUpOwogICAgY29uc3QgRHJhd0NpcmNsZSYgY2lyY2xlID0gbGlzdC5jaXJjbGVzWzBdOwogICAgRVhQRUNUX0VRKGNpcmNsZS5vdXRsaW5lLnIsIDI1NSk7CiAgICBFWFBFQ1RfRVEoY2lyY2xlLm91dGxpbmUuZywgMjIwKTsKICAgIEVYUEVDVF9FUShjaXJjbGUub3V0bGluZS5iLCA0MCk7CiAgICBFWFBFQ1RfTkUoY2lyY2xlLm91dGxpbmUuciwgY2lyY2xlLmZpbGwucik7CgogICAgRnJhbWVidWZmZXIgZmI7CiAgICBmYi53aWR0aCA9IDEyODA7CiAgICBmYi5oZWlnaHQgPSA3MjA7CiAgICBSYXN0ZXJpemUobGlzdCwgZmIpOwogICAgYXV0byBweCA9IFsmXShpbnQgeCwgaW50IHkpIHsKICAgICAgICBjb25zdCBzdGQ6OnVpbnQ4X3QqIHAgPSAmZmIucmdiYVsoeSAqIGZiLndpZHRoICsgeCkgKiA0XTsKICAgICAgICByZXR1cm4gUmdiYXtwWzBdLCBwWzFdLCBwWzJdLCBwWzNdfTsKICAgIH07CiAgICBjb25zdCBpbnQgY3ggPSA0Mjc7CiAgICBjb25zdCBpbnQgY3kgPSAzNjA7CiAgICBjb25zdCBpbnQgcmluZ1NhbXBsZVggPSBjeCArIHN0YXRpY19jYXN0PGludD4oc3RkOjpmbG9vcihjaXJjbGUucmFkaXVzKSkgKyAyOwogICAgRVhQRUNUX0VRKHB4KGN4LCBjeSkuciwgY2lyY2xlLmZpbGwucik7CiAgICBFWFBFQ1RfRVEocHgocmluZ1NhbXBsZVgsIGN5KS5yLCAyNTUpOwogICAgRVhQRUNUX0VRKHB4KHJpbmdTYW1wbGVYLCBjeSkuZywgMjIwKTsKICAgIEVYUEVDVF9FUShweChyaW5nU2FtcGxlWCwgY3kpLmIsIDQwKTsKfQo=
+#include "core/gamestate/RTSGameState.h"
+
+#include "Camera.h"
+#include "DrawList.h"
+#include "Raster.h"
+#include "Scenario.h"
+#include "SnapshotRenderer.h"
+
+#include <cmath>
+#include <gtest/gtest.h>
+
+TEST(SnapshotRendererTest, TwoUnitsBecomeTeamColoredCirclesAtProjectedCenters)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    DrawList list = BuildSnapshotDrawList(*scene.state, camera);
+    ASSERT_EQ(list.circles.size(), 2u);
+    auto center = camera.WorldToScreen(Vector2(200.0f, 300.0f));
+    EXPECT_NEAR(list.circles[0].center.x, center.x, 0.01f);
+    EXPECT_NEAR(list.circles[0].center.y, center.y, 0.01f);
+    EXPECT_NEAR(list.circles[0].radius, 12.0f * camera.pixelsPerUnit, 0.01f);
+    EXPECT_EQ(list.circles[0].fill.r, 70);
+    EXPECT_EQ(list.circles[0].fill.g, 140);
+    EXPECT_EQ(list.circles[0].fill.b, 230);
+    EXPECT_EQ(list.circles[1].fill.r, 220);
+    EXPECT_EQ(list.circles[1].fill.b, 80);
+}
+
+TEST(SnapshotRendererTest, RasterizedTeamOneCenterIsBlueAndFarPixelIsMapFill)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    DrawList list = BuildSnapshotDrawList(*scene.state, camera);
+    Framebuffer fb;
+    fb.width = 1280;
+    fb.height = 720;
+    Rasterize(list, fb);
+    auto px = [&](int x, int y) {
+        const std::uint8_t* p = &fb.rgba[(y * fb.width + x) * 4];
+        return Rgba{p[0], p[1], p[2], p[3]};
+    };
+    const int cx = 427;
+    const int cy = 360;
+    EXPECT_EQ(px(cx, cy).r, 70);
+    EXPECT_EQ(px(cx, cy).g, 140);
+    EXPECT_EQ(px(cx, cy).b, 230);
+    EXPECT_EQ(px(cx + 30, cy).r, 32);
+    EXPECT_EQ(px(cx + 30, cy).g, 36);
+    EXPECT_EQ(px(cx + 30, cy).b, 42);
+}
+
+TEST(SnapshotRendererTest, SelectedUnitGetsYellowOutlineRingLargerThanFill)
+{
+    Scene scene = BuildPreset(Preset::TwoUnits, 1);
+    scene.state->GetAllUnits()[0]->SetSelected(true);
+    Camera camera = FitMap(scene.state->GetMapSize(), 1280, 720, 40.0f);
+    DrawList list = BuildSnapshotDrawList(*scene.state, camera);
+    ASSERT_GE(list.circles.size(), 1u);
+    const DrawCircle& circle = list.circles[0];
+    EXPECT_EQ(circle.outline.r, 255);
+    EXPECT_EQ(circle.outline.g, 220);
+    EXPECT_EQ(circle.outline.b, 40);
+    EXPECT_NE(circle.outline.r, circle.fill.r);
+
+    Framebuffer fb;
+    fb.width = 1280;
+    fb.height = 720;
+    Rasterize(list, fb);
+    auto px = [&](int x, int y) {
+        const std::uint8_t* p = &fb.rgba[(y * fb.width + x) * 4];
+        return Rgba{p[0], p[1], p[2], p[3]};
+    };
+    const int cx = 427;
+    const int cy = 360;
+    const int ringSampleX = cx + static_cast<int>(std::floor(circle.radius)) + 2;
+    EXPECT_EQ(px(cx, cy).r, circle.fill.r);
+    EXPECT_EQ(px(ringSampleX, cy).r, 255);
+    EXPECT_EQ(px(ringSampleX, cy).g, 220);
+    EXPECT_EQ(px(ringSampleX, cy).b, 40);
+}
