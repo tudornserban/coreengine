@@ -1,17 +1,1 @@
-#pragma once
-#include "../../interfaces/IBehavior.h"
-
-class SeparationBehavior : public IBehavior {
-private:
-    std::map<std::string, float> params_;
-
-public:
-    SeparationBehavior();
-
-    std::vector<InfluenceFieldItem> GenerateFieldItems(const BehaviorContext& ctx) override { return {}; }
-    Vector2 CalculateAcceleration(const BehaviorContext& ctx) override;
-    const char* GetName() const override { return "Separation"; }
-
-    std::map<std::string, float>& GetParameters() override { return params_; }
-    const std::map<std::string, float>& GetParameters() const override { return params_; }
-};
+I3ByYWdtYSBvbmNlCiNpbmNsdWRlICJjb3JlL2ludGVyZmFjZXMvSUJlaGF2aW9yLmgiCgpjbGFzcyBTZXBhcmF0aW9uQmVoYXZpb3IgOiBwdWJsaWMgSUJlaGF2aW9yIHsKcHJpdmF0ZToKICAgIHN0ZDo6bWFwPHN0ZDo6c3RyaW5nLCBmbG9hdD4gcGFyYW1zXzsKCnB1YmxpYzoKICAgIFNlcGFyYXRpb25CZWhhdmlvcigpOwoKICAgIHN0ZDo6dmVjdG9yPEluZmx1ZW5jZUZpZWxkSXRlbT4gR2VuZXJhdGVGaWVsZEl0ZW1zKGNvbnN0IEJlaGF2aW9yQ29udGV4dCYgY3R4KSBvdmVycmlkZSB7IHJldHVybiB7fTsgfQogICAgVmVjdG9yMiBDYWxjdWxhdGVBY2NlbGVyYXRpb24oY29uc3QgQmVoYXZpb3JDb250ZXh0JiBjdHgpIG92ZXJyaWRlOwogICAgY29uc3QgY2hhciogR2V0TmFtZSgpIGNvbnN0IG92ZXJyaWRlIHsgcmV0dXJuICJTZXBhcmF0aW9uIjsgfQoKICAgIHN0ZDo6bWFwPHN0ZDo6c3RyaW5nLCBmbG9hdD4mIEdldFBhcmFtZXRlcnMoKSBvdmVycmlkZSB7IHJldHVybiBwYXJhbXNfOyB9CiAgICBjb25zdCBzdGQ6Om1hcDxzdGQ6OnN0cmluZywgZmxvYXQ+JiBHZXRQYXJhbWV0ZXJzKCkgY29uc3Qgb3ZlcnJpZGUgeyByZXR1cm4gcGFyYW1zXzsgfQp9Owo=
