@@ -1,1 +1,3 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSAiY29yZS9pbnRlcmZhY2VzL0lHYW1lU3RhdGUuaCIK
+#pragma once
+
+#include "core/interfaces/IGameState.h"

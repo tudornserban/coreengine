@@ -1,1 +1,385 @@
-I2luY2x1ZGUgIlJUU0dhbWVTdGF0ZS5oIgojaW5jbHVkZSAiQmVoYXZpb3JDb250ZXh0QXNzZW1ibGVyLmgiCiNpbmNsdWRlICIuLi9jb21iYXQvRXhwbG9zaW9uLmgiCiNpbmNsdWRlICJSVFNVbml0LmgiCiNpbmNsdWRlIDxhbGdvcml0aG0+CiNpbmNsdWRlICIuLi9tYXAvTWFwQ29tcG9uZW50cy9NYXBPYnN0YWNsZUNvbXBvbmVudC5oIgojaW5jbHVkZSAiLi4vaW5mbHVlbmNlL0luZmx1ZW5jZUZpZWxkSXRlbS5oIgojaW5jbHVkZSAiLi4vaW5mbHVlbmNlL0luZmx1ZW5jZUZpZWxkQ2FsY3VsYXRvci5oIgojaW5jbHVkZSAiLi4vY29sbGlzaW9uL0lDb2xsaXNpb25EZXRlY3Rvci5oIgojaW5jbHVkZSAiLi4vbWF0aC9EZXRlcm1pbmlzdGljUk5HLmgiCiNpbmNsdWRlICIuLi9sb2dnaW5nL0xvZ2dlci5oIgojaW5jbHVkZSAiLi4vaW50ZXJmYWNlcy9JVW5pdEJlaGF2aW9ySG9zdC5oIgoKUlRTR2FtZVN0YXRlOjpSVFNHYW1lU3RhdGUoVmVjdG9yMiBtYXBCb3VuZHMsIHVpbnQ2NF90IHJuZ1NlZWQpCiAgICA6IG1hcF8oc3RkOjptYWtlX3VuaXF1ZTxNYXA+KG1hcEJvdW5kcykpCiAgICAsIHBlcmNlcHRpb25SYWRpdXNfKDMwMC4wZikKICAgICwgcm5nXyhybmdTZWVkKQp7CiAgICBMT0dfREVCVUcoIlJUU0dhbWVTdGF0ZTogQ29uc3RydWN0b3IgKFZlY3RvcjIpIGNhbGxlZCwgbWFwQm91bmRzPSglLjJmLCAlLjJmKSwgcm5nU2VlZD0lbGx1IiwgCiAgICAgICAgICAgICAgbWFwQm91bmRzLngsIG1hcEJvdW5kcy55LCBybmdTZWVkKTsKICAgIExPR19ERUJVRygiUlRTR2FtZVN0YXRlOiBNYXAgY3JlYXRlZDogJXAiLCBtYXBfLmdldCgpKTsKICAgIExPR19ERUJVRygiUlRTR2FtZVN0YXRlOiBJbml0aWFsaXppbmcgc3RhdGljIGZpZWxkIGl0ZW1zLi4uIik7CiAgICBJbml0aWFsaXplU3RhdGljRmllbGRJdGVtcygpOwogICAgTE9HX0RFQlVHKCJSVFNHYW1lU3RhdGU6IENvbnN0cnVjdG9yIChWZWN0b3IyKSBjb21wbGV0ZWQiKTsKfQoKUlRTR2FtZVN0YXRlOjpSVFNHYW1lU3RhdGUoc3RkOjp1bmlxdWVfcHRyPE1hcD4gbWFwSW5zdGFuY2UsIHVpbnQ2NF90IHJuZ1NlZWQpCiAgICA6IG1hcF8oc3RkOjptb3ZlKG1hcEluc3RhbmNlKSkKICAgICwgcGVyY2VwdGlvblJhZGl1c18oMzAwLjBmKQogICAgLCBybmdfKHJuZ1NlZWQpCnsKICAgIExPR19ERUJVRygiUlRTR2FtZVN0YXRlOiBDb25zdHJ1Y3RvciAoTWFwKikgY2FsbGVkLCBtYXBJbnN0YW5jZT0lcCwgcm5nU2VlZD0lbGx1IiwgCiAgICAgICAgICAgICAgbWFwXy5nZXQoKSwgcm5nU2VlZCk7CiAgICBMT0dfREVCVUcoIlJUU0dhbWVTdGF0ZTogSW5pdGlhbGl6aW5nIHN0YXRpYyBmaWVsZCBpdGVtcy4uLiIpOwogICAgSW5pdGlhbGl6ZVN0YXRpY0ZpZWxkSXRlbXMoKTsKICAgIExPR19ERUJVRygiUlRTR2FtZVN0YXRlOiBDb25zdHJ1Y3RvciAoTWFwKikgY29tcGxldGVkIik7Cn0KCnZvaWQgUlRTR2FtZVN0YXRlOjpBZGRVbml0KHN0ZDo6dW5pcXVlX3B0cjxJR2FtZVVuaXQ+IHVuaXQpCnsKICAgIGlmICghdW5pdCkgewogICAgICAgIExPR19FUlJPUigiUlRTR2FtZVN0YXRlOjpBZGRVbml0OiBBdHRlbXB0ZWQgdG8gYWRkIG51bGwgdW5pdCIpOwogICAgICAgIHJldHVybjsKICAgIH0KICAgIAogICAgSUdhbWVVbml0KiB1bml0UHRyID0gdW5pdC5nZXQoKTsKICAgIExPR19ERUJVRygiUlRTR2FtZVN0YXRlOjpBZGRVbml0OiBBZGRpbmcgdW5pdCBhdCAlcCwgcG9zaXRpb249KCUuMmYsICUuMmYpLCB0ZWFtPSVkIiwgCiAgICAgICAgICAgICAgdW5pdFB0ciwgdW5pdFB0ci0+R2V0UG9zaXRpb24oKS54LCB1bml0UHRyLT5HZXRQb3NpdGlvbigpLnksIHVuaXRQdHItPkdldFRlYW0oKSk7CiAgICAKICAgIHVuaXRzXy5wdXNoX2JhY2soc3RkOjptb3ZlKHVuaXQpKTsKICAgIAogICAgTE9HX0RFQlVHKCJSVFNHYW1lU3RhdGU6OkFkZFVuaXQ6IFVuaXQgYWRkZWQgc3VjY2Vzc2Z1bGx5LiBUb3RhbCB1bml0czogJXp1IiwgdW5pdHNfLnNpemUoKSk7Cn0KCnZvaWQgUlRTR2FtZVN0YXRlOjpSZW1vdmVVbml0KElHYW1lVW5pdCogdW5pdCkKewogICAgYXV0byBpdCA9IHN0ZDo6ZmluZF9pZih1bml0c18uYmVnaW4oKSwgdW5pdHNfLmVuZCgpLAogICAgICAgIFt1bml0XShjb25zdCBzdGQ6OnVuaXF1ZV9wdHI8SUdhbWVVbml0PiYgdSkgeyByZXR1cm4gdS5nZXQoKSA9PSB1bml0OyB9KTsKCiAgICBpZiAoaXQgIT0gdW5pdHNfLmVuZCgpKQogICAgewogICAgICAgIHVuaXRzXy5lcmFzZShpdCk7CiAgICB9Cn0KCnZvaWQgUlRTR2FtZVN0YXRlOjpVcGRhdGUoZmxvYXQgZGVsdGFUaW1lKQp7CiAgICAvLyBCdWlsZCBjb250ZXh0IGFuZCB1cGRhdGUgZWFjaCB1bml0CiAgICBmb3IgKGF1dG8mIHVuaXQgOiB1bml0c18pCiAgICB7CiAgICAgICAgSVVuaXRCZWhhdmlvckhvc3QqIGJlaGF2aW9ySG9zdCA9IGR5bmFtaWNfY2FzdDxJVW5pdEJlaGF2aW9ySG9zdCo+KHVuaXQuZ2V0KCkpOwogICAgICAgIGlmICghYmVoYXZpb3JIb3N0KSBjb250aW51ZTsKCiAgICAgICAgLy8gVXBkYXRlIGRlYnVnIG1vdmVtZW50IGZpcnN0CiAgICAgICAgdW5pdC0+VXBkYXRlKGRlbHRhVGltZSk7CgogICAgICAgIC8vIElmIGluIGRlYnVnIG1vZGUsIHNraXAgQUkKICAgICAgICBpZiAodW5pdC0+SXNJbkRlYnVnTW9kZSgpKQogICAgICAgIHsKICAgICAgICAgICAgLy8gQXBwbHkgZGVidWcgbW92ZW1lbnQKICAgICAgICAgICAgVmVjdG9yMiB0b1RhcmdldCA9IHVuaXQtPkdldFBvc2l0aW9uKCk7ICAvLyBQb3NpdGlvbiBhbHJlYWR5IHVwZGF0ZWQgaW4gVXBkYXRlKCkKICAgICAgICAgICAgY29udGludWU7CiAgICAgICAgfQoKICAgICAgICAvLyBCdWlsZCBiZWhhdmlvciBjb250ZXh0CiAgICAgICAgQmVoYXZpb3JDb250ZXh0IGN0eCA9IEJ1aWxkQ29udGV4dEZvclVuaXQodW5pdC5nZXQoKSwgZGVsdGFUaW1lKTsKCiAgICAgICAgLy8gR2V0IGN1cnJlbnQgYmVoYXZpb3IgYW5kIGNhbGN1bGF0ZSBhY2NlbGVyYXRpb24KICAgICAgICBJQmVoYXZpb3IqIGN1cnJlbnRCZWhhdmlvciA9IGJlaGF2aW9ySG9zdC0+R2V0Q3VycmVudEJlaGF2aW9yKCk7CiAgICAgICAgaWYgKGN1cnJlbnRCZWhhdmlvcikKICAgICAgICB7CiAgICAgICAgICAgIFZlY3RvcjIgYWNjZWxlcmF0aW9uOwoKICAgICAgICAgICAgLy8gQmVoYXZpb3IgZmllbGQgaXRlbXMgKyBzdGF0aWMgaW5mbHVlbmNlcyAobWFwIGVkZ2VzLCBvYnN0YWNsZXMsIHN0YXRpYyBhdHRyYWN0b3JzKQogICAgICAgICAgICBzdGQ6OnZlY3RvcjxJbmZsdWVuY2VGaWVsZEl0ZW0+IGl0ZW1zID0gY3VycmVudEJlaGF2aW9yLT5HZW5lcmF0ZUZpZWxkSXRlbXMoY3R4KTsKICAgICAgICAgICAgaXRlbXMuaW5zZXJ0KGl0ZW1zLmVuZCgpLCBjdHguc3RhdGljRmllbGRJdGVtcy5iZWdpbigpLCBjdHguc3RhdGljRmllbGRJdGVtcy5lbmQoKSk7CgogICAgICAgICAgICBpZiAoIWl0ZW1zLmVtcHR5KCkpCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIGFjY2VsZXJhdGlvbiA9IEluZmx1ZW5jZUZpZWxkOjpDYWxjdWxhdGVUb3RhbEZvcmNlKAogICAgICAgICAgICAgICAgICAgIHVuaXQtPkdldFBvc2l0aW9uKCksCiAgICAgICAgICAgICAgICAgICAgdW5pdC0+R2V0VmVsb2NpdHkoKSwKICAgICAgICAgICAgICAgICAgICBpdGVtcywKICAgICAgICAgICAgICAgICAgICAzMDAuMGYgIC8vIG1heCBhY2NlbGVyYXRpb24KICAgICAgICAgICAgICAgICk7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxzZQogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICBhY2NlbGVyYXRpb24gPSBjdXJyZW50QmVoYXZpb3ItPkNhbGN1bGF0ZUFjY2VsZXJhdGlvbihjdHgpOwogICAgICAgICAgICB9CgogICAgICAgICAgICB1bml0LT5BcHBseUFjY2VsZXJhdGlvbihhY2NlbGVyYXRpb24sIGRlbHRhVGltZSk7CiAgICAgICAgfQogICAgfQoKICAgIC8vIFByb2Nlc3MgY29sbGlzaW9ucyAocnVucyBpbiBnYW1lIGxvb3ApCiAgICBpZiAobWFwXykKICAgIHsKICAgICAgICBWZWN0b3IyIG1hcFNpemUgPSBtYXBfLT5HZXREaW1lbnNpb25zKCk7CiAgICAgICAgTWFwQm91bmRzIGJvdW5kcyhWZWN0b3IyOjpaZXJvKCksIG1hcFNpemUpOwoKICAgICAgICBzdGQ6OnZlY3RvcjxJR2FtZVVuaXQqPiBhbGxVbml0cyA9IEdldEFsbFVuaXRzKCk7CiAgICAgICAgY29sbGlzaW9uU3lzdGVtXy5Qcm9jZXNzQ29sbGlzaW9ucyhhbGxVbml0cywgYm91bmRzKTsKICAgIH0KCiAgICAvLyBQcm9jZXNzIGV4cGxvc2lvbnMgKGNyZWF0ZWQgYnkgY29sbGlzaW9ucyBvciBvdGhlciBzb3VyY2VzKQogICAgLy8gQXBwbHkgaW1wdWxzZSBmb3JjZXMgdG8gdW5pdHMgd2l0aGluIGV4cGxvc2lvbiByYWRpdXMKICAgIGZvciAoY29uc3QgRXhwbG9zaW9uJiBleHBsb3Npb24gOiBleHBsb3Npb25zXykKICAgIHsKICAgICAgICAvLyBGaW5kIHVuaXRzIHdpdGhpbiBleHBsb3Npb24gcmFkaXVzCiAgICAgICAgc3RkOjp2ZWN0b3I8SUdhbWVVbml0Kj4gYWZmZWN0ZWRVbml0cyA9IEdldFVuaXRzSW5SYWRpdXMoZXhwbG9zaW9uLkdldFBvc2l0aW9uKCksIGV4cGxvc2lvbi5HZXRSYWRpdXMoKSk7CgogICAgICAgIC8vIEFwcGx5IGltcHVsc2UgdG8gZWFjaCBhZmZlY3RlZCB1bml0CiAgICAgICAgZm9yIChJR2FtZVVuaXQqIHVuaXQgOiBhZmZlY3RlZFVuaXRzKQogICAgICAgIHsKICAgICAgICAgICAgUlRTVW5pdCogcnRzVW5pdCA9IGR5bmFtaWNfY2FzdDxSVFNVbml0Kj4odW5pdCk7CiAgICAgICAgICAgIGlmICghcnRzVW5pdCkgY29udGludWU7CgogICAgICAgICAgICAvLyBDYWxjdWxhdGUgaW1wdWxzZSBmb3IgdGhpcyB1bml0CiAgICAgICAgICAgIFZlY3RvcjIgaW1wdWxzZSA9IGV4cGxvc2lvbi5DYWxjdWxhdGVJbXB1bHNlKHJ0c1VuaXQtPkdldFBvc2l0aW9uKCksIHJ0c1VuaXQtPkNhbGN1bGF0ZU1hc3MoKSk7CgogICAgICAgICAgICAvLyBBcHBseSBpbXB1bHNlIGFzIGFjY2VsZXJhdGlvbiAoaW1wdWxzZSBpcyBmb3JjZSwgY29udmVydCB0byBhY2NlbGVyYXRpb24pCiAgICAgICAgICAgIC8vIEltcHVsc2UgPSBmb3JjZSAqIGRlbHRhVGltZSwgc28gYWNjZWxlcmF0aW9uID0gaW1wdWxzZSAvIGRlbHRhVGltZQogICAgICAgICAgICAvLyBCdXQgc2luY2Ugd2Ugd2FudCBpbnN0YW50IGltcHVsc2UsIHdlIGFwcGx5IGl0IGRpcmVjdGx5IGFzIHZlbG9jaXR5IGNoYW5nZQogICAgICAgICAgICBpZiAoZGVsdGFUaW1lID4gMC4wZikKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgVmVjdG9yMiB2ZWxvY2l0eUNoYW5nZSA9IGltcHVsc2UgLyBkZWx0YVRpbWU7CiAgICAgICAgICAgICAgICBydHNVbml0LT5BcHBseUFjY2VsZXJhdGlvbih2ZWxvY2l0eUNoYW5nZSwgZGVsdGFUaW1lKTsKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KCiAgICAvLyBDbGVhciBleHBsb3Npb25zIGFmdGVyIHByb2Nlc3NpbmcgKHNpbmdsZSBmcmFtZSBkdXJhdGlvbikKICAgIGV4cGxvc2lvbnNfLmNsZWFyKCk7CgogICAgLy8gVXBkYXRlIGltbXVuaXR5IHN5c3RlbSAoZGVjcmVtZW50IGZyYW1lcykKICAgIGNvbGxpc2lvblN5c3RlbV8uVXBkYXRlSW1tdW5pdHkoKTsKCiAgICAvLyBLZWVwIHVuaXRzIHdpdGhpbiBib3VuZHMgKGZhbGxiYWNrIC0gY29sbGlzaW9uIHN5c3RlbSBzaG91bGQgaGFuZGxlIHRoaXMpCiAgICBpZiAobWFwXykKICAgIHsKICAgICAgICBWZWN0b3IyIG1hcFNpemUgPSBtYXBfLT5HZXREaW1lbnNpb25zKCk7CiAgICAgICAgZm9yIChhdXRvJiB1bml0IDogdW5pdHNfKQogICAgICAgIHsKICAgICAgICAgICAgVmVjdG9yMiBwb3MgPSB1bml0LT5HZXRQb3NpdGlvbigpOwogICAgICAgICAgICBib29sIG91dE9mQm91bmRzID0gZmFsc2U7CgogICAgICAgICAgICBpZiAocG9zLnggPCAwLjBmKSB7IHBvcy54ID0gMC4wZjsgb3V0T2ZCb3VuZHMgPSB0cnVlOyB9CiAgICAgICAgICAgIGlmIChwb3MueSA8IDAuMGYpIHsgcG9zLnkgPSAwLjBmOyBvdXRPZkJvdW5kcyA9IHRydWU7IH0KICAgICAgICAgICAgaWYgKHBvcy54ID4gbWFwU2l6ZS54KSB7IHBvcy54ID0gbWFwU2l6ZS54OyBvdXRPZkJvdW5kcyA9IHRydWU7IH0KICAgICAgICAgICAgaWYgKHBvcy55ID4gbWFwU2l6ZS55KSB7IHBvcy55ID0gbWFwU2l6ZS55OyBvdXRPZkJvdW5kcyA9IHRydWU7IH0KCiAgICAgICAgICAgIGlmIChvdXRPZkJvdW5kcykKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgUlRTVW5pdCogcnRzVW5pdCA9IGR5bmFtaWNfY2FzdDxSVFNVbml0Kj4odW5pdC5nZXQoKSk7CiAgICAgICAgICAgICAgICBpZiAocnRzVW5pdCkKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBydHNVbml0LT5TZXRQb3NpdGlvbihwb3MpOwogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQp9CgpCZWhhdmlvckNvbnRleHQgUlRTR2FtZVN0YXRlOjpCdWlsZENvbnRleHRGb3JVbml0KElHYW1lVW5pdCogdW5pdCwgZmxvYXQgZGVsdGFUaW1lKQp7CiAgICBzdGQ6OnZlY3RvcjxJR2FtZVVuaXQqPiBvdGhlcnM7CiAgICBvdGhlcnMucmVzZXJ2ZSh1bml0c18uc2l6ZSgpKTsKICAgIGZvciAoY29uc3QgYXV0byYgdSA6IHVuaXRzXykKICAgIHsKICAgICAgICBvdGhlcnMucHVzaF9iYWNrKHUuZ2V0KCkpOwogICAgfQoKICAgIHN0ZDo6dmVjdG9yPEluZmx1ZW5jZUZpZWxkSXRlbT4gb2JzdGFjbGVJdGVtczsKICAgIGlmIChtYXBfKQogICAgewogICAgICAgIGZvciAoY29uc3QgYXV0byYgZW50aXR5IDogbWFwXy0+R2V0RW50aXRpZXMoKSkKICAgICAgICB7CiAgICAgICAgICAgIGF1dG8qIG9ic3RhY2xlQ29tcCA9IGVudGl0eS0+R2V0Q29tcG9uZW50PE1hcE9ic3RhY2xlQ29tcG9uZW50PigpOwogICAgICAgICAgICBpZiAob2JzdGFjbGVDb21wKQogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICBvYnN0YWNsZUl0ZW1zLnB1c2hfYmFjayhvYnN0YWNsZUNvbXAtPkdldEluZmx1ZW5jZUZpZWxkSXRlbSgpKTsKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KCiAgICBCZWhhdmlvckNvbnRleHRJbnB1dHMgaW5wdXRzewogICAgICAgIHVuaXQsCiAgICAgICAgZGVsdGFUaW1lLAogICAgICAgIHBlcmNlcHRpb25SYWRpdXNfLAogICAgICAgIEdldE1hcENlbnRlcigpLAogICAgICAgIEdldE1hcFNpemUoKSwKICAgICAgICAmcm5nXywKICAgICAgICBvdGhlcnMsCiAgICAgICAgbWFwRWRnZUl0ZW1zXywKICAgICAgICBzdGF0aWNBdHRyYWN0b3JzXywKICAgICAgICBvYnN0YWNsZUl0ZW1zfTsKCiAgICByZXR1cm4gQXNzZW1ibGVCZWhhdmlvckNvbnRleHQoaW5wdXRzKTsKfQoKc3RkOjp2ZWN0b3I8SUdhbWVVbml0Kj4gUlRTR2FtZVN0YXRlOjpHZXRVbml0c0luUmFkaXVzKFZlY3RvcjIgcG9zaXRpb24sIGZsb2F0IHJhZGl1cykgY29uc3QKewogICAgc3RkOjp2ZWN0b3I8SUdhbWVVbml0Kj4gcmVzdWx0OwogICAgZm9yIChjb25zdCBhdXRvJiB1bml0IDogdW5pdHNfKQogICAgewogICAgICAgIGlmICh1bml0LT5HZXRQb3NpdGlvbigpLkRpc3RhbmNlKHBvc2l0aW9uKSA8PSByYWRpdXMpCiAgICAgICAgewogICAgICAgICAgICByZXN1bHQucHVzaF9iYWNrKHVuaXQuZ2V0KCkpOwogICAgICAgIH0KICAgIH0KICAgIHJldHVybiByZXN1bHQ7Cn0KCnN0ZDo6dmVjdG9yPElHYW1lVW5pdCo+IFJUU0dhbWVTdGF0ZTo6R2V0VGVhbVVuaXRzSW5SYWRpdXMoVmVjdG9yMiBwb3NpdGlvbiwgZmxvYXQgcmFkaXVzLCBpbnQgdGVhbSkgY29uc3QKewogICAgc3RkOjp2ZWN0b3I8SUdhbWVVbml0Kj4gcmVzdWx0OwogICAgZm9yIChjb25zdCBhdXRvJiB1bml0IDogdW5pdHNfKQogICAgewogICAgICAgIGlmICh1bml0LT5HZXRUZWFtKCkgPT0gdGVhbSAmJiB1bml0LT5HZXRQb3NpdGlvbigpLkRpc3RhbmNlKHBvc2l0aW9uKSA8PSByYWRpdXMpCiAgICAgICAgewogICAgICAgICAgICByZXN1bHQucHVzaF9iYWNrKHVuaXQuZ2V0KCkpOwogICAgICAgIH0KICAgIH0KICAgIHJldHVybiByZXN1bHQ7Cn0KCnN0ZDo6dmVjdG9yPElHYW1lVW5pdCo+IFJUU0dhbWVTdGF0ZTo6R2V0QWxsVW5pdHMoKSBjb25zdAp7CiAgICBzdGQ6OnZlY3RvcjxJR2FtZVVuaXQqPiByZXN1bHQ7CiAgICByZXN1bHQucmVzZXJ2ZSh1bml0c18uc2l6ZSgpKTsKICAgIGZvciAoY29uc3QgYXV0byYgdW5pdCA6IHVuaXRzXykKICAgIHsKICAgICAgICByZXN1bHQucHVzaF9iYWNrKHVuaXQuZ2V0KCkpOwogICAgfQogICAgcmV0dXJuIHJlc3VsdDsKfQoKSUdhbWVVbml0KiBSVFNHYW1lU3RhdGU6OkdldFVuaXRBdFBvc2l0aW9uKFZlY3RvcjIgcG9zaXRpb24sIGZsb2F0IHRvbGVyYW5jZSkgY29uc3QKewogICAgZm9yIChjb25zdCBhdXRvJiB1bml0IDogdW5pdHNfKQogICAgewogICAgICAgIGZsb2F0IGRpc3RhbmNlID0gdW5pdC0+R2V0UG9zaXRpb24oKS5EaXN0YW5jZShwb3NpdGlvbik7CiAgICAgICAgaWYgKGRpc3RhbmNlIDw9IHVuaXQtPkdldFJhZGl1cygpICsgdG9sZXJhbmNlKQogICAgICAgIHsKICAgICAgICAgICAgcmV0dXJuIHVuaXQuZ2V0KCk7CiAgICAgICAgfQogICAgfQogICAgcmV0dXJuIG51bGxwdHI7Cn0KClZlY3RvcjIgUlRTR2FtZVN0YXRlOjpHZXRNYXBTaXplKCkgY29uc3QKewogICAgcmV0dXJuIG1hcF8gPyBtYXBfLT5HZXREaW1lbnNpb25zKCkgOiBWZWN0b3IyKDAuMGYsIDAuMGYpOwp9CgpWZWN0b3IyIFJUU0dhbWVTdGF0ZTo6R2V0TWFwQ2VudGVyKCkgY29uc3QKewogICAgcmV0dXJuIG1hcF8gPyBtYXBfLT5HZXRDZW50ZXIoKSA6IFZlY3RvcjIoMC4wZiwgMC4wZik7Cn0KCmNvbnN0IHN0ZDo6dmVjdG9yPEluZmx1ZW5jZUZpZWxkSXRlbT4mIFJUU0dhbWVTdGF0ZTo6R2V0U3RhdGljSXRlbXMoKSBjb25zdAp7CiAgICByZXR1cm4gbWFwRWRnZUl0ZW1zXzsKfQoKdm9pZCBSVFNHYW1lU3RhdGU6OkFkZE9ic3RhY2xlKGNvbnN0IEluZmx1ZW5jZUZpZWxkSXRlbSYgb2JzdGFjbGUpCnsKICAgIGlmIChtYXBfKQogICAgewogICAgICAgIHN0YXRpYyBpbnQgb2JzdGFjbGVDb3VudGVyID0gMDsKICAgICAgICBzdGQ6OnN0cmluZyBvYnN0YWNsZUlkID0gIm9ic3RhY2xlXyIgKyBzdGQ6OnRvX3N0cmluZyhvYnN0YWNsZUNvdW50ZXIrKyk7CgogICAgICAgIGF1dG8gZW50aXR5ID0gc3RkOjptYWtlX3VuaXF1ZTxNYXBFbnRpdHk+KG9ic3RhY2xlSWQsIG9ic3RhY2xlLkdldFBvc2l0aW9uKCkpOwogICAgICAgIGZsb2F0IHJhZGl1cyA9IG9ic3RhY2xlLkdldFJlcHVsc29yUGFyYW1zKCkuRGV0ZWN0aW9uUmFuZ2U7CiAgICAgICAgYXV0byBvYnN0YWNsZUNvbXAgPSBzdGQ6Om1ha2VfdW5pcXVlPE1hcE9ic3RhY2xlQ29tcG9uZW50PihyYWRpdXMsIG9ic3RhY2xlKTsKICAgICAgICBlbnRpdHktPkFkZENvbXBvbmVudChzdGQ6Om1vdmUob2JzdGFjbGVDb21wKSk7CiAgICAgICAgbWFwXy0+QWRkRW50aXR5KHN0ZDo6bW92ZShlbnRpdHkpKTsKICAgIH0KfQoKdm9pZCBSVFNHYW1lU3RhdGU6OkFkZEV4cGxvc2lvbihjb25zdCBFeHBsb3Npb24mIGV4cGxvc2lvbikKewogICAgZXhwbG9zaW9uc18ucHVzaF9iYWNrKGV4cGxvc2lvbik7Cn0KCnZvaWQgUlRTR2FtZVN0YXRlOjpDbGVhck9ic3RhY2xlcygpCnsKICAgIC8vIFJlbW92ZSBhbGwgb2JzdGFjbGUgZW50aXRpZXMgZnJvbSBtYXAKICAgIGlmIChtYXBfKQogICAgewogICAgICAgIC8vIENvbGxlY3Qgb2JzdGFjbGUgZW50aXR5IElEcwogICAgICAgIHN0ZDo6dmVjdG9yPHN0ZDo6c3RyaW5nPiBvYnN0YWNsZUlkczsKICAgICAgICBmb3IgKGNvbnN0IGF1dG8mIGVudGl0eSA6IG1hcF8tPkdldEVudGl0aWVzKCkpCiAgICAgICAgewogICAgICAgICAgICBpZiAoZW50aXR5LT5HZXRDb21wb25lbnQ8TWFwT2JzdGFjbGVDb21wb25lbnQ+KCkpCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIG9ic3RhY2xlSWRzLnB1c2hfYmFjayhlbnRpdHktPkdldElkKCkpOwogICAgICAgICAgICB9CiAgICAgICAgfQogICAgICAgIC8vIFJlbW92ZSB0aGVtCiAgICAgICAgZm9yIChjb25zdCBhdXRvJiBpZCA6IG9ic3RhY2xlSWRzKQogICAgICAgIHsKICAgICAgICAgICAgbWFwXy0+UmVtb3ZlRW50aXR5KGlkKTsKICAgICAgICB9CiAgICB9Cn0KCnZvaWQgUlRTR2FtZVN0YXRlOjpJbml0aWFsaXplU3RhdGljRmllbGRJdGVtcygpCnsKICAgIC8vIENyZWF0ZSBlZGdlIGZpZWxkIGl0ZW1zIGZvciB0aGUgZm91ciBtYXAgYm91bmRhcmllcwogICAgLy8gVGhlc2UgYWN0IGFzIGludmlzaWJsZSB3YWxscyB0aGF0IHB1c2ggdW5pdHMgYXdheSBmcm9tIG1hcCBlZGdlcwoKICAgIGlmICghbWFwXykgcmV0dXJuOwoKICAgIFZlY3RvcjIgbWFwU2l6ZSA9IG1hcF8tPkdldERpbWVuc2lvbnMoKTsKCiAgICBFZGdlUGFyYW1zIGVkZ2VQYXJhbXM7CiAgICBlZGdlUGFyYW1zLlJlcHVsc29yU3RyZW5ndGggPSAxNTAuMGY7CiAgICBlZGdlUGFyYW1zLkRldGVjdGlvblJhbmdlID0gODAuMGY7CgogICAgbWFwRWRnZUl0ZW1zXy5jbGVhcigpOwoKICAgIC8vIExlZnQgZWRnZSAoeCA9IDApCiAgICBMT0dfREVCVUcoIlJUU0dhbWVTdGF0ZTo6SW5pdGlhbGl6ZVN0YXRpY0ZpZWxkSXRlbXM6IENyZWF0aW5nIGxlZnQgZWRnZS4uLiIpOwogICAgbWFwRWRnZUl0ZW1zXy5wdXNoX2JhY2soSW5mbHVlbmNlRmllbGRJdGVtOjpDcmVhdGVFZGdlKAogICAgICAgIFZlY3RvcjIoLWVkZ2VQYXJhbXMuRGV0ZWN0aW9uUmFuZ2UgKiAwLjVmLCBtYXBTaXplLnkgKiAwLjVmKSwKICAgICAgICBlZGdlUGFyYW1zCiAgICApKTsKICAgIExPR19ERUJVRygiUlRTR2FtZVN0YXRlOjpJbml0aWFsaXplU3RhdGljRmllbGRJdGVtczogTGVmdCBlZGdlIGNyZWF0ZWQiKTsKCiAgICAvLyBSaWdodCBlZGdlICh4ID0gbWFwU2l6ZS54KQogICAgTE9HX0RFQlVHKCJSVFNHYW1lU3RhdGU6OkluaXRpYWxpemVTdGF0aWNGaWVsZEl0ZW1zOiBDcmVhdGluZyByaWdodCBlZGdlLi4uIik7CiAgICBtYXBFZGdlSXRlbXNfLnB1c2hfYmFjayhJbmZsdWVuY2VGaWVsZEl0ZW06OkNyZWF0ZUVkZ2UoCiAgICAgICAgVmVjdG9yMihtYXBTaXplLnggKyBlZGdlUGFyYW1zLkRldGVjdGlvblJhbmdlICogMC41ZiwgbWFwU2l6ZS55ICogMC41ZiksCiAgICAgICAgZWRnZVBhcmFtcwogICAgKSk7CiAgICBMT0dfREVCVUcoIlJUU0dhbWVTdGF0ZTo6SW5pdGlhbGl6ZVN0YXRpY0ZpZWxkSXRlbXM6IFJpZ2h0IGVkZ2UgY3JlYXRlZCIpOwoKICAgIC8vIFRvcCBlZGdlICh5ID0gMCkKICAgIExPR19ERUJVRygiUlRTR2FtZVN0YXRlOjpJbml0aWFsaXplU3RhdGljRmllbGRJdGVtczogQ3JlYXRpbmcgdG9wIGVkZ2UuLi4iKTsKICAgIG1hcEVkZ2VJdGVtc18ucHVzaF9iYWNrKEluZmx1ZW5jZUZpZWxkSXRlbTo6Q3JlYXRlRWRnZSgKICAgICAgICBWZWN0b3IyKG1hcFNpemUueCAqIDAuNWYsIC1lZGdlUGFyYW1zLkRldGVjdGlvblJhbmdlICogMC41ZiksCiAgICAgICAgZWRnZVBhcmFtcwogICAgKSk7CiAgICBMT0dfREVCVUcoIlJUU0dhbWVTdGF0ZTo6SW5pdGlhbGl6ZVN0YXRpY0ZpZWxkSXRlbXM6IFRvcCBlZGdlIGNyZWF0ZWQiKTsKCiAgICAvLyBCb3R0b20gZWRnZSAoeSA9IG1hcFNpemUueSkKICAgIExPR19ERUJVRygiUlRTR2FtZVN0YXRlOjpJbml0aWFsaXplU3RhdGljRmllbGRJdGVtczogQ3JlYXRpbmcgYm90dG9tIGVkZ2UuLi4iKTsKICAgIG1hcEVkZ2VJdGVtc18ucHVzaF9iYWNrKEluZmx1ZW5jZUZpZWxkSXRlbTo6Q3JlYXRlRWRnZSgKICAgICAgICBWZWN0b3IyKG1hcFNpemUueCAqIDAuNWYsIG1hcFNpemUueSArIGVkZ2VQYXJhbXMuRGV0ZWN0aW9uUmFuZ2UgKiAwLjVmKSwKICAgICAgICBlZGdlUGFyYW1zCiAgICApKTsKICAgIExPR19ERUJVRygiUlRTR2FtZVN0YXRlOjpJbml0aWFsaXplU3RhdGljRmllbGRJdGVtczogQm90dG9tIGVkZ2UgY3JlYXRlZCIpOwogICAgTE9HX0RFQlVHKCJSVFNHYW1lU3RhdGU6OkluaXRpYWxpemVTdGF0aWNGaWVsZEl0ZW1zOiBDb21wbGV0ZWQsIGNyZWF0ZWQgJXp1IGVkZ2UgaXRlbXMiLCBtYXBFZGdlSXRlbXNfLnNpemUoKSk7Cn0KCnZvaWQgUlRTR2FtZVN0YXRlOjpBZGRTdGF0aWNBdHRyYWN0b3IoY29uc3QgSW5mbHVlbmNlRmllbGRJdGVtJiBhdHRyYWN0b3IpIHsKICAgIHN0YXRpY0F0dHJhY3RvcnNfLnB1c2hfYmFjayhhdHRyYWN0b3IpOwp9Cgp2b2lkIFJUU0dhbWVTdGF0ZTo6Q2xlYXJTdGF0aWNBdHRyYWN0b3JzKCkgewogICAgc3RhdGljQXR0cmFjdG9yc18uY2xlYXIoKTsKfQoK
+#include "RTSGameState.h"
+#include "BehaviorContextAssembler.h"
+#include "../combat/Explosion.h"
+#include "RTSUnit.h"
+#include <algorithm>
+#include "../map/MapComponents/MapObstacleComponent.h"
+#include "../influence/InfluenceFieldItem.h"
+#include "../influence/InfluenceFieldCalculator.h"
+#include "../collision/ICollisionDetector.h"
+#include "../math/DeterministicRNG.h"
+#include "../logging/Logger.h"
+#include "../interfaces/IUnitBehaviorHost.h"
+
+RTSGameState::RTSGameState(Vector2 mapBounds, uint64_t rngSeed)
+    : map_(std::make_unique<Map>(mapBounds))
+    , perceptionRadius_(300.0f)
+    , rng_(rngSeed)
+{
+    LOG_DEBUG("RTSGameState: Constructor (Vector2) called, mapBounds=(%.2f, %.2f), rngSeed=%llu", 
+              mapBounds.x, mapBounds.y, rngSeed);
+    LOG_DEBUG("RTSGameState: Map created: %p", map_.get());
+    LOG_DEBUG("RTSGameState: Initializing static field items...");
+    InitializeStaticFieldItems();
+    LOG_DEBUG("RTSGameState: Constructor (Vector2) completed");
+}
+
+RTSGameState::RTSGameState(std::unique_ptr<Map> mapInstance, uint64_t rngSeed)
+    : map_(std::move(mapInstance))
+    , perceptionRadius_(300.0f)
+    , rng_(rngSeed)
+{
+    LOG_DEBUG("RTSGameState: Constructor (Map*) called, mapInstance=%p, rngSeed=%llu", 
+              map_.get(), rngSeed);
+    LOG_DEBUG("RTSGameState: Initializing static field items...");
+    InitializeStaticFieldItems();
+    LOG_DEBUG("RTSGameState: Constructor (Map*) completed");
+}
+
+void RTSGameState::AddUnit(std::unique_ptr<IGameUnit> unit)
+{
+    if (!unit) {
+        LOG_ERROR("RTSGameState::AddUnit: Attempted to add null unit");
+        return;
+    }
+    
+    IGameUnit* unitPtr = unit.get();
+    LOG_DEBUG("RTSGameState::AddUnit: Adding unit at %p, position=(%.2f, %.2f), team=%d", 
+              unitPtr, unitPtr->GetPosition().x, unitPtr->GetPosition().y, unitPtr->GetTeam());
+    
+    units_.push_back(std::move(unit));
+    
+    LOG_DEBUG("RTSGameState::AddUnit: Unit added successfully. Total units: %zu", units_.size());
+}
+
+void RTSGameState::RemoveUnit(IGameUnit* unit)
+{
+    auto it = std::find_if(units_.begin(), units_.end(),
+        [unit](const std::unique_ptr<IGameUnit>& u) { return u.get() == unit; });
+
+    if (it != units_.end())
+    {
+        units_.erase(it);
+    }
+}
+
+void RTSGameState::Update(float deltaTime)
+{
+    // Build context and update each unit
+    for (auto& unit : units_)
+    {
+        IUnitBehaviorHost* behaviorHost = dynamic_cast<IUnitBehaviorHost*>(unit.get());
+        if (!behaviorHost) continue;
+
+        // Update debug movement first
+        unit->Update(deltaTime);
+
+        // If in debug mode, skip AI
+        if (unit->IsInDebugMode())
+        {
+            // Apply debug movement
+            Vector2 toTarget = unit->GetPosition();  // Position already updated in Update()
+            continue;
+        }
+
+        // Build behavior context
+        BehaviorContext ctx = BuildContextForUnit(unit.get(), deltaTime);
+
+        // Get current behavior and calculate acceleration
+        IBehavior* currentBehavior = behaviorHost->GetCurrentBehavior();
+        if (currentBehavior)
+        {
+            Vector2 acceleration;
+
+            // Behavior field items + static influences (map edges, obstacles, static attractors)
+            std::vector<InfluenceFieldItem> items = currentBehavior->GenerateFieldItems(ctx);
+            items.insert(items.end(), ctx.staticFieldItems.begin(), ctx.staticFieldItems.end());
+
+            if (!items.empty())
+            {
+                acceleration = InfluenceField::CalculateTotalForce(
+                    unit->GetPosition(),
+                    unit->GetVelocity(),
+                    items,
+                    300.0f  // max acceleration
+                );
+            }
+            else
+            {
+                acceleration = currentBehavior->CalculateAcceleration(ctx);
+            }
+
+            unit->ApplyAcceleration(acceleration, deltaTime);
+        }
+    }
+
+    // Process collisions (runs in game loop)
+    if (map_)
+    {
+        Vector2 mapSize = map_->GetDimensions();
+        MapBounds bounds(Vector2::Zero(), mapSize);
+
+        std::vector<IGameUnit*> allUnits = GetAllUnits();
+        collisionSystem_.ProcessCollisions(allUnits, bounds);
+    }
+
+    // Process explosions (created by collisions or other sources)
+    // Apply impulse forces to units within explosion radius
+    for (const Explosion& explosion : explosions_)
+    {
+        // Find units within explosion radius
+        std::vector<IGameUnit*> affectedUnits = GetUnitsInRadius(explosion.GetPosition(), explosion.GetRadius());
+
+        // Apply impulse to each affected unit
+        for (IGameUnit* unit : affectedUnits)
+        {
+            RTSUnit* rtsUnit = dynamic_cast<RTSUnit*>(unit);
+            if (!rtsUnit) continue;
+
+            // Calculate impulse for this unit
+            Vector2 impulse = explosion.CalculateImpulse(rtsUnit->GetPosition(), rtsUnit->CalculateMass());
+
+            // Apply impulse as acceleration (impulse is force, convert to acceleration)
+            // Impulse = force * deltaTime, so acceleration = impulse / deltaTime
+            // But since we want instant impulse, we apply it directly as velocity change
+            if (deltaTime > 0.0f)
+            {
+                Vector2 velocityChange = impulse / deltaTime;
+                rtsUnit->ApplyAcceleration(velocityChange, deltaTime);
+            }
+        }
+    }
+
+    // Clear explosions after processing (single frame duration)
+    explosions_.clear();
+
+    // Update immunity system (decrement frames)
+    collisionSystem_.UpdateImmunity();
+
+    // Keep units within bounds (fallback - collision system should handle this)
+    if (map_)
+    {
+        Vector2 mapSize = map_->GetDimensions();
+        for (auto& unit : units_)
+        {
+            Vector2 pos = unit->GetPosition();
+            bool outOfBounds = false;
+
+            if (pos.x < 0.0f) { pos.x = 0.0f; outOfBounds = true; }
+            if (pos.y < 0.0f) { pos.y = 0.0f; outOfBounds = true; }
+            if (pos.x > mapSize.x) { pos.x = mapSize.x; outOfBounds = true; }
+            if (pos.y > mapSize.y) { pos.y = mapSize.y; outOfBounds = true; }
+
+            if (outOfBounds)
+            {
+                RTSUnit* rtsUnit = dynamic_cast<RTSUnit*>(unit.get());
+                if (rtsUnit)
+                {
+                    rtsUnit->SetPosition(pos);
+                }
+            }
+        }
+    }
+}
+
+BehaviorContext RTSGameState::BuildContextForUnit(IGameUnit* unit, float deltaTime)
+{
+    std::vector<IGameUnit*> others;
+    others.reserve(units_.size());
+    for (const auto& u : units_)
+    {
+        others.push_back(u.get());
+    }
+
+    std::vector<InfluenceFieldItem> obstacleItems;
+    if (map_)
+    {
+        for (const auto& entity : map_->GetEntities())
+        {
+            auto* obstacleComp = entity->GetComponent<MapObstacleComponent>();
+            if (obstacleComp)
+            {
+                obstacleItems.push_back(obstacleComp->GetInfluenceFieldItem());
+            }
+        }
+    }
+
+    BehaviorContextInputs inputs{
+        unit,
+        deltaTime,
+        perceptionRadius_,
+        GetMapCenter(),
+        GetMapSize(),
+        &rng_,
+        others,
+        mapEdgeItems_,
+        staticAttractors_,
+        obstacleItems};
+
+    return AssembleBehaviorContext(inputs);
+}
+
+std::vector<IGameUnit*> RTSGameState::GetUnitsInRadius(Vector2 position, float radius) const
+{
+    std::vector<IGameUnit*> result;
+    for (const auto& unit : units_)
+    {
+        if (unit->GetPosition().Distance(position) <= radius)
+        {
+            result.push_back(unit.get());
+        }
+    }
+    return result;
+}
+
+std::vector<IGameUnit*> RTSGameState::GetTeamUnitsInRadius(Vector2 position, float radius, int team) const
+{
+    std::vector<IGameUnit*> result;
+    for (const auto& unit : units_)
+    {
+        if (unit->GetTeam() == team && unit->GetPosition().Distance(position) <= radius)
+        {
+            result.push_back(unit.get());
+        }
+    }
+    return result;
+}
+
+std::vector<IGameUnit*> RTSGameState::GetAllUnits() const
+{
+    std::vector<IGameUnit*> result;
+    result.reserve(units_.size());
+    for (const auto& unit : units_)
+    {
+        result.push_back(unit.get());
+    }
+    return result;
+}
+
+IGameUnit* RTSGameState::GetUnitAtPosition(Vector2 position, float tolerance) const
+{
+    for (const auto& unit : units_)
+    {
+        float distance = unit->GetPosition().Distance(position);
+        if (distance <= unit->GetRadius() + tolerance)
+        {
+            return unit.get();
+        }
+    }
+    return nullptr;
+}
+
+Vector2 RTSGameState::GetMapSize() const
+{
+    return map_ ? map_->GetDimensions() : Vector2(0.0f, 0.0f);
+}
+
+Vector2 RTSGameState::GetMapCenter() const
+{
+    return map_ ? map_->GetCenter() : Vector2(0.0f, 0.0f);
+}
+
+const std::vector<InfluenceFieldItem>& RTSGameState::GetStaticItems() const
+{
+    return mapEdgeItems_;
+}
+
+void RTSGameState::AddObstacle(const InfluenceFieldItem& obstacle)
+{
+    if (map_)
+    {
+        static int obstacleCounter = 0;
+        std::string obstacleId = "obstacle_" + std::to_string(obstacleCounter++);
+
+        auto entity = std::make_unique<MapEntity>(obstacleId, obstacle.GetPosition());
+        float radius = obstacle.GetRepulsorParams().DetectionRange;
+        auto obstacleComp = std::make_unique<MapObstacleComponent>(radius, obstacle);
+        entity->AddComponent(std::move(obstacleComp));
+        map_->AddEntity(std::move(entity));
+    }
+}
+
+void RTSGameState::AddExplosion(const Explosion& explosion)
+{
+    explosions_.push_back(explosion);
+}
+
+void RTSGameState::ClearObstacles()
+{
+    // Remove all obstacle entities from map
+    if (map_)
+    {
+        // Collect obstacle entity IDs
+        std::vector<std::string> obstacleIds;
+        for (const auto& entity : map_->GetEntities())
+        {
+            if (entity->GetComponent<MapObstacleComponent>())
+            {
+                obstacleIds.push_back(entity->GetId());
+            }
+        }
+        // Remove them
+        for (const auto& id : obstacleIds)
+        {
+            map_->RemoveEntity(id);
+        }
+    }
+}
+
+void RTSGameState::InitializeStaticFieldItems()
+{
+    // Create edge field items for the four map boundaries
+    // These act as invisible walls that push units away from map edges
+
+    if (!map_) return;
+
+    Vector2 mapSize = map_->GetDimensions();
+
+    EdgeParams edgeParams;
+    edgeParams.RepulsorStrength = 150.0f;
+    edgeParams.DetectionRange = 80.0f;
+
+    mapEdgeItems_.clear();
+
+    // Left edge (x = 0)
+    LOG_DEBUG("RTSGameState::InitializeStaticFieldItems: Creating left edge...");
+    mapEdgeItems_.push_back(InfluenceFieldItem::CreateEdge(
+        Vector2(-edgeParams.DetectionRange * 0.5f, mapSize.y * 0.5f),
+        edgeParams
+    ));
+    LOG_DEBUG("RTSGameState::InitializeStaticFieldItems: Left edge created");
+
+    // Right edge (x = mapSize.x)
+    LOG_DEBUG("RTSGameState::InitializeStaticFieldItems: Creating right edge...");
+    mapEdgeItems_.push_back(InfluenceFieldItem::CreateEdge(
+        Vector2(mapSize.x + edgeParams.DetectionRange * 0.5f, mapSize.y * 0.5f),
+        edgeParams
+    ));
+    LOG_DEBUG("RTSGameState::InitializeStaticFieldItems: Right edge created");
+
+    // Top edge (y = 0)
+    LOG_DEBUG("RTSGameState::InitializeStaticFieldItems: Creating top edge...");
+    mapEdgeItems_.push_back(InfluenceFieldItem::CreateEdge(
+        Vector2(mapSize.x * 0.5f, -edgeParams.DetectionRange * 0.5f),
+        edgeParams
+    ));
+    LOG_DEBUG("RTSGameState::InitializeStaticFieldItems: Top edge created");
+
+    // Bottom edge (y = mapSize.y)
+    LOG_DEBUG("RTSGameState::InitializeStaticFieldItems: Creating bottom edge...");
+    mapEdgeItems_.push_back(InfluenceFieldItem::CreateEdge(
+        Vector2(mapSize.x * 0.5f, mapSize.y + edgeParams.DetectionRange * 0.5f),
+        edgeParams
+    ));
+    LOG_DEBUG("RTSGameState::InitializeStaticFieldItems: Bottom edge created");
+    LOG_DEBUG("RTSGameState::InitializeStaticFieldItems: Completed, created %zu edge items", mapEdgeItems_.size());
+}
+
+void RTSGameState::AddStaticAttractor(const InfluenceFieldItem& attractor) {
+    staticAttractors_.push_back(attractor);
+}
+
+void RTSGameState::ClearStaticAttractors() {
+    staticAttractors_.clear();
+}
+

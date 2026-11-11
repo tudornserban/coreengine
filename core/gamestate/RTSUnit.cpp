@@ -1,1 +1,81 @@
-I2luY2x1ZGUgIlJUU1VuaXQuaCIKI2luY2x1ZGUgIi4uL2ludGVyZmFjZXMvSUJlaGF2aW9yLmgiCgpSVFNVbml0OjpSVFNVbml0KFZlY3RvcjIgc3RhcnRQb3MsIGludCB0ZWFtSWQsIGZsb2F0IHVuaXRSYWRpdXMsIGZsb2F0IHVuaXRNYXhTcGVlZCkKICAgIDogcG9zaXRpb24oc3RhcnRQb3MpCiAgICAsIHZlbG9jaXR5KFZlY3RvcjI6Olplcm8oKSkKICAgICwgYWNjZWxlcmF0aW9uKFZlY3RvcjI6Olplcm8oKSkKICAgICwgbWF4U3BlZWQodW5pdE1heFNwZWVkKQogICAgLCByYWRpdXModW5pdFJhZGl1cykKICAgICwgdGVhbSh0ZWFtSWQpCiAgICAsIHNlbGVjdGVkKGZhbHNlKQogICAgLCBjdXJyZW50SFAoMTAwLjBmKQogICAgLCBtYXhIUCgxMDAuMGYpCiAgICAsIGJhc2VNYXNzKDEwMC4wZikKICAgICwgbWFzc01vZGlmaWVyKDEuMGYpCiAgICAsIHJlc3RpdHV0aW9uKDAuN2YpCiAgICAsIHBvc2l0aW9uQ29ycmVjdGlvbigwLjJmKQogICAgLCBkYW1hZ2VNb2RpZmllcigxLjBmKQogICAgLCBzdGF0ZU1hY2hpbmUodGhpcykKICAgICwgZGVidWdNb2RlKGZhbHNlKQogICAgLCBkZWJ1Z0Rlc3RpbmF0aW9uKFZlY3RvcjI6Olplcm8oKSkKe30KCnZvaWQgUlRTVW5pdDo6VXBkYXRlKGZsb2F0IGRlbHRhVGltZSkgewogICAgaWYgKGRlYnVnTW9kZSkgewogICAgICAgIFZlY3RvcjIgdG9UYXJnZXQgPSBkZWJ1Z0Rlc3RpbmF0aW9uIC0gcG9zaXRpb247CiAgICAgICAgZmxvYXQgZGlzdGFuY2UgPSB0b1RhcmdldC5MZW5ndGgoKTsKCiAgICAgICAgaWYgKGRpc3RhbmNlID4gNS4wZikgewogICAgICAgICAgICBWZWN0b3IyIGRlc2lyZWRWZWxvY2l0eSA9IHRvVGFyZ2V0Lk5vcm1hbGl6ZWQoKSAqIG1heFNwZWVkOwogICAgICAgICAgICBhY2NlbGVyYXRpb24gPSAoZGVzaXJlZFZlbG9jaXR5IC0gdmVsb2NpdHkpICogNS4wZjsKICAgICAgICB9IGVsc2UgewogICAgICAgICAgICBhY2NlbGVyYXRpb24gPSAtdmVsb2NpdHkgKiA1LjBmOwogICAgICAgICAgICBkZWJ1Z01vZGUgPSBmYWxzZTsKICAgICAgICB9CgogICAgICAgIHZlbG9jaXR5ICs9IGFjY2VsZXJhdGlvbiAqIGRlbHRhVGltZTsKICAgICAgICBpZiAodmVsb2NpdHkuTGVuZ3RoU3F1YXJlZCgpID4gbWF4U3BlZWQgKiBtYXhTcGVlZCkgewogICAgICAgICAgICB2ZWxvY2l0eSA9IHZlbG9jaXR5Lk5vcm1hbGl6ZWQoKSAqIG1heFNwZWVkOwogICAgICAgIH0KICAgICAgICBwb3NpdGlvbiArPSB2ZWxvY2l0eSAqIGRlbHRhVGltZTsKICAgIH0KfQoKdm9pZCBSVFNVbml0OjpBcHBseUFjY2VsZXJhdGlvbihWZWN0b3IyIGFjY2VsLCBmbG9hdCBkZWx0YVRpbWUpIHsKICAgIGlmIChkZWJ1Z01vZGUpIHJldHVybjsKCiAgICBhY2NlbGVyYXRpb24gPSBhY2NlbDsKICAgIHZlbG9jaXR5ICs9IGFjY2VsZXJhdGlvbiAqIGRlbHRhVGltZTsKCiAgICBpZiAodmVsb2NpdHkuTGVuZ3RoU3F1YXJlZCgpID4gbWF4U3BlZWQgKiBtYXhTcGVlZCkgewogICAgICAgIHZlbG9jaXR5ID0gdmVsb2NpdHkuTm9ybWFsaXplZCgpICogbWF4U3BlZWQ7CiAgICB9CgogICAgcG9zaXRpb24gKz0gdmVsb2NpdHkgKiBkZWx0YVRpbWU7Cn0KCmZsb2F0IFJUU1VuaXQ6OkNhbGN1bGF0ZU1hc3MoKSBjb25zdCB7CiAgICBpZiAobWF4SFAgPD0gMC4wZikgcmV0dXJuIGJhc2VNYXNzOwogICAgZmxvYXQgaHBSYXRpbyA9IGN1cnJlbnRIUCAvIG1heEhQOwogICAgcmV0dXJuIGJhc2VNYXNzICogaHBSYXRpbyAqIG1hc3NNb2RpZmllcjsKfQoKSUJlaGF2aW9yKiBSVFNVbml0OjpHZXRDdXJyZW50QmVoYXZpb3IoKSB7CiAgICByZXR1cm4gc3RhdGVNYWNoaW5lLkdldEN1cnJlbnRCZWhhdmlvcigpOwp9Cgp2b2lkIFJUU1VuaXQ6OlNldEFnZW50U3RhdGUoY29uc3Qgc3RkOjpzdHJpbmcmIHN0YXRlTmFtZSkgewogICAgR2V0U3RhdGVNYWNoaW5lKCkuU2V0U3RhdGUoc3RhdGVOYW1lKTsKfQoKdm9pZCBSVFNVbml0OjpTZXRBZ2VudFBhcmFtZXRlcihjb25zdCBzdGQ6OnN0cmluZyYgcGFyYW1OYW1lLCBmbG9hdCB2YWx1ZSkgewogICAgSUJlaGF2aW9yKiBjdXJyZW50QmVoYXZpb3IgPSBHZXRTdGF0ZU1hY2hpbmUoKS5HZXRDdXJyZW50QmVoYXZpb3IoKTsKICAgIGlmIChjdXJyZW50QmVoYXZpb3IpIHsKICAgICAgICBhdXRvJiBwYXJhbXMgPSBjdXJyZW50QmVoYXZpb3ItPkdldFBhcmFtZXRlcnMoKTsKICAgICAgICBhdXRvIGl0ID0gcGFyYW1zLmZpbmQocGFyYW1OYW1lKTsKICAgICAgICBpZiAoaXQgIT0gcGFyYW1zLmVuZCgpKSB7CiAgICAgICAgICAgIGl0LT5zZWNvbmQgPSB2YWx1ZTsKICAgICAgICB9CiAgICB9Cn0K
+#include "RTSUnit.h"
+#include "../interfaces/IBehavior.h"
+
+RTSUnit::RTSUnit(Vector2 startPos, int teamId, float unitRadius, float unitMaxSpeed)
+    : position(startPos)
+    , velocity(Vector2::Zero())
+    , acceleration(Vector2::Zero())
+    , maxSpeed(unitMaxSpeed)
+    , radius(unitRadius)
+    , team(teamId)
+    , selected(false)
+    , currentHP(100.0f)
+    , maxHP(100.0f)
+    , baseMass(100.0f)
+    , massModifier(1.0f)
+    , restitution(0.7f)
+    , positionCorrection(0.2f)
+    , damageModifier(1.0f)
+    , stateMachine(this)
+    , debugMode(false)
+    , debugDestination(Vector2::Zero())
+{}
+
+void RTSUnit::Update(float deltaTime) {
+    if (debugMode) {
+        Vector2 toTarget = debugDestination - position;
+        float distance = toTarget.Length();
+
+        if (distance > 5.0f) {
+            Vector2 desiredVelocity = toTarget.Normalized() * maxSpeed;
+            acceleration = (desiredVelocity - velocity) * 5.0f;
+        } else {
+            acceleration = -velocity * 5.0f;
+            debugMode = false;
+        }
+
+        velocity += acceleration * deltaTime;
+        if (velocity.LengthSquared() > maxSpeed * maxSpeed) {
+            velocity = velocity.Normalized() * maxSpeed;
+        }
+        position += velocity * deltaTime;
+    }
+}
+
+void RTSUnit::ApplyAcceleration(Vector2 accel, float deltaTime) {
+    if (debugMode) return;
+
+    acceleration = accel;
+    velocity += acceleration * deltaTime;
+
+    if (velocity.LengthSquared() > maxSpeed * maxSpeed) {
+        velocity = velocity.Normalized() * maxSpeed;
+    }
+
+    position += velocity * deltaTime;
+}
+
+float RTSUnit::CalculateMass() const {
+    if (maxHP <= 0.0f) return baseMass;
+    float hpRatio = currentHP / maxHP;
+    return baseMass * hpRatio * massModifier;
+}
+
+IBehavior* RTSUnit::GetCurrentBehavior() {
+    return stateMachine.GetCurrentBehavior();
+}
+
+void RTSUnit::SetAgentState(const std::string& stateName) {
+    GetStateMachine().SetState(stateName);
+}
+
+void RTSUnit::SetAgentParameter(const std::string& paramName, float value) {
+    IBehavior* currentBehavior = GetStateMachine().GetCurrentBehavior();
+    if (currentBehavior) {
+        auto& params = currentBehavior->GetParameters();
+        auto it = params.find(paramName);
+        if (it != params.end()) {
+            it->second = value;
+        }
+    }
+}

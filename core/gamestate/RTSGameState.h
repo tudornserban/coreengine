@@ -1,1 +1,92 @@
-I3ByYWdtYSBvbmNlCgojaW5jbHVkZSA8dmVjdG9yPgojaW5jbHVkZSA8bWVtb3J5PgojaW5jbHVkZSAiLi4vaW50ZXJmYWNlcy9JR2FtZVVuaXQuaCIKI2luY2x1ZGUgIi4uL2ludGVyZmFjZXMvSVNpbXVsYXRpb25TbmFwc2hvdC5oIgojaW5jbHVkZSAiLi4vYWkvQmVoYXZpb3JDb250ZXh0LmgiCiNpbmNsdWRlICIuLi9tYXRoL1ZlY3RvcjIuaCIKI2luY2x1ZGUgIi4uL21hdGgvRGV0ZXJtaW5pc3RpY1JORy5oIgojaW5jbHVkZSAiLi4vY29tYmF0L1NlbGVjdGlvblN5c3RlbS5oIgojaW5jbHVkZSAiLi4vY29tYmF0L0NvbW1hbmRTeXN0ZW0uaCIKI2luY2x1ZGUgIi4uL2luZmx1ZW5jZS9JbmZsdWVuY2VGaWVsZEl0ZW0uaCIKI2luY2x1ZGUgIi4uL21hcC9NYXAuaCIKI2luY2x1ZGUgIi4uL2NvbGxpc2lvbi9Db2xsaXNpb25TeXN0ZW0uaCIKI2luY2x1ZGUgIi4uL2NvbWJhdC9FeHBsb3Npb24uaCIKCmNsYXNzIFJUU0dhbWVTdGF0ZSA6IHB1YmxpYyBJU2ltdWxhdGlvblNuYXBzaG90CnsKcHJpdmF0ZToKICAgIHN0ZDo6dmVjdG9yPHN0ZDo6dW5pcXVlX3B0cjxJR2FtZVVuaXQ+PiB1bml0c187CiAgICBTZWxlY3Rpb25TeXN0ZW0gc2VsZWN0aW9uU3lzdGVtXzsKICAgIENvbW1hbmRTeXN0ZW0gY29tbWFuZFN5c3RlbV87CgogICAgc3RkOjp1bmlxdWVfcHRyPE1hcD4gbWFwXzsKICAgIGZsb2F0IHBlcmNlcHRpb25SYWRpdXNfOyAgLy8gRGVmYXVsdCByYWRpdXMgZm9yIG5lYXJieSB1bml0IHF1ZXJpZXMKICAgIHN0ZDo6dmVjdG9yPEluZmx1ZW5jZUZpZWxkSXRlbT4gbWFwRWRnZUl0ZW1zXzsgICAgICAgLy8gTWFwIGJvdW5kYXJ5IGZpZWxkIGl0ZW1zIChkZXJpdmVkIGZyb20gTWFwKQogICAgc3RkOjp2ZWN0b3I8SW5mbHVlbmNlRmllbGRJdGVtPiBzdGF0aWNBdHRyYWN0b3JzXzsgIC8vIFN0YXRpYyBhdHRyYWN0b3JzIChnb2FscywgcmVzb3VyY2VzLCBldGMuKQogICAgCiAgICAvLyBEZXRlcm1pbmlzdGljIFJORyBmb3IgcmVwcm9kdWNpYmxlIHJhbmRvbW5lc3MKICAgIERldGVybWluaXN0aWNSTkcgcm5nXzsKCiAgICAvLyBDb2xsaXNpb24gc3lzdGVtCiAgICBDb2xsaXNpb25TeXN0ZW0gY29sbGlzaW9uU3lzdGVtXzsKCiAgICAvLyBFeHBsb3Npb24gc3lzdGVtCiAgICBzdGQ6OnZlY3RvcjxFeHBsb3Npb24+IGV4cGxvc2lvbnNfOwoKcHVibGljOgogICAgUlRTR2FtZVN0YXRlKFZlY3RvcjIgbWFwQm91bmRzLCB1aW50NjRfdCBybmdTZWVkID0gMCk7CiAgICBSVFNHYW1lU3RhdGUoc3RkOjp1bmlxdWVfcHRyPE1hcD4gbWFwSW5zdGFuY2UsIHVpbnQ2NF90IHJuZ1NlZWQgPSAwKTsKCiAgICAvLyBVbml0IG1hbmFnZW1lbnQKICAgIHZvaWQgQWRkVW5pdChzdGQ6OnVuaXF1ZV9wdHI8SUdhbWVVbml0PiB1bml0KTsKICAgIHZvaWQgUmVtb3ZlVW5pdChJR2FtZVVuaXQqIHVuaXQpOwoKICAgIC8vIE1haW4gdXBkYXRlCiAgICB2b2lkIFVwZGF0ZShmbG9hdCBkZWx0YVRpbWUpOwoKICAgIC8vIFF1ZXJpZXMKICAgIHN0ZDo6dmVjdG9yPElHYW1lVW5pdCo+IEdldFVuaXRzSW5SYWRpdXMoVmVjdG9yMiBwb3NpdGlvbiwgZmxvYXQgcmFkaXVzKSBjb25zdDsKICAgIHN0ZDo6dmVjdG9yPElHYW1lVW5pdCo+IEdldFRlYW1Vbml0c0luUmFkaXVzKFZlY3RvcjIgcG9zaXRpb24sIGZsb2F0IHJhZGl1cywgaW50IHRlYW0pIGNvbnN0OwogICAgc3RkOjp2ZWN0b3I8SUdhbWVVbml0Kj4gR2V0QWxsVW5pdHMoKSBjb25zdCBvdmVycmlkZTsKICAgIElHYW1lVW5pdCogR2V0VW5pdEF0UG9zaXRpb24oVmVjdG9yMiBwb3NpdGlvbiwgZmxvYXQgdG9sZXJhbmNlID0gMTUuMGYpIGNvbnN0OwoKICAgIC8vIFN5c3RlbXMKICAgIFNlbGVjdGlvblN5c3RlbSYgR2V0U2VsZWN0aW9uU3lzdGVtKCkgeyByZXR1cm4gc2VsZWN0aW9uU3lzdGVtXzsgfQogICAgQ29tbWFuZFN5c3RlbSYgR2V0Q29tbWFuZFN5c3RlbSgpIHsgcmV0dXJuIGNvbW1hbmRTeXN0ZW1fOyB9CiAgICBDb2xsaXNpb25TeXN0ZW0mIEdldENvbGxpc2lvblN5c3RlbSgpIHsgcmV0dXJuIGNvbGxpc2lvblN5c3RlbV87IH0KICAgIERldGVybWluaXN0aWNSTkcmIEdldFJORygpIHsgcmV0dXJuIHJuZ187IH0KICAgIGNvbnN0IERldGVybWluaXN0aWNSTkcmIEdldFJORygpIGNvbnN0IHsgcmV0dXJuIHJuZ187IH0KCiAgICAvLyBQZXJjZXB0aW9uIHJhZGl1cwogICAgdm9pZCBTZXRQZXJjZXB0aW9uUmFkaXVzKGZsb2F0IHJhZGl1cykgeyBwZXJjZXB0aW9uUmFkaXVzXyA9IHJhZGl1czsgfQogICAgZmxvYXQgR2V0UGVyY2VwdGlvblJhZGl1cygpIGNvbnN0IHsgcmV0dXJuIHBlcmNlcHRpb25SYWRpdXNfOyB9CgogICAgLy8gR2V0dGVycwogICAgVmVjdG9yMiBHZXRNYXBTaXplKCkgY29uc3Qgb3ZlcnJpZGU7CiAgICBWZWN0b3IyIEdldE1hcENlbnRlcigpIGNvbnN0OwogICAgTWFwKiBHZXRNYXAoKSB7IHJldHVybiBtYXBfLmdldCgpOyB9CiAgICBjb25zdCBNYXAqIEdldE1hcCgpIGNvbnN0IHsgcmV0dXJuIG1hcF8uZ2V0KCk7IH0KICAgIGNvbnN0IHN0ZDo6dmVjdG9yPEluZmx1ZW5jZUZpZWxkSXRlbT4mIEdldFN0YXRpY0l0ZW1zKCkgY29uc3Q7CiAgICBjb25zdCBzdGQ6OnZlY3RvcjxJbmZsdWVuY2VGaWVsZEl0ZW0+JiBHZXRTdGF0aWNBdHRyYWN0b3JzKCkgY29uc3QgeyByZXR1cm4gc3RhdGljQXR0cmFjdG9yc187IH0KCiAgICAvLyBPYnN0YWNsZSBtYW5hZ2VtZW50IChmb3IgYmFja3dhcmQgY29tcGF0aWJpbGl0eSAtIG5vdyB1c2VzIE1hcCBlbnRpdGllcykKICAgIHZvaWQgQWRkT2JzdGFjbGUoY29uc3QgSW5mbHVlbmNlRmllbGRJdGVtJiBvYnN0YWNsZSk7CiAgICB2b2lkIENsZWFyT2JzdGFjbGVzKCk7CiAgICAKICAgIC8vIEF0dHJhY3RvciBtYW5hZ2VtZW50CiAgICB2b2lkIEFkZFN0YXRpY0F0dHJhY3Rvcihjb25zdCBJbmZsdWVuY2VGaWVsZEl0ZW0mIGF0dHJhY3Rvcik7CiAgICB2b2lkIENsZWFyU3RhdGljQXR0cmFjdG9ycygpOwoKICAgIC8vIEV4cGxvc2lvbiBtYW5hZ2VtZW50CiAgICB2b2lkIEFkZEV4cGxvc2lvbihjb25zdCBFeHBsb3Npb24mIGV4cGxvc2lvbik7CiAgICBjb25zdCBzdGQ6OnZlY3RvcjxFeHBsb3Npb24+JiBHZXRFeHBsb3Npb25zKCkgY29uc3QgeyByZXR1cm4gZXhwbG9zaW9uc187IH0KCiAgICAvLyBEZWJ1ZyBhY2Nlc3MKICAgIEJlaGF2aW9yQ29udGV4dCBCdWlsZENvbnRleHRGb3JVbml0KElHYW1lVW5pdCogdW5pdCwgZmxvYXQgZGVsdGFUaW1lKTsKCnByaXZhdGU6CiAgICB2b2lkIEluaXRpYWxpemVTdGF0aWNGaWVsZEl0ZW1zKCk7Cn07Cgo=
+#pragma once
+
+#include <vector>
+#include <memory>
+#include "../interfaces/IGameUnit.h"
+#include "../interfaces/ISimulationSnapshot.h"
+#include "../ai/BehaviorContext.h"
+#include "../math/Vector2.h"
+#include "../math/DeterministicRNG.h"
+#include "../combat/SelectionSystem.h"
+#include "../combat/CommandSystem.h"
+#include "../influence/InfluenceFieldItem.h"
+#include "../map/Map.h"
+#include "../collision/CollisionSystem.h"
+#include "../combat/Explosion.h"
+
+class RTSGameState : public ISimulationSnapshot
+{
+private:
+    std::vector<std::unique_ptr<IGameUnit>> units_;
+    SelectionSystem selectionSystem_;
+    CommandSystem commandSystem_;
+
+    std::unique_ptr<Map> map_;
+    float perceptionRadius_;  // Default radius for nearby unit queries
+    std::vector<InfluenceFieldItem> mapEdgeItems_;       // Map boundary field items (derived from Map)
+    std::vector<InfluenceFieldItem> staticAttractors_;  // Static attractors (goals, resources, etc.)
+    
+    // Deterministic RNG for reproducible randomness
+    DeterministicRNG rng_;
+
+    // Collision system
+    CollisionSystem collisionSystem_;
+
+    // Explosion system
+    std::vector<Explosion> explosions_;
+
+public:
+    RTSGameState(Vector2 mapBounds, uint64_t rngSeed = 0);
+    RTSGameState(std::unique_ptr<Map> mapInstance, uint64_t rngSeed = 0);
+
+    // Unit management
+    void AddUnit(std::unique_ptr<IGameUnit> unit);
+    void RemoveUnit(IGameUnit* unit);
+
+    // Main update
+    void Update(float deltaTime);
+
+    // Queries
+    std::vector<IGameUnit*> GetUnitsInRadius(Vector2 position, float radius) const;
+    std::vector<IGameUnit*> GetTeamUnitsInRadius(Vector2 position, float radius, int team) const;
+    std::vector<IGameUnit*> GetAllUnits() const override;
+    IGameUnit* GetUnitAtPosition(Vector2 position, float tolerance = 15.0f) const;
+
+    // Systems
+    SelectionSystem& GetSelectionSystem() { return selectionSystem_; }
+    CommandSystem& GetCommandSystem() { return commandSystem_; }
+    CollisionSystem& GetCollisionSystem() { return collisionSystem_; }
+    DeterministicRNG& GetRNG() { return rng_; }
+    const DeterministicRNG& GetRNG() const { return rng_; }
+
+    // Perception radius
+    void SetPerceptionRadius(float radius) { perceptionRadius_ = radius; }
+    float GetPerceptionRadius() const { return perceptionRadius_; }
+
+    // Getters
+    Vector2 GetMapSize() const override;
+    Vector2 GetMapCenter() const;
+    Map* GetMap() { return map_.get(); }
+    const Map* GetMap() const { return map_.get(); }
+    const std::vector<InfluenceFieldItem>& GetStaticItems() const;
+    const std::vector<InfluenceFieldItem>& GetStaticAttractors() const { return staticAttractors_; }
+
+    // Obstacle management (for backward compatibility - now uses Map entities)
+    void AddObstacle(const InfluenceFieldItem& obstacle);
+    void ClearObstacles();
+    
+    // Attractor management
+    void AddStaticAttractor(const InfluenceFieldItem& attractor);
+    void ClearStaticAttractors();
+
+    // Explosion management
+    void AddExplosion(const Explosion& explosion);
+    const std::vector<Explosion>& GetExplosions() const { return explosions_; }
+
+    // Debug access
+    BehaviorContext BuildContextForUnit(IGameUnit* unit, float deltaTime);
+
+private:
+    void InitializeStaticFieldItems();
+};
+
