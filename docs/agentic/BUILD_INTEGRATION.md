@@ -24,6 +24,7 @@ python3 scripts/test_check_module_deps.py
 ./scripts/run-serialization-module-tests.sh
 ./scripts/run-collision-module-tests.sh
 ./scripts/run-combat-module-tests.sh
+./scripts/run-session-module-tests.sh
 ```
 
 `./scripts/check-module-deps.sh` also runs `scripts/check_docs_links.py` and `scripts/test_check_docs_links.py`.
@@ -46,9 +47,9 @@ There is **no** `./scripts/run-gamestate-module-tests.sh`; `core.gamestate` is c
 | `math-module-pilot` | `check-module-deps.sh`, `run-math-module-tests.sh` |
 | `influence-module-pilot` | `check-module-deps.sh`, `run-influence-module-tests.sh` |
 | `logging-module-pilot` | `check-module-deps.sh`, `run-logging-module-tests.sh` |
-| `build-and-test` | `check-module-deps.sh`, full configure/build, `ctest` (299 tests) |
+| `build-and-test` | `check-module-deps.sh`, full configure/build, `ctest` (366 tests) |
 
-**Not in CI:** `run-influence-types-module-tests.sh`, `run-interfaces-module-tests.sh`, `run-gameloop-module-tests.sh`, `run-map-module-tests.sh`, `run-ai-module-tests.sh`, `run-serialization-module-tests.sh`, `run-collision-module-tests.sh`, `run-combat-module-tests.sh`, `verify-ffi-build.sh`, optional SDL2 viewer builds.
+**Not in CI:** `run-influence-types-module-tests.sh`, `run-interfaces-module-tests.sh`, `run-gameloop-module-tests.sh`, `run-map-module-tests.sh`, `run-ai-module-tests.sh`, `run-serialization-module-tests.sh`, `run-collision-module-tests.sh`, `run-combat-module-tests.sh`, `run-session-module-tests.sh`, `verify-ffi-build.sh`, optional SDL2 viewer builds.
 
 ## FFI shared library (`BUILD_FFI=ON`)
 

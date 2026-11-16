@@ -18,6 +18,7 @@ _MODULE_LAYERS: dict[str, str] = {
     "core.math": "Foundation",
     "core.influence.types": "Foundation",
     "core.logging": "Foundation",
+    "core.session": "Systems",
     "core.interfaces": "Contracts",
     "core.ai": "Systems",
     "core.influence": "Systems",
@@ -61,6 +62,7 @@ INCLUDE_ENFORCED_MODULES = frozenset(
         "core.collision",
         "core.combat",
         "core.gamestate",
+        "core.session",
     }
 )
 

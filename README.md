@@ -31,6 +31,7 @@ Deeper reading: [Architecture](docs/ARCHITECTURE.md) · [Porting guide](docs/POR
 | `core.gamestate` | [core/gamestate](core/gamestate/MODULE.md) | `RTSGameState`, the simulation hub (units, map, AI tick, collision, explosions, RNG), `RTSUnit`, `GameStateManager` |
 | `core.serialization` | [core/serialization](core/serialization/MODULE.md) | `GameStateSerializer`: JSON snapshot of the state (format `CoreEngine-JSON-v1`) |
 | `core.logging` | [core/logging](core/logging/MODULE.md) | Singleton `VenusWars::Logging::Logger` with levels, optional file output, `LOG_DEBUG…LOG_FATAL` macros |
+| `core.session` | [core/session](core/session/MODULE.md) | Lobby and client-server session: offline deterministic resolution, online lockstep with input delay and rollback. No sockets in `core/` |
 | `core.interfaces` | [core/interfaces](core/interfaces/MODULE.md) | The abstract contracts (next section); header-only |
 | `core.ai_advanced` | `core/ai_advanced/` | Experimental: `Genome`, `BotPlayer`, `GeneticTrainer` (no MODULE.md, includes not enforced) |
 
@@ -49,6 +50,7 @@ graph TD
   gs[core.gamestate] --> ai & infl & coll & combat & map & ifc & logging & math
   ser[core.serialization] --> gs & ifc
   adv[core.ai_advanced] -.-> gs
+  session[core.session]
 ```
 
 ## Interfaces

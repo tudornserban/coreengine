@@ -1,6 +1,6 @@
 # Module dependency policy (draft)
 
-Enforcement is **active** for `core.math`, `core.influence.types`, `core.influence`, `core.logging`, `core.interfaces`, `core.gameloop`, `core.map`, `core.ai`, `core.serialization`, `core.collision`, `core.combat`, and `core.gamestate` (`scripts/check-module-deps.sh`). **`core.ai_advanced`** remains manifest-only until opted in. **`requires` graphs must be acyclic** — no checker exceptions. Standalone `COREENGINE_*_STANDALONE` test executables in the top-level `CMakeLists.txt` may only link `coreengine_*` object libraries for that module and the transitive closure of its manifest `requires` (header-only `core.interfaces` has no object target). The link checker tokenises each `target_link_libraries` call literally: `${...}` variables and unexpanded generator expressions fail the check—list required `coreengine_*` libraries explicitly in CMake.
+Enforcement is **active** for `core.math`, `core.influence.types`, `core.influence`, `core.logging`, `core.interfaces`, `core.gameloop`, `core.map`, `core.ai`, `core.serialization`, `core.collision`, `core.combat`, `core.gamestate`, and `core.session` (`scripts/check-module-deps.sh`). **`core.ai_advanced`** remains manifest-only until opted in. **`requires` graphs must be acyclic** — no checker exceptions. Standalone `COREENGINE_*_STANDALONE` test executables in the top-level `CMakeLists.txt` may only link `coreengine_*` object libraries for that module and the transitive closure of its manifest `requires` (header-only `core.interfaces` has no object target). The link checker tokenises each `target_link_libraries` call literally: `${...}` variables and unexpanded generator expressions fail the check—list required `coreengine_*` libraries explicitly in CMake.
 
 The committed manifest-only **`requires` graph** (machine-readable JSON plus a human summary) lives under [`docs/deps/`](../deps/). `scripts/check_module_deps.py` regenerates and byte-compares these files on every run so committed artifacts cannot drift from the manifests.
 
@@ -8,7 +8,7 @@ The committed manifest-only **`requires` graph** (machine-readable JSON plus a h
 
 1. **Foundation:** `core.math`, `core.influence.types`, `core.logging`
 2. **Contracts:** `core.interfaces` (may depend on foundation / value-type leaves — not on `core.influence` systems)
-3. **Systems:** `core.ai`, `core.influence`, `core.collision`, `core.map`, `core.gameloop`, `core.combat`
+3. **Systems:** `core.ai`, `core.influence`, `core.collision`, `core.map`, `core.gameloop`, `core.combat`, `core.session`
 4. **Integration:** `core.gamestate`, `core.serialization`
 5. **Experimental:** `core.ai_advanced`
 

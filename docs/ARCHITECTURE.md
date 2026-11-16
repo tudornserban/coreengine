@@ -30,7 +30,8 @@
 │   ├── gamestate/
 │   ├── logging/
 │   ├── ai_advanced/
-│   └── serialization/
+│   ├── serialization/
+│   └── session/
 ├── platform/       ← LAYER 2: Platform adapter headers (implement core/ interfaces)
 │   ├── sdl2/       (SDLRenderer / SDLInputReader — stubs; no .cpp in repo)
 │   ├── raylib/     (RaylibRenderer::Render() unimplemented; header-only)
@@ -137,6 +138,16 @@ Directly from VenusWars — broadphase SpatialGrid + narrowphase circle detectio
 
 ### `core/serialization/`
 - `GameStateSerializer` — JSON snapshot of RTSGameState (for replay, FFI, server)
+
+### `core/session/`
+Lobby and client-server session. No sockets in `core/` — `ISessionTransport` is the byte pipe, and `InProcessHost` is the reference server plus clients in one process.
+
+- `SessionServer` / `SessionClient` — create/join/ready lobby, matchmaking by `GameTitle` + `PlayMode`
+- `PlayMode::OfflineResolution` — each client submits a `DecisionPlan`; `ResolveOffline` runs an `IDeterministicMatch` on the server and returns one `MatchOutcome` (same hash a client gets by replaying)
+- `PlayMode::OnlineSync` — server-authoritative lockstep. Input delay tracks the worst RTT; late commands inside the rollback window restore a snapshot and resimulate; remote presentation waits half an RTT
+- `GameTitle` — `DynamicGo`, `AscendantExpanse`, `ZodiacWars`. Each game supplies `IMatchFactory`; this module does not contain their rules
+
+The authoritative tick clock stays on the server (`AdvanceOnlineMatches`). Clients send commands; they do not advance time.
 
 ---
 

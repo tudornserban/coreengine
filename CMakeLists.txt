@@ -20,6 +20,7 @@ option(COREENGINE_AI_STANDALONE "Build only core.ai tests (no full coreengine)" 
 option(COREENGINE_SERIALIZATION_STANDALONE "Build only core.serialization tests (no full coreengine)" OFF)
 option(COREENGINE_COLLISION_STANDALONE "Build only core.collision tests (no full coreengine)" OFF)
 option(COREENGINE_COMBAT_STANDALONE "Build only core.combat tests (no full coreengine)" OFF)
+option(COREENGINE_SESSION_STANDALONE "Build only core.session tests (no full coreengine)" OFF)
 
 set(_standalone_modes 0)
 if(COREENGINE_MATH_STANDALONE)
@@ -53,6 +54,9 @@ if(COREENGINE_COLLISION_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(COREENGINE_COMBAT_STANDALONE)
+    math(EXPR _standalone_modes "${_standalone_modes}+1")
+endif()
+if(COREENGINE_SESSION_STANDALONE)
     math(EXPR _standalone_modes "${_standalone_modes}+1")
 endif()
 if(_standalone_modes GREATER 1)
@@ -357,6 +361,26 @@ elseif(COREENGINE_COMBAT_STANDALONE)
     )
     include(GoogleTest)
     gtest_discover_tests(coreengine_combat_tests)
+elseif(COREENGINE_SESSION_STANDALONE)
+    add_subdirectory(core/session)
+    if(NOT BUILD_TESTS)
+        message(FATAL_ERROR "COREENGINE_SESSION_STANDALONE requires BUILD_TESTS=ON")
+    endif()
+    enable_testing()
+    find_package(GTest REQUIRED)
+
+    add_executable(coreengine_session_tests
+        tests/UnitTests/Session/SessionHeaderCompileTest.cpp
+        tests/UnitTests/Session/SessionTest.cpp
+    )
+    target_include_directories(coreengine_session_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(coreengine_session_tests
+        coreengine_session
+        GTest::gtest
+        GTest::gtest_main
+    )
+    include(GoogleTest)
+    gtest_discover_tests(coreengine_session_tests)
 else()
     add_subdirectory(core/math)
     add_subdirectory(core/influence_types)
@@ -369,6 +393,7 @@ else()
     add_subdirectory(core/collision)
     add_subdirectory(core/gamestate)
     add_subdirectory(core/serialization)
+    add_subdirectory(core/session)
 
     file(GLOB_RECURSE CORE_SOURCES
         "core/interfaces/*.cpp"
@@ -388,6 +413,7 @@ else()
         $<TARGET_OBJECTS:coreengine_collision>
         $<TARGET_OBJECTS:coreengine_gamestate>
         $<TARGET_OBJECTS:coreengine_serialization>
+        $<TARGET_OBJECTS:coreengine_session>
     )
     target_include_directories(coreengine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 

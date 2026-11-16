@@ -30,6 +30,7 @@ DynamicGO already has its own clean codebase. Integration path:
 - `GeneticTrainer` / `BotPlayer` are in `core/ai_advanced/`
 - Migrate `GameEngine.h` to use `RTSGameState` + `GameLogicEngine` from CoreEngine
 - Keep DynamicGO-specific `AnchorUnit` as a game layer type (extends `RTSUnit`)
+- Multiplayer goes through `core/session/`. Implement `IDeterministicMatch` for DynamicGo rules and pass an `IMatchFactory` to `SessionServer` (or `InProcessHost` for local play). `GameTitle::DynamicGo` is the queue key. Use `PlayMode::OfflineResolution` when the server should play the whole match from submitted plans, and `PlayMode::OnlineSync` for a live lockstep match. AscendantExpanse (`GameTitle::AscendantExpanse`) and ZodiacWars (`GameTitle::ZodiacWars`) use the same session API when those games take it up; this repo does not ship their rules.
 
 ---
 

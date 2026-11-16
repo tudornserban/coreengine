@@ -1,0 +1,26 @@
+{
+  "id": "core.session",
+  "version": "1.0.0",
+  "path": "core/session",
+  "exports": [
+    "GameTitle",
+    "PlayMode",
+    "IDeterministicMatch",
+    "IMatchFactory",
+    "ISessionTransport",
+    "InProcessTransport",
+    "InProcessHost",
+    "SessionServer",
+    "SessionClient",
+    "OnlineMatch",
+    "ResolveOffline",
+    "LatencyProfile",
+    "LobbyView",
+    "DecisionPlan",
+    "MatchOutcome",
+    "PlayerCommand"
+  ],
+  "requires": {},
+  "tags": ["multiplayer", "deterministic"],
+  "notes": "Lobby, offline server resolution, and online lockstep. No sockets in core/. DynamicGo, AscendantExpanse, and ZodiacWars supply IDeterministicMatch."
+}

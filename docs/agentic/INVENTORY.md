@@ -8,7 +8,7 @@
 
 ## 1. Logical modules under `core/`
 
-Registry: [modules/registry.json](modules/registry.json) (13 modules). Subfolders `Behaviors/`, `Conditions/`, and `MapComponents/` belong to their parent module.
+Registry: [modules/registry.json](modules/registry.json) (14 modules). Subfolders `Behaviors/`, `Conditions/`, and `MapComponents/` belong to their parent module.
 
 | Module ID | Path | Role | OBJECT lib | Include enforced |
 |-----------|------|------|------------|------------------|
@@ -23,6 +23,7 @@ Registry: [modules/registry.json](modules/registry.json) (13 modules). Subfolder
 | `core.collision` | `core/collision/` | Spatial grid, detection, resolution | yes | yes |
 | `core.combat` | `core/combat/` | Selection, commands, explosions; `CombatManager` stub | yes | yes |
 | `core.serialization` | `core/serialization/` | JSON snapshot serializer | yes | yes |
+| `core.session` | `core/session/` | Lobby, offline resolution, online lockstep | yes | yes |
 | `core.gamestate` | `core/gamestate/` | `RTSGameState` hub, `RTSUnit` | yes | yes |
 | `core.ai_advanced` | `core/ai_advanced/` | Genome / bot trainer (experimental) | *(in monolithic glob)* | **manifest only** |
 
@@ -33,7 +34,7 @@ Registry: [modules/registry.json](modules/registry.json) (13 modules). Subfolder
 | **Platform** | `platform/{null,sdl2,raylib,unity,unreal}/` | Header sketches; SDL2/Raylib **`Render()` unimplemented**, no `.cpp` in-repo. `BUILD_SDL2` / `BUILD_RAYLIB` **fail configure** with an explicit stub message (before `find_package`) until implementations exist — they do **not** ship working adapter libraries today. Runnable SDL2 window: `tools/viewer` + `COREENGINE_BUILD_SDL2_VIEWER`. No `#include` from `core/` into platform (verified). |
 | **FFI** | `ffi/c_api.{h,cpp}` + `ffi/python`, `ffi/lua` | Shared lib `coreengine_ffi` when `BUILD_FFI=ON`; links **private** to monolithic `coreengine`. Public boundary is C types in `c_api.h`. |
 | **Tests** | `tests/UnitTests/<Area>/`, `tests/IntegrationTests/` | Single executable `coreengine_tests` when `BUILD_TESTS=ON`; links `coreengine` + GTest. Mirrors core areas (Math, AI, Collision, …). |
-| **Scripts** | `scripts/run-*-module-tests.sh` | Eleven standalone runners (no `gamestate` runner — use full `ctest`). |
+| **Scripts** | `scripts/run-*-module-tests.sh` | Twelve standalone runners (no `gamestate` runner — use full `ctest`). |
 | **Docs** | `docs/ARCHITECTURE.md`, guides | Authoritative subsystem descriptions; coding rules in `docs/CODING_GUIDELINES.md`. |
 
 ---
@@ -46,7 +47,7 @@ Registry: [modules/registry.json](modules/registry.json) (13 modules). Subfolder
 |--------|---------|--------|
 | (none) | — | Static library `coreengine` (OBJECT libs per module) |
 | `BUILD_FFI` | OFF | Shared `coreengine_ffi` |
-| `BUILD_TESTS` | OFF | `coreengine_tests` + `ctest` discovery (299 tests) |
+| `BUILD_TESTS` | OFF | `coreengine_tests` + `ctest` discovery (366 tests) |
 | `BUILD_SDL2` | OFF | Intended `coreengine_sdl2` static lib; **configure fails** with stub message while headers-only (no `.cpp`) |
 | `BUILD_RAYLIB` | OFF | Intended `coreengine_raylib` static lib; **configure fails** with stub message while headers-only (no `.cpp`) |
 | `COREENGINE_BUILD_SDL2_VIEWER` | OFF | `coreengine_sdl2_viewer` + optional viewer tests (needs SDL2; `libsdl2-dev`) |
@@ -61,7 +62,7 @@ cmake --build build --parallel
 ctest --output-on-failure
 ```
 
-**Recommended local merge gate** — [BUILD_INTEGRATION.md](BUILD_INTEGRATION.md) and [AGENTS.md](../../AGENTS.md#verification) (full `ctest`, all 11 standalone runners, guard scripts, doc links).
+**Recommended local merge gate** — [BUILD_INTEGRATION.md](BUILD_INTEGRATION.md) and [AGENTS.md](../../AGENTS.md#verification) (full `ctest`, all 12 standalone runners, guard scripts, doc links).
 
 **Agentic dependency check** (manifests, committed `docs/deps/*`, `#include` boundaries, `core.interfaces` changelog heading, standalone link closure):
 
@@ -70,7 +71,7 @@ ctest --output-on-failure
 python3 scripts/test_check_module_deps.py
 ```
 
-### Standalone module runners (11)
+### Standalone module runners (12)
 
 | Script | Module |
 |--------|--------|
@@ -85,6 +86,7 @@ python3 scripts/test_check_module_deps.py
 | `./scripts/run-serialization-module-tests.sh` | `core.serialization` |
 | `./scripts/run-collision-module-tests.sh` | `core.collision` |
 | `./scripts/run-combat-module-tests.sh` | `core.combat` |
+| `./scripts/run-session-module-tests.sh` | `core.session` |
 
 There is **no** `run-gamestate-module-tests.sh`; validate `core.gamestate` via full `ctest` and manifest include rules.
 
@@ -148,6 +150,7 @@ See committed [docs/deps/graph.json](../deps/graph.json) and [SUMMARY.md](../dep
 | `core.combat` | `ExplosionTest`, `CommandSystemTest`, `CommandSystemAgentContractTest`, header compile | Standalone runner |
 | `core.gamestate` | `GamestateModuleHeaderCompileTest`, `RTSGameStateNonRTSUnitGateTest`, `RTSGameStateCharacterizationTest` | `DeterminismTest`; **no** standalone runner |
 | `core.serialization` | `SerializationModuleHeaderCompileTest`, `GameStateSerializerCharacterizationTest`, `GameStateSerializerSnapshotFakeTest` | Standalone runner |
+| `core.session` | `SessionTest`, `SessionHeaderCompileTest` | Standalone runner |
 | `core.interfaces` | `InterfacesModuleHeaderCompileTest`, `IGameLogicRendererDefaultSnapshotTest`, `GameStateInterfaceForwardCompileTest` | Standalone runner |
 | `core.ai_advanced` | — | Manifest only |
 
