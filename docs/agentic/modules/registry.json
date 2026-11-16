@@ -13,6 +13,7 @@
     "core.logging",
     "core.map",
     "core.math",
-    "core.serialization"
+    "core.serialization",
+    "core.session"
   ]
 }

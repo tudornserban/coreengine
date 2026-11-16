@@ -56,6 +56,7 @@ python3 scripts/test_check_module_deps.py
 ./scripts/run-serialization-module-tests.sh
 ./scripts/run-collision-module-tests.sh
 ./scripts/run-combat-module-tests.sh
+./scripts/run-session-module-tests.sh
 ./scripts/check_docs_links.py
 python3 scripts/test_check_docs_links.py
 ```
@@ -64,7 +65,7 @@ Optional (not in `.gitlab-ci.yml`): `./scripts/verify-ffi-build.sh`
 
 GitLab CI runs `check-module-deps.sh`, full `ctest` in `build-and-test`, and standalone runners for **math**, **influence**, and **logging** only — see [docs/agentic/BUILD_INTEGRATION.md](docs/agentic/BUILD_INTEGRATION.md).
 
-**Include enforcement:** `./scripts/check-module-deps.sh` enforces `#include` boundaries for opted-in registry modules (see `INCLUDE_ENFORCED_MODULES` in `scripts/check_module_deps.py`), including `core.gameloop` as of Phase 3 A3.2, `core.map` as of Phase 3 A3.3, `core.ai` as of Phase 3 A3.4, `core.serialization` as of Phase 3 A3.5, `core.collision` as of R1.3 (A3.6), `core.combat` as of R1.6, and `core.gamestate` as of R2.1.
+**Include enforcement:** `./scripts/check-module-deps.sh` enforces `#include` boundaries for opted-in registry modules (see `INCLUDE_ENFORCED_MODULES` in `scripts/check_module_deps.py`), including `core.gameloop` as of Phase 3 A3.2, `core.map` as of Phase 3 A3.3, `core.ai` as of Phase 3 A3.4, `core.serialization` as of Phase 3 A3.5, `core.collision` as of R1.3 (A3.6), `core.combat` as of R1.6, `core.gamestate` as of R2.1, and `core.session` (lobby, offline resolution, online lockstep).
 
 See [docs/agentic/BUILD_INTEGRATION.md](docs/agentic/BUILD_INTEGRATION.md).
 

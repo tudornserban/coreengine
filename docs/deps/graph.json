@@ -320,6 +320,13 @@
         "core.interfaces": "^1.0.0"
       },
       "version": "1.1.0"
+    },
+    {
+      "id": "core.session",
+      "includeEnforced": true,
+      "path": "core/session",
+      "requires": {},
+      "version": "1.0.0"
     }
   ],
   "schemaVersion": 1
