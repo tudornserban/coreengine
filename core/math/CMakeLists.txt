@@ -4,4 +4,4 @@ set(CORE_MATH_SOURCES
 )
 
 add_library(coreengine_math OBJECT ${CORE_MATH_SOURCES})
-target_include_directories(coreengine_math PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories(coreengine_math PUBLIC ${PROJECT_SOURCE_DIR})

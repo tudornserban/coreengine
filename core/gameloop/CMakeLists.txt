@@ -7,4 +7,4 @@ set(CORE_GAMELOOP_SOURCES
 )
 
 add_library(coreengine_gameloop OBJECT ${CORE_GAMELOOP_SOURCES})
-target_include_directories(coreengine_gameloop PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories(coreengine_gameloop PUBLIC ${PROJECT_SOURCE_DIR})

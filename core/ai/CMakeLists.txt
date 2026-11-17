@@ -14,4 +14,4 @@ set(CORE_AI_SOURCES
 )
 
 add_library(coreengine_ai OBJECT ${CORE_AI_SOURCES})
-target_include_directories(coreengine_ai PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories(coreengine_ai PUBLIC ${PROJECT_SOURCE_DIR})

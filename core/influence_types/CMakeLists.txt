@@ -4,4 +4,4 @@ set(CORE_INFLUENCE_TYPES_SOURCES
 )
 
 add_library(coreengine_influence_types OBJECT ${CORE_INFLUENCE_TYPES_SOURCES})
-target_include_directories(coreengine_influence_types PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories(coreengine_influence_types PUBLIC ${PROJECT_SOURCE_DIR})

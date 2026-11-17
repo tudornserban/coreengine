@@ -7,4 +7,4 @@ set(CORE_COMBAT_SOURCES
 )
 
 add_library(coreengine_combat OBJECT ${CORE_COMBAT_SOURCES})
-target_include_directories(coreengine_combat PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories(coreengine_combat PUBLIC ${PROJECT_SOURCE_DIR})
