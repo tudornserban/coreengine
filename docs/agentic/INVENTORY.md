@@ -21,7 +21,7 @@ Registry: [modules/registry.json](modules/registry.json) (14 modules). Subfolder
 | `core.map` | `core/map/` | ECS map, placement validation | yes | yes |
 | `core.ai` | `core/ai/` | FSM, `BehaviorFactory`, behaviors/conditions | yes | yes |
 | `core.collision` | `core/collision/` | Spatial grid, detection, resolution | yes | yes |
-| `core.combat` | `core/combat/` | Selection, commands, explosions; `CombatManager` stub | yes | yes |
+| `core.combat` | `core/combat/` | Selection, commands, explosions, dual-mode `CombatManager` | yes | yes |
 | `core.serialization` | `core/serialization/` | JSON snapshot serializer | yes | yes |
 | `core.session` | `core/session/` | Lobby, offline resolution, online lockstep | yes | yes |
 | `core.gamestate` | `core/gamestate/` | `RTSGameState` hub, `RTSUnit` | yes | yes |

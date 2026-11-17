@@ -1,17 +1,18 @@
 {
   "id": "core.map",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "path": "core/map",
   "exports": [
     "Map",
     "MapEntity",
     "PlacementValidator",
+    "Obstacle",
     "GameMode",
     "MapObstacleComponent",
     "MapResourceComponent"
   ],
   "requires": {
-    "core.interfaces": "^1.0.0",
+    "core.interfaces": "^1.6.0",
     "core.influence.types": "^1.0.0",
     "core.math": "^1.0.0"
   },

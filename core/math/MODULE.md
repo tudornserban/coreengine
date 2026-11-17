@@ -16,6 +16,7 @@ Include headers from the repo root, e.g. `#include "core/math/Vector2.h"`.
 | `Vector3` | struct | `Vector3.h` | 3D vector algebra; header-only |
 | `MathConstants` | namespace `CoreEngine::Math` | `MathConstants.h` | `PI`, angle conversion, `EPSILON`, float limits |
 | `DeterministicRNG` | class | `DeterministicRNG.h` | Seeded LCG; `.cpp` in this module |
+| `ArenaGeometry` | struct | `ArenaGeometry.h` | Shortest toroidal delta, distance, wrap, and clamp; header-only |
 
 ### Contract highlights
 
@@ -54,6 +55,7 @@ Do not read other `core/*` implementation trees for math-only tasks.
 | Suite | Path |
 |-------|------|
 | RNG | `tests/UnitTests/Math/DeterministicRNGTest.cpp` |
+| Arena | `tests/UnitTests/Math/ArenaGeometryTest.cpp` |
 | Constants | `tests/UnitTests/Math/MathConstantsTest.cpp` |
 | Vector2 | `tests/UnitTests/Math/Vector2Test.cpp` |
 | Vector3 | `tests/UnitTests/Math/Vector3Test.cpp` |
@@ -70,7 +72,7 @@ Equivalent manual steps:
 ```bash
 cmake -S . -B build-math -G Ninja -DBUILD_TESTS=ON -DCOREENGINE_MATH_STANDALONE=ON
 cmake --build build-math --target coreengine_math_tests
-cd build-math && ctest --output-on-failure -R 'DeterministicRNGTest|MathConstantsTest|Vector2Test|Vector3Test'
+cd build-math && ctest --output-on-failure -R 'ArenaGeometryTest|DeterministicRNGTest|MathConstantsTest|Vector2Test|Vector3Test'
 ```
 
 ### Full engine (links `coreengine` as today)

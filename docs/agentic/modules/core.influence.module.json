@@ -1,15 +1,19 @@
 {
   "id": "core.influence",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "path": "core/influence",
   "exports": [
     "InfluenceFieldCalculator",
-    "TerritoryCalculator"
+    "TerritoryCalculator",
+    "ClusterDetector",
+    "EncirclementChecker",
+    "SurroundChecker"
   ],
   "requires": {
     "core.math": "^1.0.0",
     "core.influence.types": "^1.0.0",
-    "core.interfaces": "^1.0.0"
+    "core.interfaces": "^1.6.0",
+    "core.map": "^1.0.0"
   },
   "tags": ["gameplay", "movement"],
   "notes": "APF calculator + territory; value types in core.influence.types. Compatibility wrappers under core/influence/ re-export types."

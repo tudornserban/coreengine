@@ -82,7 +82,7 @@ These are the FFI boundary contracts — the minimal surface area each system de
 - `StateMachine` — generic FSM; behavior states + condition-driven transitions
 - `BehaviorContext` — per-tick context struct (self, allies, enemies, RNG, map)
 - `BehaviorFactory` — runtime behavior creation by string key (magic dust pattern)
-- Behaviors: `Seek`, `Flee`, `Wander`, `Cohesion`, `Separation`
+- Behaviors: `Seek`, `Flee`, `Wander`, `Cohesion`, `Separation`, `TacticalFrontline`
 - Conditions: `EnemyInRange`, `AlliesNearby`, `TimeElapsed`
 
 ### `core/influence/`
@@ -91,7 +91,8 @@ Merged from VenusWars PotentialField* and DynamicGO InfluenceMap.
 - `InfluenceFieldItem` — attractor/repulsor/edge entry with typed parameters
 - `InfluenceField::CalculateTotalForce` — APF total force from item list (clamped to maxAccel)
 - `InfluenceFieldParameters` — AttractorParams, RepulsorParams, EdgeParams
-- `TerritoryCalculator` — Voronoi grid ownership % (win condition system)
+- `TerritoryCalculator` — Voronoi grid ownership % (win condition system) plus N-team `UpdateGrid` (active / passive / contested / obstacle, timed capture)
+- `ClusterDetector` / `EncirclementChecker` / `SurroundChecker` — proximity clusters, liberty flood-fill, and circumference surround checks
 
 ### `core/collision/`
 Directly from VenusWars — broadphase SpatialGrid + narrowphase circle detection.
@@ -105,19 +106,21 @@ Directly from VenusWars — broadphase SpatialGrid + narrowphase circle detectio
 ### `core/gameloop/`
 - `GameLogicEngine` — fixed 30Hz logic tick, decoupled from render Hz, pause/speed/fast-forward
 - `PlaybackController` — thin wrapper for playback control UI
-- `DeploymentTimer` — charge-based spawn timer (single-charge strict; from DynamicGO)
+- `DeploymentTimer` — multi-charge spawn timer with optional initial fill and `GrantCharge()`
 - `ThinkTimer` — tactical pause / think-time bank (from DynamicGO)
 - `MatchState` — canonical 2-team match state with territory/time win conditions
+- `MultiTeamMatchState` — same hold and time-limit rules for FFA / N teams
 
 ### `core/map/`
 - `Map` — ECS-based arena (rectangle/circle/polygon shapes)
 - `MapEntity` / `IMapComponent` — entity + component system for map objects
-- `MapObstacleComponent` / `MapResourceComponent` — built-in component types
-- `PlacementValidator` — validates unit spawn positions (no overlap, in-bounds)
+- `MapObstacleComponent` / `MapResourceComponent` — built-in component types. Obstacles emit the shared `Obstacle` disc.
+- `PlacementValidator` — bounds, placement obstacles, team and enemy clearance, optional territory predicate
+- `Obstacle` — stateless disc (`blocksPlacement`, `blocksInfluence`) used by map, influence, and validators
 - `GameMode` — DETERMINISTIC vs INTERACTIVE enum
 
 ### `core/combat/`
-- `CombatManager` — **empty stub**; game-specific attrition/zone combat belongs in the game layer
+- `CombatManager` — simultaneous influence-attrition, direct-attack, and hybrid resolution on `IUnitCombat` / `IInfluenceEmitter`
 - `Explosion` — area impulse/damage with falloff
 - `SelectionSystem` — click/box unit selection
 - `CommandSystem` — unit state overrides, move-to commands, parameter tuning

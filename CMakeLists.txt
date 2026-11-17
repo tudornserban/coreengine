@@ -83,6 +83,7 @@ if(COREENGINE_MATH_STANDALONE)
     find_package(GTest REQUIRED)
 
     set(CORE_MATH_TEST_SOURCES
+        tests/UnitTests/Math/ArenaGeometryTest.cpp
         tests/UnitTests/Math/DeterministicRNGTest.cpp
         tests/UnitTests/Math/MathConstantsTest.cpp
         tests/UnitTests/Math/Vector2Test.cpp
@@ -134,6 +135,7 @@ elseif(COREENGINE_INFLUENCE_STANDALONE)
 
     add_executable(coreengine_influence_tests
         tests/UnitTests/Influence/InfluenceFieldTest.cpp
+        tests/UnitTests/Influence/TacticalSystemsTest.cpp
         tests/UnitTests/Influence/InfluenceTypesCanonicalHeaderCompileTest.cpp
         tests/UnitTests/Influence/InfluenceLegacyItemHeaderCompileTest.cpp
         tests/UnitTests/Influence/InfluenceLegacyParametersHeaderCompileTest.cpp
@@ -203,9 +205,12 @@ elseif(COREENGINE_GAMELOOP_STANDALONE)
     find_package(GTest REQUIRED)
 
     add_executable(coreengine_gameloop_tests
+        tests/UnitTests/GameLoop/DeploymentTimerTest.cpp
+        tests/UnitTests/GameLoop/ThinkTimerTest.cpp
         tests/UnitTests/Gameloop/GameloopInvariantsTest.cpp
         tests/UnitTests/Gameloop/GameloopModuleHeaderCompileTest.cpp
         tests/UnitTests/Gameloop/MatchAdvanceTest.cpp
+        tests/UnitTests/Gameloop/MultiTeamAndDeploymentTest.cpp
     )
     target_include_directories(coreengine_gameloop_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
     target_link_libraries(coreengine_gameloop_tests
@@ -229,6 +234,7 @@ elseif(COREENGINE_MAP_STANDALONE)
     add_executable(coreengine_map_tests
         tests/UnitTests/Map/MapTest.cpp
         tests/UnitTests/Map/MapModuleHeaderCompileTest.cpp
+        tests/UnitTests/Map/PlacementValidatorTest.cpp
     )
     target_include_directories(coreengine_map_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
     target_link_libraries(coreengine_map_tests
@@ -256,6 +262,7 @@ elseif(COREENGINE_AI_STANDALONE)
         tests/UnitTests/AI/IBehaviorInterfaceTest.cpp
         tests/UnitTests/AI/BehaviorFactoryTest.cpp
         tests/UnitTests/AI/BehaviorsTest.cpp
+        tests/UnitTests/AI/TacticalFrontlineBehaviorTest.cpp
         tests/UnitTests/AI/ConditionsTest.cpp
         tests/UnitTests/AI/StateMachineTest.cpp
     )
@@ -348,6 +355,7 @@ elseif(COREENGINE_COMBAT_STANDALONE)
     find_package(GTest REQUIRED)
 
     add_executable(coreengine_combat_tests
+        tests/UnitTests/Combat/CombatManagerTest.cpp
         tests/UnitTests/Combat/CombatModuleHeaderCompileTest.cpp
         tests/UnitTests/Combat/CommandSystemAgentContractTest.cpp
         tests/UnitTests/Combat/ExplosionTest.cpp

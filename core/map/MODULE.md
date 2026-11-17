@@ -14,7 +14,8 @@ Include headers from the repo root, e.g. `#include "core/map/Map.h"`.
 |--------|------|--------|-------|
 | `Map` | class | `Map.h` | Dimensions, shape, entity list — `.cpp` in this module |
 | `MapEntity` | class | `MapEntity.h` | Id + position + components — `.cpp` in this module |
-| `PlacementValidator` | class | `PlacementValidator.h` | Placement rules — `.cpp` in this module |
+| `PlacementValidator` | class | `PlacementValidator.h` | Bounds, obstacles, team/enemy clearance, territory predicate — `.cpp` in this module |
+| `Obstacle` | struct | `Obstacle.h` | Shared placement/influence disc; header-only |
 | `GameMode` | _(enum / header-only)_ | `GameMode.h` | Match mode tag used by higher layers |
 | `MapObstacleComponent` | class | `MapComponents/MapObstacleComponent.h` | Obstacle radius + `InfluenceFieldItem` |
 | `MapResourceComponent` | class | `MapComponents/MapResourceComponent.h` | Resource placement helper |
@@ -28,7 +29,7 @@ Include headers from the repo root, e.g. `#include "core/map/Map.h"`.
 | Module | Range | Why |
 |--------|-------|-----|
 | `core.math` | `^1.0.0` | `Vector2` and spatial queries |
-| `core.interfaces` | `^1.0.0` | Reserved for future ECS-facing contracts; not required by current sources |
+| `core.interfaces` | `^1.6.0` | `IGameUnit`, `IInfluenceEmitter`, and `IUnitCombat` for placement clearance |
 | `core.influence.types` | `^1.0.0` | `InfluenceFieldItem` on obstacles |
 
 Allowed `#include` in `core/map/**`: standard library (`<…>`), headers under `core/map/`, or paths under `requires` modules (`core/math/…`, `core/interfaces/…`, `core/influence_types/…`). No other `core/*` siblings, `platform/`, or `ffi/` (enforced by `./scripts/check-module-deps.sh`).
@@ -54,6 +55,7 @@ Do not read other `core/*` implementation trees for map-only tasks.
 | Suite | Path |
 |-------|------|
 | Map behavior | `tests/UnitTests/Map/MapTest.cpp` |
+| Placement | `tests/UnitTests/Map/PlacementValidatorTest.cpp` |
 | Header compile smoke | `tests/UnitTests/Map/MapModuleHeaderCompileTest.cpp` |
 
 ### Map-only (OBJECT lib + math + influence types; no full `coreengine` static lib)

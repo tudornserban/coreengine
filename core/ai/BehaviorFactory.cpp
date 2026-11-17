@@ -4,6 +4,7 @@
 #include "Behaviors/WanderBehavior.h"
 #include "Behaviors/CohesionBehavior.h"
 #include "Behaviors/SeparationBehavior.h"
+#include "Behaviors/TacticalFrontlineBehavior.h"
 #include <algorithm>
 
 std::map<std::string, BehaviorFactory::Creator>& BehaviorFactory::Registry()
@@ -51,4 +52,5 @@ void BehaviorFactory::RegisterBuiltins()
     Register("Wander",     []{ return std::make_unique<WanderBehavior>(); });
     Register("Cohesion",   []{ return std::make_unique<CohesionBehavior>(); });
     Register("Separation", []{ return std::make_unique<SeparationBehavior>(); });
+    Register("TacticalFrontline", []{ return std::make_unique<TacticalFrontlineBehavior>(); });
 }

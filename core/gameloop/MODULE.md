@@ -15,8 +15,9 @@ Include headers from the repo root, e.g. `#include "core/gameloop/GameLogicEngin
 | `GameLogicEngine` | class | `GameLogicEngine.h` | Fixed timestep, pause, speed, fast-forward — `.cpp` in this module |
 | `PlaybackController` | class | `PlaybackController.h` | Thin wrapper over `GameLogicEngine` |
 | `ThinkTimer` | class | `ThinkTimer.h` | Real-time think bank; header-only API |
-| `DeploymentTimer` | class | `DeploymentTimer.h` | Charge / spend — `.cpp` in this module |
-| `MatchState` / `MatchResult` | struct / enum | `MatchState.h` | Match metadata; `Advance(dt)` evaluates dominance (≥75% held 10 s) or 300 s time limit; no engine deps |
+| `DeploymentTimer` | class | `DeploymentTimer.h` | Multi-charge bank, initial fill, `GrantCharge` — `.cpp` in this module |
+| `MatchState` / `MatchResult` | struct / enum | `MatchState.h` | 2-team match metadata; `Advance(dt)` evaluates dominance (≥75% held 10 s) or 300 s time limit |
+| `MultiTeamMatchState` | struct | `MatchState.h` | FFA hold and time-limit rules; `winnerTeamId` 0 / -1 / team id |
 
 ### Contract highlights
 

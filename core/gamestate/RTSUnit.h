@@ -4,12 +4,19 @@
 #include "../interfaces/IUnitKinematics.h"
 #include "../interfaces/IUnitAgent.h"
 #include "../interfaces/IUnitBehaviorHost.h"
+#include "../interfaces/IInfluenceEmitter.h"
+#include "../interfaces/IUnitCombat.h"
 #include "../ai/StateMachine.h"
 #include "../math/Vector2.h"
 #include <algorithm>
 #include <string>
 
-class RTSUnit : public IGameUnit, public IUnitKinematics, public IUnitAgent, public IUnitBehaviorHost {
+class RTSUnit : public IGameUnit,
+                 public IUnitKinematics,
+                 public IUnitAgent,
+                 public IUnitBehaviorHost,
+                 public IInfluenceEmitter,
+                 public IUnitCombat {
 protected:
     Vector2 position;
     Vector2 velocity;
@@ -30,6 +37,11 @@ protected:
     float restitution;
     float positionCorrection;
     float damageModifier;
+
+    float influenceRadius;
+    float attackRange;
+    float baseDps;
+    float attackCooldown;
 
     StateMachine stateMachine;
 
@@ -89,7 +101,18 @@ public:
     float GetMassModifier() const override { return massModifier; }
     float CalculateMass() const override;
     void SetHP(float hp) { currentHP = std::max(0.0f, std::min(maxHP, hp)); }
-    void TakeDamage(float damage) { currentHP = std::max(0.0f, currentHP - damage); }
+
+    float GetInfluenceRadius() const override { return influenceRadius; }
+    void SetInfluenceRadius(float radius) override { influenceRadius = std::max(0.0f, radius); }
+
+    void TakeDamage(float amount) override { currentHP = std::max(0.0f, currentHP - amount); }
+    bool IsDead() const override { return currentHP <= 0.0f; }
+    float GetAttackRange() const override { return attackRange; }
+    float GetBaseDPS() const override { return baseDps; }
+    float GetAttackCooldown() const override { return attackCooldown; }
+    void SetAttackRange(float range) { attackRange = std::max(0.0f, range); }
+    void SetBaseDPS(float dps) { baseDps = std::max(0.0f, dps); }
+    void SetAttackCooldown(float cooldown) { attackCooldown = std::max(0.0f, cooldown); }
 
     // Collision properties
     float GetRestitution() const override { return restitution; }

@@ -1,8 +1,17 @@
 #include "DeploymentTimer.h"
 #include <cassert>
 
-DeploymentTimer::DeploymentTimer(float timeRequired) : chargeTimeRequired(timeRequired) {
+DeploymentTimer::DeploymentTimer(float timeRequired, float initialChargeFraction)
+    : chargeTimeRequired(timeRequired)
+    , currentChargeTime(timeRequired * initialChargeFraction)
+{
     assert(timeRequired > 0.0f && "Time required must be greater than 0");
+    assert(initialChargeFraction >= 0.0f && initialChargeFraction <= 1.0f
+           && "Initial charge fraction must be in [0, 1]");
+    while (currentChargeTime >= chargeTimeRequired) {
+        ++charges;
+        currentChargeTime -= chargeTimeRequired;
+    }
 }
 
 void DeploymentTimer::Update(float deltaTime) {
@@ -25,4 +34,8 @@ void DeploymentTimer::SpendCharge() {
         charges--;
         currentChargeTime = 0.0f;
     }
+}
+
+void DeploymentTimer::GrantCharge() {
+    ++charges;
 }

@@ -13,7 +13,7 @@ Include headers from the repo root, e.g. `#include "core/gamestate/RTSGameState.
 | Symbol | Kind | Header | Notes |
 |--------|------|--------|-------|
 | `RTSGameState` | class | `RTSGameState.h` | Main simulation step (`Update`, units, map, combat systems); implements `ISimulationSnapshot` |
-| `RTSUnit` | class | `RTSUnit.h` | Concrete unit; AI FSM + kinematics/agent interfaces |
+| `RTSUnit` | class | `RTSUnit.h` | Concrete unit; AI FSM, kinematics, influence radius, and combat stats |
 | `GameStateManager` | class | `GameStateManager.h` | Menu / mission state holder (`currentState` + `GameStateType`) |
 | `IGameState` | header | `IGameState.h` | Legacy forwarder → `core/interfaces/IGameState.h` |
 | `IGameLogicRenderer` | header | `IGameLogicRenderer.h` | Legacy forwarder → `core/interfaces/IGameLogicRenderer.h` |
@@ -37,7 +37,7 @@ Include headers from the repo root, e.g. `#include "core/gamestate/RTSGameState.
 | `core.collision` | `^1.0.0` | Collision system / detector hooks |
 | `core.math` | `^1.0.0` | `Vector2`, deterministic RNG |
 | `core.logging` | `^1.0.0` | `Logger` |
-| `core.interfaces` | `^1.0.0` | `IGameUnit`, kinematics, game-state contracts |
+| `core.interfaces` | `^1.6.0` | `IGameUnit`, kinematics, influence, combat, game-state contracts |
 
 Allowed `#include` in `core/gamestate/**`: standard library (`<…>`), headers under `core/gamestate/`, repo-root paths under declared `requires` (e.g. `core/interfaces/…`), or **relative** includes that resolve into a declared requirement (e.g. `../logging/Logger.h`, `../combat/CommandSystem.h`). No other `core/*` siblings (`core/serialization/`, `core/ai_advanced/`, …), `platform/`, or `ffi/` (enforced by `./scripts/check-module-deps.sh`).
 

@@ -4,7 +4,7 @@ Manifest: [docs/agentic/modules/core.combat.module.json](../../docs/agentic/modu
 
 ## Purpose
 
-**Selection, player commands, explosion impulses, and combat manager stub** for CoreEngine. This module does not own game state orchestration or concrete unit types; it talks to units through `IGameUnit` and `IUnitAgent` only.
+**Selection, player commands, explosion impulses, and simultaneous combat resolution** for CoreEngine. This module does not own game state orchestration or concrete unit types; it talks to units through `IGameUnit`, `IUnitCombat`, `IInfluenceEmitter`, and `IUnitAgent` only.
 
 ## Public surface (`exports`)
 
@@ -12,7 +12,7 @@ Include headers from the repo root, e.g. `#include "core/combat/CommandSystem.h"
 
 | Symbol | Kind | Header | Notes |
 |--------|------|--------|-------|
-| `CombatManager` | class | `CombatManager.h` | Stub — extend in game layer |
+| `CombatManager` | class | `CombatManager.h` | Influence attrition, direct attack, and hybrid; `.cpp` in this module |
 | `CommandSystem` | class | `CommandSystem.h` | `.cpp` dispatches via `IUnitAgent` where applicable |
 | `SelectionSystem` | class | `SelectionSystem.h` | Box and click selection |
 | `Explosion` | class | `Explosion.h` | Impulse math from position and radius |
@@ -27,7 +27,7 @@ Include headers from the repo root, e.g. `#include "core/combat/CommandSystem.h"
 | Module | Range | Why |
 |--------|-------|-----|
 | `core.math` | `^1.0.0` | `Vector2` |
-| `core.interfaces` | `^1.2.0` | `IGameUnit`, `IUnitAgent` |
+| `core.interfaces` | `^1.6.0` | `IGameUnit`, `IUnitAgent`, `IUnitCombat`, `IInfluenceEmitter` |
 
 Allowed `#include` in `core/combat/**`: standard library (`<…>`), headers under `core/combat/`, or paths under `requires` modules (`core/math/…`, `core/interfaces/…`). No other `core/*` siblings, `platform/`, or `ffi/` (enforced by `./scripts/check-module-deps.sh`).
 
