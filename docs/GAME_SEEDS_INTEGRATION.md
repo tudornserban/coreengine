@@ -25,7 +25,7 @@ VenusWars is the original source of most `core/` systems. After extraction:
 DynamicGO already has its own clean codebase. Integration path:
 
 - `DeploymentTimer` and `ThinkTimer` are now in `core/gameloop/`
-- `TerritoryCalculator`, `PlacementValidator` are in CoreEngine; `CombatManager` is an **empty stub** in `core/combat/`
+- `TerritoryCalculator` (2-team `Calculate` and N-team `UpdateGrid`), `PlacementValidator`, and `CombatManager` (influence attrition, direct attack, hybrid) live in CoreEngine
 - `InfluenceMap` is replaced by `core/influence/TerritoryCalculator`
 - `GeneticTrainer` / `BotPlayer` are in `core/ai_advanced/`
 - Migrate `GameEngine.h` to use `RTSGameState` + `GameLogicEngine` from CoreEngine

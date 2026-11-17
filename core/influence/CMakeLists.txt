@@ -1,6 +1,9 @@
 # core.influence — calculator + territory (types live in core/influence_types/).
 set(CORE_INFLUENCE_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/ClusterDetector.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/EncirclementChecker.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/InfluenceFieldCalculator.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/SurroundChecker.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/TerritoryCalculator.cpp
 )
 

@@ -15,7 +15,7 @@ Include headers from the repo root, e.g. `#include "core/ai/StateMachine.h"`.
 | `StateMachine` | class | `StateMachine.h` | FSM — `.cpp` in this module |
 | `BehaviorContext` | struct | `BehaviorContext.h` | Per-tick context (nearby units, map vectors, static `InfluenceFieldItem` list, RNG pointer) |
 | `BehaviorFactory` | class | `BehaviorFactory.h` | Registers behavior factories — `.cpp` in this module |
-| `SeekBehavior`, `FleeBehavior`, `WanderBehavior`, `CohesionBehavior`, `SeparationBehavior` | class | `Behaviors/*.h` | Unit steering helpers |
+| `SeekBehavior`, `FleeBehavior`, `WanderBehavior`, `CohesionBehavior`, `SeparationBehavior`, `TacticalFrontlineBehavior` | class | `Behaviors/*.h` | Unit steering helpers |
 | `EnemyInRangeCondition`, `AlliesNearbyCondition`, `TimeElapsedCondition` | class | `Conditions/*.h` | Transition predicates |
 
 ### Contract highlights

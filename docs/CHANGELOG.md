@@ -5,6 +5,18 @@ Each entry links back to the originating proposal document where applicable.
 
 ---
 
+## 2026-11-17 — Shared RTS systems and dual-mode combat
+
+- `ArenaGeometry` toroidal and clamped arena math in `core.math`.
+- `IInfluenceEmitter` and `IUnitCombat` optional unit capabilities. `RTSUnit` implements both.
+- `DeploymentTimer` accepts an initial charge fraction and `GrantCharge()`. `MultiTeamMatchState` covers FFA hold and time-limit wins. `ThinkTimer` already matched DynamicGO.
+- `Obstacle` is the shared disc used by `MapObstacleComponent` and `PlacementValidator`.
+- `ClusterDetector`, `EncirclementChecker`, `SurroundChecker`, and `TerritoryCalculator::UpdateGrid` cover clusters, liberties, surround samples, and N-team timed capture.
+- `CombatManager` resolves influence attrition, direct attacks, and hybrid combat simultaneously.
+- `TacticalFrontline` is a built-in steering behavior.
+
+---
+
 ## 2026-03-25 — F1.5: platform adapter CMake options fail at configure
 
 ### F1.5 — `BUILD_SDL2` / `BUILD_RAYLIB` explicit stub failure

@@ -16,6 +16,8 @@ Include headers from the repo root, e.g. `#include "core/interfaces/IGameUnit.h"
 | `IGameUnit` | class | `IGameUnit.h` | Unit contract; uses `Vector2` |
 | `IUnitKinematics` | class | `IUnitKinematics.h` | Optional direct position/velocity writes (`SetPosition`, `SetVelocity`); implemented by `RTSUnit` for collision writers |
 | `IUnitAgent` | class | `IUnitAgent.h` | Optional FSM / behavior-parameter commands (`SetAgentState`, `SetAgentParameter`); implemented by `RTSUnit` for `CommandSystem` |
+| `IInfluenceEmitter` | class | `IInfluenceEmitter.h` | Optional influence radius; implemented by `RTSUnit` |
+| `IUnitCombat` | class | `IUnitCombat.h` | Optional damage, death, and attack stats; implemented by `RTSUnit` |
 | `IInputReader` | class | `IInputReader.h` | Input abstraction; uses `Vector2` |
 | `ITransitionCondition` | class | `ITransitionCondition.h` | Condition evaluation; `BehaviorContext` forward-declared |
 | `IGameState` | class | `IGameState.h` | Single active state contract |

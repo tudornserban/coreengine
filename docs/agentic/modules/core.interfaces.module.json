@@ -1,11 +1,13 @@
 {
   "id": "core.interfaces",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "path": "core/interfaces",
   "exports": [
     "IGameUnit",
     "IUnitKinematics",
     "IUnitAgent",
+    "IInfluenceEmitter",
+    "IUnitCombat",
     "IBehavior",
     "ITransitionCondition",
     "IGameState",

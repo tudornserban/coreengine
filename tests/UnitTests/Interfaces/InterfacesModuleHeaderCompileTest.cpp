@@ -4,6 +4,8 @@
 #include "core/interfaces/IGameLogicRenderer.h"
 #include "core/interfaces/IGameState.h"
 #include "core/interfaces/IGameUnit.h"
+#include "core/interfaces/IInfluenceEmitter.h"
+#include "core/interfaces/IUnitCombat.h"
 #include "core/interfaces/IUnitKinematics.h"
 #include "core/interfaces/IUnitAgent.h"
 #include "core/interfaces/IInputReader.h"

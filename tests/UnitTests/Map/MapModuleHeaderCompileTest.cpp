@@ -3,6 +3,7 @@
 #include "core/map/GameMode.h"
 #include "core/map/Map.h"
 #include "core/map/MapEntity.h"
+#include "core/map/Obstacle.h"
 #include "core/map/MapComponents/MapObstacleComponent.h"
 #include "core/map/MapComponents/MapResourceComponent.h"
 #include "core/map/PlacementValidator.h"

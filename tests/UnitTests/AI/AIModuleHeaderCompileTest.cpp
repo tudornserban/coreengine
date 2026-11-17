@@ -6,6 +6,7 @@
 #include "core/ai/Behaviors/FleeBehavior.h"
 #include "core/ai/Behaviors/SeekBehavior.h"
 #include "core/ai/Behaviors/SeparationBehavior.h"
+#include "core/ai/Behaviors/TacticalFrontlineBehavior.h"
 #include "core/ai/Behaviors/WanderBehavior.h"
 #include "core/ai/Conditions/AlliesNearbyCondition.h"
 #include "core/ai/Conditions/EnemyInRangeCondition.h"

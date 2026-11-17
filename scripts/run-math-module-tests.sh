@@ -14,4 +14,4 @@ cmake -S "${ROOT}" -B "${BUILD_DIR}" -G Ninja \
 
 cmake --build "${BUILD_DIR}" --target coreengine_math_tests
 cd "${BUILD_DIR}"
-ctest --output-on-failure -R 'DeterministicRNGTest|MathConstantsTest|Vector2Test|Vector3Test'
+ctest --output-on-failure -R 'ArenaGeometryTest|DeterministicRNGTest|MathConstantsTest|Vector2Test|Vector3Test'

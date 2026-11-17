@@ -5,6 +5,11 @@ Agents **must** append a dated note under the matching `## [version]` section wh
 
 Entries describe the **published contract**: manifest `exports` and the headers under `core/interfaces/`, plus manifest `requires` edges. Follow [AGENTS.md](../../AGENTS.md) for major / minor / patch rules.
 
+## [1.6.0] — 2026-11-17
+
+- **Export:** `IInfluenceEmitter.h` — optional influence radius get/set. `RTSUnit` implements it.
+- **Export:** `IUnitCombat.h` — optional damage, death, attack range, base DPS, and attack cooldown. `RTSUnit` implements it. `IGameUnit` is unchanged.
+
 ## [1.5.0] — 2026-11-10
 
 - **Export:** `IUnitBehaviorHost.h` — `GetCurrentBehavior()` for the hub AI tick. `RTSUnit` implements it. Explosion impulse and bounds fallback stay `RTSUnit*` participation filters.

@@ -6,6 +6,7 @@ set(CORE_AI_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/Behaviors/FleeBehavior.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Behaviors/SeekBehavior.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Behaviors/SeparationBehavior.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Behaviors/TacticalFrontlineBehavior.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Behaviors/WanderBehavior.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Conditions/AlliesNearbyCondition.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Conditions/EnemyInRangeCondition.cpp
