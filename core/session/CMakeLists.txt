@@ -11,4 +11,4 @@ set(CORE_SESSION_SOURCES
 )
 
 add_library(coreengine_session OBJECT ${CORE_SESSION_SOURCES})
-target_include_directories(coreengine_session PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories(coreengine_session PUBLIC ${PROJECT_SOURCE_DIR})

@@ -8,4 +8,4 @@ set(CORE_INFLUENCE_SOURCES
 )
 
 add_library(coreengine_influence OBJECT ${CORE_INFLUENCE_SOURCES})
-target_include_directories(coreengine_influence PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories(coreengine_influence PUBLIC ${PROJECT_SOURCE_DIR})

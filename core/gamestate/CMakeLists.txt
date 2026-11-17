@@ -7,4 +7,4 @@ set(CORE_GAMESTATE_SOURCES
 )
 
 add_library(coreengine_gamestate OBJECT ${CORE_GAMESTATE_SOURCES})
-target_include_directories(coreengine_gamestate PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories(coreengine_gamestate PUBLIC ${PROJECT_SOURCE_DIR})

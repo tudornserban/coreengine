@@ -5,6 +5,13 @@ Each entry links back to the originating proposal document where applicable.
 
 ---
 
+## 2026-11-17 — Module includes follow the CoreEngine project root
+
+- `core/*/CMakeLists.txt` publish `${PROJECT_SOURCE_DIR}` instead of `${CMAKE_SOURCE_DIR}`.
+- A parent game can `add_subdirectory` CoreEngine and compile the `coreengine_*` object libraries without an extra `-I` for the CoreEngine root.
+
+---
+
 ## 2026-11-17 — Shared RTS systems and dual-mode combat
 
 - `ArenaGeometry` toroidal and clamped arena math in `core.math`.

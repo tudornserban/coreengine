@@ -12,4 +12,4 @@ set(CORE_COLLISION_SOURCES
 )
 
 add_library(coreengine_collision OBJECT ${CORE_COLLISION_SOURCES})
-target_include_directories(coreengine_collision PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories(coreengine_collision PUBLIC ${PROJECT_SOURCE_DIR})

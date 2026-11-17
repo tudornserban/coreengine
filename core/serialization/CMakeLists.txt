@@ -4,4 +4,4 @@ set(CORE_SERIALIZATION_SOURCES
 )
 
 add_library(coreengine_serialization OBJECT ${CORE_SERIALIZATION_SOURCES})
-target_include_directories(coreengine_serialization PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories(coreengine_serialization PUBLIC ${PROJECT_SOURCE_DIR})

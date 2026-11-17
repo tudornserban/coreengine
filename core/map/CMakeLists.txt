@@ -8,4 +8,4 @@ set(CORE_MAP_SOURCES
 )
 
 add_library(coreengine_map OBJECT ${CORE_MAP_SOURCES})
-target_include_directories(coreengine_map PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories(coreengine_map PUBLIC ${PROJECT_SOURCE_DIR})

@@ -4,4 +4,4 @@ set(CORE_LOGGING_SOURCES
 )
 
 add_library(coreengine_logging OBJECT ${CORE_LOGGING_SOURCES})
-target_include_directories(coreengine_logging PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories(coreengine_logging PUBLIC ${PROJECT_SOURCE_DIR})
