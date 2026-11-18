@@ -1,7 +1,7 @@
 # CoreEngine — Phase 0 Inventory
 
 **Date:** 2026-11-11 (refreshed)  
-**Repo layout:** `core/` (engine), `platform/` (adapter headers), `ffi/` (C API), `tools/viewer/` (optional SDL2 viewer), `scripts/`, `tests/`, `docs/`  
+**Repo layout:** `core/` (engine), `platform/` (adapter headers and `platform/host`), `cmake/` (macOS, Windows, and Android toolchains), `ffi/` (C API), `tools/viewer/` (optional SDL2 viewer), `scripts/`, `tests/`, `docs/`  
 **Build:** static `coreengine` links **OBJECT** libraries `coreengine_<module>` from `core/*/CMakeLists.txt`, plus optional `coreengine_ffi`, platform stubs, and viewer targets.
 
 ---
@@ -31,7 +31,7 @@ Registry: [modules/registry.json](modules/registry.json) (14 modules). Subfolder
 
 | Area | Path | Relation to `core/` |
 |------|------|---------------------|
-| **Platform** | `platform/{null,sdl2,raylib,unity,unreal}/` | Header sketches; SDL2/Raylib **`Render()` unimplemented**, no `.cpp` in-repo. `BUILD_SDL2` / `BUILD_RAYLIB` **fail configure** with an explicit stub message (before `find_package`) until implementations exist — they do **not** ship working adapter libraries today. Runnable SDL2 window: `tools/viewer` + `COREENGINE_BUILD_SDL2_VIEWER`. No `#include` from `core/` into platform (verified). |
+| **Platform** | `platform/{host,null,sdl2,raylib,unity,unreal}/` | `platform/host` names the OS target (macOS, Windows, Android, Linux). SDL2/Raylib **`Render()` unimplemented**, no adapter `.cpp` except `platform/host/HostPlatformCheck.cpp`. `BUILD_SDL2` / `BUILD_RAYLIB` **fail configure** with an explicit stub message (before `find_package`) until implementations exist — they do **not** ship working adapter libraries today. Runnable SDL2 window: `tools/viewer` + `COREENGINE_BUILD_SDL2_VIEWER`. Host library builds: [HOST_PLATFORMS.md](../HOST_PLATFORMS.md). No `#include` from `core/` into platform (verified). |
 | **FFI** | `ffi/c_api.{h,cpp}` + `ffi/python`, `ffi/lua` | Shared lib `coreengine_ffi` when `BUILD_FFI=ON`; links **private** to monolithic `coreengine`. Public boundary is C types in `c_api.h`. |
 | **Tests** | `tests/UnitTests/<Area>/`, `tests/IntegrationTests/` | Single executable `coreengine_tests` when `BUILD_TESTS=ON`; links `coreengine` + GTest. Mirrors core areas (Math, AI, Collision, …). |
 | **Scripts** | `scripts/run-*-module-tests.sh` | Twelve standalone runners (no `gamestate` runner — use full `ctest`). |
@@ -52,6 +52,8 @@ Registry: [modules/registry.json](modules/registry.json) (14 modules). Subfolder
 | `BUILD_RAYLIB` | OFF | Intended `coreengine_raylib` static lib; **configure fails** with stub message while headers-only (no `.cpp`) |
 | `COREENGINE_BUILD_SDL2_VIEWER` | OFF | `coreengine_sdl2_viewer` + optional viewer tests (needs SDL2; `libsdl2-dev`) |
 | `COREENGINE_<MODULE>_STANDALONE` | OFF | Per-module test executable + narrowed link closure (see each `MODULE.md`) |
+
+**Host OS builds** (not the SDL/Raylib adapter options): [HOST_PLATFORMS.md](../HOST_PLATFORMS.md). `./scripts/build-host-platform.sh` configures `macos`, `windows`, or `android` and builds `coreengine`, `coreengine_ffi`, and `coreengine_host_check`. Android rejects `BUILD_TESTS`, standalone runners, and the SDL viewer. GitLab jobs `windows-mingw-ffi` and `android-arm64-ffi` build those libraries. macOS dylib generation needs a Mac or osxcross; `scripts/test_host_platforms.py` checks the osxcross error path and the `__APPLE__` macros.
 
 **GitLab CI `build-and-test` job** (not the full local gate):
 
@@ -101,6 +103,8 @@ There is **no** `run-gamestate-module-tests.sh`; validate `core.gamestate` via f
 | `influence-module-pilot` | Influence standalone runner |
 | `logging-module-pilot` | Logging standalone runner |
 | `build-and-test` | Full engine compile + `ctest` |
+| `windows-mingw-ffi` | Windows `coreengine_ffi.dll` via MinGW-w64 |
+| `android-arm64-ffi` | Android `libcoreengine_ffi.so` (arm64-v8a, NDK r26d) |
 
 Other standalone runners and `verify-ffi-build.sh` are **local-only** today.
 

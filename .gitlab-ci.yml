@@ -63,3 +63,36 @@ build-and-test:
     - cmake -S . -B build -G Ninja -DBUILD_TESTS=ON
     - cmake --build build --parallel 4
     - cd build && ctest --output-on-failure
+
+windows-mingw-ffi:
+  stage: build
+  image: ubuntu:24.04
+  before_script:
+    - apt-get update -qq
+    - apt-get install -qq -y --no-install-recommends
+        cmake ninja-build build-essential g++-mingw-w64-x86-64 python3
+  script:
+    - chmod +x scripts/build-host-platform.sh
+    - ./scripts/build-host-platform.sh windows
+    - python3 scripts/test_host_platforms.py
+
+android-arm64-ffi:
+  stage: build
+  image: ubuntu:24.04
+  variables:
+    ANDROID_NDK: /opt/android-ndk-r26d
+    ANDROID_ABI: arm64-v8a
+  before_script:
+    - apt-get update -qq
+    - apt-get install -qq -y --no-install-recommends
+        cmake ninja-build build-essential python3 curl unzip ca-certificates
+    - |
+      if [ ! -f "${ANDROID_NDK}/build/cmake/android.toolchain.cmake" ]; then
+        curl -fsSL -o /tmp/android-ndk.zip https://dl.google.com/android/repository/android-ndk-r26d-linux.zip
+        unzip -q /tmp/android-ndk.zip -d /opt
+        rm -f /tmp/android-ndk.zip
+      fi
+  script:
+    - chmod +x scripts/build-host-platform.sh
+    - ./scripts/build-host-platform.sh android --abi arm64-v8a
+    - python3 scripts/test_host_platforms.py

@@ -2,6 +2,8 @@
 
 How to use CoreEngine in different game engines and platforms.
 
+Host libraries for macOS (`.dylib`), Windows (`.dll`), and Android (`.so`) are built with `./scripts/build-host-platform.sh`. Commands, NDK/MSVC/osxcross setup, and the `platform/host/HostPlatform.h` macros are in [HOST_PLATFORMS.md](HOST_PLATFORMS.md).
+
 ---
 
 ## C FFI — deployment and teams
@@ -87,10 +89,13 @@ cmake --build build
 ### Step 2: Copy to Unity Plugins folder
 
 ```
-Assets/Plugins/libcoreengine_ffi.dylib  (macOS)
-Assets/Plugins/coreengine_ffi.dll       (Windows)
-Assets/Plugins/libcoreengine_ffi.so     (Linux/Android)
+Assets/Plugins/libcoreengine_ffi.dylib           (macOS)
+Assets/Plugins/coreengine_ffi.dll                (Windows)
+Assets/Plugins/libcoreengine_ffi.so              (Linux)
+Assets/Plugins/Android/libs/<abi>/libcoreengine_ffi.so
 ```
+
+Build those artifacts with `./scripts/build-host-platform.sh macos`, `windows`, or `android --abi arm64-v8a` ([HOST_PLATFORMS.md](HOST_PLATFORMS.md)). Android uses `c++_shared` by default so it can sit next to Unity's libc++.
 
 ### Step 3: C# P/Invoke bindings
 

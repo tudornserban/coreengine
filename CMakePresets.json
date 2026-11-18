@@ -1,0 +1,135 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "linux",
+      "displayName": "Linux host",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-linux",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "BUILD_FFI": "ON",
+        "BUILD_TESTS": "OFF"
+      }
+    },
+    {
+      "name": "macos",
+      "displayName": "macOS host",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-macos",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      },
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_OSX_DEPLOYMENT_TARGET": "11.0",
+        "BUILD_FFI": "ON",
+        "BUILD_TESTS": "OFF"
+      }
+    },
+    {
+      "name": "macos-osxcross",
+      "displayName": "macOS via osxcross",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-macos",
+      "toolchainFile": "${sourceDir}/cmake/toolchains/macos.cmake",
+      "condition": {
+        "type": "notEquals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      },
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "BUILD_FFI": "ON",
+        "BUILD_TESTS": "OFF"
+      }
+    },
+    {
+      "name": "windows-mingw",
+      "displayName": "Windows via MinGW-w64",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-windows",
+      "toolchainFile": "${sourceDir}/cmake/toolchains/windows-mingw.cmake",
+      "condition": {
+        "type": "notEquals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "BUILD_FFI": "ON",
+        "BUILD_TESTS": "OFF"
+      }
+    },
+    {
+      "name": "windows-msvc",
+      "displayName": "Windows MSVC (Visual Studio 2022)",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build-windows-msvc",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "cacheVariables": {
+        "BUILD_FFI": "ON",
+        "BUILD_TESTS": "OFF"
+      }
+    },
+    {
+      "name": "android-arm64",
+      "displayName": "Android arm64-v8a",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-android-arm64-v8a",
+      "toolchainFile": "${sourceDir}/cmake/toolchains/android.cmake",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "ANDROID_ABI": "arm64-v8a",
+        "ANDROID_PLATFORM": "android-24",
+        "BUILD_FFI": "ON",
+        "BUILD_TESTS": "OFF"
+      }
+    },
+    {
+      "name": "android-armv7",
+      "displayName": "Android armeabi-v7a",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-android-armeabi-v7a",
+      "toolchainFile": "${sourceDir}/cmake/toolchains/android.cmake",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "ANDROID_ABI": "armeabi-v7a",
+        "ANDROID_PLATFORM": "android-24",
+        "BUILD_FFI": "ON",
+        "BUILD_TESTS": "OFF"
+      }
+    },
+    {
+      "name": "android-x86_64",
+      "displayName": "Android x86_64",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-android-x86_64",
+      "toolchainFile": "${sourceDir}/cmake/toolchains/android.cmake",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "ANDROID_ABI": "x86_64",
+        "ANDROID_PLATFORM": "android-24",
+        "BUILD_FFI": "ON",
+        "BUILD_TESTS": "OFF"
+      }
+    }
+  ]
+}

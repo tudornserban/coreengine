@@ -6,7 +6,7 @@ Adapted from VenusWars CODING_GUIDELINES.md. Follow these rules in all `core/` f
 
 ## Non-negotiable rules
 
-1. **No platform headers in `core/`** — Zero `<SDL.h>`, `<raylib.h>`, UE5 macros, etc.
+1. **No platform headers in `core/`** — Zero `<SDL.h>`, `<raylib.h>`, UE5 macros, etc. The OS a binary targets is `platform/host/HostPlatform.h` plus the CMake profile in [HOST_PLATFORMS.md](HOST_PLATFORMS.md), not an include under `core/`.
 2. **C++17 STL only** — `<vector>`, `<memory>`, `<string>`, `<functional>`, `<map>`, `<cmath>`, `<algorithm>`
 3. **`ARCHITECTURE.md` must stay current** — Update it with every subsystem change.
 4. **Include paths** — Always relative; no absolute paths.
