@@ -1,6 +1,6 @@
 {
   "id": "core.gameloop",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "path": "core/gameloop",
   "exports": [
     "GameLogicEngine",
@@ -8,7 +8,8 @@
     "ThinkTimer",
     "PlaybackController",
     "MatchState",
-    "MultiTeamMatchState"
+    "MultiTeamMatchState",
+    "ObservationUnlockTracker"
   ],
   "requires": {
     "core.math": "^1.0.0"

@@ -5,6 +5,7 @@
 #include "core/gameloop/MatchState.h"
 #include "core/gameloop/PlaybackController.h"
 #include "core/gameloop/ThinkTimer.h"
+#include "core/gameloop/ObservationUnlockTracker.h"
 
 namespace {
 
