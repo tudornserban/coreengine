@@ -22,7 +22,11 @@ public:
     float GetCurrentHP() const override { return hp_; }
     float GetMaxHP() const override { return 100.0f; }
     uint64_t GetEntityId() const override { return id_; }
-    void TakeDamage(float amount) override { hp_ -= amount; }
+    void TakeDamage(float amount) override { ++damageCalls; hp_ -= std::max(0.0f, amount - armor); }
+    bool ParticipatesInCollision() const override { return enabled; }
+    bool enabled = true;
+    float armor = 0;
+    int damageCalls = 0;
     bool IsDead() const override { return hp_ <= 0.0f; }
 
 private:
@@ -106,4 +110,54 @@ TEST(ProjectileSimulationTest, ExpiredShotIsRemovedWithoutImpact) {
     EXPECT_TRUE(impacts.empty());
     EXPECT_TRUE(simulation.Projectiles().empty());
     EXPECT_FLOAT_EQ(target.GetCurrentHP(), 100.0f);
+}
+
+TEST(ProjectileSimulationTest, EligibilityDamageAttributionAndSequentialKills) {
+    ProjectileSimulation simulation;
+    Body dead({10, 0}, {}, 2, 1, 2);
+    dead.TakeDamage(100);
+    Body disabled({20, 0}, {}, 2, 1, 3);
+    disabled.enabled = false;
+    Body near({30, 0}, {}, 2, 1, 4);
+    near.armor = 10;
+    Body far({40, 0}, {}, 2, 1, 5);
+    Projectile shot;
+    shot.ownerId = 77;
+    shot.team = 1;
+    shot.velocity = {100, 0};
+    shot.timeRemaining = 1;
+    shot.damage = 150;
+    simulation.Spawn(shot);
+    simulation.Spawn(shot);
+    simulation.Advance(1, {&dead, &disabled, &near, &far});
+    const auto events = simulation.LastImpacts();
+    ASSERT_EQ(events.size(), 2u);
+    EXPECT_EQ(events[0].targetId, 4u);
+    EXPECT_EQ(events[1].targetId, 5u);
+    EXPECT_EQ(events[0].ownerId, 77u);
+    EXPECT_EQ(events[0].team, 1);
+    EXPECT_FLOAT_EQ(events[0].requestedDamage, 150);
+    EXPECT_FLOAT_EQ(events[0].appliedDamage, 100);
+    EXPECT_EQ(near.damageCalls, 1);
+    EXPECT_EQ(far.damageCalls, 1);
+    EXPECT_EQ(disabled.damageCalls, 0);
+    simulation.Advance(1, {});
+    EXPECT_TRUE(simulation.LastImpacts().empty());
+    EXPECT_EQ(events[0].targetId, 4u);
+}
+
+TEST(ProjectileSimulationTest, ReportsDamageAfterArmorExactlyOnce) {
+    ProjectileSimulation simulation;
+    Body target({10, 0}, {}, 2, 1, 2);
+    target.armor = 7;
+    Projectile shot;
+    shot.team = 1;
+    shot.velocity = {100, 0};
+    shot.timeRemaining = 1;
+    shot.damage = 20;
+    simulation.Spawn(shot);
+    simulation.Advance(1, {&target});
+    ASSERT_EQ(simulation.LastImpacts().size(), 1u);
+    EXPECT_FLOAT_EQ(simulation.LastImpacts()[0].appliedDamage, 13);
+    EXPECT_EQ(target.damageCalls, 1);
 }

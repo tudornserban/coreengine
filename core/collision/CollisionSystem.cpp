@@ -12,8 +12,8 @@ CollisionSystem::CollisionSystem()
 }
 
 CollisionSystem::CollisionSystem(const CollisionSettings& customSettings)
-    : settings(customSettings)
-    , detector(std::make_unique<CollisionDetector>())
+    : detector(std::make_unique<CollisionDetector>())
+    , settings(customSettings)
     , immunityManager(settings.immunityFrames) {
 }
 

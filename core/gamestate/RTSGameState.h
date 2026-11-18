@@ -43,7 +43,7 @@
 /// 6. Split-motion units with movement participation integrate position once.
 ///    Debug movement has already integrated inside `Update` and is not integrated again.
 /// 7. Collisions for units that participate in collision.
-/// 8. Projectile sweep, deterministic impacts, and expiry.
+/// 8. Projectile sweep against this tick's start-to-post-contact target chords, impacts, and expiry.
 /// 9. Timed actions advance one tick.
 /// 10. Collision immunity countdown and the RTS-unit bounds fallback.
 /// 11. Observe deaths again so damage from this tick latches before commit.
@@ -120,6 +120,8 @@ public:
 
     ProjectileSimulation& GetProjectiles() { return projectiles_; }
     const ProjectileSimulation& GetProjectiles() const { return projectiles_; }
+    // Value events from the last completed tick; unchanged by paused updates.
+    const std::vector<ProjectileImpactRecord>& GetProjectileImpacts() const { return projectiles_.LastImpacts(); }
     TimedActionClock& GetTimedActions() { return actions_; }
     const TimedActionClock& GetTimedActions() const { return actions_; }
     const std::vector<TimedActionEvent>& GetActionEvents() const { return actionEvents_; }

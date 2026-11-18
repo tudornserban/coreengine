@@ -1,6 +1,6 @@
 {
   "id": "core.gamestate",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "path": "core/gamestate",
   "exports": [
     "RTSGameState",
@@ -11,7 +11,7 @@
   ],
   "requires": {
     "core.ai": "^1.2.0",
-    "core.combat": "^1.2.0",
+    "core.combat": "^1.3.0",
     "core.map": "^1.2.0",
     "core.influence": "^1.0.0",
     "core.collision": "^1.1.0",
@@ -19,6 +19,9 @@
     "core.logging": "^1.0.0",
     "core.interfaces": "^1.7.0"
   },
-  "tags": ["integration", "gameplay"],
+  "tags": [
+    "integration",
+    "gameplay"
+  ],
   "notes": "Simulation hub (units, map, selection, commands, collision, RNG, explosions, static influence) plus GameStateManager single active menu/mission state. `#include` boundaries are enforced via INCLUDE_ENFORCED_MODULES (R2.1)."
 }

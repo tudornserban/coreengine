@@ -186,6 +186,9 @@ void RTSGameState::Update(float deltaTime)
         std::string behavior;
         bool record = false;
     };
+    std::vector<ProjectileTargetMotion> projectileTargets;
+    for (const auto& unit : units_)
+        projectileTargets.push_back({unit.get(), unit->GetPosition(), unit->GetPosition()});
     std::vector<MotionNote> notes;
 
     for (auto& held : units_)
@@ -328,7 +331,8 @@ void RTSGameState::Update(float deltaTime)
         collisionSystem_.ProcessCollisions(colliding, bounds);
     }
 
-    projectiles_.Advance(deltaTime, GetAllUnits());
+    for (auto& motion : projectileTargets) motion.end = motion.unit->GetPosition();
+    projectiles_.AdvanceSwept(deltaTime, projectileTargets);
     actionEvents_ = actions_.Advance();
     collisionSystem_.UpdateImmunity();
 

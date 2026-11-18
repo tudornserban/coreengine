@@ -72,3 +72,19 @@ ctest --test-dir build-combat --output-on-failure
 ```
 
 Standalone links `coreengine_combat` and `coreengine_math` only (header-only `core.interfaces` via include paths).
+
+## Projectile interval and events (1.3.0)
+
+`Advance(dt, units)` treats positions as interval starts and predicts constant-velocity
+ends. `AdvanceSwept(dt, motions)` accepts explicit start/end positions for that same
+interval. Target paths are linear chords, not reconstructed contact trajectories.
+Dead units (HP <= 0) and units with collision participation disabled cannot consume
+shots. Eligibility is checked again when resolving time/id-ordered impacts: a target
+killed by an earlier shot no longer blocks a later shot.
+
+`LastImpacts()` exposes `ProjectileImpactRecord` values with projectile, owner, team
+and target IDs, contact time relative to the interval start, projectile-center contact
+point, requested damage and actual nonnegative HP removed (armor and overkill excluded).
+Damage is applied once through `IUnitCombat::TakeDamage`. Copy records for retained
+history; the next advance or restore clears them. Existing `ProjectileImpact` raw
+pointers returned by the direct API remain call-scoped.

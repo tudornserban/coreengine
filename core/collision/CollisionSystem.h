@@ -20,8 +20,8 @@ class CollisionSystem {
 private:
     std::unique_ptr<CollisionDetector> detector;
     CollisionEventManager eventManager;
-    ImmunityManager immunityManager;
     CollisionSettings settings;
+    ImmunityManager immunityManager;
     MapBounds currentBounds;  // Current map bounds for collision resolution
 
 public:
