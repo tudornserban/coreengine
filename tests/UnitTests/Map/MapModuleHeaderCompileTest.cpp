@@ -7,6 +7,7 @@
 #include "core/map/MapComponents/MapObstacleComponent.h"
 #include "core/map/MapComponents/MapResourceComponent.h"
 #include "core/map/PlacementValidator.h"
+#include "core/map/ResourceClaims.h"
 
 namespace {
 

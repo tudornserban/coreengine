@@ -12,6 +12,9 @@ public:
 
     bool Evaluate(const BehaviorContext& ctx) const override;
     const char* GetDescription() const override;
+    bool HasNumericState() const override { return true; }
+    float GetNumericState() const override { return elapsed_; }
+    void SetNumericState(float value) override { elapsed_ = value; }
 
     void Reset() { elapsed_ = 0.0f; }
 };

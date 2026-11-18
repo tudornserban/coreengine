@@ -22,13 +22,14 @@ Include headers from the repo root, e.g. `#include "core/ai/StateMachine.h"`.
 
 - **Canonical influence type include:** use `#include "core/influence_types/InfluenceFieldItem.h"` (not `core/influence/InfluenceFieldItem.h`) so manifest `requires` matches actual `#include` boundaries.
 - **Interfaces:** depend on `IGameUnit`, `IBehavior`, `ITransitionCondition` from `core/interfaces/`.
+- **Automatic transitions:** `EvaluateAutomaticTransitions` is the transition pass. `Update` still runs that pass and then `CalculateAcceleration` once. The hub must not call `Update` if it also evaluates steering.
 
 ## Dependencies (`requires`)
 
 | Module | Range | Why |
 |--------|-------|-----|
 | `core.math` | `^1.0.0` | `Vector2`, `DeterministicRNG`, constants |
-| `core.interfaces` | `^1.0.0` | Behavior and unit contracts |
+| `core.interfaces` | `^1.7.0` | Behavior, unit, and transition numeric-state contracts |
 | `core.logging` | `^1.0.0` | `Logger` in `StateMachine` |
 | `core.influence.types` | `^1.0.0` | `InfluenceFieldItem` in `BehaviorContext` |
 

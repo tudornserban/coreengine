@@ -9,7 +9,7 @@
 
 1. **Platform-agnostic core**: zero SDL2/Raylib/UE5/Unity headers in `core/`
 2. **Language-interoperable**: flat C API in `ffi/` for Python, Rust, Go, Lua, Unity C#
-3. **Deterministic**: seeded RNG + fixed-timestep loop → reproducible replays
+3. **Deterministic**: seeded RNG + fixed-timestep loop → reproducible replays on the same binary and platform ([DETERMINISM.md](DETERMINISM.md))
 4. **Extensible**: behavior factory enables runtime behavior swapping (RationalInsanity)
 5. **Future-portable**: compile `core/` unchanged into UE5, Unity, or any C++17 environment
 
@@ -115,19 +115,22 @@ Directly from VenusWars — broadphase SpatialGrid + narrowphase circle detectio
 - `Map` — ECS-based arena (rectangle/circle/polygon shapes)
 - `MapEntity` / `IMapComponent` — entity + component system for map objects
 - `MapObstacleComponent` / `MapResourceComponent` — built-in component types. Obstacles emit the shared `Obstacle` disc.
-- `PlacementValidator` — bounds, placement obstacles, team and enemy clearance, optional territory predicate
+- `PlacementValidator` — bounds, placement obstacles, team and enemy clearance, optional territory predicate, optional candidate radius
+- `ResolveResourceClaims` — one grant per resource, lowest claimant id wins
 - `Obstacle` — stateless disc (`blocksPlacement`, `blocksInfluence`) used by map, influence, and validators
 - `GameMode` — DETERMINISTIC vs INTERACTIVE enum
 
 ### `core/combat/`
-- `CombatManager` — simultaneous influence-attrition, direct-attack, and hybrid resolution on `IUnitCombat` / `IInfluenceEmitter`
-- `Explosion` — area impulse/damage with falloff
+- `CombatManager` — simultaneous influence-attrition, direct-attack, and hybrid resolution on `IUnitCombat` / `IInfluenceEmitter`. Shot timers for units with an entity id can be exported and restored
+- `ProjectileSimulation` — swept projectiles. Games choose firing policy, charge, and armor
+- `Explosion` — area velocity change with falloff. The impulse is already mass-scaled
 - `SelectionSystem` — click/box unit selection
 - `CommandSystem` — unit state overrides, move-to commands, parameter tuning
 
 ### `core/gamestate/`
-- `RTSGameState` — canonical simulation state (units, map, collision, RNG)
-- `RTSUnit` — concrete IGameUnit with StateMachine + InfluenceFieldController
+- `RTSGameState` — simulation hub. `CaptureCanonicalState` / `RestoreCanonicalState` is the restorable snapshot. Diagnostic JSON is a separate, non-restoring view
+- `RTSUnit` — concrete unit with a state machine, split propulsion and impulses, and a game-supplied visual-radius curve
+- `TimedActionClock` — start, progress, complete, cancel, and interrupt counted in ticks
 - `GameStateManager` — single active state (transitions via SetState)
 - `IGameState` / `IGameLogicRenderer` — thin `#include` forwarders to `core/interfaces/` (canonical contract)
 
@@ -140,7 +143,7 @@ Directly from VenusWars — broadphase SpatialGrid + narrowphase circle detectio
 - `GeneticTrainer` — genetic algorithm for evolving Genome populations
 
 ### `core/serialization/`
-- `GameStateSerializer` — JSON snapshot of RTSGameState (for replay, FFI, server)
+- `GameStateSerializer` — diagnostic JSON of `RTSGameState`. It does not restore a match. Rollback uses the canonical snapshot on `RTSGameState`
 
 ### `core/session/`
 Lobby and client-server session. No sockets in `core/` — `ISessionTransport` is the byte pipe, and `InProcessHost` is the reference server plus clients in one process.
@@ -148,7 +151,8 @@ Lobby and client-server session. No sockets in `core/` — `ISessionTransport` i
 - `SessionServer` / `SessionClient` — create/join/ready lobby, matchmaking by `GameTitle` + `PlayMode`
 - `PlayMode::OfflineResolution` — each client submits a `DecisionPlan`; `ResolveOffline` runs an `IDeterministicMatch` on the server and returns one `MatchOutcome` (same hash a client gets by replaying)
 - `PlayMode::OnlineSync` — server-authoritative lockstep. Input delay tracks the worst RTT; late commands inside the rollback window restore a snapshot and resimulate; remote presentation waits half an RTT
-- `GameTitle` — `DynamicGo`, `AscendantExpanse`, `ZodiacWars`. Each game supplies `IMatchFactory`; this module does not contain their rules
+- `GameTitle` — `DynamicGo`, `AscendantExpanse`, `ZodiacWars`, `VenusWars`. Each game supplies `IMatchFactory`; this module does not contain their rules
+- `MatchSetup` — opaque content reference and payload stored on the lobby before start. `IDeterministicMatch::Configure` receives it. Persistent accounts and authenticated transport stay outside this module
 
 The authoritative tick clock stays on the server (`AdvanceOnlineMatches`). Clients send commands; they do not advance time.
 

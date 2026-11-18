@@ -21,6 +21,15 @@ class IDeterministicMatch
 public:
     virtual ~IDeterministicMatch() = default;
 
+    // Game-side check of a lobby setup payload. The default accepts any payload
+    // the session layer already validated. Return false to refuse the match.
+    // Adapters advance exactly one simulation tick inside each Step call.
+    virtual bool Configure(const MatchSetup& setup)
+    {
+        (void)setup;
+        return true;
+    }
+
     virtual void Reset(uint64_t seed, const std::vector<uint32_t>& playerIds) = 0;
     virtual void Apply(const PlayerCommand& command) = 0;
     virtual void Step() = 0;

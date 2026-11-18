@@ -15,6 +15,8 @@ Include headers from the repo root, e.g. `#include "core/gamestate/RTSGameState.
 | `RTSGameState` | class | `RTSGameState.h` | Main simulation step (`Update`, units, map, combat systems); implements `ISimulationSnapshot` |
 | `RTSUnit` | class | `RTSUnit.h` | Concrete unit; AI FSM, kinematics, influence radius, and combat stats |
 | `GameStateManager` | class | `GameStateManager.h` | Menu / mission state holder (`currentState` + `GameStateType`) |
+| `TimedActionClock` | class | `TimedActionClock.h` | Tick-counted actions. Completion, cancel, and interrupt each report once |
+| `UnitDiagnosticRecord` | struct | `SimulationDiagnostics.h` | Value captured during a tick. Safe after the unit is removed |
 | `IGameState` | header | `IGameState.h` | Legacy forwarder → `core/interfaces/IGameState.h` |
 | `IGameLogicRenderer` | header | `IGameLogicRenderer.h` | Legacy forwarder → `core/interfaces/IGameLogicRenderer.h` |
 
@@ -30,14 +32,14 @@ Include headers from the repo root, e.g. `#include "core/gamestate/RTSGameState.
 
 | Module | Range | Why |
 |--------|-------|-----|
-| `core.ai` | `^1.0.0` | `BehaviorContext`, unit AI tick |
-| `core.combat` | `^1.0.0` | Selection, commands, explosions |
-| `core.map` | `^1.0.0` | `Map`, placement/obstacle components |
+| `core.ai` | `^1.2.0` | Automatic transitions and transition numeric state |
+| `core.combat` | `^1.2.0` | Selection, commands, explosions, projectiles, id-keyed cooldowns |
+| `core.map` | `^1.2.0` | `Map`, placement radius, resource claims |
 | `core.influence` | `^1.0.0` | Influence items and calculator |
-| `core.collision` | `^1.0.0` | Collision system / detector hooks |
+| `core.collision` | `^1.1.0` | Collision system and immunity export |
 | `core.math` | `^1.0.0` | `Vector2`, deterministic RNG |
 | `core.logging` | `^1.0.0` | `Logger` |
-| `core.interfaces` | `^1.6.0` | `IGameUnit`, kinematics, influence, combat, game-state contracts |
+| `core.interfaces` | `^1.7.0` | Motion, participation, death latch, and transition numeric state |
 
 Allowed `#include` in `core/gamestate/**`: standard library (`<…>`), headers under `core/gamestate/`, repo-root paths under declared `requires` (e.g. `core/interfaces/…`), or **relative** includes that resolve into a declared requirement (e.g. `../logging/Logger.h`, `../combat/CommandSystem.h`). No other `core/*` siblings (`core/serialization/`, `core/ai_advanced/`, …), `platform/`, or `ffi/` (enforced by `./scripts/check-module-deps.sh`).
 
@@ -54,10 +56,11 @@ Allowed `#include` in `core/gamestate/**`: standard library (`<…>`), headers u
 
 - **Legacy forwarders** in `IGameState.h` / `IGameLogicRenderer.h` remain; canonical contracts live under `core/interfaces/`.
 - **`SetAgentState` / `SetAgentParameter`** forwarder bodies stay verbatim on `RTSUnit` / command paths.
-- **`RTSGameState::Update`:** when a behavior’s `GenerateFieldItems` is empty, the hub applies `CalculateAcceleration` first, then adds static map-edge (and other static) field forces via `InfluenceField::CalculateTotalForce`; behaviors that emit field items still use the field path only (static items are not folded into the non-empty branch).
-- **`RTSGameState::Update`:** AI tick gates on `dynamic_cast<IUnitBehaviorHost*>`; explosion impulse and bounds fallback remain `dynamic_cast<RTSUnit*>` participation filters (do not widen those two gates to `IGameUnit` / `IUnitKinematics`).
-- Bounds fallback center-clamps `RTSUnit` centers onto `[0, mapSize]` after explosions; collision still performs radius-aware map-edge inset via `IUnitKinematics` for non-`RTSUnit` kinematic doubles (see `RTSGameStateNonRTSUnitGateTest`).
-- **`RTSUnit`** multiply-inherits `IGameUnit`, `IUnitKinematics`, `IUnitAgent`, and `IUnitBehaviorHost`; ABI/size changed for out-of-tree binaries when the behavior-host base was added (in-tree tests use concrete `RTSUnit`).
+- **`RTSGameState::Update`:** behavior hosts are visited once. Automatic transitions run through `EvaluateAutomaticTransitions`, then either field items or `CalculateAcceleration`. Static field force is added to that result, and the sum is clamped once to `GetMaxAcceleration`. `StateMachine::Update` is not called from the hub.
+- **Explosions** apply `Explosion::CalculateImpulse` with `ApplyVelocityChange` on split-tick units. That vector is already mass-scaled. One `IntegrateMotion` follows. Impulses are not clamped to max speed.
+- **Bounds fallback** center-clamps `RTSUnit` centers onto `[0, mapSize]`. Collision still performs radius-aware map-edge inset via `IUnitKinematics`.
+- **Canonical snapshot** (`CaptureCanonicalState` / `RestoreCanonicalState` / `CanonicalStateHash`) is the restorable match state. Diagnostic JSON is unchanged and does not restore.
+- **`RTSUnit`** implements `IGameUnit`, `IUnitKinematics`, `IUnitAgent`, `IUnitBehaviorHost`, `IInfluenceEmitter`, and `IUnitCombat`. Its motion integration is `SplitTick`.
 - **Map-edge collision events** always emit, including for units that do not implement `IUnitKinematics`.
 - Do not introduce `#include` of other CoreEngine modules without updating manifest `requires`, dependency policy, and regenerating `docs/deps/*`.
 

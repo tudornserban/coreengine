@@ -3,6 +3,7 @@ set(CORE_MAP_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/Map.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/MapEntity.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/PlacementValidator.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/ResourceClaims.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/MapComponents/MapObstacleComponent.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/MapComponents/MapResourceComponent.cpp
 )

@@ -29,6 +29,8 @@ const char* ToString(GameTitle game)
         return "AscendantExpanse";
     case GameTitle::ZodiacWars:
         return "ZodiacWars";
+    case GameTitle::VenusWars:
+        return "VenusWars";
     }
     return "DynamicGo";
 }
@@ -63,7 +65,34 @@ bool TryParseGameTitle(const std::string& text, GameTitle& game)
         game = GameTitle::ZodiacWars;
         return true;
     }
+    if (key == "venuswars")
+    {
+        game = GameTitle::VenusWars;
+        return true;
+    }
     return false;
+}
+
+SetupReject ValidateMatchSetup(const MatchSetup& setup)
+{
+    if (setup.schemaVersion != kMatchSetupSchemaVersion)
+    {
+        return SetupReject::UnsupportedVersion;
+    }
+    if (setup.payload.size() > kMaxSetupPayloadBytes || setup.contentReference.size() > kMaxSetupReferenceLength)
+    {
+        return SetupReject::Oversized;
+    }
+    for (unsigned char ch : setup.contentReference)
+    {
+        const bool ok = (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') ||
+                        (ch >= '0' && ch <= '9') || ch == '-' || ch == '_' || ch == '.' || ch == '/';
+        if (!ok)
+        {
+            return SetupReject::InvalidReference;
+        }
+    }
+    return SetupReject::Ok;
 }
 
 bool TryParsePlayMode(const std::string& text, PlayMode& mode)

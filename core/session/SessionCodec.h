@@ -31,6 +31,9 @@ bool DecodeQueueStatus(const std::vector<uint8_t>& bytes, QueueStatusMessage& st
 std::vector<uint8_t> EncodeDecisionPlan(const DecisionPlan& plan);
 bool DecodeDecisionPlan(const std::vector<uint8_t>& bytes, DecisionPlan& plan);
 
+std::vector<uint8_t> EncodeMatchSetup(const MatchSetup& setup);
+bool DecodeMatchSetup(const std::vector<uint8_t>& bytes, MatchSetup& setup);
+
 std::vector<uint8_t> EncodeMatchOutcome(const MatchOutcome& outcome);
 bool DecodeMatchOutcome(const std::vector<uint8_t>& bytes, MatchOutcome& outcome);
 

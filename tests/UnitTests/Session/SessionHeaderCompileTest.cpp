@@ -14,6 +14,7 @@
 TEST(SessionHeaderCompile, PublicHeadersExposeLobbyAndBothPlayModes)
 {
     EXPECT_EQ(Session::ToString(Session::GameTitle::DynamicGo)[0], 'D');
+    EXPECT_STREQ(Session::ToString(Session::GameTitle::VenusWars), "VenusWars");
     EXPECT_EQ(Session::InputDelayTicksForRtt(0, Session::LatencyProfile{}), 1u);
     const Session::MatchOutcome* outcome = nullptr;
     EXPECT_EQ(outcome, nullptr);

@@ -5,6 +5,11 @@ Agents **must** append a dated note under the matching `## [version]` section wh
 
 Entries describe the **published contract**: manifest `exports` and the headers under `core/interfaces/`, plus manifest `requires` edges. Follow [AGENTS.md](../../AGENTS.md) for major / minor / patch rules.
 
+## [1.7.0] — 2026-11-18
+
+- **Behavior:** `IGameUnit` default motion helpers. `ApplyPropulsion` calls `ApplyAcceleration`. `ApplyImpulse`, `ApplyVelocityChange`, and `IntegrateMotion` are no-ops. `GetMotionIntegration` is `CombinedInApplyAcceleration`. `GetMaxAcceleration` is 300. `GetEntityId` is 0. Action, movement, and collision participation default to true. `ConsumeDeathEvent` returns false.
+- **Behavior:** `ITransitionCondition` numeric state defaults. `HasNumericState` is false, `GetNumericState` is 0, and `SetNumericState` does nothing. Existing conditions stay valid. `TimeElapsedCondition` stores its elapsed timer here.
+
 ## [1.6.0] — 2026-11-17
 
 - **Export:** `IInfluenceEmitter.h` — optional influence radius get/set. `RTSUnit` implements it.

@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <cmath>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 namespace {
@@ -191,7 +192,7 @@ void CombatManager::Resolve(const std::vector<IGameUnit*>& units, float deltaTim
                 shots = 1;
                 shotDamage = combat->GetBaseDPS() * deltaTime;
             } else {
-                float& timer = attackTimers_[attacker];
+                float& timer = TimerFor(attacker);
                 timer += deltaTime;
                 while (timer >= cooldown) {
                     timer -= cooldown;
@@ -260,10 +261,59 @@ void CombatManager::Resolve(const std::vector<IGameUnit*>& units, float deltaTim
     for (auto it = attackTimers_.begin(); it != attackTimers_.end();) {
         const IGameUnit* unit = it->first;
         const bool present = indexOf.find(unit) != indexOf.end();
-        if (!present || !IsAlive(unit)) {
+        if (!present || !IsAlive(unit) || (unit && unit->GetEntityId() != 0)) {
             it = attackTimers_.erase(it);
         } else {
             ++it;
         }
+    }
+
+    std::unordered_set<uint64_t> liveIds;
+    for (IGameUnit* unit : units) {
+        if (unit && unit->GetEntityId() != 0 && IsAlive(unit)) {
+            liveIds.insert(unit->GetEntityId());
+        }
+    }
+    for (auto it = attackTimersById_.begin(); it != attackTimersById_.end();) {
+        if (liveIds.find(it->first) == liveIds.end()) {
+            it = attackTimersById_.erase(it);
+        } else {
+            ++it;
+        }
+    }
+}
+
+float& CombatManager::TimerFor(const IGameUnit* unit) {
+    const uint64_t id = unit ? unit->GetEntityId() : 0;
+    if (id != 0) {
+        return attackTimersById_[id];
+    }
+    return attackTimers_[unit];
+}
+
+std::vector<CombatManager::CooldownRecord> CombatManager::ExportCooldowns() const {
+    std::vector<CooldownRecord> records;
+    records.reserve(attackTimersById_.size());
+    for (const auto& entry : attackTimersById_) {
+        records.push_back(CooldownRecord{entry.first, entry.second});
+    }
+    std::sort(records.begin(), records.end(), [](const CooldownRecord& a, const CooldownRecord& b) {
+        return a.entityId < b.entityId;
+    });
+    return records;
+}
+
+void CombatManager::ImportCooldowns(const std::vector<CooldownRecord>& records) {
+    attackTimersById_.clear();
+    for (const CooldownRecord& record : records) {
+        if (record.entityId != 0) {
+            attackTimersById_[record.entityId] = record.remaining;
+        }
+    }
+}
+
+void CombatManager::ForgetEntity(uint64_t entityId) {
+    if (entityId != 0) {
+        attackTimersById_.erase(entityId);
     }
 }

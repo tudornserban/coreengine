@@ -3,6 +3,7 @@
 #include "core/interfaces/IGameUnit.h"
 #include <unordered_map>
 #include <set>
+#include <vector>
 
 struct ImmunityData {
     int remainingFrames;
@@ -33,6 +34,15 @@ public:
 
     // Clear immunity for a specific unit
     void ClearImmunity(IGameUnit* unit);
+
+    struct ExportRecord {
+        IGameUnit* unit = nullptr;
+        int remainingFrames = 0;
+        std::vector<IGameUnit*> against;
+    };
+
+    std::vector<ExportRecord> Export() const;
+    void Import(const std::vector<ExportRecord>& records);
 
     void SetDefaultImmunityFrames(int frames) { defaultImmunityFrames = frames; }
     int GetDefaultImmunityFrames() const { return defaultImmunityFrames; }

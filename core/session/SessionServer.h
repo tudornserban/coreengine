@@ -31,6 +31,7 @@ public:
 
     uint32_t LobbyCount() const { return static_cast<uint32_t>(lobbies_.size()); }
     uint32_t QueueSize() const { return static_cast<uint32_t>(queue_.size()); }
+    const MatchSetup* SetupForPlayer(uint32_t playerId) const;
 
 private:
     struct OfflineRuntime
@@ -49,6 +50,8 @@ private:
         std::unique_ptr<OfflineRuntime> offline;
         std::unique_ptr<OnlineMatch> online;
         bool resultSent = false;
+        bool hasSetup = false;
+        MatchSetup setup;
     };
 
     struct ServerPlayer

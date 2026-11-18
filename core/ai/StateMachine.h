@@ -2,6 +2,7 @@
 
 #include <string>
 #include <map>
+#include <utility>
 #include <vector>
 #include <memory>
 #include "core/interfaces/IBehavior.h"
@@ -41,6 +42,19 @@ public:
     void AddState(const std::string& name, std::unique_ptr<IBehavior> behavior);
     void AddTransition(StateTransition transition);
 
+    /// Result of one automatic-transition pass. Priority is registration order:
+    /// the first automatic transition whose condition is true wins. Manual
+    /// (`isAutomatic == false`) transitions are ignored. Enter/exit run once.
+    struct TransitionEval {
+        bool changed = false;
+        std::string fromState;
+        std::string toState;
+    };
+
+    /// Transition pass only. Does not evaluate steering or advance behavior timers
+    /// beyond what the winning condition itself reads.
+    TransitionEval EvaluateAutomaticTransitions(const BehaviorContext& ctx);
+
     /// Evaluates automatic transitions, then returns the current behavior's acceleration.
     Vector2 Update(const BehaviorContext& ctx);
 
@@ -57,4 +71,17 @@ public:
 
     IBehavior* GetCurrentBehavior();
     const IBehavior* GetCurrentBehavior() const;
+
+    std::size_t TransitionCount() const { return transitions_.size(); }
+    bool TransitionHasNumericState(std::size_t index) const;
+    float TransitionNumericState(std::size_t index) const;
+    void SetTransitionNumericState(std::size_t index, float value);
+
+    /// Assign the current state without enter/exit callbacks. Fails if `name` is unknown.
+    /// An empty name clears the current state without callbacks.
+    bool RestoreCurrentStateName(const std::string& name);
+
+    /// Replace one behavior's parameter map. Keys are inserted; unknown names fail.
+    bool RestoreBehaviorParameters(const std::string& stateName,
+                                   const std::vector<std::pair<std::string, float>>& parameters);
 };

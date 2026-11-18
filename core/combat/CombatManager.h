@@ -57,9 +57,24 @@ public:
     void ProcessAttrition(IGameUnit* unit, bool isSurrounded, float deltaTime,
                           float surroundedHpFractionPerSecond);
 
-    /// Resolve one tick. Shot cooldown timers persist on this manager, keyed by unit pointer.
+    /// Resolve one tick. Shot cooldown timers persist on this manager.
+    /// Units with a non-zero `GetEntityId()` are keyed by that id so timers survive
+    /// pointer changes. Units without an id stay keyed by pointer.
     void Resolve(const std::vector<IGameUnit*>& units, float deltaTime, const Params& params);
 
+    struct CooldownRecord {
+        uint64_t entityId = 0;
+        float remaining = 0.0f;
+    };
+
+    /// Id-keyed timers in ascending entity id order. Pointer-keyed timers are not included.
+    std::vector<CooldownRecord> ExportCooldowns() const;
+    void ImportCooldowns(const std::vector<CooldownRecord>& records);
+    void ForgetEntity(uint64_t entityId);
+
 private:
+    float& TimerFor(const IGameUnit* unit);
+
     std::unordered_map<const IGameUnit*, float> attackTimers_;
+    std::unordered_map<uint64_t, float> attackTimersById_;
 };

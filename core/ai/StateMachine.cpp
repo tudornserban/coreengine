@@ -25,16 +25,28 @@ void StateMachine::AddTransition(StateTransition transition)
     transitions_.push_back(std::move(transition));
 }
 
-Vector2 StateMachine::Update(const BehaviorContext& ctx)
+StateMachine::TransitionEval StateMachine::EvaluateAutomaticTransitions(const BehaviorContext& ctx)
 {
+    TransitionEval result;
+    result.fromState = currentState_;
+    result.toState = currentState_;
     for (const auto& transition : transitions_) {
         if (!transition.isAutomatic) continue;
         if (transition.fromState != currentState_) continue;
         if (transition.condition && transition.condition->Evaluate(ctx)) {
-            SetState(transition.toState);
+            const std::string destination = transition.toState;
+            SetState(destination);
+            result.changed = currentState_ == destination && destination != result.fromState;
+            result.toState = currentState_;
             break;
         }
     }
+    return result;
+}
+
+Vector2 StateMachine::Update(const BehaviorContext& ctx)
+{
+    EvaluateAutomaticTransitions(ctx);
 
     auto it = states_.find(currentState_);
     if (it != states_.end() && it->second) {
@@ -90,4 +102,62 @@ const IBehavior* StateMachine::GetCurrentBehavior() const
 {
     auto it = states_.find(currentState_);
     return (it != states_.end()) ? it->second.get() : nullptr;
+}
+
+bool StateMachine::TransitionHasNumericState(std::size_t index) const
+{
+    if (index >= transitions_.size() || !transitions_[index].condition) {
+        return false;
+    }
+    return transitions_[index].condition->HasNumericState();
+}
+
+float StateMachine::TransitionNumericState(std::size_t index) const
+{
+    if (!TransitionHasNumericState(index)) {
+        return 0.0f;
+    }
+    return transitions_[index].condition->GetNumericState();
+}
+
+void StateMachine::SetTransitionNumericState(std::size_t index, float value)
+{
+    if (!TransitionHasNumericState(index)) {
+        return;
+    }
+    transitions_[index].condition->SetNumericState(value);
+}
+
+bool StateMachine::RestoreCurrentStateName(const std::string& name)
+{
+    if (name.empty()) {
+        currentState_.clear();
+        return true;
+    }
+    if (states_.find(name) == states_.end()) {
+        return false;
+    }
+    currentState_ = name;
+    return true;
+}
+
+bool StateMachine::RestoreBehaviorParameters(
+    const std::string& stateName,
+    const std::vector<std::pair<std::string, float>>& parameters)
+{
+    auto it = states_.find(stateName);
+    if (it == states_.end() || !it->second) {
+        return false;
+    }
+    auto& live = it->second->GetParameters();
+    for (const auto& parameter : parameters) {
+        auto found = live.find(parameter.first);
+        if (found == live.end()) {
+            return false;
+        }
+    }
+    for (const auto& parameter : parameters) {
+        live[parameter.first] = parameter.second;
+    }
+    return true;
 }

@@ -762,3 +762,78 @@ TEST(SessionTransport, InProcessPipeRoundTripsEnvelopeBytes)
     EXPECT_EQ(reason, "lobby-full");
     EXPECT_EQ(incoming[0].playerId, 3u);
 }
+
+TEST(SessionVenusWars, SetupRoundTripsAndRejectsBadPayloads)
+{
+    MatchSetup setup;
+    setup.schemaVersion = kMatchSetupSchemaVersion;
+    setup.contentReference = "scenarios/alpha";
+    setup.payload = {9, 4, 1};
+
+    const std::vector<uint8_t> bytes = EncodeMatchSetup(setup);
+    MatchSetup decoded;
+    ASSERT_TRUE(DecodeMatchSetup(bytes, decoded));
+    EXPECT_EQ(decoded.contentReference, setup.contentReference);
+    EXPECT_EQ(decoded.payload, setup.payload);
+    EXPECT_EQ(std::string(ToString(GameTitle::VenusWars)), "VenusWars");
+    GameTitle parsed = GameTitle::DynamicGo;
+    EXPECT_TRUE(TryParseGameTitle("VenusWars", parsed));
+    EXPECT_EQ(parsed, GameTitle::VenusWars);
+
+    MatchSetup bad = setup;
+    bad.schemaVersion = 99;
+    EXPECT_EQ(ValidateMatchSetup(bad), SetupReject::UnsupportedVersion);
+    bad = setup;
+    bad.payload.assign(kMaxSetupPayloadBytes + 1, std::uint8_t{1});
+    EXPECT_EQ(ValidateMatchSetup(bad), SetupReject::Oversized);
+    bad = setup;
+    bad.contentReference = "bad ref";
+    EXPECT_EQ(ValidateMatchSetup(bad), SetupReject::InvalidReference);
+
+    InProcessHost host(std::make_unique<ScoreRaceFactory>());
+    SessionClient* alice = host.Connect("Alice");
+    alice->CreateLobby(GameTitle::VenusWars, PlayMode::OfflineResolution, 2, 7);
+    host.Pump();
+    alice->SubmitSetup(setup);
+    host.Pump();
+    const MatchSetup* stored = host.Server().SetupForPlayer(alice->PlayerId());
+    ASSERT_NE(stored, nullptr);
+    EXPECT_EQ(stored->payload, setup.payload);
+
+    alice->SubmitSetup(bad);
+    host.Pump();
+    EXPECT_EQ(alice->LastReject(), "");
+
+    Envelope forged;
+    forged.type = MessageType::SubmitSetup;
+    forged.playerId = alice->PlayerId();
+    forged.payload = {1, 2, 3};
+    host.Server().Receive(alice->PlayerId(), forged);
+    host.Pump();
+    EXPECT_EQ(alice->LastReject(), "bad-setup");
+    EXPECT_EQ(host.Server().SetupForPlayer(alice->PlayerId())->payload, setup.payload);
+}
+
+TEST(SessionVenusWars, OfflineResolutionMatchesLocalSteps)
+{
+    std::vector<uint32_t> ids = {1, 2};
+    DecisionPlan alice = PlanFor(1, {PlayerCommand{1, 0, 3, 1, 0}});
+    DecisionPlan bob = PlanFor(2, {PlayerCommand{2, 1, 1, 0, 0}});
+
+    ScoreRace local;
+    local.Reset(11, ids);
+    local.Apply(alice.commands[0]);
+    local.Step();
+    local.Apply(bob.commands[0]);
+    local.Step();
+    while (!local.IsComplete())
+    {
+        local.Step();
+    }
+
+    ScoreRace remote;
+    const MatchOutcome outcome = ResolveOffline(remote, 11, ids, {bob, alice});
+    EXPECT_EQ(outcome.ticksSimulated, local.MaxTicks());
+    EXPECT_EQ(outcome.stateHash, local.StateHash());
+    EXPECT_EQ(local.Outcome().scores, outcome.scores);
+}

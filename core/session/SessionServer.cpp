@@ -300,6 +300,45 @@ void SessionServer::Receive(uint32_t playerId, const Envelope& message)
         HandleEnqueue(playerId, request);
         return;
     }
+    case MessageType::SubmitSetup:
+    {
+        LobbyRecord* lobby = LobbyOf(playerId);
+        if (lobby == nullptr)
+        {
+            Reject(playerId, "not-in-lobby");
+            return;
+        }
+        if (lobby->view.started)
+        {
+            Reject(playerId, "match-started");
+            return;
+        }
+        MatchSetup setup;
+        if (!DecodeMatchSetup(message.payload, setup))
+        {
+            Reject(playerId, "bad-setup");
+            return;
+        }
+        const SetupReject reason = ValidateMatchSetup(setup);
+        if (reason == SetupReject::UnsupportedVersion)
+        {
+            Reject(playerId, "unsupported-setup-version");
+            return;
+        }
+        if (reason == SetupReject::Oversized)
+        {
+            Reject(playerId, "oversized-setup");
+            return;
+        }
+        if (reason == SetupReject::InvalidReference)
+        {
+            Reject(playerId, "invalid-setup-reference");
+            return;
+        }
+        lobby->setup = std::move(setup);
+        lobby->hasSetup = true;
+        return;
+    }
     case MessageType::SubmitPlan:
     {
         DecisionPlan plan;
@@ -458,6 +497,10 @@ bool SessionServer::StartLobby(LobbyRecord& lobby)
     }
     std::unique_ptr<IDeterministicMatch> sim = rules_ ? rules_->Create(lobby.view.game) : nullptr;
     if (!sim)
+    {
+        return false;
+    }
+    if (lobby.hasSetup && !sim->Configure(lobby.setup))
     {
         return false;
     }
@@ -884,6 +927,21 @@ uint64_t SessionServer::MatchSeed(
         hash = MixByte(hash, playerId);
     }
     return hash;
+}
+
+const MatchSetup* SessionServer::SetupForPlayer(uint32_t playerId) const
+{
+    const auto player = players_.find(playerId);
+    if (player == players_.end() || player->second.lobbyId == 0)
+    {
+        return nullptr;
+    }
+    const auto lobby = lobbies_.find(player->second.lobbyId);
+    if (lobby == lobbies_.end() || !lobby->second.hasSetup)
+    {
+        return nullptr;
+    }
+    return &lobby->second.setup;
 }
 
 }

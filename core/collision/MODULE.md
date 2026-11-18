@@ -25,6 +25,7 @@ Include headers from the repo root, e.g. `#include "core/collision/CollisionSyst
 ### Contract highlights
 
 - **Kinematics gate:** resolution paths that apply impulses or correct positions require `IUnitKinematics` (optional interface); callers must not assume every `IGameUnit` implements it.
+- **Immunity export:** `CollisionSystem::ExportImmunity` / `ImportImmunity` and `ForgetUnit` drop a removed unit from contact immunity. Canonical snapshots sort those pairs by entity id.
 - **No `RTSUnit`:** do not include gamestate unit types from this module; use `IGameUnit` / `IUnitKinematics` only.
 
 ## Dependencies (`requires`)

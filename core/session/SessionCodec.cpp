@@ -151,7 +151,7 @@ private:
 bool WriteGame(ByteWriter& writer, GameTitle game)
 {
     const uint8_t raw = static_cast<uint8_t>(game);
-    if (raw < 1 || raw > 3)
+    if (raw < 1 || raw > 4)
     {
         writer.Fail();
         return false;
@@ -175,7 +175,7 @@ bool WriteMode(ByteWriter& writer, PlayMode mode)
 bool ReadGame(ByteReader& reader, GameTitle& game)
 {
     const uint8_t raw = reader.U8();
-    if (raw < 1 || raw > 3)
+    if (raw < 1 || raw > 4)
     {
         return false;
     }
@@ -263,6 +263,7 @@ bool DecodeEnvelope(const std::vector<uint8_t>& bytes, Envelope& message)
     case MessageType::Enqueue:
     case MessageType::QueueStatus:
     case MessageType::SubmitPlan:
+    case MessageType::SubmitSetup:
     case MessageType::MatchResult:
     case MessageType::SubmitInput:
     case MessageType::TickConfirm:
@@ -642,6 +643,35 @@ bool DecodeReject(const std::vector<uint8_t>& bytes, std::string& reason)
     ByteReader reader(bytes);
     reason = reader.Str(kMaxNoticeLength);
     return reader.Finish();
+}
+
+std::vector<uint8_t> EncodeMatchSetup(const MatchSetup& setup)
+{
+    if (ValidateMatchSetup(setup) != SetupReject::Ok)
+    {
+        return {};
+    }
+    ByteWriter writer;
+    writer.U32(setup.schemaVersion);
+    if (!writer.Str(setup.contentReference, kMaxSetupReferenceLength) ||
+        !writer.Blob(setup.payload, kMaxSetupPayloadBytes))
+    {
+        return {};
+    }
+    return FinishWrite(writer);
+}
+
+bool DecodeMatchSetup(const std::vector<uint8_t>& bytes, MatchSetup& setup)
+{
+    ByteReader reader(bytes);
+    setup.schemaVersion = reader.U32();
+    setup.contentReference = reader.Str(kMaxSetupReferenceLength);
+    setup.payload = reader.Blob(kMaxSetupPayloadBytes);
+    if (!reader.Finish())
+    {
+        return false;
+    }
+    return ValidateMatchSetup(setup) == SetupReject::Ok;
 }
 
 }
