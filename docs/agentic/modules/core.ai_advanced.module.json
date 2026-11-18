@@ -1,8 +1,8 @@
 {
   "id": "core.ai_advanced",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "path": "core/ai_advanced",
-  "exports": ["GeneticTrainer", "Genome", "BotPlayer"],
+  "exports": ["GeneticTrainer", "Genome", "BotPlayer", "MonteCarloRunner"],
   "requires": {
     "core.gamestate": "^1.0.0"
   },
