@@ -4,6 +4,7 @@ set(CORE_GAMELOOP_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/GameLogicEngine.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/PlaybackController.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/ThinkTimer.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/ObservationUnlockTracker.cpp
 )
 
 add_library(coreengine_gameloop OBJECT ${CORE_GAMELOOP_SOURCES})
