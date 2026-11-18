@@ -11,6 +11,8 @@ set(CORE_AI_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/Conditions/AlliesNearbyCondition.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Conditions/EnemyInRangeCondition.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Conditions/TimeElapsedCondition.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/DecisionGraph.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/DecisionGraphInterpreter.cpp
 )
 
 add_library(coreengine_ai OBJECT ${CORE_AI_SOURCES})
