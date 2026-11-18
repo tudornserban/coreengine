@@ -48,12 +48,14 @@ There is **no** `./scripts/run-gamestate-module-tests.sh`; `core.gamestate` is c
 | `influence-module-pilot` | `check-module-deps.sh`, `run-influence-module-tests.sh` |
 | `logging-module-pilot` | `check-module-deps.sh`, `run-logging-module-tests.sh` |
 | `build-and-test` | `check-module-deps.sh`, full configure/build, `ctest` (366 tests) |
+| `windows-mingw-ffi` | MinGW-w64 `./scripts/build-host-platform.sh windows` plus `test_host_platforms.py` |
+| `android-arm64-ffi` | NDK r26d `./scripts/build-host-platform.sh android --abi arm64-v8a` plus `test_host_platforms.py` |
 
-**Not in CI:** `run-influence-types-module-tests.sh`, `run-interfaces-module-tests.sh`, `run-gameloop-module-tests.sh`, `run-map-module-tests.sh`, `run-ai-module-tests.sh`, `run-serialization-module-tests.sh`, `run-collision-module-tests.sh`, `run-combat-module-tests.sh`, `run-session-module-tests.sh`, `verify-ffi-build.sh`, optional SDL2 viewer builds.
+**Not in CI:** `run-influence-types-module-tests.sh`, `run-interfaces-module-tests.sh`, `run-gameloop-module-tests.sh`, `run-map-module-tests.sh`, `run-ai-module-tests.sh`, `run-serialization-module-tests.sh`, `run-collision-module-tests.sh`, `run-combat-module-tests.sh`, `run-session-module-tests.sh`, `verify-ffi-build.sh`, optional SDL2 viewer builds. macOS `libcoreengine_ffi.dylib` is not produced in CI; the osxcross toolchain's missing-SDK failure and the macOS header macros are covered by `scripts/test_host_platforms.py` (also run from `check-module-deps.sh`). See [HOST_PLATFORMS.md](../HOST_PLATFORMS.md).
 
 ## FFI shared library (`BUILD_FFI=ON`)
 
-Linking `coreengine_ffi` pulls in the monolithic static `coreengine` archive and OBJECT-library objects; on ELF toolchains those inputs must be built with position-independent code. When `BUILD_FFI=ON`, root `CMakeLists.txt` sets `CMAKE_POSITION_INDEPENDENT_CODE ON` before any targets are defined.
+Linking `coreengine_ffi` pulls in the monolithic static `coreengine` archive and OBJECT-library objects; on ELF toolchains those inputs must be built with position-independent code. When `BUILD_FFI=ON`, root `CMakeLists.txt` sets `CMAKE_POSITION_INDEPENDENT_CODE ON` before any targets are defined. Android targets set it as well, even when `BUILD_FFI` is off, because the archive is loaded from a shared object. See [HOST_PLATFORMS.md](../HOST_PLATFORMS.md).
 
 ```bash
 ./scripts/verify-ffi-build.sh

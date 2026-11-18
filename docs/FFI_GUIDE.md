@@ -69,6 +69,8 @@ cmake --build build
 #         build/coreengine_ffi.dll        (Windows)
 ```
 
+macOS, Windows, and Android library builds, including the Android `.so`, are in [HOST_PLATFORMS.md](HOST_PLATFORMS.md) (`./scripts/build-host-platform.sh`).
+
 Or run `./scripts/verify-ffi-build.sh` from the repo root.
 
 ---

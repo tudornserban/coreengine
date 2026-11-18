@@ -33,11 +33,13 @@
 │   ├── serialization/
 │   └── session/
 ├── platform/       ← LAYER 2: Platform adapter headers (implement core/ interfaces)
+│   ├── host/       (HostPlatform.h — macOS / Windows / Android / Linux macros)
 │   ├── sdl2/       (SDLRenderer / SDLInputReader — stubs; no .cpp in repo)
 │   ├── raylib/     (RaylibRenderer::Render() unimplemented; header-only)
 │   ├── null/
 │   ├── unreal/
 │   └── unity/
+├── cmake/          ← Host toolchains (macos osxcross, windows MinGW, Android NDK)
 ├── ffi/            ← LAYER 3: C API for foreign language interop
 │   ├── c_api.h
 │   ├── c_api.cpp
@@ -161,6 +163,8 @@ The authoritative tick clock stays on the server (`AdvanceOnlineMatches`). Clien
 ## Layer 2: `platform/` — Platform Adapters
 
 Each adapter implements interfaces from `core/interfaces/`. The core engine never includes platform headers. **Today:** `platform/sdl2` and `platform/raylib` are **header stubs** only (`Render()` not implemented; no `.cpp` in-repo). `-DBUILD_SDL2=ON` or `-DBUILD_RAYLIB=ON` **fail at configure** with an explicit `header-only stub` message (before any `find_package` for those adapters). Headers remain the extension point for ports. For a windowed SDL2 tick without writing adapters, use **`COREENGINE_BUILD_SDL2_VIEWER`** (`tools/viewer/`, [VIEWER.md](VIEWER.md)).
+
+**Host OS builds** (macOS, Windows, Android) are not rendering adapters. CMake records `COREENGINE_TARGET_PLATFORM` and `platform/host/HostPlatform.h` exposes the matching macros. Toolchains and the `./scripts/build-host-platform.sh` entry point are documented in [HOST_PLATFORMS.md](HOST_PLATFORMS.md). `core/` does not include `platform/host`.
 
 | Adapter | Implements | Use |
 |---------|-----------|-----|

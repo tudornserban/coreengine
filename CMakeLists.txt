@@ -1,4 +1,13 @@
 cmake_minimum_required(VERSION 3.17)
+
+# Native macOS: set the deployment target before project() so the compiler
+# test uses the same minimum as the libraries. Cross builds set it in
+# cmake/toolchains/macos.cmake. See docs/HOST_PLATFORMS.md.
+if(APPLE AND NOT CMAKE_OSX_DEPLOYMENT_TARGET)
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "11.0" CACHE STRING
+        "Minimum macOS version for CoreEngine")
+endif()
+
 project(CoreEngine VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -70,9 +79,14 @@ endif()
 
 # Static archive and OBJECT-library .o files linked into coreengine_ffi must be PIC/PIE-ready.
 # Scoped to BUILD_FFI so default static-only builds keep non-PIC objects (smaller .a on some toolchains).
+# Android turns PIC on as well, inside coreengine_apply_host_platform(), because the archive is
+# loaded from a shared object even when BUILD_FFI is OFF.
 if(BUILD_FFI)
     set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 endif()
+
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CoreEnginePlatform.cmake)
+coreengine_apply_host_platform()
 
 if(COREENGINE_MATH_STANDALONE)
     add_subdirectory(core/math)
@@ -427,6 +441,19 @@ else()
     )
     target_include_directories(coreengine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
+    # Proves CMake's COREENGINE_TARGET_PLATFORM matches the compiler OS macros.
+    # Not linked into coreengine. Skipped for generic / unknown hosts.
+    if(COREENGINE_TARGET_PLATFORM STREQUAL "linux"
+        OR COREENGINE_TARGET_PLATFORM STREQUAL "macos"
+        OR COREENGINE_TARGET_PLATFORM STREQUAL "windows"
+        OR COREENGINE_TARGET_PLATFORM STREQUAL "android"
+        OR COREENGINE_TARGET_PLATFORM STREQUAL "emscripten")
+        add_library(coreengine_host_check STATIC platform/host/HostPlatformCheck.cpp)
+        target_include_directories(coreengine_host_check PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+        string(TOUPPER "${COREENGINE_TARGET_PLATFORM}" _ce_expect_os)
+        target_compile_definitions(coreengine_host_check PRIVATE "COREENGINE_EXPECT_${_ce_expect_os}=1")
+    endif()
+
     if(COREENGINE_BUILD_SDL2_VIEWER)
         add_subdirectory(tools/viewer)
     endif()
@@ -439,6 +466,19 @@ else()
             OUTPUT_NAME "coreengine_ffi"
             POSITION_INDEPENDENT_CODE ON
         )
+        if(COREENGINE_TARGET_PLATFORM STREQUAL "windows")
+            # MinGW's default shared prefix is "lib", which would emit
+            # libcoreengine_ffi.dll. Unity and the porting guide load coreengine_ffi.dll.
+            set_target_properties(coreengine_ffi PROPERTIES
+                WINDOWS_EXPORT_ALL_SYMBOLS ON
+                PREFIX ""
+                SUFFIX ".dll"
+            )
+        endif()
+        if(COREENGINE_TARGET_PLATFORM STREQUAL "android")
+            # 16 KB ELF alignment for Android 15+ devices.
+            target_link_options(coreengine_ffi PRIVATE "-Wl,-z,max-page-size=16384")
+        endif()
     endif()
 
     if(BUILD_SDL2)
