@@ -375,7 +375,9 @@ elseif(COREENGINE_COMBAT_STANDALONE)
         tests/UnitTests/Combat/CombatModuleHeaderCompileTest.cpp
         tests/UnitTests/Combat/CommandSystemAgentContractTest.cpp
         tests/UnitTests/Combat/ExplosionTest.cpp
+        tests/UnitTests/Combat/InteractionMatrixTest.cpp
         tests/UnitTests/Combat/ProjectileSimulationTest.cpp
+        tests/UnitTests/Combat/TurnClashResolverTest.cpp
     )
     target_include_directories(coreengine_combat_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
     target_link_libraries(coreengine_combat_tests
