@@ -17,6 +17,10 @@ Include headers from the repo root, e.g. `#include "core/combat/CommandSystem.h"
 | `SelectionSystem` | class | `SelectionSystem.h` | Box and click selection |
 | `Explosion` | class | `Explosion.h` | Mass-scaled velocity change from position and radius |
 | `ProjectileSimulation` | class | `ProjectileSimulation.h` | Swept projectiles and intercept. Games own firing policy |
+| `ProjectileTargetMotion` | struct | `ProjectileSimulation.h` | Explicit start/end target motion for swept advances |
+| `ProjectileImpactRecord` | struct | `ProjectileSimulation.h` | Attributed impact metadata from `LastImpacts()` |
+| `InteractionMatrix` | class | `InteractionMatrix.h` | Move dominance and archetype damage multipliers |
+| `TurnClashResolver` | class | `TurnClashResolver.h` | Simultaneous turn clash resolution |
 
 ### Contract highlights
 

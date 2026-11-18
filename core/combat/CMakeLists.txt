@@ -3,8 +3,10 @@ set(CORE_COMBAT_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/CombatManager.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/CommandSystem.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Explosion.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/InteractionMatrix.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/ProjectileSimulation.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/SelectionSystem.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/TurnClashResolver.cpp
 )
 
 add_library(coreengine_combat OBJECT ${CORE_COMBAT_SOURCES})

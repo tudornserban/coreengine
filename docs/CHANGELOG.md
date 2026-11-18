@@ -5,6 +5,16 @@ Each entry links back to the originating proposal document where applicable.
 
 ---
 
+## 2026-11-18 — macOS, Windows, and Android host builds
+
+- CMake detects `COREENGINE_TARGET_PLATFORM` (`linux`, `macos`, `windows`, `android`, plus the existing Emscripten recipe).
+- `./scripts/build-host-platform.sh` builds the static engine and `coreengine_ffi` for those targets. Toolchains: `cmake/toolchains/macos.cmake` (osxcross), `windows-mingw.cmake`, `android.cmake` (NDK r25+).
+- Windows DLLs export the C API. Android shared libraries are 16 KB aligned and default to `c++_shared`. Android rejects GoogleTest, standalone module runners, and the SDL2 viewer.
+- `platform/host/HostPlatform.h` is the compile-time OS name. `coreengine_host_check` fails the build if it disagrees with CMake. `core/` still does not include `platform/`.
+- GitLab jobs `windows-mingw-ffi` and `android-arm64-ffi`. Details: [HOST_PLATFORMS.md](HOST_PLATFORMS.md).
+
+---
+
 ## 2026-11-17 — Module includes follow the CoreEngine project root
 
 - `core/*/CMakeLists.txt` publish `${PROJECT_SOURCE_DIR}` instead of `${CMAKE_SOURCE_DIR}`.

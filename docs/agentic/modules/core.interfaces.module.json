@@ -1,6 +1,6 @@
 {
   "id": "core.interfaces",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "path": "core/interfaces",
   "exports": [
     "IGameUnit",
@@ -16,7 +16,9 @@
     "ISerializer",
     "IMapComponent",
     "ISimulationSnapshot",
-    "IUnitBehaviorHost"
+    "IUnitBehaviorHost",
+    "IDecisionSnapshot",
+    "ITurnCombatant"
   ],
   "requires": {
     "core.math": "^1.0.0",

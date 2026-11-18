@@ -1,6 +1,6 @@
 {
   "id": "core.combat",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "path": "core/combat",
   "exports": [
     "CombatManager",
@@ -9,7 +9,9 @@
     "Explosion",
     "ProjectileSimulation",
     "ProjectileTargetMotion",
-    "ProjectileImpactRecord"
+    "ProjectileImpactRecord",
+    "InteractionMatrix",
+    "TurnClashResolver"
   ],
   "requires": {
     "core.interfaces": "^1.7.0",

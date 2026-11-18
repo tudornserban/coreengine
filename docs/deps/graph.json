@@ -204,7 +204,7 @@
         "core.logging": "^1.0.0",
         "core.math": "^1.0.0"
       },
-      "version": "1.2.0"
+      "version": "1.3.0"
     },
     {
       "id": "core.ai_advanced",
@@ -235,7 +235,7 @@
         "core.interfaces": "^1.7.0",
         "core.math": "^1.0.0"
       },
-      "version": "1.3.0"
+      "version": "1.4.0"
     },
     {
       "id": "core.gameloop",
@@ -291,7 +291,7 @@
         "core.influence.types": "^1.0.0",
         "core.math": "^1.0.0"
       },
-      "version": "1.7.0"
+      "version": "1.8.0"
     },
     {
       "id": "core.logging",

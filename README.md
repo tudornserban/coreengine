@@ -4,7 +4,8 @@ A C++17 simulation core for 2D RTS-style games: units, steering AI, collision, a
 
 ```
 core/        engine modules (pure C++17 + STL; no SDL/Raylib/UE/Unity headers)
-platform/    adapter headers (sdl2, raylib, null, unreal, unity) implementing core interfaces
+platform/    adapter headers (sdl2, raylib, null, unreal, unity) plus platform/host for the OS target
+cmake/       macOS, Windows, and Android toolchains (see docs/HOST_PLATFORMS.md)
 ffi/         flat C API (c_api.h) + Python / Lua binding examples
 tools/       optional SDL2 viewer under tools/viewer/ (off by default)
 scripts/     module manifest checks, per-module test runners, FFI verify
@@ -12,7 +13,7 @@ tests/       GoogleTest unit and integration tests (BUILD_TESTS=ON)
 docs/        architecture, porting, FFI, viewer, agentic workflow, dependency map
 ```
 
-Deeper reading: [Architecture](docs/ARCHITECTURE.md) · [Determinism](docs/DETERMINISM.md) · [Porting guide](docs/PORTING_GUIDE.md) · [FFI guide](docs/FFI_GUIDE.md) · [Viewer](docs/VIEWER.md) · [Coding guidelines](docs/CODING_GUIDELINES.md) · [Game seeds integration](docs/GAME_SEEDS_INTEGRATION.md)
+Deeper reading: [Architecture](docs/ARCHITECTURE.md) · [Determinism](docs/DETERMINISM.md) · [Porting guide](docs/PORTING_GUIDE.md) · [Host builds](docs/HOST_PLATFORMS.md) · [FFI guide](docs/FFI_GUIDE.md) · [Viewer](docs/VIEWER.md) · [Coding guidelines](docs/CODING_GUIDELINES.md) · [Game seeds integration](docs/GAME_SEEDS_INTEGRATION.md)
 
 ---
 
@@ -95,7 +96,15 @@ All of these live in [`core/interfaces/`](core/interfaces/MODULE.md). Include th
 | `COREENGINE_BUILD_SDL2_VIEWER` | Runnable SDL2 window/tools (`coreengine_sdl2_viewer` + tests; needs `libsdl2-dev`) |
 | `COREENGINE_<MODULE>_STANDALONE` | Builds and tests just one module (can't be combined with the viewer) |
 
-When vendoring this tree as a submodule, use `add_subdirectory(CoreEngine)` and `target_link_libraries(mygame PRIVATE coreengine)` with the include root at the submodule path.
+macOS, Windows, and Android library builds (separate from the SDL/Raylib adapters) are in [HOST_PLATFORMS.md](docs/HOST_PLATFORMS.md):
+
+```bash
+./scripts/build-host-platform.sh macos
+./scripts/build-host-platform.sh windows
+./scripts/build-host-platform.sh android --abi arm64-v8a
+```
+
+When vendoring this tree as a submodule, use `add_subdirectory(CoreEngine)` and `target_link_libraries(mygame PRIVATE coreengine)` with the include root at the submodule path. The target platform follows the parent toolchain (`COREENGINE_TARGET_PLATFORM` in the cache).
 
 ### Minimal loop (C++)
 
@@ -232,7 +241,7 @@ python3 scripts/test_check_module_deps.py   # checker self-tests
                                             # serialization, collision, combat
 ```
 
-[AGENTS.md](AGENTS.md#verification) lists the full local gate. GitLab CI (`.gitlab-ci.yml`) runs the dependency checks, the full build plus ctest, and the math, influence and logging runners. The default build needs only CMake, a C++17 compiler and GoogleTest, not SDL2.
+[AGENTS.md](AGENTS.md#verification) lists the full local gate. GitLab CI (`.gitlab-ci.yml`) runs the dependency checks, the full build plus ctest, the math, influence and logging runners, a MinGW Windows FFI build, and an Android arm64 FFI build. The default Linux build needs only CMake, a C++17 compiler and GoogleTest, not SDL2. macOS, Windows, and Android library commands are in [HOST_PLATFORMS.md](docs/HOST_PLATFORMS.md).
 
 **Working on a module:** contributors and agents work one module at a time.
 
