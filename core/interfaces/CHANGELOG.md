@@ -5,6 +5,11 @@ Agents **must** append a dated note under the matching `## [version]` section wh
 
 Entries describe the **published contract**: manifest `exports` and the headers under `core/interfaces/`, plus manifest `requires` edges. Follow [AGENTS.md](../../AGENTS.md) for major / minor / patch rules.
 
+## [1.8.0] — 2026-11-18
+
+- **Export:** `IDecisionSnapshot.h` — read-only property query (`DecisionTarget`, float/int/bool keys) for decision graphs and AI conditions without game-state types.
+- **Export:** `ITurnCombatant.h` — minimal discrete turn / clash combatant stats (`GetCombatantId`, HP, stamina, initiative, momentum; default `IsDefeated()`).
+
 ## [1.7.0] — 2026-11-18
 
 - **Behavior:** `IGameUnit` default motion helpers. `ApplyPropulsion` calls `ApplyAcceleration`. `ApplyImpulse`, `ApplyVelocityChange`, and `IntegrateMotion` are no-ops. `GetMotionIntegration` is `CombinedInApplyAcceleration`. `GetMaxAcceleration` is 300. `GetEntityId` is 0. Action, movement, and collision participation default to true. `ConsumeDeathEvent` returns false.

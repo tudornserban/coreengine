@@ -291,7 +291,7 @@
         "core.influence.types": "^1.0.0",
         "core.math": "^1.0.0"
       },
-      "version": "1.7.0"
+      "version": "1.8.0"
     },
     {
       "id": "core.logging",
