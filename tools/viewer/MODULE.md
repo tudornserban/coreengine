@@ -4,7 +4,7 @@ Optional SDL2 simulation viewer. Not registered in `docs/agentic/modules/registr
 
 ## Layout
 
-- Logic sources under `tools/viewer/` (no SDL).
+- Logic sources under `tools/viewer/` (no SDL), including `UiCanvas`/`Raster` 2D UI primitives and `Font5x7Printable.h`.
 - SDL presentation in `tools/viewer/sdl/` only.
 - Tests in `tools/viewer/tests/`.
 

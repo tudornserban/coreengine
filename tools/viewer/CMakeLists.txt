@@ -3,6 +3,7 @@ find_package(SDL2 REQUIRED)
 add_library(coreengine_viewer_logic STATIC
     ViewerConfig.cpp
     Camera.cpp
+    UiCanvas.cpp
     Raster.cpp
     PngWriter.cpp
     Scenario.cpp
@@ -14,8 +15,10 @@ add_library(coreengine_viewer_logic STATIC
     ViewerInput.cpp
 )
 target_link_libraries(coreengine_viewer_logic PUBLIC coreengine)
+# PUBLIC include path: consumers link Raster, UiCanvas, PngWriter, SdlPresenter helpers.
 target_include_directories(coreengine_viewer_logic PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/sdl
 )
 
 add_executable(coreengine_sdl2_viewer
@@ -46,6 +49,7 @@ if(BUILD_TESTS)
         tests/OverlayTest.cpp
         tests/ScenarioTest.cpp
         tests/ViewerInputTest.cpp
+        tests/UiCanvasTest.cpp
     )
     target_link_libraries(coreengine_sdl2_viewer_tests PRIVATE
         coreengine_viewer_logic
