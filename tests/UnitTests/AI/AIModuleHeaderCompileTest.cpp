@@ -12,6 +12,8 @@
 #include "core/ai/Conditions/EnemyInRangeCondition.h"
 #include "core/ai/Conditions/TimeElapsedCondition.h"
 #include "core/ai/StateMachine.h"
+#include "core/ai/DecisionGraph.h"
+#include "core/ai/DecisionGraphInterpreter.h"
 
 namespace {
 
