@@ -3,8 +3,10 @@
 #include "core/combat/CombatManager.h"
 #include "core/combat/CommandSystem.h"
 #include "core/combat/Explosion.h"
+#include "core/combat/InteractionMatrix.h"
 #include "core/combat/ProjectileSimulation.h"
 #include "core/combat/SelectionSystem.h"
+#include "core/combat/TurnClashResolver.h"
 
 namespace {
 
