@@ -56,6 +56,17 @@ uint64_t ProjectileSimulation::Spawn(Projectile projectile) {
 }
 
 std::vector<ProjectileImpact> ProjectileSimulation::Advance(float deltaTime, const std::vector<IGameUnit*>& units) {
+    std::vector<ProjectileTargetMotion> targets;
+    for (IGameUnit* unit : units) {
+        if (unit) targets.push_back({unit, unit->GetPosition(),
+            unit->GetPosition() + unit->GetVelocity() * deltaTime});
+    }
+    return AdvanceSwept(deltaTime, targets);
+}
+
+std::vector<ProjectileImpact> ProjectileSimulation::AdvanceSwept(
+    float deltaTime, const std::vector<ProjectileTargetMotion>& targets) {
+    lastImpacts_.clear();
     std::vector<ProjectileImpact> candidates;
     if (!(deltaTime > 0.0f)) {
         return candidates;
@@ -66,8 +77,9 @@ std::vector<ProjectileImpact> ProjectileSimulation::Advance(float deltaTime, con
             continue;
         }
         const float window = std::min(deltaTime, projectile.timeRemaining);
-        for (IGameUnit* unit : units) {
-            if (!unit) {
+        for (const auto& motion : targets) {
+            IGameUnit* unit = motion.unit;
+            if (!unit || !unit->ParticipatesInCollision() || unit->GetCurrentHP() <= 0) {
                 continue;
             }
             if (unit->GetEntityId() != 0 && unit->GetEntityId() == projectile.ownerId) {
@@ -79,8 +91,8 @@ std::vector<ProjectileImpact> ProjectileSimulation::Advance(float deltaTime, con
             float time = 0.0f;
             Vector2 point;
             const float reach = projectile.radius + unit->GetRadius();
-            if (!EarliestApproach(projectile.position, projectile.velocity, unit->GetPosition(),
-                                  unit->GetVelocity(), reach, window, time, point)) {
+            if (!EarliestApproach(projectile.position, projectile.velocity, motion.start,
+                                  (motion.end - motion.start) / deltaTime, reach, window, time, point)) {
                 continue;
             }
             ProjectileImpact impact;
@@ -109,17 +121,23 @@ std::vector<ProjectileImpact> ProjectileSimulation::Advance(float deltaTime, con
         if (std::find(consumed.begin(), consumed.end(), impact.projectileId) != consumed.end()) {
             continue;
         }
+        if (!impact.target || !impact.target->ParticipatesInCollision() || impact.target->GetCurrentHP() <= 0)
+            continue; // A prior impact may have killed this target; try the next candidate.
         consumed.push_back(impact.projectileId);
         resolved.push_back(impact);
         auto projectile = std::find_if(projectiles_.begin(), projectiles_.end(), [&](const Projectile& item) {
             return item.id == impact.projectileId;
         });
         if (projectile != projectiles_.end() && impact.target) {
+            const float hpBefore = impact.target->GetCurrentHP();
             if (auto* combat = dynamic_cast<IUnitCombat*>(impact.target)) {
                 if (projectile->damage > 0.0f) {
                     combat->TakeDamage(projectile->damage);
                 }
             }
+            lastImpacts_.push_back({impact.projectileId, projectile->ownerId, projectile->team,
+                impact.targetId, impact.time, impact.point, std::max(0.0f, projectile->damage),
+                std::max(0.0f, std::max(0.0f, hpBefore) - std::max(0.0f, impact.target->GetCurrentHP()))});
         }
     }
 
@@ -142,6 +160,7 @@ std::vector<ProjectileImpact> ProjectileSimulation::Advance(float deltaTime, con
 }
 
 void ProjectileSimulation::Restore(std::vector<Projectile> projectiles, uint64_t nextId) {
+    lastImpacts_.clear();
     projectiles_ = std::move(projectiles);
     nextId_ = std::max<uint64_t>(1, nextId);
 }

@@ -33,7 +33,7 @@ Include headers from the repo root, e.g. `#include "core/gamestate/RTSGameState.
 | Module | Range | Why |
 |--------|-------|-----|
 | `core.ai` | `^1.2.0` | Automatic transitions and transition numeric state |
-| `core.combat` | `^1.2.0` | Selection, commands, explosions, projectiles, id-keyed cooldowns |
+| `core.combat` | `^1.3.0` | Selection, commands, explosions, projectiles, id-keyed cooldowns |
 | `core.map` | `^1.2.0` | `Map`, placement radius, resource claims |
 | `core.influence` | `^1.0.0` | Influence items and calculator |
 | `core.collision` | `^1.1.0` | Collision system and immunity export |
@@ -73,3 +73,13 @@ Allowed `#include` in `core/gamestate/**`: standard library (`<…>`), headers u
 | Determinism (integration) | `tests/IntegrationTests/DeterminismTest.cpp` (when present in full gate) |
 
 Run with the full-engine test target (`cmake` + `ctest`).
+
+## Projectile hub integration (2.1.0)
+
+The hub captures target positions before the unit update and after contact resolution,
+then calls `AdvanceSwept` exactly once with that tick's start/end positions. It does
+not extrapolate a second target interval from already-integrated positions. Contact
+corrections are included in the linear chord; piecewise bounce trajectories are not
+modeled. `GetProjectileImpacts()` returns safe value events for the latest advanced
+tick. Pausing preserves that tick and its records; consumers should index by simulation
+tick to avoid recounting them. Retained copies remain valid after despawn.

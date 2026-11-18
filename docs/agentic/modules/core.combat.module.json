@@ -1,6 +1,6 @@
 {
   "id": "core.combat",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "path": "core/combat",
   "exports": [
     "CombatManager",
@@ -8,6 +8,8 @@
     "SelectionSystem",
     "Explosion",
     "ProjectileSimulation",
+    "ProjectileTargetMotion",
+    "ProjectileImpactRecord",
     "InteractionMatrix",
     "TurnClashResolver"
   ],
@@ -15,6 +17,8 @@
     "core.interfaces": "^1.7.0",
     "core.math": "^1.0.0"
   },
-  "tags": ["gameplay"],
+  "tags": [
+    "gameplay"
+  ],
   "notes": "CommandSystem uses IUnitAgent for SetUnitState / SetBehaviorParameter (no RTSUnit include). `#include` boundaries are enforced via INCLUDE_ENFORCED_MODULES (R1.6)."
 }

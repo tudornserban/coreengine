@@ -19,12 +19,33 @@ struct Projectile {
     bool hitAllies = false;
 };
 
+// Value event safe to retain after entity removal.
+struct ProjectileImpactRecord {
+    uint64_t projectileId = 0;
+    uint64_t ownerId = 0;
+    int team = 0;
+    uint64_t targetId = 0;
+    float time = 0.0f;
+    Vector2 point;
+    float requestedDamage = 0.0f;
+    float appliedDamage = 0.0f; // HP actually removed, excluding overkill/armor
+};
+
+// Call-scoped target reference retained for existing direct consumers.
 struct ProjectileImpact {
     uint64_t projectileId = 0;
     uint64_t targetId = 0;
     IGameUnit* target = nullptr;
     float time = 0.0f;
     Vector2 point;
+};
+
+// Explicit motion over the SAME interval as the projectile step.
+// Hub uses the tick's start and post-contact end positions (linear chord).
+struct ProjectileTargetMotion {
+    IGameUnit* unit = nullptr;
+    Vector2 start;
+    Vector2 end;
 };
 
 struct InterceptSolution {
@@ -39,8 +60,11 @@ class ProjectileSimulation {
 public:
     uint64_t Spawn(Projectile projectile);
 
-    /// Advance by `deltaTime`. Applies `IUnitCombat::TakeDamage` when the projectile damage is positive.
+    /// Positions are interval starts; target ends use constant velocity. Applies `IUnitCombat::TakeDamage` when the projectile damage is positive.
     std::vector<ProjectileImpact> Advance(float deltaTime, const std::vector<IGameUnit*>& units);
+
+    std::vector<ProjectileImpact> AdvanceSwept(float deltaTime, const std::vector<ProjectileTargetMotion>& targets);
+    const std::vector<ProjectileImpactRecord>& LastImpacts() const { return lastImpacts_; }
 
     const std::vector<Projectile>& Projectiles() const { return projectiles_; }
     uint64_t NextId() const { return nextId_; }
@@ -53,4 +77,5 @@ public:
 private:
     std::vector<Projectile> projectiles_;
     uint64_t nextId_ = 1;
+    std::vector<ProjectileImpactRecord> lastImpacts_;
 };

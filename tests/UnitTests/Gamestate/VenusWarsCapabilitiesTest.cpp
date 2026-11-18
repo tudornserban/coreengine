@@ -372,3 +372,52 @@ TEST(VenusWarsCapabilities, CombatCooldownRestoresByEntityId) {
     EXPECT_EQ(restored.ExportCooldowns()[0].entityId, 5u);
     EXPECT_NEAR(restored.ExportCooldowns()[0].remaining, 0.4f, 1.0e-4f);
 }
+
+TEST(VenusWarsCapabilities, ProjectileUsesSameTickTargetMotionAndRetainsValueEvents) {
+    RTSGameState state(Vector2(500, 500), 1);
+    auto target = std::make_unique<RTSUnit>(Vector2(100, 50), 1, 5, 1000);
+    target->SetVelocity(Vector2(100, 0));
+    auto* raw = target.get();
+    state.AddUnit(std::move(target));
+    Projectile shot;
+    shot.ownerId = 99;
+    shot.team = 0;
+    shot.position = {50, 50};
+    shot.velocity = {200, 0};
+    shot.timeRemaining = 2;
+    shot.damage = 20;
+    state.GetProjectiles().Spawn(shot);
+    state.Update(0.5f);
+    const auto events = state.GetProjectileImpacts();
+    ASSERT_EQ(events.size(), 1u);
+    EXPECT_NEAR(events[0].time, 0.45f, 0.00001f);
+    EXPECT_NEAR(events[0].point.x, 140, 0.0001f);
+    EXPECT_FLOAT_EQ(raw->GetPosition().x, 150);
+    EXPECT_FLOAT_EQ(raw->GetCurrentHP(), 80);
+    state.RemoveUnit(raw);
+    EXPECT_EQ(events[0].targetId, 1u);
+    state.SetSimulationPaused(true);
+    state.Update(0.5f);
+    EXPECT_EQ(state.GetProjectileImpacts().size(), 1u);
+    state.SetSimulationPaused(false);
+    state.Update(0.5f);
+    EXPECT_TRUE(state.GetProjectileImpacts().empty());
+}
+
+TEST(VenusWarsCapabilities, ProjectileDoesNotExtrapolateMovementDisabledTarget) {
+    RTSGameState state(Vector2(500, 500), 1);
+    auto target = std::make_unique<RTSUnit>(Vector2(100, 50), 1, 5, 1000);
+    target->SetVelocity(Vector2(100, 0));
+    target->SetMovementParticipation(false);
+    state.AddUnit(std::move(target));
+    Projectile shot;
+    shot.team = 0;
+    shot.position = {50, 50};
+    shot.velocity = {100, 0};
+    shot.timeRemaining = 2;
+    shot.damage = 20;
+    state.GetProjectiles().Spawn(shot);
+    state.Update(0.5f);
+    ASSERT_EQ(state.GetProjectileImpacts().size(), 1u);
+    EXPECT_NEAR(state.GetProjectileImpacts()[0].time, 0.45f, 0.00001f);
+}
