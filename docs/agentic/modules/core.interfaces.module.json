@@ -1,6 +1,6 @@
 {
   "id": "core.interfaces",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "path": "core/interfaces",
   "exports": [
     "IGameUnit",

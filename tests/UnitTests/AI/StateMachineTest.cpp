@@ -118,6 +118,48 @@ TEST(StateMachineTest, ClearCurrentState_ExitsBehaviorAndEmptiesCurrent) {
     EXPECT_GE(raw->GetExitCount(), 1);
 }
 
+TEST(StateMachineTest, EvaluateAutomaticTransitionsDoesNotCalculateAcceleration) {
+    StateMachine sm;
+    MockGameUnit unit;
+    sm.SetOwner(&unit);
+    auto beh = std::make_unique<MockBehavior>("A");
+    beh->SetAccelerationToReturn(Vector2(4.0f, 0.0f));
+    sm.AddState("A", std::move(beh));
+    sm.AddState("B", std::make_unique<MockBehavior>("B"));
+    sm.SetState("A");
+    sm.AddTransition(StateTransition("A", "B", std::make_unique<TimeElapsedCondition>(0.0f), true));
+
+    BehaviorContext ctx;
+    ctx.self = &unit;
+    ctx.deltaTime = 0.0f;
+    const StateMachine::TransitionEval eval = sm.EvaluateAutomaticTransitions(ctx);
+    EXPECT_TRUE(eval.changed);
+    EXPECT_EQ(eval.fromState, "A");
+    EXPECT_EQ(eval.toState, "B");
+    EXPECT_EQ(sm.GetCurrentState(), "B");
+    EXPECT_GE(static_cast<MockBehavior*>(sm.GetStates().at("A").get())->GetExitCount(), 1);
+    EXPECT_GE(static_cast<MockBehavior*>(sm.GetStates().at("B").get())->GetEnterCount(), 1);
+}
+
+TEST(StateMachineTest, ManualTransitionIsNotTakenAutomatically) {
+    StateMachine sm;
+    MockGameUnit unit;
+    sm.SetOwner(&unit);
+    sm.AddState("A", std::make_unique<MockBehavior>("A"));
+    sm.AddState("B", std::make_unique<MockBehavior>("B"));
+    sm.SetState("A");
+    sm.AddTransition(StateTransition("A", "B", std::make_unique<TimeElapsedCondition>(0.0f), false));
+
+    BehaviorContext ctx;
+    ctx.self = &unit;
+    ctx.deltaTime = 1.0f;
+    const StateMachine::TransitionEval eval = sm.EvaluateAutomaticTransitions(ctx);
+    EXPECT_FALSE(eval.changed);
+    EXPECT_EQ(sm.GetCurrentState(), "A");
+    sm.SetState("B");
+    EXPECT_EQ(sm.GetCurrentState(), "B");
+}
+
 TEST(StateMachineTest, OnEnterOnExitCalledOnTransition) {
     StateMachine sm;
     MockGameUnit unit;

@@ -27,6 +27,7 @@ public:
     void Leave();
     void Enqueue(GameTitle game, PlayMode mode, uint32_t playersNeeded = 2);
     void SubmitPlan(const DecisionPlan& plan);
+    void SubmitSetup(const MatchSetup& setup);
     void SubmitInput(const PlayerCommand& command);
     void SendPing(uint32_t clientTimeMs);
     void CompletePing(uint32_t nowMs);

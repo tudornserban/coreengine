@@ -232,26 +232,33 @@ TEST_F(RTSGameStateUpdateCharacterizationTest, RtsUnitMapEdgeInsetNotClampedToZe
 }
 
 TEST_F(RTSGameStateUpdateCharacterizationTest, ExplosionImpulseOnRtsUnit) {
-    RTSUnit* unit = AddRts(state, Vector2(50.0f, 50.0f), 0, 10.0f, 100.0f);
-    state.AddExplosion(Explosion(Vector2(35.0f, 50.0f), 40.0f, 8000.0f));
+    // Impulse is a velocity change with one later position step, and it is not
+    // clamped by max speed. A large map keeps the bounds fallback out of the result.
+    RTSGameState open(Vector2(10000.0f, 10000.0f), kSeed);
+    RTSUnit* unit = AddRts(open, Vector2(50.0f, 50.0f), 0, 10.0f, 100.0f);
+    open.AddExplosion(Explosion(Vector2(35.0f, 50.0f), 40.0f, 8000.0f));
 
-    state.Update(0.25f);
+    open.Update(0.25f);
 
-    EXPECT_FLOAT_EQ(unit->GetVelocity().x, 100.0f);
+    EXPECT_FLOAT_EQ(unit->GetVelocity().x, 5000.0f);
     EXPECT_FLOAT_EQ(unit->GetVelocity().y, 0.0f);
-    EXPECT_FLOAT_EQ(unit->GetPosition().x, 75.0f);
+    EXPECT_FLOAT_EQ(unit->GetPosition().x, 50.0f + 5000.0f * 0.25f);
     EXPECT_FLOAT_EQ(unit->GetPosition().y, 50.0f);
 }
 
 TEST_F(RTSGameStateUpdateCharacterizationTest, BoundsFallbackClampsCenterNotRadiusInset) {
+    // Collision is off so the contact pass does not inset the disc first.
+    // The fallback then clamps the center to the map edge, and the impulse
+    // stays a raw velocity change.
     RTSUnit* unit = AddRts(state, Vector2(90.0f, 50.0f), 0, 10.0f, 100.0f);
+    unit->SetCollisionParticipation(false);
     state.AddExplosion(Explosion(Vector2(70.0f, 50.0f), 40.0f, 8000.0f));
 
     state.Update(1.0f);
 
     EXPECT_FLOAT_EQ(unit->GetPosition().x, 100.0f);
     EXPECT_FLOAT_EQ(unit->GetPosition().y, 50.0f);
-    EXPECT_FLOAT_EQ(unit->GetVelocity().x, 100.0f);
+    EXPECT_FLOAT_EQ(unit->GetVelocity().x, 4000.0f);
     EXPECT_FLOAT_EQ(unit->GetVelocity().y, 0.0f);
 }
 

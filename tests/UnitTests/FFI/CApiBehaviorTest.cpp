@@ -232,8 +232,9 @@ TEST_F(CApiBehaviorTest, FieldItemsNearLeftEdgeSplitStaticAndBehaviorForces) {
 
     CE_UnitState st{};
     ASSERT_EQ(ce_unit_get_state(e, 0, &st), 1);
-    // Split hub: behavior field pull capped to 300 then left-edge static adds on X (0x41200007 vs 0x41200001 w/o edges).
-    EXPECT_EQ(FloatBits(st.vx), 0x41200007u);
+    // Behavior and static edge forces are summed, then clamped once to max acceleration.
+    // The old per-source cap let the edge add a few ulps past that cap (0x41200007).
+    EXPECT_EQ(FloatBits(st.vx), 0x41200001u);
     EXPECT_EQ(FloatBits(st.vy), FloatBits(0.0f));
 }
 

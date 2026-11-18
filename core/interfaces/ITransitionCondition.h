@@ -13,4 +13,9 @@ public:
 
     /// Human-readable description for editors and debugging.
     virtual const char* GetDescription() const = 0;
+
+    /// Optional scalar carried across snapshot restore (for example an elapsed timer).
+    virtual bool HasNumericState() const { return false; }
+    virtual float GetNumericState() const { return 0.0f; }
+    virtual void SetNumericState(float /*value*/) {}
 };

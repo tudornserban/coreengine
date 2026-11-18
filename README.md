@@ -12,7 +12,7 @@ tests/       GoogleTest unit and integration tests (BUILD_TESTS=ON)
 docs/        architecture, porting, FFI, viewer, agentic workflow, dependency map
 ```
 
-Deeper reading: [Architecture](docs/ARCHITECTURE.md) · [Porting guide](docs/PORTING_GUIDE.md) · [FFI guide](docs/FFI_GUIDE.md) · [Viewer](docs/VIEWER.md) · [Coding guidelines](docs/CODING_GUIDELINES.md) · [Game seeds integration](docs/GAME_SEEDS_INTEGRATION.md)
+Deeper reading: [Architecture](docs/ARCHITECTURE.md) · [Determinism](docs/DETERMINISM.md) · [Porting guide](docs/PORTING_GUIDE.md) · [FFI guide](docs/FFI_GUIDE.md) · [Viewer](docs/VIEWER.md) · [Coding guidelines](docs/CODING_GUIDELINES.md) · [Game seeds integration](docs/GAME_SEEDS_INTEGRATION.md)
 
 ---
 
@@ -25,13 +25,13 @@ Deeper reading: [Architecture](docs/ARCHITECTURE.md) · [Porting guide](docs/POR
 | `core.influence` | [core/influence](core/influence/MODULE.md) | APF force sum (`InfluenceField::CalculateTotalForce`) and `TerritoryCalculator` (ownership %) |
 | `core.ai` | [core/ai](core/ai/MODULE.md) | `StateMachine`, `BehaviorFactory` (create behaviors by name), behaviors Seek / Flee / Wander / Cohesion / Separation, conditions EnemyInRange / AlliesNearby / TimeElapsed |
 | `core.collision` | [core/collision](core/collision/MODULE.md) | `SpatialGrid` broadphase, circle narrowphase, impulse resolution, position correction, map edges, collision events, immunity |
-| `core.combat` | [core/combat](core/combat/MODULE.md) | `SelectionSystem` (click/box), `CommandSystem` (move-to, state/param overrides), `Explosion` impulses; `CombatManager` is an empty stub |
+| `core.combat` | [core/combat](core/combat/MODULE.md) | `CombatManager` (influence attrition, direct attack, hybrid), `ProjectileSimulation`, `SelectionSystem`, `CommandSystem`, `Explosion` impulses |
 | `core.gameloop` | [core/gameloop](core/gameloop/MODULE.md) | `GameLogicEngine` fixed timestep (default 1/30 s) with pause, speed, fast-forward; `PlaybackController`, `DeploymentTimer`, `ThinkTimer`, `MatchState` |
-| `core.map` | [core/map](core/map/MODULE.md) | `Map` with entities + components (obstacles, resources), `PlacementValidator`, `GameMode` |
-| `core.gamestate` | [core/gamestate](core/gamestate/MODULE.md) | `RTSGameState`, the simulation hub (units, map, AI tick, collision, explosions, RNG), `RTSUnit`, `GameStateManager` |
-| `core.serialization` | [core/serialization](core/serialization/MODULE.md) | `GameStateSerializer`: JSON snapshot of the state (format `CoreEngine-JSON-v1`) |
+| `core.map` | [core/map](core/map/MODULE.md) | `Map` with entities + components (obstacles, resources), `PlacementValidator` (optional candidate radius), `ResolveResourceClaims`, `GameMode` |
+| `core.gamestate` | [core/gamestate](core/gamestate/MODULE.md) | `RTSGameState` simulation hub, `RTSUnit`, timed actions, tick diagnostics, and a versioned canonical snapshot separate from diagnostic JSON |
+| `core.serialization` | [core/serialization](core/serialization/MODULE.md) | `GameStateSerializer`: diagnostic JSON (`CoreEngine-JSON-v1`). `Deserialize` stays unsupported. Restorable state is the gamestate canonical snapshot |
 | `core.logging` | [core/logging](core/logging/MODULE.md) | Singleton `VenusWars::Logging::Logger` with levels, optional file output, `LOG_DEBUG…LOG_FATAL` macros |
-| `core.session` | [core/session](core/session/MODULE.md) | Lobby and client-server session: offline deterministic resolution, online lockstep with input delay and rollback. No sockets in `core/` |
+| `core.session` | [core/session](core/session/MODULE.md) | Lobby and client-server session for DynamicGo, AscendantExpanse, ZodiacWars, and VenusWars. Offline resolution, online lockstep, and an opaque `MatchSetup`. No sockets in `core/` |
 | `core.interfaces` | [core/interfaces](core/interfaces/MODULE.md) | The abstract contracts (next section); header-only |
 | `core.ai_advanced` | `core/ai_advanced/` | Experimental: `Genome`, `BotPlayer`, `GeneticTrainer` (no MODULE.md, includes not enforced) |
 

@@ -74,6 +74,35 @@ void ImmunityManager::Clear() {
     immunityMap.clear();
 }
 
+std::vector<ImmunityManager::ExportRecord> ImmunityManager::Export() const {
+    std::vector<ExportRecord> records;
+    for (const auto& entry : immunityMap) {
+        ExportRecord record;
+        record.unit = entry.first;
+        record.remainingFrames = entry.second.remainingFrames;
+        record.against.assign(entry.second.immuneTo.begin(), entry.second.immuneTo.end());
+        records.push_back(std::move(record));
+    }
+    return records;
+}
+
+void ImmunityManager::Import(const std::vector<ExportRecord>& records) {
+    immunityMap.clear();
+    for (const ExportRecord& record : records) {
+        if (!record.unit) {
+            continue;
+        }
+        ImmunityData data;
+        data.remainingFrames = record.remainingFrames;
+        for (IGameUnit* other : record.against) {
+            if (other) {
+                data.immuneTo.insert(other);
+            }
+        }
+        immunityMap[record.unit] = std::move(data);
+    }
+}
+
 void ImmunityManager::ClearImmunity(IGameUnit* unit) {
     if (!unit) return;
 

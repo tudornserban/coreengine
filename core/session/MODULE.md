@@ -15,7 +15,7 @@ Two play modes, selected per lobby:
 | `OfflineResolution` | Matchmaking (or a lobby) collects one `DecisionPlan` per player. `ResolveOffline` runs `IDeterministicMatch` to the end. Every client receives the same `MatchOutcome`. |
 | `OnlineSync` | Server-authoritative lockstep at `LatencyProfile::tickHz` (default 30, the engine logic rate). Clients should lead by `InputDelayTicksForRtt` so a command is waiting when its tick is simulated. A late command inside `rollbackWindowTicks` restores a snapshot and resimulates. Older commands are dropped. Presentation of remote players waits `InterpolationDelayMs` (half the worst RTT in the match). |
 
-DynamicGo is the first game meant to supply `IDeterministicMatch`. AscendantExpanse and ZodiacWars use the same `GameTitle` values when they adopt it. The session module does not include those games.
+DynamicGo, AscendantExpanse, ZodiacWars, and VenusWars each supply `IDeterministicMatch`. `GameTitle::VenusWars` is the lobby key. `MatchSetup` carries a content reference and an opaque payload; the session checks schema, size, and reference shape, and the game checks the payload in `Configure` before the first tick. The session module does not include those games.
 
 ## Public surface (`exports`)
 
@@ -28,7 +28,7 @@ DynamicGo is the first game meant to supply `IDeterministicMatch`. AscendantExpa
 
 | Symbol | Header |
 |--------|--------|
-| `GameTitle`, `PlayMode`, `LobbyView`, `DecisionPlan`, `PlayerCommand`, `MatchOutcome` | `SessionTypes.h` |
+| `GameTitle`, `PlayMode`, `LobbyView`, `DecisionPlan`, `PlayerCommand`, `MatchOutcome`, `MatchSetup`, `ValidateMatchSetup` | `SessionTypes.h` |
 | `IDeterministicMatch`, `IMatchFactory` | `IDeterministicMatch.h` |
 | `ISessionTransport`, `InProcessTransport` | `ISessionTransport.h` |
 | `SessionServer`, `SessionClient`, `InProcessHost` | `SessionServer.h`, `SessionClient.h`, `InProcessHost.h` |

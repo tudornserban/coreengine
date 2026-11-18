@@ -95,3 +95,28 @@ TEST(MapObstacleComponentTest, ToObstacleCopiesFlagsAndWorldPosition) {
     EXPECT_EQ(obstacle.kind, ObstacleKind::Wall);
     EXPECT_TRUE(obstacle.ContainsPoint(3.0f, 4.0f));
 }
+
+TEST(PlacementValidatorTest, CandidateFootprintRejectsBorderOverhangAndOverlap) {
+    PlacementValidator validator;
+    PlacementValidator::Rules rules;
+    EXPECT_FALSE(validator.IsValidPlacement(4.0f, 10.0f, 1, {}, {}, 100.0f, 80.0f, rules, 5.0f));
+    EXPECT_TRUE(validator.IsValidPlacement(5.0f, 10.0f, 1, {}, {}, 100.0f, 80.0f, rules, 5.0f));
+
+    Obstacle wall;
+    wall.x = 30.0f;
+    wall.y = 10.0f;
+    wall.radius = 4.0f;
+    EXPECT_FALSE(validator.IsValidPlacement(20.0f, 10.0f, 1, {}, {wall}, 100.0f, 80.0f, rules, 6.0f));
+    EXPECT_TRUE(validator.IsValidPlacement(20.0f, 10.0f, 1, {}, {wall}, 100.0f, 80.0f, rules, 5.0f));
+
+    ProbeUnit neighbor(Vector2(40.0f, 10.0f), 2, 8.0f);
+    const std::vector<const IGameUnit*> units = {&neighbor};
+    EXPECT_FALSE(validator.IsValidPlacement(25.0f, 10.0f, 1, units, {}, 100.0f, 80.0f, rules, 8.0f));
+    EXPECT_TRUE(validator.IsValidPlacement(24.0f, 10.0f, 1, units, {}, 100.0f, 80.0f, rules, 8.0f));
+
+    rules.wrapBorders = true;
+    EXPECT_TRUE(validator.IsValidPlacement(1.0f, 10.0f, 1, {}, {}, 100.0f, 80.0f, rules, 5.0f));
+    ProbeUnit wrapped(Vector2(2.0f, 10.0f), 2, 4.0f);
+    const std::vector<const IGameUnit*> wrappedUnits = {&wrapped};
+    EXPECT_FALSE(validator.IsValidPlacement(98.0f, 10.0f, 1, wrappedUnits, {}, 100.0f, 80.0f, rules, 4.0f));
+}

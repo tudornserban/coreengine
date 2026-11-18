@@ -35,4 +35,21 @@ public:
         float arenaW,
         float arenaH,
         const Rules& rules) const;
+
+    /// Same checks, plus the candidate disc of `candidateRadius`.
+    /// A non-wrapping arena rejects a disc that extends past the border.
+    /// Flush contact with the border is inside. Obstacle contact rejects
+    /// (distance <= sum of radii). Unit contact allows distance == required
+    /// center gap. Wrapping maps fold the center and do not reject border overhang.
+    /// `candidateRadius == 0` matches `IsValidPlacement` without a footprint.
+    [[nodiscard]] bool IsValidPlacement(
+        float x,
+        float y,
+        int placingTeamId,
+        const std::vector<const IGameUnit*>& units,
+        const std::vector<Obstacle>& obstacles,
+        float arenaW,
+        float arenaH,
+        const Rules& rules,
+        float candidateRadius) const;
 };

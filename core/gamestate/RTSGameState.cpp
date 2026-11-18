@@ -3,6 +3,8 @@
 #include "../combat/Explosion.h"
 #include "RTSUnit.h"
 #include <algorithm>
+#include <cmath>
+#include <limits>
 #include "../map/MapComponents/MapObstacleComponent.h"
 #include "../influence/InfluenceFieldItem.h"
 #include "../influence/InfluenceFieldCalculator.h"
@@ -10,6 +12,26 @@
 #include "../math/DeterministicRNG.h"
 #include "../logging/Logger.h"
 #include "../interfaces/IUnitBehaviorHost.h"
+#include "../ai/StateMachine.h"
+
+namespace {
+
+Vector2 ClampMagnitude(Vector2 value, float maxMagnitude) {
+    if (!(maxMagnitude > 0.0f) || !std::isfinite(value.x) || !std::isfinite(value.y)) {
+        return Vector2::Zero();
+    }
+    const float limitSq = maxMagnitude * maxMagnitude;
+    if (!(value.LengthSquared() > limitSq)) {
+        return value;
+    }
+    const float length = value.Length();
+    if (!(length > 0.0f)) {
+        return Vector2::Zero();
+    }
+    return value * (maxMagnitude / length);
+}
+
+}  // namespace
 
 RTSGameState::RTSGameState(Vector2 mapBounds, uint64_t rngSeed)
     : map_(std::make_unique<Map>(mapBounds))
@@ -36,133 +58,280 @@ RTSGameState::RTSGameState(std::unique_ptr<Map> mapInstance, uint64_t rngSeed)
     LOG_DEBUG("RTSGameState: Constructor (Map*) completed");
 }
 
+void RTSGameState::AdoptUnit(std::unique_ptr<IGameUnit> unit)
+{
+    IGameUnit* unitPtr = unit.get();
+    const uint64_t id = nextEntityId_++;
+    entityIds_[unitPtr] = id;
+    unitPtr->SetEntityId(id);
+    LOG_DEBUG("RTSGameState::AddUnit: Adding unit at %p, id=%llu, position=(%.2f, %.2f), team=%d",
+              unitPtr, static_cast<unsigned long long>(id), unitPtr->GetPosition().x,
+              unitPtr->GetPosition().y, unitPtr->GetTeam());
+    units_.push_back(std::move(unit));
+}
+
+void RTSGameState::DestroyUnit(IGameUnit* unit)
+{
+    if (!unit) {
+        return;
+    }
+    const uint64_t id = GetEntityId(unit);
+    selectionSystem_.ForgetUnit(unit);
+    collisionSystem_.ForgetUnit(unit);
+    if (combat_) {
+        combat_->ForgetEntity(id);
+    }
+    entityIds_.erase(unit);
+    auto it = std::find_if(units_.begin(), units_.end(),
+        [unit](const std::unique_ptr<IGameUnit>& candidate) { return candidate.get() == unit; });
+    if (it != units_.end()) {
+        units_.erase(it);
+    }
+}
+
+void RTSGameState::CommitStructure()
+{
+    std::vector<IGameUnit*> removals;
+    removals.swap(pendingDespawns_);
+    for (IGameUnit* unit : removals) {
+        DestroyUnit(unit);
+    }
+    std::vector<std::unique_ptr<IGameUnit>> spawns;
+    spawns.swap(pendingSpawns_);
+    for (auto& unit : spawns) {
+        if (unit) {
+            AdoptUnit(std::move(unit));
+        }
+    }
+}
+
+void RTSGameState::ObserveDeaths()
+{
+    for (const auto& unit : units_) {
+        if (!unit->ConsumeDeathEvent()) {
+            continue;
+        }
+        lifecycleEvents_.push_back(LifecycleEvent{
+            LifecycleEventKind::Died, GetEntityId(unit.get()), simulationTick_});
+    }
+}
+
 void RTSGameState::AddUnit(std::unique_ptr<IGameUnit> unit)
 {
     if (!unit) {
         LOG_ERROR("RTSGameState::AddUnit: Attempted to add null unit");
         return;
     }
-    
-    IGameUnit* unitPtr = unit.get();
-    LOG_DEBUG("RTSGameState::AddUnit: Adding unit at %p, position=(%.2f, %.2f), team=%d", 
-              unitPtr, unitPtr->GetPosition().x, unitPtr->GetPosition().y, unitPtr->GetTeam());
-    
-    units_.push_back(std::move(unit));
-    
-    LOG_DEBUG("RTSGameState::AddUnit: Unit added successfully. Total units: %zu", units_.size());
+    if (updating_) {
+        pendingSpawns_.push_back(std::move(unit));
+        return;
+    }
+    AdoptUnit(std::move(unit));
 }
 
 void RTSGameState::RemoveUnit(IGameUnit* unit)
 {
-    auto it = std::find_if(units_.begin(), units_.end(),
-        [unit](const std::unique_ptr<IGameUnit>& u) { return u.get() == unit; });
-
-    if (it != units_.end())
-    {
-        units_.erase(it);
+    if (!unit) {
+        return;
     }
+    if (updating_) {
+        if (std::find(pendingDespawns_.begin(), pendingDespawns_.end(), unit) == pendingDespawns_.end()) {
+            pendingDespawns_.push_back(unit);
+        }
+        return;
+    }
+    DestroyUnit(unit);
+}
+
+uint64_t RTSGameState::GetEntityId(const IGameUnit* unit) const
+{
+    if (!unit) {
+        return 0;
+    }
+    const auto found = entityIds_.find(unit);
+    if (found != entityIds_.end()) {
+        return found->second;
+    }
+    return unit->GetEntityId();
+}
+
+void RTSGameState::SetGameExtension(
+    std::function<std::vector<uint8_t>()> capture,
+    std::function<bool(const std::vector<uint8_t>&)> validate,
+    std::function<void(const std::vector<uint8_t>&)> apply)
+{
+    extensionCapture_ = std::move(capture);
+    extensionValidate_ = std::move(validate);
+    extensionApply_ = std::move(apply);
 }
 
 void RTSGameState::Update(float deltaTime)
 {
-    // Build context and update each unit
-    for (auto& unit : units_)
+    if (paused_) {
+        return;
+    }
+
+    ++simulationTick_;
+    diagnostics_.clear();
+    updating_ = true;
+    ObserveDeaths();
+
+    struct MotionNote {
+        IGameUnit* unit = nullptr;
+        Vector2 propulsion;
+        Vector2 impulse;
+        bool transitioned = false;
+        std::string fromState;
+        std::string toState;
+        std::string behavior;
+        bool record = false;
+    };
+    std::vector<MotionNote> notes;
+
+    for (auto& held : units_)
     {
-        IUnitBehaviorHost* behaviorHost = dynamic_cast<IUnitBehaviorHost*>(unit.get());
+        IGameUnit* unit = held.get();
+        IUnitBehaviorHost* behaviorHost = dynamic_cast<IUnitBehaviorHost*>(unit);
         if (!behaviorHost) continue;
 
-        // Update debug movement first
         unit->Update(deltaTime);
 
-        // If in debug mode, skip AI
         if (unit->IsInDebugMode())
         {
-            // Apply debug movement
-            Vector2 toTarget = unit->GetPosition();  // Position already updated in Update()
             continue;
         }
 
-        // Build behavior context
-        BehaviorContext ctx = BuildContextForUnit(unit.get(), deltaTime);
+        Vector2 propulsion = Vector2::Zero();
+        MotionNote note;
+        note.unit = unit;
+        note.record = diagnosticsEnabled_;
 
-        // Get current behavior and calculate acceleration
-        IBehavior* currentBehavior = behaviorHost->GetCurrentBehavior();
-        if (currentBehavior)
+        if (unit->ParticipatesInActions())
         {
-            std::vector<InfluenceFieldItem> behaviorItems =
-                currentBehavior->GenerateFieldItems(ctx);
-            Vector2 acceleration = Vector2::Zero();
-            if (!behaviorItems.empty())
-            {
-                acceleration = InfluenceField::CalculateTotalForce(
-                    unit->GetPosition(),
-                    unit->GetVelocity(),
-                    behaviorItems,
-                    300.0f  // max acceleration
-                );
-            }
-            else
-            {
-                acceleration = currentBehavior->CalculateAcceleration(ctx);
-            }
-            if (!ctx.staticFieldItems.empty())
-            {
-                acceleration += InfluenceField::CalculateTotalForce(
-                    unit->GetPosition(),
-                    unit->GetVelocity(),
-                    ctx.staticFieldItems,
-                    300.0f  // max acceleration
-                );
+            BehaviorContext ctx = BuildContextForUnit(unit, deltaTime);
+            if (auto* rtsUnit = dynamic_cast<RTSUnit*>(unit)) {
+                const StateMachine::TransitionEval transition =
+                    rtsUnit->GetStateMachine().EvaluateAutomaticTransitions(ctx);
+                note.transitioned = transition.changed;
+                note.fromState = transition.fromState;
+                note.toState = transition.toState;
             }
 
-            unit->ApplyAcceleration(acceleration, deltaTime);
+            IBehavior* currentBehavior = behaviorHost->GetCurrentBehavior();
+            if (currentBehavior)
+            {
+                note.behavior = currentBehavior->GetName() ? currentBehavior->GetName() : "";
+                const auto& parameters = currentBehavior->GetParameters();
+                const auto targetX = parameters.find("targetX");
+                const auto targetY = parameters.find("targetY");
+                if (targetX != parameters.end() && targetY != parameters.end() && note.record) {
+                    // Target is recorded with the diagnostic below.
+                }
+                const float maxAcceleration = unit->GetMaxAcceleration();
+                // Field sums stay unclamped here. The hub clamps behavior plus static once.
+                const float fieldCap = std::numeric_limits<float>::infinity();
+                std::vector<InfluenceFieldItem> behaviorItems =
+                    currentBehavior->GenerateFieldItems(ctx);
+                if (!behaviorItems.empty())
+                {
+                    propulsion = InfluenceField::CalculateTotalForce(
+                        unit->GetPosition(), unit->GetVelocity(), behaviorItems, fieldCap);
+                }
+                else
+                {
+                    propulsion = currentBehavior->CalculateAcceleration(ctx);
+                }
+                if (!ctx.staticFieldItems.empty())
+                {
+                    propulsion += InfluenceField::CalculateTotalForce(
+                        unit->GetPosition(), unit->GetVelocity(), ctx.staticFieldItems, fieldCap);
+                }
+                propulsion = ClampMagnitude(propulsion, maxAcceleration);
+
+                if (unit->GetMotionIntegration() == MotionIntegration::SplitTick) {
+                    if (unit->ParticipatesInMovement()) {
+                        unit->ApplyPropulsion(propulsion, deltaTime);
+                    }
+                } else {
+                    unit->ApplyAcceleration(propulsion, deltaTime);
+                }
+            }
         }
+        note.propulsion = propulsion;
+        notes.push_back(std::move(note));
     }
 
-    // Process collisions (runs in game loop)
+    for (const Explosion& explosion : explosions_)
+    {
+        std::vector<IGameUnit*> affectedUnits = GetUnitsInRadius(explosion.GetPosition(), explosion.GetRadius());
+        for (IGameUnit* unit : affectedUnits)
+        {
+            if (unit->GetMotionIntegration() != MotionIntegration::SplitTick) continue;
+            if (unit->IsInDebugMode() || !unit->ParticipatesInMovement()) continue;
+            const Vector2 impulse = explosion.CalculateImpulse(unit->GetPosition(), unit->CalculateMass());
+            unit->ApplyVelocityChange(impulse);
+            for (MotionNote& note : notes) {
+                if (note.unit == unit) {
+                    note.impulse += impulse;
+                }
+            }
+        }
+    }
+    explosions_.clear();
+
+    for (const MotionNote& note : notes)
+    {
+        if (!note.unit) continue;
+        if (note.unit->GetMotionIntegration() == MotionIntegration::SplitTick
+            && note.unit->ParticipatesInMovement()
+            && !note.unit->IsInDebugMode())
+        {
+            note.unit->IntegrateMotion(deltaTime);
+        }
+        if (!note.record) continue;
+        UnitDiagnosticRecord record;
+        record.entityId = GetEntityId(note.unit);
+        record.tick = simulationTick_;
+        record.behavior = note.behavior;
+        record.transitioned = note.transitioned;
+        record.fromState = note.fromState;
+        record.toState = note.toState;
+        record.propulsion = note.propulsion;
+        record.impulse = note.impulse;
+        if (IUnitBehaviorHost* host = dynamic_cast<IUnitBehaviorHost*>(note.unit)) {
+            if (IBehavior* behavior = host->GetCurrentBehavior()) {
+                const auto& parameters = behavior->GetParameters();
+                const auto targetX = parameters.find("targetX");
+                const auto targetY = parameters.find("targetY");
+                if (targetX != parameters.end() && targetY != parameters.end()) {
+                    record.hasTarget = true;
+                    record.target = Vector2(targetX->second, targetY->second);
+                }
+            }
+        }
+        if (diagnosticExtension_) {
+            diagnosticExtension_(*note.unit, record.extensions);
+        }
+        diagnostics_.push_back(std::move(record));
+    }
+
     if (map_)
     {
         Vector2 mapSize = map_->GetDimensions();
         MapBounds bounds(Vector2::Zero(), mapSize);
-
-        std::vector<IGameUnit*> allUnits = GetAllUnits();
-        collisionSystem_.ProcessCollisions(allUnits, bounds);
-    }
-
-    // Process explosions (created by collisions or other sources)
-    // Apply impulse forces to units within explosion radius
-    for (const Explosion& explosion : explosions_)
-    {
-        // Find units within explosion radius
-        std::vector<IGameUnit*> affectedUnits = GetUnitsInRadius(explosion.GetPosition(), explosion.GetRadius());
-
-        // Apply impulse to each affected unit
-        for (IGameUnit* unit : affectedUnits)
-        {
-            RTSUnit* rtsUnit = dynamic_cast<RTSUnit*>(unit);
-            if (!rtsUnit) continue;
-
-            // Calculate impulse for this unit
-            Vector2 impulse = explosion.CalculateImpulse(rtsUnit->GetPosition(), rtsUnit->CalculateMass());
-
-            // Apply impulse as acceleration (impulse is force, convert to acceleration)
-            // Impulse = force * deltaTime, so acceleration = impulse / deltaTime
-            // But since we want instant impulse, we apply it directly as velocity change
-            if (deltaTime > 0.0f)
-            {
-                Vector2 velocityChange = impulse / deltaTime;
-                rtsUnit->ApplyAcceleration(velocityChange, deltaTime);
+        std::vector<IGameUnit*> colliding;
+        for (const auto& unit : units_) {
+            if (unit->ParticipatesInCollision()) {
+                colliding.push_back(unit.get());
             }
         }
+        collisionSystem_.ProcessCollisions(colliding, bounds);
     }
 
-    // Clear explosions after processing (single frame duration)
-    explosions_.clear();
-
-    // Update immunity system (decrement frames)
+    projectiles_.Advance(deltaTime, GetAllUnits());
+    actionEvents_ = actions_.Advance();
     collisionSystem_.UpdateImmunity();
 
-    // Keep units within bounds (fallback - collision system should handle this)
     if (map_)
     {
         Vector2 mapSize = map_->GetDimensions();
@@ -186,6 +355,10 @@ void RTSGameState::Update(float deltaTime)
             }
         }
     }
+
+    ObserveDeaths();
+    CommitStructure();
+    updating_ = false;
 }
 
 BehaviorContext RTSGameState::BuildContextForUnit(IGameUnit* unit, float deltaTime)

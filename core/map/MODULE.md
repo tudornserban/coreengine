@@ -14,11 +14,12 @@ Include headers from the repo root, e.g. `#include "core/map/Map.h"`.
 |--------|------|--------|-------|
 | `Map` | class | `Map.h` | Dimensions, shape, entity list — `.cpp` in this module |
 | `MapEntity` | class | `MapEntity.h` | Id + position + components — `.cpp` in this module |
-| `PlacementValidator` | class | `PlacementValidator.h` | Bounds, obstacles, team/enemy clearance, territory predicate — `.cpp` in this module |
+| `PlacementValidator` | class | `PlacementValidator.h` | Bounds, obstacles, team/enemy clearance, territory predicate, optional candidate radius |
 | `Obstacle` | struct | `Obstacle.h` | Shared placement/influence disc; header-only |
 | `GameMode` | _(enum / header-only)_ | `GameMode.h` | Match mode tag used by higher layers |
 | `MapObstacleComponent` | class | `MapComponents/MapObstacleComponent.h` | Obstacle radius + `InfluenceFieldItem` |
 | `MapResourceComponent` | class | `MapComponents/MapResourceComponent.h` | Resource placement helper |
+| `ResolveResourceClaims` | function | `ResourceClaims.h` | Lowest claimant id consumes the resource once |
 
 ### Contract highlights
 

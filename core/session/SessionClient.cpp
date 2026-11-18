@@ -77,6 +77,11 @@ void SessionClient::SubmitPlan(const DecisionPlan& plan)
     Queue(MessageType::SubmitPlan, EncodeDecisionPlan(stamped));
 }
 
+void SessionClient::SubmitSetup(const MatchSetup& setup)
+{
+    Queue(MessageType::SubmitSetup, EncodeMatchSetup(setup));
+}
+
 void SessionClient::SubmitInput(const PlayerCommand& command)
 {
     PlayerCommand stamped = command;
@@ -242,6 +247,7 @@ void SessionClient::Receive(const Envelope& message)
     case MessageType::Enqueue:
     case MessageType::SubmitPlan:
     case MessageType::SubmitInput:
+    case MessageType::SubmitSetup:
         return;
     }
 }

@@ -4,7 +4,7 @@ Manifest: [docs/agentic/modules/core.serialization.module.json](../../docs/agent
 
 ## Purpose
 
-**JSON-oriented game state snapshots** for `RTSGameState`: implements `ISerializer` so callers can exchange portable state strings or byte buffers (server validation, replay scaffolding, FFI helpers). This module does not own simulation, map layout, combat, or AI behavior.
+**Diagnostic JSON** for `RTSGameState`. `Deserialize` does not restore a match. Restorable state is `RTSGameState::CaptureCanonicalState` ([DETERMINISM.md](../../docs/DETERMINISM.md)). This module does not own simulation, map layout, combat, or AI behavior.
 
 ## Public surface (`exports`)
 

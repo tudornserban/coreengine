@@ -15,7 +15,8 @@ Include headers from the repo root, e.g. `#include "core/combat/CommandSystem.h"
 | `CombatManager` | class | `CombatManager.h` | Influence attrition, direct attack, and hybrid; `.cpp` in this module |
 | `CommandSystem` | class | `CommandSystem.h` | `.cpp` dispatches via `IUnitAgent` where applicable |
 | `SelectionSystem` | class | `SelectionSystem.h` | Box and click selection |
-| `Explosion` | class | `Explosion.h` | Impulse math from position and radius |
+| `Explosion` | class | `Explosion.h` | Mass-scaled velocity change from position and radius |
+| `ProjectileSimulation` | class | `ProjectileSimulation.h` | Swept projectiles and intercept. Games own firing policy |
 
 ### Contract highlights
 
@@ -27,7 +28,7 @@ Include headers from the repo root, e.g. `#include "core/combat/CommandSystem.h"
 | Module | Range | Why |
 |--------|-------|-----|
 | `core.math` | `^1.0.0` | `Vector2` |
-| `core.interfaces` | `^1.6.0` | `IGameUnit`, `IUnitAgent`, `IUnitCombat`, `IInfluenceEmitter` |
+| `core.interfaces` | `^1.7.0` | `IGameUnit` entity id, `IUnitAgent`, `IUnitCombat`, `IInfluenceEmitter` |
 
 Allowed `#include` in `core/combat/**`: standard library (`<…>`), headers under `core/combat/`, or paths under `requires` modules (`core/math/…`, `core/interfaces/…`). No other `core/*` siblings, `platform/`, or `ffi/` (enforced by `./scripts/check-module-deps.sh`).
 

@@ -5,6 +5,8 @@
 #include "core/gamestate/IGameState.h"
 #include "core/gamestate/RTSGameState.h"
 #include "core/gamestate/RTSUnit.h"
+#include "core/gamestate/SimulationDiagnostics.h"
+#include "core/gamestate/TimedActionClock.h"
 
 namespace {
 

@@ -193,3 +193,19 @@ void CollisionSystem::UpdateImmunity() {
     immunityManager.Update();
 }
 
+void CollisionSystem::ForgetUnit(IGameUnit* unit) {
+    immunityManager.ClearImmunity(unit);
+}
+
+void CollisionSystem::SetContactImmunity(IGameUnit* unit, IGameUnit* againstUnit, int frames) {
+    immunityManager.SetImmunity(unit, againstUnit, frames);
+}
+
+std::vector<ImmunityManager::ExportRecord> CollisionSystem::ExportImmunity() const {
+    return immunityManager.Export();
+}
+
+void CollisionSystem::ImportImmunity(const std::vector<ImmunityManager::ExportRecord>& records) {
+    immunityManager.Import(records);
+}
+

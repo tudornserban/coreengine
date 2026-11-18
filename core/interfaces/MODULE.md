@@ -13,13 +13,13 @@ Include headers from the repo root, e.g. `#include "core/interfaces/IGameUnit.h"
 | Symbol | Kind | Header | Notes |
 |--------|------|--------|-------|
 | `IBehavior` | class | `IBehavior.h` | Influence items + optional direct acceleration; includes value types from `core.influence.types` and `Vector2` |
-| `IGameUnit` | class | `IGameUnit.h` | Unit contract; uses `Vector2` |
+| `IGameUnit` | class | `IGameUnit.h` | Unit contract. Default motion is combined in `ApplyAcceleration`. New helpers (`ApplyPropulsion`, `ApplyImpulse`, `ApplyVelocityChange`, `IntegrateMotion`, participation, entity id, death latch) have defaults so older implementers still compile |
 | `IUnitKinematics` | class | `IUnitKinematics.h` | Optional direct position/velocity writes (`SetPosition`, `SetVelocity`); implemented by `RTSUnit` for collision writers |
 | `IUnitAgent` | class | `IUnitAgent.h` | Optional FSM / behavior-parameter commands (`SetAgentState`, `SetAgentParameter`); implemented by `RTSUnit` for `CommandSystem` |
 | `IInfluenceEmitter` | class | `IInfluenceEmitter.h` | Optional influence radius; implemented by `RTSUnit` |
 | `IUnitCombat` | class | `IUnitCombat.h` | Optional damage, death, and attack stats; implemented by `RTSUnit` |
 | `IInputReader` | class | `IInputReader.h` | Input abstraction; uses `Vector2` |
-| `ITransitionCondition` | class | `ITransitionCondition.h` | Condition evaluation; `BehaviorContext` forward-declared |
+| `ITransitionCondition` | class | `ITransitionCondition.h` | Condition evaluation. Optional numeric state defaults to none so existing conditions still compile |
 | `IGameState` | class | `IGameState.h` | Single active state contract |
 | `IGameLogicRenderer` | class | `IGameLogicRenderer.h` | Read-only renderer; `GetCurrentGameState` (`const RTSGameState*`); optional `GetSimulationSnapshot()` (default `nullptr`) |
 | `ISerializer` | class | `ISerializer.h` | Byte/string serialization contract |

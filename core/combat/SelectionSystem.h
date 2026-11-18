@@ -28,6 +28,9 @@ public:
     // Clear selection
     void ClearSelection();
 
+    /// Drop one unit so removal cannot leave a dangling selection pointer.
+    void ForgetUnit(IGameUnit* unit);
+
     // Getters
     const std::vector<IGameUnit*>& GetSelectedUnits() const { return selectedUnits; }
     bool IsBoxSelecting() const { return isBoxSelecting; }

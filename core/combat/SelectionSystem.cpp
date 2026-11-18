@@ -71,6 +71,14 @@ void SelectionSystem::EndBoxSelection(const std::vector<IGameUnit*>& allUnits) {
     SelectUnits(unitsInBox, false);
 }
 
+void SelectionSystem::ForgetUnit(IGameUnit* unit) {
+    if (!unit) return;
+    auto it = std::find(selectedUnits.begin(), selectedUnits.end(), unit);
+    if (it == selectedUnits.end()) return;
+    unit->SetSelected(false);
+    selectedUnits.erase(it);
+}
+
 void SelectionSystem::ClearSelection() {
     for (IGameUnit* unit : selectedUnits) {
         if (unit) {

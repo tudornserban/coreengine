@@ -40,6 +40,10 @@ public:
 
     // Immunity system
     void UpdateImmunity();  // Call each game update frame
+    void ForgetUnit(IGameUnit* unit);
+    void SetContactImmunity(IGameUnit* unit, IGameUnit* againstUnit, int frames);
+    std::vector<ImmunityManager::ExportRecord> ExportImmunity() const;
+    void ImportImmunity(const std::vector<ImmunityManager::ExportRecord>& records);
 
     // Settings
     CollisionSettings& GetSettings() { return settings; }

@@ -1,6 +1,6 @@
 {
   "id": "core.session",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "path": "core/session",
   "exports": [
     "GameTitle",
@@ -18,9 +18,11 @@
     "LobbyView",
     "DecisionPlan",
     "MatchOutcome",
-    "PlayerCommand"
+    "PlayerCommand",
+    "MatchSetup",
+    "ValidateMatchSetup"
   ],
   "requires": {},
   "tags": ["multiplayer", "deterministic"],
-  "notes": "Lobby, offline server resolution, and online lockstep. No sockets in core/. DynamicGo, AscendantExpanse, and ZodiacWars supply IDeterministicMatch."
+  "notes": "Lobby, offline server resolution, and online lockstep. No sockets in core/. DynamicGo, AscendantExpanse, ZodiacWars, and VenusWars supply IDeterministicMatch. MatchSetup is an opaque payload checked for schema, size, and reference shape."
 }

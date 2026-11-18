@@ -6,15 +6,13 @@ How each game project uses CoreEngine systems.
 
 ## VenusWars
 
-**Location:** `VenusWars/` (CMake project and sources at repository root)
+VenusWars consumes CoreEngine as a pinned external C++ library. Do not symlink or copy `core/` into the game tree.
 
-VenusWars is the original source of most `core/` systems. After extraction:
+The engine supplies the fixed-step loop, playback, RNG, behavior factory, FSM, steering and influence, collision, map queries, commands, session lobby, projectiles, timed actions, placement footprints, resource claims, and a canonical snapshot. VenusWars keeps its own policy: deployment accounting, attribute curves, health-to-radius presentation, charge and Integrity costs, armor, spawn templates, objectives, rewards, progression, and UI.
 
-- **Replace** `src/Core/` with a symlink or copy of this repo's `core/`
-- **Keep** `src/VenusWars/` — game-specific behaviors (`ExplorationBehavior`, `CombatBehavior`, `DefensiveBehavior`), unit types (`VenusWarsUnit`), and game states
-- **Keep** `src/Platform/` — SDL2 renderer and input (now equivalent to `CoreEngine/platform/sdl2/`)
-- **Replace** `PotentialFieldItem` references with `InfluenceFieldItem` (same API, renamed)
-- Register VenusWars-specific behaviors via `BehaviorFactory::Register("Combat", ...)`
+Wire the game through `GameTitle::VenusWars` and `IDeterministicMatch`. Put scenario identity in `MatchSetup` and submit it before the lobby starts. `Configure` runs before the first tick. A full VenusWars encounter is validated in the VenusWars repository against a pinned CoreEngine revision, not in this repo.
+
+Replay and rollback identity is the guarantee in [DETERMINISM.md](DETERMINISM.md): same binary, same platform, same compiler, and the same fixed timestep. Diagnostic JSON from `GameStateSerializer` is not that snapshot.
 
 ---
 

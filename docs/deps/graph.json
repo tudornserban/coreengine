@@ -9,7 +9,7 @@
     {
       "enforced": true,
       "from": "core.ai",
-      "range": "^1.0.0",
+      "range": "^1.7.0",
       "to": "core.interfaces"
     },
     {
@@ -57,7 +57,7 @@
     {
       "enforced": true,
       "from": "core.combat",
-      "range": "^1.6.0",
+      "range": "^1.7.0",
       "to": "core.interfaces"
     },
     {
@@ -75,19 +75,19 @@
     {
       "enforced": true,
       "from": "core.gamestate",
-      "range": "^1.0.0",
+      "range": "^1.2.0",
       "to": "core.ai"
     },
     {
       "enforced": true,
       "from": "core.gamestate",
-      "range": "^1.0.0",
+      "range": "^1.1.0",
       "to": "core.collision"
     },
     {
       "enforced": true,
       "from": "core.gamestate",
-      "range": "^1.0.0",
+      "range": "^1.2.0",
       "to": "core.combat"
     },
     {
@@ -99,7 +99,7 @@
     {
       "enforced": true,
       "from": "core.gamestate",
-      "range": "^1.6.0",
+      "range": "^1.7.0",
       "to": "core.interfaces"
     },
     {
@@ -111,7 +111,7 @@
     {
       "enforced": true,
       "from": "core.gamestate",
-      "range": "^1.0.0",
+      "range": "^1.2.0",
       "to": "core.map"
     },
     {
@@ -200,11 +200,11 @@
       "path": "core/ai",
       "requires": {
         "core.influence.types": "^1.0.0",
-        "core.interfaces": "^1.0.0",
+        "core.interfaces": "^1.7.0",
         "core.logging": "^1.0.0",
         "core.math": "^1.0.0"
       },
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "id": "core.ai_advanced",
@@ -225,17 +225,17 @@
         "core.logging": "^1.0.0",
         "core.math": "^1.0.0"
       },
-      "version": "1.0.4"
+      "version": "1.1.0"
     },
     {
       "id": "core.combat",
       "includeEnforced": true,
       "path": "core/combat",
       "requires": {
-        "core.interfaces": "^1.6.0",
+        "core.interfaces": "^1.7.0",
         "core.math": "^1.0.0"
       },
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "id": "core.gameloop",
@@ -251,16 +251,16 @@
       "includeEnforced": true,
       "path": "core/gamestate",
       "requires": {
-        "core.ai": "^1.0.0",
-        "core.collision": "^1.0.0",
-        "core.combat": "^1.0.0",
+        "core.ai": "^1.2.0",
+        "core.collision": "^1.1.0",
+        "core.combat": "^1.2.0",
         "core.influence": "^1.0.0",
-        "core.interfaces": "^1.6.0",
+        "core.interfaces": "^1.7.0",
         "core.logging": "^1.0.0",
-        "core.map": "^1.0.0",
+        "core.map": "^1.2.0",
         "core.math": "^1.0.0"
       },
-      "version": "1.4.0"
+      "version": "2.0.0"
     },
     {
       "id": "core.influence",
@@ -291,7 +291,7 @@
         "core.influence.types": "^1.0.0",
         "core.math": "^1.0.0"
       },
-      "version": "1.6.0"
+      "version": "1.7.0"
     },
     {
       "id": "core.logging",
@@ -309,7 +309,7 @@
         "core.interfaces": "^1.6.0",
         "core.math": "^1.0.0"
       },
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "id": "core.math",
@@ -333,7 +333,7 @@
       "includeEnforced": true,
       "path": "core/session",
       "requires": {},
-      "version": "1.0.0"
+      "version": "1.1.0"
     }
   ],
   "schemaVersion": 1
