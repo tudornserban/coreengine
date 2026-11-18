@@ -282,6 +282,9 @@ elseif(COREENGINE_AI_STANDALONE)
         tests/UnitTests/AI/ConditionsTest.cpp
         tests/UnitTests/AI/StateMachineTest.cpp
         tests/UnitTests/AI/DecisionGraphTest.cpp
+        tests/UnitTests/AI/MonteCarloRunnerTest.cpp
+        core/ai_advanced/GeneticTrainer.cpp
+        core/ai_advanced/MonteCarloRunner.cpp
     )
     target_include_directories(coreengine_ai_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
     target_link_libraries(coreengine_ai_tests

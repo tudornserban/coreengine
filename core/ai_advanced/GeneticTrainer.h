@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Genome.h"
-#include "BotPlayer.h"
 #include <vector>
 #include <random>
 #include <functional>
