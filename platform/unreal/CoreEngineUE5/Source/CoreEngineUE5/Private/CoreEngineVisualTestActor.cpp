@@ -259,10 +259,8 @@ ACoreEngineVisualTestActor* ACoreEngineVisualTestHUD::FindVisualTestActor() cons
     if (!GetWorld()) {
         return nullptr;
     }
-    for (TActorIterator<ACoreEngineVisualTestActor> It(GetWorld()); It; ++It) {
-        return *It;
-    }
-    return nullptr;
+    TActorIterator<ACoreEngineVisualTestActor> It(GetWorld());
+    return It ? *It : nullptr;
 }
 
 void ACoreEngineVisualTestHUD::DrawHUD() {
@@ -502,12 +500,8 @@ void ACoreEngineVisualTestGameMode::BeginPlay() {
     if (!GetWorld()) {
         return;
     }
-    bool bFound = false;
-    for (TActorIterator<ACoreEngineVisualTestActor> It(GetWorld()); It; ++It) {
-        bFound = true;
-        break;
-    }
-    if (!bFound) {
+    TActorIterator<ACoreEngineVisualTestActor> It(GetWorld());
+    if (!It) {
         GetWorld()->SpawnActor<ACoreEngineVisualTestActor>(
             ACoreEngineVisualTestActor::StaticClass(), FVector::ZeroVector, FRotator::ZeroRotator);
     }
