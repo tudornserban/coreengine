@@ -171,7 +171,7 @@ Each adapter implements interfaces from `core/interfaces/`. The core engine neve
 | `sdl2/` | `IGameLogicRenderer`, `IInputReader` | Reference stubs; copy from VenusWars or use `tools/viewer` |
 | `raylib/` | `IGameLogicRenderer`, `IInputReader` | Reference stubs; `RaylibRenderer::Render()` is declared but not implemented |
 | `null/` | `IGameLogicRenderer`, `IInputReader` | Headless server, unit tests |
-| `unreal/` | Stubs + porting guide | UE5 integration |
+| `unreal/` | `IGameLogicRenderer`, `IInputReader`, 3D Sandbox, Character, Inventory, Minimap, Default GUI, `CoreEngineUE5` plugin | Full UE5 integration ([UE5_INTEGRATION_GUIDE.md](UE5_INTEGRATION_GUIDE.md)) |
 | `unity/` | Stubs → delegates to ffi/ | Unity C# P/Invoke |
 
 ---

@@ -14,13 +14,15 @@ When using `ffi/c_api.h` (`coreengine_ffi`), playable teams are **`1`** and **`2
 
 ## Unreal Engine 5
 
-### Step 1: Copy `core/` into your UE5 project
+For the complete step-by-step guide covering **new** and **existing** UE5 game projects, the drop-in **`CoreEngineUE5`** plugin (`platform/unreal/CoreEngineUE5/`), the **3D Placeholder Sandbox** (`UEPlaceholder3DSandbox`), **Generic Character** (`UEGenericCharacter`), **Generic Inventory** (`UEGenericInventory`), **Minimap** (`UEMinimapSystem`), and **7-panel Default GUI** (`UEDefaultGUI`), see **[UE5_INTEGRATION_GUIDE.md](UE5_INTEGRATION_GUIDE.md)**.
+
+### Quick Manual Integration: Step 1: Copy `core/` and `platform/unreal/` into your UE5 project
 
 ```
-cp -r core/ MyGame/Source/MyGame/CoreEngine/
+cp -r core/ platform/ MyGame/Source/MyGame/CoreEngine/
 ```
 
-All files in `core/` compile with `-std=c++17` and zero UE5 dependencies.
+All files in `core/` and `platform/unreal/` compile with `-std=c++17` and zero UE5 dependencies (or drop `platform/unreal/CoreEngineUE5/` directly into `MyGame/Plugins/CoreEngineUE5/`).
 
 ### Step 2: Add to Build.cs
 

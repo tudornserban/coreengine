@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.0",
+	"FriendlyName": "CoreEngine UE5 Integration",
+	"Description": "Zero-overhead C++17 integration of CoreEngine (deterministic simulation loop, AI behaviors, finite state machines, decision graphs, influence fields, collision, combat, session lockstep, generic character, inventory, minimap, 3D placeholder sandbox, and default GUI) for Unreal Engine 5.",
+	"Category": "Gameplay",
+	"CreatedBy": "CoreEngine Team",
+	"CreatedByURL": "",
+	"DocsURL": "docs/UE5_INTEGRATION_GUIDE.md",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "CoreEngineUE5",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
