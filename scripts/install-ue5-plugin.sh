@@ -23,7 +23,7 @@ fi
 
 PLUGIN_DEST="${TARGET_PROJECT_DIR}/Plugins/CoreEngineUE5"
 THIRDPARTY_DEST="${PLUGIN_DEST}/ThirdParty/CoreEngine"
-GENERATED_SRC_DEST="${PLUGIN_DEST}/Source/CoreEngineUE5/Private/GeneratedCoreSources"
+GENERATED_SRC_DEST="${PLUGIN_DEST}/Source/CoreEngineCore/Private/GeneratedCoreSources"
 
 echo "[install-ue5-plugin] Installing CoreEngineUE5 into: ${PLUGIN_DEST}"
 rm -rf "${PLUGIN_DEST}"

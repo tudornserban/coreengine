@@ -4,6 +4,7 @@
 #include "GameFramework/Actor.h"
 #include "GameFramework/GameModeBase.h"
 #include "GameFramework/HUD.h"
+#include "CoreEngineCoreBridge.h"
 #include "CoreEngineUE5Actors.h"
 #include "CoreEngineVisualTestActor.generated.h"
 
@@ -118,8 +119,8 @@ public:
     UFUNCTION(CallInEditor, BlueprintCallable, Category = "CoreEngine|5_CombatAndMinimap")
     void SendMinimapPing();
 
-    CoreEngine::Unreal::UEWorldSubsystemController* GetController() { return SubsystemController.get(); }
-    const CoreEngine::Unreal::UEWorldSubsystemController* GetController() const { return SubsystemController.get(); }
+    CoreEngine::Unreal::FCoreEngineRuntimeBridge* GetBridge() { return RuntimeBridge.get(); }
+    const CoreEngine::Unreal::FCoreEngineRuntimeBridge* GetBridge() const { return RuntimeBridge.get(); }
 
 protected:
     virtual void BeginPlay() override;
@@ -129,7 +130,7 @@ private:
     void EnsureControllerInitialized();
     void PollPlayerControllerInput();
 
-    std::unique_ptr<CoreEngine::Unreal::UEWorldSubsystemController> SubsystemController;
+    std::unique_ptr<CoreEngine::Unreal::FCoreEngineRuntimeBridge> RuntimeBridge;
 };
 
 /// Zero-asset UCanvas HUD that renders all 7 UEDefaultGUI panels, interactive clickable buttons,
@@ -157,9 +158,9 @@ private:
     };
 
     ACoreEngineVisualTestActor* FindVisualTestActor() const;
-    void DrawGuiPanels(CoreEngine::Unreal::UEWorldSubsystemController& Ctrl);
-    void DrawMinimapWidget(CoreEngine::Unreal::UEWorldSubsystemController& Ctrl);
-    void HandleHudMouseClicks(CoreEngine::Unreal::UEWorldSubsystemController& Ctrl);
+    void DrawGuiPanels(CoreEngine::Unreal::FCoreEngineRuntimeBridge& Bridge);
+    void DrawMinimapWidget(CoreEngine::Unreal::FCoreEngineRuntimeBridge& Bridge);
+    void HandleHudMouseClicks(CoreEngine::Unreal::FCoreEngineRuntimeBridge& Bridge);
 
     std::vector<FClickableButtonRect> ButtonRectsThisFrame;
     FVector2D MinimapOriginPx{980.0f, 440.0f};

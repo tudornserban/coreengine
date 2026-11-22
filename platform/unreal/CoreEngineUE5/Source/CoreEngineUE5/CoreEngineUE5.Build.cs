@@ -9,12 +9,12 @@ public class CoreEngineUE5 : ModuleRules
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		bUseUnity = false;
-		CppStandard = CppStandardVersion.Default; // UE 5.4+ requires C++20; CoreEngine C++17 compiles cleanly under C++20+
+		CppStandard = CppStandardVersion.Default;
 		bEnableExceptions = true;
-		bUseRTTI = true; // Required for CoreEngine interface dynamic_cast gates (IUnitKinematics, IUnitAgent, etc.)
+		// Keep RTTI disabled on UCLASS modules so AActor/AHUD/AGameModeBase link cleanly on macOS arm64.
+		// All RTTI/dynamic_cast logic lives inside the CoreEngineCore dependency module.
+		bUseRTTI = false;
 
-		// Resolve CoreEngine root whether the plugin is used in-place from platform/unreal/CoreEngineUE5
-		// or copied to <UE5Project>/Plugins/CoreEngineUE5 with a bundled CoreEngine root.
 		string BundledCoreRoot = Path.GetFullPath(Path.Combine(ModuleDirectory, "..", "..", "ThirdParty", "CoreEngine"));
 		string InRepoCoreRoot = Path.GetFullPath(Path.Combine(ModuleDirectory, "..", "..", "..", ".."));
 		string ActiveCoreRoot = Directory.Exists(Path.Combine(BundledCoreRoot, "core"))
@@ -29,15 +29,14 @@ public class CoreEngineUE5 : ModuleRules
 			Path.Combine(ModuleDirectory, "Private")
 		});
 
-		// Add CoreEngine root as a system include path so UE5's -Werror=shadow / strict
-		// warning flags do not fail on pure-C++17 CoreEngine headers (e.g. Vector2.h).
 		PublicSystemIncludePaths.Add(ActiveCoreRoot);
 
 		PublicDependencyModuleNames.AddRange(new string[] {
 			"Core",
 			"CoreUObject",
 			"Engine",
-			"InputCore"
+			"InputCore",
+			"CoreEngineCore"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {

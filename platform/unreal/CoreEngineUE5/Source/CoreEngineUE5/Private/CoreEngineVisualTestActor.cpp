@@ -16,14 +16,12 @@ ACoreEngineVisualTestActor::ACoreEngineVisualTestActor() {
 }
 
 void ACoreEngineVisualTestActor::EnsureControllerInitialized() {
-    if (!SubsystemController) {
-        UECoordinateConfig Cfg;
-        Cfg.worldScale = FMath::Max(0.1f, WorldScale);
+    if (!RuntimeBridge) {
         const FVector ActorLoc = GetActorLocation();
-        Cfg.originOffset = UEVec3(ActorLoc.X, ActorLoc.Y, ActorLoc.Z);
-        SubsystemController = std::make_unique<UEWorldSubsystemController>(
-            Vector2(800.0f, 600.0f), 42, Cfg);
-        SubsystemController->Initialize(
+        RuntimeBridge = std::make_unique<FCoreEngineRuntimeBridge>(
+            800.0f, 600.0f, 42, FMath::Max(0.1f, WorldScale),
+            UEVec3(ActorLoc.X, ActorLoc.Y, ActorLoc.Z));
+        RuntimeBridge->Initialize(
             static_cast<UESandboxPreset>(InitialPreset), FMath::Max(1, UnitsPerTeam));
     }
 }
@@ -39,8 +37,7 @@ void ACoreEngineVisualTestActor::BeginPlay() {
             PC->bEnableMouseOverEvents = true;
 
             if (bAutoPositionCameraOnBeginPlay && PC->GetPawn()) {
-                const UEVec3 CenterUE = SubsystemController->GetSandbox().GetCoordinateBridge().CoreToUEPosition(
-                    Vector2(400.0f, 300.0f), 4200.0f);
+                const UEVec3 CenterUE = RuntimeBridge->CoreToUEPosition(400.0f, 300.0f, 4200.0f);
                 PC->GetPawn()->SetActorLocation(FVector(CenterUE.x - 1800.0f, CenterUE.y, CenterUE.z));
                 PC->SetControlRotation(FRotator(-62.0f, 0.0f, 0.0f));
             }
@@ -49,7 +46,7 @@ void ACoreEngineVisualTestActor::BeginPlay() {
 }
 
 void ACoreEngineVisualTestActor::PollPlayerControllerInput() {
-    if (!SubsystemController) {
+    if (!RuntimeBridge) {
         return;
     }
     UWorld* World = GetWorld();
@@ -61,21 +58,17 @@ void ACoreEngineVisualTestActor::PollPlayerControllerInput() {
         return;
     }
 
-    auto& Input = SubsystemController->GetSandbox().GetInputReader();
-    const auto& Bridge = SubsystemController->GetSandbox().GetCoordinateBridge();
-
     float MouseX = 0.0f;
     float MouseY = 0.0f;
     if (PC->GetMousePosition(MouseX, MouseY)) {
-        Input.InjectScreenMousePosition(Vector2(MouseX, MouseY));
+        RuntimeBridge->InjectScreenMousePosition(MouseX, MouseY);
     }
 
     FVector WorldOrigin, WorldDirection;
     if (PC->DeprojectMousePositionToWorld(WorldOrigin, WorldDirection)) {
-        Input.InjectWorldCameraRay(
+        RuntimeBridge->InjectWorldCameraRay(
             UEVec3(WorldOrigin.X, WorldOrigin.Y, WorldOrigin.Z),
-            UEVec3(WorldDirection.X, WorldDirection.Y, WorldDirection.Z),
-            Bridge);
+            UEVec3(WorldDirection.X, WorldDirection.Y, WorldDirection.Z));
     }
 
     bool bHudConsumed = false;
@@ -84,27 +77,27 @@ void ACoreEngineVisualTestActor::PollPlayerControllerInput() {
     }
 
     if (!bHudConsumed) {
-        Input.InjectMouseButtonState(UE_MOUSE_LEFT, PC->IsInputKeyDown(EKeys::LeftMouseButton));
-        Input.InjectMouseButtonState(UE_MOUSE_RIGHT, PC->IsInputKeyDown(EKeys::RightMouseButton));
+        RuntimeBridge->InjectMouseButtonState(UE_MOUSE_LEFT, PC->IsInputKeyDown(EKeys::LeftMouseButton));
+        RuntimeBridge->InjectMouseButtonState(UE_MOUSE_RIGHT, PC->IsInputKeyDown(EKeys::RightMouseButton));
     } else {
-        Input.InjectMouseButtonState(UE_MOUSE_LEFT, false);
-        Input.InjectMouseButtonState(UE_MOUSE_RIGHT, false);
+        RuntimeBridge->InjectMouseButtonState(UE_MOUSE_LEFT, false);
+        RuntimeBridge->InjectMouseButtonState(UE_MOUSE_RIGHT, false);
     }
 
-    Input.InjectKeyState(UE_KEY_LSHIFT, PC->IsInputKeyDown(EKeys::LeftShift));
-    Input.InjectKeyState(UE_KEY_SPACE, PC->IsInputKeyDown(EKeys::SpaceBar));
-    Input.InjectKeyState(UE_KEY_PERIOD, PC->IsInputKeyDown(EKeys::Period));
-    Input.InjectKeyState(UE_KEY_1, PC->IsInputKeyDown(EKeys::One));
-    Input.InjectKeyState(UE_KEY_2, PC->IsInputKeyDown(EKeys::Two));
-    Input.InjectKeyState(UE_KEY_3, PC->IsInputKeyDown(EKeys::Three));
-    Input.InjectKeyState(UE_KEY_4, PC->IsInputKeyDown(EKeys::Four));
-    Input.InjectKeyState(UE_KEY_R, PC->IsInputKeyDown(EKeys::R));
-    Input.InjectKeyState(UE_KEY_F1, PC->IsInputKeyDown(EKeys::F1));
-    Input.InjectKeyState(UE_KEY_F2, PC->IsInputKeyDown(EKeys::F2));
-    Input.InjectKeyState(UE_KEY_F3, PC->IsInputKeyDown(EKeys::F3));
-    Input.InjectKeyState(UE_KEY_F4, PC->IsInputKeyDown(EKeys::F4));
-    Input.InjectKeyState(UE_KEY_F5, PC->IsInputKeyDown(EKeys::F5));
-    Input.InjectKeyState(UE_KEY_F6, PC->IsInputKeyDown(EKeys::F6));
+    RuntimeBridge->InjectKeyState(UE_KEY_LSHIFT, PC->IsInputKeyDown(EKeys::LeftShift));
+    RuntimeBridge->InjectKeyState(UE_KEY_SPACE, PC->IsInputKeyDown(EKeys::SpaceBar));
+    RuntimeBridge->InjectKeyState(UE_KEY_PERIOD, PC->IsInputKeyDown(EKeys::Period));
+    RuntimeBridge->InjectKeyState(UE_KEY_1, PC->IsInputKeyDown(EKeys::One));
+    RuntimeBridge->InjectKeyState(UE_KEY_2, PC->IsInputKeyDown(EKeys::Two));
+    RuntimeBridge->InjectKeyState(UE_KEY_3, PC->IsInputKeyDown(EKeys::Three));
+    RuntimeBridge->InjectKeyState(UE_KEY_4, PC->IsInputKeyDown(EKeys::Four));
+    RuntimeBridge->InjectKeyState(UE_KEY_R, PC->IsInputKeyDown(EKeys::R));
+    RuntimeBridge->InjectKeyState(UE_KEY_F1, PC->IsInputKeyDown(EKeys::F1));
+    RuntimeBridge->InjectKeyState(UE_KEY_F2, PC->IsInputKeyDown(EKeys::F2));
+    RuntimeBridge->InjectKeyState(UE_KEY_F3, PC->IsInputKeyDown(EKeys::F3));
+    RuntimeBridge->InjectKeyState(UE_KEY_F4, PC->IsInputKeyDown(EKeys::F4));
+    RuntimeBridge->InjectKeyState(UE_KEY_F5, PC->IsInputKeyDown(EKeys::F5));
+    RuntimeBridge->InjectKeyState(UE_KEY_F6, PC->IsInputKeyDown(EKeys::F6));
 }
 
 void ACoreEngineVisualTestActor::Tick(float DeltaSeconds) {
@@ -112,141 +105,141 @@ void ACoreEngineVisualTestActor::Tick(float DeltaSeconds) {
     EnsureControllerInitialized();
 
     PollPlayerControllerInput();
-    SubsystemController->Tick(DeltaSeconds);
+    RuntimeBridge->Tick(DeltaSeconds);
 
-    const UE3DRenderFrame& Frame3D = SubsystemController->GetSandbox().GetRenderer().GetLastRenderFrame();
+    const UE3DRenderFrame& Frame3D = RuntimeBridge->GetLastRenderFrame();
     DrawUE5Placeholder3DFrame(GetWorld(), Frame3D, 0.0f);
 }
 
 void ACoreEngineVisualTestActor::LoadSingleUnitBehaviorLab() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("preset.single_behavior");
+    RuntimeBridge->ExecuteGuiButtonAction("preset.single_behavior");
 }
 
 void ACoreEngineVisualTestActor::LoadSingleUnitStateMachineLab() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("preset.single_fsm");
+    RuntimeBridge->ExecuteGuiButtonAction("preset.single_fsm");
 }
 
 void ACoreEngineVisualTestActor::LoadMultiUnitSwarmLab() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("preset.multi_swarm");
+    RuntimeBridge->ExecuteGuiButtonAction("preset.multi_swarm");
 }
 
 void ACoreEngineVisualTestActor::LoadCombatLab() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("preset.combat");
+    RuntimeBridge->ExecuteGuiButtonAction("preset.combat");
 }
 
 void ACoreEngineVisualTestActor::LoadDecisionGraphAndClashLab() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("preset.decision_clash");
+    RuntimeBridge->ExecuteGuiButtonAction("preset.decision_clash");
 }
 
 void ACoreEngineVisualTestActor::TogglePause() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("playback.toggle_pause");
+    RuntimeBridge->ExecuteGuiButtonAction("playback.toggle_pause");
 }
 
 void ACoreEngineVisualTestActor::StepSingleTick() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("playback.step_tick");
+    RuntimeBridge->ExecuteGuiButtonAction("playback.step_tick");
 }
 
 void ACoreEngineVisualTestActor::ResetScenario() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("sandbox.reset");
+    RuntimeBridge->ExecuteGuiButtonAction("sandbox.reset");
 }
 
 void ACoreEngineVisualTestActor::SwapBehaviorToSeek() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("ai.set_behavior:Seek");
+    RuntimeBridge->ExecuteGuiButtonAction("ai.set_behavior:Seek");
 }
 
 void ACoreEngineVisualTestActor::SwapBehaviorToFlee() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("ai.set_behavior:Flee");
+    RuntimeBridge->ExecuteGuiButtonAction("ai.set_behavior:Flee");
 }
 
 void ACoreEngineVisualTestActor::SwapBehaviorToWander() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("ai.set_behavior:Wander");
+    RuntimeBridge->ExecuteGuiButtonAction("ai.set_behavior:Wander");
 }
 
 void ACoreEngineVisualTestActor::SwapBehaviorToCohesion() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("ai.set_behavior:Cohesion");
+    RuntimeBridge->ExecuteGuiButtonAction("ai.set_behavior:Cohesion");
 }
 
 void ACoreEngineVisualTestActor::SwapBehaviorToSeparation() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("ai.set_behavior:Separation");
+    RuntimeBridge->ExecuteGuiButtonAction("ai.set_behavior:Separation");
 }
 
 void ACoreEngineVisualTestActor::SwapBehaviorToTacticalFrontline() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("ai.set_behavior:TacticalFrontline");
+    RuntimeBridge->ExecuteGuiButtonAction("ai.set_behavior:TacticalFrontline");
 }
 
 void ACoreEngineVisualTestActor::EjectBehavior() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("ai.eject_state");
+    RuntimeBridge->ExecuteGuiButtonAction("ai.eject_state");
 }
 
 void ACoreEngineVisualTestActor::ApplyFSMPatrolEngageFlee() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("fsm.preset:PatrolEngageFlee");
+    RuntimeBridge->ExecuteGuiButtonAction("fsm.preset:PatrolEngageFlee");
 }
 
 void ACoreEngineVisualTestActor::ApplyFSMSwarmToFrontline() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("fsm.preset:SwarmToFrontline");
+    RuntimeBridge->ExecuteGuiButtonAction("fsm.preset:SwarmToFrontline");
 }
 
 void ACoreEngineVisualTestActor::EvaluateDecisionGraph() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("ai.eval_decision_graph");
+    RuntimeBridge->ExecuteGuiButtonAction("ai.eval_decision_graph");
 }
 
 void ACoreEngineVisualTestActor::SpawnTeam1Unit() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("unit.spawn_team1");
+    RuntimeBridge->ExecuteGuiButtonAction("unit.spawn_team1");
 }
 
 void ACoreEngineVisualTestActor::SpawnTeam2Unit() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("unit.spawn_team2");
+    RuntimeBridge->ExecuteGuiButtonAction("unit.spawn_team2");
 }
 
 void ACoreEngineVisualTestActor::EquipWeaponAndArmorOnFocusUnit() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("inv.equip:weapon_plasma_blade");
-    SubsystemController->GetGUI().ExecuteButtonAction("inv.equip:armor_aegis_plate");
+    RuntimeBridge->ExecuteGuiButtonAction("inv.equip:weapon_plasma_blade");
+    RuntimeBridge->ExecuteGuiButtonAction("inv.equip:armor_aegis_plate");
 }
 
 void ACoreEngineVisualTestActor::UseRepairKitOnFocusUnit() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("inv.use:consumable_nanite_repair");
+    RuntimeBridge->ExecuteGuiButtonAction("inv.use:consumable_nanite_repair");
 }
 
 void ACoreEngineVisualTestActor::FireTestProjectile() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("combat.fire_projectile");
+    RuntimeBridge->ExecuteGuiButtonAction("combat.fire_projectile");
 }
 
 void ACoreEngineVisualTestActor::DetonateTestExplosion() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("combat.trigger_explosion");
+    RuntimeBridge->ExecuteGuiButtonAction("combat.trigger_explosion");
 }
 
 void ACoreEngineVisualTestActor::TriggerTurnClash() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("combat.exec_turn_clash");
+    RuntimeBridge->ExecuteGuiButtonAction("combat.exec_turn_clash");
 }
 
 void ACoreEngineVisualTestActor::SendMinimapPing() {
     EnsureControllerInitialized();
-    SubsystemController->GetGUI().ExecuteButtonAction("minimap.add_ping");
+    RuntimeBridge->ExecuteGuiButtonAction("minimap.add_ping");
 }
 
 // ============================================================================
@@ -269,23 +262,23 @@ void ACoreEngineVisualTestHUD::DrawHUD() {
         return;
     }
     ACoreEngineVisualTestActor* TestActor = FindVisualTestActor();
-    if (!TestActor || !TestActor->GetController()) {
+    if (!TestActor || !TestActor->GetBridge()) {
         return;
     }
-    UEWorldSubsystemController& Ctrl = *TestActor->GetController();
+    FCoreEngineRuntimeBridge& Bridge = *TestActor->GetBridge();
 
     ButtonRectsThisFrame.clear();
     if (bShowDefaultGUIPanels) {
-        DrawGuiPanels(Ctrl);
+        DrawGuiPanels(Bridge);
     }
     if (bShowMinimap) {
-        DrawMinimapWidget(Ctrl);
+        DrawMinimapWidget(Bridge);
     }
-    HandleHudMouseClicks(Ctrl);
+    HandleHudMouseClicks(Bridge);
 }
 
-void ACoreEngineVisualTestHUD::DrawGuiPanels(UEWorldSubsystemController& Ctrl) {
-    const UEGuiFrameModel& GuiModel = Ctrl.GetGUI().GetLastFrameModel();
+void ACoreEngineVisualTestHUD::DrawGuiPanels(FCoreEngineRuntimeBridge& Bridge) {
+    const UEGuiFrameModel& GuiModel = Bridge.GetLastGuiFrameModel();
     UFont* Font = GEngine ? GEngine->GetSmallFont() : nullptr;
 
     // Top status banner
@@ -372,21 +365,17 @@ void ACoreEngineVisualTestHUD::DrawGuiPanels(UEWorldSubsystemController& Ctrl) {
     }
 }
 
-void ACoreEngineVisualTestHUD::DrawMinimapWidget(UEWorldSubsystemController& Ctrl) {
+void ACoreEngineVisualTestHUD::DrawMinimapWidget(FCoreEngineRuntimeBridge& Bridge) {
     UFont* Font = GEngine ? GEngine->GetSmallFont() : nullptr;
-    auto& Minimap = Ctrl.GetSandbox().GetMinimapSystem();
     const float CanvasW = Canvas->SizeX;
     const float CanvasH = Canvas->SizeY;
 
     MinimapSizePx = FVector2D(260.0f, 220.0f);
     MinimapOriginPx = FVector2D(FMath::Max(16.0f, CanvasW - MinimapSizePx.X - 18.0f),
                                 FMath::Max(36.0f, CanvasH - MinimapSizePx.Y - 18.0f));
-    Minimap.GetConfig().screenOriginX = MinimapOriginPx.X;
-    Minimap.GetConfig().screenOriginY = MinimapOriginPx.Y;
-    Minimap.GetConfig().screenWidthPx = MinimapSizePx.X;
-    Minimap.GetConfig().screenHeightPx = MinimapSizePx.Y;
+    Bridge.SetMinimapScreenRect(MinimapOriginPx.X, MinimapOriginPx.Y, MinimapSizePx.X, MinimapSizePx.Y);
 
-    const UEMinimapFrame& Frame = Minimap.GetLastFrame();
+    const UEMinimapFrame& Frame = Bridge.GetLastMinimapFrame();
 
     // Header + radar background
     DrawRect(FLinearColor(0.12f, 0.20f, 0.35f, 0.95f), MinimapOriginPx.X, MinimapOriginPx.Y - 20.0f, MinimapSizePx.X, 20.0f);
@@ -436,7 +425,7 @@ void ACoreEngineVisualTestHUD::DrawMinimapWidget(UEWorldSubsystemController& Ctr
     }
 }
 
-void ACoreEngineVisualTestHUD::HandleHudMouseClicks(UEWorldSubsystemController& Ctrl) {
+void ACoreEngineVisualTestHUD::HandleHudMouseClicks(FCoreEngineRuntimeBridge& Bridge) {
     bHudConsumedClickThisFrame = false;
     APlayerController* PC = GetOwningPlayerController();
     if (!PC) {
@@ -457,20 +446,17 @@ void ACoreEngineVisualTestHUD::HandleHudMouseClicks(UEWorldSubsystemController& 
     bWasRightMouseDown = bRightDown;
 
     // Check minimap bounds
-    Vector2 ClickedUV;
-    if (Ctrl.GetSandbox().GetMinimapSystem().ScreenPixelsToMinimapUV(Vector2(MouseX, MouseY), &ClickedUV)) {
+    float U = 0.0f, V = 0.0f;
+    if (Bridge.ScreenPixelsToMinimapUV(MouseX, MouseY, &U, &V)) {
         bHudConsumedClickThisFrame = true;
         if (bLeftJustPressed) {
-            const Vector2 NewCamCore = Ctrl.GetSandbox().GetMinimapSystem().HandleLeftClickUV(
-                ClickedUV, Ctrl.GetSandbox().GetGameState().GetMapSize());
+            const UEVec3 CamUE = Bridge.HandleMinimapLeftClickUV(U, V, 4200.0f);
             if (PC->GetPawn()) {
-                const UEVec3 CamUE = Ctrl.GetSandbox().GetCoordinateBridge().CoreToUEPosition(NewCamCore, 4200.0f);
                 PC->GetPawn()->SetActorLocation(FVector(CamUE.x - 1800.0f, CamUE.y, CamUE.z));
             }
         }
         if (bRightJustPressed) {
-            Ctrl.GetSandbox().GetMinimapSystem().HandleRightClickUV(
-                ClickedUV, Ctrl.GetSandbox().GetGameState());
+            Bridge.HandleMinimapRightClickUV(U, V);
         }
         return;
     }
@@ -480,7 +466,7 @@ void ACoreEngineVisualTestHUD::HandleHudMouseClicks(UEWorldSubsystemController& 
         if (MouseX >= Btn.Min.X && MouseX <= Btn.Max.X && MouseY >= Btn.Min.Y && MouseY <= Btn.Max.Y) {
             bHudConsumedClickThisFrame = true;
             if (bLeftJustPressed) {
-                Ctrl.GetGUI().ExecuteButtonAction(Btn.WidgetId);
+                Bridge.ExecuteGuiButtonAction(Btn.WidgetId);
             }
             return;
         }

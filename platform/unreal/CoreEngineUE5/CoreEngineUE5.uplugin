@@ -16,6 +16,11 @@
 	"Installed": false,
 	"Modules": [
 		{
+			"Name": "CoreEngineCore",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		},
+		{
 			"Name": "CoreEngineUE5",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
