@@ -22,14 +22,16 @@ public class CoreEngineUE5 : ModuleRules
 			: InRepoCoreRoot;
 
 		PublicIncludePaths.AddRange(new string[] {
-			Path.Combine(ModuleDirectory, "Public"),
-			ActiveCoreRoot
+			Path.Combine(ModuleDirectory, "Public")
 		});
 
 		PrivateIncludePaths.AddRange(new string[] {
-			Path.Combine(ModuleDirectory, "Private"),
-			ActiveCoreRoot
+			Path.Combine(ModuleDirectory, "Private")
 		});
+
+		// Add CoreEngine root as a system include path so UE5's -Werror=shadow / strict
+		// warning flags do not fail on pure-C++17 CoreEngine headers (e.g. Vector2.h).
+		PublicSystemIncludePaths.Add(ActiveCoreRoot);
 
 		PublicDependencyModuleNames.AddRange(new string[] {
 			"Core",
