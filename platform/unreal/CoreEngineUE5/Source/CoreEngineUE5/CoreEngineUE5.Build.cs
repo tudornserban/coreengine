@@ -9,7 +9,7 @@ public class CoreEngineUE5 : ModuleRules
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		bUseUnity = false;
-		CppStandard = CppStandardVersion.Cpp17;
+		CppStandard = CppStandardVersion.Default; // UE 5.4+ requires C++20; CoreEngine C++17 compiles cleanly under C++20+
 		bEnableExceptions = true;
 		bUseRTTI = true; // Required for CoreEngine interface dynamic_cast gates (IUnitKinematics, IUnitAgent, etc.)
 
